@@ -4,6 +4,7 @@ import { getVideosForTopic } from '@/data/videoTutorials';
 
 
 
+
 export default function DockerPage() {
   const pageHeadings = [
     { id: 'introduction', title: 'What is Containerization?' },
