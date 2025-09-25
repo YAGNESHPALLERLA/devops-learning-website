@@ -1,4 +1,4 @@
-import Terminal from '@/components/terminal';
+import MultiTerminal from '@/components/multi-terminal';
 import DocsLayout from '@/components/docs-layout';
 
 export default function TerminalPage() {
@@ -12,13 +12,13 @@ export default function TerminalPage() {
     <DocsLayout onThisPage={onThisPage}>
       <div className="max-w-6xl mx-auto">
         <h1 id="interactive-terminal" className="text-4xl font-bold text-gray-900 mb-8">
-          🖥️ Interactive Linux Terminal
+          🖥️ Multi-Technology Terminal
         </h1>
         
         <div className="mb-8">
           <p className="text-lg text-gray-700 mb-6">
-            Practice Linux commands in this interactive terminal simulation. This is a safe environment 
-            where you can experiment with common Linux commands without affecting your actual system.
+            Practice commands for multiple technologies in this interactive terminal simulation. Switch between 
+            Linux/DevOps, Python, Java, and SQL environments to practice technology-specific commands safely.
           </p>
           
           <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
@@ -30,56 +30,72 @@ export default function TerminalPage() {
               </div>
               <div className="ml-3">
                 <p className="text-sm text-blue-700">
-                  <strong>Note:</strong> This is a simulated terminal for learning purposes. 
-                  Commands are processed locally and don't affect your actual system.
+                  <strong>Multi-Technology Terminal:</strong> Switch between different technology environments using the tabs above. 
+                  This is a simulated terminal for learning purposes - commands are processed locally and don't affect your actual system.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Terminal Component */}
+        {/* Multi-Technology Terminal Component */}
         <div className="mb-8">
-          <Terminal className="w-full" />
+          <MultiTerminal className="w-full" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Available Commands */}
           <div id="available-commands">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Available Commands</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Technology-Specific Commands</h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">File System Commands</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">🐧 Linux/DevOps Commands</h3>
                   <ul className="space-y-1 text-sm text-gray-700">
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">ls</code> - List directory contents</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">pwd</code> - Print working directory</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">cd</code> - Change directory</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">cat</code> - Display file contents</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">mkdir</code> - Create directory</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">touch</code> - Create file</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">docker ps</code> - List containers</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">git status</code> - Git repository status</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">systemctl status</code> - Service status</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">chmod</code> - Change permissions</li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">System Commands</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">🐍 Python Commands</h3>
                   <ul className="space-y-1 text-sm text-gray-700">
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">whoami</code> - Display current user</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">date</code> - Display current date/time</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">uname -a</code> - System information</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">ps</code> - Running processes</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">df -h</code> - Disk usage</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">free -h</code> - Memory usage</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">python --version</code> - Check Python version</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">pip list</code> - List packages</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">pip install [pkg]</code> - Install package</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">python [file]</code> - Run script</li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Utility Commands</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">☕ Java Commands</h3>
                   <ul className="space-y-1 text-sm text-gray-700">
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">echo</code> - Display text</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">clear</code> - Clear terminal</li>
-                    <li><code className="bg-gray-200 px-2 py-1 rounded">history</code> - Command history</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">java --version</code> - Check Java version</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">javac [file]</code> - Compile Java</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">mvn compile</code> - Maven compile</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">gradle build</code> - Gradle build</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">🗄️ SQL Commands</h3>
+                  <ul className="space-y-1 text-sm text-gray-700">
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">mysql -u [user]</code> - Connect to MySQL</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">psql -U [user]</code> - Connect to PostgreSQL</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">sqlite3 [db]</code> - Open SQLite</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">show databases</code> - List databases</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">🔧 Common Commands</h3>
+                  <ul className="space-y-1 text-sm text-gray-700">
                     <li><code className="bg-gray-200 px-2 py-1 rounded">help</code> - Show all commands</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">clear</code> - Clear terminal</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">ls</code> - List files</li>
+                    <li><code className="bg-gray-200 px-2 py-1 rounded">pwd</code> - Print directory</li>
                   </ul>
                 </div>
               </div>
