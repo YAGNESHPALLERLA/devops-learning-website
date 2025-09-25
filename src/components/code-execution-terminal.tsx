@@ -150,8 +150,8 @@ echo "Name: $NAME, Age: $AGE"
 
 # Array operations
 numbers=(1 2 3 4 5)
-for i in "${!numbers[@]}"; do
-    numbers[i]=$((${numbers[i]} * ${numbers[i]}))
+for i in {0..4}; do
+    numbers[i]=$((numbers[i] * numbers[i]))
 done
 echo "Squared numbers: ${numbers[@]}"
 
@@ -342,6 +342,10 @@ Hello, Developer!`;
       } else if (line.includes('echo "Date: $(date)"')) {
         output += `Date: ${new Date().toString()}\n`;
       }
+    }
+    
+    if (!output) {
+      output = 'Bash script executed successfully\n';
     }
     
     return output.trim();
