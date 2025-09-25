@@ -1,109 +1,129 @@
 // src/app/page.tsx
 import Link from 'next/link';
-import Image from 'next/image';
 
-// Define the props interface for TopicCard
-interface TopicCardProps {
+// Define the props interface for TechnologyCard
+interface TechnologyCardProps {
   title: string;
   description: string;
+  icon: string;
   link: string;
+  color: string;
 }
 
-// A simple reusable card component for your topics
-function TopicCard({ title, description, link }: TopicCardProps) {
+// Technology card component
+function TechnologyCard({ title, description, icon, link, color }: TechnologyCardProps) {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-      <h2 className="text-xl font-bold text-white mb-2">{title}</h2>
-      <p className="text-gray-400 mb-4">{description}</p>
-      <Link href={link} className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">
-        Learn More
-      </Link>
-    </div>
+    <Link href={link} className="block group">
+      <div className="bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-700 hover:border-gray-600">
+        <div className="text-center">
+          <div className={`text-6xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+            {icon}
+          </div>
+          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+            {title}
+          </h3>
+          <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+            {description}
+          </p>
+          <div className={`mt-6 w-full h-1 bg-gradient-to-r ${color} rounded-full group-hover:h-2 transition-all duration-300`}></div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Hero Section */}
       <section className="text-center py-20 px-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
-          🚀 DevOps Learning by Yagnesh
-        </h1>
-        <p className="text-lg md:text-xl text-gray-400 mb-8">
-          "Learn DevOps from Basics to Intermediate"
-        </p>
+        <div className="container mx-auto">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            🎓 Tech Learning Hub
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-4">
+            Master the technologies that power modern software development
+          </p>
+          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+            Choose your learning path and dive deep into comprehensive tutorials, hands-on projects, and real-world applications.
+          </p>
+        </div>
       </section>
 
-      {/* Topics Grid */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-white mb-10">Guide to DevOps</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <TopicCard
-            title="What is DevOps"
-            description="Understand the core principles and cultural shift of DevOps."
-            link="/docs/what-is-devops"
+      {/* Technologies Grid */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-4">Choose Your Technology</h2>
+          <p className="text-gray-400 text-lg">Select a technology to start your learning journey</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <TechnologyCard
+            title="DevOps"
+            description="Learn containerization, CI/CD, infrastructure automation, and cloud platforms"
+            icon="🚀"
+            link="/devops"
+            color="from-blue-500 to-blue-600"
           />
-          <TopicCard
-            title="Concepts in DevOps"
-            description="Learn about the key concepts and the infinite DevOps lifecycle."
-            link="/docs/concepts"
+          <TechnologyCard
+            title="Java"
+            description="Master Java programming, Spring Framework, and enterprise development"
+            icon="☕"
+            link="/java"
+            color="from-orange-500 to-red-500"
           />
-          <TopicCard
-            title="Tools in DevOps"
-            description="Explore the different tools used in each stage of the DevOps lifecycle."
-            link="/docs/tools"
+          <TechnologyCard
+            title="Python"
+            description="Learn Python programming, data science, web development, and automation"
+            icon="🐍"
+            link="/python"
+            color="from-yellow-500 to-green-500"
           />
-          <TopicCard
-            title="Linux Basics"
-            description="The first step in your DevOps journey: master the Linux command line."
-            link="/docs/linux-basics"
+          <TechnologyCard
+            title="SQL & Databases"
+            description="Database design, SQL queries, optimization, and modern database technologies"
+            icon="🗄️"
+            link="/sql"
+            color="from-purple-500 to-indigo-500"
           />
-          <TopicCard
-            title="Scripting Languages"
-            description="Learn how to write automation scripts with Python or Ruby."
-            link="/docs/scripting-languages"
+          <TechnologyCard
+            title="Web Development"
+            description="HTML, CSS, JavaScript, React, and full-stack web development"
+            icon="🌐"
+            link="/web-dev"
+            color="from-green-500 to-teal-500"
           />
-          <TopicCard
-            title="Version Control (Git)"
-            description="Understand Git basics for collaboration and code management."
-            link="/docs/version-control"
+          <TechnologyCard
+            title="Data Science"
+            description="Data analysis, machine learning, statistics, and visualization"
+            icon="📊"
+            link="/data-science"
+            color="from-pink-500 to-purple-500"
           />
-          <TopicCard
-            title="Cloud (AWS, Azure)"
-            description="Master cloud platforms and services for scalable infrastructure."
-            link="/docs/cloud"
-          />
-          <TopicCard
-            title="Docker (Containers)"
-            description="Learn containerization with Docker for consistent deployments."
-            link="/docs/docker"
-          />
-          <TopicCard
-            title="Jenkins (CI & CD)"
-            description="Set up continuous integration and deployment pipelines."
-            link="/docs/jenkins"
-          />
-          <TopicCard
-            title="Infrastructure as Code (IaC)"
-            description="Manage infrastructure using code with Terraform and CloudFormation."
-            link="/docs/iac"
-          />
-          <TopicCard
-            title="Kubernetes"
-            description="Orchestrate containers at scale with Kubernetes."
-            link="/docs/kubernetes"
-          />
-          <TopicCard
-            title="Monitoring & Logging"
-            description="Implement observability with monitoring and logging solutions."
-            link="/docs/monitoring"
-          />
-          <TopicCard
-            title="Interactive Terminal"
-            description="Practice Linux commands in a safe, simulated environment."
-            link="/terminal"
-          />
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="bg-gray-800 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-12">Why Choose Our Learning Platform?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🎥</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Video Tutorials</h3>
+              <p className="text-gray-400">High-quality video content with hands-on examples</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Interactive Learning</h3>
+              <p className="text-gray-400">Practice with interactive exercises and real-world projects</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🚀</div>
+              <h3 className="text-xl font-semibold text-white mb-2">Industry Ready</h3>
+              <p className="text-gray-400">Learn skills that are in demand in the tech industry</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
