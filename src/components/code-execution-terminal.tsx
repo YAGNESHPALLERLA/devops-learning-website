@@ -153,7 +153,7 @@ numbers=(1 2 3 4 5)
 for i in {0..4}; do
     numbers[i]=$((numbers[i] * numbers[i]))
 done
-echo "Squared numbers: ${numbers[@]}"
+echo "Squared numbers:" \${numbers[*]}
 
 # Function example
 greet() {
@@ -163,9 +163,9 @@ greet() {
 greet "Developer"
 
 # System commands
-echo "Current user: $(whoami)"
-echo "Current directory: $(pwd)"
-echo "Date: $(date)"`
+echo "Current user:" $(whoami)
+echo "Current directory:" $(pwd)
+echo "Date:" $(date)`
     }
   };
 
@@ -331,15 +331,15 @@ Hello, Developer!`;
         output += 'Hello, World!\n';
       } else if (line.includes('echo "Name: $NAME, Age: $AGE"')) {
         output += 'Name: DevOps Learning, Age: 25\n';
-      } else if (line.includes('echo "Squared numbers: ${numbers[@]}"')) {
+      } else if (line.includes('echo "Squared numbers:"')) {
         output += 'Squared numbers: 1 4 9 16 25\n';
       } else if (line.includes('greet "Developer"')) {
         output += 'Hello, Developer!\n';
-      } else if (line.includes('echo "Current user: $(whoami)"')) {
+      } else if (line.includes('echo "Current user:"')) {
         output += 'Current user: devops\n';
-      } else if (line.includes('echo "Current directory: $(pwd)"')) {
+      } else if (line.includes('echo "Current directory:"')) {
         output += 'Current directory: /home/devops\n';
-      } else if (line.includes('echo "Date: $(date)"')) {
+      } else if (line.includes('echo "Date:"')) {
         output += `Date: ${new Date().toString()}\n`;
       }
     }
