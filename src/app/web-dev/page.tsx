@@ -1,28 +1,22 @@
 // src/app/web-dev/page.tsx
 import Link from 'next/link';
 
+// Define the props interface for TopicCard
 interface TopicCardProps {
   title: string;
   description: string;
-  status: 'coming-soon' | 'available';
+  link: string;
 }
 
-function TopicCard({ title, description, status }: TopicCardProps) {
+// A simple reusable card component for your topics
+function TopicCard({ title, description, link }: TopicCardProps) {
   return (
-    <div className={`rounded-lg shadow-lg p-6 transition-all duration-300 ${
-      status === 'available' 
-        ? 'bg-gray-800 hover:shadow-xl' 
-        : 'bg-gray-700 opacity-75'
-    }`}>
+    <div className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
       <h2 className="text-xl font-bold text-white mb-2">{title}</h2>
       <p className="text-gray-400 mb-4">{description}</p>
-      <div className={`inline-block px-4 py-2 rounded-md text-sm font-semibold ${
-        status === 'available'
-          ? 'bg-green-600 text-white hover:bg-green-700'
-          : 'bg-gray-600 text-gray-300'
-      }`}>
-        {status === 'available' ? 'Available' : 'Coming Soon'}
-      </div>
+      <Link href={link} className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">
+        Learn More
+      </Link>
     </div>
   );
 }
@@ -43,44 +37,68 @@ export default function WebDevPage() {
       </section>
 
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-white mb-10">Web Development Learning Path</h2>
+        <h2 className="text-3xl font-bold text-center text-white mb-10">Complete Web Development Path</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TopicCard
-            title="HTML Fundamentals"
-            description="Learn HTML structure, semantic elements, and web page basics."
-            status="coming-soon"
+            title="HTML5 Fundamentals"
+            description="Learn semantic markup, forms, multimedia, and modern HTML5 features."
+            link="/web-dev/html"
           />
           <TopicCard
-            title="CSS Styling"
-            description="Master CSS selectors, layouts, Flexbox, and Grid systems."
-            status="coming-soon"
+            title="CSS3 & Styling"
+            description="Master CSS3, Flexbox, Grid, animations, and responsive design."
+            link="/web-dev/css"
           />
           <TopicCard
             title="JavaScript Basics"
-            description="Variables, functions, DOM manipulation, and JavaScript fundamentals."
-            status="coming-soon"
+            description="Variables, functions, DOM manipulation, and ES6+ features."
+            link="/web-dev/javascript"
           />
           <TopicCard
-            title="Responsive Design"
-            description="Mobile-first design, media queries, and responsive layouts."
-            status="coming-soon"
+            title="Advanced JavaScript"
+            description="Async programming, modules, error handling, and modern JS patterns."
+            link="/web-dev/advanced-js"
           />
           <TopicCard
-            title="React Fundamentals"
-            description="Components, JSX, props, state, and React basics."
-            status="coming-soon"
+            title="React.js Fundamentals"
+            description="Components, props, state, hooks, and React best practices."
+            link="/web-dev/react"
           />
           <TopicCard
-            title="Node.js Backend"
-            description="Server-side JavaScript, Express.js, and API development."
-            status="coming-soon"
+            title="React Advanced"
+            description="Context, Redux, performance optimization, and testing."
+            link="/web-dev/react-advanced"
           />
-        </div>
-        
-        <div className="text-center mt-12">
-          <p className="text-gray-400 text-lg">
-            Web Development content is being prepared. Check back soon!
-          </p>
+          <TopicCard
+            title="Node.js & Express"
+            description="Server-side JavaScript, REST APIs, and backend development."
+            link="/web-dev/nodejs"
+          />
+          <TopicCard
+            title="Database Integration"
+            description="MongoDB, SQL databases, ORMs, and data modeling."
+            link="/web-dev/database"
+          />
+          <TopicCard
+            title="Authentication & Security"
+            description="JWT, OAuth, security best practices, and user management."
+            link="/web-dev/auth"
+          />
+          <TopicCard
+            title="Deployment & DevOps"
+            description="AWS, Docker, CI/CD, and production deployment strategies."
+            link="/web-dev/deployment"
+          />
+          <TopicCard
+            title="Full-Stack Projects"
+            description="Build complete web applications from frontend to backend."
+            link="/web-dev/projects"
+          />
+          <TopicCard
+            title="Performance Optimization"
+            description="Web performance, SEO, caching, and optimization techniques."
+            link="/web-dev/performance"
+          />
         </div>
       </section>
     </main>
