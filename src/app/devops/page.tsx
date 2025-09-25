@@ -106,6 +106,11 @@ export default function DevOpsPage() {
             description="Practice Linux commands in a safe, simulated environment."
             link="/terminal"
           />
+          <TopicCard
+            title="Code Execution Terminal"
+            description="Write, edit, and execute code online for multiple programming languages."
+            link="/code-terminal"
+          />
         </div>
       </section>
     </main>

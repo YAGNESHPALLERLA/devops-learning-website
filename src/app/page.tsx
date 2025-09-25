@@ -100,6 +100,13 @@ export default function HomePage() {
             link="/data-science"
             color="from-pink-500 to-purple-500"
           />
+          <TechnologyCard
+            title="Code Terminal"
+            description="Write, edit, and execute code online for Python, JavaScript, Java, SQL, and Bash"
+            icon="💻"
+            link="/code-terminal"
+            color="from-cyan-500 to-blue-500"
+          />
         </div>
       </section>
 
