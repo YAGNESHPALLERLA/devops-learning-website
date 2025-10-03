@@ -94,24 +94,679 @@ export default function SQLPage() {
             <div className="max-w-6xl mx-auto">
               <h2 id="basic-commands" className="text-3xl font-bold text-blue-400 mb-6">2. Basic SQL Commands</h2>
               
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Understanding SQL Commands</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  SQL commands are the building blocks of database interaction. They allow you to create, read, update, and delete data 
+                  in databases. SQL commands are categorized into different types based on their functionality: DDL (Data Definition Language), 
+                  DML (Data Manipulation Language), DCL (Data Control Language), and TCL (Transaction Control Language).
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 SQL commands are case-insensitive, but it's a best practice to write keywords in uppercase for better readability.</p>
+                </div>
+              </div>
+
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-                <h3 className="text-xl font-bold text-purple-400 mb-4">SELECT Statement</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                    <h4 className="font-bold text-green-400 mb-2">Basic SELECT</h4>
-                    <pre className="text-green-400 font-mono text-sm">
-{`SELECT * FROM employees;
-SELECT name, salary FROM employees;`}
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. SELECT Statement - Data Retrieval</h3>
+                <p className="text-gray-300 mb-6">The SELECT statement is used to retrieve data from one or more tables.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Basic SELECT Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Select all columns from a table
+SELECT * FROM employees;
+
+-- Select specific columns
+SELECT first_name, last_name, salary FROM employees;
+
+-- Select with column aliases
+SELECT 
+    first_name AS "First Name",
+    last_name AS "Last Name",
+    salary AS "Annual Salary"
+FROM employees;
+
+-- Select with calculated columns
+SELECT 
+    first_name,
+    last_name,
+    salary,
+    salary * 1.1 AS "10% Raise",
+    salary / 12 AS "Monthly Salary"
+FROM employees;
+
+-- Select distinct values
+SELECT DISTINCT department FROM employees;
+
+-- Select with LIMIT (top N records)
+SELECT * FROM employees LIMIT 10;
+
+-- Select with OFFSET (skip records)
+SELECT * FROM employees LIMIT 10 OFFSET 20;`}
                     </pre>
                   </div>
-                  <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                    <h4 className="font-bold text-blue-400 mb-2">With Conditions</h4>
-                    <pre className="text-green-400 font-mono text-sm">
-{`SELECT * FROM employees 
-WHERE salary > 50000;
-SELECT name FROM employees 
-WHERE department = 'IT';`}
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">SELECT with WHERE Clause</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Basic WHERE conditions
+SELECT * FROM employees WHERE salary > 50000;
+SELECT * FROM employees WHERE department = 'IT';
+SELECT * FROM employees WHERE hire_date >= '2020-01-01';
+
+-- Multiple conditions with AND/OR
+SELECT * FROM employees 
+WHERE department = 'IT' AND salary > 60000;
+
+SELECT * FROM employees 
+WHERE department = 'IT' OR department = 'HR';
+
+-- IN operator
+SELECT * FROM employees 
+WHERE department IN ('IT', 'HR', 'Finance');
+
+-- BETWEEN operator
+SELECT * FROM employees 
+WHERE salary BETWEEN 40000 AND 80000;
+
+-- LIKE operator for pattern matching
+SELECT * FROM employees 
+WHERE first_name LIKE 'J%';  -- Names starting with 'J'
+
+SELECT * FROM employees 
+WHERE email LIKE '%@company.com';
+
+-- IS NULL / IS NOT NULL
+SELECT * FROM employees 
+WHERE phone_number IS NULL;
+
+SELECT * FROM employees 
+WHERE phone_number IS NOT NULL;`}
                     </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. INSERT Statement - Adding Data</h3>
+                <p className="text-gray-300 mb-6">The INSERT statement is used to add new records to a table.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Basic INSERT Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Insert single record
+INSERT INTO employees (first_name, last_name, email, department, salary)
+VALUES ('John', 'Doe', 'john.doe@company.com', 'IT', 65000);
+
+-- Insert with all columns (in order)
+INSERT INTO employees 
+VALUES (1, 'Jane', 'Smith', 'jane.smith@company.com', 'HR', 55000, '2023-01-15');
+
+-- Insert multiple records
+INSERT INTO employees (first_name, last_name, email, department, salary)
+VALUES 
+    ('Alice', 'Johnson', 'alice.j@company.com', 'Finance', 70000),
+    ('Bob', 'Wilson', 'bob.w@company.com', 'IT', 60000),
+    ('Carol', 'Brown', 'carol.b@company.com', 'Marketing', 58000);
+
+-- Insert from another table
+INSERT INTO employees_backup (first_name, last_name, salary)
+SELECT first_name, last_name, salary 
+FROM employees 
+WHERE department = 'IT';
+
+-- Insert with subquery
+INSERT INTO high_earners (employee_id, name, salary)
+SELECT id, CONCAT(first_name, ' ', last_name), salary
+FROM employees 
+WHERE salary > 80000;`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Advanced INSERT Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Insert with default values
+INSERT INTO employees (first_name, last_name, email)
+VALUES ('Mike', 'Davis', 'mike.d@company.com');
+-- Other columns will use default values or NULL
+
+-- Insert with NULL values
+INSERT INTO employees (first_name, last_name, email, phone_number)
+VALUES ('Sarah', 'Lee', 'sarah.l@company.com', NULL);
+
+-- Insert with current timestamp
+INSERT INTO employees (first_name, last_name, email, hire_date)
+VALUES ('Tom', 'Garcia', 'tom.g@company.com', CURRENT_TIMESTAMP);
+
+-- Insert with calculated values
+INSERT INTO employees (first_name, last_name, salary, bonus)
+VALUES ('Lisa', 'Martinez', 50000, 50000 * 0.1);
+
+-- Insert with conditional logic
+INSERT INTO employees (first_name, last_name, department, salary)
+SELECT 
+    first_name,
+    last_name,
+    CASE 
+        WHEN salary > 70000 THEN 'Senior'
+        WHEN salary > 50000 THEN 'Mid'
+        ELSE 'Junior'
+    END,
+    salary
+FROM temp_employees;`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. UPDATE Statement - Modifying Data</h3>
+                <p className="text-gray-300 mb-6">The UPDATE statement is used to modify existing records in a table.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Basic UPDATE Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Update single column
+UPDATE employees 
+SET salary = 70000 
+WHERE id = 1;
+
+-- Update multiple columns
+UPDATE employees 
+SET salary = 75000, department = 'Senior IT'
+WHERE id = 1;
+
+-- Update with calculation
+UPDATE employees 
+SET salary = salary * 1.05  -- 5% raise
+WHERE department = 'IT';
+
+-- Update with subquery
+UPDATE employees 
+SET salary = (
+    SELECT AVG(salary) 
+    FROM employees 
+    WHERE department = 'IT'
+)
+WHERE department = 'IT' AND salary < (
+    SELECT AVG(salary) 
+    FROM employees 
+    WHERE department = 'IT'
+);
+
+-- Update with CASE statement
+UPDATE employees 
+SET salary = CASE 
+    WHEN department = 'IT' THEN salary * 1.1
+    WHEN department = 'HR' THEN salary * 1.05
+    ELSE salary * 1.03
+END;`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Advanced UPDATE Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Update with JOIN
+UPDATE employees e
+JOIN departments d ON e.department_id = d.id
+SET e.salary = e.salary * 1.1
+WHERE d.name = 'IT';
+
+-- Update with EXISTS
+UPDATE employees 
+SET status = 'Active'
+WHERE EXISTS (
+    SELECT 1 FROM projects 
+    WHERE projects.manager_id = employees.id
+);
+
+-- Update with LIMIT (MySQL)
+UPDATE employees 
+SET last_login = CURRENT_TIMESTAMP
+WHERE status = 'Active'
+LIMIT 10;
+
+-- Update with ORDER BY (MySQL)
+UPDATE employees 
+SET salary = salary + 1000
+WHERE department = 'IT'
+ORDER BY salary ASC
+LIMIT 5;
+
+-- Update with NULL values
+UPDATE employees 
+SET phone_number = NULL
+WHERE phone_number = '';
+
+-- Update with current date/time
+UPDATE employees 
+SET last_updated = CURRENT_TIMESTAMP
+WHERE id = 1;`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">4. DELETE Statement - Removing Data</h3>
+                <p className="text-gray-300 mb-6">The DELETE statement is used to remove records from a table.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Basic DELETE Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Delete specific record
+DELETE FROM employees WHERE id = 1;
+
+-- Delete with multiple conditions
+DELETE FROM employees 
+WHERE department = 'IT' AND salary < 50000;
+
+-- Delete with IN operator
+DELETE FROM employees 
+WHERE id IN (1, 2, 3, 4, 5);
+
+-- Delete with subquery
+DELETE FROM employees 
+WHERE id IN (
+    SELECT employee_id 
+    FROM terminated_employees
+);
+
+-- Delete with EXISTS
+DELETE FROM employees 
+WHERE EXISTS (
+    SELECT 1 FROM performance_reviews 
+    WHERE performance_reviews.employee_id = employees.id 
+    AND performance_reviews.rating = 'Poor'
+);
+
+-- Delete with date conditions
+DELETE FROM employees 
+WHERE hire_date < '2020-01-01' AND status = 'Inactive';`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Advanced DELETE Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Delete with JOIN
+DELETE e FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.name = 'Discontinued';
+
+-- Delete with LIMIT (MySQL)
+DELETE FROM employees 
+WHERE status = 'Inactive'
+LIMIT 100;
+
+-- Delete with ORDER BY (MySQL)
+DELETE FROM employees 
+WHERE department = 'Temp'
+ORDER BY hire_date ASC
+LIMIT 50;
+
+-- Delete all records (be careful!)
+DELETE FROM employees;  -- This deletes ALL records!
+
+-- Delete with CASCADE (if foreign key constraints allow)
+DELETE FROM departments 
+WHERE id = 5;  -- May delete related employees if CASCADE is set
+
+-- Soft delete (update instead of delete)
+UPDATE employees 
+SET status = 'Deleted', deleted_at = CURRENT_TIMESTAMP
+WHERE id = 1;
+
+-- Delete with transaction
+BEGIN;
+DELETE FROM employees WHERE id = 1;
+DELETE FROM employee_benefits WHERE employee_id = 1;
+COMMIT;`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">5. ORDER BY and GROUP BY</h3>
+                <p className="text-gray-300 mb-6">These clauses help organize and summarize data in your queries.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">ORDER BY - Sorting Results</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Sort by single column
+SELECT * FROM employees ORDER BY last_name;
+
+-- Sort by multiple columns
+SELECT * FROM employees 
+ORDER BY department, salary DESC;
+
+-- Sort with NULL handling
+SELECT * FROM employees 
+ORDER BY phone_number NULLS LAST;
+
+-- Sort by column position
+SELECT first_name, last_name, salary 
+FROM employees 
+ORDER BY 3 DESC;  -- Sort by 3rd column (salary)
+
+-- Sort by expression
+SELECT first_name, last_name, salary 
+FROM employees 
+ORDER BY salary * 12 DESC;  -- Annual salary
+
+-- Sort with CASE statement
+SELECT * FROM employees 
+ORDER BY 
+    CASE department
+        WHEN 'IT' THEN 1
+        WHEN 'HR' THEN 2
+        WHEN 'Finance' THEN 3
+        ELSE 4
+    END;`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">GROUP BY - Aggregating Data</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`-- Group by single column
+SELECT department, COUNT(*) as employee_count
+FROM employees 
+GROUP BY department;
+
+-- Group by multiple columns
+SELECT department, status, COUNT(*) as count
+FROM employees 
+GROUP BY department, status;
+
+-- Group with aggregate functions
+SELECT 
+    department,
+    COUNT(*) as total_employees,
+    AVG(salary) as avg_salary,
+    MAX(salary) as max_salary,
+    MIN(salary) as min_salary,
+    SUM(salary) as total_salary
+FROM employees 
+GROUP BY department;
+
+-- Group with HAVING clause
+SELECT department, AVG(salary) as avg_salary
+FROM employees 
+GROUP BY department
+HAVING AVG(salary) > 60000;
+
+-- Group with WHERE and HAVING
+SELECT department, COUNT(*) as employee_count
+FROM employees 
+WHERE hire_date >= '2020-01-01'
+GROUP BY department
+HAVING COUNT(*) > 5;`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">SQL Command Categories</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-green-400 font-bold mb-2">DDL (Data Definition)</h4>
+                    <p className="text-gray-300 text-sm">CREATE, ALTER, DROP, TRUNCATE</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-blue-400 font-bold mb-2">DML (Data Manipulation)</h4>
+                    <p className="text-gray-300 text-sm">SELECT, INSERT, UPDATE, DELETE</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-purple-400 font-bold mb-2">DCL (Data Control)</h4>
+                    <p className="text-gray-300 text-sm">GRANT, REVOKE, DENY</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-yellow-400 font-bold mb-2">TCL (Transaction Control)</h4>
+                    <p className="text-gray-300 text-sm">COMMIT, ROLLBACK, SAVEPOINT</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Employee Management System</h3>
+                <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
+                  <h4 className="text-lg font-bold text-blue-400 mb-4">employee_management.sql</h4>
+                  <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`-- Employee Management System SQL Examples
+-- This demonstrates comprehensive SQL operations
+
+-- 1. Create the employees table
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
+    department VARCHAR(50),
+    position VARCHAR(50),
+    salary DECIMAL(10,2),
+    hire_date DATE,
+    manager_id INT,
+    status ENUM('Active', 'Inactive', 'Terminated') DEFAULT 'Active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 2. Insert sample data
+INSERT INTO employees (first_name, last_name, email, phone, department, position, salary, hire_date, manager_id) VALUES
+('John', 'Doe', 'john.doe@company.com', '555-0101', 'IT', 'Software Engineer', 75000.00, '2022-01-15', NULL),
+('Jane', 'Smith', 'jane.smith@company.com', '555-0102', 'HR', 'HR Manager', 65000.00, '2021-03-20', NULL),
+('Mike', 'Johnson', 'mike.johnson@company.com', '555-0103', 'IT', 'Senior Developer', 85000.00, '2020-06-10', 1),
+('Sarah', 'Williams', 'sarah.williams@company.com', '555-0104', 'Finance', 'Accountant', 55000.00, '2022-02-28', NULL),
+('David', 'Brown', 'david.brown@company.com', '555-0105', 'IT', 'DevOps Engineer', 80000.00, '2021-11-05', 1),
+('Lisa', 'Davis', 'lisa.davis@company.com', '555-0106', 'Marketing', 'Marketing Specialist', 60000.00, '2022-04-12', NULL),
+('Tom', 'Wilson', 'tom.wilson@company.com', '555-0107', 'IT', 'Junior Developer', 50000.00, '2023-01-20', 3),
+('Amy', 'Garcia', 'amy.garcia@company.com', '555-0108', 'HR', 'Recruiter', 45000.00, '2022-08-15', 2);
+
+-- 3. Basic SELECT queries
+-- Get all employees
+SELECT * FROM employees;
+
+-- Get employees by department
+SELECT first_name, last_name, department, salary
+FROM employees 
+WHERE department = 'IT'
+ORDER BY salary DESC;
+
+-- Get employees with high salary
+SELECT CONCAT(first_name, ' ', last_name) AS full_name, 
+       department, 
+       salary,
+       salary * 12 AS annual_salary
+FROM employees 
+WHERE salary > 70000
+ORDER BY salary DESC;
+
+-- 4. Advanced SELECT queries
+-- Get department statistics
+SELECT 
+    department,
+    COUNT(*) AS employee_count,
+    AVG(salary) AS avg_salary,
+    MAX(salary) AS max_salary,
+    MIN(salary) AS min_salary,
+    SUM(salary) AS total_salary
+FROM employees 
+WHERE status = 'Active'
+GROUP BY department
+ORDER BY avg_salary DESC;
+
+-- Get employees with their managers
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.position,
+    m.first_name AS manager_first_name,
+    m.last_name AS manager_last_name
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.id
+ORDER BY e.department, e.last_name;
+
+-- Get recent hires
+SELECT 
+    first_name,
+    last_name,
+    department,
+    hire_date,
+    DATEDIFF(CURRENT_DATE, hire_date) AS days_employed
+FROM employees 
+WHERE hire_date >= DATE_SUB(CURRENT_DATE, INTERVAL 1 YEAR)
+ORDER BY hire_date DESC;
+
+-- 5. UPDATE operations
+-- Give raise to IT department
+UPDATE employees 
+SET salary = salary * 1.1
+WHERE department = 'IT' AND status = 'Active';
+
+-- Update employee status
+UPDATE employees 
+SET status = 'Inactive', updated_at = CURRENT_TIMESTAMP
+WHERE id = 8;
+
+-- Update manager for new employee
+UPDATE employees 
+SET manager_id = 1
+WHERE first_name = 'Tom' AND last_name = 'Wilson';
+
+-- 6. DELETE operations
+-- Delete terminated employees (soft delete)
+UPDATE employees 
+SET status = 'Terminated', updated_at = CURRENT_TIMESTAMP
+WHERE id = 8;
+
+-- Delete old inactive employees (hard delete)
+DELETE FROM employees 
+WHERE status = 'Inactive' 
+AND updated_at < DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH);
+
+-- 7. Complex queries
+-- Find employees earning more than their department average
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.department,
+    e.salary,
+    dept_avg.avg_salary
+FROM employees e
+JOIN (
+    SELECT department, AVG(salary) AS avg_salary
+    FROM employees 
+    WHERE status = 'Active'
+    GROUP BY department
+) dept_avg ON e.department = dept_avg.department
+WHERE e.salary > dept_avg.avg_salary
+ORDER BY e.department, e.salary DESC;
+
+-- Find employees without managers
+SELECT 
+    first_name,
+    last_name,
+    department,
+    position
+FROM employees 
+WHERE manager_id IS NULL AND status = 'Active'
+ORDER BY department, last_name;
+
+-- Get department headcount by month
+SELECT 
+    department,
+    YEAR(hire_date) AS year,
+    MONTH(hire_date) AS month,
+    COUNT(*) AS new_hires
+FROM employees 
+WHERE hire_date >= '2022-01-01'
+GROUP BY department, YEAR(hire_date), MONTH(hire_date)
+ORDER BY department, year, month;
+
+-- 8. Data validation queries
+-- Find duplicate emails
+SELECT email, COUNT(*) AS count
+FROM employees 
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+-- Find employees with missing required data
+SELECT 
+    id,
+    first_name,
+    last_name,
+    CASE 
+        WHEN phone IS NULL THEN 'Missing Phone'
+        WHEN department IS NULL THEN 'Missing Department'
+        WHEN salary IS NULL THEN 'Missing Salary'
+        ELSE 'Complete'
+    END AS data_status
+FROM employees 
+WHERE phone IS NULL OR department IS NULL OR salary IS NULL;
+
+-- 9. Performance and maintenance queries
+-- Create index for better performance
+CREATE INDEX idx_employees_department ON employees(department);
+CREATE INDEX idx_employees_salary ON employees(salary);
+CREATE INDEX idx_employees_status ON employees(status);
+
+-- Analyze table statistics
+ANALYZE TABLE employees;
+
+-- Show table structure
+DESCRIBE employees;
+
+-- Show table size and row count
+SELECT 
+    TABLE_NAME,
+    TABLE_ROWS,
+    ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2) AS 'Size (MB)'
+FROM information_schema.TABLES 
+WHERE TABLE_SCHEMA = DATABASE() 
+AND TABLE_NAME = 'employees';`}
+                  </pre>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
+                    <h4 className="text-green-300 font-bold mb-2">🎯 Features Demonstrated</h4>
+                    <ul className="text-gray-300 text-sm space-y-1">
+                      <li>• Complete CRUD operations (Create, Read, Update, Delete)</li>
+                      <li>• Table creation with constraints and indexes</li>
+                      <li>• Complex queries with JOINs and subqueries</li>
+                      <li>• Data aggregation and grouping</li>
+                      <li>• Data validation and quality checks</li>
+                      <li>• Performance optimization techniques</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
+                    <h4 className="text-blue-300 font-bold mb-2">📊 Sample Results</h4>
+                    <div className="bg-gray-900 p-3 rounded text-sm">
+                      <pre className="text-green-400 font-mono">
+{`Department Statistics:
++------------+----------------+-------------+------------+------------+-------------+
+| department | employee_count | avg_salary  | max_salary | min_salary | total_salary|
++------------+----------------+-------------+------------+------------+-------------+
+| IT         | 4              | 72500.00    | 85000.00   | 50000.00   | 290000.00   |
+| HR         | 2              | 55000.00    | 65000.00   | 45000.00   | 110000.00   |
+| Finance    | 1              | 55000.00    | 55000.00   | 55000.00   | 55000.00    |
+| Marketing  | 1              | 60000.00    | 60000.00   | 60000.00   | 60000.00    |
++------------+----------------+-------------+------------+------------+-------------+`}
+                      </pre>
+                    </div>
                   </div>
                 </div>
               </div>

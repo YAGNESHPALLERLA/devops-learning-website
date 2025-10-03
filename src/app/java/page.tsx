@@ -1195,37 +1195,748 @@ Account: CHK001, Holder: Jane Smith, Balance: $100.00`}
             
             <div className="max-w-6xl mx-auto">
               <h2 id="keywords" className="text-3xl font-bold text-orange-400 mb-6">4. Java Keywords</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Access Modifiers</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• public - accessible everywhere</li>
-                  <li>• private - accessible within class</li>
-                  <li>• protected - accessible in package and subclasses</li>
-                  <li>• default - accessible in package</li>
-                </ul>
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Understanding Java Keywords</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Java keywords are reserved words that have special meaning in the Java language. They cannot be used as identifiers (variable names, method names, class names, etc.) and are essential for defining the structure and behavior of Java programs.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 Java has 50+ keywords. Understanding their proper usage is crucial for writing correct and efficient Java code.</p>
+                </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">Class Keywords</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• class - defines a class</li>
-                  <li>• interface - defines an interface</li>
-                  <li>• abstract - cannot be instantiated</li>
-                  <li>• final - cannot be modified</li>
-                </ul>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. Access Modifiers</h3>
+                <p className="text-gray-300 mb-6">Control the visibility and accessibility of classes, methods, and variables.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Access Modifier Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// public - accessible from anywhere
+public class PublicClass {
+    public int publicVar = 10;
+    public void publicMethod() {
+        System.out.println("Public method");
+    }
+}
+
+// private - accessible only within the same class
+class PrivateExample {
+    private int privateVar = 20;
+    private void privateMethod() {
+        System.out.println("Private method");
+    }
+    
+    public void accessPrivate() {
+        System.out.println(privateVar); // OK - same class
+        privateMethod(); // OK - same class
+    }
+}
+
+// protected - accessible in same package and subclasses
+class ProtectedExample {
+    protected int protectedVar = 30;
+    protected void protectedMethod() {
+        System.out.println("Protected method");
+    }
+}
+
+// default (package-private) - accessible in same package
+class DefaultExample {
+    int defaultVar = 40; // No modifier = default
+    void defaultMethod() {
+        System.out.println("Default method");
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Access Modifier Visibility</h4>
+                    <div className="bg-gray-900 p-4 rounded mb-4">
+                      <table className="text-green-400 font-mono text-sm w-full">
+                        <thead>
+                          <tr className="border-b border-gray-600">
+                            <th className="text-left p-2">Modifier</th>
+                            <th className="text-left p-2">Same Class</th>
+                            <th className="text-left p-2">Same Package</th>
+                            <th className="text-left p-2">Subclass</th>
+                            <th className="text-left p-2">Other</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">public</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                          </tr>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">protected</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✗</td>
+                          </tr>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">default</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✗</td>
+                            <td className="p-2">✗</td>
+                          </tr>
+                          <tr>
+                            <td className="p-2">private</td>
+                            <td className="p-2">✓</td>
+                            <td className="p-2">✗</td>
+                            <td className="p-2">✗</td>
+                            <td className="p-2">✗</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-purple-400 mb-2">Control Flow</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• if, else - conditional statements</li>
-                  <li>• switch, case - multi-way selection</li>
-                  <li>• for, while, do - loops</li>
-                  <li>• break, continue - loop control</li>
-                </ul>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Class and Object Keywords</h3>
+                <p className="text-gray-300 mb-6">Keywords used for defining classes, interfaces, and object behavior.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Class Definition Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// class - defines a class
+class MyClass {
+    // class body
+}
+
+// abstract - cannot be instantiated
+abstract class AbstractClass {
+    abstract void abstractMethod(); // Must be implemented by subclass
+    void concreteMethod() {
+        System.out.println("Concrete method");
+    }
+}
+
+// final - cannot be extended or modified
+final class FinalClass {
+    final int finalVar = 100; // Cannot be changed
+    final void finalMethod() {
+        System.out.println("Cannot be overridden");
+    }
+}
+
+// interface - defines a contract
+interface MyInterface {
+    void interfaceMethod(); // Implicitly public and abstract
+    default void defaultMethod() {
+        System.out.println("Default implementation");
+    }
+}
+
+// enum - defines enumerated types
+enum Color {
+    RED, GREEN, BLUE;
+    
+    public void printColor() {
+        System.out.println("Color: " + this);
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Object Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// static - belongs to class, not instance
+class StaticExample {
+    static int staticVar = 10;
+    static void staticMethod() {
+        System.out.println("Static method");
+    }
+    
+    // Access: StaticExample.staticVar
+}
+
+// this - reference to current object
+class ThisExample {
+    private String name;
+    
+    public ThisExample(String name) {
+        this.name = name; // 'this' refers to current object
+    }
+    
+    public void printName() {
+        System.out.println(this.name);
+    }
+}
+
+// super - reference to parent class
+class Parent {
+    protected String parentField = "Parent";
+}
+
+class Child extends Parent {
+    private String childField = "Child";
+    
+    public void printFields() {
+        System.out.println(super.parentField); // Access parent field
+        System.out.println(this.childField);   // Access own field
+    }
+}
+
+// instanceof - checks object type
+public void checkType(Object obj) {
+    if (obj instanceof String) {
+        System.out.println("It's a String");
+    } else if (obj instanceof Integer) {
+        System.out.println("It's an Integer");
+    }
+}`}
+                    </pre>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. Control Flow Keywords</h3>
+                <p className="text-gray-300 mb-6">Keywords that control the flow of program execution.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Conditional Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// if, else, else if - conditional execution
+int score = 85;
+if (score >= 90) {
+    System.out.println("Grade A");
+} else if (score >= 80) {
+    System.out.println("Grade B");
+} else if (score >= 70) {
+    System.out.println("Grade C");
+} else {
+    System.out.println("Grade F");
+}
+
+// switch, case, default - multi-way selection
+int day = 3;
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    default:
+        System.out.println("Invalid day");
+        break;
+}
+
+// ternary operator (conditional operator)
+int a = 10, b = 20;
+int max = (a > b) ? a : b; // If a > b, return a, else return b`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Loop Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// for - definite iteration
+for (int i = 0; i < 5; i++) {
+    System.out.println("Count: " + i);
+}
+
+// while - indefinite iteration
+int count = 0;
+while (count < 5) {
+    System.out.println("While count: " + count);
+    count++;
+}
+
+// do-while - executes at least once
+int num = 0;
+do {
+    System.out.println("Do-while: " + num);
+    num++;
+} while (num < 3);
+
+// break - exit loop immediately
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        break; // Exit loop when i equals 5
+    }
+    System.out.println("i = " + i);
+}
+
+// continue - skip current iteration
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+        continue; // Skip even numbers
+    }
+    System.out.println("Odd: " + i);
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">4. Exception Handling Keywords</h3>
+                <p className="text-gray-300 mb-6">Keywords for handling errors and exceptional conditions.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Exception Keywords</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// try, catch, finally - exception handling
+try {
+    int result = 10 / 0; // This will throw ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Division by zero: " + e.getMessage());
+} catch (Exception e) {
+    System.out.println("General exception: " + e.getMessage());
+} finally {
+    System.out.println("This always executes");
+}
+
+// throw - throw an exception
+public void validateAge(int age) throws IllegalArgumentException {
+    if (age < 0) {
+        throw new IllegalArgumentException("Age cannot be negative");
+    }
+    if (age > 150) {
+        throw new IllegalArgumentException("Age cannot be greater than 150");
+    }
+}
+
+// throws - declare exceptions that method might throw
+public void riskyMethod() throws IOException, SQLException {
+    // Method that might throw these exceptions
+}
+
+// assert - assertion for debugging
+public void assertExample(int value) {
+    assert value > 0 : "Value must be positive";
+    System.out.println("Value is positive: " + value);
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Advanced Exception Handling</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// try-with-resources - automatic resource management
+try (FileInputStream fis = new FileInputStream("file.txt");
+     BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    System.out.println("Error reading file: " + e.getMessage());
+}
+// Resources are automatically closed
+
+// Multiple catch blocks
+try {
+    // Some code that might throw exceptions
+} catch (NullPointerException e) {
+    System.out.println("Null pointer: " + e.getMessage());
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array index out of bounds: " + e.getMessage());
+} catch (Exception e) {
+    System.out.println("Other exception: " + e.getMessage());
+}
+
+// Custom exception
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+public void throwCustomException() throws CustomException {
+    throw new CustomException("This is a custom exception");
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">5. Data Type and Variable Keywords</h3>
+                <p className="text-gray-300 mb-6">Keywords for declaring and managing data types and variables.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Primitive Data Types</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Primitive data type keywords
+byte b = 127;           // 8-bit integer
+short s = 32767;        // 16-bit integer
+int i = 2147483647;     // 32-bit integer
+long l = 9223372036854775807L; // 64-bit integer
+
+float f = 3.14f;        // 32-bit floating point
+double d = 3.14159265359; // 64-bit floating point
+
+char c = 'A';           // 16-bit Unicode character
+boolean bool = true;    // true or false
+
+// Literal keywords
+boolean isTrue = true;
+boolean isFalse = false;
+String nullValue = null;
+
+// Type casting
+int intValue = 100;
+double doubleValue = (double) intValue; // Explicit cast
+long longValue = intValue; // Implicit cast (widening)`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Variable Modifiers</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// final - constant (cannot be changed)
+final int MAX_SIZE = 100;
+final String COMPANY_NAME = "OHG 365";
+
+// static - belongs to class
+class Counter {
+    static int count = 0; // Shared among all instances
+    static void increment() {
+        count++;
+    }
+}
+
+// volatile - ensures visibility across threads
+volatile boolean flag = false;
+
+// transient - not serialized
+class User implements Serializable {
+    private String name;
+    private transient String password; // Won't be serialized
+}
+
+// var - local variable type inference (Java 10+)
+var list = new ArrayList<String>();
+var map = new HashMap<String, Integer>();
+var number = 42; // Inferred as int
+
+// const - reserved but not used in Java
+// const int x = 10; // This would cause compilation error`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">Complete Java Keywords List</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-green-400 font-bold mb-2">Access Modifiers</h4>
+                    <p className="text-gray-300 text-sm">public, private, protected</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-blue-400 font-bold mb-2">Class & Interface</h4>
+                    <p className="text-gray-300 text-sm">class, interface, abstract, final, enum</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-purple-400 font-bold mb-2">Control Flow</h4>
+                    <p className="text-gray-300 text-sm">if, else, switch, case, default, for, while, do, break, continue</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-yellow-400 font-bold mb-2">Exception Handling</h4>
+                    <p className="text-gray-300 text-sm">try, catch, finally, throw, throws, assert</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-red-400 font-bold mb-2">Object & Reference</h4>
+                    <p className="text-gray-300 text-sm">this, super, instanceof, new</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-indigo-400 font-bold mb-2">Modifiers</h4>
+                    <p className="text-gray-300 text-sm">static, final, volatile, transient, synchronized, native</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-pink-400 font-bold mb-2">Data Types</h4>
+                    <p className="text-gray-300 text-sm">byte, short, int, long, float, double, char, boolean, void</p>
+                  </div>
+                  <div className="bg-gray-800 p-4 rounded">
+                    <h4 className="text-cyan-400 font-bold mb-2">Literals</h4>
+                    <p className="text-gray-300 text-sm">true, false, null</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Keyword Usage in Real Application</h3>
+                <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
+                  <h4 className="text-lg font-bold text-blue-400 mb-4">KeywordDemo.java</h4>
+                  <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`package com.ohg365.examples;
+
+import java.io.*;
+import java.util.*;
+
+/**
+ * Comprehensive example demonstrating Java keywords usage
+ * This class showcases various keywords in a real-world context
+ */
+public class KeywordDemo {
+    // Static final constants
+    private static final String APP_NAME = "OHG 365 Keyword Demo";
+    private static final int MAX_ATTEMPTS = 3;
+    
+    // Instance variables with different access modifiers
+    private String userName;
+    protected int userAge;
+    public boolean isActive;
+    
+    // Static variable shared across all instances
+    private static int instanceCount = 0;
+    
+    // Constructor
+    public KeywordDemo(String userName, int userAge) {
+        this.userName = userName;
+        this.userAge = userAge;
+        this.isActive = true;
+        instanceCount++;
+    }
+    
+    // Static method - can be called without creating instance
+    public static void printAppInfo() {
+        System.out.println("Application: " + APP_NAME);
+        System.out.println("Instance count: " + instanceCount);
+    }
+    
+    // Public method with exception handling
+    public void processUserData() throws IllegalArgumentException {
+        try {
+            // Validate user data
+            if (userName == null || userName.isEmpty()) {
+                throw new IllegalArgumentException("Username cannot be null or empty");
+            }
+            
+            if (userAge < 0 || userAge > 150) {
+                throw new IllegalArgumentException("Age must be between 0 and 150");
+            }
+            
+            // Process data based on age
+            if (userAge < 18) {
+                System.out.println("User is a minor");
+            } else if (userAge >= 18 && userAge < 65) {
+                System.out.println("User is an adult");
+            } else {
+                System.out.println("User is a senior");
+            }
+            
+        } catch (IllegalArgumentException e) {
+            System.err.println("Validation error: " + e.getMessage());
+            throw e; // Re-throw the exception
+        } finally {
+            System.out.println("User data processing completed");
+        }
+    }
+    
+    // Method demonstrating control flow keywords
+    public void demonstrateControlFlow() {
+        System.out.println("\\n=== Control Flow Demonstration ===");
+        
+        // if-else statement
+        if (isActive) {
+            System.out.println("User is active");
+        } else {
+            System.out.println("User is inactive");
+        }
+        
+        // switch statement
+        switch (userAge / 10) {
+            case 0:
+            case 1:
+                System.out.println("Age group: 0-19");
+                break;
+            case 2:
+                System.out.println("Age group: 20-29");
+                break;
+            case 3:
+                System.out.println("Age group: 30-39");
+                break;
+            default:
+                System.out.println("Age group: 40+");
+                break;
+        }
+        
+        // for loop
+        for (int i = 0; i < 5; i++) {
+            if (i == 2) {
+                continue; // Skip iteration when i equals 2
+            }
+            if (i == 4) {
+                break; // Exit loop when i equals 4
+            }
+            System.out.println("Loop iteration: " + i);
+        }
+        
+        // while loop
+        int count = 0;
+        while (count < 3) {
+            System.out.println("While loop count: " + count);
+            count++;
+        }
+    }
+    
+    // Method demonstrating object keywords
+    public void demonstrateObjectKeywords() {
+        System.out.println("\\n=== Object Keywords Demonstration ===");
+        
+        // this keyword
+        System.out.println("Current object username: " + this.userName);
+        
+        // instanceof keyword
+        Object obj = this;
+        if (obj instanceof KeywordDemo) {
+            System.out.println("Object is instance of KeywordDemo");
+        }
+        
+        // new keyword (creating new objects)
+        String[] hobbies = new String[]{"Reading", "Coding", "Gaming"};
+        for (String hobby : hobbies) {
+            System.out.println("Hobby: " + hobby);
+        }
+    }
+    
+    // Method demonstrating data type keywords
+    public void demonstrateDataTypes() {
+        System.out.println("\\n=== Data Type Keywords Demonstration ===");
+        
+        // Primitive data types
+        byte byteValue = 127;
+        short shortValue = 32767;
+        int intValue = 2147483647;
+        long longValue = 9223372036854775807L;
+        float floatValue = 3.14f;
+        double doubleValue = 3.14159265359;
+        char charValue = 'A';
+        boolean booleanValue = true;
+        
+        System.out.println("Byte: " + byteValue);
+        System.out.println("Short: " + shortValue);
+        System.out.println("Int: " + intValue);
+        System.out.println("Long: " + longValue);
+        System.out.println("Float: " + floatValue);
+        System.out.println("Double: " + doubleValue);
+        System.out.println("Char: " + charValue);
+        System.out.println("Boolean: " + booleanValue);
+        
+        // Literal keywords
+        String nullString = null;
+        boolean trueValue = true;
+        boolean falseValue = false;
+        
+        System.out.println("Null string: " + nullString);
+        System.out.println("True value: " + trueValue);
+        System.out.println("False value: " + falseValue);
+    }
+    
+    // Final method - cannot be overridden
+    public final void finalMethod() {
+        System.out.println("This is a final method and cannot be overridden");
+    }
+    
+    // Static method to demonstrate static keyword
+    public static void demonstrateStatic() {
+        System.out.println("\\n=== Static Keyword Demonstration ===");
+        System.out.println("This method belongs to the class, not any instance");
+        System.out.println("Current instance count: " + instanceCount);
+    }
+    
+    // Main method - entry point of the program
+    public static void main(String[] args) {
+        System.out.println("=== " + APP_NAME + " ===");
+        
+        // Create instances
+        KeywordDemo demo1 = new KeywordDemo("Alice", 25);
+        KeywordDemo demo2 = new KeywordDemo("Bob", 17);
+        
+        // Call static method
+        printAppInfo();
+        
+        // Demonstrate various keyword usages
+        demo1.demonstrateControlFlow();
+        demo1.demonstrateObjectKeywords();
+        demo1.demonstrateDataTypes();
+        
+        // Demonstrate static method
+        demonstrateStatic();
+        
+        // Demonstrate exception handling
+        try {
+            demo1.processUserData();
+            demo2.processUserData();
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error processing user data: " + e.getMessage());
+        }
+        
+        // Demonstrate final method
+        demo1.finalMethod();
+        
+        System.out.println("\\n=== Program completed successfully ===");
+    }
+}`}
+                  </pre>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
+                    <h4 className="text-green-300 font-bold mb-2">🎯 Keywords Demonstrated</h4>
+                    <ul className="text-gray-300 text-sm space-y-1">
+                      <li>• Access modifiers (public, private, protected)</li>
+                      <li>• Class keywords (class, static, final)</li>
+                      <li>• Control flow (if, else, switch, for, while)</li>
+                      <li>• Exception handling (try, catch, finally, throw)</li>
+                      <li>• Object keywords (this, new, instanceof)</li>
+                      <li>• Data types (byte, int, long, float, double, char, boolean)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
+                    <h4 className="text-blue-300 font-bold mb-2">📊 Sample Output</h4>
+                    <div className="bg-gray-900 p-3 rounded text-sm">
+                      <pre className="text-green-400 font-mono">
+{`=== OHG 365 Keyword Demo ===
+Application: OHG 365 Keyword Demo
+Instance count: 2
+
+=== Control Flow Demonstration ===
+User is active
+Age group: 20-29
+Loop iteration: 0
+Loop iteration: 1
+Loop iteration: 3
+While loop count: 0
+While loop count: 1
+While loop count: 2
+
+=== Object Keywords Demonstration ===
+Current object username: Alice
+Object is instance of KeywordDemo
+Hobby: Reading
+Hobby: Coding
+Hobby: Gaming`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1243,73 +1954,640 @@ Account: CHK001, Holder: Jane Smith, Balance: $100.00`}
             
             <div className="max-w-6xl mx-auto">
               <h2 id="strings" className="text-3xl font-bold text-orange-400 mb-6">5. Strings & String Handling</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">String Classes</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">String</h4>
-                <p className="text-gray-300 text-sm mb-2">Immutable sequence of characters</p>
-                <div className="bg-gray-900 p-2 rounded">
-                  <pre className="text-green-400 font-mono text-xs">
-{`String str = "Hello";
-str = str + " World";`}
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Understanding Java Strings</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Strings in Java are objects that represent sequences of characters. They are immutable, meaning once created, their content cannot be changed. 
+                  Java provides several classes for string manipulation: String, StringBuilder, and StringBuffer, each with specific use cases and performance characteristics.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 String manipulation is one of the most common operations in Java programming. Understanding the differences between String, StringBuilder, and StringBuffer is crucial for writing efficient code.</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. String Class - Immutable Strings</h3>
+                <p className="text-gray-300 mb-6">The String class represents immutable character sequences. Once created, String objects cannot be modified.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">String Creation and Immutability</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Different ways to create strings
+String str1 = "Hello World";                    // String literal
+String str2 = new String("Hello World");       // Using constructor
+String str3 = new String(new char[]{'H','e','l','l','o'});
+String str4 = String.valueOf(123);             // Convert number to string
+
+// String immutability demonstration
+String original = "Hello";
+String modified = original.concat(" World");
+System.out.println("Original: " + original);    // Still "Hello"
+System.out.println("Modified: " + modified);    // "Hello World"
+
+// String pool concept
+String s1 = "Java";
+String s2 = "Java";
+String s3 = new String("Java");
+System.out.println(s1 == s2);    // true (same reference)
+System.out.println(s1 == s3);    // false (different references)
+System.out.println(s1.equals(s3)); // true (same content)`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">String Methods - Basic Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`String text = "Hello World Java Programming";
+
+// Length and character access
+int length = text.length();                    // 28
+char firstChar = text.charAt(0);              // 'H'
+char lastChar = text.charAt(text.length()-1); // 'g'
+
+// Substring operations
+String sub1 = text.substring(6);              // "World Java Programming"
+String sub2 = text.substring(6, 11);          // "World"
+
+// Case conversion
+String upper = text.toUpperCase();            // "HELLO WORLD JAVA PROGRAMMING"
+String lower = text.toLowerCase();            // "hello world java programming"
+
+// String comparison
+boolean equals1 = text.equals("Hello World Java Programming"); // true
+boolean equals2 = text.equalsIgnoreCase("HELLO WORLD JAVA PROGRAMMING"); // true
+int compare = text.compareTo("Hello");        // Positive number
+
+// Searching
+int index1 = text.indexOf("World");           // 6
+int index2 = text.lastIndexOf("a");           // 25
+boolean contains = text.contains("Java");     // true
+boolean starts = text.startsWith("Hello");    // true
+boolean ends = text.endsWith("Programming");  // true`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. StringBuilder - Mutable Strings</h3>
+                <p className="text-gray-300 mb-6">StringBuilder is mutable and not thread-safe, making it efficient for frequent string modifications.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">StringBuilder Operations</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Creating StringBuilder
+StringBuilder sb1 = new StringBuilder();           // Default capacity 16
+StringBuilder sb2 = new StringBuilder("Hello");    // With initial content
+StringBuilder sb3 = new StringBuilder(50);         // With initial capacity
+
+// Appending content
+sb1.append("Hello");
+sb1.append(" ");
+sb1.append("World");
+sb1.append(123);                    // Append numbers
+sb1.append(true);                   // Append booleans
+
+// Inserting content
+sb1.insert(5, " Beautiful");        // Insert at specific position
+sb1.insert(0, "Say: ");            // Insert at beginning
+
+// Modifying content
+sb1.setCharAt(0, 's');             // Change character at index
+sb1.replace(4, 9, "Hi");           // Replace substring
+
+// Deleting content
+sb1.delete(0, 4);                  // Delete characters
+sb1.deleteCharAt(0);               // Delete single character
+
+// Other operations
+int length = sb1.length();         // Get current length
+int capacity = sb1.capacity();     // Get current capacity
+sb1.reverse();                     // Reverse the string
+sb1.setLength(10);                 // Set length (truncate or pad)
+
+// Convert to String
+String result = sb1.toString();`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">StringBuilder Performance Example</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Performance comparison: String vs StringBuilder
+public class StringPerformanceDemo {
+    public static void main(String[] args) {
+        int iterations = 10000;
+        
+        // Using String (inefficient for many concatenations)
+        long startTime = System.currentTimeMillis();
+        String result1 = "";
+        for (int i = 0; i < iterations; i++) {
+            result1 += "Number: " + i + " ";
+        }
+        long stringTime = System.currentTimeMillis() - startTime;
+        
+        // Using StringBuilder (efficient)
+        startTime = System.currentTimeMillis();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < iterations; i++) {
+            sb.append("Number: ").append(i).append(" ");
+        }
+        String result2 = sb.toString();
+        long stringBuilderTime = System.currentTimeMillis() - startTime;
+        
+        System.out.println("String concatenation time: " + stringTime + "ms");
+        System.out.println("StringBuilder time: " + stringBuilderTime + "ms");
+        System.out.println("StringBuilder is " + (stringTime/stringBuilderTime) + "x faster");
+    }
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. StringBuffer - Thread-Safe Mutable Strings</h3>
+                <p className="text-gray-300 mb-6">StringBuffer is similar to StringBuilder but is thread-safe, making it suitable for multi-threaded environments.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">StringBuffer Usage</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// StringBuffer is thread-safe version of StringBuilder
+StringBuffer sb = new StringBuffer("Thread-Safe String");
+
+// All StringBuilder methods are available in StringBuffer
+sb.append(" Operations");
+sb.insert(0, "Safe ");
+sb.replace(0, 4, "Secure");
+
+// Thread-safe operations
+synchronized(sb) {
+    sb.append(" - Modified safely");
+}
+
+// Additional thread-safe methods
+sb.ensureCapacity(100);    // Ensure minimum capacity
+sb.trimToSize();           // Trim to actual size
+
+String result = sb.toString();
+
+// When to use StringBuffer vs StringBuilder
+// Use StringBuffer when:
+// - Multiple threads access the same string buffer
+// - Thread safety is required
+// - Performance is less critical than safety
+
+// Use StringBuilder when:
+// - Single-threaded access
+// - Maximum performance is required
+// - Thread safety is not needed`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">String vs StringBuilder vs StringBuffer</h4>
+                    <div className="bg-gray-900 p-4 rounded mb-4">
+                      <table className="text-green-400 font-mono text-sm w-full">
+                        <thead>
+                          <tr className="border-b border-gray-600">
+                            <th className="text-left p-2">Feature</th>
+                            <th className="text-left p-2">String</th>
+                            <th className="text-left p-2">StringBuilder</th>
+                            <th className="text-left p-2">StringBuffer</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">Mutability</td>
+                            <td className="p-2">Immutable</td>
+                            <td className="p-2">Mutable</td>
+                            <td className="p-2">Mutable</td>
+                          </tr>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">Thread Safety</td>
+                            <td className="p-2">Thread-safe</td>
+                            <td className="p-2">Not thread-safe</td>
+                            <td className="p-2">Thread-safe</td>
+                          </tr>
+                          <tr className="border-b border-gray-700">
+                            <td className="p-2">Performance</td>
+                            <td className="p-2">Slow for concatenation</td>
+                            <td className="p-2">Fast</td>
+                            <td className="p-2">Slower than StringBuilder</td>
+                          </tr>
+                          <tr>
+                            <td className="p-2">Memory</td>
+                            <td className="p-2">Creates new objects</td>
+                            <td className="p-2">Modifies existing</td>
+                            <td className="p-2">Modifies existing</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">4. Advanced String Operations</h3>
+                <p className="text-gray-300 mb-6">Advanced string manipulation techniques and regular expressions.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">String Formatting and Parsing</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// String formatting
+String name = "John";
+int age = 25;
+double salary = 50000.50;
+
+// Using String.format()
+String formatted = String.format("Name: %s, Age: %d, Salary: $%.2f", name, age, salary);
+
+// Using printf-style formatting
+System.out.printf("Employee: %s is %d years old and earns $%.2f%n", name, age, salary);
+
+// String splitting and joining
+String data = "apple,banana,orange,grape";
+String[] fruits = data.split(",");              // Split by comma
+String joined = String.join(" | ", fruits);     // Join with separator
+
+// String trimming and whitespace
+String text = "  Hello World  ";
+String trimmed = text.trim();                   // Remove leading/trailing spaces
+String stripped = text.strip();                 // Java 11+ - removes all whitespace
+
+// String replacement
+String original = "Hello World Hello";
+String replaced = original.replace("Hello", "Hi");        // Replace all
+String replacedFirst = original.replaceFirst("Hello", "Hi"); // Replace first only
+
+// Regular expressions
+String email = "user@example.com";
+boolean isValidEmail = email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
+
+String phone = "123-456-7890";
+String cleanPhone = phone.replaceAll("[^0-9]", ""); // Remove non-digits`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">String Validation and Processing</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// String validation methods
+String input = "Hello123";
+
+// Check if string is empty or null
+boolean isEmpty = input.isEmpty();              // false
+boolean isBlank = input.isBlank();              // false (Java 11+)
+
+// Check string content
+boolean hasLetters = input.matches(".*[a-zA-Z].*");     // true
+boolean hasNumbers = input.matches(".*[0-9].*");        // true
+boolean isNumeric = input.matches("\\d+");              // false
+
+// String manipulation utilities
+public class StringUtils {
+    public static String reverse(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+    
+    public static String capitalize(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+    }
+    
+    public static String removeWhitespace(String str) {
+        return str.replaceAll("\\s+", "");
+    }
+    
+    public static boolean isPalindrome(String str) {
+        String cleaned = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+    }
+}
+
+// Usage examples
+String reversed = StringUtils.reverse("Hello");        // "olleH"
+String capitalized = StringUtils.capitalize("hello");  // "Hello"
+String cleaned = StringUtils.removeWhitespace("H e l l o"); // "Hello"
+boolean palindrome = StringUtils.isPalindrome("racecar"); // true`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">Best Practices for String Handling</h3>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• <strong>Use String for immutable operations</strong> - when you don't need to modify the string</li>
+                  <li>• <strong>Use StringBuilder for single-threaded concatenation</strong> - much more efficient than String concatenation</li>
+                  <li>• <strong>Use StringBuffer for multi-threaded environments</strong> - when thread safety is required</li>
+                  <li>• <strong>Always use equals() for string comparison</strong> - never use == for content comparison</li>
+                  <li>• <strong>Use String.format() for complex formatting</strong> - more readable than concatenation</li>
+                  <li>• <strong>Be careful with string concatenation in loops</strong> - use StringBuilder instead</li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Text Processing Application</h3>
+                <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
+                  <h4 className="text-lg font-bold text-blue-400 mb-4">TextProcessor.java</h4>
+                  <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`package com.ohg365.examples;
+
+import java.util.*;
+import java.util.regex.Pattern;
+
+/**
+ * Comprehensive text processing application demonstrating string handling
+ */
+public class TextProcessor {
+    private static final Pattern EMAIL_PATTERN = 
+        Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
+    private static final Pattern PHONE_PATTERN = 
+        Pattern.compile("^\\+?[1-9]\\d{1,14}$");
+    
+    /**
+     * Process and clean text input
+     */
+    public static String processText(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            return "";
+        }
+        
+        // Remove extra whitespace and normalize
+        String cleaned = input.trim().replaceAll("\\s+", " ");
+        
+        // Capitalize first letter of each sentence
+        String[] sentences = cleaned.split("\\. ");
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < sentences.length; i++) {
+            if (!sentences[i].isEmpty()) {
+                String sentence = sentences[i].trim();
+                if (!sentence.endsWith(".") && i < sentences.length - 1) {
+                    sentence += ".";
+                }
+                result.append(capitalizeFirst(sentence));
+                if (i < sentences.length - 1) {
+                    result.append(" ");
+                }
+            }
+        }
+        
+        return result.toString();
+    }
+    
+    /**
+     * Extract and validate email addresses from text
+     */
+    public static List<String> extractEmails(String text) {
+        List<String> emails = new ArrayList<>();
+        String[] words = text.split("\\s+");
+        
+        for (String word : words) {
+            // Remove punctuation from word
+            String cleanWord = word.replaceAll("[^\\w@.-]", "");
+            if (isValidEmail(cleanWord)) {
+                emails.add(cleanWord);
+            }
+        }
+        
+        return emails;
+    }
+    
+    /**
+     * Extract and format phone numbers
+     */
+    public static List<String> extractPhoneNumbers(String text) {
+        List<String> phones = new ArrayList<>();
+        String[] words = text.split("\\s+");
+        
+        for (String word : words) {
+            String cleanNumber = word.replaceAll("[^0-9+]", "");
+            if (isValidPhone(cleanNumber)) {
+                phones.add(formatPhoneNumber(cleanNumber));
+            }
+        }
+        
+        return phones;
+    }
+    
+    /**
+     * Count word frequency in text
+     */
+    public static Map<String, Integer> getWordFrequency(String text) {
+        Map<String, Integer> frequency = new HashMap<>();
+        
+        if (text == null || text.trim().isEmpty()) {
+            return frequency;
+        }
+        
+        // Split text into words, convert to lowercase
+        String[] words = text.toLowerCase().split("\\W+");
+        
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                frequency.put(word, frequency.getOrDefault(word, 0) + 1);
+            }
+        }
+        
+        return frequency;
+    }
+    
+    /**
+     * Generate text summary
+     */
+    public static String generateSummary(String text, int maxLength) {
+        if (text == null || text.trim().isEmpty()) {
+            return "";
+        }
+        
+        String processed = processText(text);
+        
+        if (processed.length() <= maxLength) {
+            return processed;
+        }
+        
+        // Find the last complete sentence within maxLength
+        String truncated = processed.substring(0, maxLength);
+        int lastSentenceEnd = truncated.lastIndexOf(". ");
+        
+        if (lastSentenceEnd > 0) {
+            return truncated.substring(0, lastSentenceEnd + 1);
+        } else {
+            return truncated + "...";
+        }
+    }
+    
+    /**
+     * Check if text is palindrome
+     */
+    public static boolean isPalindrome(String text) {
+        if (text == null) return false;
+        
+        String cleaned = text.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+    }
+    
+    /**
+     * Format text with proper indentation
+     */
+    public static String formatWithIndentation(String text, int spaces) {
+        if (text == null || text.trim().isEmpty()) {
+            return "";
+        }
+        
+        String indent = " ".repeat(spaces);
+        String[] lines = text.split("\\n");
+        StringBuilder result = new StringBuilder();
+        
+        for (String line : lines) {
+            if (!line.trim().isEmpty()) {
+                result.append(indent).append(line.trim()).append("\\n");
+            }
+        }
+        
+        return result.toString();
+    }
+    
+    // Helper methods
+    private static String capitalizeFirst(String str) {
+        if (str == null || str.isEmpty()) return str;
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+    }
+    
+    private static boolean isValidEmail(String email) {
+        return EMAIL_PATTERN.matcher(email).matches();
+    }
+    
+    private static boolean isValidPhone(String phone) {
+        return PHONE_PATTERN.matcher(phone).matches();
+    }
+    
+    private static String formatPhoneNumber(String phone) {
+        // Remove all non-digits except +
+        String cleaned = phone.replaceAll("[^0-9+]", "");
+        
+        if (cleaned.startsWith("+")) {
+            return cleaned;
+        } else if (cleaned.length() == 10) {
+            return "+1" + cleaned;
+        } else if (cleaned.length() == 11 && cleaned.startsWith("1")) {
+            return "+" + cleaned;
+        }
+        
+        return cleaned;
+    }
+    
+    // Main method for demonstration
+    public static void main(String[] args) {
+        String sampleText = "hello world. this is a sample text with email@example.com and phone 123-456-7890. " +
+                           "it contains multiple sentences and some special characters!!!";
+        
+        System.out.println("=== Text Processing Demo ===");
+        System.out.println("Original text: " + sampleText);
+        System.out.println();
+        
+        // Process text
+        String processed = processText(sampleText);
+        System.out.println("Processed text: " + processed);
+        System.out.println();
+        
+        // Extract emails
+        List<String> emails = extractEmails(sampleText);
+        System.out.println("Extracted emails: " + emails);
+        
+        // Extract phone numbers
+        List<String> phones = extractPhoneNumbers(sampleText);
+        System.out.println("Extracted phones: " + phones);
+        System.out.println();
+        
+        // Word frequency
+        Map<String, Integer> frequency = getWordFrequency(sampleText);
+        System.out.println("Word frequency:");
+        frequency.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .forEach(entry -> System.out.println("  " + entry.getKey() + ": " + entry.getValue()));
+        System.out.println();
+        
+        // Generate summary
+        String summary = generateSummary(sampleText, 50);
+        System.out.println("Summary (50 chars): " + summary);
+        System.out.println();
+        
+        // Palindrome check
+        String palindrome = "racecar";
+        System.out.println("Is '" + palindrome + "' a palindrome? " + isPalindrome(palindrome));
+        System.out.println();
+        
+        // Format with indentation
+        String indented = formatWithIndentation("Line 1\\nLine 2\\nLine 3", 4);
+        System.out.println("Indented text:");
+        System.out.println(indented);
+    }
+}`}
                   </pre>
                 </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">StringBuilder</h4>
-                <p className="text-gray-300 text-sm mb-2">Mutable, not thread-safe</p>
-                <div className="bg-gray-900 p-2 rounded">
-                  <pre className="text-green-400 font-mono text-xs">
-{`StringBuilder sb = new StringBuilder();
-sb.append("Hello");`}
-                  </pre>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
+                    <h4 className="text-green-300 font-bold mb-2">🎯 Features Demonstrated</h4>
+                    <ul className="text-gray-300 text-sm space-y-1">
+                      <li>• String processing and cleaning</li>
+                      <li>• Email and phone number extraction</li>
+                      <li>• Word frequency analysis</li>
+                      <li>• Text summarization</li>
+                      <li>• Palindrome detection</li>
+                      <li>• Text formatting utilities</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
+                    <h4 className="text-blue-300 font-bold mb-2">📊 Sample Output</h4>
+                    <div className="bg-gray-900 p-3 rounded text-sm">
+                      <pre className="text-green-400 font-mono">
+{`=== Text Processing Demo ===
+Original text: hello world. this is a sample text with email@example.com and phone 123-456-7890. it contains multiple sentences and some special characters!!!
+
+Processed text: Hello world. This is a sample text with email@example.com and phone 123-456-7890. It contains multiple sentences and some special characters!!!
+
+Extracted emails: [email@example.com]
+Extracted phones: [+11234567890]
+
+Word frequency:
+  text: 2
+  sample: 1
+  with: 1
+  email: 1
+  and: 1
+  phone: 1
+  it: 1
+  contains: 1
+  multiple: 1
+  sentences: 1
+  some: 1
+  special: 1
+  characters: 1
+  hello: 1
+  world: 1
+  this: 1
+  is: 1
+  a: 1
+
+Summary (50 chars): Hello world. This is a sample text with email@example.com and phone 123-456-7890.
+
+Is 'racecar' a palindrome? true`}
+                      </pre>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-purple-400 mb-2">StringBuffer</h4>
-                <p className="text-gray-300 text-sm mb-2">Mutable, thread-safe</p>
-                <div className="bg-gray-900 p-2 rounded">
-                  <pre className="text-green-400 font-mono text-xs">
-{`StringBuffer sb = new StringBuffer();
-sb.append("Hello");`}
-                  </pre>
-                </div>
-              </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-purple-400 mb-4 mt-6">Common String Methods</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.length()</code>
-                  <span className="text-gray-300 ml-3"># Get string length</span>
-                </div>
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.charAt(index)</code>
-                  <span className="text-gray-300 ml-3"># Get character at index</span>
-                </div>
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.substring(start, end)</code>
-                  <span className="text-gray-300 ml-3"># Extract substring</span>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.equals(other)</code>
-                  <span className="text-gray-300 ml-3"># Compare strings</span>
-                </div>
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.indexOf(substring)</code>
-                  <span className="text-gray-300 ml-3"># Find substring</span>
-                </div>
-                <div className="bg-gray-700 p-3 rounded">
-                  <code className="text-green-400">str.toUpperCase()</code>
-                  <span className="text-gray-300 ml-3"># Convert to uppercase</span>
-                </div>
-              </div>
-            </div>
               </div>
             </div>
           </div>
