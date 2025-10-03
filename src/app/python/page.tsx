@@ -1203,14 +1203,6 @@ Is alnum: False`}
             </div>
           </div>
         );
-print(type(name))  # <class 'str'>
-print(type(age))  # <class 'int'>`}
-              </pre>
-            </div>
-              </div>
-            </div>
-          </div>
-        );
       
       case 'operators':
         return (
