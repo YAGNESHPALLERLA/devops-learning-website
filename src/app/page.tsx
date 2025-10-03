@@ -57,7 +57,7 @@ export default function HomePage() {
           <p className="text-gray-400 text-lg">Select a technology to start your learning journey</p>
         </div>
         
-        <div className="space-y-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <TechnologyCard
             title="DevOps"
             description="Learn containerization, CI/CD, infrastructure automation, and cloud platforms"
@@ -114,7 +114,7 @@ export default function HomePage() {
       <section className="bg-gray-800 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-12">Why Choose Our Learning Platform?</h2>
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-4xl mb-4">🎥</div>
               <h3 className="text-xl font-semibold text-white mb-2">Video Tutorials</h3>
