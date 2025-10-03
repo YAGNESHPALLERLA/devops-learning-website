@@ -15,9 +15,11 @@ interface SidebarItem {
 interface SidebarProps {
   items: SidebarItem[];
   onThisPage?: { id: string; title: string }[];
+  activeSection?: string;
+  setActiveSection?: (section: string) => void;
 }
 
-export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
+export default function Sidebar({ items, onThisPage = [], activeSection, setActiveSection }: SidebarProps) {
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
@@ -33,10 +35,21 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
     return pathname === href;
   };
 
+  const handleItemClick = (e: React.MouseEvent, itemId: string, href: string) => {
+    // Check if the href is a hash link (client-side navigation)
+    if (href.includes('#') && setActiveSection) {
+      e.preventDefault();
+      const section = href.split('#')[1];
+      setActiveSection(section);
+      // Scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.id);
-    const active = isActive(item.href);
+    const active = isActive(item.href) || (activeSection && item.id === activeSection);
 
     return (
       <div key={item.id} className="mb-1">
@@ -66,6 +79,7 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
           ) : (
             <Link
               href={item.href}
+              onClick={(e) => handleItemClick(e, item.id, item.href)}
               className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg group focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
                 active 
                   ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20' 
@@ -110,23 +124,6 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
         </div>
       </nav>
 
-      {/* On This Page */}
-      {onThisPage.length > 0 && (
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">On this page</h3>
-          <div className="space-y-1">
-            {onThisPage.map(item => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50"
-              >
-                {item.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

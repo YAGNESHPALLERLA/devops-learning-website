@@ -1,8 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { getVideosForTopic } from '@/data/videoTutorials';
 
 export default function JavaPage() {
+  const [activeSection, setActiveSection] = useState('introduction');
+
   const pageHeadings = [
     { id: 'introduction', title: 'Java Introduction' },
     { id: 'control-statements', title: 'Control Statements' },
@@ -24,22 +29,24 @@ export default function JavaPage() {
 
   const javaVideos = getVideosForTopic('java');
 
-  return (
-    <TechLayout onThisPage={pageHeadings} technology="java">
-      <div className="animate-fade-in-up">
-        <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
-          ☕ Java Programming
-        </h1>
-        
-        <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-orange-900/50 to-red-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-orange-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Master Java programming from basics to advanced enterprise development.</p>
-            </div>
-          </div>
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'introduction':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java Programming
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="gradient-border hover-lift mb-8">
+                <div className="bg-gradient-to-r from-orange-900/50 to-red-900/50 p-8 rounded-xl">
+                  <h2 className="text-3xl font-bold text-orange-400 mb-4 neon-glow">Goal</h2>
+                  <p className="text-white text-xl">Master Java programming from basics to advanced enterprise development.</p>
+                </div>
+              </div>
 
-          <h2 id="introduction" className="text-3xl font-bold text-orange-400 mb-6">1. Java Introduction</h2>
+              <h2 id="introduction" className="text-3xl font-bold text-orange-400 mb-6">1. Java Introduction</h2>
           
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
             <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What is Java?</h3>
@@ -133,9 +140,23 @@ java HelloWorld
                 </ul>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="control-statements" className="text-3xl font-bold text-orange-400 mb-6">2. Control Statements</h2>
+        );
+      
+      case 'control-statements':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="control-statements" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java Control Statements
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Master if-else, switch statements, loops, and program flow control in Java
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="control-statements" className="text-3xl font-bold text-orange-400 mb-6">2. Control Statements</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8 hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Conditional Statements</h3>
@@ -319,9 +340,23 @@ Good job! You're doing well.`}
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="oop-concepts" className="text-3xl font-bold text-orange-400 mb-6">3. Object-Oriented Programming</h2>
+        );
+      
+      case 'oop-concepts':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="oop-concepts" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Object-Oriented Programming
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn the four pillars of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="oop-concepts" className="text-3xl font-bold text-orange-400 mb-6">3. Object-Oriented Programming</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Four Pillars of OOP</h3>
@@ -560,9 +595,23 @@ Account: CHK001, Holder: Jane Smith, Balance: $100.00`}
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="keywords" className="text-3xl font-bold text-orange-400 mb-6">4. Java Keywords</h2>
+        );
+      
+      case 'keywords':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="keywords" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java Keywords
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Essential Java reserved words and their usage
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="keywords" className="text-3xl font-bold text-orange-400 mb-6">4. Java Keywords</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -594,9 +643,23 @@ Account: CHK001, Holder: Jane Smith, Balance: $100.00`}
                 </ul>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="strings" className="text-3xl font-bold text-orange-400 mb-6">5. Strings & String Handling</h2>
+        );
+      
+      case 'strings':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="strings" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Strings & String Handling
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Master String manipulation and handling in Java
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="strings" className="text-3xl font-bold text-orange-400 mb-6">5. Strings & String Handling</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">String Classes</h3>
@@ -664,9 +727,23 @@ sb.append("Hello");`}
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="arrays-collections" className="text-3xl font-bold text-orange-400 mb-6">6. Arrays & Collections</h2>
+        );
+      
+      case 'arrays-collections':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="arrays-collections" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Arrays & Collections
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about arrays and the Java Collections Framework
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="arrays-collections" className="text-3xl font-bold text-orange-400 mb-6">6. Arrays & Collections</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Arrays</h3>
@@ -728,9 +805,23 @@ int length = numbers.length;`}
                 </ul>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="exceptions" className="text-3xl font-bold text-orange-400 mb-6">7. Exception Handling</h2>
+        );
+      
+      case 'exceptions':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="exceptions" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Exception Handling
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn how to handle errors and exceptions in Java
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="exceptions" className="text-3xl font-bold text-orange-400 mb-6">7. Exception Handling</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Exception Hierarchy</h3>
@@ -762,9 +853,23 @@ int length = numbers.length;`}
 }`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="packages" className="text-3xl font-bold text-orange-400 mb-6">8. Packages & Modules</h2>
+        );
+      
+      case 'packages':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="packages" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Packages & Modules
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Organize your code with packages and modules
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="packages" className="text-3xl font-bold text-orange-400 mb-6">8. Packages & Modules</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Package Declaration</h3>
@@ -812,9 +917,23 @@ public class MyClass {
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="multithreading" className="text-3xl font-bold text-orange-400 mb-6">9. Multi-threading</h2>
+        );
+      
+      case 'multithreading':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="multithreading" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Multi-threading
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn concurrent programming with Java threads
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="multithreading" className="text-3xl font-bold text-orange-400 mb-6">9. Multi-threading</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Thread Creation</h3>
@@ -869,9 +988,23 @@ thread.start();`}
 }`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="file-io" className="text-3xl font-bold text-orange-400 mb-6">10. File I/O Streams</h2>
+        );
+      
+      case 'file-io':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="file-io" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ File I/O Streams
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn file input/output operations in Java
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="file-io" className="text-3xl font-bold text-orange-400 mb-6">10. File I/O Streams</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">File Reading</h3>
@@ -919,9 +1052,23 @@ thread.start();`}
 }`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="java8-features" className="text-3xl font-bold text-orange-400 mb-6">11. Java 8+ Features</h2>
+        );
+      
+      case 'java8-features':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="java8-features" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java 8+ Features
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Modern Java features including lambdas and streams
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="java8-features" className="text-3xl font-bold text-orange-400 mb-6">11. Java 8+ Features</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Lambda Expressions</h3>
@@ -956,9 +1103,23 @@ List<String> upperCase = names.stream()
     .collect(Collectors.toList());`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="memory-management" className="text-3xl font-bold text-orange-400 mb-6">12. Memory Management</h2>
+        );
+      
+      case 'memory-management':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="memory-management" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Memory Management
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Understanding JVM memory and garbage collection
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="memory-management" className="text-3xl font-bold text-orange-400 mb-6">12. Memory Management</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">JVM Memory Areas</h3>
@@ -986,9 +1147,23 @@ List<String> upperCase = names.stream()
                 <li>• <strong>Permanent Generation:</strong> Class metadata (Java 8+)</li>
               </ul>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="advanced-concepts" className="text-3xl font-bold text-orange-400 mb-6">13. Advanced Core Concepts</h2>
+        );
+      
+      case 'advanced-concepts':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="advanced-concepts" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Advanced Core Concepts
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Master generics, annotations, and advanced Java features
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="advanced-concepts" className="text-3xl font-bold text-orange-400 mb-6">13. Advanced Core Concepts</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Generics</h3>
@@ -1032,11 +1207,39 @@ public void methodWithWarnings() {
 }`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <VideoSection videos={javaVideos} title="Java Video Tutorials" />
-
-          <h2 id="practice-projects" className="text-3xl font-bold text-orange-400 mb-6">14. Practice Projects</h2>
+        );
+      
+      case 'video-tutorials':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="video-tutorials" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java Video Tutorials
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn Java through comprehensive video tutorials
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <VideoSection videos={javaVideos} title="Java Video Tutorials" />
+            </div>
+          </div>
+        );
+      
+      case 'practice-projects':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="practice-projects" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Practice Projects
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Build real-world projects to master Java
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="practice-projects" className="text-3xl font-bold text-orange-400 mb-6">14. Practice Projects</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
@@ -1061,9 +1264,23 @@ public void methodWithWarnings() {
                 <strong>Library Management System:</strong> Database integration with JDBC
               </li>
             </ul>
+              </div>
+            </div>
           </div>
-
-          <h2 id="summary" className="text-3xl font-bold text-orange-400 mb-6">✅ Summary</h2>
+        );
+      
+      case 'summary':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="summary" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Summary
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Key takeaways from Java programming
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="summary" className="text-3xl font-bold text-orange-400 mb-6">✅ Summary</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
@@ -1088,9 +1305,34 @@ public void methodWithWarnings() {
                 Practice with real projects to master Java programming skills
               </li>
             </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      
+      default:
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              ☕ Java Programming
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="gradient-border hover-lift mb-8">
+                <div className="bg-gradient-to-r from-orange-900/50 to-red-900/50 p-8 rounded-xl">
+                  <h2 className="text-3xl font-bold text-orange-400 mb-4 neon-glow">Goal</h2>
+                  <p className="text-white text-xl">Master Java programming from basics to advanced enterprise development.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <TechLayout onThisPage={pageHeadings} technology="java" activeSection={activeSection} setActiveSection={setActiveSection}>
+      {renderContent()}
     </TechLayout>
   );
 }

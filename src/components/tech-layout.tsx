@@ -8,6 +8,8 @@ interface TechLayoutProps {
   children: React.ReactNode;
   onThisPage: { id: string; title: string }[];
   technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops';
+  activeSection?: string;
+  setActiveSection?: (section: string) => void;
 }
 
 // Technology-specific navigation items
@@ -35,8 +37,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/java',
         icon: '☕',
         children: [
-          { id: 'java-intro', title: 'Introduction', href: '/java/basics/introduction' },
-          { id: 'java-control', title: 'Control Statements', href: '/java/basics/control-statements' }
+          { id: 'introduction', title: 'Introduction', href: '/java#introduction' },
+          { id: 'control-statements', title: 'Control Statements', href: '/java#control-statements' }
         ]
       },
       {
@@ -45,8 +47,12 @@ const getTechNavigationItems = (tech: string) => {
         href: '/java',
         icon: '⚡',
         children: [
-          { id: 'java-oop', title: 'OOP Concepts', href: '/java' },
-          { id: 'java-collections', title: 'Collections', href: '/java' }
+          { id: 'oop-concepts', title: 'OOP Concepts', href: '/java#oop-concepts' },
+          { id: 'keywords', title: 'Java Keywords', href: '/java#keywords' },
+          { id: 'strings', title: 'Strings & String Handling', href: '/java#strings' },
+          { id: 'arrays-collections', title: 'Arrays & Collections', href: '/java#arrays-collections' },
+          { id: 'exceptions', title: 'Exception Handling', href: '/java#exceptions' },
+          { id: 'packages', title: 'Packages & Modules', href: '/java#packages' }
         ]
       },
       {
@@ -55,8 +61,22 @@ const getTechNavigationItems = (tech: string) => {
         href: '/java',
         icon: '🔥',
         children: [
-          { id: 'java-spring', title: 'Spring Framework', href: '/java' },
-          { id: 'java-microservices', title: 'Microservices', href: '/java' }
+          { id: 'multithreading', title: 'Multi-threading', href: '/java#multithreading' },
+          { id: 'file-io', title: 'File I/O Streams', href: '/java#file-io' },
+          { id: 'java8-features', title: 'Java 8+ Features', href: '/java#java8-features' },
+          { id: 'memory-management', title: 'Memory Management', href: '/java#memory-management' },
+          { id: 'advanced-concepts', title: 'Advanced Core Concepts', href: '/java#advanced-concepts' }
+        ]
+      },
+      {
+        id: 'java-resources',
+        title: 'Resources',
+        href: '/java',
+        icon: '📚',
+        children: [
+          { id: 'video-tutorials', title: 'Video Tutorials', href: '/java#video-tutorials' },
+          { id: 'practice-projects', title: 'Practice Projects', href: '/java#practice-projects' },
+          { id: 'summary', title: 'Summary', href: '/java#summary' }
         ]
       }
     ],
@@ -67,12 +87,12 @@ const getTechNavigationItems = (tech: string) => {
         href: '/python',
         icon: '🐍',
         children: [
-          { id: 'python-intro', title: 'Introduction', href: '/python' },
-          { id: 'python-syntax', title: 'Syntax', href: '/python/basics/syntax' },
-          { id: 'python-variables', title: 'Variables', href: '/python/basics/variables' },
-          { id: 'python-operators', title: 'Operators', href: '/python/basics/operators' },
-          { id: 'python-conditionals', title: 'Conditionals', href: '/python/basics/conditionals' },
-          { id: 'python-loops', title: 'Loops', href: '/python/basics/loops' }
+          { id: 'introduction', title: 'Introduction', href: '/python#introduction' },
+          { id: 'syntax-indentation', title: 'Syntax & Indentation', href: '/python#syntax-indentation' },
+          { id: 'variables-data-types', title: 'Variables & Data Types', href: '/python#variables-data-types' },
+          { id: 'operators', title: 'Type Casting & Operators', href: '/python#operators' },
+          { id: 'conditionals', title: 'Conditionals', href: '/python#conditionals' },
+          { id: 'loops', title: 'Loops', href: '/python#loops' }
         ]
       },
       {
@@ -81,9 +101,13 @@ const getTechNavigationItems = (tech: string) => {
         href: '/python',
         icon: '⚡',
         children: [
-          { id: 'python-functions', title: 'Functions', href: '/python' },
-          { id: 'python-oop', title: 'OOP', href: '/python' },
-          { id: 'python-modules', title: 'Modules', href: '/python' }
+          { id: 'strings', title: 'Strings', href: '/python#strings' },
+          { id: 'data-structures', title: 'Data Structures', href: '/python#data-structures' },
+          { id: 'functions', title: 'Functions', href: '/python#functions' },
+          { id: 'oop', title: 'OOP', href: '/python#oop' },
+          { id: 'file-handling', title: 'File Handling', href: '/python#file-handling' },
+          { id: 'exception-handling', title: 'Exception Handling', href: '/python#exception-handling' },
+          { id: 'modules-packages', title: 'Modules & Packages', href: '/python#modules-packages' }
         ]
       },
       {
@@ -92,8 +116,18 @@ const getTechNavigationItems = (tech: string) => {
         href: '/python',
         icon: '🔥',
         children: [
-          { id: 'python-data-science', title: 'Data Science', href: '/python' },
-          { id: 'python-web-dev', title: 'Web Development', href: '/python' }
+          { id: 'advanced-concepts', title: 'Advanced Concepts', href: '/python#advanced-concepts' }
+        ]
+      },
+      {
+        id: 'python-resources',
+        title: 'Resources',
+        href: '/python',
+        icon: '📚',
+        children: [
+          { id: 'video-tutorials', title: 'Video Tutorials', href: '/python#video-tutorials' },
+          { id: 'practice-projects', title: 'Practice Projects', href: '/python#practice-projects' },
+          { id: 'summary', title: 'Summary', href: '/python#summary' }
         ]
       }
     ],
@@ -104,8 +138,12 @@ const getTechNavigationItems = (tech: string) => {
         href: '/sql',
         icon: '🗄️',
         children: [
-          { id: 'sql-intro', title: 'Introduction', href: '/sql/basics/introduction' },
-          { id: 'sql-commands', title: 'Basic Commands', href: '/sql/basics/commands' }
+          { id: 'introduction', title: 'Introduction', href: '/sql#introduction' },
+          { id: 'basic-commands', title: 'Basic Commands', href: '/sql#basic-commands' },
+          { id: 'data-types', title: 'Data Types & Constraints', href: '/sql#data-types' },
+          { id: 'creating-tables', title: 'Creating Tables', href: '/sql#creating-tables' },
+          { id: 'data-manipulation', title: 'Data Manipulation', href: '/sql#data-manipulation' },
+          { id: 'filtering-sorting', title: 'Filtering & Sorting', href: '/sql#filtering-sorting' }
         ]
       },
       {
@@ -114,8 +152,10 @@ const getTechNavigationItems = (tech: string) => {
         href: '/sql',
         icon: '⚡',
         children: [
-          { id: 'sql-joins', title: 'Joins', href: '/sql' },
-          { id: 'sql-functions', title: 'Functions', href: '/sql' }
+          { id: 'joins', title: 'Joins and Relationships', href: '/sql#joins' },
+          { id: 'aggregate-functions', title: 'Aggregate Functions', href: '/sql#aggregate-functions' },
+          { id: 'subqueries', title: 'Subqueries', href: '/sql#subqueries' },
+          { id: 'window-functions', title: 'Window Functions', href: '/sql#window-functions' }
         ]
       },
       {
@@ -124,8 +164,20 @@ const getTechNavigationItems = (tech: string) => {
         href: '/sql',
         icon: '🔥',
         children: [
-          { id: 'sql-optimization', title: 'Optimization', href: '/sql' },
-          { id: 'sql-performance', title: 'Performance', href: '/sql' }
+          { id: 'database-design', title: 'Database Design', href: '/sql#database-design' },
+          { id: 'indexes-performance', title: 'Indexes & Performance', href: '/sql#indexes-performance' },
+          { id: 'transactions', title: 'Transactions & ACID', href: '/sql#transactions' }
+        ]
+      },
+      {
+        id: 'sql-resources',
+        title: 'Resources',
+        href: '/sql',
+        icon: '📚',
+        children: [
+          { id: 'video-tutorials', title: 'Video Tutorials', href: '/sql#video-tutorials' },
+          { id: 'practice-projects', title: 'Practice Projects', href: '/sql#practice-projects' },
+          { id: 'summary', title: 'Summary', href: '/sql#summary' }
         ]
       }
     ],
@@ -203,9 +255,28 @@ const getTechNavigationItems = (tech: string) => {
         href: '/devops',
         icon: '🚀',
         children: [
-          { id: 'what-is-devops', title: 'What is DevOps', href: '/docs/what-is-devops' },
-          { id: 'concepts', title: 'Core Concepts', href: '/docs/concepts' },
-          { id: 'tools', title: 'DevOps Tools', href: '/docs/tools' }
+          { id: 'introduction', title: 'Introduction', href: '/devops#introduction' },
+          { id: 'core-concepts', title: 'Core Concepts', href: '/devops#core-concepts' },
+          { id: 'devops-lifecycle', title: 'DevOps Lifecycle', href: '/devops#devops-lifecycle' }
+        ]
+      },
+      {
+        id: 'devops-tools',
+        title: 'Tools & Technologies',
+        href: '/devops',
+        icon: '⚡',
+        children: [
+          { id: 'tools-technologies', title: 'Tools & Technologies', href: '/devops#tools-technologies' },
+          { id: 'learning-path', title: 'Learning Path', href: '/devops#learning-path' }
+        ]
+      },
+      {
+        id: 'devops-resources',
+        title: 'Resources',
+        href: '/devops',
+        icon: '📚',
+        children: [
+          { id: 'summary', title: 'Summary', href: '/devops#summary' }
         ]
       },
       {
@@ -264,9 +335,12 @@ const getTechNavigationItems = (tech: string) => {
   return [...baseItems, ...(techItems[tech as keyof typeof techItems] || [])];
 };
 
-export default function TechLayout({ children, onThisPage, technology }: TechLayoutProps) {
+export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection }: TechLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [internalActiveSection, setInternalActiveSection] = useState('');
+
+  const activeSection = externalActiveSection !== undefined ? externalActiveSection : internalActiveSection;
+  const setActiveSection = externalSetActiveSection || setInternalActiveSection;
 
   const navigationItems = getTechNavigationItems(technology);
 
@@ -318,7 +392,7 @@ export default function TechLayout({ children, onThisPage, technology }: TechLay
         transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <Sidebar items={navigationItems} onThisPage={onThisPage} />
+        <Sidebar items={navigationItems} onThisPage={onThisPage} activeSection={activeSection} setActiveSection={setActiveSection} />
       </aside>
 
       {/* Main Content */}

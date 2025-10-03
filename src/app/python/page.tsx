@@ -1,8 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { getVideosForTopic } from '@/data/videoTutorials';
 
 export default function PythonPage() {
+  const [activeSection, setActiveSection] = useState('introduction');
+
   const pageHeadings = [
     { id: 'introduction', title: 'Python Introduction' },
     { id: 'syntax-indentation', title: 'Syntax & Indentation' },
@@ -25,14 +30,16 @@ export default function PythonPage() {
 
   const pythonVideos = getVideosForTopic('python');
 
-  return (
-    <TechLayout onThisPage={pageHeadings} technology="python">
-      <div className="animate-fade-in-up">
-        <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
-          🐍 Python Programming
-        </h1>
-        
-        <div className="max-w-6xl mx-auto">
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'introduction':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Programming
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
           <div className="gradient-border hover-lift mb-8">
             <div className="bg-gradient-to-r from-green-900/50 to-blue-900/50 p-8 rounded-xl">
               <h2 className="text-3xl font-bold text-green-400 mb-4 neon-glow">Goal</h2>
@@ -78,9 +85,23 @@ export default function PythonPage() {
             <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg">
               <p className="text-yellow-300 font-semibold">📌 Python is used in web development, data science, AI/ML, automation, and scientific computing</p>
             </div>
+            </div>
+            </div>
           </div>
-
-          <h2 id="syntax-indentation" className="text-3xl font-bold text-green-400 mb-6">2. Syntax & Indentation</h2>
+        );
+      
+      case 'syntax-indentation':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="syntax-indentation" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Syntax & Indentation
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn Python's unique syntax and indentation rules
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="syntax-indentation" className="text-3xl font-bold text-green-400 mb-6">2. Syntax & Indentation</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Python Syntax Rules</h3>
@@ -115,9 +136,23 @@ age = 30`}
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="variables-data-types" className="text-3xl font-bold text-green-400 mb-6">3. Variables & Data Types</h2>
+        );
+      
+      case 'variables-data-types':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="variables-data-types" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Variables & Data Types
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about Python variables and data types
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="variables-data-types" className="text-3xl font-bold text-green-400 mb-6">3. Variables & Data Types</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Python Data Types</h3>
@@ -161,9 +196,23 @@ print(type(name))  # <class 'str'>
 print(type(age))  # <class 'int'>`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="operators" className="text-3xl font-bold text-green-400 mb-6">4. Type Casting & Operators</h2>
+        );
+      
+      case 'operators':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="operators" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Type Casting & Operators
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about Python operators and type casting
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="operators" className="text-3xl font-bold text-green-400 mb-6">4. Type Casting & Operators</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Type Casting</h3>
@@ -213,9 +262,23 @@ int(), float(), str(), bool()`}
                 </ul>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="conditionals" className="text-3xl font-bold text-green-400 mb-6">5. Conditionals (if, elif, else)</h2>
+        );
+      
+      case 'conditionals':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="conditionals" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Conditionals
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about if, elif, and else statements in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="conditionals" className="text-3xl font-bold text-green-400 mb-6">5. Conditionals (if, elif, else)</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Conditional Statements</h3>
@@ -245,9 +308,23 @@ if x > 0:
         print("x positive, y negative")`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="loops" className="text-3xl font-bold text-green-400 mb-6">6. Loops</h2>
+        );
+      
+      case 'loops':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="loops" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Loops
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about for and while loops in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="loops" className="text-3xl font-bold text-green-400 mb-6">6. Loops</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Loop Types</h3>
@@ -293,9 +370,23 @@ while True:
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="strings" className="text-3xl font-bold text-green-400 mb-6">7. Strings</h2>
+        );
+      
+      case 'strings':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="strings" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Strings
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about string manipulation in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="strings" className="text-3xl font-bold text-green-400 mb-6">7. Strings</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">String Operations</h3>
@@ -353,9 +444,23 @@ message = "Hello, {}! You are {} years old.".format(name, age)
 message = "Hello, %s! You are %d years old." % (name, age)`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="data-structures" className="text-3xl font-bold text-green-400 mb-6">8. Data Structures</h2>
+        );
+      
+      case 'data-structures':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="data-structures" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Data Structures
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about lists, tuples, dictionaries, and sets
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="data-structures" className="text-3xl font-bold text-green-400 mb-6">8. Data Structures</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Lists, Tuples, Sets, Dictionaries</h3>
@@ -402,9 +507,23 @@ person["city"] = "NYC"`}
                 </div>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="functions" className="text-3xl font-bold text-green-400 mb-6">9. Functions</h2>
+        );
+      
+      case 'functions':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="functions" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Functions
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about functions and their usage in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="functions" className="text-3xl font-bold text-green-400 mb-6">9. Functions</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Function Definition</h3>
@@ -427,9 +546,23 @@ square = lambda x: x ** 2
 result = square(5)  # 25`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="oop" className="text-3xl font-bold text-green-400 mb-6">10. Object-Oriented Programming</h2>
+        );
+      
+      case 'oop':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="oop" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Object-Oriented Programming
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about classes and objects in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="oop" className="text-3xl font-bold text-green-400 mb-6">10. Object-Oriented Programming</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Classes and Objects</h3>
@@ -453,9 +586,23 @@ person.have_birthday()
 print(person.age)  # 26`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="file-handling" className="text-3xl font-bold text-green-400 mb-6">11. File Handling</h2>
+        );
+      
+      case 'file-handling':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="file-handling" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 File Handling
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about file operations in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="file-handling" className="text-3xl font-bold text-green-400 mb-6">11. File Handling</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">File Operations</h3>
@@ -475,9 +622,23 @@ with open("log.txt", "a") as file:
     file.write("New log entry\\n")`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="exception-handling" className="text-3xl font-bold text-green-400 mb-6">12. Exception Handling</h2>
+        );
+      
+      case 'exception-handling':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="exception-handling" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Exception Handling
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about error handling in Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="exception-handling" className="text-3xl font-bold text-green-400 mb-6">12. Exception Handling</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Try-Except Blocks</h3>
@@ -504,9 +665,23 @@ except CustomError as e:
     print(f"Custom error: {e}")`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="modules-packages" className="text-3xl font-bold text-green-400 mb-6">13. Modules & Packages</h2>
+        );
+      
+      case 'modules-packages':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="modules-packages" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Modules & Packages
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about Python modules and packages
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="modules-packages" className="text-3xl font-bold text-green-400 mb-6">13. Modules & Packages</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Importing Modules</h3>
@@ -528,9 +703,23 @@ array = np.array([1, 2, 3])
 from mymodule import my_function`}
               </pre>
             </div>
+              </div>
+            </div>
           </div>
-
-          <h2 id="advanced-concepts" className="text-3xl font-bold text-green-400 mb-6">14. Advanced Concepts</h2>
+        );
+      
+      case 'advanced-concepts':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="advanced-concepts" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Advanced Concepts
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn about advanced Python concepts
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="advanced-concepts" className="text-3xl font-bold text-green-400 mb-6">14. Advanced Concepts</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Key Advanced Topics</h3>
@@ -560,11 +749,39 @@ from mymodule import my_function`}
                 <p className="text-gray-300 text-sm">Garbage collection and optimization</p>
               </div>
             </div>
+              </div>
+            </div>
           </div>
-
-          <VideoSection videos={pythonVideos} title="Python Video Tutorials" />
-
-          <h2 id="practice-projects" className="text-3xl font-bold text-green-400 mb-6">15. Practice Projects</h2>
+        );
+      
+      case 'video-tutorials':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="video-tutorials" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Video Tutorials
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Learn Python through comprehensive video tutorials
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <VideoSection videos={pythonVideos} title="Python Video Tutorials" />
+            </div>
+          </div>
+        );
+      
+      case 'practice-projects':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="practice-projects" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Practice Projects
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Build real-world projects to master Python
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="practice-projects" className="text-3xl font-bold text-green-400 mb-6">15. Practice Projects</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
@@ -589,9 +806,23 @@ from mymodule import my_function`}
                 <strong>API Development:</strong> Build REST APIs with Flask/FastAPI
               </li>
             </ul>
+              </div>
+            </div>
           </div>
-
-          <h2 id="summary" className="text-3xl font-bold text-green-400 mb-6">✅ Summary</h2>
+        );
+      
+      case 'summary':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="summary" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Summary
+            </h1>
+            <p className="text-lg text-gray-400 mb-8 text-center">
+              Key takeaways from Python programming
+            </p>
+            
+            <div className="max-w-6xl mx-auto">
+              <h2 id="summary" className="text-3xl font-bold text-green-400 mb-6">✅ Summary</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
@@ -612,9 +843,34 @@ from mymodule import my_function`}
                 Practice with real projects to master Python programming
               </li>
             </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      
+      default:
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="introduction" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Programming
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="gradient-border hover-lift mb-8">
+                <div className="bg-gradient-to-r from-green-900/50 to-blue-900/50 p-8 rounded-xl">
+                  <h2 className="text-3xl font-bold text-green-400 mb-4 neon-glow">Goal</h2>
+                  <p className="text-white text-xl">Master Python programming from basics to advanced concepts and applications.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <TechLayout onThisPage={pageHeadings} technology="python" activeSection={activeSection} setActiveSection={setActiveSection}>
+      {renderContent()}
     </TechLayout>
   );
 }
