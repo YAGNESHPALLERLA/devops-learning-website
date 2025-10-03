@@ -35,7 +35,7 @@ export default function VersionControlPage() {
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-red-400 mb-4">Problem without version control:</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-red-900 border border-red-700 p-4 rounded">
                 <p className="text-red-300 font-semibold">❌ Code scattered across folders</p>
               </div>
@@ -102,7 +102,7 @@ export default function VersionControlPage() {
           </div>
 
           <h2 id="why-git-devops" className="text-3xl font-bold text-blue-400 mb-6">3. Why Git in DevOps?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Infrastructure as Code</h4>
               <p className="text-gray-300 text-sm">Version control for Terraform, Ansible, etc.</p>
@@ -131,7 +131,7 @@ export default function VersionControlPage() {
 
           <h2 id="git-architecture" className="text-3xl font-bold text-blue-400 mb-6">4. Git Architecture</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Working Directory</h4>
                 <p className="text-gray-300 text-sm">Files you're currently editing</p>
@@ -190,7 +190,7 @@ export default function VersionControlPage() {
           </div>
 
           <h2 id="git-commands" className="text-3xl font-bold text-blue-400 mb-6">6. Important Git Commands</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="space-y-6">
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 Repository Setup</h3>
@@ -285,7 +285,7 @@ export default function VersionControlPage() {
           </div>
 
           <h2 id="branching-merging" className="text-3xl font-bold text-blue-400 mb-6">7. Branching & Merging</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Branching</h3>
               <div className="space-y-2 mb-4">
@@ -331,7 +331,7 @@ export default function VersionControlPage() {
 
           <h2 id="remote-repositories" className="text-3xl font-bold text-blue-400 mb-6">8. Remote Repositories</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Popular Git Hosting</h3>
                 <ul className="text-gray-300 space-y-2">
@@ -412,7 +412,7 @@ export default function VersionControlPage() {
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <p className="text-gray-300 mb-4">Git hooks are scripts that run automatically at certain points in the Git workflow.</p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Client-side Hooks</h3>
                 <ul className="text-gray-300 space-y-2">
@@ -451,7 +451,7 @@ export default function VersionControlPage() {
           </div>
 
           <h2 id="git-devops" className="text-3xl font-bold text-blue-400 mb-6">11. Git in DevOps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Infrastructure as Code</h4>
               <p className="text-gray-300">Version control Terraform, Ansible, CloudFormation</p>
@@ -479,7 +479,7 @@ export default function VersionControlPage() {
           </div>
 
           <h2 id="advanced-concepts" className="text-3xl font-bold text-blue-400 mb-6">12. Advanced Concepts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Rebasing</h4>
               <p className="text-gray-300 text-sm">Cleaner history by replaying commits</p>

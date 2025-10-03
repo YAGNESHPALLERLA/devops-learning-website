@@ -70,7 +70,7 @@ export default function WhatIsDevOpsPage() {
 
           <h2 id="key-principles" className="text-3xl font-bold text-blue-400 mb-6">3. Key Principles of DevOps</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="space-y-6 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Collaboration & Communication</h3>
               <ul className="text-gray-300 space-y-2">
@@ -146,7 +146,7 @@ export default function WhatIsDevOpsPage() {
           <p className="text-gray-300 text-lg mb-6">The DevOps lifecycle is usually represented as an infinity loop:</p>
           
           <div className="bg-gray-800 p-8 rounded-lg my-8 border border-gray-700">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="space-y-4 text-center">
               <div className="bg-blue-900 p-4 rounded-lg border border-blue-700">
                 <strong className="text-blue-300">Plan</strong><br />
                 <small className="text-gray-400">Define requirements, plan features</small>
@@ -185,7 +185,7 @@ export default function WhatIsDevOpsPage() {
           <p className="text-gray-300 text-lg mb-8">This loop is continuous, improving with every cycle.</p>
 
           <h2 id="benefits" className="text-3xl font-bold text-blue-400 mb-6">5. Benefits of DevOps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+          <div className="space-y-6 my-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
               <h4 className="font-bold text-green-400 text-xl mb-3">Faster Delivery</h4>
               <p className="text-gray-300">Frequent releases and updates</p>
@@ -213,7 +213,7 @@ export default function WhatIsDevOpsPage() {
           </div>
 
           <h2 id="popular-tools" className="text-3xl font-bold text-blue-400 mb-6">6. Popular DevOps Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+          <div className="space-y-6 my-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
               <h4 className="font-bold text-blue-400 text-lg mb-3">Version Control</h4>
               <p className="text-gray-300">Git, GitHub, GitLab</p>

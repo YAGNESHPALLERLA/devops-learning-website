@@ -61,7 +61,7 @@ export default function JenkinsPage() {
 
           <h2 id="why-jenkins-devops" className="text-3xl font-bold text-blue-400 mb-6">2. Why Jenkins in DevOps?</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-red-900 border border-red-700 p-4 rounded">
                 <p className="text-red-300 font-semibold">❌ Manual builds/testing/deployment → slow, error-prone</p>
               </div>
@@ -89,7 +89,7 @@ export default function JenkinsPage() {
 
           <h2 id="jenkins-architecture" className="text-3xl font-bold text-blue-400 mb-6">3. Jenkins Architecture</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Jenkins Master (Controller)</h4>
                 <p className="text-gray-300 text-sm">Runs the web UI & schedules jobs</p>
@@ -107,7 +107,7 @@ export default function JenkinsPage() {
 
           <h2 id="key-concepts" className="text-3xl font-bold text-blue-400 mb-6">4. Key Concepts</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Job / Project</h4>
                 <p className="text-gray-300 text-sm">Unit of work (e.g., build + test a project)</p>
@@ -189,7 +189,7 @@ sudo systemctl start jenkins`}
           </div>
 
           <h2 id="freestyle-vs-pipelines" className="text-3xl font-bold text-blue-400 mb-6">7. Freestyle Jobs vs Pipelines</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Freestyle Jobs</h3>
               <p className="text-gray-300 mb-4">GUI-based, simple automation</p>
@@ -241,7 +241,7 @@ sudo systemctl start jenkins`}
           </div>
 
           <h2 id="integrations" className="text-3xl font-bold text-blue-400 mb-6">8. Integrations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Version Control</h4>
               <p className="text-gray-300 text-sm">Git, GitHub, GitLab, Bitbucket</p>
@@ -269,7 +269,7 @@ sudo systemctl start jenkins`}
           </div>
 
           <h2 id="cicd-example" className="text-3xl font-bold text-blue-400 mb-6">9. CI/CD Example</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-green-400 mb-4">Continuous Integration (CI)</h3>
               <ul className="text-gray-300 space-y-2">
@@ -338,7 +338,7 @@ sudo systemctl start jenkins`}
           </div>
 
           <h2 id="intermediate-features" className="text-3xl font-bold text-blue-400 mb-6">11. Intermediate Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Blue Ocean UI</h4>
               <p className="text-gray-300 text-sm">Modern UI for pipelines</p>

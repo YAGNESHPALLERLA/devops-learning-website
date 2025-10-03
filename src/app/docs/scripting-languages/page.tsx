@@ -76,7 +76,7 @@ export default function ScriptingPage() {
           <h2 id="automation" className="text-3xl font-bold text-blue-400 mb-6">3. Automation Scripts</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-purple-400 mb-6 neon-glow">Common Automation Tasks</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 border border-purple-500/30 p-6 rounded-xl hover-glow-secondary">
                 <h4 className="text-purple-400 font-bold text-lg mb-3">Deployment Scripts</h4>
                 <p className="text-white">Automate application deployments and rollbacks</p>

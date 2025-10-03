@@ -30,7 +30,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="plan-tools" className="text-3xl font-bold text-blue-400 mb-6">1. Plan</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Define requirements, track progress, and manage collaboration.</p>
@@ -42,7 +42,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Jira</h4>
                 <p className="text-gray-300 text-sm">Agile project management, sprint planning, issue tracking</p>
@@ -73,7 +73,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="code-tools" className="text-3xl font-bold text-blue-400 mb-6">2. Code</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Source code management, collaboration, and version control.</p>
@@ -85,7 +85,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Git</h4>
                 <p className="text-gray-300 text-sm">Distributed version control system (foundation for all)</p>
@@ -116,7 +116,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="build-tools" className="text-3xl font-bold text-blue-400 mb-6">3. Build</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Compile source code, package apps, create builds/containers.</p>
@@ -128,7 +128,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Maven</h4>
                 <p className="text-gray-300 text-sm">Java build automation tool</p>
@@ -159,7 +159,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="test-tools" className="text-3xl font-bold text-blue-400 mb-6">4. Test</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Automated testing (unit, integration, security, performance).</p>
@@ -171,7 +171,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">JUnit / TestNG</h4>
                 <p className="text-gray-300 text-sm">Java testing frameworks</p>
@@ -206,7 +206,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="release-tools" className="text-3xl font-bold text-blue-400 mb-6">5. Release</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Control and approve what gets delivered.</p>
@@ -218,7 +218,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Jenkins</h4>
                 <p className="text-gray-300 text-sm">CI/CD pipeline automation</p>
@@ -249,7 +249,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="deploy-tools" className="text-3xl font-bold text-blue-400 mb-6">6. Deploy</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Push applications into production safely.</p>
@@ -261,7 +261,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Kubernetes</h4>
                 <p className="text-gray-300 text-sm">Container orchestration (auto-scaling, rollback, self-healing)</p>
@@ -292,7 +292,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="operate-tools" className="text-3xl font-bold text-blue-400 mb-6">7. Operate</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Manage applications and infrastructure in production.</p>
@@ -304,7 +304,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Kubernetes</h4>
                 <p className="text-gray-300 text-sm">Manages containers in production</p>
@@ -335,7 +335,7 @@ export default function ToolsPage() {
           <div className="mb-12">
             <h2 id="monitor-tools" className="text-3xl font-bold text-blue-400 mb-6">8. Monitor</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
                   <p className="text-gray-300">Track application performance, system health, and logs.</p>
@@ -347,7 +347,7 @@ export default function ToolsPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="space-y-4 mb-6">
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
                 <h4 className="font-bold text-blue-400 mb-2">Prometheus</h4>
                 <p className="text-gray-300 text-sm">Metrics collection and monitoring</p>

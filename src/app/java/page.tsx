@@ -50,7 +50,7 @@ export default function JavaPage() {
           
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
             <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What is Java?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="space-y-6 mb-8">
               <div className="bg-gradient-to-r from-blue-900/50 to-blue-800/50 border border-blue-500/30 p-6 rounded-xl hover-glow-accent">
                 <p className="text-blue-300 font-semibold text-lg">✅ Platform Independent</p>
                 <p className="text-gray-300 text-sm mt-2">Write once, run anywhere (WORA)</p>
@@ -109,7 +109,7 @@ export default function JavaPage() {
               </pre>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
                 <h4 className="text-blue-300 font-bold mb-2">🔧 Compilation & Execution</h4>
                 <div className="bg-gray-900 p-3 rounded text-sm">
@@ -174,7 +174,7 @@ java HelloWorld
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Conditional Statements</h3>
                 <p className="text-gray-300 mb-6">Conditional statements allow your program to make decisions based on boolean expressions.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">if-else Statement</h4>
                     <p className="text-gray-300 mb-4">The most basic conditional statement that executes code based on a condition.</p>
@@ -264,7 +264,7 @@ String result = switch (day) {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. Loop Statements</h3>
                 <p className="text-gray-300 mb-6">Loops allow you to execute a block of code repeatedly until a condition is met.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">for Loop</h4>
                     <p className="text-gray-300 mb-4">Best when you know the exact number of iterations.</p>
@@ -362,7 +362,7 @@ do {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Jump Statements</h3>
                 <p className="text-gray-300 mb-6">Jump statements allow you to transfer control to another part of the program.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">break Statement</h4>
                     <p className="text-gray-300 mb-4">Terminates the loop or switch statement immediately.</p>
@@ -527,7 +527,7 @@ public class StudentGradeCalculator {
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Learning Objectives</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -596,7 +596,7 @@ Good job! You're doing well.`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Four Pillars of OOP</h3>
                 <p className="text-gray-300 mb-6">These are the fundamental principles that make OOP powerful and effective.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600 hover:ring-2 hover:ring-blue-500/30 transition-all duration-300">
                     <h4 className="font-bold text-blue-400 mb-4 text-lg">Encapsulation</h4>
                     <p className="text-gray-300 text-sm mb-4">Data hiding and bundling data with methods that operate on that data.</p>
@@ -651,7 +651,7 @@ public String getName() {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. Classes and Objects</h3>
                 <p className="text-gray-300 mb-6">A class is a blueprint for creating objects. An object is an instance of a class.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Class Definition</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -749,7 +749,7 @@ public String getName() {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Inheritance</h3>
                 <p className="text-gray-300 mb-6">Inheritance allows a class to inherit properties and methods from another class.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Parent Class (Superclass)</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -882,7 +882,7 @@ class Motorcycle extends Vehicle {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">5. Abstraction and Interfaces</h3>
                 <p className="text-gray-300 mb-6">Abstraction hides complex implementation details and shows only essential features.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Abstract Class</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1146,7 +1146,7 @@ public class BankSystemDemo {
               </pre>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-purple-900/30 border border-purple-500/30 p-4 rounded-lg">
                 <h4 className="text-purple-300 font-bold mb-2">🏗️ OOP Concepts Demonstrated</h4>
                 <ul className="text-gray-300 text-sm space-y-1">
@@ -1211,7 +1211,7 @@ Account: CHK001, Holder: Jane Smith, Balance: $100.00`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Access Modifiers</h3>
                 <p className="text-gray-300 mb-6">Control the visibility and accessibility of classes, methods, and variables.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Access Modifier Keywords</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1307,7 +1307,7 @@ class DefaultExample {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. Class and Object Keywords</h3>
                 <p className="text-gray-300 mb-6">Keywords used for defining classes, interfaces, and object behavior.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Class Definition Keywords</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1408,7 +1408,7 @@ public void checkType(Object obj) {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Control Flow Keywords</h3>
                 <p className="text-gray-300 mb-6">Keywords that control the flow of program execution.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Conditional Keywords</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1493,7 +1493,7 @@ for (int i = 0; i < 10; i++) {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. Exception Handling Keywords</h3>
                 <p className="text-gray-300 mb-6">Keywords for handling errors and exceptional conditions.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Exception Keywords</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1576,7 +1576,7 @@ public void throwCustomException() throws CustomException {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">5. Data Type and Variable Keywords</h3>
                 <p className="text-gray-300 mb-6">Keywords for declaring and managing data types and variables.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Primitive Data Types</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1642,7 +1642,7 @@ var number = 42; // Inferred as int
 
               <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
                 <h3 className="text-xl font-bold text-blue-400 mb-4">Complete Java Keywords List</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="space-y-4">
                   <div className="bg-gray-800 p-4 rounded">
                     <h4 className="text-green-400 font-bold mb-2">Access Modifiers</h4>
                     <p className="text-gray-300 text-sm">public, private, protected</p>
@@ -1896,7 +1896,7 @@ public class KeywordDemo {
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Keywords Demonstrated</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -1971,7 +1971,7 @@ Hobby: Gaming`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. String Class - Immutable Strings</h3>
                 <p className="text-gray-300 mb-6">The String class represents immutable character sequences. Once created, String objects cannot be modified.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">String Creation and Immutability</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -2035,7 +2035,7 @@ boolean ends = text.endsWith("Programming");  // true`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. StringBuilder - Mutable Strings</h3>
                 <p className="text-gray-300 mb-6">StringBuilder is mutable and not thread-safe, making it efficient for frequent string modifications.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">StringBuilder Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -2113,7 +2113,7 @@ public class StringPerformanceDemo {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. StringBuffer - Thread-Safe Mutable Strings</h3>
                 <p className="text-gray-300 mb-6">StringBuffer is similar to StringBuilder but is thread-safe, making it suitable for multi-threaded environments.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">StringBuffer Usage</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -2197,7 +2197,7 @@ String result = sb.toString();
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. Advanced String Operations</h3>
                 <p className="text-gray-300 mb-6">Advanced string manipulation techniques and regular expressions.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">String Formatting and Parsing</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -2536,7 +2536,7 @@ public class TextProcessor {
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Features Demonstrated</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -2608,7 +2608,7 @@ Is 'racecar' a palindrome? true`}
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Arrays</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div className="space-y-6 mb-6">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Array Declaration</h4>
                 <div className="bg-gray-900 p-3 rounded">
@@ -2640,7 +2640,7 @@ int length = numbers.length;`}
             </div>
             
             <h3 className="text-xl font-bold text-purple-400 mb-4">Collections Framework</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">List Interface</h4>
                 <ul className="text-gray-300 text-sm space-y-1">
@@ -2748,7 +2748,7 @@ public class MyClass {
             </div>
             
             <h3 className="text-xl font-bold text-purple-400 mb-4">Common Java Packages</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
               <div className="space-y-2">
                 <div className="bg-gray-700 p-3 rounded">
                   <code className="text-green-400">java.lang</code>
@@ -2798,7 +2798,7 @@ public class MyClass {
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Thread Creation</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Extending Thread Class</h4>
                 <div className="bg-gray-900 p-3 rounded">
@@ -2869,7 +2869,7 @@ thread.start();`}
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">File Reading</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">FileReader</h4>
                 <div className="bg-gray-900 p-3 rounded">
@@ -2984,7 +2984,7 @@ List<String> upperCase = names.stream()
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">JVM Memory Areas</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Heap Memory</h4>
                 <p className="text-gray-300 text-sm">Stores objects and instance variables</p>

@@ -50,7 +50,7 @@ export default function SQLPage() {
               
               <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What is SQL?</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gradient-to-r from-blue-900/50 to-blue-800/50 border border-blue-500/30 p-6 rounded-xl hover-glow-accent">
                     <p className="text-blue-300 font-semibold text-lg">✅ Structured Query Language</p>
                     <p className="text-gray-300 text-sm mt-2">Standard language for database management</p>
@@ -111,7 +111,7 @@ export default function SQLPage() {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. SELECT Statement - Data Retrieval</h3>
                 <p className="text-gray-300 mb-6">The SELECT statement is used to retrieve data from one or more tables.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Basic SELECT Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -193,7 +193,7 @@ WHERE phone_number IS NOT NULL;`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. INSERT Statement - Adding Data</h3>
                 <p className="text-gray-300 mb-6">The INSERT statement is used to add new records to a table.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Basic INSERT Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -267,7 +267,7 @@ FROM temp_employees;`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. UPDATE Statement - Modifying Data</h3>
                 <p className="text-gray-300 mb-6">The UPDATE statement is used to modify existing records in a table.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Basic UPDATE Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -357,7 +357,7 @@ WHERE id = 1;`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. DELETE Statement - Removing Data</h3>
                 <p className="text-gray-300 mb-6">The DELETE statement is used to remove records from a table.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Basic DELETE Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -438,7 +438,7 @@ COMMIT;`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">5. ORDER BY and GROUP BY</h3>
                 <p className="text-gray-300 mb-6">These clauses help organize and summarize data in your queries.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">ORDER BY - Sorting Results</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -518,7 +518,7 @@ HAVING COUNT(*) > 5;`}
 
               <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
                 <h3 className="text-xl font-bold text-blue-400 mb-4">SQL Command Categories</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="space-y-4">
                   <div className="bg-gray-800 p-4 rounded">
                     <h4 className="text-green-400 font-bold mb-2">DDL (Data Definition)</h4>
                     <p className="text-gray-300 text-sm">CREATE, ALTER, DROP, TRUNCATE</p>
@@ -739,7 +739,7 @@ AND TABLE_NAME = 'employees';`}
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Features Demonstrated</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -804,7 +804,7 @@ AND TABLE_NAME = 'employees';`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Numeric Data Types</h3>
                 <p className="text-gray-300 mb-6">Numeric types store numbers with different precision and scale requirements.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Integer Types</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -859,7 +859,7 @@ INSERT INTO products VALUES
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. String Data Types</h3>
                 <p className="text-gray-300 mb-6">String types store text data with different storage characteristics.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Variable-Length Strings</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -917,7 +917,7 @@ INSERT INTO employees VALUES
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Date and Time Types</h3>
                 <p className="text-gray-300 mb-6">Date and time types handle temporal data with various precision levels.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Date Types</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -972,7 +972,7 @@ SELECT
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. Boolean and Other Types</h3>
                 <p className="text-gray-300 mb-6">Special data types for boolean values, JSON, and other specific use cases.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Boolean and JSON</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1031,7 +1031,7 @@ INSERT INTO orders VALUES
                 <h3 className="text-xl font-bold text-purple-400 mb-4">5. Constraints</h3>
                 <p className="text-gray-300 mb-6">Constraints enforce data integrity and business rules at the database level.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Common Constraints</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -1223,7 +1223,7 @@ INSERT INTO products (category_id, product_name, sku, price, cost, stock_quantit
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Key Data Type Choices</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -1301,7 +1301,7 @@ INSERT INTO products (category_id, product_name, sku, price, cost, stock_quantit
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">INSERT, UPDATE, DELETE</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-2">INSERT</h4>
                     <pre className="text-green-400 font-mono text-sm">
@@ -1345,7 +1345,7 @@ WHERE id = 1;`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">WHERE Clause</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-2">Basic Filtering</h4>
                     <pre className="text-green-400 font-mono text-sm">
@@ -1390,7 +1390,7 @@ LIMIT 10 OFFSET 20;`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Types of Joins</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-2">INNER JOIN</h4>
                     <pre className="text-green-400 font-mono text-sm">
@@ -1430,7 +1430,7 @@ ON e.department_id = d.department_id;`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Common Aggregate Functions</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-4">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-blue-400 mb-2">COUNT</h4>
                     <p className="text-gray-300 text-sm">Counts the number of rows</p>
@@ -1464,7 +1464,7 @@ ON e.department_id = d.department_id;`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Types of Subqueries</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-2">Scalar Subquery</h4>
                     <pre className="text-green-400 font-mono text-sm">
@@ -1535,7 +1535,7 @@ FROM employees;`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Normalization</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-4">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-blue-400 mb-2">1NF</h4>
                     <p className="text-gray-300 text-sm">First Normal Form - Atomic values</p>
@@ -1596,7 +1596,7 @@ CREATE INDEX idx_employee_dept ON employees(department_id);`}
               
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">ACID Properties</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="space-y-4">
                   <div className="bg-gray-700 p-4 rounded border border-gray-600">
                     <h4 className="font-bold text-blue-400 mb-2">Atomicity</h4>
                     <p className="text-gray-300 text-sm">All or nothing</p>

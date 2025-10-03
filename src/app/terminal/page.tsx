@@ -43,7 +43,7 @@ export default function TerminalPage() {
           <MultiTerminal className="w-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-8">
           {/* Available Commands */}
           <div id="available-commands">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Technology-Specific Commands</h2>

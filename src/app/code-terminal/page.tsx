@@ -27,7 +27,7 @@ export default function CodeTerminalPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-blue-400 mb-3">Supported Languages</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="space-y-4">
                 <div className="bg-gray-700 p-4 rounded-lg">
                   <div className="text-2xl mb-2">🐍</div>
                   <h4 className="text-white font-semibold">Python</h4>
@@ -58,7 +58,7 @@ export default function CodeTerminalPage() {
 
             <div>
               <h3 className="text-xl font-semibold text-blue-400 mb-3">Features</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="text-green-400 text-xl">✅</div>
@@ -119,7 +119,7 @@ export default function CodeTerminalPage() {
         <div id="learning-tips" className="bg-gray-800 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-white mb-6">Learning Tips</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-8">
             <div>
               <h3 className="text-xl font-semibold text-blue-400 mb-4">🚀 Getting Started</h3>
               <ul className="space-y-2 text-gray-300">
@@ -145,7 +145,7 @@ export default function CodeTerminalPage() {
 
           <div className="mt-8 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
             <h4 className="text-blue-400 font-semibold mb-2">💻 Try These Examples:</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+            <div className="space-y-4 text-sm">
               <div>
                 <strong className="text-white">Python:</strong>
                 <div className="text-gray-300">print("Hello World")</div>

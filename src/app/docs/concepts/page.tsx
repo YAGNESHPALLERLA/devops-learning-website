@@ -206,7 +206,7 @@ export default function ConceptsPage() {
           
           <div className="bg-gray-800 p-8 rounded-lg my-8 border border-gray-700">
             <h3 className="text-xl font-bold text-purple-400 mb-6 text-center">🔄 The main stages are:</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="space-y-4">
               <div className="bg-blue-900 p-4 rounded-lg border border-blue-700 text-center">
                 <strong className="text-blue-300 text-lg">Plan</strong><br />
                 <small className="text-gray-400">Define requirements, plan features, track work using tools like Jira/Trello</small>

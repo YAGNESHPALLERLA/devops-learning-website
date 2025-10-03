@@ -51,7 +51,7 @@ export default function PythonPage() {
           
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-blue-400 mb-6 neon-glow">What is Python?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="space-y-6 mb-8">
               <div className="bg-gradient-to-r from-green-900/50 to-green-800/50 border border-green-500/30 p-6 rounded-xl hover-glow-accent">
                 <p className="text-green-300 font-semibold text-lg">✅ High-Level Language</p>
                 <p className="text-gray-300 text-sm mt-2">Easy to read and write</p>
@@ -119,7 +119,7 @@ export default function PythonPage() {
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Indentation Rules</h3>
                 <p className="text-gray-300 mb-6">Indentation is crucial in Python - it defines code blocks instead of braces.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Basic Indentation</h4>
                     <p className="text-gray-300 mb-4">Use 4 spaces (recommended) or 1 tab for each indentation level. Be consistent!</p>
@@ -167,7 +167,7 @@ area = calculate_area(10, 20)`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. Comments and Docstrings</h3>
                 <p className="text-gray-300 mb-6">Python supports different types of comments for documentation and code explanation.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Single-line Comments</h4>
                     <p className="text-gray-300 mb-4">Use # for single-line comments. Everything after # on that line is ignored.</p>
@@ -232,7 +232,7 @@ that require multiple steps:
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Python Keywords and Identifiers</h3>
                 <p className="text-gray-300 mb-6">Understanding Python's reserved words and naming conventions.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Python Keywords</h4>
                     <p className="text-gray-300 mb-4">These are reserved words that have special meaning in Python.</p>
@@ -306,7 +306,7 @@ class MyClass:
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. Line Continuation and Multiple Statements</h3>
                 <p className="text-gray-300 mb-6">Python provides several ways to handle long lines and multiple statements.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Line Continuation</h4>
                     <p className="text-gray-300 mb-4">Break long lines using backslash or parentheses.</p>
@@ -493,7 +493,7 @@ if __name__ == "__main__":
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Key Syntax Elements</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -565,7 +565,7 @@ Charlie Brown: Active`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Numeric Data Types</h3>
                 <p className="text-gray-300 mb-6">Python supports three numeric types: integers, floating-point numbers, and complex numbers.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Integer (int)</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -657,7 +657,7 @@ print(type(z1))            # <class 'complex'>`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">2. Text Data Type (String)</h3>
                 <p className="text-gray-300 mb-6">Strings in Python are sequences of characters and are immutable.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">String Creation</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -734,7 +734,7 @@ print(text[2:7])            # "Hello" - slicing`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">3. Boolean Data Type</h3>
                 <p className="text-gray-300 mb-6">Boolean values represent truth values: True or False.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Boolean Values and Operations</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -819,7 +819,7 @@ print(is_positive(-3))      # False`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">4. Sequence Data Types</h3>
                 <p className="text-gray-300 mb-6">Python has several built-in sequence types: lists, tuples, and ranges.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">List (Mutable Sequence)</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -897,7 +897,7 @@ print(numbers[3:])          # (3, 4, 5)`}
                 <h3 className="text-xl font-bold text-purple-400 mb-4">5. Mapping and Set Data Types</h3>
                 <p className="text-gray-300 mb-6">Python provides dictionaries for key-value mappings and sets for unique collections.</p>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
                     <h4 className="font-bold text-green-400 mb-4 text-lg">Dictionary (dict)</h4>
                     <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
@@ -967,7 +967,7 @@ even_squares = {x**2 for x in range(1, 11) if x % 2 == 0}  # {4, 16, 36, 64, 100
 
               <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
                 <h3 className="text-xl font-bold text-blue-400 mb-4">Type Checking and Conversion</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-gray-800 p-4 rounded">
                     <h4 className="text-green-400 font-bold mb-2">Type Checking</h4>
                     <pre className="text-green-400 font-mono text-sm">
@@ -1152,7 +1152,7 @@ if __name__ == "__main__":
                   </pre>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
                     <h4 className="text-green-300 font-bold mb-2">🎯 Features Demonstrated</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
@@ -1241,7 +1241,7 @@ int(), float(), str(), bool()`}
             </div>
             
             <h3 className="text-xl font-bold text-purple-400 mb-4">Operators</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Arithmetic</h4>
                 <ul className="text-gray-300 text-sm space-y-1">
@@ -1339,7 +1339,7 @@ if x > 0:
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Loop Types</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">for Loop</h4>
                 <div className="bg-gray-900 p-3 rounded">
@@ -1401,7 +1401,7 @@ while True:
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">String Operations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
               <div className="space-y-2">
                 <div className="bg-gray-700 p-3 rounded">
                   <code className="text-green-400">len(string)</code>
@@ -1475,7 +1475,7 @@ message = "Hello, %s! You are %d years old." % (name, age)`}
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Lists, Tuples, Sets, Dictionaries</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Lists</h4>
                 <p className="text-gray-300 text-sm mb-2">Ordered, mutable</p>
@@ -1734,7 +1734,7 @@ from mymodule import my_function`}
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Key Advanced Topics</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Decorators</h4>
                 <p className="text-gray-300 text-sm">Functions that modify other functions</p>

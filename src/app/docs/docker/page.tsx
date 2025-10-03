@@ -45,7 +45,7 @@ export default function DockerPage() {
           
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-red-400 mb-6 neon-glow">Traditional deployment problem:</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="space-y-6 mb-8">
               <div className="bg-gradient-to-r from-green-900/50 to-green-800/50 border border-green-500/30 p-6 rounded-xl hover-glow-accent">
                 <p className="text-green-300 font-semibold text-lg">✅ Works on developer machine</p>
               </div>
@@ -94,7 +94,7 @@ export default function DockerPage() {
           </div>
 
           <h2 id="why-docker-devops" className="text-3xl font-bold text-blue-400 mb-6">3. Why Docker in DevOps?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Consistency</h4>
               <p className="text-gray-300 text-sm">Same environment across dev → QA → prod</p>
@@ -119,7 +119,7 @@ export default function DockerPage() {
 
           <h2 id="docker-architecture" className="text-3xl font-bold text-blue-400 mb-6">4. Docker Architecture</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">Docker Client</h4>
                 <p className="text-gray-300 text-sm">CLI (docker) used by developers</p>
@@ -177,7 +177,7 @@ export default function DockerPage() {
           </div>
 
           <h2 id="docker-commands" className="text-3xl font-bold text-blue-400 mb-6">6. Important Docker Commands</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="space-y-6">
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 Working with Images</h3>
@@ -262,7 +262,7 @@ CMD ["python", "app.py"]`}
 
           <h2 id="dockerfile" className="text-3xl font-bold text-blue-400 mb-6">7. Dockerfile (Key Instructions)</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
                 <h4 className="font-bold text-blue-400 mb-2">FROM</h4>
                 <p className="text-gray-300 text-sm">Base image (e.g., Ubuntu, Python)</p>
@@ -291,7 +291,7 @@ CMD ["python", "app.py"]`}
           </div>
 
           <h2 id="volumes-networking" className="text-3xl font-bold text-blue-400 mb-6">8. Docker Volumes & Networking</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Volumes (Persistent Storage)</h3>
               <div className="bg-gray-700 p-3 rounded mb-4">
@@ -343,7 +343,7 @@ services:
 
           <h2 id="docker-registry" className="text-3xl font-bold text-blue-400 mb-6">10. Docker Registry</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Docker Hub</h3>
                 <p className="text-gray-300 mb-4">Public registry</p>
@@ -367,7 +367,7 @@ services:
           </div>
 
           <h2 id="docker-devops" className="text-3xl font-bold text-blue-400 mb-6">11. Docker in DevOps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">CI/CD Pipelines</h4>
               <p className="text-gray-300">Build & push Docker images</p>
@@ -387,7 +387,7 @@ services:
           </div>
 
           <h2 id="intermediate-concepts" className="text-3xl font-bold text-blue-400 mb-6">12. Intermediate Concepts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Multi-stage Builds</h4>
               <p className="text-gray-300 text-sm">Reduce image size</p>

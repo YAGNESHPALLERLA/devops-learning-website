@@ -41,7 +41,7 @@ export default function DevOpsPage() {
                 
                 <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
                   <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What is DevOps?</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="space-y-6 mb-8">
                     <div className="bg-gradient-to-r from-blue-900/50 to-blue-800/50 border border-blue-500/30 p-6 rounded-xl hover-glow-accent">
                       <p className="text-blue-300 font-semibold text-lg">✅ Development + Operations</p>
                       <p className="text-gray-300 text-sm mt-2">Bridging the gap between development and operations teams</p>
@@ -88,7 +88,7 @@ export default function DevOpsPage() {
                 
                 <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
                   <h3 className="text-xl font-bold text-purple-400 mb-4">The Three Ways of DevOps</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-6">
                     <div className="bg-gray-700 p-4 rounded border border-gray-600">
                       <h4 className="font-bold text-blue-400 mb-2">1. Flow</h4>
                       <p className="text-gray-300 text-sm">Fast left-to-right flow of work from Development to Operations</p>
@@ -124,7 +124,7 @@ export default function DevOpsPage() {
                 
                 <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
                   <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">The Infinite Loop</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="space-y-6">
                     <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg text-center">
                       <div className="text-4xl mb-2">💻</div>
                       <h4 className="text-blue-300 font-bold mb-2">Plan</h4>
@@ -168,7 +168,7 @@ export default function DevOpsPage() {
                 
                 <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
                   <h3 className="text-xl font-bold text-purple-400 mb-4">DevOps Toolchain</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="space-y-6">
                     <div className="bg-gray-700 p-4 rounded border border-gray-600">
                       <h4 className="font-bold text-blue-400 mb-2">Version Control</h4>
                       <p className="text-gray-300 text-sm">Git, GitHub, GitLab</p>

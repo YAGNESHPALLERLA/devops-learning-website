@@ -35,7 +35,7 @@ export default function KubernetesPage() {
           <h2 id="core-concepts" className="text-3xl font-bold text-blue-400 mb-6">1. Core Concepts</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-blue-400 mb-6 neon-glow">Kubernetes Architecture</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-6">
               <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-500/30 p-6 rounded-xl hover-glow-primary">
                 <h4 className="text-blue-400 font-bold text-lg mb-3">Control Plane</h4>
                 <p className="text-white">API Server, etcd, Scheduler, Controller Manager</p>
