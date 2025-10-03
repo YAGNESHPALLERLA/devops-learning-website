@@ -102,40 +102,434 @@ export default function PythonPage() {
             
             <div className="max-w-6xl mx-auto">
               <h2 id="syntax-indentation" className="text-3xl font-bold text-green-400 mb-6">2. Syntax & Indentation</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Python Syntax Rules</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Indentation</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`# Python uses indentation for code blocks
-if x > 0:
-    print("Positive")
-    print("Number is greater than 0")
-else:
-    print("Negative or zero")`}
-                  </pre>
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What Makes Python Special?</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Python's syntax is designed to be readable and straightforward. Unlike many programming languages that use braces {} to define code blocks, 
+                  Python uses indentation (whitespace) to indicate the structure of code. This makes Python code more readable and forces programmers to write clean, well-formatted code.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 Python's philosophy: "Code is read more often than it is written." This is why Python emphasizes readability and clean syntax.</p>
                 </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">Comments</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`# Single line comment
-"""
-Multi-line comment
-or docstring
-"""
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. Indentation Rules</h3>
+                <p className="text-gray-300 mb-6">Indentation is crucial in Python - it defines code blocks instead of braces.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Basic Indentation</h4>
+                    <p className="text-gray-300 mb-4">Use 4 spaces (recommended) or 1 tab for each indentation level. Be consistent!</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# Correct indentation
+if x > 0:
+    print("Positive")  # 4 spaces
+    print("Number is greater than 0")  # 4 spaces
+    if x > 10:
+        print("Very positive")  # 8 spaces (2 levels)
+else:
+    print("Negative or zero")  # 4 spaces
+
+# Incorrect indentation (will cause IndentationError)
+if x > 0:
+print("This will cause an error")  # No indentation`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Indentation in Functions</h4>
+                    <p className="text-gray-300 mb-4">Function bodies must be indented to define the function's scope.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`def greet(name):
+    """This is a docstring - also indented"""
+    message = f"Hello, {name}!"  # Function body indented
+    print(message)
+    return message
+
+def calculate_area(length, width):
+    area = length * width  # Function body indented
+    if area > 100:
+        print("Large area!")  # Nested indentation
+    return area
+
+# Function call (not indented)
+result = greet("Alice")
+area = calculate_area(10, 20)`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Comments and Docstrings</h3>
+                <p className="text-gray-300 mb-6">Python supports different types of comments for documentation and code explanation.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Single-line Comments</h4>
+                    <p className="text-gray-300 mb-4">Use # for single-line comments. Everything after # on that line is ignored.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# This is a single-line comment
+name = "Python"  # Inline comment
+age = 30
+
+# Multiple single-line comments
+# for longer explanations
+# that span multiple lines
 
 # Variables don't need type declaration
-name = "Python"
-age = 30`}
-                  </pre>
+# Python infers types automatically
+price = 19.99  # float
+is_available = True  # boolean
+items = ["apple", "banana"]  # list`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Multi-line Comments & Docstrings</h4>
+                    <p className="text-gray-300 mb-4">Use triple quotes for multi-line comments and docstrings.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`"""
+This is a multi-line comment
+or docstring at the module level
+It can span multiple lines
+"""
+
+def calculate_tax(amount, rate=0.1):
+    """
+    Calculate tax on an amount.
+    
+    Args:
+        amount (float): The base amount
+        rate (float): Tax rate (default 0.1)
+    
+    Returns:
+        float: The calculated tax amount
+    
+    Example:
+        >>> calculate_tax(100, 0.15)
+        15.0
+    """
+    return amount * rate
+
+# Multi-line comment for complex logic
+"""
+This function handles complex calculations
+that require multiple steps:
+1. Validate input
+2. Perform calculation
+3. Format result
+"""`}
+                    </pre>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. Python Keywords and Identifiers</h3>
+                <p className="text-gray-300 mb-6">Understanding Python's reserved words and naming conventions.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Python Keywords</h4>
+                    <p className="text-gray-300 mb-4">These are reserved words that have special meaning in Python.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# Common Python keywords
+# Control flow
+if, elif, else, for, while, break, continue, pass
+
+# Function and class definition
+def, class, return, yield, lambda
+
+# Exception handling
+try, except, finally, raise, assert
+
+# Import and module
+import, from, as, with
+
+# Logical operators
+and, or, not, in, is
+
+# Data types
+True, False, None
+
+# Example usage
+if True and not False:
+    for i in range(5):
+        if i == 3:
+            break
+        print(i)`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Naming Conventions</h4>
+                    <p className="text-gray-300 mb-4">Follow PEP 8 naming conventions for clean, readable code.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# Variable names: snake_case
+user_name = "Alice"
+total_count = 100
+is_valid = True
+
+# Function names: snake_case
+def calculate_total():
+    pass
+
+def get_user_info():
+    pass
+
+# Class names: PascalCase
+class UserAccount:
+    pass
+
+class DatabaseConnection:
+    pass
+
+# Constants: UPPER_SNAKE_CASE
+MAX_CONNECTIONS = 100
+DEFAULT_TIMEOUT = 30
+
+# Private attributes: leading underscore
+class MyClass:
+    def __init__(self):
+        self._private_var = "hidden"
+        self.__very_private = "very hidden"`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">4. Line Continuation and Multiple Statements</h3>
+                <p className="text-gray-300 mb-6">Python provides several ways to handle long lines and multiple statements.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Line Continuation</h4>
+                    <p className="text-gray-300 mb-4">Break long lines using backslash or parentheses.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# Using backslash for line continuation
+total = 10 + 20 + 30 + 40 + 50 + \
+        60 + 70 + 80 + 90 + 100
+
+# Using parentheses (preferred)
+total = (10 + 20 + 30 + 40 + 50 +
+         60 + 70 + 80 + 90 + 100)
+
+# Long function call
+result = some_function(
+    argument1,
+    argument2,
+    argument3,
+    argument4
+)
+
+# Long string
+message = ("This is a very long string "
+          "that spans multiple lines "
+          "for better readability")`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Multiple Statements</h4>
+                    <p className="text-gray-300 mb-4">Use semicolons to put multiple statements on one line.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`# Multiple statements on one line
+x = 10; y = 20; z = 30
+
+# Multiple assignments
+a, b, c = 1, 2, 3
+
+# Swap variables
+x, y = y, x
+
+# Multiple return values
+def get_name_and_age():
+    return "Alice", 25
+
+name, age = get_name_and_age()
+
+# Unpacking
+numbers = [1, 2, 3, 4, 5]
+first, *middle, last = numbers
+print(first)    # 1
+print(middle)   # [2, 3, 4]
+print(last)     # 5`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">Best Practices</h3>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• <strong>Use 4 spaces for indentation</strong> - never mix spaces and tabs</li>
+                  <li>• <strong>Keep lines under 79 characters</strong> for better readability</li>
+                  <li>• <strong>Use meaningful variable names</strong> that describe their purpose</li>
+                  <li>• <strong>Write docstrings</strong> for functions, classes, and modules</li>
+                  <li>• <strong>Follow PEP 8 style guide</strong> for consistent code formatting</li>
+                  <li>• <strong>Use comments sparingly</strong> - code should be self-explanatory</li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Python Syntax in Action</h3>
+                <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
+                  <h4 className="text-lg font-bold text-blue-400 mb-4">syntax_example.py</h4>
+                  <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`#!/usr/bin/env python3
+"""
+Python Syntax Example
+Demonstrates proper indentation, comments, and naming conventions
+"""
+
+# Constants
+MAX_ATTEMPTS = 3
+DEFAULT_TIMEOUT = 30
+
+class UserManager:
+    """Manages user operations with proper syntax and documentation."""
+    
+    def __init__(self):
+        self.users = []
+        self._current_user = None
+    
+    def add_user(self, name, email, age):
+        """
+        Add a new user to the system.
+        
+        Args:
+            name (str): User's full name
+            email (str): User's email address
+            age (int): User's age
+        
+        Returns:
+            bool: True if user was added successfully
+        """
+        # Validate input
+        if not name or not email:
+            print("Error: Name and email are required")
+            return False
+        
+        if age < 0 or age > 150:
+            print("Error: Invalid age")
+            return False
+        
+        # Create user dictionary
+        user = {
+            'name': name,
+            'email': email,
+            'age': age,
+            'active': True
+        }
+        
+        self.users.append(user)
+        print(f"User {name} added successfully")
+        return True
+    
+    def find_user(self, email):
+        """Find user by email address."""
+        for user in self.users:
+            if user['email'] == email:
+                return user
+        return None
+    
+    def activate_user(self, email):
+        """Activate a user account."""
+        user = self.find_user(email)
+        if user:
+            user['active'] = True
+            print(f"User {user['name']} activated")
+            return True
+        else:
+            print("User not found")
+            return False
+
+def main():
+    """Main function demonstrating Python syntax."""
+    print("=== Python Syntax Example ===")
+    
+    # Create user manager instance
+    manager = UserManager()
+    
+    # Add users with proper indentation
+    users_data = [
+        ("Alice Johnson", "alice@example.com", 25),
+        ("Bob Smith", "bob@example.com", 30),
+        ("Charlie Brown", "charlie@example.com", 28)
+    ]
+    
+    # Process users
+    for name, email, age in users_data:
+        success = manager.add_user(name, email, age)
+        if success:
+            print(f"✓ {name} registered")
+        else:
+            print(f"✗ Failed to register {name}")
+    
+    # Demonstrate control flow with proper indentation
+    print("\\n=== User Search ===")
+    search_emails = ["alice@example.com", "nonexistent@example.com"]
+    
+    for email in search_emails:
+        user = manager.find_user(email)
+        if user:
+            print(f"Found: {user['name']} ({user['age']} years old)")
+        else:
+            print(f"User with email {email} not found")
+    
+    # Demonstrate conditional logic
+    print("\\n=== User Status Check ===")
+    for user in manager.users:
+        status = "Active" if user['active'] else "Inactive"
+        print(f"{user['name']}: {status}")
+
+if __name__ == "__main__":
+    main()`}
+                  </pre>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
+                    <h4 className="text-green-300 font-bold mb-2">🎯 Key Syntax Elements</h4>
+                    <ul className="text-gray-300 text-sm space-y-1">
+                      <li>• Proper indentation (4 spaces)</li>
+                      <li>• Docstrings for documentation</li>
+                      <li>• Snake_case naming convention</li>
+                      <li>• Type hints in docstrings</li>
+                      <li>• Proper comment usage</li>
+                      <li>• Clean function structure</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
+                    <h4 className="text-blue-300 font-bold mb-2">📊 Sample Output</h4>
+                    <div className="bg-gray-900 p-3 rounded text-sm">
+                      <pre className="text-green-400 font-mono">
+{`=== Python Syntax Example ===
+User Alice Johnson added successfully
+✓ Alice Johnson registered
+User Bob Smith added successfully
+✓ Bob Smith registered
+User Charlie Brown added successfully
+✓ Charlie Brown registered
+
+=== User Search ===
+Found: Alice Johnson (25 years old)
+User with email nonexistent@example.com not found
+
+=== User Status Check ===
+Alice Johnson: Active
+Bob Smith: Active
+Charlie Brown: Active`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

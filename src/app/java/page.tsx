@@ -157,81 +157,303 @@ java HelloWorld
             
             <div className="max-w-6xl mx-auto">
               <h2 id="control-statements" className="text-3xl font-bold text-orange-400 mb-6">2. Control Statements</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8 hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Conditional Statements</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">if-else Statement</h4>
-                <div className="bg-gray-900 p-3 rounded mb-2">
-                  <pre className="text-green-400 font-mono text-sm">
-{`if (condition) {
-    // code block
-} else {
-    // alternative code
-}`}
-                  </pre>
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What are Control Statements?</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Control statements in Java are used to control the flow of execution in a program. They allow you to make decisions, 
+                  repeat code blocks, and jump to different parts of your program based on conditions.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 Control statements are essential for creating dynamic and interactive programs that can respond to different conditions and user inputs.</p>
                 </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">switch Statement</h4>
-                <div className="bg-gray-900 p-3 rounded mb-2">
-                  <pre className="text-green-400 font-mono text-sm">
-{`switch (variable) {
-    case value1:
-        // code
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. Conditional Statements</h3>
+                <p className="text-gray-300 mb-6">Conditional statements allow your program to make decisions based on boolean expressions.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">if-else Statement</h4>
+                    <p className="text-gray-300 mb-4">The most basic conditional statement that executes code based on a condition.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Basic if-else
+int age = 18;
+if (age >= 18) {
+    System.out.println("You are an adult");
+} else {
+    System.out.println("You are a minor");
+}
+
+// if-else if-else chain
+int score = 85;
+if (score >= 90) {
+    System.out.println("Grade: A");
+} else if (score >= 80) {
+    System.out.println("Grade: B");
+} else if (score >= 70) {
+    System.out.println("Grade: C");
+} else {
+    System.out.println("Grade: F");
+}
+
+// Nested if statements
+if (age >= 18) {
+    if (age >= 65) {
+        System.out.println("Senior citizen");
+    } else {
+        System.out.println("Adult");
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">switch Statement</h4>
+                    <p className="text-gray-300 mb-4">Used when you have multiple conditions to check against a single variable.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Basic switch statement
+int day = 3;
+switch (day) {
+    case 1:
+        System.out.println("Monday");
         break;
-    case value2:
-        // code
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
         break;
     default:
-        // default code
-}`}
-                  </pre>
-                </div>
-              </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-purple-400 mb-4 mt-6">Loop Statements</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-yellow-400 mb-2">for Loop</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`for (int i = 0; i < 10; i++) {
-    // code
-}`}
-                  </pre>
-                </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-red-400 mb-2">while Loop</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`while (condition) {
-    // code
-}`}
-                  </pre>
-                </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-indigo-400 mb-2">do-while Loop</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`do {
-    // code
-} while (condition);`}
-                  </pre>
-                </div>
-              </div>
-            </div>
-          </div>
+        System.out.println("Invalid day");
+}
 
-          <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Student Grade Calculator</h3>
-            <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
-              <h4 className="text-lg font-bold text-blue-400 mb-4">StudentGradeCalculator.java</h4>
-              <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+// Switch with char
+char grade = 'B';
+switch (grade) {
+    case 'A':
+    case 'a':
+        System.out.println("Excellent!");
+        break;
+    case 'B':
+    case 'b':
+        System.out.println("Good job!");
+        break;
+    case 'C':
+    case 'c':
+        System.out.println("Average");
+        break;
+    default:
+        System.out.println("Needs improvement");
+}
+
+// Java 14+ switch expressions
+String result = switch (day) {
+    case 1, 2, 3, 4, 5 -> "Weekday";
+    case 6, 7 -> "Weekend";
+    default -> "Invalid";
+};`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Loop Statements</h3>
+                <p className="text-gray-300 mb-6">Loops allow you to execute a block of code repeatedly until a condition is met.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">for Loop</h4>
+                    <p className="text-gray-300 mb-4">Best when you know the exact number of iterations.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Basic for loop
+for (int i = 0; i < 5; i++) {
+    System.out.println("Count: " + i);
+}
+
+// Enhanced for loop (for-each)
+int[] numbers = {1, 2, 3, 4, 5};
+for (int num : numbers) {
+    System.out.println("Number: " + num);
+}
+
+// Nested for loops
+for (int i = 1; i <= 3; i++) {
+    for (int j = 1; j <= 3; j++) {
+        System.out.println(i + " x " + j + " = " + (i * j));
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">while Loop</h4>
+                    <p className="text-gray-300 mb-4">Executes as long as the condition is true.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Basic while loop
+int count = 0;
+while (count < 5) {
+    System.out.println("Count: " + count);
+    count++;
+}
+
+// Reading user input
+Scanner scanner = new Scanner(System.in);
+int number;
+while ((number = scanner.nextInt()) != 0) {
+    System.out.println("You entered: " + number);
+}
+
+// Infinite loop with break
+while (true) {
+    System.out.println("Enter 'quit' to exit");
+    String input = scanner.nextLine();
+    if (input.equals("quit")) {
+        break;
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-purple-400 mb-4 text-lg">do-while Loop</h4>
+                    <p className="text-gray-300 mb-4">Executes at least once, then checks the condition.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// Basic do-while loop
+int count = 0;
+do {
+    System.out.println("Count: " + count);
+    count++;
+} while (count < 5);
+
+// Menu system
+Scanner scanner = new Scanner(System.in);
+int choice;
+do {
+    System.out.println("1. Add");
+    System.out.println("2. Subtract");
+    System.out.println("3. Exit");
+    System.out.print("Enter choice: ");
+    choice = scanner.nextInt();
+    
+    switch (choice) {
+        case 1:
+            System.out.println("Addition selected");
+            break;
+        case 2:
+            System.out.println("Subtraction selected");
+            break;
+        case 3:
+            System.out.println("Goodbye!");
+            break;
+        default:
+            System.out.println("Invalid choice");
+    }
+} while (choice != 3);`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. Jump Statements</h3>
+                <p className="text-gray-300 mb-6">Jump statements allow you to transfer control to another part of the program.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">break Statement</h4>
+                    <p className="text-gray-300 mb-4">Terminates the loop or switch statement immediately.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// break in for loop
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        break; // Exits the loop when i equals 5
+    }
+    System.out.println("i = " + i);
+}
+
+// break in while loop
+int num = 0;
+while (num < 10) {
+    if (num == 7) {
+        break; // Exits the loop
+    }
+    System.out.println("Number: " + num);
+    num++;
+}
+
+// break in switch
+int day = 2;
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break; // Prevents fall-through
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    default:
+        System.out.println("Other day");
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">continue Statement</h4>
+                    <p className="text-gray-300 mb-4">Skips the current iteration and continues with the next iteration.</p>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`// continue in for loop
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+        continue; // Skip even numbers
+    }
+    System.out.println("Odd number: " + i);
+}
+
+// continue in while loop
+int num = 0;
+while (num < 10) {
+    num++;
+    if (num % 3 == 0) {
+        continue; // Skip multiples of 3
+    }
+    System.out.println("Number: " + num);
+}
+
+// Practical example: Skip invalid input
+for (int i = 0; i < 5; i++) {
+    System.out.print("Enter a positive number: ");
+    int input = scanner.nextInt();
+    if (input <= 0) {
+        System.out.println("Invalid input, skipping...");
+        continue;
+    }
+    System.out.println("Valid input: " + input);
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <h3 className="text-xl font-bold text-blue-400 mb-4">Best Practices</h3>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• <strong>Use meaningful variable names</strong> in loop counters and conditions</li>
+                  <li>• <strong>Avoid infinite loops</strong> by ensuring conditions will eventually become false</li>
+                  <li>• <strong>Use break and continue sparingly</strong> as they can make code harder to read</li>
+                  <li>• <strong>Prefer enhanced for loops</strong> when iterating over collections</li>
+                  <li>• <strong>Use switch statements</strong> instead of long if-else chains when appropriate</li>
+                  <li>• <strong>Always include break statements</strong> in switch cases to prevent fall-through</li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Practical Example: Student Grade Calculator</h3>
+                <div className="bg-gray-900 p-6 rounded-xl border border-gray-700 mb-6">
+                  <h4 className="text-lg font-bold text-blue-400 mb-4">StudentGradeCalculator.java</h4>
+                  <pre className="text-green-400 font-mono text-sm overflow-x-auto">
 {`import java.util.Scanner;
 
 public class StudentGradeCalculator {
@@ -302,26 +524,26 @@ public class StudentGradeCalculator {
         scanner.close();
     }
 }`}
-              </pre>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
-                <h4 className="text-green-300 font-bold mb-2">🎯 Learning Objectives</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• Input/Output with Scanner</li>
-                  <li>• Variable declaration and initialization</li>
-                  <li>• Arithmetic operations</li>
-                  <li>• if-else-if ladder</li>
-                  <li>• switch statement</li>
-                  <li>• String formatting with printf</li>
-                </ul>
-              </div>
-              
-              <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
-                <h4 className="text-blue-300 font-bold mb-2">📊 Sample Output</h4>
-                <div className="bg-gray-900 p-3 rounded text-sm">
-                  <pre className="text-green-400 font-mono">
+                  </pre>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-green-900/30 border border-green-500/30 p-4 rounded-lg">
+                    <h4 className="text-green-300 font-bold mb-2">🎯 Learning Objectives</h4>
+                    <ul className="text-gray-300 text-sm space-y-1">
+                      <li>• Input/Output with Scanner</li>
+                      <li>• Variable declaration and initialization</li>
+                      <li>• Arithmetic operations</li>
+                      <li>• if-else-if ladder</li>
+                      <li>• switch statement</li>
+                      <li>• String formatting with printf</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-blue-900/30 border border-blue-500/30 p-4 rounded-lg">
+                    <h4 className="text-blue-300 font-bold mb-2">📊 Sample Output</h4>
+                    <div className="bg-gray-900 p-3 rounded text-sm">
+                      <pre className="text-green-400 font-mono">
 {`=== OHG 365 Student Grade Calculator ===
 Enter student name: John Doe
 Enter marks for Math (0-100): 85
@@ -336,10 +558,10 @@ English: 78
 Average: 85.00
 Grade: A
 Good job! You're doing well.`}
-                  </pre>
+                      </pre>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
               </div>
             </div>
           </div>
@@ -357,54 +579,415 @@ Good job! You're doing well.`}
             
             <div className="max-w-6xl mx-auto">
               <h2 id="oop-concepts" className="text-3xl font-bold text-orange-400 mb-6">3. Object-Oriented Programming</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Four Pillars of OOP</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Encapsulation</h4>
-                <p className="text-gray-300 text-sm">Data hiding and bundling data with methods</p>
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">What is Object-Oriented Programming?</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data (attributes) and code (methods). 
+                  OOP provides a clear modular structure for programs and makes code more maintainable, reusable, and easier to debug.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 OOP helps you think about problems in terms of real-world objects and their interactions, making complex programs easier to understand and maintain.</p>
+                </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">Inheritance</h4>
-                <p className="text-gray-300 text-sm">Creating new classes based on existing ones</p>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. Four Pillars of OOP</h3>
+                <p className="text-gray-300 mb-6">These are the fundamental principles that make OOP powerful and effective.</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600 hover:ring-2 hover:ring-blue-500/30 transition-all duration-300">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Encapsulation</h4>
+                    <p className="text-gray-300 text-sm mb-4">Data hiding and bundling data with methods that operate on that data.</p>
+                    <div className="bg-gray-900 p-3 rounded text-xs">
+                      <pre className="text-green-400 font-mono">
+{`private String name;
+public String getName() {
+    return name;
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600 hover:ring-2 hover:ring-green-500/30 transition-all duration-300">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Inheritance</h4>
+                    <p className="text-gray-300 text-sm mb-4">Creating new classes based on existing ones, inheriting their properties and methods.</p>
+                    <div className="bg-gray-900 p-3 rounded text-xs">
+                      <pre className="text-green-400 font-mono">
+{`class Dog extends Animal {
+    // Dog inherits from Animal
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600 hover:ring-2 hover:ring-purple-500/30 transition-all duration-300">
+                    <h4 className="font-bold text-purple-400 mb-4 text-lg">Polymorphism</h4>
+                    <p className="text-gray-300 text-sm mb-4">One interface, multiple implementations. Same method, different behavior.</p>
+                    <div className="bg-gray-900 p-3 rounded text-xs">
+                      <pre className="text-green-400 font-mono">
+{`animal.makeSound();
+// Different sounds for different animals`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600 hover:ring-2 hover:ring-yellow-500/30 transition-all duration-300">
+                    <h4 className="font-bold text-yellow-400 mb-4 text-lg">Abstraction</h4>
+                    <p className="text-gray-300 text-sm mb-4">Hiding complex implementation details and showing only essential features.</p>
+                    <div className="bg-gray-900 p-3 rounded text-xs">
+                      <pre className="text-green-400 font-mono">
+{`abstract class Vehicle {
+    abstract void start();
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-purple-400 mb-2">Polymorphism</h4>
-                <p className="text-gray-300 text-sm">One interface, multiple implementations</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-yellow-400 mb-2">Abstraction</h4>
-                <p className="text-gray-300 text-sm">Hiding complex implementation details</p>
-              </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Class and Object Example</h3>
-            <div className="bg-gray-900 p-4 rounded border border-gray-600">
-              <pre className="text-green-400 font-mono text-sm">
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Classes and Objects</h3>
+                <p className="text-gray-300 mb-6">A class is a blueprint for creating objects. An object is an instance of a class.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Class Definition</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
 {`public class Car {
+    // Fields (attributes)
     private String brand;
+    private String model;
     private int year;
+    private boolean isRunning;
     
     // Constructor
-    public Car(String brand, int year) {
+    public Car(String brand, String model, int year) {
         this.brand = brand;
+        this.model = model;
         this.year = year;
+        this.isRunning = false;
     }
     
-    // Method
+    // Methods (behaviors)
     public void start() {
-        System.out.println("Car is starting...");
+        if (!isRunning) {
+            isRunning = true;
+            System.out.println("Car started!");
+        } else {
+            System.out.println("Car is already running!");
+        }
     }
     
-    // Getter
-    public String getBrand() {
-        return brand;
+    public void stop() {
+        if (isRunning) {
+            isRunning = false;
+            System.out.println("Car stopped!");
+        } else {
+            System.out.println("Car is already stopped!");
+        }
+    }
+    
+    // Getters and Setters (Encapsulation)
+    public String getBrand() { return brand; }
+    public String getModel() { return model; }
+    public int getYear() { return year; }
+    public boolean isRunning() { return isRunning; }
+    
+    public void setBrand(String brand) { this.brand = brand; }
+    public void setModel(String model) { this.model = model; }
+    public void setYear(int year) { this.year = year; }
+    
+    // Method to display car information
+    public void displayInfo() {
+        System.out.printf("Car: %s %s (%d) - %s%n", 
+                        brand, model, year, 
+                        isRunning ? "Running" : "Stopped");
     }
 }`}
-              </pre>
-            </div>
-          </div>
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Object Creation and Usage</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`public class CarDemo {
+    public static void main(String[] args) {
+        // Creating objects (instances of Car class)
+        Car car1 = new Car("Toyota", "Camry", 2023);
+        Car car2 = new Car("Honda", "Civic", 2022);
+        
+        // Using object methods
+        car1.displayInfo();
+        car1.start();
+        car1.displayInfo();
+        
+        car2.displayInfo();
+        car2.start();
+        car2.stop();
+        car2.displayInfo();
+        
+        // Modifying object properties
+        car1.setBrand("Lexus");
+        car1.setModel("ES");
+        car1.displayInfo();
+        
+        // Array of objects
+        Car[] cars = {car1, car2};
+        for (Car car : cars) {
+            car.displayInfo();
+        }
+    }
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. Inheritance</h3>
+                <p className="text-gray-300 mb-6">Inheritance allows a class to inherit properties and methods from another class.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Parent Class (Superclass)</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`public class Vehicle {
+    protected String brand;
+    protected int year;
+    protected boolean isRunning;
+    
+    public Vehicle(String brand, int year) {
+        this.brand = brand;
+        this.year = year;
+        this.isRunning = false;
+    }
+    
+    public void start() {
+        isRunning = true;
+        System.out.println("Vehicle started!");
+    }
+    
+    public void stop() {
+        isRunning = false;
+        System.out.println("Vehicle stopped!");
+    }
+    
+    public void displayInfo() {
+        System.out.printf("Vehicle: %s (%d) - %s%n", 
+                        brand, year, 
+                        isRunning ? "Running" : "Stopped");
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Child Class (Subclass)</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`public class Car extends Vehicle {
+    private int numberOfDoors;
+    private String fuelType;
+    
+    public Car(String brand, int year, int doors, String fuel) {
+        super(brand, year); // Call parent constructor
+        this.numberOfDoors = doors;
+        this.fuelType = fuel;
+    }
+    
+    // Method overriding (Polymorphism)
+    @Override
+    public void start() {
+        super.start(); // Call parent method
+        System.out.println("Car engine started with " + fuelType + " fuel!");
+    }
+    
+    // Additional methods specific to Car
+    public void openTrunk() {
+        System.out.println("Trunk opened!");
+    }
+    
+    public void honk() {
+        System.out.println("Beep beep!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.printf("Doors: %d, Fuel: %s%n", 
+                        numberOfDoors, fuelType);
+    }
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">4. Polymorphism</h3>
+                <p className="text-gray-300 mb-6">Polymorphism allows objects of different types to be treated as objects of a common base type.</p>
+                
+                <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                  <h4 className="font-bold text-green-400 mb-4 text-lg">Runtime Polymorphism Example</h4>
+                  <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`public class PolymorphismDemo {
+    public static void main(String[] args) {
+        // Creating objects of different types
+        Vehicle vehicle1 = new Vehicle("Generic", 2023);
+        Vehicle vehicle2 = new Car("Toyota", 2023, 4, "Gasoline");
+        Vehicle vehicle3 = new Motorcycle("Honda", 2023, "Sport");
+        
+        // Array of Vehicle references
+        Vehicle[] vehicles = {vehicle1, vehicle2, vehicle3};
+        
+        // Polymorphic method calls
+        for (Vehicle vehicle : vehicles) {
+            vehicle.start(); // Different behavior for each type
+            vehicle.displayInfo();
+            System.out.println("---");
+        }
+        
+        // Type checking and casting
+        if (vehicle2 instanceof Car) {
+            Car car = (Car) vehicle2;
+            car.honk(); // Car-specific method
+        }
+    }
+}
+
+class Motorcycle extends Vehicle {
+    private String type;
+    
+    public Motorcycle(String brand, int year, String type) {
+        super(brand, year);
+        this.type = type;
+    }
+    
+    @Override
+    public void start() {
+        super.start();
+        System.out.println("Motorcycle engine revved!");
+    }
+    
+    public void wheelie() {
+        System.out.println("Doing a wheelie!");
+    }
+}`}
+                  </pre>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">5. Abstraction and Interfaces</h3>
+                <p className="text-gray-300 mb-6">Abstraction hides complex implementation details and shows only essential features.</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Abstract Class</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`abstract class Shape {
+    protected String color;
+    
+    public Shape(String color) {
+        this.color = color;
+    }
+    
+    // Abstract method - must be implemented by subclasses
+    public abstract double getArea();
+    public abstract double getPerimeter();
+    
+    // Concrete method - shared by all subclasses
+    public void displayInfo() {
+        System.out.printf("Shape color: %s%n", color);
+        System.out.printf("Area: %.2f%n", getArea());
+        System.out.printf("Perimeter: %.2f%n", getPerimeter());
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+    
+    public Circle(String color, double radius) {
+        super(color);
+        this.radius = radius;
+    }
+    
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+    
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}`}
+                    </pre>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Interface</h4>
+                    <pre className="text-green-400 font-mono text-sm bg-gray-900 p-4 rounded">
+{`interface Drawable {
+    void draw();
+    void erase();
+    default void display() {
+        System.out.println("Displaying drawable object");
+    }
+}
+
+interface Movable {
+    void move(int x, int y);
+    void stop();
+}
+
+class Rectangle extends Shape implements Drawable, Movable {
+    private double width, height;
+    private int x, y;
+    
+    public Rectangle(String color, double width, double height) {
+        super(color);
+        this.width = width;
+        this.height = height;
+    }
+    
+    @Override
+    public double getArea() {
+        return width * height;
+    }
+    
+    @Override
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing rectangle");
+    }
+    
+    @Override
+    public void erase() {
+        System.out.println("Erasing rectangle");
+    }
+    
+    @Override
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+        System.out.printf("Moved to (%d, %d)%n", x, y);
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Stopped moving");
+    }
+}`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
 
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
             <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Comprehensive OOP Example: Bank Account System</h3>
