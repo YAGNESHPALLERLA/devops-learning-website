@@ -2605,67 +2605,609 @@ Is 'racecar' a palindrome? true`}
             
             <div className="max-w-6xl mx-auto">
               <h2 id="arrays-collections" className="text-3xl font-bold text-orange-400 mb-6">6. Arrays & Collections</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Arrays</h3>
-            <div className="space-y-6 mb-6">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Array Declaration</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`// One-dimensional array
-int[] numbers = new int[5];
-int[] numbers = {1, 2, 3, 4, 5};
-
-// Two-dimensional array
-int[][] matrix = new int[3][4];`}
-                  </pre>
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-orange-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Understanding Arrays and Collections in Java</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Arrays and Collections are fundamental data structures in Java that allow you to store and manipulate multiple values efficiently. 
+                  While arrays provide a basic way to store elements of the same type, the Collections Framework offers more sophisticated 
+                  data structures with built-in methods for common operations.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 Arrays are fixed-size and store primitive types or object references, while Collections are dynamic and provide more flexibility with built-in methods for manipulation.</p>
                 </div>
               </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">Array Operations</h4>
-                <div className="bg-gray-900 p-3 rounded">
-                  <pre className="text-green-400 font-mono text-sm">
-{`// Access elements
-int first = numbers[0];
+
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. Arrays - Fixed-Size Data Structures</h3>
+                <p className="text-gray-300 mb-6">
+                  Arrays are the most basic data structure in Java. They store multiple values of the same data type in contiguous memory locations. 
+                  Arrays have a fixed size that must be declared when they are created, and this size cannot be changed later.
+                </p>
+                
+                <div className="space-y-6 mb-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">What are Arrays and Why Use Them?</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>Arrays</strong> are containers that hold a fixed number of values of the same type. They are stored in contiguous memory locations, 
+                        making them very efficient for accessing elements by index.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Why use arrays?</strong>
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1 ml-4">
+                        <li>• <strong>Fast Access:</strong> O(1) time complexity for accessing elements by index</li>
+                        <li>• <strong>Memory Efficient:</strong> Elements are stored in contiguous memory blocks</li>
+                        <li>• <strong>Simple Structure:</strong> Easy to understand and implement</li>
+                        <li>• <strong>Cache Friendly:</strong> Better performance due to spatial locality</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-green-400 mb-2">Array Declaration Methods</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// Method 1: Declare and initialize with size
+int[] numbers = new int[5];  // Creates array of 5 integers (all 0)
+
+// Method 2: Declare and initialize with values
+int[] numbers = {1, 2, 3, 4, 5};  // Creates array with specific values
+
+// Method 3: Declare first, initialize later
+int[] numbers;
+numbers = new int[]{10, 20, 30, 40, 50};
+
+// Two-dimensional arrays (arrays of arrays)
+int[][] matrix = new int[3][4];  // 3 rows, 4 columns
+int[][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}};  // 3x3 matrix`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">How Arrays Work Internally</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        When you create an array, Java allocates a contiguous block of memory. Each element is stored at a specific memory address 
+                        that can be calculated using the formula: <code className="text-blue-400">base_address + (index × element_size)</code>
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        This is why array access is so fast - there's no need to traverse through elements to find the one you want.
+                      </p>
+                    </div>
+                    <h5 className="font-bold text-blue-400 mb-2">Array Operations and Properties</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// Array properties and operations
+int[] numbers = {10, 20, 30, 40, 50};
+
+// Access elements (O(1) time complexity)
+int first = numbers[0];    // 10
+int last = numbers[4];     // 50
+int middle = numbers[2];   // 30
 
 // Modify elements
-numbers[0] = 10;
+numbers[0] = 100;          // Changes first element to 100
+numbers[4] = 500;          // Changes last element to 500
 
-// Get length
-int length = numbers.length;`}
-                  </pre>
+// Get array length
+int length = numbers.length;  // 5
+
+// Iterate through array
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println("Element " + i + ": " + numbers[i]);
+}
+
+// Enhanced for loop (for-each)
+for (int number : numbers) {
+    System.out.println("Number: " + number);
+}
+
+// Array bounds checking
+try {
+    int invalid = numbers[10];  // Throws ArrayIndexOutOfBoundsException
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Index out of bounds: " + e.getMessage());
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                  <h4 className="font-bold text-purple-400 mb-4 text-lg">Real-World Array Examples</h4>
+                  <div className="mb-4">
+                    <p className="text-gray-300 mb-3">
+                      Arrays are commonly used in many programming scenarios. Here are some practical examples:
+                    </p>
+                  </div>
+                  <div className="bg-gray-900 p-4 rounded">
+                    <pre className="text-green-400 font-mono text-sm">
+{`// Example 1: Student Grade Management
+public class GradeManager {
+    public static void main(String[] args) {
+        // Array to store student grades
+        double[] grades = {85.5, 92.0, 78.5, 96.0, 88.5};
+        
+        // Calculate average grade
+        double sum = 0;
+        for (double grade : grades) {
+            sum += grade;
+        }
+        double average = sum / grades.length;
+        System.out.println("Average grade: " + average);
+        
+        // Find highest and lowest grades
+        double highest = grades[0];
+        double lowest = grades[0];
+        for (int i = 1; i < grades.length; i++) {
+            if (grades[i] > highest) highest = grades[i];
+            if (grades[i] < lowest) lowest = grades[i];
+        }
+        System.out.println("Highest grade: " + highest);
+        System.out.println("Lowest grade: " + lowest);
+    }
+}
+
+// Example 2: Temperature Monitoring System
+public class TemperatureMonitor {
+    public static void main(String[] args) {
+        // 2D array for weekly temperature data (7 days, 24 hours)
+        double[][] weeklyTemps = new double[7][24];
+        
+        // Initialize with sample data
+        for (int day = 0; day < 7; day++) {
+            for (int hour = 0; hour < 24; hour++) {
+                weeklyTemps[day][hour] = 20 + Math.random() * 15; // 20-35°C
+            }
+        }
+        
+        // Calculate daily averages
+        for (int day = 0; day < 7; day++) {
+            double dailySum = 0;
+            for (int hour = 0; hour < 24; hour++) {
+                dailySum += weeklyTemps[day][hour];
+            }
+            double dailyAvg = dailySum / 24;
+            System.out.println("Day " + (day + 1) + " average: " + 
+                             String.format("%.2f°C", dailyAvg));
+        }
+    }
+}`}
+                    </pre>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Collections Framework</h3>
-            <div className="space-y-4">
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">List Interface</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• ArrayList - Dynamic array</li>
-                  <li>• LinkedList - Doubly linked list</li>
-                  <li>• Vector - Synchronized array</li>
-                </ul>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-green-400 mb-2">Set Interface</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• HashSet - Hash table based</li>
-                  <li>• TreeSet - Red-black tree</li>
-                  <li>• LinkedHashSet - Hash table + linked list</li>
-                </ul>
-              </div>
-              <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-purple-400 mb-2">Map Interface</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• HashMap - Hash table based</li>
-                  <li>• TreeMap - Red-black tree</li>
-                  <li>• LinkedHashMap - Hash table + linked list</li>
-                </ul>
-              </div>
-            </div>
+              
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Collections Framework - Dynamic Data Structures</h3>
+                <p className="text-gray-300 mb-6">
+                  The Java Collections Framework is a unified architecture for representing and manipulating collections. It provides 
+                  interfaces, implementations, and algorithms to work with groups of objects. Unlike arrays, collections can grow and 
+                  shrink dynamically, and they provide many useful methods for common operations.
+                </p>
+                
+                <div className="space-y-6 mb-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">What is the Collections Framework?</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        The <strong>Collections Framework</strong> is a set of classes and interfaces that provide a standardized way to 
+                        work with groups of objects. It was introduced in Java 1.2 and has become the standard way to handle collections in Java.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Key Benefits:</strong>
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1 ml-4">
+                        <li>• <strong>Reusability:</strong> Common algorithms work with any collection</li>
+                        <li>• <strong>Interoperability:</strong> Collections can be easily passed between methods</li>
+                        <li>• <strong>Performance:</strong> Optimized implementations for different use cases</li>
+                        <li>• <strong>Type Safety:</strong> Generics provide compile-time type checking</li>
+                        <li>• <strong>Extensibility:</strong> Easy to create custom collection types</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-green-400 mb-2">Core Interfaces Hierarchy</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// Core Collection Interfaces
+Collection<E>                    // Root interface
+├── List<E>                      // Ordered collections with duplicates
+│   ├── ArrayList<E>            // Resizable array implementation
+│   ├── LinkedList<E>           // Doubly-linked list implementation
+│   └── Vector<E>               // Synchronized array implementation
+├── Set<E>                       // Collections without duplicates
+│   ├── HashSet<E>              // Hash table implementation
+│   ├── LinkedHashSet<E>        // Hash table + linked list
+│   └── TreeSet<E>              // Red-black tree implementation
+└── Queue<E>                     // Collections for holding elements prior to processing
+    ├── PriorityQueue<E>        // Heap-based implementation
+    └── Deque<E>                // Double-ended queue
+        └── ArrayDeque<E>       // Array-based deque
+
+// Map Interface (not part of Collection hierarchy)
+Map<K,V>                         // Key-value pairs
+├── HashMap<K,V>                // Hash table implementation
+├── LinkedHashMap<K,V>          // Hash table + linked list
+└── TreeMap<K,V>                // Red-black tree implementation`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">List Interface - Ordered Collections</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>List</strong> is an ordered collection that allows duplicate elements. Elements can be accessed by their 
+                        integer index (position in the list). Lists provide precise control over where each element is inserted.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Key Characteristics:</strong>
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1 ml-4">
+                        <li>• <strong>Ordered:</strong> Elements maintain insertion order</li>
+                        <li>• <strong>Indexed:</strong> Access elements by position (0-based)</li>
+                        <li>• <strong>Duplicates Allowed:</strong> Same element can appear multiple times</li>
+                        <li>• <strong>Null Allowed:</strong> Can contain null elements</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-blue-400 mb-2">ArrayList vs LinkedList - When to Use Which?</h5>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>ArrayList:</strong> Best for frequent random access and when you know the approximate size.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>LinkedList:</strong> Best for frequent insertions/deletions in the middle of the list.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// ArrayList Example - Fast Random Access
+import java.util.*;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Create ArrayList
+        List<String> fruits = new ArrayList<>();
+        
+        // Add elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Apple");  // Duplicates allowed
+        
+        // Access elements by index (O(1) time complexity)
+        System.out.println("First fruit: " + fruits.get(0));
+        System.out.println("Last fruit: " + fruits.get(fruits.size() - 1));
+        
+        // Modify elements
+        fruits.set(1, "Grape");  // Replace "Banana" with "Grape"
+        
+        // Insert element at specific position
+        fruits.add(2, "Mango");  // Insert at index 2
+        
+        // Remove elements
+        fruits.remove("Apple");  // Remove first occurrence
+        fruits.remove(0);        // Remove element at index 0
+        
+        // Check if element exists
+        if (fruits.contains("Orange")) {
+            System.out.println("Orange is in the list");
+        }
+        
+        // Iterate through list
+        System.out.println("All fruits:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+        
+        // Get list size
+        System.out.println("Number of fruits: " + fruits.size());
+    }
+}
+
+// LinkedList Example - Fast Insertions/Deletions
+public class LinkedListExample {
+    public static void main(String[] args) {
+        // Create LinkedList
+        List<Integer> numbers = new LinkedList<>();
+        
+        // Add elements at beginning (O(1) time complexity)
+        numbers.add(0, 10);
+        numbers.add(0, 20);
+        numbers.add(0, 30);
+        
+        // Add elements at end
+        numbers.add(40);
+        numbers.add(50);
+        
+        // Insert in middle (O(n) time complexity, but no shifting needed)
+        numbers.add(2, 25);
+        
+        // Remove from middle (O(n) time complexity, but no shifting needed)
+        numbers.remove(3);
+        
+        System.out.println("Numbers: " + numbers);
+    }
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Set Interface - Unique Collections</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>Set</strong> is a collection that cannot contain duplicate elements. It models the mathematical set abstraction. 
+                        Sets are used when you need to store unique elements and don't care about the order.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Key Characteristics:</strong>
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1 ml-4">
+                        <li>• <strong>No Duplicates:</strong> Each element appears only once</li>
+                        <li>• <strong>Unordered:</strong> No guarantee about element order (except TreeSet)</li>
+                        <li>• <strong>Null Handling:</strong> Most implementations allow one null element</li>
+                        <li>• <strong>Mathematical Operations:</strong> Union, intersection, difference operations</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-green-400 mb-2">HashSet vs TreeSet vs LinkedHashSet</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// HashSet Example - Fastest, No Order Guarantee
+import java.util.*;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        // Create HashSet
+        Set<String> uniqueNames = new HashSet<>();
+        
+        // Add elements (duplicates are automatically ignored)
+        uniqueNames.add("Alice");
+        uniqueNames.add("Bob");
+        uniqueNames.add("Alice");  // This won't be added (duplicate)
+        uniqueNames.add("Charlie");
+        uniqueNames.add("Bob");    // This won't be added (duplicate)
+        
+        System.out.println("Unique names: " + uniqueNames);
+        System.out.println("Size: " + uniqueNames.size());  // 3, not 5
+        
+        // Check if element exists (O(1) average time)
+        if (uniqueNames.contains("Alice")) {
+            System.out.println("Alice is in the set");
+        }
+        
+        // Remove element
+        uniqueNames.remove("Bob");
+        System.out.println("After removing Bob: " + uniqueNames);
+        
+        // Set operations
+        Set<String> otherNames = new HashSet<>();
+        otherNames.add("David");
+        otherNames.add("Alice");
+        otherNames.add("Eve");
+        
+        // Union (all elements from both sets)
+        Set<String> union = new HashSet<>(uniqueNames);
+        union.addAll(otherNames);
+        System.out.println("Union: " + union);
+        
+        // Intersection (common elements)
+        Set<String> intersection = new HashSet<>(uniqueNames);
+        intersection.retainAll(otherNames);
+        System.out.println("Intersection: " + intersection);
+        
+        // Difference (elements in first set but not in second)
+        Set<String> difference = new HashSet<>(uniqueNames);
+        difference.removeAll(otherNames);
+        System.out.println("Difference: " + difference);
+    }
+}
+
+// TreeSet Example - Sorted Order
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Create TreeSet (automatically sorted)
+        Set<Integer> numbers = new TreeSet<>();
+        
+        // Add elements in random order
+        numbers.add(50);
+        numbers.add(10);
+        numbers.add(30);
+        numbers.add(20);
+        numbers.add(40);
+        
+        System.out.println("Sorted numbers: " + numbers);  // [10, 20, 30, 40, 50]
+        
+        // First and last elements
+        TreeSet<Integer> treeSet = (TreeSet<Integer>) numbers;
+        System.out.println("First: " + treeSet.first());
+        System.out.println("Last: " + treeSet.last());
+        
+        // Subset operations
+        System.out.println("Numbers less than 30: " + treeSet.headSet(30));
+        System.out.println("Numbers greater than 20: " + treeSet.tailSet(20));
+        System.out.println("Numbers between 15 and 35: " + treeSet.subSet(15, 35));
+    }
+}
+
+// LinkedHashSet Example - Maintains Insertion Order
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        // Create LinkedHashSet (maintains insertion order)
+        Set<String> orderedNames = new LinkedHashSet<>();
+        
+        // Add elements
+        orderedNames.add("First");
+        orderedNames.add("Second");
+        orderedNames.add("Third");
+        orderedNames.add("First");  // Duplicate, won't be added
+        
+        System.out.println("Ordered names: " + orderedNames);  // [First, Second, Third]
+        
+        // Order is maintained even after operations
+        orderedNames.add("Fourth");
+        orderedNames.remove("Second");
+        System.out.println("After operations: " + orderedNames);  // [First, Third, Fourth]
+    }
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Map Interface - Key-Value Pairs</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>Map</strong> is an object that maps keys to values. A map cannot contain duplicate keys; each key can map to at most one value. 
+                        Maps are perfect for storing and retrieving data based on unique identifiers.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Key Characteristics:</strong>
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1 ml-4">
+                        <li>• <strong>Key-Value Pairs:</strong> Each entry has a unique key and associated value</li>
+                        <li>• <strong>No Duplicate Keys:</strong> Each key can appear only once</li>
+                        <li>• <strong>Fast Lookup:</strong> O(1) average time for get/put operations</li>
+                        <li>• <strong>Null Handling:</strong> HashMap allows one null key, TreeMap doesn't allow null keys</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-blue-400 mb-2">HashMap vs TreeMap vs LinkedHashMap</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`// HashMap Example - Fastest, No Order Guarantee
+import java.util.*;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        // Create HashMap
+        Map<String, Integer> studentGrades = new HashMap<>();
+        
+        // Add key-value pairs
+        studentGrades.put("Alice", 95);
+        studentGrades.put("Bob", 87);
+        studentGrades.put("Charlie", 92);
+        studentGrades.put("Alice", 98);  // Updates Alice's grade
+        
+        System.out.println("Student grades: " + studentGrades);
+        
+        // Get value by key
+        int aliceGrade = studentGrades.get("Alice");
+        System.out.println("Alice's grade: " + aliceGrade);
+        
+        // Check if key exists
+        if (studentGrades.containsKey("Bob")) {
+            System.out.println("Bob's grade: " + studentGrades.get("Bob"));
+        }
+        
+        // Check if value exists
+        if (studentGrades.containsValue(95)) {
+            System.out.println("Someone has a grade of 95");
+        }
+        
+        // Remove entry
+        studentGrades.remove("Charlie");
+        System.out.println("After removing Charlie: " + studentGrades);
+        
+        // Iterate through map
+        System.out.println("All students and their grades:");
+        for (Map.Entry<String, Integer> entry : studentGrades.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        
+        // Get all keys
+        Set<String> studentNames = studentGrades.keySet();
+        System.out.println("Student names: " + studentNames);
+        
+        // Get all values
+        Collection<Integer> grades = studentGrades.values();
+        System.out.println("All grades: " + grades);
+    }
+}
+
+// TreeMap Example - Sorted by Keys
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // Create TreeMap (automatically sorted by keys)
+        Map<String, String> countryCapitals = new TreeMap<>();
+        
+        // Add entries in random order
+        countryCapitals.put("Japan", "Tokyo");
+        countryCapitals.put("USA", "Washington D.C.");
+        countryCapitals.put("India", "New Delhi");
+        countryCapitals.put("Brazil", "Brasilia");
+        countryCapitals.put("Australia", "Canberra");
+        
+        System.out.println("Countries and capitals (sorted): " + countryCapitals);
+        
+        // First and last entries
+        TreeMap<String, String> treeMap = (TreeMap<String, String>) countryCapitals;
+        System.out.println("First country: " + treeMap.firstKey());
+        System.out.println("Last country: " + treeMap.lastKey());
+        
+        // Submap operations
+        System.out.println("Countries from I to U: " + treeMap.subMap("I", "U"));
+    }
+}
+
+// Practical Example: Employee Management System
+public class EmployeeManager {
+    public static void main(String[] args) {
+        // Use HashMap for fast employee lookup by ID
+        Map<Integer, Employee> employees = new HashMap<>();
+        
+        // Add employees
+        employees.put(1001, new Employee("John Doe", "Developer", 75000));
+        employees.put(1002, new Employee("Jane Smith", "Manager", 85000));
+        employees.put(1003, new Employee("Bob Johnson", "Designer", 65000));
+        
+        // Find employee by ID
+        Employee emp = employees.get(1002);
+        if (emp != null) {
+            System.out.println("Found: " + emp.getName() + " - " + emp.getPosition());
+        }
+        
+        // Update salary
+        if (employees.containsKey(1001)) {
+            Employee john = employees.get(1001);
+            john.setSalary(80000);
+            System.out.println("Updated John's salary to: $" + john.getSalary());
+        }
+        
+        // List all employees
+        System.out.println("All employees:");
+        for (Map.Entry<Integer, Employee> entry : employees.entrySet()) {
+            Employee employee = entry.getValue();
+            System.out.println("ID: " + entry.getKey() + 
+                             ", Name: " + employee.getName() + 
+                             ", Position: " + employee.getPosition() + 
+                             ", Salary: $" + employee.getSalary());
+        }
+    }
+}
+
+class Employee {
+    private String name;
+    private String position;
+    private double salary;
+    
+    public Employee(String name, String position, double salary) {
+        this.name = name;
+        this.position = position;
+        this.salary = salary;
+    }
+    
+    // Getters and setters
+    public String getName() { return name; }
+    public String getPosition() { return position; }
+    public double getSalary() { return salary; }
+    public void setSalary(double salary) { this.salary = salary; }
+}`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

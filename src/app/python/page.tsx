@@ -1535,28 +1535,346 @@ person["city"] = "NYC"`}
             
             <div className="max-w-6xl mx-auto">
               <h2 id="functions" className="text-3xl font-bold text-green-400 mb-6">9. Functions</h2>
-          
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Function Definition</h3>
-            <div className="bg-gray-900 p-4 rounded border border-gray-600">
-              <pre className="text-green-400 font-mono text-sm">
-{`# Basic function
-def greet(name):
-    return f"Hello, {name}!"
+              
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 neon-glow">Understanding Functions in Python</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Functions are reusable blocks of code that perform a specific task. They are one of the most important concepts in programming, 
+                  allowing you to organize your code, avoid repetition, and make your programs more modular and maintainable.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 Functions help you write DRY (Don't Repeat Yourself) code by allowing you to define a task once and use it multiple times throughout your program.</p>
+                </div>
+              </div>
 
-# Function with default parameters
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. What are Functions and Why Use Them?</h3>
+                <p className="text-gray-300 mb-6">
+                  A <strong>function</strong> is a named block of code that performs a specific task. When you call a function, Python executes 
+                  the code inside it and can optionally return a value. Functions make your code more organized, reusable, and easier to debug.
+                </p>
+                
+                <div className="space-y-6 mb-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Benefits of Using Functions</h4>
+                    <div className="mb-4">
+                      <ul className="text-gray-300 text-sm space-y-2 ml-4">
+                        <li>• <strong>Code Reusability:</strong> Write once, use many times</li>
+                        <li>• <strong>Modularity:</strong> Break complex problems into smaller, manageable pieces</li>
+                        <li>• <strong>Maintainability:</strong> Easy to update and fix bugs in one place</li>
+                        <li>• <strong>Readability:</strong> Code becomes more self-documenting</li>
+                        <li>• <strong>Testing:</strong> Easier to test individual functions</li>
+                        <li>• <strong>Abstraction:</strong> Hide complex implementation details</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-green-400 mb-2">Basic Function Structure</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`# Function definition syntax
+def function_name(parameters):
+    """
+    Docstring - describes what the function does
+    """
+    # Function body - code that executes
+    return value  # Optional return statement
+
+# Function call
+result = function_name(arguments)`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Function Components Explained</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>def keyword:</strong> Tells Python you're defining a function
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Function name:</strong> Follows the same rules as variable names (use snake_case)
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Parameters:</strong> Variables that receive values when the function is called
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Function body:</strong> The code that runs when the function is called
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>Return statement:</strong> Sends a value back to the caller (optional)
+                      </p>
+                    </div>
+                    <h5 className="font-bold text-blue-400 mb-2">Simple Function Examples</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`# Example 1: Simple greeting function
+def greet():
+    """Prints a greeting message"""
+    print("Hello, World!")
+
+# Call the function
+greet()  # Output: Hello, World!
+
+# Example 2: Function with parameters
+def greet_person(name):
+    """Greets a specific person"""
+    print(f"Hello, {name}!")
+
+# Call with argument
+greet_person("Alice")  # Output: Hello, Alice!
+
+# Example 3: Function that returns a value
+def add_numbers(a, b):
+    """Adds two numbers and returns the result"""
+    result = a + b
+    return result
+
+# Call and use the return value
+sum_result = add_numbers(5, 3)
+print(f"5 + 3 = {sum_result}")  # Output: 5 + 3 = 8
+
+# Example 4: Function with multiple parameters
+def calculate_rectangle_area(length, width):
+    """Calculates the area of a rectangle"""
+    area = length * width
+    return area
+
+# Call with multiple arguments
+area = calculate_rectangle_area(10, 5)
+print(f"Rectangle area: {area}")  # Output: Rectangle area: 50`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                  <h4 className="font-bold text-purple-400 mb-4 text-lg">Advanced Function Concepts</h4>
+                  <div className="mb-4">
+                    <p className="text-gray-300 mb-3">
+                      Python functions support many advanced features that make them powerful and flexible:
+                    </p>
+                  </div>
+                  <div className="bg-gray-900 p-4 rounded">
+                    <pre className="text-green-400 font-mono text-sm">
+{`# Default Parameters - Parameters with default values
 def greet_with_title(name, title="Mr."):
+    """Greets someone with an optional title"""
     return f"Hello, {title} {name}!"
 
-# Function with multiple parameters
-def calculate_area(length, width):
-    return length * width
+# Call without title (uses default)
+print(greet_with_title("Smith"))  # Output: Hello, Mr. Smith!
 
-# Lambda functions
+# Call with custom title
+print(greet_with_title("Smith", "Dr."))  # Output: Hello, Dr. Smith!
+
+# Keyword Arguments - Specify parameters by name
+def create_profile(name, age, city, country="USA"):
+    """Creates a user profile"""
+    return f"Name: {name}, Age: {age}, City: {city}, Country: {country}"
+
+# Call with keyword arguments (order doesn't matter)
+profile = create_profile(age=25, city="New York", name="John")
+print(profile)  # Output: Name: John, Age: 25, City: New York, Country: USA
+
+# Variable Arguments - *args for positional arguments
+def sum_all(*numbers):
+    """Sums all provided numbers"""
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+# Call with any number of arguments
+print(sum_all(1, 2, 3))  # Output: 6
+print(sum_all(1, 2, 3, 4, 5))  # Output: 15
+
+# Keyword Arguments - **kwargs for keyword arguments
+def create_user(**user_info):
+    """Creates a user with any number of attributes"""
+    for key, value in user_info.items():
+        print(f"{key}: {value}")
+
+# Call with any keyword arguments
+create_user(name="Alice", age=30, city="Boston", occupation="Developer")
+
+# Lambda Functions - Anonymous functions
+# Syntax: lambda parameters: expression
 square = lambda x: x ** 2
-result = square(5)  # 25`}
-              </pre>
-            </div>
+print(square(5))  # Output: 25
+
+# Lambda with multiple parameters
+multiply = lambda x, y: x * y
+print(multiply(3, 4))  # Output: 12
+
+# Using lambda with built-in functions
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = list(map(lambda x: x ** 2, numbers))
+print(squared_numbers)  # Output: [1, 4, 9, 16, 25]
+
+# Filter with lambda
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Output: [2, 4]`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Real-World Function Examples</h3>
+                <p className="text-gray-300 mb-6">
+                  Here are practical examples that demonstrate how functions are used in real-world applications:
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Example 1: Calculator Functions</h4>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`# Calculator with multiple functions
+def add(a, b):
+    """Adds two numbers"""
+    return a + b
+
+def subtract(a, b):
+    """Subtracts b from a"""
+    return a - b
+
+def multiply(a, b):
+    """Multiplies two numbers"""
+    return a * b
+
+def divide(a, b):
+    """Divides a by b, handles division by zero"""
+    if b == 0:
+        return "Error: Division by zero!"
+    return a / b
+
+def calculator(operation, a, b):
+    """Main calculator function"""
+    if operation == "add":
+        return add(a, b)
+    elif operation == "subtract":
+        return subtract(a, b)
+    elif operation == "multiply":
+        return multiply(a, b)
+    elif operation == "divide":
+        return divide(a, b)
+    else:
+        return "Error: Invalid operation!"
+
+# Test the calculator
+print(calculator("add", 10, 5))      # Output: 15
+print(calculator("multiply", 3, 4))  # Output: 12
+print(calculator("divide", 10, 0))   # Output: Error: Division by zero!`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Example 2: Data Processing Functions</h4>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`# Data processing functions
+def calculate_statistics(numbers):
+    """Calculates basic statistics for a list of numbers"""
+    if not numbers:
+        return "Error: Empty list provided"
+    
+    total = sum(numbers)
+    count = len(numbers)
+    average = total / count
+    maximum = max(numbers)
+    minimum = min(numbers)
+    
+    return {
+        "total": total,
+        "count": count,
+        "average": average,
+        "maximum": maximum,
+        "minimum": minimum
+    }
+
+def process_text(text):
+    """Processes text and returns various statistics"""
+    words = text.split()
+    word_count = len(words)
+    char_count = len(text)
+    char_count_no_spaces = len(text.replace(" ", ""))
+    
+    return {
+        "word_count": word_count,
+        "character_count": char_count,
+        "character_count_no_spaces": char_count_no_spaces,
+        "average_word_length": char_count_no_spaces / word_count if word_count > 0 else 0
+    }
+
+# Test data processing
+scores = [85, 92, 78, 96, 88, 91, 87]
+stats = calculate_statistics(scores)
+print("Test Scores Statistics:")
+for key, value in stats.items():
+    print(f"{key}: {value}")
+
+text = "Python is a powerful programming language"
+text_stats = process_text(text)
+print("\\nText Statistics:")
+for key, value in text_stats.items():
+    print(f"{key}: {value}")`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-purple-400 mb-4 text-lg">Example 3: File Processing Functions</h4>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`# File processing functions
+def read_file_lines(filename):
+    """Reads all lines from a file and returns them as a list"""
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+        return [line.strip() for line in lines]
+    except FileNotFoundError:
+        return f"Error: File '{filename}' not found"
+    except Exception as e:
+        return f"Error reading file: {e}"
+
+def count_words_in_file(filename):
+    """Counts words in a file"""
+    lines = read_file_lines(filename)
+    if isinstance(lines, str):  # Error message
+        return lines
+    
+    total_words = 0
+    for line in lines:
+        words = line.split()
+        total_words += len(words)
+    
+    return total_words
+
+def find_longest_word_in_file(filename):
+    """Finds the longest word in a file"""
+    lines = read_file_lines(filename)
+    if isinstance(lines, str):  # Error message
+        return lines
+    
+    longest_word = ""
+    for line in lines:
+        words = line.split()
+        for word in words:
+            if len(word) > len(longest_word):
+                longest_word = word
+    
+    return longest_word
+
+# Example usage (would work with actual files)
+# word_count = count_words_in_file("sample.txt")
+# longest = find_longest_word_in_file("sample.txt")`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
