@@ -32,7 +32,7 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'java-basics',
         title: 'Java Basics',
-        href: '/java/basics',
+        href: '/java',
         icon: '☕',
         children: [
           { id: 'java-intro', title: 'Introduction', href: '/java/basics/introduction' },
@@ -42,21 +42,21 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'java-intermediate',
         title: 'Java Intermediate',
-        href: '/java/intermediate',
+        href: '/java',
         icon: '⚡',
         children: [
-          { id: 'java-oop', title: 'OOP Concepts', href: '/java/intermediate/oop' },
-          { id: 'java-collections', title: 'Collections', href: '/java/intermediate/collections' }
+          { id: 'java-oop', title: 'OOP Concepts', href: '/java' },
+          { id: 'java-collections', title: 'Collections', href: '/java' }
         ]
       },
       {
         id: 'java-advanced',
         title: 'Java Advanced',
-        href: '/java/advanced',
+        href: '/java',
         icon: '🔥',
         children: [
-          { id: 'java-spring', title: 'Spring Framework', href: '/java/advanced/spring' },
-          { id: 'java-microservices', title: 'Microservices', href: '/java/advanced/microservices' }
+          { id: 'java-spring', title: 'Spring Framework', href: '/java' },
+          { id: 'java-microservices', title: 'Microservices', href: '/java' }
         ]
       }
     ],
@@ -64,10 +64,10 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'python-basics',
         title: 'Python Basics',
-        href: '/python/basics',
+        href: '/python',
         icon: '🐍',
         children: [
-          { id: 'python-intro', title: 'Introduction', href: '/python/basics/introduction' },
+          { id: 'python-intro', title: 'Introduction', href: '/python' },
           { id: 'python-syntax', title: 'Syntax', href: '/python/basics/syntax' },
           { id: 'python-variables', title: 'Variables', href: '/python/basics/variables' },
           { id: 'python-operators', title: 'Operators', href: '/python/basics/operators' },
@@ -78,22 +78,22 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'python-intermediate',
         title: 'Python Intermediate',
-        href: '/python/intermediate',
+        href: '/python',
         icon: '⚡',
         children: [
-          { id: 'python-functions', title: 'Functions', href: '/python/intermediate/functions' },
-          { id: 'python-oop', title: 'OOP', href: '/python/intermediate/oop' },
-          { id: 'python-modules', title: 'Modules', href: '/python/intermediate/modules' }
+          { id: 'python-functions', title: 'Functions', href: '/python' },
+          { id: 'python-oop', title: 'OOP', href: '/python' },
+          { id: 'python-modules', title: 'Modules', href: '/python' }
         ]
       },
       {
         id: 'python-advanced',
         title: 'Python Advanced',
-        href: '/python/advanced',
+        href: '/python',
         icon: '🔥',
         children: [
-          { id: 'python-data-science', title: 'Data Science', href: '/python/advanced/data-science' },
-          { id: 'python-web-dev', title: 'Web Development', href: '/python/advanced/web-dev' }
+          { id: 'python-data-science', title: 'Data Science', href: '/python' },
+          { id: 'python-web-dev', title: 'Web Development', href: '/python' }
         ]
       }
     ],
@@ -101,7 +101,7 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'sql-basics',
         title: 'SQL Basics',
-        href: '/sql/basics',
+        href: '/sql',
         icon: '🗄️',
         children: [
           { id: 'sql-intro', title: 'Introduction', href: '/sql/basics/introduction' },
@@ -111,21 +111,21 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'sql-intermediate',
         title: 'SQL Intermediate',
-        href: '/sql/intermediate',
+        href: '/sql',
         icon: '⚡',
         children: [
-          { id: 'sql-joins', title: 'Joins', href: '/sql/intermediate/joins' },
-          { id: 'sql-functions', title: 'Functions', href: '/sql/intermediate/functions' }
+          { id: 'sql-joins', title: 'Joins', href: '/sql' },
+          { id: 'sql-functions', title: 'Functions', href: '/sql' }
         ]
       },
       {
         id: 'sql-advanced',
         title: 'SQL Advanced',
-        href: '/sql/advanced',
+        href: '/sql',
         icon: '🔥',
         children: [
-          { id: 'sql-optimization', title: 'Optimization', href: '/sql/advanced/optimization' },
-          { id: 'sql-performance', title: 'Performance', href: '/sql/advanced/performance' }
+          { id: 'sql-optimization', title: 'Optimization', href: '/sql' },
+          { id: 'sql-performance', title: 'Performance', href: '/sql' }
         ]
       }
     ],
@@ -133,22 +133,22 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'frontend',
         title: 'Frontend Development',
-        href: '/web-dev/frontend',
+        href: '/web-dev',
         icon: '🎨',
         children: [
-          { id: 'html', title: 'HTML', href: '/web-dev/frontend/html' },
-          { id: 'css', title: 'CSS', href: '/web-dev/frontend/css' },
-          { id: 'javascript', title: 'JavaScript', href: '/web-dev/frontend/javascript' }
+          { id: 'html', title: 'HTML', href: '/web-dev' },
+          { id: 'css', title: 'CSS', href: '/web-dev' },
+          { id: 'javascript', title: 'JavaScript', href: '/web-dev' }
         ]
       },
       {
         id: 'backend',
         title: 'Backend Development',
-        href: '/web-dev/backend',
+        href: '/web-dev',
         icon: '⚙️',
         children: [
-          { id: 'nodejs', title: 'Node.js', href: '/web-dev/backend/nodejs' },
-          { id: 'express', title: 'Express.js', href: '/web-dev/backend/express' }
+          { id: 'nodejs', title: 'Node.js', href: '/web-dev' },
+          { id: 'express', title: 'Express.js', href: '/web-dev' }
         ]
       }
     ],
@@ -156,21 +156,21 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'data-analysis',
         title: 'Data Analysis',
-        href: '/data-science/analysis',
+        href: '/data-science',
         icon: '📊',
         children: [
-          { id: 'pandas', title: 'Pandas', href: '/data-science/analysis/pandas' },
-          { id: 'numpy', title: 'NumPy', href: '/data-science/analysis/numpy' }
+          { id: 'pandas', title: 'Pandas', href: '/data-science' },
+          { id: 'numpy', title: 'NumPy', href: '/data-science' }
         ]
       },
       {
         id: 'machine-learning',
         title: 'Machine Learning',
-        href: '/data-science/ml',
+        href: '/data-science',
         icon: '🤖',
         children: [
-          { id: 'scikit-learn', title: 'Scikit-learn', href: '/data-science/ml/scikit-learn' },
-          { id: 'tensorflow', title: 'TensorFlow', href: '/data-science/ml/tensorflow' }
+          { id: 'scikit-learn', title: 'Scikit-learn', href: '/data-science' },
+          { id: 'tensorflow', title: 'TensorFlow', href: '/data-science' }
         ]
       }
     ],
@@ -178,21 +178,21 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'terminal-basics',
         title: 'Terminal Basics',
-        href: '/code-terminal/basics',
+        href: '/code-terminal',
         icon: '💻',
         children: [
-          { id: 'commands', title: 'Basic Commands', href: '/code-terminal/basics/commands' },
-          { id: 'navigation', title: 'File Navigation', href: '/code-terminal/basics/navigation' }
+          { id: 'commands', title: 'Basic Commands', href: '/code-terminal' },
+          { id: 'navigation', title: 'File Navigation', href: '/code-terminal' }
         ]
       },
       {
         id: 'terminal-advanced',
         title: 'Advanced Terminal',
-        href: '/code-terminal/advanced',
+        href: '/code-terminal',
         icon: '⚡',
         children: [
-          { id: 'scripting', title: 'Shell Scripting', href: '/code-terminal/advanced/scripting' },
-          { id: 'automation', title: 'Automation', href: '/code-terminal/advanced/automation' }
+          { id: 'scripting', title: 'Shell Scripting', href: '/code-terminal' },
+          { id: 'automation', title: 'Automation', href: '/code-terminal' }
         ]
       }
     ],
@@ -200,7 +200,7 @@ const getTechNavigationItems = (tech: string) => {
       {
         id: 'devops-basics',
         title: 'DevOps Basics',
-        href: '/devops/basics',
+        href: '/devops',
         icon: '🚀',
         children: [
           { id: 'what-is-devops', title: 'What is DevOps', href: '/docs/what-is-devops' },
@@ -214,8 +214,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/docs/linux-basics',
         icon: '🐧',
         children: [
-          { id: 'linux-commands', title: 'Basic Commands', href: '/docs/linux-basics/commands' },
-          { id: 'file-system', title: 'File System', href: '/docs/linux-basics/file-system' }
+          { id: 'linux-commands', title: 'Basic Commands', href: '/docs/linux-basics' },
+          { id: 'file-system', title: 'File System', href: '/docs/linux-basics' }
         ]
       },
       {
@@ -224,8 +224,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/docs/docker',
         icon: '🐳',
         children: [
-          { id: 'docker-basics', title: 'Docker Basics', href: '/docs/docker/basics' },
-          { id: 'docker-compose', title: 'Docker Compose', href: '/docs/docker/compose' }
+          { id: 'docker-basics', title: 'Docker Basics', href: '/docs/docker' },
+          { id: 'docker-compose', title: 'Docker Compose', href: '/docs/docker' }
         ]
       },
       {
@@ -234,8 +234,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/docs/kubernetes',
         icon: '☸️',
         children: [
-          { id: 'k8s-basics', title: 'Kubernetes Basics', href: '/docs/kubernetes/basics' },
-          { id: 'k8s-deployment', title: 'Deployments', href: '/docs/kubernetes/deployments' }
+          { id: 'k8s-basics', title: 'Kubernetes Basics', href: '/docs/kubernetes' },
+          { id: 'k8s-deployment', title: 'Deployments', href: '/docs/kubernetes' }
         ]
       },
       {
@@ -244,8 +244,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/docs/jenkins',
         icon: '🔄',
         children: [
-          { id: 'jenkins-basics', title: 'Jenkins Basics', href: '/docs/jenkins/basics' },
-          { id: 'pipelines', title: 'Pipelines', href: '/docs/jenkins/pipelines' }
+          { id: 'jenkins-basics', title: 'Jenkins Basics', href: '/docs/jenkins' },
+          { id: 'pipelines', title: 'Pipelines', href: '/docs/jenkins' }
         ]
       },
       {
@@ -254,8 +254,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/docs/monitoring',
         icon: '📊',
         children: [
-          { id: 'prometheus', title: 'Prometheus', href: '/docs/monitoring/prometheus' },
-          { id: 'grafana', title: 'Grafana', href: '/docs/monitoring/grafana' }
+          { id: 'prometheus', title: 'Prometheus', href: '/docs/monitoring' },
+          { id: 'grafana', title: 'Grafana', href: '/docs/monitoring' }
         ]
       }
     ]
