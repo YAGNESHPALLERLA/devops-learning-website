@@ -13,8 +13,8 @@ interface TechnologyCardProps {
 // Technology card component
 function TechnologyCard({ title, description, icon, link, color }: TechnologyCardProps) {
   return (
-    <Link href={link} className="block group">
-      <div className="bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-700 hover:border-gray-600">
+    <Link href={link} className="block group focus:outline-none focus:ring-4 focus:ring-blue-500/50 focus:ring-opacity-50 rounded-xl">
+      <div className="bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-700 hover:border-blue-500/50 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 focus:outline-none focus:ring-4 focus:ring-blue-500/50 focus:ring-opacity-50">
         <div className="text-center">
           <div className={`text-6xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
             {icon}
@@ -39,7 +39,7 @@ export default function HomePage() {
       <section className="text-center py-20 px-4">
         <div className="container mx-auto">
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            🎓 Tech Learning Hub
+            🎓 OHG 365
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
             Master the technologies that power modern software development

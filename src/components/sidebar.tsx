@@ -44,10 +44,10 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
           {hasChildren ? (
             <button
               onClick={() => toggleExpanded(item.id)}
-              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
                 active 
                   ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20' 
-                  : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20'
+                  : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50'
               }`}
             >
               <svg
@@ -66,10 +66,10 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
           ) : (
             <Link
               href={item.href}
-              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg group ${
+              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg group focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
                 active 
                   ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20' 
-                  : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20'
+                  : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50'
               }`}
             >
               {item.icon && <span className="mr-3 text-lg group-hover:scale-110 transition-transform duration-300">{item.icon}</span>}
@@ -99,7 +99,7 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
               <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
             </svg>
           </div>
-          <span className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">DevOps Learning</span>
+          <span className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">OHG 365</span>
         </Link>
       </div>
 
@@ -119,7 +119,7 @@ export default function Sidebar({ items, onThisPage = [] }: SidebarProps) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="block px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50"
               >
                 {item.title}
               </a>

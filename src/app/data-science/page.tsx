@@ -1,5 +1,6 @@
 // src/app/data-science/page.tsx
 import Link from 'next/link';
+import TechLayout from '@/components/tech-layout';
 
 // Define the props interface for TopicCard
 interface TopicCardProps {
@@ -11,7 +12,7 @@ interface TopicCardProps {
 // A simple reusable card component for your topics
 function TopicCard({ title, description, link }: TopicCardProps) {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50">
       <h2 className="text-xl font-bold text-white mb-2">{title}</h2>
       <p className="text-gray-400 mb-4">{description}</p>
       <Link href={link} className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition">
@@ -22,9 +23,15 @@ function TopicCard({ title, description, link }: TopicCardProps) {
 }
 
 export default function DataSciencePage() {
+  const pageHeadings = [
+    { id: 'introduction', title: 'Data Science Learning Hub' },
+    { id: 'learning-path', title: 'Complete Data Science Learning Path' }
+  ];
+
   return (
-    <main>
-      <section className="text-center py-20 px-4">
+    <TechLayout onThisPage={pageHeadings} technology="data-science">
+      <main>
+      <section id="introduction" className="text-center py-20 px-4">
         <Link href="/" className="inline-block mb-8 text-blue-400 hover:text-blue-300 transition-colors">
           ← Back to Technology Selection
         </Link>
@@ -36,7 +43,7 @@ export default function DataSciencePage() {
         </p>
       </section>
 
-      <section className="container mx-auto px-4 py-12">
+      <section id="learning-path" className="container mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold text-center text-white mb-10">Complete Data Science Learning Path</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TopicCard
@@ -101,6 +108,7 @@ export default function DataSciencePage() {
           />
         </div>
       </section>
-    </main>
+      </main>
+    </TechLayout>
   );
 }

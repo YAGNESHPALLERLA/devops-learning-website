@@ -17,7 +17,7 @@ export default function Terminal({ className = '' }: TerminalProps) {
   const [history, setHistory] = useState<CommandHistory[]>([
     {
       command: 'welcome',
-      output: 'Welcome to the DevOps Learning Terminal! 🚀\n\nThis is a simulated Linux terminal where you can practice commands.\nType "help" to see available commands or "clear" to clear the screen.\n\n',
+      output: 'Welcome to the OHG 365 Terminal! 🚀\n\nThis is a simulated Linux terminal where you can practice commands.\nType "help" to see available commands or "clear" to clear the screen.\n\n',
       timestamp: new Date()
     }
   ]);
@@ -83,7 +83,7 @@ drwxr-xr-x 2 devops devops 4096 Dec 15 10:20 scripts
       if (!file) return 'cat: missing file operand';
       
       const files: { [key: string]: string } = {
-        'README.md': `# DevOps Learning Project
+        'README.md': `# OHG 365 Project
 
 Welcome to your DevOps learning journey!
 
@@ -167,7 +167,7 @@ Swap:          2.0G          0B        2.0G`;
     },
 
     exit: () => {
-      return 'Goodbye! Thanks for using the DevOps Learning Terminal.';
+      return 'Goodbye! Thanks for using the OHG 365 Terminal.';
     }
   };
 
@@ -237,7 +237,7 @@ Swap:          2.0G          0B        2.0G`;
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-gray-300 text-sm">DevOps Learning Terminal</div>
+        <div className="text-gray-300 text-sm">OHG 365 Terminal</div>
         <div className="w-16"></div>
       </div>
 

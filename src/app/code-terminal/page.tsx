@@ -1,9 +1,17 @@
 import CodeExecutionTerminal from '@/components/code-execution-terminal';
+import TechLayout from '@/components/tech-layout';
 
 export default function CodeTerminalPage() {
+  const pageHeadings = [
+    { id: 'introduction', title: 'Code Execution Terminal' },
+    { id: 'features', title: 'Features' },
+    { id: 'learning-tips', title: 'Learning Tips' }
+  ];
+
   return (
-    <main>
-      <section className="text-center py-12 px-4">
+    <TechLayout onThisPage={pageHeadings} technology="code-terminal">
+      <main>
+      <section id="introduction" className="text-center py-12 px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
           💻 Code Execution Terminal
         </h1>
@@ -13,7 +21,7 @@ export default function CodeTerminalPage() {
       </section>
 
       <section className="container mx-auto px-4 py-8">
-        <div className="bg-gray-800 rounded-lg p-8 mb-8">
+        <div id="features" className="bg-gray-800 rounded-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-white mb-6">Online Code Execution</h2>
           
           <div className="space-y-6">
@@ -108,7 +116,7 @@ export default function CodeTerminalPage() {
         </div>
 
         {/* Learning Tips */}
-        <div className="bg-gray-800 rounded-lg p-8">
+        <div id="learning-tips" className="bg-gray-800 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-white mb-6">Learning Tips</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -162,6 +170,7 @@ export default function CodeTerminalPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </TechLayout>
   );
 }

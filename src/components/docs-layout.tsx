@@ -150,7 +150,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevOps Learning</h1>
+            <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">OHG 365</h1>
             <div className="w-10" /> {/* Spacer for centering */}
           </div>
         </header>
@@ -176,10 +176,10 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => handleSectionClick(e, item.id)}
-                  className={`block px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer ${
+                  className={`block px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
                     activeSection === item.id
                       ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20 font-semibold'
-                      : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20'
+                      : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50'
                   }`}
                 >
                   {item.title}

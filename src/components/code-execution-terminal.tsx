@@ -32,7 +32,7 @@ export default function CodeExecutionTerminal({ className = '' }: TerminalProps)
 print("Hello, World!")
 
 # Variables and operations
-name = "DevOps Learning"
+name = "OHG 365"
 age = 25
 print(f"Name: {name}, Age: {age}")
 
@@ -55,7 +55,7 @@ print(greet("Developer"))`
 console.log("Hello, World!");
 
 // Variables and operations
-const name = "DevOps Learning";
+const name = "OHG 365";
 const age = 25;
 console.log(\`Name: \${name}, Age: \${age}\`);
 
@@ -81,7 +81,7 @@ public class Main {
         System.out.println("Hello, World!");
         
         // Variables and operations
-        String name = "DevOps Learning";
+        String name = "OHG 365";
         int age = 25;
         System.out.println("Name: " + name + ", Age: " + age);
         
@@ -144,7 +144,7 @@ GROUP BY grade;`
 echo "Hello, World!"
 
 # Variables and operations
-NAME="DevOps Learning"
+NAME="OHG 365"
 AGE=25
 echo "Name: $NAME, Age: $AGE"
 
@@ -178,7 +178,7 @@ echo "Date:" $(date)`
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     let result = '';
-    const lang = languages[currentLanguage];
+    const lang = languages[currentLanguage as keyof typeof languages];
 
     try {
       switch (currentLanguage) {
@@ -230,7 +230,7 @@ echo "Date:" $(date)`
           const fMatch = line.match(/print\(f["'](.*?)["']\)/);
           if (fMatch) {
             output += fMatch[1].replace(/\{([^}]+)\}/g, (match, varName) => {
-              if (varName === 'name') return 'DevOps Learning';
+              if (varName === 'name') return 'OHG 365';
               if (varName === 'age') return '25';
               return match;
             }) + '\n';
@@ -260,7 +260,7 @@ echo "Date:" $(date)`
           const templateMatch = line.match(/console\.log\(`(.*?)`\)/);
           if (templateMatch) {
             output += templateMatch[1].replace(/\$\{([^}]+)\}/g, (match, varName) => {
-              if (varName === 'name') return 'DevOps Learning';
+              if (varName === 'name') return 'OHG 365';
               if (varName === 'age') return '25';
               return match;
             }) + '\n';
@@ -283,7 +283,7 @@ Compilation successful.
 Running Main.class...
 
 Hello, World!
-Name: DevOps Learning, Age: 25
+Name: OHG 365, Age: 25
 Squared numbers: [1, 4, 9, 16, 25]
 Hello, Developer!`;
   };
@@ -330,7 +330,7 @@ Hello, Developer!`;
       if (line.includes('echo "Hello, World!"')) {
         output += 'Hello, World!\n';
       } else if (line.includes('echo "Name: $NAME, Age: $AGE"')) {
-        output += 'Name: DevOps Learning, Age: 25\n';
+        output += 'Name: OHG 365, Age: 25\n';
       } else if (line.includes('echo "Squared numbers:"')) {
         output += 'Squared numbers: 1 4 9 16 25\n';
       } else if (line.includes('greet "Developer"')) {
@@ -353,7 +353,7 @@ Hello, Developer!`;
 
   const switchLanguage = (lang: string) => {
     setCurrentLanguage(lang);
-    setCode(languages[lang].template);
+    setCode(languages[lang as keyof typeof languages].template);
     setOutput('');
   };
 
@@ -364,7 +364,7 @@ Hello, Developer!`;
   };
 
   const runExample = () => {
-    setCode(languages[currentLanguage].template);
+    setCode(languages[currentLanguage as keyof typeof languages].template);
   };
 
   // Auto-scroll to bottom when new output is added
@@ -381,7 +381,7 @@ Hello, Developer!`;
     }
   }, [currentLanguage]);
 
-  const currentLang = languages[currentLanguage];
+  const currentLang = languages[currentLanguage as keyof typeof languages];
 
   return (
     <div className={`bg-black text-green-400 font-mono rounded-lg overflow-hidden ${className}`}>
@@ -470,7 +470,7 @@ Hello, Developer!`;
         {history.map((execution, index) => (
           <div key={index} className="mb-4">
             <div className="flex items-center mb-2 text-blue-400">
-              <span className="text-sm">Execution #{index + 1} - {languages[execution.language].name} - {execution.timestamp.toLocaleTimeString()}</span>
+              <span className="text-sm">Execution #{index + 1} - {languages[execution.language as keyof typeof languages].name} - {execution.timestamp.toLocaleTimeString()}</span>
             </div>
             <div className="bg-gray-900 p-3 rounded mb-2">
               <div className="text-gray-300 text-sm mb-1">Code:</div>
