@@ -1388,26 +1388,379 @@ LIMIT 10 OFFSET 20;`}
             <div className="max-w-6xl mx-auto">
               <h2 id="joins" className="text-3xl font-bold text-blue-400 mb-6">7. Joins and Relationships</h2>
               
+              <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-blue-400 mb-6 neon-glow">Understanding SQL Joins and Relationships</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  SQL JOINs are used to combine rows from two or more tables based on a related column between them. 
+                  They are essential for working with relational databases where data is normalized and stored across multiple tables.
+                </p>
+                
+                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                  <p className="text-yellow-300 font-semibold">📌 JOINs allow you to retrieve data from multiple tables in a single query, making it possible to work with related data efficiently and maintain data integrity.</p>
+                </div>
+              </div>
+
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-                <h3 className="text-xl font-bold text-purple-400 mb-4">Types of Joins</h3>
-                <div className="space-y-6">
-                  <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                    <h4 className="font-bold text-green-400 mb-2">INNER JOIN</h4>
-                    <pre className="text-green-400 font-mono text-sm">
-{`SELECT e.name, d.department_name
-FROM employees e
-INNER JOIN departments d 
-ON e.department_id = d.department_id;`}
-                    </pre>
+                <h3 className="text-xl font-bold text-purple-400 mb-4">1. What are JOINs and Why Use Them?</h3>
+                <p className="text-gray-300 mb-6">
+                  A <strong>JOIN</strong> is a SQL operation that combines rows from two or more tables based on a related column. 
+                  In relational databases, data is often split across multiple tables to avoid redundancy and maintain data integrity. 
+                  JOINs allow you to bring this related data together for analysis and reporting.
+                </p>
+                
+                <div className="space-y-6 mb-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Why Use JOINs?</h4>
+                    <div className="mb-4">
+                      <ul className="text-gray-300 text-sm space-y-2 ml-4">
+                        <li>• <strong>Data Normalization:</strong> Avoid storing duplicate data across tables</li>
+                        <li>• <strong>Data Integrity:</strong> Maintain consistency and reduce errors</li>
+                        <li>• <strong>Efficient Storage:</strong> Save space by not duplicating information</li>
+                        <li>• <strong>Flexible Queries:</strong> Combine data from multiple sources</li>
+                        <li>• <strong>Complex Analysis:</strong> Perform sophisticated data analysis across tables</li>
+                        <li>• <strong>Reporting:</strong> Create comprehensive reports with related data</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-green-400 mb-2">Sample Database Schema</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- Sample tables for JOIN examples
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50),
+    location VARCHAR(50)
+);
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department_id INT,
+    salary DECIMAL(10,2),
+    hire_date DATE,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE projects (
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(100),
+    budget DECIMAL(12,2),
+    start_date DATE
+);
+
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    role VARCHAR(50),
+    PRIMARY KEY (employee_id, project_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+
+-- Sample data
+INSERT INTO departments VALUES 
+(1, 'Engineering', 'New York'),
+(2, 'Marketing', 'Los Angeles'),
+(3, 'Sales', 'Chicago');
+
+INSERT INTO employees VALUES 
+(1, 'John Smith', 1, 75000, '2020-01-15'),
+(2, 'Jane Doe', 1, 80000, '2019-03-20'),
+(3, 'Bob Johnson', 2, 65000, '2021-06-10'),
+(4, 'Alice Brown', 3, 70000, '2020-11-05');`}
+                      </pre>
+                    </div>
                   </div>
-                  <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                    <h4 className="font-bold text-blue-400 mb-2">LEFT JOIN</h4>
-                    <pre className="text-green-400 font-mono text-sm">
-{`SELECT e.name, d.department_name
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">Types of Relationships</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        Understanding table relationships is crucial for writing effective JOINs:
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-2 ml-4">
+                        <li>• <strong>One-to-One:</strong> Each record in Table A relates to exactly one record in Table B</li>
+                        <li>• <strong>One-to-Many:</strong> One record in Table A can relate to many records in Table B</li>
+                        <li>• <strong>Many-to-Many:</strong> Many records in Table A can relate to many records in Table B</li>
+                      </ul>
+                    </div>
+                    <h5 className="font-bold text-blue-400 mb-2">Common JOIN Patterns</h5>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- One-to-Many: Department to Employees
+-- One department can have many employees
+SELECT d.department_name, e.name
+FROM departments d
+INNER JOIN employees e ON d.department_id = e.department_id;
+
+-- Many-to-Many: Employees to Projects (through junction table)
+-- Many employees can work on many projects
+SELECT e.name, p.project_name, ep.role
 FROM employees e
-LEFT JOIN departments d 
-ON e.department_id = d.department_id;`}
-                    </pre>
+INNER JOIN employee_projects ep ON e.employee_id = ep.employee_id
+INNER JOIN projects p ON ep.project_id = p.project_id;`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">2. Types of JOINs Explained</h3>
+                <p className="text-gray-300 mb-6">
+                  There are several types of JOINs, each serving different purposes. Understanding when to use each type is crucial for effective database querying.
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">INNER JOIN - Matching Records Only</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>INNER JOIN</strong> returns only the records that have matching values in both tables. 
+                        It's the most commonly used JOIN type and is often the default when people say "JOIN".
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>When to use:</strong> When you only want records that exist in both tables.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- INNER JOIN: Get employees with their departments
+SELECT e.name, e.salary, d.department_name, d.location
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+
+-- Result: Only employees who have a department assigned
+-- John Smith | 75000 | Engineering | New York
+-- Jane Doe   | 80000 | Engineering | New York
+-- Bob Johnson| 65000 | Marketing   | Los Angeles
+-- Alice Brown| 70000 | Sales       | Chicago
+
+-- INNER JOIN with multiple tables
+SELECT e.name, d.department_name, p.project_name, ep.role
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id
+INNER JOIN employee_projects ep ON e.employee_id = ep.employee_id
+INNER JOIN projects p ON ep.project_id = p.project_id;`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">LEFT JOIN - All Records from Left Table</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>LEFT JOIN</strong> returns all records from the left table and matching records from the right table. 
+                        If there's no match, NULL values are returned for the right table columns.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>When to use:</strong> When you want all records from the main table, even if they don't have matches in the related table.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- LEFT JOIN: Get all employees, even those without departments
+SELECT e.name, e.salary, d.department_name, d.location
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id;
+
+-- Result: All employees, with NULL for department info if no match
+-- John Smith | 75000 | Engineering | New York
+-- Jane Doe   | 80000 | Engineering | New York
+-- Bob Johnson| 65000 | Marketing   | Los Angeles
+-- Alice Brown| 70000 | Sales       | Chicago
+-- Mike Wilson| 60000 | NULL        | NULL (if Mike has no department)
+
+-- LEFT JOIN to find employees without departments
+SELECT e.name, e.salary
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id
+WHERE d.department_id IS NULL;`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-purple-400 mb-4 text-lg">RIGHT JOIN - All Records from Right Table</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>RIGHT JOIN</strong> returns all records from the right table and matching records from the left table. 
+                        If there's no match, NULL values are returned for the left table columns.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>When to use:</strong> When you want all records from the related table, even if they don't have matches in the main table.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- RIGHT JOIN: Get all departments, even those without employees
+SELECT d.department_name, d.location, e.name, e.salary
+FROM employees e
+RIGHT JOIN departments d ON e.department_id = d.department_id;
+
+-- Result: All departments, with NULL for employee info if no match
+-- Engineering | New York    | John Smith | 75000
+-- Engineering | New York    | Jane Doe   | 80000
+-- Marketing   | Los Angeles | Bob Johnson| 65000
+-- Sales       | Chicago     | Alice Brown| 70000
+-- HR          | Boston      | NULL       | NULL (if HR has no employees)
+
+-- RIGHT JOIN to find departments without employees
+SELECT d.department_name, d.location
+FROM employees e
+RIGHT JOIN departments d ON e.department_id = d.department_id
+WHERE e.employee_id IS NULL;`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-orange-400 mb-4 text-lg">FULL OUTER JOIN - All Records from Both Tables</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        <strong>FULL OUTER JOIN</strong> returns all records when there's a match in either table. 
+                        If there's no match, NULL values are returned for the missing side.
+                      </p>
+                      <p className="text-gray-300 mb-3">
+                        <strong>When to use:</strong> When you want to see all records from both tables, regardless of matches.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- FULL OUTER JOIN: Get all employees and all departments
+SELECT e.name, e.salary, d.department_name, d.location
+FROM employees e
+FULL OUTER JOIN departments d ON e.department_id = d.department_id;
+
+-- Result: All employees AND all departments
+-- John Smith | 75000 | Engineering | New York
+-- Jane Doe   | 80000 | Engineering | New York
+-- Bob Johnson| 65000 | Marketing   | Los Angeles
+-- Alice Brown| 70000 | Sales       | Chicago
+-- Mike Wilson| 60000 | NULL        | NULL
+-- NULL       | NULL  | HR          | Boston
+
+-- Note: FULL OUTER JOIN is not supported in MySQL
+-- Use LEFT JOIN UNION RIGHT JOIN instead:
+SELECT e.name, e.salary, d.department_name, d.location
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id
+UNION
+SELECT e.name, e.salary, d.department_name, d.location
+FROM employees e
+RIGHT JOIN departments d ON e.department_id = d.department_id
+WHERE e.employee_id IS NULL;`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 className="text-xl font-bold text-purple-400 mb-4">3. Advanced JOIN Concepts</h3>
+                <p className="text-gray-300 mb-6">
+                  Beyond basic JOINs, there are several advanced concepts that can make your queries more powerful and efficient.
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-blue-400 mb-4 text-lg">Self JOIN - Joining a Table to Itself</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        A <strong>self JOIN</strong> is when you join a table to itself. This is useful for finding relationships within the same table.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- Example: Employees table with manager_id
+CREATE TABLE employees_with_managers (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    manager_id INT,
+    salary DECIMAL(10,2)
+);
+
+-- Self JOIN to find employees and their managers
+SELECT e.name AS employee_name, m.name AS manager_name
+FROM employees_with_managers e
+LEFT JOIN employees_with_managers m ON e.manager_id = m.employee_id;
+
+-- Self JOIN to find employees at the same salary level
+SELECT e1.name AS employee1, e2.name AS employee2, e1.salary
+FROM employees_with_managers e1
+INNER JOIN employees_with_managers e2 ON e1.salary = e2.salary
+WHERE e1.employee_id < e2.employee_id;  -- Avoid duplicates`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-green-400 mb-4 text-lg">CROSS JOIN - Cartesian Product</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        A <strong>CROSS JOIN</strong> returns the Cartesian product of two tables - every row from the first table 
+                        combined with every row from the second table.
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- CROSS JOIN: Combine every employee with every project
+SELECT e.name, p.project_name
+FROM employees e
+CROSS JOIN projects p;
+
+-- Result: Every employee paired with every project
+-- John Smith | Project Alpha
+-- John Smith | Project Beta
+-- Jane Doe   | Project Alpha
+-- Jane Doe   | Project Beta
+-- Bob Johnson| Project Alpha
+-- Bob Johnson| Project Beta
+
+-- CROSS JOIN for generating test data
+SELECT d.department_name, p.project_name
+FROM departments d
+CROSS JOIN projects p;`}
+                      </pre>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-700 p-6 rounded border border-gray-600">
+                    <h4 className="font-bold text-purple-400 mb-4 text-lg">JOIN Performance Tips</h4>
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-3">
+                        Here are some tips to make your JOINs more efficient:
+                      </p>
+                    </div>
+                    <div className="bg-gray-900 p-4 rounded">
+                      <pre className="text-green-400 font-mono text-sm">
+{`-- 1. Use appropriate indexes
+CREATE INDEX idx_employee_department ON employees(department_id);
+CREATE INDEX idx_department_id ON departments(department_id);
+
+-- 2. Be specific with column selection
+-- Good: Only select needed columns
+SELECT e.name, d.department_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+
+-- Avoid: SELECT * (selects all columns)
+SELECT *
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+
+-- 3. Use WHERE clause to filter early
+SELECT e.name, d.department_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id
+WHERE e.salary > 70000;  -- Filter before joining
+
+-- 4. Consider JOIN order for large tables
+-- Start with the most selective table
+SELECT e.name, d.department_name
+FROM employees e  -- If employees table is smaller
+INNER JOIN departments d ON e.department_id = d.department_id;`}
+                      </pre>
+                    </div>
                   </div>
                 </div>
               </div>
