@@ -1,5 +1,6 @@
 import MultiTerminal from '@/components/multi-terminal';
 import DocsLayout from '@/components/docs-layout';
+import PageNavigation from '@/components/page-navigation';
 
 export default function TerminalPage() {
   const onThisPage = [
@@ -147,6 +148,14 @@ export default function TerminalPage() {
             </div>
           </div>
         </div>
+
+        {/* Page Navigation */}
+        <PageNavigation
+          previousPage={{
+            href: '/code-terminal',
+            title: 'Code Terminal'
+          }}
+        />
       </div>
     </DocsLayout>
   );

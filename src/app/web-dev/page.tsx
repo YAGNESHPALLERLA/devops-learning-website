@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import TechLayout from '@/components/tech-layout';
+import PageNavigation from '@/components/page-navigation';
 
 export default function WebDevPage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -487,6 +488,17 @@ export default function WebDevPage() {
                 Select a topic from the sidebar to start learning
               </p>
             </div>
+            {/* Page Navigation */}
+            <PageNavigation
+              previousPage={{
+                href: '/sql',
+                title: 'SQL & Databases'
+              }}
+              nextPage={{
+                href: '/data-science',
+                title: 'Data Science'
+              }}
+            />
           </main>
         );
     }

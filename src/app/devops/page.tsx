@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
+import PageNavigation from '@/components/page-navigation';
 import { getVideosForTopic } from '@/data/videoTutorials';
 
 export default function DevOpsPage() {
@@ -11101,6 +11102,14 @@ export default function DevOpsPage() {
                 </div>
               </div>
             </div>
+            
+            {/* Page Navigation */}
+            <PageNavigation
+              nextPage={{
+                href: '/java',
+                title: 'Java Programming'
+              }}
+            />
           </main>
         );
     }

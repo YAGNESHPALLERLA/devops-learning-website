@@ -4,6 +4,7 @@ import { useState } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { getVideosForTopic } from '@/data/videoTutorials';
+import PageNavigation from '@/components/page-navigation';
 
 export default function PythonPage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -5444,6 +5445,17 @@ from mymodule import my_function`}
                 </div>
               </div>
             </div>
+            {/* Page Navigation */}
+            <PageNavigation
+              previousPage={{
+                href: '/java',
+                title: 'Java Programming'
+              }}
+              nextPage={{
+                href: '/sql',
+                title: 'SQL & Databases'
+              }}
+            />
           </div>
         );
     }

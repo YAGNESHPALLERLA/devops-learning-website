@@ -1,5 +1,6 @@
 import CodeExecutionTerminal from '@/components/code-execution-terminal';
 import TechLayout from '@/components/tech-layout';
+import PageNavigation from '@/components/page-navigation';
 
 export default function CodeTerminalPage() {
   const pageHeadings = [
@@ -170,6 +171,18 @@ export default function CodeTerminalPage() {
           </div>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation
+        previousPage={{
+          href: '/data-science',
+          title: 'Data Science'
+        }}
+        nextPage={{
+          href: '/terminal',
+          title: 'Terminal'
+        }}
+      />
       </main>
     </TechLayout>
   );

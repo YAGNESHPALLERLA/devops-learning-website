@@ -6,6 +6,7 @@ import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { videoTutorialsData } from '@/data/videoTutorials';
 import { useState, useEffect } from 'react';
+import PageNavigation from '@/components/page-navigation';
 
 export default function SQLPage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -5629,6 +5630,17 @@ BEGIN; UPDATE...; INSERT...; COMMIT;`}
                 Select a topic from the sidebar to start learning
               </p>
             </div>
+            {/* Page Navigation */}
+            <PageNavigation
+              previousPage={{
+                href: '/python',
+                title: 'Python Programming'
+              }}
+              nextPage={{
+                href: '/web-dev',
+                title: 'Web Development'
+              }}
+            />
           </main>
         );
     }

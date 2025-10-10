@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import TechLayout from '@/components/tech-layout';
+import PageNavigation from '@/components/page-navigation';
 
 export default function DataSciencePage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -572,6 +573,17 @@ export default function DataSciencePage() {
                 Select a topic from the sidebar to start learning
               </p>
         </div>
+        {/* Page Navigation */}
+        <PageNavigation
+          previousPage={{
+            href: '/web-dev',
+            title: 'Web Development'
+          }}
+          nextPage={{
+            href: '/code-terminal',
+            title: 'Code Terminal'
+          }}
+        />
       </main>
         );
     }

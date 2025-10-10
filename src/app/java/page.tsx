@@ -6,6 +6,7 @@ import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { videoTutorialsData } from '@/data/videoTutorials';
 import { useState, useEffect } from 'react';
+import PageNavigation from '@/components/page-navigation';
 
 export default function JavaPage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -13626,6 +13627,17 @@ public class ComparatorDemo {
                 Select a topic from the sidebar to start learning
               </p>
             </div>
+            {/* Page Navigation */}
+            <PageNavigation
+              previousPage={{
+                href: '/devops',
+                title: 'DevOps'
+              }}
+              nextPage={{
+                href: '/python',
+                title: 'Python Programming'
+              }}
+            />
           </main>
         );
     }
