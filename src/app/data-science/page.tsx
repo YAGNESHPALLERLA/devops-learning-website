@@ -20,6 +20,36 @@ export default function DataSciencePage() {
     { id: 'learning-path', title: 'Complete Learning Path' }
   ];
 
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/data-science/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : {
+        href: '/web-dev',
+        title: 'Web Development',
+        isSection: false
+      },
+      next: nextSection ? {
+        href: `/data-science/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/code-terminal',
+        title: 'Code Terminal',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
+
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
@@ -585,14 +615,9 @@ export default function DataSciencePage() {
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          previousPage={{
-            href: '/web-dev',
-            title: 'Web Development'
-          }}
-          nextPage={{
-            href: '/code-terminal',
-            title: 'Code Terminal'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>

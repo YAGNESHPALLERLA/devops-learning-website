@@ -19,6 +19,36 @@ export default function WebDevPage() {
     { id: 'learning-path', title: 'Complete Learning Path' }
   ];
 
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/web-dev/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : {
+        href: '/sql',
+        title: 'SQL & Databases',
+        isSection: false
+      },
+      next: nextSection ? {
+        href: `/web-dev/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/data-science',
+        title: 'Data Science',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
+
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
@@ -500,14 +530,9 @@ export default function WebDevPage() {
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          previousPage={{
-            href: '/sql',
-            title: 'SQL & Databases'
-          }}
-          nextPage={{
-            href: '/data-science',
-            title: 'Data Science'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>

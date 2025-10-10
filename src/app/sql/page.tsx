@@ -51,6 +51,36 @@ export default function SQLPage() {
     };
   }, []);
 
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/sql/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : {
+        href: '/python',
+        title: 'Python Programming',
+        isSection: false
+      },
+      next: nextSection ? {
+        href: `/sql/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/web-dev',
+        title: 'Web Development',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
+
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
@@ -5642,14 +5672,9 @@ BEGIN; UPDATE...; INSERT...; COMMIT;`}
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          previousPage={{
-            href: '/python',
-            title: 'Python Programming'
-          }}
-          nextPage={{
-            href: '/web-dev',
-            title: 'Web Development'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>

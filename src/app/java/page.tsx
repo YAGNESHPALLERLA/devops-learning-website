@@ -83,6 +83,36 @@ export default function JavaPage() {
     };
   }, []);
 
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/java/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : {
+        href: '/devops',
+        title: 'DevOps',
+        isSection: false
+      },
+      next: nextSection ? {
+        href: `/java/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/python',
+        title: 'Python Programming',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
+
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
@@ -13639,14 +13669,9 @@ public class ComparatorDemo {
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          previousPage={{
-            href: '/devops',
-            title: 'DevOps'
-          }}
-          nextPage={{
-            href: '/python',
-            title: 'Python Programming'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>

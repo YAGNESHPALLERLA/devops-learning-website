@@ -49,6 +49,36 @@ export default function PythonPage() {
 
   const pythonVideos = getVideosForTopic('python');
 
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/python/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : {
+        href: '/java',
+        title: 'Java Programming',
+        isSection: false
+      },
+      next: nextSection ? {
+        href: `/python/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/sql',
+        title: 'SQL & Databases',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
+
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
@@ -5457,14 +5487,9 @@ from mymodule import my_function`}
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          previousPage={{
-            href: '/java',
-            title: 'Java Programming'
-          }}
-          nextPage={{
-            href: '/sql',
-            title: 'SQL & Databases'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>
