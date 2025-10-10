@@ -13627,17 +13627,6 @@ public class ComparatorDemo {
                 Select a topic from the sidebar to start learning
               </p>
             </div>
-            {/* Page Navigation */}
-            <PageNavigation
-              previousPage={{
-                href: '/devops',
-                title: 'DevOps'
-              }}
-              nextPage={{
-                href: '/python',
-                title: 'Python Programming'
-              }}
-            />
           </main>
         );
     }
@@ -13645,7 +13634,21 @@ public class ComparatorDemo {
 
   return (
     <TechLayout onThisPage={pageHeadings} technology="java" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
+        <PageNavigation
+          previousPage={{
+            href: '/devops',
+            title: 'DevOps'
+          }}
+          nextPage={{
+            href: '/python',
+            title: 'Python Programming'
+          }}
+        />
+      </div>
     </TechLayout>
   );
 }

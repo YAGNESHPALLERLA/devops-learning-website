@@ -5445,17 +5445,6 @@ from mymodule import my_function`}
                 </div>
               </div>
             </div>
-            {/* Page Navigation */}
-            <PageNavigation
-              previousPage={{
-                href: '/java',
-                title: 'Java Programming'
-              }}
-              nextPage={{
-                href: '/sql',
-                title: 'SQL & Databases'
-              }}
-            />
           </div>
         );
     }
@@ -5463,7 +5452,21 @@ from mymodule import my_function`}
 
   return (
     <TechLayout onThisPage={pageHeadings} technology="python" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
+        <PageNavigation
+          previousPage={{
+            href: '/java',
+            title: 'Java Programming'
+          }}
+          nextPage={{
+            href: '/sql',
+            title: 'SQL & Databases'
+          }}
+        />
+      </div>
     </TechLayout>
   );
 }

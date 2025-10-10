@@ -573,7 +573,17 @@ export default function DataSciencePage() {
                 Select a topic from the sidebar to start learning
               </p>
         </div>
-        {/* Page Navigation */}
+      </main>
+        );
+    }
+  };
+
+  return (
+    <TechLayout onThisPage={pageHeadings} technology="data-science" activeSection={activeSection} setActiveSection={setActiveSection}>
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
         <PageNavigation
           previousPage={{
             href: '/web-dev',
@@ -584,14 +594,7 @@ export default function DataSciencePage() {
             title: 'Code Terminal'
           }}
         />
-      </main>
-        );
-    }
-  };
-
-  return (
-    <TechLayout onThisPage={pageHeadings} technology="data-science" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      </div>
     </TechLayout>
   );
 }

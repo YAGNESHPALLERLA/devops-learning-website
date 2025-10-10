@@ -11102,14 +11102,6 @@ export default function DevOpsPage() {
                 </div>
               </div>
             </div>
-            
-            {/* Page Navigation */}
-            <PageNavigation
-              nextPage={{
-                href: '/java',
-                title: 'Java Programming'
-              }}
-            />
           </main>
         );
     }
@@ -11117,7 +11109,17 @@ export default function DevOpsPage() {
 
   return (
     <TechLayout onThisPage={pageHeadings} technology="devops" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
+        <PageNavigation
+          nextPage={{
+            href: '/java',
+            title: 'Java Programming'
+          }}
+        />
+      </div>
     </TechLayout>
   );
 }

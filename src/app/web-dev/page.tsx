@@ -488,17 +488,6 @@ export default function WebDevPage() {
                 Select a topic from the sidebar to start learning
               </p>
             </div>
-            {/* Page Navigation */}
-            <PageNavigation
-              previousPage={{
-                href: '/sql',
-                title: 'SQL & Databases'
-              }}
-              nextPage={{
-                href: '/data-science',
-                title: 'Data Science'
-              }}
-            />
           </main>
         );
     }
@@ -506,7 +495,21 @@ export default function WebDevPage() {
 
   return (
     <TechLayout onThisPage={pageHeadings} technology="web-dev" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
+        <PageNavigation
+          previousPage={{
+            href: '/sql',
+            title: 'SQL & Databases'
+          }}
+          nextPage={{
+            href: '/data-science',
+            title: 'Data Science'
+          }}
+        />
+      </div>
     </TechLayout>
   );
 }

@@ -5630,17 +5630,6 @@ BEGIN; UPDATE...; INSERT...; COMMIT;`}
                 Select a topic from the sidebar to start learning
               </p>
             </div>
-            {/* Page Navigation */}
-            <PageNavigation
-              previousPage={{
-                href: '/python',
-                title: 'Python Programming'
-              }}
-              nextPage={{
-                href: '/web-dev',
-                title: 'Web Development'
-              }}
-            />
           </main>
         );
     }
@@ -5648,7 +5637,21 @@ BEGIN; UPDATE...; INSERT...; COMMIT;`}
 
   return (
     <TechLayout onThisPage={pageHeadings} technology="sql" activeSection={activeSection} setActiveSection={setActiveSection}>
-      {renderContent()}
+      <div>
+        {renderContent()}
+        
+        {/* Page Navigation - Shows on all sections */}
+        <PageNavigation
+          previousPage={{
+            href: '/python',
+            title: 'Python Programming'
+          }}
+          nextPage={{
+            href: '/web-dev',
+            title: 'Web Development'
+          }}
+        />
+      </div>
     </TechLayout>
   );
 }
