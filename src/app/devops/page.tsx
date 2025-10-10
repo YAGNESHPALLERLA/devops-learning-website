@@ -6105,8 +6105,8 @@ export default function DevOpsPage() {
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
                               def deployToEnvironment(env) {`{`}<br/>
-                              &nbsp;&nbsp;sh "kubectl set image deployment/app app=myapp:${env.BUILD_NUMBER} -n ${env}"<br/>
-                              &nbsp;&nbsp;sh "kubectl rollout status deployment/app -n ${env}"<br/>
+                              &nbsp;&nbsp;sh "kubectl set image deployment/app app=myapp:{'${env.BUILD_NUMBER}'} -n {'${env}'}"<br/>
+                              &nbsp;&nbsp;sh "kubectl rollout status deployment/app -n {'${env}'}"<br/>
                               {`}`}<br/><br/>
                               node {`{`}<br/>
                               &nbsp;&nbsp;stage('Deploy to Dev') {`{`}<br/>
@@ -6252,7 +6252,7 @@ export default function DevOpsPage() {
                               &nbsp;&nbsp;stages {`{`}<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;stage('Build') {`{`}<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;steps {`{`}<br/>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Triggered by: ${env.GIT_COMMIT}"<br/>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Triggered by: {'${env.GIT_COMMIT}'}"<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`}`}<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;{`}`}<br/>
                               &nbsp;&nbsp;{`}`}<br/>
@@ -6570,7 +6570,7 @@ export default function DevOpsPage() {
                               const github = require('@actions/github');<br/><br/>
                               try {`{`}<br/>
                               &nbsp;&nbsp;const ms = core.getInput('milliseconds');<br/>
-                              &nbsp;&nbsp;core.info(`Waiting ${ms} milliseconds ...`);<br/><br/>
+                              &nbsp;&nbsp;core.info(`Waiting {'${ms}'} milliseconds ...`);<br/><br/>
                               &nbsp;&nbsp;core.info('The current time was: ' + new Date().toTimeString());<br/>
                               &nbsp;&nbsp;core.setOutput('time', new Date().toTimeString());<br/>
                               {`}`} catch (error) {`{`}<br/>
@@ -7150,9 +7150,9 @@ export default function DevOpsPage() {
                               <span className="text-gray-400">
                                 # HELP node_cpu_seconds_total Seconds the CPUs spent in each mode.<br/>
                                 # TYPE node_cpu_seconds_total counter<br/>
-                                node_cpu_seconds_total{cpu="0",mode="idle"} 12345.67<br/>
-                                node_cpu_seconds_total{cpu="0",mode="system"} 123.45<br/>
-                                node_cpu_seconds_total{cpu="0",mode="user"} 234.56
+                                node_cpu_seconds_total{'{'}cpu="0",mode="idle"{'}'} 12345.67<br/>
+                                node_cpu_seconds_total{'{'}cpu="0",mode="system"{'}'} 123.45<br/>
+                                node_cpu_seconds_total{'{'}cpu="0",mode="user"{'}'} 234.56
                               </span>
                             </p>
                           </div>
@@ -7219,8 +7219,8 @@ export default function DevOpsPage() {
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
                                   # Always increasing values<br/>
-                                  http_requests_total{method="GET",status="200"} 1234<br/>
-                                  http_requests_total{method="POST",status="201"} 567<br/><br/>
+                                  http_requests_total{'{'}method="GET",status="200"{'}'} 1234<br/>
+                                  http_requests_total{'{'}method="POST",status="201"{'}'} 567<br/><br/>
                                   # PromQL: Rate of increase<br/>
                                   rate(http_requests_total[5m])
                                 </code>
@@ -7231,8 +7231,8 @@ export default function DevOpsPage() {
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
                                   # Values that can go up or down<br/>
-                                  memory_usage_bytes{instance="server1"} 1024000000<br/>
-                                  cpu_usage_percent{instance="server1"} 45.6<br/><br/>
+                                  memory_usage_bytes{'{'}instance="server1"{'}'} 1024000000<br/>
+                                  cpu_usage_percent{'{'}instance="server1"{'}'} 45.6<br/><br/>
                                   # PromQL: Current value<br/>
                                   memory_usage_bytes
                                 </code>
@@ -7248,9 +7248,9 @@ export default function DevOpsPage() {
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
                                   # Distribution of values in buckets<br/>
-                                  http_request_duration_seconds_bucket{le="0.1"} 100<br/>
-                                  http_request_duration_seconds_bucket{le="0.5"} 150<br/>
-                                  http_request_duration_seconds_bucket{le="1.0"} 200<br/>
+                                  http_request_duration_seconds_bucket{'{'}le="0.1"{'}'} 100<br/>
+                                  http_request_duration_seconds_bucket{'{'}le="0.5"{'}'} 150<br/>
+                                  http_request_duration_seconds_bucket{'{'}le="1.0"{'}'} 200<br/>
                                   http_request_duration_seconds_count 200<br/>
                                   http_request_duration_seconds_sum 45.6<br/><br/>
                                   # PromQL: 95th percentile<br/>
@@ -7263,9 +7263,9 @@ export default function DevOpsPage() {
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
                                   # Pre-calculated quantiles<br/>
-                                  rpc_duration_seconds{quantile="0.5"} 0.1<br/>
-                                  rpc_duration_seconds{quantile="0.9"} 0.3<br/>
-                                  rpc_duration_seconds{quantile="0.99"} 0.5<br/>
+                                  rpc_duration_seconds{'{'}quantile="0.5"{'}'} 0.1<br/>
+                                  rpc_duration_seconds{'{'}quantile="0.9"{'}'} 0.3<br/>
+                                  rpc_duration_seconds{'{'}quantile="0.99"{'}'} 0.5<br/>
                                   rpc_duration_seconds_count 1000<br/>
                                   rpc_duration_seconds_sum 150.0
                                 </code>
@@ -7749,14 +7749,14 @@ export default function DevOpsPage() {
                             <code className="text-green-400">
                               # Using variables in queries<br/>
                               # Prometheus query with variable:<br/>
-                              cpu_usage{instance="$instance"}<br/><br/>
+                              cpu_usage{'{'}instance="$instance"{'}'}<br/><br/>
                               # Multiple variable selection:<br/>
-                              cpu_usage{instance=~"$instance:.*"}<br/><br/>
+                              cpu_usage{'{'}instance=~"$instance:.*"{'}'}<br/><br/>
                               # Conditional queries:<br/>
-                              {"{"}{'$__condition'} cpu_usage{env="$environment"}<br/>
+                              {"{"}{'$__condition'} cpu_usage{'{'}env="$environment"{'}'}<br/>
                               {"}"}<br/><br/>
                               # Panel title with variable:<br/>
-                              CPU Usage - {$instance}<br/><br/>
+                              CPU Usage - {'$instance'}<br/><br/>
                               # Dashboard URL with variable:<br/>
                               /d/system-overview?var-instance=server1&var-environment=production
                             </code>
@@ -8536,7 +8536,7 @@ export default function DevOpsPage() {
                               - name: application_alerts<br/>
                               &nbsp;&nbsp;rules:<br/>
                               &nbsp;&nbsp;- alert: HighErrorRate<br/>
-                              &nbsp;&nbsp;&nbsp;&nbsp;expr: rate(http_requests_total{status=~"5.."}[5m]) gt 0.1<br/>
+                              &nbsp;&nbsp;&nbsp;&nbsp;expr: rate(http_requests_total{'{'}status=~"5.."{'}'} [5m]) gt 0.1<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;for: 2m<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;labels:<br/>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;severity: critical<br/>
@@ -10596,13 +10596,13 @@ export default function DevOpsPage() {
                               <strong>📊 Output:</strong><br/>
                               <span className="text-gray-400">
                                 TASK [Try to install package] ******************************************<br/>
-                                failed: [web1.example.com] {'=>'} {"msg": "Package not found"}<br/>
+                                failed: [web1.example.com] {'=>'} {'{"msg": "Package not found"}'}<br/>
                                 ...ignoring<br/>
                                 <br/>
                                 TASK [Handle installation failure] *************************************<br/>
-                                ok: [web1.example.com] {'=>'} {<br/>
+                                ok: [web1.example.com] {'=>'} {'{'}<br/>
                                 &nbsp;&nbsp;"msg": "Package unknown-package failed to install"<br/>
-                                }
+                                {'}'}
                               </span>
                             </p>
                           </div>
