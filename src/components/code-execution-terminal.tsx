@@ -396,7 +396,7 @@ Hello, Developer!`;
                 onClick={() => switchLanguage(key)}
                 className={`px-3 py-1 rounded text-sm transition-colors ${
                   currentLanguage === key
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-rose-600 text-white'
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                 }`}
               >
@@ -439,7 +439,7 @@ Hello, Developer!`;
           <button
             onClick={executeCode}
             disabled={isExecuting || !code.trim()}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors"
+            className="px-4 py-2 bg-rose-600 text-white rounded hover:bg-rose-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors"
           >
             {isExecuting ? '⏳ Executing...' : '▶️ Run Code'}
           </button>
@@ -448,7 +448,7 @@ Hello, Developer!`;
           ref={textareaRef}
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="w-full h-64 bg-black text-green-400 font-mono p-4 rounded border border-gray-600 resize-none focus:outline-none focus:border-blue-500"
+          className="w-full h-64 bg-black text-green-400 font-mono p-4 rounded border border-gray-600 resize-none focus:outline-none focus:border-rose-500"
           placeholder={`Enter your ${currentLang.name} code here...`}
           spellCheck={false}
         />
@@ -469,7 +469,7 @@ Hello, Developer!`;
         
         {history.map((execution, index) => (
           <div key={index} className="mb-4">
-            <div className="flex items-center mb-2 text-blue-400">
+            <div className="flex items-center mb-2 text-white">
               <span className="text-sm">Execution #{index + 1} - {languages[execution.language as keyof typeof languages].name} - {execution.timestamp.toLocaleTimeString()}</span>
             </div>
             <div className="bg-gray-900 p-3 rounded mb-2">

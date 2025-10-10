@@ -25,31 +25,31 @@ export default function WhatIsDevOpsPage() {
         </h1>
         
         <div className="max-w-4xl mx-auto">
-          <h2 id="definition" className="text-3xl font-bold text-blue-400 mb-6">1. Definition</h2>
+          <h2 id="definition" className="text-3xl font-bold text-white mb-6">1. Definition</h2>
           <p className="text-gray-300 text-lg mb-6">DevOps is a set of practices, cultural philosophies, and tools that combines software development (Dev) and IT operations (Ops).</p>
           
           <p className="text-gray-300 text-lg mb-4">Its main goal is to:</p>
           <ul className="text-gray-300 text-lg mb-8 space-y-2">
             <li className="flex items-center">
-              <span className="text-blue-400 mr-3">•</span>
+              <span className="text-white mr-3">•</span>
               Shorten the software development lifecycle
             </li>
             <li className="flex items-center">
-              <span className="text-blue-400 mr-3">•</span>
+              <span className="text-white mr-3">•</span>
               Deliver high-quality software continuously
             </li>
             <li className="flex items-center">
-              <span className="text-blue-400 mr-3">•</span>
+              <span className="text-white mr-3">•</span>
               Ensure faster and reliable releases
             </li>
           </ul>
 
-          <div className="bg-gray-800 border-l-4 border-blue-500 p-6 my-8 rounded-r-lg">
-            <p className="text-blue-300 text-lg font-semibold mb-2">In simple words:</p>
+          <div className="bg-gray-800 border-l-4 border-rose-500 p-6 my-8 rounded-r-lg">
+            <p className="text-white text-lg font-semibold mb-2">In simple words:</p>
             <p className="text-gray-300 text-lg">👉 DevOps is a bridge between developers who write the code and operations teams who deploy and maintain it.</p>
           </div>
 
-          <h2 id="why-devops" className="text-3xl font-bold text-blue-400 mb-6">2. Why DevOps?</h2>
+          <h2 id="why-devops" className="text-3xl font-bold text-white mb-6">2. Why DevOps?</h2>
           <p className="text-gray-300 text-lg mb-4">Traditionally, development and operations worked in silos:</p>
           <ul className="text-gray-300 text-lg mb-6 space-y-2">
             <li className="flex items-center">
@@ -68,7 +68,7 @@ export default function WhatIsDevOpsPage() {
           
           <p className="text-gray-300 text-lg mb-8">DevOps solves this by promoting collaboration, automation, and continuous improvement.</p>
 
-          <h2 id="key-principles" className="text-3xl font-bold text-blue-400 mb-6">3. Key Principles of DevOps</h2>
+          <h2 id="key-principles" className="text-3xl font-bold text-white mb-6">3. Key Principles of DevOps</h2>
           
           <div className="space-y-6 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
@@ -142,13 +142,13 @@ export default function WhatIsDevOpsPage() {
       </ul>
           </div>
 
-          <h2 id="devops-lifecycle" className="text-3xl font-bold text-blue-400 mb-6">4. DevOps Lifecycle</h2>
+          <h2 id="devops-lifecycle" className="text-3xl font-bold text-white mb-6">4. DevOps Lifecycle</h2>
           <p className="text-gray-300 text-lg mb-6">The DevOps lifecycle is usually represented as an infinity loop:</p>
           
           <div className="bg-gray-800 p-8 rounded-lg my-8 border border-gray-700">
             <div className="space-y-4 text-center">
-              <div className="bg-blue-900 p-4 rounded-lg border border-blue-700">
-                <strong className="text-blue-300">Plan</strong><br />
+              <div className="bg-rose-900 p-4 rounded-lg border border-blue-700">
+                <strong className="text-white">Plan</strong><br />
                 <small className="text-gray-400">Define requirements, plan features</small>
               </div>
               <div className="bg-green-900 p-4 rounded-lg border border-green-700">
@@ -184,14 +184,14 @@ export default function WhatIsDevOpsPage() {
           
           <p className="text-gray-300 text-lg mb-8">This loop is continuous, improving with every cycle.</p>
 
-          <h2 id="benefits" className="text-3xl font-bold text-blue-400 mb-6">5. Benefits of DevOps</h2>
+          <h2 id="benefits" className="text-3xl font-bold text-white mb-6">5. Benefits of DevOps</h2>
           <div className="space-y-6 my-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
               <h4 className="font-bold text-green-400 text-xl mb-3">Faster Delivery</h4>
               <p className="text-gray-300">Frequent releases and updates</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-              <h4 className="font-bold text-blue-400 text-xl mb-3">Improved Quality</h4>
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+              <h4 className="font-bold text-white text-xl mb-3">Improved Quality</h4>
               <p className="text-gray-300">Automated testing ensures fewer bugs</p>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
@@ -212,10 +212,10 @@ export default function WhatIsDevOpsPage() {
             </div>
           </div>
 
-          <h2 id="popular-tools" className="text-3xl font-bold text-blue-400 mb-6">6. Popular DevOps Tools</h2>
+          <h2 id="popular-tools" className="text-3xl font-bold text-white mb-6">6. Popular DevOps Tools</h2>
           <div className="space-y-6 my-8">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-              <h4 className="font-bold text-blue-400 text-lg mb-3">Version Control</h4>
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+              <h4 className="font-bold text-white text-lg mb-3">Version Control</h4>
               <p className="text-gray-300">Git, GitHub, GitLab</p>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
@@ -244,7 +244,7 @@ export default function WhatIsDevOpsPage() {
             </div>
           </div>
 
-          <h2 id="devops-vs-traditional" className="text-3xl font-bold text-blue-400 mb-6">7. DevOps vs Traditional IT</h2>
+          <h2 id="devops-vs-traditional" className="text-3xl font-bold text-white mb-6">7. DevOps vs Traditional IT</h2>
           <div className="overflow-x-auto my-8">
             <table className="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
               <thead className="bg-gray-700">

@@ -28,35 +28,35 @@ export default function ToolsPage() {
 
           {/* Plan Tools */}
           <div className="mb-12">
-            <h2 id="plan-tools" className="text-3xl font-bold text-blue-400 mb-6">1. Plan</h2>
+            <h2 id="plan-tools" className="text-3xl font-bold text-white mb-6">1. Plan</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Define requirements, track progress, and manage collaboration.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Helps teams stay aligned and manage backlogs.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Jira</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Jira</h4>
                 <p className="text-gray-300 text-sm">Agile project management, sprint planning, issue tracking</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Trello</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Trello</h4>
                 <p className="text-gray-300 text-sm">Simple kanban-style board for tasks</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">Asana</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Asana</h4>
                 <p className="text-gray-300 text-sm">Task & project management with timeline view</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Confluence</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Confluence</h4>
                 <p className="text-gray-300 text-sm">Documentation and knowledge sharing</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -71,35 +71,35 @@ export default function ToolsPage() {
 
           {/* Code Tools */}
           <div className="mb-12">
-            <h2 id="code-tools" className="text-3xl font-bold text-blue-400 mb-6">2. Code</h2>
+            <h2 id="code-tools" className="text-3xl font-bold text-white mb-6">2. Code</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Source code management, collaboration, and version control.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Ensures teamwork, history tracking, and safe collaboration.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Git</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Git</h4>
                 <p className="text-gray-300 text-sm">Distributed version control system (foundation for all)</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">GitHub</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">GitHub</h4>
                 <p className="text-gray-300 text-sm">Cloud platform for hosting Git repositories, PRs, and collaboration</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">GitLab</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">GitLab</h4>
                 <p className="text-gray-300 text-sm">Git-based platform with integrated CI/CD</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Bitbucket</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Bitbucket</h4>
                 <p className="text-gray-300 text-sm">Git repo hosting with Jira integration</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -114,35 +114,35 @@ export default function ToolsPage() {
 
           {/* Build Tools */}
           <div className="mb-12">
-            <h2 id="build-tools" className="text-3xl font-bold text-blue-400 mb-6">3. Build</h2>
+            <h2 id="build-tools" className="text-3xl font-bold text-white mb-6">3. Build</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Compile source code, package apps, create builds/containers.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Converts code into runnable artifacts.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Maven</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Maven</h4>
                 <p className="text-gray-300 text-sm">Java build automation tool</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Gradle</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Gradle</h4>
                 <p className="text-gray-300 text-sm">Flexible build automation for multiple languages</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">npm / Yarn</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">npm / Yarn</h4>
                 <p className="text-gray-300 text-sm">Build/package managers for JavaScript</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Docker</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Docker</h4>
                 <p className="text-gray-300 text-sm">Package applications into containers for consistency</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -157,35 +157,35 @@ export default function ToolsPage() {
 
           {/* Test Tools */}
           <div className="mb-12">
-            <h2 id="test-tools" className="text-3xl font-bold text-blue-400 mb-6">4. Test</h2>
+            <h2 id="test-tools" className="text-3xl font-bold text-white mb-6">4. Test</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Automated testing (unit, integration, security, performance).</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Ensures reliability, prevents bugs from reaching production.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">JUnit / TestNG</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">JUnit / TestNG</h4>
                 <p className="text-gray-300 text-sm">Java testing frameworks</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Selenium</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Selenium</h4>
                 <p className="text-gray-300 text-sm">Automated browser testing</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">Jest / Mocha</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Jest / Mocha</h4>
                 <p className="text-gray-300 text-sm">JavaScript testing</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">PyTest</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">PyTest</h4>
                 <p className="text-gray-300 text-sm">Python testing</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -204,35 +204,35 @@ export default function ToolsPage() {
 
           {/* Release Tools */}
           <div className="mb-12">
-            <h2 id="release-tools" className="text-3xl font-bold text-blue-400 mb-6">5. Release</h2>
+            <h2 id="release-tools" className="text-3xl font-bold text-white mb-6">5. Release</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Control and approve what gets delivered.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Ensures stability before production rollout.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Jenkins</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Jenkins</h4>
                 <p className="text-gray-300 text-sm">CI/CD pipeline automation</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">GitLab CI/CD</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">GitLab CI/CD</h4>
                 <p className="text-gray-300 text-sm">Integrated with GitLab repos</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">CircleCI</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">CircleCI</h4>
                 <p className="text-gray-300 text-sm">Cloud CI/CD solutions</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Azure DevOps</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Azure DevOps</h4>
                 <p className="text-gray-300 text-sm">CI/CD and release pipelines</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -247,35 +247,35 @@ export default function ToolsPage() {
 
           {/* Deploy Tools */}
           <div className="mb-12">
-            <h2 id="deploy-tools" className="text-3xl font-bold text-blue-400 mb-6">6. Deploy</h2>
+            <h2 id="deploy-tools" className="text-3xl font-bold text-white mb-6">6. Deploy</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Push applications into production safely.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Automates release to environments (staging, prod).</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Kubernetes</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Kubernetes</h4>
                 <p className="text-gray-300 text-sm">Container orchestration (auto-scaling, rollback, self-healing)</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Docker Swarm</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Docker Swarm</h4>
                 <p className="text-gray-300 text-sm">Lightweight orchestration for Docker</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">Ansible</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Ansible</h4>
                 <p className="text-gray-300 text-sm">Configuration management & deployment automation</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Terraform</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Terraform</h4>
                 <p className="text-gray-300 text-sm">IaC for cloud provisioning</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -290,35 +290,35 @@ export default function ToolsPage() {
 
           {/* Operate Tools */}
           <div className="mb-12">
-            <h2 id="operate-tools" className="text-3xl font-bold text-blue-400 mb-6">7. Operate</h2>
+            <h2 id="operate-tools" className="text-3xl font-bold text-white mb-6">7. Operate</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Manage applications and infrastructure in production.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Ensure uptime, stability, scaling, and infrastructure management.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Kubernetes</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Kubernetes</h4>
                 <p className="text-gray-300 text-sm">Manages containers in production</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Docker</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Docker</h4>
                 <p className="text-gray-300 text-sm">Runs isolated application environments</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">Ansible / Puppet / Chef</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Ansible / Puppet / Chef</h4>
                 <p className="text-gray-300 text-sm">Configuration management</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">AWS / Azure / GCP</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">AWS / Azure / GCP</h4>
                 <p className="text-gray-300 text-sm">Cloud platforms to run workloads</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -333,35 +333,35 @@ export default function ToolsPage() {
 
           {/* Monitor Tools */}
           <div className="mb-12">
-            <h2 id="monitor-tools" className="text-3xl font-bold text-blue-400 mb-6">8. Monitor</h2>
+            <h2 id="monitor-tools" className="text-3xl font-bold text-white mb-6">8. Monitor</h2>
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Goal</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Goal</h3>
                   <p className="text-gray-300">Track application performance, system health, and logs.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">Why</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">Why</h3>
                   <p className="text-gray-300">Early detection of issues, user feedback loop.</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors">
-                <h4 className="font-bold text-blue-400 mb-2">Prometheus</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-rose-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Prometheus</h4>
                 <p className="text-gray-300 text-sm">Metrics collection and monitoring</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-colors">
-                <h4 className="font-bold text-green-400 mb-2">Grafana</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Grafana</h4>
                 <p className="text-gray-300 text-sm">Visualization of metrics and dashboards</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-purple-500 transition-colors">
-                <h4 className="font-bold text-purple-400 mb-2">ELK Stack</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">ELK Stack</h4>
                 <p className="text-gray-300 text-sm">Centralized log management (Elasticsearch, Logstash, Kibana)</p>
               </div>
-              <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-yellow-500 transition-colors">
-                <h4 className="font-bold text-yellow-400 mb-2">Splunk</h4>
+              <div className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors">
+                <h4 className="font-bold text-white mb-2">Splunk</h4>
                 <p className="text-gray-300 text-sm">Enterprise-grade log monitoring</p>
               </div>
               <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
@@ -375,14 +375,14 @@ export default function ToolsPage() {
           </div>
 
           {/* Summary Table */}
-          <h2 id="summary-table" className="text-3xl font-bold text-blue-400 mb-6">📌 Summary Table</h2>
+          <h2 id="summary-table" className="text-3xl font-bold text-white mb-6">📌 Summary Table</h2>
           <div className="overflow-x-auto mb-8">
             <table className="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
               <thead className="bg-gray-700">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-bold text-gray-300 uppercase tracking-wider">Stage</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-blue-400 uppercase tracking-wider">Tools (Common)</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-green-400 uppercase tracking-wider">Most Used</th>
+                  <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Tools (Common)</th>
+                  <th className="px-6 py-4 text-left text-sm font-bold text-white uppercase tracking-wider">Most Used</th>
                 </tr>
               </thead>
               <tbody className="bg-gray-800 divide-y divide-gray-700">

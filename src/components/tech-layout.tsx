@@ -6,8 +6,8 @@ import Sidebar from './sidebar';
 // Define the types for the props
 interface TechLayoutProps {
   children: React.ReactNode;
-  onThisPage: { id: string; title: string }[];
-  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops';
+  onThisPage?: { id: string; title: string }[];
+  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux';
   activeSection?: string;
   setActiveSection?: (section: string) => void;
 }
@@ -32,40 +32,74 @@ const getTechNavigationItems = (tech: string) => {
   const techItems = {
     java: [
       {
-        id: 'java-basics',
-        title: 'Java Basics',
+        id: 'java-tutorial',
+        title: 'Java Tutorial',
         href: '/java',
         icon: '☕',
         children: [
-          { id: 'introduction', title: 'Introduction', href: '/java#introduction' },
-          { id: 'control-statements', title: 'Control Statements', href: '/java#control-statements' }
+          { id: 'introduction', title: 'Java Tutorial', href: '/java#introduction' },
+          { id: 'basics', title: 'Java Basics', href: '/java#basics' },
+          { id: 'syntax', title: 'Java Syntax', href: '/java#syntax' },
+          { id: 'output', title: 'Java Output', href: '/java#output' },
+          { id: 'comments', title: 'Java Comments', href: '/java#comments' },
+          { id: 'variables', title: 'Java Variables', href: '/java#variables' },
+          { id: 'data-types', title: 'Java Data Types', href: '/java#data-types' },
+          { id: 'operators', title: 'Java Operators', href: '/java#operators' },
+          { id: 'strings', title: 'Java Strings', href: '/java#strings' },
+          { id: 'math', title: 'Java Math', href: '/java#math' },
+          { id: 'booleans', title: 'Java Booleans', href: '/java#booleans' },
+          { id: 'if-else', title: 'Java If...Else', href: '/java#if-else' },
+          { id: 'switch', title: 'Java Switch', href: '/java#switch' },
+          { id: 'loops', title: 'Java Loops', href: '/java#loops' },
+          { id: 'arrays', title: 'Java Arrays', href: '/java#arrays' },
+          { id: 'methods', title: 'Java Methods', href: '/java#methods' }
         ]
       },
       {
-        id: 'java-intermediate',
-        title: 'Java Intermediate',
+        id: 'java-oop',
+        title: 'Java OOP Concepts',
         href: '/java',
-        icon: '⚡',
+        icon: '🏗️',
         children: [
-          { id: 'oop-concepts', title: 'OOP Concepts', href: '/java#oop-concepts' },
-          { id: 'keywords', title: 'Java Keywords', href: '/java#keywords' },
-          { id: 'strings', title: 'Strings & String Handling', href: '/java#strings' },
-          { id: 'arrays-collections', title: 'Arrays & Collections', href: '/java#arrays-collections' },
-          { id: 'exceptions', title: 'Exception Handling', href: '/java#exceptions' },
-          { id: 'packages', title: 'Packages & Modules', href: '/java#packages' }
+          { id: 'oop-concepts', title: 'Java OOP Concepts', href: '/java#oop-concepts' },
+          { id: 'classes-objects', title: 'Java Classes and Objects', href: '/java#classes-objects' },
+          { id: 'class-attributes', title: 'Java Class Attributes', href: '/java#class-attributes' },
+          { id: 'class-methods', title: 'Java Class Methods', href: '/java#class-methods' },
+          { id: 'constructors', title: 'Java Constructors', href: '/java#constructors' },
+          { id: 'modifiers', title: 'Java Modifiers', href: '/java#modifiers' },
+          { id: 'encapsulation', title: 'Java Encapsulation', href: '/java#encapsulation' },
+          { id: 'packages', title: 'Java Packages', href: '/java#packages' },
+          { id: 'inheritance', title: 'Java Inheritance', href: '/java#inheritance' },
+          { id: 'polymorphism', title: 'Java Polymorphism', href: '/java#polymorphism' },
+          { id: 'abstraction', title: 'Java Abstraction', href: '/java#abstraction' },
+          { id: 'interfaces', title: 'Java Interface', href: '/java#interfaces' },
+          { id: 'enums', title: 'Java Enums', href: '/java#enums' }
         ]
       },
       {
         id: 'java-advanced',
         title: 'Java Advanced',
         href: '/java',
-        icon: '🔥',
+        icon: '⚡',
         children: [
-          { id: 'multithreading', title: 'Multi-threading', href: '/java#multithreading' },
-          { id: 'file-io', title: 'File I/O Streams', href: '/java#file-io' },
-          { id: 'java8-features', title: 'Java 8+ Features', href: '/java#java8-features' },
-          { id: 'memory-management', title: 'Memory Management', href: '/java#memory-management' },
-          { id: 'advanced-concepts', title: 'Advanced Core Concepts', href: '/java#advanced-concepts' }
+          { id: 'java-keywords', title: 'Java Keywords', href: '/java#java-keywords' },
+          { id: 'strings-handling', title: 'Java String Methods', href: '/java#strings-handling' },
+          { id: 'arrays-collections', title: 'Java Collections', href: '/java#arrays-collections' },
+          { id: 'exception-handling', title: 'Java Exception Handling', href: '/java#exception-handling' },
+          { id: 'packages-modules', title: 'Java Packages/Modules', href: '/java#packages-modules' },
+          { id: 'file-handling', title: 'Java File Handling', href: '/java#file-handling' },
+          { id: 'advanced', title: 'Java Advanced', href: '/java#advanced' },
+          { id: 'date-time', title: 'Java Date/Time', href: '/java#date-time' },
+          { id: 'arraylist', title: 'Java ArrayList', href: '/java#arraylist' },
+          { id: 'linkedlist', title: 'Java LinkedList', href: '/java#linkedlist' },
+          { id: 'hashmap', title: 'Java HashMap', href: '/java#hashmap' },
+          { id: 'hashset', title: 'Java HashSet', href: '/java#hashset' },
+          { id: 'iterator', title: 'Java Iterator', href: '/java#iterator' },
+          { id: 'wrapper-classes', title: 'Java Wrapper Classes', href: '/java#wrapper-classes' },
+          { id: 'exceptions-advanced', title: 'Java Exceptions', href: '/java#exceptions-advanced' },
+          { id: 'regex', title: 'Java RegEx', href: '/java#regex' },
+          { id: 'threads', title: 'Java Threads', href: '/java#threads' },
+          { id: 'lambda', title: 'Java Lambda', href: '/java#lambda' }
         ]
       },
       {
@@ -74,9 +108,8 @@ const getTechNavigationItems = (tech: string) => {
         href: '/java',
         icon: '📚',
         children: [
-          { id: 'video-tutorials', title: 'Video Tutorials', href: '/java#video-tutorials' },
           { id: 'practice-projects', title: 'Practice Projects', href: '/java#practice-projects' },
-          { id: 'summary', title: 'Summary', href: '/java#summary' }
+          { id: 'video-tutorials', title: 'Video Tutorials', href: '/java#video-tutorials' }
         ]
       }
     ],
@@ -250,83 +283,156 @@ const getTechNavigationItems = (tech: string) => {
     ],
     devops: [
       {
-        id: 'devops-basics',
-        title: 'DevOps Basics',
+        id: 'devops-foundation',
+        title: '1. DevOps Foundation',
         href: '/devops',
         icon: '🚀',
         children: [
-          { id: 'introduction', title: 'Introduction', href: '/devops#introduction' },
+          { id: 'introduction', title: 'Introduction to DevOps', href: '/devops#introduction' },
           { id: 'core-concepts', title: 'Core Concepts', href: '/devops#core-concepts' },
           { id: 'devops-lifecycle', title: 'DevOps Lifecycle', href: '/devops#devops-lifecycle' }
         ]
       },
       {
-        id: 'devops-tools',
-        title: 'Tools & Technologies',
+        id: 'linux-fundamentals',
+        title: '2. Linux Fundamentals',
         href: '/devops',
-        icon: '⚡',
-        children: [
-          { id: 'tools-technologies', title: 'Tools & Technologies', href: '/devops#tools-technologies' },
-          { id: 'learning-path', title: 'Learning Path', href: '/devops#learning-path' }
-        ]
-      },
-      {
-        id: 'devops-resources',
-        title: 'Resources',
-        href: '/devops',
-        icon: '📚',
-        children: [
-          { id: 'summary', title: 'Summary', href: '/devops#summary' }
-        ]
-      },
-      {
-        id: 'linux-basics',
-        title: 'Linux Basics',
-        href: '/docs/linux-basics',
         icon: '🐧',
         children: [
-          { id: 'linux-commands', title: 'Basic Commands', href: '/docs/linux-basics' },
-          { id: 'file-system', title: 'File System', href: '/docs/linux-basics' }
+          { id: 'linux-introduction', title: 'Linux Introduction', href: '/devops#linux-introduction' },
+          { id: 'linux-file-system', title: 'Linux File System', href: '/devops#linux-file-system' },
+          { id: 'linux-navigation', title: 'Linux Navigation', href: '/devops#linux-navigation' },
+          { id: 'linux-file-management', title: 'File Management', href: '/devops#linux-file-management' },
+          { id: 'linux-permissions', title: 'Linux Permissions', href: '/devops#linux-permissions' },
+          { id: 'linux-process-management', title: 'Process Management', href: '/devops#linux-process-management' },
+          { id: 'linux-networking', title: 'Linux Networking', href: '/devops#linux-networking' },
+          { id: 'linux-shell-scripting', title: 'Shell Scripting', href: '/devops#linux-shell-scripting' }
+        ]
+      },
+      {
+        id: 'version-control',
+        title: '3. Version Control',
+        href: '/devops',
+        icon: '🔀',
+        children: [
+          { id: 'git-fundamentals', title: 'Git Fundamentals', href: '/devops#git-fundamentals' },
+          { id: 'git-workflows', title: 'Git Workflows', href: '/devops#git-workflows' },
+          { id: 'git-advanced', title: 'Advanced Git', href: '/devops#git-advanced' },
+          { id: 'github-gitlab', title: 'GitHub & GitLab', href: '/devops#github-gitlab' }
+        ]
+      },
+      {
+        id: 'infrastructure-automation',
+        title: '4. Infrastructure Automation',
+        href: '/devops',
+        icon: '🔧',
+        children: [
+          { id: 'ansible-basics', title: 'Ansible Basics', href: '/devops#ansible-basics' },
+          { id: 'ansible-playbooks', title: 'Ansible Playbooks', href: '/devops#ansible-playbooks' },
+          { id: 'ansible-roles', title: 'Ansible Roles', href: '/devops#ansible-roles' },
+          { id: 'ansible-advanced', title: 'Advanced Ansible', href: '/devops#ansible-advanced' }
         ]
       },
       {
         id: 'containerization',
-        title: 'Containerization',
-        href: '/docs/docker',
+        title: '5. Containerization',
+        href: '/devops',
         icon: '🐳',
         children: [
-          { id: 'docker-basics', title: 'Docker Basics', href: '/docs/docker' },
-          { id: 'docker-compose', title: 'Docker Compose', href: '/docs/docker' }
+          { id: 'docker-basics', title: 'Docker Basics', href: '/devops#docker-basics' },
+          { id: 'docker-compose', title: 'Docker Compose', href: '/devops#docker-compose' },
+          { id: 'container-best-practices', title: 'Container Best Practices', href: '/devops#container-best-practices' }
         ]
       },
       {
         id: 'orchestration',
-        title: 'Orchestration',
-        href: '/docs/kubernetes',
+        title: '6. Orchestration',
+        href: '/devops',
         icon: '☸️',
         children: [
-          { id: 'k8s-basics', title: 'Kubernetes Basics', href: '/docs/kubernetes' },
-          { id: 'k8s-deployment', title: 'Deployments', href: '/docs/kubernetes' }
+          { id: 'kubernetes-basics', title: 'Kubernetes Basics', href: '/devops#kubernetes-basics' },
+          { id: 'k8s-deployments', title: 'K8s Deployments', href: '/devops#k8s-deployments' },
+          { id: 'k8s-services', title: 'K8s Services', href: '/devops#k8s-services' },
+          { id: 'k8s-monitoring', title: 'K8s Monitoring', href: '/devops#k8s-monitoring' }
         ]
       },
       {
         id: 'cicd',
-        title: 'CI/CD',
-        href: '/docs/jenkins',
+        title: '7. CI/CD',
+        href: '/devops',
         icon: '🔄',
         children: [
-          { id: 'jenkins-basics', title: 'Jenkins Basics', href: '/docs/jenkins' },
-          { id: 'pipelines', title: 'Pipelines', href: '/docs/jenkins' }
+          { id: 'jenkins-basics', title: 'Jenkins Basics', href: '/devops#jenkins-basics' },
+          { id: 'jenkins-pipelines', title: 'Jenkins Pipelines', href: '/devops#jenkins-pipelines' },
+          { id: 'github-actions', title: 'GitHub Actions', href: '/devops#github-actions' },
+          { id: 'gitlab-ci', title: 'GitLab CI', href: '/devops#gitlab-ci' }
         ]
       },
       {
         id: 'monitoring',
-        title: 'Monitoring',
-        href: '/docs/monitoring',
+        title: '8. Monitoring',
+        href: '/devops',
         icon: '📊',
         children: [
-          { id: 'prometheus', title: 'Prometheus', href: '/docs/monitoring' },
-          { id: 'grafana', title: 'Grafana', href: '/docs/monitoring' }
+          { id: 'prometheus-basics', title: 'Prometheus Basics', href: '/devops#prometheus-basics' },
+          { id: 'grafana-dashboards', title: 'Grafana Dashboards', href: '/devops#grafana-dashboards' },
+          { id: 'elk-stack', title: 'ELK Stack', href: '/devops#elk-stack' },
+          { id: 'alerting', title: 'Alerting & Incident Response', href: '/devops#alerting' }
+        ]
+      },
+      {
+        id: 'devops-advanced',
+        title: '9. Advanced Topics',
+        href: '/devops',
+        icon: '🔥',
+        children: [
+          { id: 'automation', title: 'Automation & Orchestration', href: '/devops#automation' },
+          { id: 'security', title: 'DevSecOps & Security', href: '/devops#security' },
+          { id: 'cloud-platforms', title: 'Cloud Platforms', href: '/devops#cloud-platforms' },
+          { id: 'monitoring-observability', title: 'Monitoring & Observability', href: '/devops#monitoring-observability' }
+        ]
+      },
+      {
+        id: 'devops-resources',
+        title: '10. Resources',
+        href: '/devops',
+        icon: '📚',
+        children: [
+          { id: 'tools-technologies', title: 'Tools & Technologies', href: '/devops#tools-technologies' },
+          { id: 'learning-path', title: 'Learning Path', href: '/devops#learning-path' },
+          { id: 'summary', title: 'Summary', href: '/devops#summary' }
+        ]
+      }
+    ],
+    linux: [
+      {
+        id: 'linux-basics',
+        title: 'Linux Basics',
+        href: '/linux',
+        icon: '🐧',
+        children: [
+          { id: 'introduction', title: 'Introduction to Linux', href: '/linux#introduction' },
+          { id: 'file-system', title: 'File System Structure', href: '/linux#file-system' },
+          { id: 'navigation', title: 'Navigation Commands', href: '/linux#navigation' },
+          { id: 'file-management', title: 'File & Directory Management', href: '/linux#file-management' },
+          { id: 'viewing-editing', title: 'Viewing & Editing Files', href: '/linux#viewing-editing' },
+          { id: 'permissions', title: 'User & Permission Management', href: '/linux#permissions' },
+          { id: 'process-management', title: 'Process & System Management', href: '/linux#process-management' },
+          { id: 'networking', title: 'Networking Basics', href: '/linux#networking' },
+          { id: 'package-management', title: 'Package Management', href: '/linux#package-management' },
+          { id: 'shell-scripting', title: 'Shell Scripting Basics', href: '/linux#shell-scripting' },
+          { id: 'logs-monitoring', title: 'Logs & Monitoring', href: '/linux#logs-monitoring' },
+          { id: 'shortcuts', title: 'Essential Shortcuts', href: '/linux#shortcuts' }
+        ]
+      },
+      {
+        id: 'linux-resources',
+        title: 'Resources',
+        href: '/linux',
+        icon: '📚',
+        children: [
+          { id: 'video-tutorials', title: 'Video Tutorials', href: '/linux#video-tutorials' },
+          { id: 'summary', title: 'Summary', href: '/linux#summary' }
         ]
       }
     ]
@@ -346,6 +452,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
 
   // Handle scroll to update active section
   useEffect(() => {
+    if (!onThisPage) return; // Skip scroll handling if no onThisPage prop
+    
     const handleScroll = () => {
       const sections = onThisPage.map(item => document.getElementById(item.id)).filter(Boolean);
       const scrollPosition = window.scrollY + 100;
@@ -377,38 +485,38 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <div className="flex min-h-screen bg-[#1a1a1a]">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
-          className="fixed inset-0 z-40 bg-black bg-opacity-70 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black bg-opacity-80 backdrop-blur-sm lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside className={`
-        fixed lg:static inset-y-0 left-0 z-50 w-80 bg-gradient-to-b from-gray-900 to-black shadow-2xl lg:shadow-xl border-r border-gray-700
+        fixed lg:static inset-y-0 left-0 z-50 w-80 bg-[#1a1a1a] shadow-2xl lg:shadow-xl border-r border-gray-600
         transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <Sidebar items={navigationItems} onThisPage={onThisPage} activeSection={activeSection} setActiveSection={setActiveSection} />
+        <Sidebar items={navigationItems} onThisPage={onThisPage || []} activeSection={activeSection} setActiveSection={setActiveSection} />
       </aside>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Mobile header */}
-        <header className="lg:hidden bg-gradient-to-r from-gray-900 to-black shadow-lg border-b border-gray-700">
+        <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-3 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              className="p-3 rounded-xl text-white hover:bg-gray-800/50 transition-all duration-300"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold text-white">
               {technology === 'java' ? 'Java Programming' :
                technology === 'python' ? 'Python Programming' :
                technology === 'sql' ? 'SQL & Databases' :
@@ -422,7 +530,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900/50 to-black/50">
+        <main className="flex-1 overflow-y-auto bg-[#1a1a1a]">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
@@ -431,30 +539,6 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </main>
       </div>
 
-      {/* Right sidebar for desktop - Table of Contents */}
-      {onThisPage.length > 0 && (
-        <aside className="hidden xl:block w-80 bg-gradient-to-b from-gray-900 to-black shadow-2xl border-l border-gray-700 sticky top-0 h-screen overflow-y-auto">
-          <div className="p-6">
-            <h3 className="text-lg font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">On this page</h3>
-            <nav className="space-y-2">
-              {onThisPage.map(item => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => handleSectionClick(e, item.id)}
-                  className={`block px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
-                    activeSection === item.id
-                      ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20 font-semibold'
-                      : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50'
-                  }`}
-                >
-                  {item.title}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </aside>
-      )}
     </div>
   );
 }

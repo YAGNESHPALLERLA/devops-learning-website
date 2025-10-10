@@ -16,7 +16,7 @@ export default function VideoSection({ videos, title = "Video Tutorials", classN
 
   return (
     <div className={`mb-8 ${className}`}>
-      <h2 className="text-3xl font-bold text-blue-400 mb-6 flex items-center">
+      <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
         <span className="mr-3">🎥</span>
         {title}
         <span className="ml-3 text-lg text-gray-400 font-normal">

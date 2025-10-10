@@ -178,7 +178,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
                   onClick={(e) => handleSectionClick(e, item.id)}
                   className={`block px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-opacity-50 ${
                     activeSection === item.id
-                      ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 border border-blue-500/30 shadow-blue-500/20 font-semibold'
+                      ? 'bg-gradient-to-r from-rose-600/20 to-purple-600/20 text-white border border-rose-500/30 shadow-blue-500/20 font-semibold'
                       : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:text-white hover:shadow-gray-500/20 hover:ring-2 hover:ring-blue-500/30 hover:ring-opacity-50'
                   }`}
                 >

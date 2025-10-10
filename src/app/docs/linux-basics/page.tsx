@@ -30,12 +30,12 @@ export default function LinuxPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="bg-blue-900 border border-blue-700 p-6 rounded-lg mb-8">
-            <h2 className="text-2xl font-bold text-blue-300 mb-4">Goal</h2>
+          <div className="bg-gray-900/50 border border-gray-600 p-6 rounded-lg mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4">Goal</h2>
             <p className="text-gray-300 text-lg">Go from zero to intermediate with the Linux command line – the backbone of servers, cloud systems, and automation.</p>
           </div>
 
-          <h2 id="introduction" className="text-3xl font-bold text-blue-400 mb-6">1. Introduction to Linux</h2>
+          <h2 id="introduction" className="text-3xl font-bold text-white mb-6">1. Introduction to Linux</h2>
           
           <div className="space-y-8 mb-12">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
@@ -75,7 +75,7 @@ export default function LinuxPage() {
             </div>
           </div>
 
-          <h2 id="file-system" className="text-3xl font-bold text-blue-400 mb-6">2. Linux File System Structure</h2>
+          <h2 id="file-system" className="text-3xl font-bold text-white mb-6">2. Linux File System Structure</h2>
           <p className="text-gray-300 text-lg mb-6">Linux has a tree-like structure starting from / (root).</p>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-6">
@@ -121,7 +121,7 @@ export default function LinuxPage() {
             <code className="text-gray-300 text-lg">ls /</code>
           </div>
 
-          <h2 id="navigation" className="text-3xl font-bold text-blue-400 mb-6">3. Basic Navigation Commands</h2>
+          <h2 id="navigation" className="text-3xl font-bold text-white mb-6">3. Basic Navigation Commands</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">pwd</code>
@@ -157,7 +157,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Navigate from /home → / → /etc → back to /home</p>
           </div>
 
-          <h2 id="file-management" className="text-3xl font-bold text-blue-400 mb-6">4. File & Directory Management</h2>
+          <h2 id="file-management" className="text-3xl font-bold text-white mb-6">4. File & Directory Management</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">touch file.txt</code>
@@ -189,7 +189,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Create a folder devops, add files inside it, copy/move them</p>
           </div>
 
-          <h2 id="viewing-editing" className="text-3xl font-bold text-blue-400 mb-6">5. Viewing & Editing Files</h2>
+          <h2 id="viewing-editing" className="text-3xl font-bold text-white mb-6">5. Viewing & Editing Files</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">cat file.txt</code>
@@ -225,7 +225,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Create a file with nano and write some notes</p>
           </div>
 
-          <h2 id="permissions" className="text-3xl font-bold text-blue-400 mb-6">6. User & Permission Management</h2>
+          <h2 id="permissions" className="text-3xl font-bold text-white mb-6">6. User & Permission Management</h2>
           <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">User Commands</h3>
@@ -277,7 +277,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Create a script file and set it executable</p>
           </div>
 
-          <h2 id="process-management" className="text-3xl font-bold text-blue-400 mb-6">7. Process & System Management</h2>
+          <h2 id="process-management" className="text-3xl font-bold text-white mb-6">7. Process & System Management</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">ps</code>
@@ -313,7 +313,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Open two terminals, run a process in one, kill it from another</p>
           </div>
 
-          <h2 id="networking" className="text-3xl font-bold text-blue-400 mb-6">8. Networking Basics</h2>
+          <h2 id="networking" className="text-3xl font-bold text-white mb-6">8. Networking Basics</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">ifconfig / ip a</code>
@@ -345,7 +345,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Ping a website, then SSH into another Linux machine (if available)</p>
           </div>
 
-          <h2 id="package-management" className="text-3xl font-bold text-blue-400 mb-6">9. Package Management</h2>
+          <h2 id="package-management" className="text-3xl font-bold text-white mb-6">9. Package Management</h2>
           <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Debian/Ubuntu (apt)</h3>
@@ -379,7 +379,7 @@ export default function LinuxPage() {
             <p className="text-yellow-300 font-semibold">📌 Practice: Install & remove a package (like tree)</p>
           </div>
 
-          <h2 id="shell-scripting" className="text-3xl font-bold text-blue-400 mb-6">10. Shell Scripting Basics</h2>
+          <h2 id="shell-scripting" className="text-3xl font-bold text-white mb-6">10. Shell Scripting Basics</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <p className="text-gray-300 mb-4">Shell scripts automate tasks. Example:</p>
             <div className="bg-gray-900 p-4 rounded border border-gray-600">
@@ -405,7 +405,7 @@ echo "Today is $DATE"`}
             <p className="text-yellow-300 font-semibold">📌 Practice: Write a script that backs up files from /home/user/docs to /backup</p>
           </div>
 
-          <h2 id="logs-monitoring" className="text-3xl font-bold text-blue-400 mb-6">11. Logs & Monitoring</h2>
+          <h2 id="logs-monitoring" className="text-3xl font-bold text-white mb-6">11. Logs & Monitoring</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <p className="text-gray-300 mb-4">System logs are stored in /var/log.</p>
             <div className="space-y-3">
@@ -417,7 +417,7 @@ echo "Today is $DATE"`}
             <p className="text-gray-300 mt-4">Useful for debugging servers (e.g., Nginx, Apache, Docker).</p>
           </div>
 
-          <h2 id="shortcuts" className="text-3xl font-bold text-blue-400 mb-6">12. Essential Linux Shortcuts</h2>
+          <h2 id="shortcuts" className="text-3xl font-bold text-white mb-6">12. Essential Linux Shortcuts</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <code className="text-green-400 font-mono">Ctrl + C</code>
@@ -443,7 +443,7 @@ echo "Today is $DATE"`}
 
           <VideoSection videos={linuxVideos} title="Linux Basics Video Tutorials" />
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <p className="text-gray-300 text-lg mb-4">By mastering these topics, you'll move from zero → intermediate in Linux:</p>
             <div className="space-y-4">
@@ -486,8 +486,8 @@ echo "Today is $DATE"`}
                 </div>
               </div>
             </div>
-            <div className="mt-6 p-4 bg-blue-900 border border-blue-700 rounded-lg">
-              <p className="text-blue-300 font-semibold">Linux is the core skill for DevOps — everything (Docker, Kubernetes, CI/CD, Cloud) builds on it.</p>
+            <div className="mt-6 p-4 bg-rose-900 border border-blue-700 rounded-lg">
+              <p className="text-white font-semibold">Linux is the core skill for DevOps — everything (Docker, Kubernetes, CI/CD, Cloud) builds on it.</p>
             </div>
           </div>
         </div>

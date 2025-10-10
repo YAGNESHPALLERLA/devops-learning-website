@@ -42,7 +42,7 @@ export default function VideoTutorial({ video, className = '' }: VideoTutorialPr
   };
 
   return (
-    <div className={`bg-gradient-to-r from-gray-800/80 to-gray-900/80 rounded-xl border border-gray-600 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 ${className}`}>
+    <div className={`bg-gradient-to-r from-gray-800/80 to-gray-900/80 rounded-xl border border-gray-600 hover:border-rose-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 ${className}`}>
       <div className="p-6">
         {/* Video Thumbnail and Play Button */}
         <div className="relative mb-4 group cursor-pointer" onClick={handleVideoClick}>
@@ -70,7 +70,7 @@ export default function VideoTutorial({ video, className = '' }: VideoTutorialPr
         {/* Video Information */}
         <div className="space-y-3">
           <div className="flex items-start justify-between">
-            <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+            <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors line-clamp-2">
               {video.title}
             </h3>
             <div className="flex items-center space-x-2 ml-3">
@@ -91,7 +91,7 @@ export default function VideoTutorial({ video, className = '' }: VideoTutorialPr
             {video.tags.slice(0, 3).map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-blue-900/30 text-blue-300 text-xs rounded border border-blue-500/30"
+                className="px-2 py-1 bg-rose-900/30 text-white text-xs rounded border border-rose-500/30"
               >
                 {tag}
               </span>
@@ -106,7 +106,7 @@ export default function VideoTutorial({ video, className = '' }: VideoTutorialPr
           {/* Action Button */}
           <button
             onClick={handleVideoClick}
-            className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 flex items-center justify-center space-x-2"
+            className="w-full mt-4 bg-gradient-to-r from-rose-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 flex items-center justify-center space-x-2"
           >
             <span>Watch Tutorial</span>
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

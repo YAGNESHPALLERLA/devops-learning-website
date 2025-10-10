@@ -25,29 +25,27 @@ export default function KubernetesPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-blue-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Master container orchestration and management with Kubernetes.</p>
-            </div>
+          <div className="bg-gray-900/50 border border-gray-600 p-8 rounded-xl mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Goal</h2>
+            <p className="text-white text-xl">Master container orchestration and management with Kubernetes.</p>
           </div>
 
-          <h2 id="core-concepts" className="text-3xl font-bold text-blue-400 mb-6">1. Core Concepts</h2>
-          <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
-            <h3 className="text-2xl font-bold text-blue-400 mb-6 neon-glow">Kubernetes Architecture</h3>
+          <h2 id="core-concepts" className="text-3xl font-bold text-white mb-6">1. Core Concepts</h2>
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Kubernetes Architecture</h3>
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-500/30 p-6 rounded-xl hover-glow-primary">
-                <h4 className="text-blue-400 font-bold text-lg mb-3">Control Plane</h4>
+              <div className="bg-gray-700 border border-gray-500 p-6 rounded-xl">
+                <h4 className="text-white font-bold text-lg mb-3">Control Plane</h4>
                 <p className="text-white">API Server, etcd, Scheduler, Controller Manager</p>
               </div>
-              <div className="bg-gradient-to-r from-green-900/50 to-blue-900/50 border border-green-500/30 p-6 rounded-xl hover-glow-accent">
-                <h4 className="text-green-400 font-bold text-lg mb-3">Worker Nodes</h4>
+              <div className="bg-gray-700 border border-gray-500 p-6 rounded-xl">
+                <h4 className="text-white font-bold text-lg mb-3">Worker Nodes</h4>
                 <p className="text-white">kubelet, kube-proxy, container runtime</p>
               </div>
             </div>
           </div>
 
-          <h2 id="pods-deployments" className="text-3xl font-bold text-blue-400 mb-6">2. Pods & Deployments</h2>
+          <h2 id="pods-deployments" className="text-3xl font-bold text-white mb-6">2. Pods & Deployments</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-purple-400 mb-6 neon-glow">Container Management</h3>
             <ul className="text-white space-y-3">
@@ -72,7 +70,7 @@ export default function KubernetesPage() {
 
           <VideoSection videos={kubernetesVideos} title="Kubernetes Video Tutorials" />
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <ul className="text-white space-y-3">
               <li className="flex items-start">

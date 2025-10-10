@@ -249,7 +249,7 @@ Swap:          2.0G          0B        2.0G`;
         {history.map((entry, index) => (
           <div key={index} className="mb-2">
             <div className="flex items-center mb-1">
-              <span className="text-blue-400">devops@learning</span>
+              <span className="text-white">devops@learning</span>
               <span className="text-white">:</span>
               <span className="text-yellow-400">{currentPath}</span>
               <span className="text-white">$</span>
@@ -265,7 +265,7 @@ Swap:          2.0G          0B        2.0G`;
         
         {/* Current Input Line */}
         <form onSubmit={handleSubmit} className="flex items-center">
-          <span className="text-blue-400">devops@learning</span>
+          <span className="text-white">devops@learning</span>
           <span className="text-white">:</span>
           <span className="text-yellow-400">{currentPath}</span>
           <span className="text-white">$</span>

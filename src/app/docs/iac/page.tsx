@@ -19,16 +19,14 @@ export default function IacPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-purple-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Manage infrastructure through code for consistency, repeatability, and version control.</p>
-            </div>
+          <div className="bg-gray-900/50 border border-gray-600 p-8 rounded-xl mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Goal</h2>
+            <p className="text-white text-xl">Manage infrastructure through code for consistency, repeatability, and version control.</p>
           </div>
 
-          <h2 id="terraform-basics" className="text-3xl font-bold text-blue-400 mb-6">1. Terraform</h2>
-          <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
-            <h3 className="text-2xl font-bold text-purple-400 mb-6 neon-glow">HashiCorp Terraform</h3>
+          <h2 id="terraform-basics" className="text-3xl font-bold text-white mb-6">1. Terraform</h2>
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8">
+            <h3 className="text-2xl font-bold text-white mb-6">HashiCorp Terraform</h3>
             <ul className="text-white space-y-3">
               <li className="flex items-start">
                 <span className="text-purple-400 mr-3 mt-1">•</span>
@@ -49,7 +47,7 @@ export default function IacPage() {
             </ul>
           </div>
 
-          <h2 id="ansible-basics" className="text-3xl font-bold text-blue-400 mb-6">2. Ansible</h2>
+          <h2 id="ansible-basics" className="text-3xl font-bold text-white mb-6">2. Ansible</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-red-400 mb-6 neon-glow">Configuration Management</h3>
             <ul className="text-white space-y-3">
@@ -72,7 +70,7 @@ export default function IacPage() {
             </ul>
           </div>
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <ul className="text-white space-y-3">
               <li className="flex items-start">

@@ -34,22 +34,20 @@ export default function DockerPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-blue-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Learn containerization with Docker for consistent deployments.</p>
-            </div>
+          <div className="bg-gray-900/50 border border-gray-600 p-8 rounded-xl mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Goal</h2>
+            <p className="text-white text-xl">Learn containerization with Docker for consistent deployments.</p>
           </div>
 
-          <h2 id="introduction" className="text-3xl font-bold text-blue-400 mb-6">1. What is Containerization?</h2>
+          <h2 id="introduction" className="text-3xl font-bold text-white mb-6">1. What is Containerization?</h2>
           
-          <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
-            <h3 className="text-2xl font-bold text-red-400 mb-6 neon-glow">Traditional deployment problem:</h3>
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Traditional deployment problem:</h3>
             <div className="space-y-6 mb-8">
-              <div className="bg-gradient-to-r from-green-900/50 to-green-800/50 border border-green-500/30 p-6 rounded-xl hover-glow-accent">
-                <p className="text-green-300 font-semibold text-lg">✅ Works on developer machine</p>
+              <div className="bg-gray-700 border border-gray-500 p-6 rounded-xl">
+                <p className="text-white font-semibold text-lg">✅ Works on developer machine</p>
               </div>
-              <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border border-red-500/30 p-6 rounded-xl hover-glow-danger">
+              <div className="bg-gray-700 border border-gray-500 p-6 rounded-xl">
                 <p className="text-red-300 font-semibold text-lg">❌ Fails on production (due to dependency/version mismatch)</p>
               </div>
             </div>
@@ -71,7 +69,7 @@ export default function DockerPage() {
             </div>
           </div>
 
-          <h2 id="what-is-docker" className="text-3xl font-bold text-blue-400 mb-6">2. What is Docker?</h2>
+          <h2 id="what-is-docker" className="text-3xl font-bold text-white mb-6">2. What is Docker?</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
@@ -93,7 +91,7 @@ export default function DockerPage() {
             </ul>
           </div>
 
-          <h2 id="why-docker-devops" className="text-3xl font-bold text-blue-400 mb-6">3. Why Docker in DevOps?</h2>
+          <h2 id="why-docker-devops" className="text-3xl font-bold text-white mb-6">3. Why Docker in DevOps?</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Consistency</h4>
@@ -117,11 +115,11 @@ export default function DockerPage() {
             </div>
           </div>
 
-          <h2 id="docker-architecture" className="text-3xl font-bold text-blue-400 mb-6">4. Docker Architecture</h2>
+          <h2 id="docker-architecture" className="text-3xl font-bold text-white mb-6">4. Docker Architecture</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Docker Client</h4>
+                <h4 className="font-bold text-white mb-2">Docker Client</h4>
                 <p className="text-gray-300 text-sm">CLI (docker) used by developers</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -143,40 +141,40 @@ export default function DockerPage() {
             </div>
           </div>
 
-          <h2 id="docker-workflow" className="text-3xl font-bold text-blue-400 mb-6">5. Docker Basic Workflow</h2>
+          <h2 id="docker-workflow" className="text-3xl font-bold text-white mb-6">5. Docker Basic Workflow</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
                 <span className="text-gray-300">Write app code</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
                 <span className="text-gray-300">Create a Dockerfile (instructions for building image)</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
                 <code className="text-green-400 font-mono">docker build</code>
                 <span className="text-gray-300 ml-3">Build image</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
                 <code className="text-green-400 font-mono">docker run</code>
                 <span className="text-gray-300 ml-3">Run container</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
                 <code className="text-green-400 font-mono">docker push</code>
                 <span className="text-gray-300 ml-3">Push to Docker Hub</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">6</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">6</div>
                 <span className="text-gray-300">Deploy container anywhere</span>
               </div>
             </div>
           </div>
 
-          <h2 id="docker-commands" className="text-3xl font-bold text-blue-400 mb-6">6. Important Docker Commands</h2>
+          <h2 id="docker-commands" className="text-3xl font-bold text-white mb-6">6. Important Docker Commands</h2>
           <div className="space-y-8 mb-8">
             <div className="space-y-6">
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
@@ -260,11 +258,11 @@ CMD ["python", "app.py"]`}
             </div>
           </div>
 
-          <h2 id="dockerfile" className="text-3xl font-bold text-blue-400 mb-6">7. Dockerfile (Key Instructions)</h2>
+          <h2 id="dockerfile" className="text-3xl font-bold text-white mb-6">7. Dockerfile (Key Instructions)</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">FROM</h4>
+                <h4 className="font-bold text-white mb-2">FROM</h4>
                 <p className="text-gray-300 text-sm">Base image (e.g., Ubuntu, Python)</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -290,7 +288,7 @@ CMD ["python", "app.py"]`}
             </div>
           </div>
 
-          <h2 id="volumes-networking" className="text-3xl font-bold text-blue-400 mb-6">8. Docker Volumes & Networking</h2>
+          <h2 id="volumes-networking" className="text-3xl font-bold text-white mb-6">8. Docker Volumes & Networking</h2>
           <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Volumes (Persistent Storage)</h3>
@@ -314,7 +312,7 @@ CMD ["python", "app.py"]`}
             </div>
           </div>
 
-          <h2 id="docker-compose" className="text-3xl font-bold text-blue-400 mb-6">9. Docker Compose</h2>
+          <h2 id="docker-compose" className="text-3xl font-bold text-white mb-6">9. Docker Compose</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <p className="text-gray-300 mb-4">Used to run multi-container apps (like web + db).</p>
             <p className="text-gray-300 mb-4">Defined in docker-compose.yml.</p>
@@ -341,7 +339,7 @@ services:
             </div>
           </div>
 
-          <h2 id="docker-registry" className="text-3xl font-bold text-blue-400 mb-6">10. Docker Registry</h2>
+          <h2 id="docker-registry" className="text-3xl font-bold text-white mb-6">10. Docker Registry</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-6">
               <div>
@@ -366,7 +364,7 @@ services:
             </div>
           </div>
 
-          <h2 id="docker-devops" className="text-3xl font-bold text-blue-400 mb-6">11. Docker in DevOps</h2>
+          <h2 id="docker-devops" className="text-3xl font-bold text-white mb-6">11. Docker in DevOps</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">CI/CD Pipelines</h4>
@@ -386,7 +384,7 @@ services:
             </div>
           </div>
 
-          <h2 id="intermediate-concepts" className="text-3xl font-bold text-blue-400 mb-6">12. Intermediate Concepts</h2>
+          <h2 id="intermediate-concepts" className="text-3xl font-bold text-white mb-6">12. Intermediate Concepts</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Multi-stage Builds</h4>
@@ -412,7 +410,7 @@ services:
 
           <VideoSection videos={dockerVideos} title="Docker Video Tutorials" />
 
-          <h2 id="practice-exercises" className="text-3xl font-bold text-blue-400 mb-6">13. Practice Exercises</h2>
+          <h2 id="practice-exercises" className="text-3xl font-bold text-white mb-6">13. Practice Exercises</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
@@ -438,7 +436,7 @@ services:
             </ul>
           </div>
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">

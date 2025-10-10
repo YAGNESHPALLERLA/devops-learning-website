@@ -29,11 +29,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Navigation Header */}
-        <nav className="bg-gray-900 shadow-lg">
+        <nav className="bg-[#1a1a1a] border-b border-gray-600">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center py-4">
-              <Link href="/" className="flex items-center space-x-3 text-white hover:text-blue-400 transition">
-                <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
+              <Link href="/" className="flex items-center space-x-3 text-white hover:text-gray-300 transition-all duration-300 group">
+                <div className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-lg border border-gray-600">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                     {/* DevOps Infinity Symbol */}
                     <path d="M18.178 8.178a4 4 0 0 0-5.656 0L12 8.7l-.522-.522a4 4 0 1 0-5.656 5.656L12 20.014l6.178-6.18a4 4 0 0 0 0-5.656z"/>
@@ -44,13 +44,13 @@ export default function RootLayout({
                 <span className="text-2xl font-bold">OHG 365</span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link href="/" className="text-gray-300 hover:text-white transition">
+                <Link href="/" className="text-white hover:text-gray-300 transition-all duration-300 font-medium">
                   Home
                 </Link>
-                <Link href="/docs/what-is-devops" className="text-gray-300 hover:text-white transition">
+                <Link href="/docs/what-is-devops" className="text-white hover:text-gray-300 transition-all duration-300 font-medium">
                   Docs
                 </Link>
-                <Link href="/terminal" className="text-gray-300 hover:text-white transition">
+                <Link href="/terminal" className="text-white hover:text-gray-300 transition-all duration-300 font-medium">
                   Terminal
                 </Link>
               </div>

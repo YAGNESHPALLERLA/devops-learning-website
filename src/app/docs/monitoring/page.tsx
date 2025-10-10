@@ -25,16 +25,14 @@ export default function MonitoringPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-orange-900/50 to-red-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-orange-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Implement comprehensive monitoring and logging solutions for observability.</p>
-            </div>
+          <div className="bg-gray-900/50 border border-gray-600 p-8 rounded-xl mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Goal</h2>
+            <p className="text-white text-xl">Implement comprehensive monitoring and logging solutions for observability.</p>
           </div>
 
-          <h2 id="prometheus" className="text-3xl font-bold text-blue-400 mb-6">1. Prometheus</h2>
-          <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
-            <h3 className="text-2xl font-bold text-red-400 mb-6 neon-glow">Metrics Collection & Storage</h3>
+          <h2 id="prometheus" className="text-3xl font-bold text-white mb-6">1. Prometheus</h2>
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Metrics Collection & Storage</h3>
             <ul className="text-white space-y-3">
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 mt-1">•</span>
@@ -55,7 +53,7 @@ export default function MonitoringPage() {
             </ul>
           </div>
 
-          <h2 id="grafana" className="text-3xl font-bold text-blue-400 mb-6">2. Grafana</h2>
+          <h2 id="grafana" className="text-3xl font-bold text-white mb-6">2. Grafana</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-orange-400 mb-6 neon-glow">Visualization & Dashboards</h3>
             <ul className="text-white space-y-3">
@@ -78,7 +76,7 @@ export default function MonitoringPage() {
             </ul>
           </div>
 
-          <h2 id="cloudwatch" className="text-3xl font-bold text-blue-400 mb-6">3. AWS CloudWatch</h2>
+          <h2 id="cloudwatch" className="text-3xl font-bold text-white mb-6">3. AWS CloudWatch</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <h3 className="text-2xl font-bold text-yellow-400 mb-6 neon-glow">Cloud-Native Monitoring</h3>
             <ul className="text-white space-y-3">
@@ -103,7 +101,7 @@ export default function MonitoringPage() {
 
           <VideoSection videos={monitoringVideos} title="Monitoring Video Tutorials" />
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8 hover-lift">
             <ul className="text-white space-y-3">
               <li className="flex items-start">

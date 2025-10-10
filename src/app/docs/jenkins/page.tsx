@@ -30,14 +30,12 @@ export default function JenkinsPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="gradient-border hover-lift mb-8">
-            <div className="bg-gradient-to-r from-orange-900/50 to-red-900/50 p-8 rounded-xl">
-              <h2 className="text-3xl font-bold text-orange-400 mb-4 neon-glow">Goal</h2>
-              <p className="text-white text-xl">Learn to set up Continuous Integration (CI) and Continuous Deployment (CD) pipelines.</p>
-            </div>
+          <div className="bg-gray-900/50 border border-gray-600 p-8 rounded-xl mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Goal</h2>
+            <p className="text-white text-xl">Learn to set up Continuous Integration (CI) and Continuous Deployment (CD) pipelines.</p>
           </div>
 
-          <h2 id="introduction" className="text-3xl font-bold text-blue-400 mb-6">1. What is Jenkins?</h2>
+          <h2 id="introduction" className="text-3xl font-bold text-white mb-6">1. What is Jenkins?</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
@@ -59,7 +57,7 @@ export default function JenkinsPage() {
             </ul>
           </div>
 
-          <h2 id="why-jenkins-devops" className="text-3xl font-bold text-blue-400 mb-6">2. Why Jenkins in DevOps?</h2>
+          <h2 id="why-jenkins-devops" className="text-3xl font-bold text-white mb-6">2. Why Jenkins in DevOps?</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4 mb-6">
               <div className="bg-red-900 border border-red-700 p-4 rounded">
@@ -87,11 +85,11 @@ export default function JenkinsPage() {
             </ul>
           </div>
 
-          <h2 id="jenkins-architecture" className="text-3xl font-bold text-blue-400 mb-6">3. Jenkins Architecture</h2>
+          <h2 id="jenkins-architecture" className="text-3xl font-bold text-white mb-6">3. Jenkins Architecture</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Jenkins Master (Controller)</h4>
+                <h4 className="font-bold text-white mb-2">Jenkins Master (Controller)</h4>
                 <p className="text-gray-300 text-sm">Runs the web UI & schedules jobs</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -105,11 +103,11 @@ export default function JenkinsPage() {
             </div>
           </div>
 
-          <h2 id="key-concepts" className="text-3xl font-bold text-blue-400 mb-6">4. Key Concepts</h2>
+          <h2 id="key-concepts" className="text-3xl font-bold text-white mb-6">4. Key Concepts</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Job / Project</h4>
+                <h4 className="font-bold text-white mb-2">Job / Project</h4>
                 <p className="text-gray-300 text-sm">Unit of work (e.g., build + test a project)</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -131,7 +129,7 @@ export default function JenkinsPage() {
             </div>
           </div>
 
-          <h2 id="installation" className="text-3xl font-bold text-blue-400 mb-6">5. Installation</h2>
+          <h2 id="installation" className="text-3xl font-bold text-white mb-6">5. Installation</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">On Ubuntu/Debian</h3>
             <div className="bg-gray-900 p-4 rounded border border-gray-600 mb-4">
@@ -162,33 +160,33 @@ sudo systemctl start jenkins`}
             </div>
           </div>
 
-          <h2 id="jenkins-workflow" className="text-3xl font-bold text-blue-400 mb-6">6. Jenkins Workflow</h2>
+          <h2 id="jenkins-workflow" className="text-3xl font-bold text-white mb-6">6. Jenkins Workflow</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
                 <span className="text-gray-300">Developer pushes code to GitHub/GitLab</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
                 <span className="text-gray-300">Jenkins detects change (via webhook/polling)</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
                 <span className="text-gray-300">Jenkins builds project (compile, test, package)</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
                 <span className="text-gray-300">Jenkins creates artifact (JAR, WAR, Docker image)</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
                 <span className="text-gray-300">Jenkins deploys artifact (to server, Docker, Kubernetes, cloud)</span>
               </div>
             </div>
           </div>
 
-          <h2 id="freestyle-vs-pipelines" className="text-3xl font-bold text-blue-400 mb-6">7. Freestyle Jobs vs Pipelines</h2>
+          <h2 id="freestyle-vs-pipelines" className="text-3xl font-bold text-white mb-6">7. Freestyle Jobs vs Pipelines</h2>
           <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Freestyle Jobs</h3>
@@ -240,7 +238,7 @@ sudo systemctl start jenkins`}
             </div>
           </div>
 
-          <h2 id="integrations" className="text-3xl font-bold text-blue-400 mb-6">8. Integrations</h2>
+          <h2 id="integrations" className="text-3xl font-bold text-white mb-6">8. Integrations</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Version Control</h4>
@@ -268,7 +266,7 @@ sudo systemctl start jenkins`}
             </div>
           </div>
 
-          <h2 id="cicd-example" className="text-3xl font-bold text-blue-400 mb-6">9. CI/CD Example</h2>
+          <h2 id="cicd-example" className="text-3xl font-bold text-white mb-6">9. CI/CD Example</h2>
           <div className="space-y-8 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
               <h3 className="text-xl font-bold text-green-400 mb-4">Continuous Integration (CI)</h3>
@@ -289,25 +287,25 @@ sudo systemctl start jenkins`}
             </div>
 
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-bold text-blue-400 mb-4">Continuous Deployment (CD)</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Continuous Deployment (CD)</h3>
               <ul className="text-gray-300 space-y-2">
                 <li className="flex items-start">
-                  <span className="text-blue-400 mr-3 mt-1">•</span>
+                  <span className="text-white mr-3 mt-1">•</span>
                   Deploy automatically to staging server
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-400 mr-3 mt-1">•</span>
+                  <span className="text-white mr-3 mt-1">•</span>
                   If tests pass → deploy to production
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-400 mr-3 mt-1">•</span>
+                  <span className="text-white mr-3 mt-1">•</span>
                   Rollback if deployment fails
                 </li>
               </ul>
             </div>
           </div>
 
-          <h2 id="best-practices" className="text-3xl font-bold text-blue-400 mb-6">10. Best Practices</h2>
+          <h2 id="best-practices" className="text-3xl font-bold text-white mb-6">10. Best Practices</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
@@ -337,7 +335,7 @@ sudo systemctl start jenkins`}
             </ul>
           </div>
 
-          <h2 id="intermediate-features" className="text-3xl font-bold text-blue-400 mb-6">11. Intermediate Features</h2>
+          <h2 id="intermediate-features" className="text-3xl font-bold text-white mb-6">11. Intermediate Features</h2>
           <div className="space-y-4 mb-8">
             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
               <h4 className="font-bold text-purple-400 mb-2">Blue Ocean UI</h4>
@@ -363,7 +361,7 @@ sudo systemctl start jenkins`}
 
           <VideoSection videos={jenkinsVideos} title="Jenkins Video Tutorials" />
 
-          <h2 id="practice-exercises" className="text-3xl font-bold text-blue-400 mb-6">12. Practice Exercises</h2>
+          <h2 id="practice-exercises" className="text-3xl font-bold text-white mb-6">12. Practice Exercises</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
@@ -389,7 +387,7 @@ sudo systemctl start jenkins`}
             </ul>
           </div>
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">

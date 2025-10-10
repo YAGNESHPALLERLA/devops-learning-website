@@ -424,7 +424,7 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
                 onClick={() => switchTechnology(tech.id)}
                 className={`px-3 py-1 rounded text-sm transition-colors ${
                   currentTech === tech.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-rose-600 text-white'
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                 }`}
               >
@@ -455,7 +455,7 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
         {history.map((entry, index) => (
           <div key={index} className="mb-2">
             <div className="flex items-center mb-1">
-              <span className="text-blue-400">{currentTechnology.prompt}</span>
+              <span className="text-white">{currentTechnology.prompt}</span>
               <span className="text-white">:</span>
               <span className="text-yellow-400">{currentTechnology.path}</span>
               <span className="text-white">$</span>
@@ -471,7 +471,7 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
         
         {/* Current Input Line */}
         <form onSubmit={handleSubmit} className="flex items-center">
-          <span className="text-blue-400">{currentTechnology.prompt}</span>
+          <span className="text-white">{currentTechnology.prompt}</span>
           <span className="text-white">:</span>
           <span className="text-yellow-400">{currentTechnology.path}</span>
           <span className="text-white">$</span>

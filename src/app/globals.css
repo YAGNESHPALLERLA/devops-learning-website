@@ -1,70 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  /* Enhanced DevOps Theme Colors */
-  --primary: #3b82f6;        /* Bright Blue - Primary actions */
-  --primary-dark: #2563eb;   /* Darker blue for hover states */
-  --primary-light: #60a5fa;  /* Light blue for backgrounds */
-  --primary-glow: #3b82f6;   /* Glow effect color */
+  /* Ruby Red Theme Colors */
+  --primary: #e11d48;        /* Ruby Red - Primary actions */
+  --primary-dark: #be123c;   /* Darker ruby red for hover states */
+  --primary-light: #f43f5e;  /* Light ruby red for backgrounds */
+  --primary-glow: #e11d48;   /* Glow effect color */
   
-  --secondary: #8b5cf6;      /* Bright Purple - Secondary elements */
-  --secondary-dark: #7c3aed; /* Darker purple */
-  --secondary-light: #a78bfa; /* Light purple */
+  --secondary: #dc2626;      /* Crimson Red - Secondary elements */
+  --secondary-dark: #b91c1c; /* Darker crimson */
+  --secondary-light: #ef4444; /* Light crimson */
   
-  --accent: #10b981;         /* Bright Green - Success, positive actions */
-  --accent-dark: #059669;    /* Darker green */
-  --accent-light: #34d399;   /* Light green */
+  --accent: #f43f5e;         /* Rose Red - Accents and highlights */
+  --accent-dark: #e11d48;    /* Darker rose */
+  --accent-light: #fb7185;   /* Light rose */
   
-  --warning: #f59e0b;        /* Bright Orange - Warnings, highlights */
+  --warning: #f59e0b;        /* Orange - Warnings, highlights */
   --warning-dark: #d97706;   /* Darker orange */
   --warning-light: #fbbf24;  /* Light orange */
   
-  --danger: #ef4444;         /* Bright Red - Errors, destructive actions */
-  --danger-dark: #dc2626;    /* Darker red */
-  --danger-light: #f87171;   /* Light red */
+  --danger: #991b1b;         /* Dark Red - Errors, destructive actions */
+  --danger-dark: #7f1d1d;    /* Darker red */
+  --danger-light: #dc2626;   /* Light red */
   
-  /* Dark Theme Colors */
-  --background: #0a0a0a;     /* Very dark background */
-  --background-secondary: #111111; /* Slightly lighter dark */
-  --surface: #1a1a1a;        /* Dark surface */
-  --surface-secondary: #262626; /* Darker surface */
-  --surface-tertiary: #333333; /* Even darker surface */
+  /* Dark Ash Theme Colors */
+  --background: #1a1a1a;     /* Dark ash background */
+  --background-secondary: #202020; /* Slightly lighter ash */
+  --surface: #252525;        /* Ash surface */
+  --surface-secondary: #2a2a2a; /* Lighter ash surface */
+  --surface-tertiary: #303030; /* Even lighter surface */
   
-  /* Bright Text Colors */
+  /* Pure White Text Colors */
   --foreground: #ffffff;     /* Pure white text */
-  --foreground-secondary: #e5e5e5; /* Light gray text */
-  --foreground-muted: #a3a3a3; /* Medium gray text */
-  --foreground-dim: #737373; /* Dimmed text */
+  --foreground-secondary: #f5f5f5; /* Near white text */
+  --foreground-muted: #d4d4d4; /* Light gray text */
+  --foreground-dim: #a3a3a3; /* Medium gray text */
   
   /* Border and Divider Colors */
-  --border: #404040;         /* Dark border */
-  --border-dark: #525252;    /* Darker border */
-  --border-light: #2a2a2a;   /* Lighter border */
+  --border: #262626;         /* Dark border */
+  --border-dark: #404040;    /* Darker border */
+  --border-light: #1a1a1a;   /* Lighter border */
   
   /* Code and Terminal Colors */
-  --code-bg: #0d1117;        /* GitHub dark background */
-  --code-text: #f0f6fc;      /* Bright code text */
-  --code-accent: #58a6ff;    /* Blue code accent */
-  --terminal-bg: #000000;    /* Pure black terminal */
-  --terminal-text: #00ff41;  /* Matrix green */
+  --code-bg: #1a1a1a;        /* Dark ash background */
+  --code-text: #ffffff;      /* White code text */
+  --code-accent: #e11d48;    /* Ruby red code accent */
+  --terminal-bg: #1a1a1a;    /* Dark ash terminal */
+  --terminal-text: #ffffff;  /* White terminal text */
   
-  /* Enhanced Gradient Colors */
-  --gradient-start: #3b82f6;
-  --gradient-end: #8b5cf6;
-  --gradient-accent: #10b981;
+  /* Ruby Red Gradient Colors */
+  --gradient-start: #e11d48;
+  --gradient-end: #dc2626;
+  --gradient-accent: #f43f5e;
   
-  /* Glow Effects */
-  --glow-primary: 0 0 20px rgba(59, 130, 246, 0.5);
-  --glow-secondary: 0 0 20px rgba(139, 92, 246, 0.5);
-  --glow-accent: 0 0 20px rgba(16, 185, 129, 0.5);
-  --glow-warning: 0 0 20px rgba(245, 158, 11, 0.5);
+  /* No Glow Effects */
+  --glow-primary: none;
+  --glow-secondary: none;
+  --glow-accent: none;
+  --glow-warning: none;
   
-  /* Enhanced Shadow Colors */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  /* Simple Shadow Colors */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
@@ -76,14 +76,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;     /* Dark blue background */
-    --surface: #1e293b;        /* Dark surface */
-    --surface-secondary: #334155; /* Darker surface */
-    --foreground: #f1f5f9;     /* Light text */
-    --foreground-secondary: #cbd5e1; /* Medium light text */
-    --foreground-muted: #94a3b8; /* Muted light text */
-    --border: #334155;         /* Dark border */
-    --border-dark: #475569;    /* Darker border */
+    --background: #1a1a1a;     /* Dark ash background */
+    --surface: #252525;        /* Ash surface */
+    --surface-secondary: #2a2a2a; /* Lighter ash surface */
+    --foreground: #ffffff;     /* Pure white text */
+    --foreground-secondary: #ffffff; /* Pure white text */
+    --foreground-muted: #e5e5e5; /* Near white text */
+    --border: #404040;         /* Dark border */
+    --border-dark: #4a4a4a;    /* Darker border */
   }
 }
 
@@ -94,22 +94,24 @@ body {
   line-height: 1.6;
 }
 
-/* Custom scrollbar styling */
+/* Custom scrollbar styling with Ruby Red */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-secondary);
+  background: #1a1a1a;
+  border-left: 1px solid #404040;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
+  background: #e11d48;
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: #f43f5e;
 }
 
 /* Custom utility classes */
@@ -555,7 +557,7 @@ html {
 
 /* Focus styles for accessibility */
 *:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid #e11d48;
   outline-offset: 2px;
 }
 
@@ -566,42 +568,20 @@ html {
 }
 
 .prose h1 {
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--foreground);
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 700;
   margin-bottom: 2rem;
   line-height: 1.1;
-  text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  0% {
-    filter: brightness(1);
-  }
-  100% {
-    filter: brightness(1.2);
-  }
 }
 
 .prose h2 {
-  color: var(--primary-light);
+  color: var(--foreground);
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   position: relative;
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-  transition: all 0.3s ease;
-}
-
-.prose h2:hover {
-  color: var(--primary);
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  transform: translateX(10px);
 }
 
 .prose h2::before {
@@ -610,114 +590,54 @@ html {
   left: -1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 6px;
-  height: 2.5rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  border-radius: 3px;
-  box-shadow: var(--glow-primary);
-  animation: pulseGlow 2s infinite;
+  width: 4px;
+  height: 2rem;
+  background: var(--primary);
+  border-radius: 2px;
 }
 
 .prose h3 {
-  color: var(--secondary-light);
+  color: var(--foreground);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
-  transition: all 0.3s ease;
-}
-
-.prose h3:hover {
-  color: var(--secondary);
-  text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-  transform: translateX(5px);
 }
 
 .prose h4 {
-  color: var(--accent-light);
+  color: var(--foreground);
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  text-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
-  transition: all 0.3s ease;
 }
 
-.prose h4:hover {
-  color: var(--accent);
-  text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
-  transform: translateX(3px);
-}
-
-/* Enhanced code blocks */
+/* Simple code blocks */
 .prose pre {
   background: var(--code-bg) !important;
   color: var(--code-text) !important;
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 8px;
+  padding: 1.5rem;
   overflow-x: auto;
-  border: 2px solid var(--border);
-  box-shadow: var(--shadow-xl), var(--glow-primary);
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.prose pre:hover {
-  box-shadow: var(--shadow-2xl), var(--glow-secondary);
-  transform: translateY(-2px);
-}
-
-.prose pre::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-  border-radius: 16px 16px 0 0;
-  animation: gradientRotate 3s linear infinite;
+  border: 1px solid var(--border);
 }
 
 .prose code {
-  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  background: var(--surface-secondary);
   color: var(--foreground);
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
   font-size: 0.9em;
-  font-weight: 600;
-  border: 1px solid var(--primary);
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
-  transition: all 0.3s ease;
+  border: 1px solid var(--border);
 }
 
-.prose code:hover {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
-  transform: translateY(-1px);
-}
-
-/* Enhanced blockquotes */
+/* Simple blockquotes */
 .prose blockquote {
   border-left: 4px solid var(--primary);
-  background: linear-gradient(135deg, var(--primary-light), rgba(124, 58, 237, 0.05));
-  padding: 1.5rem;
-  margin: 2rem 0;
-  border-radius: 0 12px 12px 0;
-  position: relative;
-  box-shadow: var(--shadow-sm);
-}
-
-.prose blockquote::before {
-  content: '"';
-  position: absolute;
-  top: -0.5rem;
-  left: 1rem;
-  font-size: 4rem;
-  color: var(--primary);
-  opacity: 0.3;
-  font-family: serif;
+  background: var(--surface-secondary);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
 }
 
 /* Enhanced tables */

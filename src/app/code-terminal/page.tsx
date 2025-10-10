@@ -26,7 +26,7 @@ export default function CodeTerminalPage() {
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-blue-400 mb-3">Supported Languages</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Supported Languages</h3>
               <div className="space-y-4">
                 <div className="bg-gray-700 p-4 rounded-lg">
                   <div className="text-2xl mb-2">🐍</div>
@@ -57,7 +57,7 @@ export default function CodeTerminalPage() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-blue-400 mb-3">Features</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Features</h3>
               <div className="space-y-6">
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
@@ -121,7 +121,7 @@ export default function CodeTerminalPage() {
           
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">🚀 Getting Started</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">🚀 Getting Started</h3>
               <ul className="space-y-2 text-gray-300">
                 <li>• Select a programming language from the tabs above</li>
                 <li>• Click "Load Example" to see sample code</li>
@@ -132,7 +132,7 @@ export default function CodeTerminalPage() {
             </div>
             
             <div>
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">💡 Best Practices</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">💡 Best Practices</h3>
               <ul className="space-y-2 text-gray-300">
                 <li>• Start with simple examples and build complexity</li>
                 <li>• Experiment with different language features</li>
@@ -143,8 +143,8 @@ export default function CodeTerminalPage() {
             </div>
           </div>
 
-          <div className="mt-8 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-            <h4 className="text-blue-400 font-semibold mb-2">💻 Try These Examples:</h4>
+          <div className="mt-8 p-4 bg-rose-900/20 border border-rose-500/30 rounded-lg">
+            <h4 className="text-white font-semibold mb-2">💻 Try These Examples:</h4>
             <div className="space-y-4 text-sm">
               <div>
                 <strong className="text-white">Python:</strong>

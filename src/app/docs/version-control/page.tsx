@@ -26,27 +26,27 @@ export default function VersionControlPage() {
         </h1>
         
         <div className="max-w-6xl mx-auto">
-          <div className="bg-blue-900 border border-blue-700 p-6 rounded-lg mb-8">
-            <h2 className="text-2xl font-bold text-blue-300 mb-4">Goal</h2>
+          <div className="bg-gray-900/50 border border-gray-600 p-6 rounded-lg mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4">Goal</h2>
             <p className="text-gray-300 text-lg">Master Git for version control and collaborative development in DevOps.</p>
           </div>
 
-          <h2 id="introduction" className="text-3xl font-bold text-blue-400 mb-6">1. What is Version Control?</h2>
+          <h2 id="introduction" className="text-3xl font-bold text-white mb-6">1. What is Version Control?</h2>
           
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-red-400 mb-4">Problem without version control:</h3>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
+            <h3 className="text-xl font-bold text-white mb-4">Problem without version control:</h3>
             <div className="space-y-4 mb-6">
-              <div className="bg-red-900 border border-red-700 p-4 rounded">
-                <p className="text-red-300 font-semibold">❌ Code scattered across folders</p>
+              <div className="bg-gray-700 border border-gray-500 p-4 rounded">
+                <p className="text-white font-semibold">❌ Code scattered across folders</p>
               </div>
-              <div className="bg-red-900 border border-red-700 p-4 rounded">
-                <p className="text-red-300 font-semibold">❌ No history of changes</p>
+              <div className="bg-gray-700 border border-gray-500 p-4 rounded">
+                <p className="text-white font-semibold">❌ No history of changes</p>
               </div>
-              <div className="bg-red-900 border border-red-700 p-4 rounded">
-                <p className="text-red-300 font-semibold">❌ Team collaboration chaos</p>
+              <div className="bg-gray-700 border border-gray-500 p-4 rounded">
+                <p className="text-white font-semibold">❌ Team collaboration chaos</p>
               </div>
-              <div className="bg-red-900 border border-red-700 p-4 rounded">
-                <p className="text-red-300 font-semibold">❌ Can't rollback mistakes</p>
+              <div className="bg-gray-700 border border-gray-500 p-4 rounded">
+                <p className="text-white font-semibold">❌ Can't rollback mistakes</p>
               </div>
             </div>
             
@@ -75,8 +75,8 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="what-is-git" className="text-3xl font-bold text-blue-400 mb-6">2. What is Git?</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="what-is-git" className="text-3xl font-bold text-white mb-6">2. What is Git?</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
                 <span className="text-green-400 mr-3 mt-1">•</span>
@@ -101,39 +101,39 @@ export default function VersionControlPage() {
             </ul>
           </div>
 
-          <h2 id="why-git-devops" className="text-3xl font-bold text-blue-400 mb-6">3. Why Git in DevOps?</h2>
+          <h2 id="why-git-devops" className="text-3xl font-bold text-white mb-6">3. Why Git in DevOps?</h2>
           <div className="space-y-4 mb-8">
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Infrastructure as Code</h4>
               <p className="text-gray-300 text-sm">Version control for Terraform, Ansible, etc.</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">CI/CD Integration</h4>
               <p className="text-gray-300 text-sm">Automated builds triggered by commits</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Code Review</h4>
               <p className="text-gray-300 text-sm">Pull requests for quality assurance</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Deployment Tracking</h4>
               <p className="text-gray-300 text-sm">Know exactly what's deployed where</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Rollback Capability</h4>
               <p className="text-gray-300 text-sm">Quickly revert problematic deployments</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Collaboration</h4>
               <p className="text-gray-300 text-sm">Multiple teams working on same codebase</p>
             </div>
           </div>
 
-          <h2 id="git-architecture" className="text-3xl font-bold text-blue-400 mb-6">4. Git Architecture</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="git-architecture" className="text-3xl font-bold text-white mb-6">4. Git Architecture</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-blue-400 mb-2">Working Directory</h4>
+                <h4 className="font-bold text-white mb-2">Working Directory</h4>
                 <p className="text-gray-300 text-sm">Files you're currently editing</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -149,7 +149,7 @@ export default function VersionControlPage() {
                 <p className="text-gray-300 text-sm">Parallel lines of development</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-red-400 mb-2">Commits</h4>
+                <h4 className="font-bold text-white mb-2">Commits</h4>
                 <p className="text-gray-300 text-sm">Snapshots of your code</p>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
@@ -159,40 +159,40 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="git-workflow" className="text-3xl font-bold text-blue-400 mb-6">5. Git Basic Workflow</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="git-workflow" className="text-3xl font-bold text-white mb-6">5. Git Basic Workflow</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
                 <span className="text-gray-300">Edit files in working directory</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
                 <code className="text-green-400 font-mono">git add</code>
                 <span className="text-gray-300 ml-3">Stage changes</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
                 <code className="text-green-400 font-mono">git commit</code>
                 <span className="text-gray-300 ml-3">Save snapshot</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
                 <code className="text-green-400 font-mono">git push</code>
                 <span className="text-gray-300 ml-3">Share with team</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
                 <code className="text-green-400 font-mono">git pull</code>
                 <span className="text-gray-300 ml-3">Get latest changes</span>
               </div>
             </div>
           </div>
 
-          <h2 id="git-commands" className="text-3xl font-bold text-blue-400 mb-6">6. Important Git Commands</h2>
+          <h2 id="git-commands" className="text-3xl font-bold text-white mb-6">6. Important Git Commands</h2>
           <div className="space-y-8 mb-8">
             <div className="space-y-6">
-              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 Repository Setup</h3>
                 <div className="space-y-2">
                   <div className="bg-gray-700 p-3 rounded">
@@ -214,7 +214,7 @@ export default function VersionControlPage() {
                 </div>
               </div>
 
-              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 Basic Workflow</h3>
                 <div className="space-y-2">
                   <div className="bg-gray-700 p-3 rounded">
@@ -238,7 +238,7 @@ export default function VersionControlPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 Remote Operations</h3>
                 <div className="space-y-2">
                   <div className="bg-gray-700 p-3 rounded">
@@ -260,7 +260,7 @@ export default function VersionControlPage() {
                 </div>
               </div>
 
-              <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+              <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">🔹 History & Inspection</h3>
                 <div className="space-y-2">
                   <div className="bg-gray-700 p-3 rounded">
@@ -284,9 +284,9 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="branching-merging" className="text-3xl font-bold text-blue-400 mb-6">7. Branching & Merging</h2>
+          <h2 id="branching-merging" className="text-3xl font-bold text-white mb-6">7. Branching & Merging</h2>
           <div className="space-y-8 mb-8">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Branching</h3>
               <div className="space-y-2 mb-4">
                 <div className="bg-gray-700 p-3 rounded">
@@ -309,7 +309,7 @@ export default function VersionControlPage() {
               <p className="text-gray-300">Branches allow parallel development without conflicts</p>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-6 rounded-lg border border-gray-600">
               <h3 className="text-xl font-bold text-purple-400 mb-4">Merging</h3>
               <div className="space-y-2 mb-4">
                 <div className="bg-gray-700 p-3 rounded">
@@ -329,8 +329,8 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="remote-repositories" className="text-3xl font-bold text-blue-400 mb-6">8. Remote Repositories</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="remote-repositories" className="text-3xl font-bold text-white mb-6">8. Remote Repositories</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-purple-400 mb-4">Popular Git Hosting</h3>
@@ -373,32 +373,32 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="collaboration" className="text-3xl font-bold text-blue-400 mb-6">9. Collaboration & Pull Requests</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="collaboration" className="text-3xl font-bold text-white mb-6">9. Collaboration & Pull Requests</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <h3 className="text-xl font-bold text-purple-400 mb-4">Pull Request Workflow</h3>
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">1</div>
                 <span className="text-gray-300">Create feature branch from main</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">2</div>
                 <span className="text-gray-300">Make changes and commit</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">3</div>
                 <span className="text-gray-300">Push branch to remote</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">4</div>
                 <span className="text-gray-300">Create Pull Request</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">5</div>
                 <span className="text-gray-300">Code review and discussion</span>
               </div>
               <div className="flex items-center">
-                <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">6</div>
+                <div className="bg-rose-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 font-bold">6</div>
                 <span className="text-gray-300">Merge after approval</span>
               </div>
             </div>
@@ -408,8 +408,8 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="git-hooks" className="text-3xl font-bold text-blue-400 mb-6">10. Git Hooks</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="git-hooks" className="text-3xl font-bold text-white mb-6">10. Git Hooks</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <p className="text-gray-300 mb-4">Git hooks are scripts that run automatically at certain points in the Git workflow.</p>
             
             <div className="space-y-6">
@@ -450,64 +450,64 @@ export default function VersionControlPage() {
             </div>
           </div>
 
-          <h2 id="git-devops" className="text-3xl font-bold text-blue-400 mb-6">11. Git in DevOps</h2>
+          <h2 id="git-devops" className="text-3xl font-bold text-white mb-6">11. Git in DevOps</h2>
           <div className="space-y-4 mb-8">
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Infrastructure as Code</h4>
               <p className="text-gray-300">Version control Terraform, Ansible, CloudFormation</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">CI/CD Pipelines</h4>
               <p className="text-gray-300">Jenkins, GitHub Actions, GitLab CI triggered by commits</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">GitOps</h4>
               <p className="text-gray-300">Git as single source of truth for deployments</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Environment Promotion</h4>
               <p className="text-gray-300">Deploy same code across dev → staging → prod</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Configuration Management</h4>
               <p className="text-gray-300">Version control application configs</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Release Management</h4>
               <p className="text-gray-300">Git tags for versioning and releases</p>
             </div>
           </div>
 
-          <h2 id="advanced-concepts" className="text-3xl font-bold text-blue-400 mb-6">12. Advanced Concepts</h2>
+          <h2 id="advanced-concepts" className="text-3xl font-bold text-white mb-6">12. Advanced Concepts</h2>
           <div className="space-y-4 mb-8">
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Rebasing</h4>
               <p className="text-gray-300 text-sm">Cleaner history by replaying commits</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Cherry-picking</h4>
               <p className="text-gray-300 text-sm">Apply specific commits to other branches</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Stashing</h4>
               <p className="text-gray-300 text-sm">Temporarily save uncommitted changes</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Submodules</h4>
               <p className="text-gray-300 text-sm">Include other repositories as dependencies</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">Git Flow</h4>
               <p className="text-gray-300 text-sm">Branching strategy for releases</p>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-600">
               <h4 className="font-bold text-purple-400 mb-2">GitHub Flow</h4>
               <p className="text-gray-300 text-sm">Simpler branching for continuous deployment</p>
             </div>
           </div>
 
-          <h2 id="practice-exercises" className="text-3xl font-bold text-blue-400 mb-6">13. Practice Exercises</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="practice-exercises" className="text-3xl font-bold text-white mb-6">13. Practice Exercises</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
                 <span className="text-green-400 mr-3 mt-1">•</span>
@@ -540,8 +540,8 @@ export default function VersionControlPage() {
             </ul>
           </div>
 
-          <h2 id="summary" className="text-3xl font-bold text-blue-400 mb-6">✅ Summary</h2>
-          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+          <h2 id="summary" className="text-3xl font-bold text-white mb-6">✅ Summary</h2>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-600 mb-8">
             <ul className="text-gray-300 space-y-3">
               <li className="flex items-start">
                 <span className="text-green-400 mr-3 mt-1">•</span>
