@@ -7,14 +7,26 @@ interface PageNavigationProps {
   previousPage?: {
     href: string;
     title: string;
+    isSection?: boolean;
   };
   nextPage?: {
     href: string;
     title: string;
+    isSection?: boolean;
   };
+  onSectionChange?: (section: string) => void;
 }
 
-export default function PageNavigation({ previousPage, nextPage }: PageNavigationProps) {
+export default function PageNavigation({ previousPage, nextPage, onSectionChange }: PageNavigationProps) {
+  const handleClick = (e: React.MouseEvent, href: string, isSection?: boolean) => {
+    if (isSection && onSectionChange) {
+      e.preventDefault();
+      const section = href.split('#')[1];
+      onSectionChange(section);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="mt-12 pt-8 border-t border-gray-700">
       <div className="flex justify-between items-center gap-4">
@@ -23,6 +35,7 @@ export default function PageNavigation({ previousPage, nextPage }: PageNavigatio
           {previousPage ? (
             <Link
               href={previousPage.href}
+              onClick={(e) => handleClick(e, previousPage.href, previousPage.isSection)}
               className="group flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
             >
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-500/20 group-hover:bg-blue-500/30 transition-colors">
@@ -59,6 +72,7 @@ export default function PageNavigation({ previousPage, nextPage }: PageNavigatio
           {nextPage ? (
             <Link
               href={nextPage.href}
+              onClick={(e) => handleClick(e, nextPage.href, nextPage.isSection)}
               className="group flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
             >
               <div className="flex-1 text-right">

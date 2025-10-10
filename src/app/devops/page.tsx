@@ -31,36 +31,42 @@ export default function DevOpsPage() {
     { id: 'git-advanced', title: 'Advanced Git' },
     { id: 'github-gitlab', title: 'GitHub & GitLab' },
     
-    // 4. Containerization
+    // 4. Infrastructure Automation
+    { id: 'ansible-basics', title: 'Ansible Basics' },
+    { id: 'ansible-playbooks', title: 'Ansible Playbooks' },
+    { id: 'ansible-roles', title: 'Ansible Roles' },
+    { id: 'ansible-advanced', title: 'Advanced Ansible' },
+    
+    // 5. Containerization
     { id: 'docker-basics', title: 'Docker Basics' },
     { id: 'docker-compose', title: 'Docker Compose' },
     { id: 'container-best-practices', title: 'Container Best Practices' },
     
-    // 5. Orchestration
+    // 6. Orchestration
     { id: 'kubernetes-basics', title: 'Kubernetes Basics' },
     { id: 'k8s-deployments', title: 'K8s Deployments' },
     { id: 'k8s-services', title: 'K8s Services' },
     { id: 'k8s-monitoring', title: 'K8s Monitoring' },
     
-    // 6. CI/CD
+    // 7. CI/CD
     { id: 'jenkins-basics', title: 'Jenkins Basics' },
     { id: 'jenkins-pipelines', title: 'Jenkins Pipelines' },
     { id: 'github-actions', title: 'GitHub Actions' },
     { id: 'gitlab-ci', title: 'GitLab CI' },
     
-    // 7. Monitoring
+    // 8. Monitoring
     { id: 'prometheus-basics', title: 'Prometheus Basics' },
     { id: 'grafana-dashboards', title: 'Grafana Dashboards' },
     { id: 'elk-stack', title: 'ELK Stack' },
     { id: 'alerting', title: 'Alerting & Incident Response' },
     
-    // 8. Advanced Topics
+    // 9. Advanced Topics
     { id: 'automation', title: 'Automation & Orchestration' },
     { id: 'security', title: 'DevSecOps & Security' },
     { id: 'cloud-platforms', title: 'Cloud Platforms & Services' },
     { id: 'monitoring-observability', title: 'Monitoring & Observability' },
     
-    // 9. Resources
+    // 10. Resources
     { id: 'tools-technologies', title: 'Tools & Technologies' },
     { id: 'learning-path', title: 'Learning Path' },
     { id: 'summary', title: 'Summary' }
@@ -88,6 +94,32 @@ export default function DevOpsPage() {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
+
+  // Get navigation for current section
+  const getNavigation = () => {
+    const currentIndex = pageHeadings.findIndex(h => h.id === activeSection);
+    const previousSection = currentIndex > 0 ? pageHeadings[currentIndex - 1] : null;
+    const nextSection = currentIndex < pageHeadings.length - 1 ? pageHeadings[currentIndex + 1] : null;
+
+    return {
+      previous: previousSection ? {
+        href: `/devops/#${previousSection.id}`,
+        title: previousSection.title,
+        isSection: true
+      } : undefined,
+      next: nextSection ? {
+        href: `/devops/#${nextSection.id}`,
+        title: nextSection.title,
+        isSection: true
+      } : {
+        href: '/java',
+        title: 'Java Programming',
+        isSection: false
+      }
+    };
+  };
+
+  const navigation = getNavigation();
 
   const renderContent = () => {
     switch (activeSection) {
@@ -11114,10 +11146,9 @@ export default function DevOpsPage() {
         
         {/* Page Navigation - Shows on all sections */}
         <PageNavigation
-          nextPage={{
-            href: '/java',
-            title: 'Java Programming'
-          }}
+          previousPage={navigation.previous}
+          nextPage={navigation.next}
+          onSectionChange={setActiveSection}
         />
       </div>
     </TechLayout>
