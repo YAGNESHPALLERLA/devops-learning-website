@@ -150,7 +150,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">OHG 365</h1>
+            <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">OneHubGlobal</h1>
             <div className="w-10" /> {/* Spacer for centering */}
           </div>
         </header>

@@ -32,7 +32,7 @@ export default function CodeExecutionTerminal({ className = '' }: TerminalProps)
 print("Hello, World!")
 
 # Variables and operations
-name = "OHG 365"
+name = "OneHubGlobal"
 age = 25
 print(f"Name: {name}, Age: {age}")
 
@@ -55,7 +55,7 @@ print(greet("Developer"))`
 console.log("Hello, World!");
 
 // Variables and operations
-const name = "OHG 365";
+const name = "OneHubGlobal";
 const age = 25;
 console.log(\`Name: \${name}, Age: \${age}\`);
 
@@ -81,7 +81,7 @@ public class Main {
         System.out.println("Hello, World!");
         
         // Variables and operations
-        String name = "OHG 365";
+        String name = "OneHubGlobal";
         int age = 25;
         System.out.println("Name: " + name + ", Age: " + age);
         
@@ -144,7 +144,7 @@ GROUP BY grade;`
 echo "Hello, World!"
 
 # Variables and operations
-NAME="OHG 365"
+NAME="OneHubGlobal"
 AGE=25
 echo "Name: $NAME, Age: $AGE"
 
@@ -230,7 +230,7 @@ echo "Date:" $(date)`
           const fMatch = line.match(/print\(f["'](.*?)["']\)/);
           if (fMatch) {
             output += fMatch[1].replace(/\{([^}]+)\}/g, (match, varName) => {
-              if (varName === 'name') return 'OHG 365';
+              if (varName === 'name') return 'OneHubGlobal';
               if (varName === 'age') return '25';
               return match;
             }) + '\n';
@@ -260,7 +260,7 @@ echo "Date:" $(date)`
           const templateMatch = line.match(/console\.log\(`(.*?)`\)/);
           if (templateMatch) {
             output += templateMatch[1].replace(/\$\{([^}]+)\}/g, (match, varName) => {
-              if (varName === 'name') return 'OHG 365';
+              if (varName === 'name') return 'OneHubGlobal';
               if (varName === 'age') return '25';
               return match;
             }) + '\n';
@@ -283,7 +283,7 @@ Compilation successful.
 Running Main.class...
 
 Hello, World!
-Name: OHG 365, Age: 25
+Name: OneHubGlobal, Age: 25
 Squared numbers: [1, 4, 9, 16, 25]
 Hello, Developer!`;
   };
@@ -330,7 +330,7 @@ Hello, Developer!`;
       if (line.includes('echo "Hello, World!"')) {
         output += 'Hello, World!\n';
       } else if (line.includes('echo "Name: $NAME, Age: $AGE"')) {
-        output += 'Name: OHG 365, Age: 25\n';
+        output += 'Name: OneHubGlobal, Age: 25\n';
       } else if (line.includes('echo "Squared numbers:"')) {
         output += 'Squared numbers: 1 4 9 16 25\n';
       } else if (line.includes('greet "Developer"')) {

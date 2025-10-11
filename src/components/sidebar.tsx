@@ -113,7 +113,7 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
               <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
             </svg>
           </div>
-          <span className="text-xl font-bold text-white transition-all duration-300 group-hover:text-gray-300">OHG 365</span>
+          <span className="text-xl font-bold text-white transition-all duration-300 group-hover:text-gray-300">OneHubGlobal</span>
         </Link>
       </div>
 

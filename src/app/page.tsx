@@ -39,7 +39,7 @@ export default function HomePage() {
       <section className="text-center py-20 px-4">
         <div className="container mx-auto">
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
-            🎓 OHG 365
+            🎓 OneHubGlobal
           </h1>
           <p className="text-xl md:text-2xl text-white mb-4">
             Master the technologies that power modern software development

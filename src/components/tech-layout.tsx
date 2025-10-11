@@ -23,7 +23,7 @@ const getTechNavigationItems = (tech: string) => {
     },
     {
       id: 'devops',
-      title: 'OHG 365',
+      title: 'OneHubGlobal',
       href: '/devops',
       icon: '🚀'
     }
@@ -523,7 +523,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
                technology === 'web-dev' ? 'Web Development' :
                technology === 'data-science' ? 'Data Science' :
                technology === 'code-terminal' ? 'Code Terminal' :
-               technology === 'devops' ? 'DevOps' : 'OHG 365'}
+               technology === 'devops' ? 'DevOps' : 'OneHubGlobal'}
             </h1>
             <div className="w-10" /> {/* Spacer for centering */}
           </div>

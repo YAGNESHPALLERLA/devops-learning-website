@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OHG 365 by Yagnesh",
+  title: "OneHubGlobal",
   description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
 };
 
@@ -41,7 +41,7 @@ export default function RootLayout({
                     <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
                   </svg>
                 </div>
-                <span className="text-2xl font-bold">OHG 365</span>
+                <span className="text-2xl font-bold">OneHubGlobal</span>
               </Link>
               <div className="hidden md:flex space-x-6">
                 <Link href="/" className="text-white hover:text-gray-300 transition-all duration-300 font-medium">
