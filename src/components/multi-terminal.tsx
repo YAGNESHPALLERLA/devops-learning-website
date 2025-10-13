@@ -473,7 +473,7 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
   const currentTechnology = technologies[currentTech];
 
   return (
-    <div className={`bg-black text-green-400 font-mono rounded-lg overflow-hidden text-lg ${className}`}>
+    <div className={`bg-black text-green-400 font-mono rounded-lg overflow-hidden text-lg border border-gray-700 ${className}`}>
       {/* Technology Switcher */}
       <div className="bg-gray-900 px-4 py-2 border-b border-gray-700">
         <div className="flex items-center justify-between">
@@ -541,11 +541,17 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="ml-2 bg-transparent text-green-400 outline-none flex-1 text-lg"
+            className="ml-2 bg-transparent text-green-400 border-none outline-none flex-1 text-lg focus:outline-none focus:ring-0"
             placeholder="Enter command..."
             disabled={isProcessing}
           />
-          {isProcessing && <span className="text-yellow-400 animate-pulse text-lg">⏳</span>}
+          <button
+            type="submit"
+            disabled={isProcessing || !input.trim()}
+            className="ml-3 px-4 py-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white text-sm rounded transition-colors font-semibold"
+          >
+            {isProcessing ? '⏳' : 'Run'}
+          </button>
         </form>
       </div>
     </div>

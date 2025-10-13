@@ -92,6 +92,20 @@ export default function TerminalPage() {
           </div>
           
           <div className="p-8">
+            <div className="mb-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+              <div className="flex items-start space-x-3">
+                <div className="text-blue-400 text-lg">💡</div>
+                <div>
+                  <h4 className="text-blue-300 font-semibold mb-2">How to Use the Terminal:</h4>
+                  <ul className="text-sm text-blue-200 space-y-1">
+                    <li>• Type commands and press <strong>Enter</strong> or click <strong>Run</strong> to execute</li>
+                    <li>• Use <code className="bg-gray-700 text-green-400 px-1 rounded">help</code> to see available commands</li>
+                    <li>• Try <code className="bg-gray-700 text-green-400 px-1 rounded">python -c "print('Hello World')"</code> for Python execution</li>
+                    <li>• Try <code className="bg-gray-700 text-green-400 px-1 rounded">compile System.out.println("Hello World");</code> for Java execution</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <MultiTerminal className="w-full" />
           </div>
         </div>
