@@ -496,7 +496,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
 
       {/* Sidebar */}
       <aside className={`
-        fixed lg:static inset-y-0 left-0 z-50 w-80 bg-[#1a1a1a] shadow-2xl lg:shadow-xl border-r border-gray-600
+        fixed lg:static inset-y-0 left-0 z-[60] w-80 bg-[#1a1a1a] shadow-2xl lg:shadow-xl border-r border-gray-600
         transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>

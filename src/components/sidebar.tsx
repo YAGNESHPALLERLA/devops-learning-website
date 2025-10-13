@@ -102,7 +102,7 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600">
+    <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600 relative z-[60]">
       {/* Logo/Brand */}
       <div className="p-6 border-b border-gray-600 animate-fade-in-up">
         <Link href="/" className="flex items-center space-x-3 group transition-all duration-300 hover:scale-105">
