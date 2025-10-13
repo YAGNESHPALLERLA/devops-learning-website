@@ -44,7 +44,73 @@ export default function PythonPage() {
     { id: 'file-handling', title: 'Python File Handling' },
     { id: 'advanced', title: 'Python Advanced' },
     { id: 'practice-projects', title: 'Practice Projects' },
-    { id: 'video-tutorials', title: 'Video Tutorials' }
+    { id: 'video-tutorials', title: 'Video Tutorials' },
+    // New comprehensive sections
+    { id: 'python-versions', title: 'Python Versions & Installation' },
+    { id: 'virtual-environments', title: 'Virtual Environments' },
+    { id: 'string-methods', title: 'Python String Methods' },
+    { id: 'list-methods', title: 'Python List Methods' },
+    { id: 'dict-methods', title: 'Python Dictionary Methods' },
+    { id: 'set-methods', title: 'Python Set Methods' },
+    { id: 'tuple-methods', title: 'Python Tuple Methods' },
+    { id: 'built-in-functions', title: 'Python Built-in Functions' },
+    { id: 'user-input', title: 'Python User Input' },
+    { id: 'math-operations', title: 'Python Math Operations' },
+    { id: 'random-module', title: 'Python Random Module' },
+    { id: 'datetime-module', title: 'Python DateTime Module' },
+    { id: 'os-module', title: 'Python OS Module' },
+    { id: 'sys-module', title: 'Python Sys Module' },
+    { id: 'collections-module', title: 'Python Collections Module' },
+    { id: 'itertools-module', title: 'Python Itertools Module' },
+    { id: 'functools-module', title: 'Python Functools Module' },
+    { id: 'generators', title: 'Python Generators' },
+    { id: 'decorators', title: 'Python Decorators' },
+    { id: 'context-managers', title: 'Python Context Managers' },
+    { id: 'metaclasses', title: 'Python Metaclasses' },
+    { id: 'descriptors', title: 'Python Descriptors' },
+    { id: 'properties', title: 'Python Properties' },
+    { id: 'abstract-base-classes', title: 'Python Abstract Base Classes' },
+    { id: 'protocols', title: 'Python Protocols' },
+    { id: 'dataclasses', title: 'Python Dataclasses' },
+    { id: 'enums', title: 'Python Enums' },
+    { id: 'typing-module', title: 'Python Typing Module' },
+    { id: 'type-hints', title: 'Python Type Hints' },
+    { id: 'pathlib', title: 'Python Pathlib' },
+    { id: 'logging', title: 'Python Logging' },
+    { id: 'unittest', title: 'Python Unit Testing' },
+    { id: 'pytest', title: 'Python Pytest' },
+    { id: 'asyncio', title: 'Python AsyncIO' },
+    { id: 'multiprocessing', title: 'Python Multiprocessing' },
+    { id: 'threading', title: 'Python Threading' },
+    { id: 'concurrent-futures', title: 'Python Concurrent Futures' },
+    { id: 'queue-module', title: 'Python Queue Module' },
+    { id: 'socket-programming', title: 'Python Socket Programming' },
+    { id: 'http-requests', title: 'Python HTTP Requests' },
+    { id: 'web-scraping', title: 'Python Web Scraping' },
+    { id: 'data-analysis', title: 'Python Data Analysis' },
+    { id: 'machine-learning', title: 'Python Machine Learning' },
+    { id: 'web-frameworks', title: 'Python Web Frameworks' },
+    { id: 'database-connectivity', title: 'Python Database Connectivity' },
+    { id: 'gui-programming', title: 'Python GUI Programming' },
+    { id: 'game-development', title: 'Python Game Development' },
+    { id: 'automation-scripts', title: 'Python Automation Scripts' },
+    { id: 'devops-tools', title: 'Python DevOps Tools' },
+    { id: 'performance-optimization', title: 'Python Performance Optimization' },
+    { id: 'memory-management', title: 'Python Memory Management' },
+    { id: 'profiling', title: 'Python Profiling' },
+    { id: 'debugging', title: 'Python Debugging' },
+    { id: 'packaging', title: 'Python Packaging' },
+    { id: 'distribution', title: 'Python Distribution' },
+    { id: 'best-practices', title: 'Python Best Practices' },
+    { id: 'code-style', title: 'Python Code Style (PEP 8)' },
+    { id: 'documentation', title: 'Python Documentation' },
+    { id: 'error-handling', title: 'Python Error Handling' },
+    { id: 'security', title: 'Python Security' },
+    { id: 'intermediate-projects', title: 'Intermediate Python Projects' },
+    { id: 'advanced-projects', title: 'Advanced Python Projects' },
+    { id: 'real-world-applications', title: 'Real-World Python Applications' },
+    { id: 'career-path', title: 'Python Career Path' },
+    { id: 'resources', title: 'Python Learning Resources' }
   ];
 
   const pythonVideos = getVideosForTopic('python');
@@ -544,18 +610,232 @@ print("Hello")`}</pre>
           <main>
             <div className="animate-fade-in-up">
               <h1 id="syntax" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
-                📝 Python Syntax
+                📝 Python Syntax - Complete Guide
               </h1>
               <p className="text-lg text-gray-400 mb-8 text-center">
-                Learn Python's syntax rules and code structure
+                Master Python's syntax rules, code structure, and programming conventions
               </p>
               
               <div className="max-w-6xl mx-auto">
+                {/* Comprehensive Syntax Theory */}
+                <div className="bg-gradient-to-r from-green-600/10 to-emerald-600/10 border border-green-500/20 p-8 rounded-2xl mb-8">
+                  <h2 className="text-3xl font-bold text-green-400 mb-6">📚 Understanding Python Syntax</h2>
+                  
+                  <div className="space-y-6">
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">What is Syntax in Programming?</h3>
+                      <p className="text-lg text-gray-300 mb-4 leading-relaxed">
+                        <strong className="text-white">Syntax</strong> is the set of rules that defines how a Python program will be written and interpreted. 
+                        Just like human languages have grammar rules, programming languages have syntax rules that must be followed for the code to be valid.
+                      </p>
+                      <p className="text-gray-300 mb-4 leading-relaxed">
+                        Think of syntax as the "grammar" of programming. Just as you can't write an English sentence without following grammar rules, 
+                        you can't write Python code without following its syntax rules. Even a small syntax error (like forgetting a colon or using 
+                        incorrect indentation) will prevent your program from running.
+                      </p>
+                      <p className="text-gray-300 leading-relaxed">
+                        Python's syntax is designed to be <strong className="text-white">clean and readable</strong>, emphasizing simplicity and clarity. 
+                        Guido van Rossum, Python's creator, wanted the language to be easy to read and write, which is why Python uses 
+                        <strong className="text-white"> significant whitespace</strong> instead of braces or keywords to delimit code blocks.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Python's Unique Syntax Features</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-green-400 font-bold mb-3">1. Indentation-Based Structure</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            Python uses <strong className="text-white">indentation</strong> (whitespace at the beginning of lines) to define code blocks, 
+                            unlike languages like Java, C++, or JavaScript that use curly braces {}.
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div>
+                              <p className="text-green-400 text-xs font-bold mb-2">Python (Indentation)</p>
+                              <div className="bg-gray-900 p-3 rounded">
+                                <pre className="text-green-400 font-mono text-xs">
+{`if x > 0:
+    print("Positive")
+    print("Number")
+print("Done")`}
+                                </pre>
+                              </div>
+                            </div>
+                            <div>
+                              <p className="text-yellow-400 text-xs font-bold mb-2">Java (Braces)</p>
+                              <div className="bg-gray-900 p-3 rounded">
+                                <pre className="text-yellow-400 font-mono text-xs">
+{`if (x > 0) {
+    System.out.println("Positive");
+    System.out.println("Number");
+}
+System.out.println("Done");`}
+                                </pre>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-3 bg-blue-900/20 border border-blue-500/30 p-3 rounded">
+                            <p className="text-gray-300 text-xs">
+                              <strong className="text-white">PEP 8 Standard:</strong> Use 4 spaces per indentation level. Never mix tabs and spaces!
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-green-400 font-bold mb-3">2. No Semicolons Required</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            Unlike C, Java, or JavaScript, Python doesn't require semicolons (;) at the end of statements. 
+                            Each new line is treated as a new statement.
+                          </p>
+                          <div className="bg-gray-900 p-3 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`# Python - No semicolons needed
+x = 5
+y = 10
+print(x + y)
+
+# JavaScript - Semicolons required
+// let x = 5;
+// let y = 10;
+// console.log(x + y);`}
+                            </pre>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-green-400 font-bold mb-3">3. Colon Usage</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            Colons (:) are used to start code blocks in control structures, functions, classes, and loops. 
+                            This is a mandatory part of Python syntax.
+                          </p>
+                          <div className="bg-gray-900 p-3 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`# Colon starts a new block
+if condition:       # ← Colon here
+    do_something()  # ← Indented block
+
+def function():     # ← Colon here
+    return value    # ← Indented block
+
+for i in range(10): # ← Colon here
+    print(i)        # ← Indented block`}
+                            </pre>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-green-400 font-bold mb-3">4. Case Sensitivity</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            Python is <strong className="text-white">case-sensitive</strong>, meaning uppercase and lowercase letters are treated as different characters.
+                          </p>
+                          <div className="bg-gray-900 p-3 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`Variable = 10    # Different from 'variable'
+variable = 20    # Different from 'Variable'
+VARIABLE = 30    # Different from both above
+
+print(Variable)  # Output: 10
+print(variable)  # Output: 20
+print(VARIABLE)  # Output: 30`}
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Statement Types in Python</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-3">Simple Statements</h4>
+                          <p className="text-gray-300 text-sm mb-2">Single line statements:</p>
+                          <div className="bg-gray-900 p-2 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`x = 5          # Assignment
+print("Hi")    # Function call
+return value   # Return statement
+break          # Loop control
+continue       # Loop control
+pass           # Placeholder`}
+                            </pre>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-3">Compound Statements</h4>
+                          <p className="text-gray-300 text-sm mb-2">Multiple line structures:</p>
+                          <div className="bg-gray-900 p-2 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`if condition:      # if-else
+    statement
+    
+for item in list:  # loops
+    statement
+    
+def function():    # functions
+    statement
+    
+class MyClass:     # classes
+    statement`}
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Line Continuation in Python</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">Method 1: Backslash (\\)</h4>
+                          <div className="bg-gray-900 p-3 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`# Long statement split across lines
+total = 1 + 2 + 3 + \\
+        4 + 5 + 6 + \\
+        7 + 8 + 9
+
+message = "This is a very long string " + \\
+          "that spans multiple lines"
+
+print(total)    # Output: 45
+print(message)  # Output: This is a very long string that spans multiple lines`}
+                            </pre>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">Method 2: Implicit Line Continuation (Preferred)</h4>
+                          <div className="bg-gray-900 p-3 rounded">
+                            <pre className="text-green-400 font-mono text-xs">
+{`# Inside parentheses, brackets, or braces
+numbers = [
+    1, 2, 3, 4, 5,
+    6, 7, 8, 9, 10
+]
+
+result = (1 + 2 + 3 +
+          4 + 5 + 6)
+
+function_call(
+    argument1,
+    argument2,
+    argument3
+)`}
+                            </pre>
+                          </div>
+                          <p className="text-gray-300 text-xs mt-2">✅ This method is preferred as it's cleaner and more readable</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Execute Python Syntax */}
                 <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6 mb-8">
                   <h2 className="text-2xl font-bold text-white mb-4">How to Execute Python Code</h2>
                   <p className="text-gray-300 mb-4">
-                    Python can be run in different ways:
+                    Python code can be executed in multiple ways, each suited for different purposes:
                   </p>
                   
                   <div className="grid md:grid-cols-3 gap-4">
@@ -701,22 +981,203 @@ print(greet("Alice"))`}</pre>
           <main>
             <div className="animate-fade-in-up">
               <h1 id="variables" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
-                📊 Python Variables
+                📊 Python Variables - Complete Guide
               </h1>
               <p className="text-lg text-gray-400 mb-8 text-center">
-                Learn how to store and manage data in Python
+                Master variables, memory management, and data storage in Python
               </p>
               
               <div className="max-w-6xl mx-auto">
-                {/* What are Variables */}
-                <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6 mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-4">What are Variables?</h2>
-                  <p className="text-gray-300 text-lg mb-4">
-                    Variables are containers for storing data values. Unlike other programming languages, Python has no command for declaring a variable—it is created the moment you first assign a value to it.
-                  </p>
-                  <p className="text-gray-300">
-                    Python is <strong className="text-white">dynamically typed</strong>, meaning you don't need to specify the variable type. The interpreter automatically determines the type based on the value.
-                  </p>
+                {/* Comprehensive Theory Section */}
+                <div className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border border-blue-500/20 p-8 rounded-2xl mb-8">
+                  <h2 className="text-3xl font-bold text-blue-400 mb-6">📚 Understanding Variables in Depth</h2>
+                  
+                  <div className="space-y-6">
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">What Are Variables? - Complete Definition</h3>
+                      <p className="text-lg text-gray-300 mb-4 leading-relaxed">
+                        A <strong className="text-white">variable</strong> is a named location in computer memory that stores a value. Think of it like a labeled box 
+                        where you can store information and retrieve it later by referring to the box's label (the variable name).
+                      </p>
+                      <p className="text-gray-300 mb-4 leading-relaxed">
+                        In programming terms, variables are <strong className="text-white">symbolic references</strong> to memory addresses where data is stored. 
+                        When you create a variable in Python, you're essentially creating a reference to an object in memory, not just a storage container.
+                      </p>
+                      <p className="text-gray-300 leading-relaxed">
+                        Unlike languages like C or Java where you must declare the type of data a variable will hold, Python uses 
+                        <strong className="text-white"> dynamic typing</strong>, which means the interpreter automatically determines the variable's type 
+                        based on the value assigned to it at runtime. This makes Python more flexible and easier to write, but requires developers 
+                        to be mindful of type conversions.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">How Variables Work in Memory</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-3">Memory Allocation Process:</h4>
+                          <ol className="text-gray-300 text-sm space-y-2 list-decimal ml-5">
+                            <li><strong className="text-white">Value Creation:</strong> Python creates an object in memory to store the value</li>
+                            <li><strong className="text-white">Memory Address:</strong> The object is assigned a unique memory address</li>
+                            <li><strong className="text-white">Reference Creation:</strong> The variable name becomes a reference to that memory address</li>
+                            <li><strong className="text-white">Binding:</strong> The variable name is bound to the object</li>
+                            <li><strong className="text-white">Access:</strong> When you use the variable, Python follows the reference to get the value</li>
+                          </ol>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-3">Visual Representation:</h4>
+                          <div className="bg-gray-900 p-4 rounded font-mono text-xs">
+                            <pre className="text-green-400">
+{`x = 42
+
+Memory:
+┌─────────────┬──────────┬─────────┐
+│ Variable    │ Address  │ Value   │
+├─────────────┼──────────┼─────────┤
+│ x ───────► │ 0x7f3c   │   42    │
+└─────────────┴──────────┴─────────┘
+
+# When you reassign:
+x = "Hello"
+
+New Memory:
+┌─────────────┬──────────┬──────────┐
+│ Variable    │ Address  │ Value    │
+├─────────────┼──────────┼──────────┤
+│ x ───────► │ 0x8a2d   │ "Hello"  │
+└─────────────┴──────────┴──────────┘
+# Old object (42) may be garbage collected`}
+                            </pre>
+                          </div>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-3">Python's Object Model:</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            In Python, <strong className="text-white">everything is an object</strong>. When you write <code className="text-green-400">x = 5</code>, 
+                            Python creates an integer object with value 5, and <code className="text-green-400">x</code> becomes a reference to that object.
+                          </p>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Object Identity:</strong> Every object has a unique ID (memory address) - use <code className="text-green-400">id()</code></li>
+                            <li>• <strong className="text-white">Object Type:</strong> Every object has a type - use <code className="text-green-400">type()</code></li>
+                            <li>• <strong className="text-white">Object Value:</strong> The actual data stored in the object</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Dynamic Typing Explained</h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-green-400 font-bold mb-3">Python (Dynamic Typing)</h4>
+                          <pre className="text-green-400 font-mono text-xs mb-3">
+{`# No type declaration needed
+x = 5           # x is int
+x = "Hello"     # x is now str
+x = [1, 2, 3]   # x is now list
+x = 3.14        # x is now float`}
+                          </pre>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>✅ More flexible</li>
+                            <li>✅ Less code to write</li>
+                            <li>✅ Faster development</li>
+                            <li>⚠️ Type errors at runtime</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-yellow-400 font-bold mb-3">Java (Static Typing)</h4>
+                          <pre className="text-yellow-400 font-mono text-xs mb-3">
+{`// Must declare type
+int x = 5;
+// x = "Hello";  ❌ Error!
+// Can't change type
+
+String y = "Hello";
+// y = 5;  ❌ Error!`}
+                          </pre>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>✅ Type errors caught early</li>
+                            <li>✅ Better IDE support</li>
+                            <li>✅ More predictable</li>
+                            <li>⚠️ More verbose code</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Why Variables Are Essential</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">🎯 Practical Uses</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong>Store user input:</strong> name = input("Enter name: ")</li>
+                            <li>• <strong>Save calculations:</strong> total = price * quantity</li>
+                            <li>• <strong>Track state:</strong> is_logged_in = True</li>
+                            <li>• <strong>Store API data:</strong> users = fetch_users()</li>
+                            <li>• <strong>Configuration:</strong> MAX_ATTEMPTS = 3</li>
+                            <li>• <strong>Intermediate values:</strong> temp = a; a = b; b = temp</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">💡 Benefits</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong>Readability:</strong> Code is self-documenting</li>
+                            <li>• <strong>Reusability:</strong> Use same value multiple times</li>
+                            <li>• <strong>Maintainability:</strong> Change value in one place</li>
+                            <li>• <strong>Flexibility:</strong> Values can change at runtime</li>
+                            <li>• <strong>Abstraction:</strong> Hide complex values behind names</li>
+                            <li>• <strong>Memory efficiency:</strong> Reference same object multiple times</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                      <h3 className="text-2xl font-bold text-white mb-4">Variable Lifetime and Scope</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">Lifetime of a Variable:</h4>
+                          <p className="text-gray-300 text-sm mb-3">
+                            A variable's lifetime is the period during which it exists in memory:
+                          </p>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Creation:</strong> When first assigned a value</li>
+                            <li>• <strong className="text-white">Usage:</strong> While the variable is in scope and referenced</li>
+                            <li>• <strong className="text-white">Destruction:</strong> When no more references exist (garbage collection)</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-white font-bold mb-2">Scope Levels:</h4>
+                          <div className="bg-gray-900 p-3 rounded font-mono text-xs text-green-400 mb-3">
+{`# Global scope
+global_var = "I'm global"
+
+def my_function():
+    # Local scope
+    local_var = "I'm local"
+    print(global_var)  # ✅ Can access global
+    print(local_var)   # ✅ Can access local
+
+my_function()
+print(global_var)  # ✅ Can access global
+# print(local_var) # ❌ Error! Local var doesn't exist here`}
+                          </div>
+                          <ul className="text-gray-300 text-sm space-y-1">
+                            <li>• <strong className="text-white">Global:</strong> Accessible everywhere in the file</li>
+                            <li>• <strong className="text-white">Local:</strong> Only inside the function where defined</li>
+                            <li>• <strong className="text-white">Enclosing:</strong> In nested functions</li>
+                            <li>• <strong className="text-white">Built-in:</strong> Python's built-in names</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Creating Variables */}
@@ -1367,6 +1828,237 @@ Int to Complex: 1 -> (1+0j)`}</pre>
                   </div>
                 </div>
               </div>
+
+              {/* Q&A Section from PDF Documentation */}
+              <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 p-8 rounded-2xl mb-8">
+                <h3 className="text-2xl font-bold text-green-300 mb-6">🧠 Variables & Data Types - Knowledge Check</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Test your understanding with these theoretical questions from Python documentation and best practices.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q1. What will be the output of the following code?</h4>
+                      <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`x = 10
+y = 10.0
+print(x == y, x is y)`}</pre>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">True True</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">True False ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">False True</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">False False</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> == compares values (10 == 10.0 is True), but 'is' compares object identity (different objects).
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q2. Which of the following is a valid complex number in Python?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">3 + 4i</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">3 + 4j ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">3 + 4k</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">complex(3, -4i)</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python uses 'j' for imaginary numbers, not 'i'. The syntax is real + imaginary*j.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q3. What will type(True + 5) return?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">bool</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">int ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">float</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">TypeError</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> True equals 1 in arithmetic operations, so True + 5 = 1 + 5 = 6, which is an int.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q4. What is the output of the following?</h4>
+                      <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`a=2
+b = 2.0
+print(type(a/b))`}</pre>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">&lt;class 'int'&gt;</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">&lt;class 'float'&gt; ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">&lt;class 'decimal.Decimal'&gt;</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">&lt;class 'complex'&gt;</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Division (/) always returns a float in Python 3, even when dividing integers.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q5. Which of the following statements is TRUE about Python variables?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">Python variables need explicit declaration before use</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">Python variables are dynamically typed ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">Python variables are statically typed</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Variable type cannot change once assigned</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python uses dynamic typing - variables can hold values of any type and can change type during execution.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q6. What will this code print?</h4>
+                      <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`x = 3 + 4j
+print(x.real, x.imag)`}</pre>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">3 4</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">3.0 4.0 ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">3j 4j</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Error</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> The .real and .imag attributes of complex numbers return float values.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q7. Which of the following is immutable in Python?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">list</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">dict</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">str ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">set</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Strings are immutable in Python. Lists, dictionaries, and sets are mutable.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q8. Which of the following is TRUE about Python's int type?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">It is limited to 32-bit values</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">It is limited to 64-bit values</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">It can hold arbitrarily large numbers ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">It automatically converts to float on overflow</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python integers have arbitrary precision - they can be as large as memory allows.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                  <p className="text-gray-300 text-sm">
+                    <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                    Python's type system specification, and PEP 484 (Type Hints). Understanding Python's dynamic typing, 
+                    immutability concepts, and numeric type behavior is essential for writing robust Python applications.
+                  </p>
+                </div>
+              </div>
             </div>
           </main>
         );
@@ -1484,13 +2176,54 @@ Count: '100', Type: <class 'str'>
               
               <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8 hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6 ">What Makes Python Special?</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  Python's syntax is designed to be readable and straightforward. Unlike many programming languages that use braces {} to define code blocks, 
-                  Python uses indentation (whitespace) to indicate the structure of code. This makes Python code more readable and forces programmers to write clean, well-formatted code.
-                </p>
                 
-                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
-                  <p className="text-yellow-300 font-semibold">📌 Python's philosophy: "Code is read more often than it is written." This is why Python emphasizes readability and clean syntax.</p>
+                <div className="space-y-6 mb-8">
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Core Design Philosophy</h4>
+                    <p className="text-gray-300 mb-4 text-lg">
+                      Python's syntax is designed to be readable and straightforward. Unlike many programming languages that use braces {} to define code blocks, 
+                      Python uses indentation (whitespace) to indicate the structure of code. This makes Python code more readable and forces programmers to write clean, well-formatted code.
+                    </p>
+                    <p className="text-gray-300 mb-4 text-lg">
+                      <strong className="text-white">The Zen of Python</strong> (PEP 20) states: "Readability counts" and "Beautiful is better than ugly." 
+                      This philosophy permeates every aspect of Python's design, from its syntax to its standard library.
+                    </p>
+                    <p className="text-gray-300 text-lg">
+                      Python's creator, Guido van Rossum, designed the language with the principle that code should be intuitive and self-documenting. 
+                      This is why Python uses English keywords like <code className="bg-gray-700 px-2 py-1 rounded">if</code>, <code className="bg-gray-700 px-2 py-1 rounded">else</code>, <code className="bg-gray-700 px-2 py-1 rounded">for</code>, and <code className="bg-gray-700 px-2 py-1 rounded">while</code> instead of cryptic symbols.
+                    </p>
+                  </div>
+
+                  <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
+                    <p className="text-yellow-300 font-semibold">📌 Python's philosophy: "Code is read more often than it is written." This is why Python emphasizes readability and clean syntax.</p>
+                  </div>
+
+                  <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-green-300 mb-4">📚 Theoretical Foundation</h4>
+                    <div className="space-y-4">
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Dynamic Typing vs Static Typing</h5>
+                        <p className="text-gray-300 text-sm">
+                          Python uses dynamic typing, meaning variable types are determined at runtime rather than compile time. 
+                          This provides flexibility but requires careful understanding of type behavior and potential runtime errors.
+                        </p>
+                      </div>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Interpreted vs Compiled Languages</h5>
+                        <p className="text-gray-300 text-sm">
+                          Python is an interpreted language, meaning code is executed line by line by the Python interpreter. 
+                          This enables rapid development and testing but may result in slower execution compared to compiled languages.
+                        </p>
+                      </div>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Object-Oriented Nature</h5>
+                        <p className="text-gray-300 text-sm">
+                          Everything in Python is an object, including numbers, strings, and functions. This consistent object model 
+                          provides a uniform interface for all data types and operations.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1604,6 +2337,181 @@ that require multiple steps:
 """`}
                     </pre>
                   </div>
+                </div>
+              </div>
+
+              {/* Q&A Section from PDF Documentation */}
+              <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 p-8 rounded-2xl mb-8">
+                <h3 className="text-2xl font-bold text-purple-300 mb-6">🧠 Syntax & Indentation - Knowledge Check</h3>
+                <p className="text-gray-300 mb-6 text-lg">
+                  Test your understanding with these theoretical questions from Python documentation and best practices.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q1. Which of the following is correct for printing in Python 3?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">print "Hello"</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">print(Hello)</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">print("Hello") ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">echo("Hello")</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python 3 requires parentheses for print function calls.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q2. What happens if you mix tabs and spaces for indentation?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">Nothing happens</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">It gives unexpected results</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">It raises IndentationError ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">It ignores indentation</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python is strict about consistent indentation. Mixing tabs and spaces causes errors.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q3. Python uses ______ to define code blocks.</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">Curly braces {}</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">Square brackets []</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">Indentation ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Semi colons ;</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python uses indentation (whitespace) to define code blocks, not braces.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q4. What is the recommended indentation size in Python (PEP 8)?</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">2 spaces</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">3 spaces</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">4 spaces ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Tab character</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> PEP 8 recommends 4 spaces for each indentation level.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q5. What will this code do?</h4>
+                      <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`if True:
+print("Hi")`}</pre>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">Print Hi</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-gray-300">Nothing</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-green-300 font-semibold">Raise IndentationError ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Print blank line</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> The print statement is not properly indented under the if block.
+                      </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                      <h4 className="font-bold text-white mb-2">Q6. Python syntax is designed to be:</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">a)</span>
+                          <span className="text-gray-300">Confusing and strict</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">b)</span>
+                          <span className="text-green-300 font-semibold">Clear and easy to read ✓</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">c)</span>
+                          <span className="text-gray-300">Similar to Java</span>
+                        </div>
+                        <div className="flex items-start">
+                          <span className="mr-2 text-gray-400">d)</span>
+                          <span className="text-gray-300">Based on semicolons</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2">
+                        <strong>Explanation:</strong> Python's design philosophy emphasizes readability and simplicity.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                  <p className="text-gray-300 text-sm">
+                    <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                    PEP 8 style guide, and Python's design philosophy. Understanding these concepts is crucial for writing 
+                    clean, maintainable Python code that follows industry standards.
+                  </p>
                 </div>
               </div>
 
@@ -2500,11 +3408,89 @@ False`}</pre>
               
               <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8 hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6 ">Understanding Python Variables and Data Types</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  Python is dynamically typed, meaning you don't need to declare variable types explicitly. 
-                  The interpreter automatically determines the type based on the value assigned. Python supports 
-                  various built-in data types for different kinds of data.
-                </p>
+                
+                <div className="space-y-6 mb-8">
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 What Are Variables in Python?</h4>
+                    <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                      In Python, a <strong className="text-white">variable</strong> is a symbolic name that serves as a reference or pointer to an object stored in memory. 
+                      Unlike some programming languages, Python variables don't store the actual data - they store references to objects.
+                    </p>
+                    <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                      Think of a variable like a <strong className="text-white">label</strong> or <strong className="text-white">tag</strong> that you attach to an object. 
+                      The object exists in memory, and the variable name is just a convenient way to access it. This reference-based system 
+                      is fundamental to understanding Python's behavior.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Key Concepts:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Reference System:</strong> Variables point to objects, not store them directly</li>
+                        <li>• <strong className="text-white">Dynamic Typing:</strong> Variable types are determined at runtime</li>
+                        <li>• <strong className="text-white">Object Identity:</strong> Each object has a unique identity in memory</li>
+                        <li>• <strong className="text-white">Memory Efficiency:</strong> Multiple variables can reference the same object</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-green-300 mb-4">🧠 Dynamic Typing vs Static Typing</h4>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-green-400 mb-3">Dynamic Typing (Python)</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• Types are checked at <strong className="text-white">runtime</strong></li>
+                          <li>• Variables can change type during execution</li>
+                          <li>• More flexible but requires careful testing</li>
+                          <li>• Faster development, potential runtime errors</li>
+                          <li>• Example: <code className="text-green-400">x = 5</code> then <code className="text-green-400">x = "hello"</code></li>
+                        </ul>
+                      </div>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-red-400 mb-3">Static Typing (Java, C++)</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• Types are checked at <strong className="text-white">compile time</strong></li>
+                          <li>• Variable types are fixed after declaration</li>
+                          <li>• More rigid but catches errors early</li>
+                          <li>• Slower development, fewer runtime errors</li>
+                          <li>• Example: <code className="text-red-400">int x = 5;</code> (x must stay int)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-purple-300 mb-4">🔬 Memory Management and Object Identity</h4>
+                    <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                      Python's memory management is automatic through <strong className="text-white">garbage collection</strong>. 
+                      Objects are created in memory when assigned to variables and automatically cleaned up when no longer referenced.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Memory Concepts:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Object Identity:</strong> Unique identifier for each object (id() function)</li>
+                        <li>• <strong className="text-white">Reference Counting:</strong> Python tracks how many variables reference each object</li>
+                        <li>• <strong className="text-white">Garbage Collection:</strong> Automatic cleanup of unreferenced objects</li>
+                        <li>• <strong className="text-white">Immutability:</strong> Some objects (strings, tuples) cannot be changed after creation</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-orange-900/20 border border-orange-500/30 p-6 rounded-lg">
+                    <h4 className="text-xl font-bold text-orange-300 mb-4">📊 Python's Data Type Hierarchy</h4>
+                    <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                      Python organizes data types in a hierarchical structure. Every value in Python is an object, and every object has:
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Object Properties:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Identity:</strong> Unique memory address (never changes)</li>
+                        <li>• <strong className="text-white">Type:</strong> Determines supported operations and methods</li>
+                        <li>• <strong className="text-white">Value:</strong> The actual data content</li>
+                        <li>• <strong className="text-white">Mutability:</strong> Whether the object can be changed after creation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 
                 <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
                   <p className="text-yellow-300 font-semibold">📌 Python variables are references to objects in memory. Understanding data types is crucial for writing efficient and correct Python code.</p>
@@ -2513,11 +3499,44 @@ False`}</pre>
 
               <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
                 <h3 className="text-xl font-bold text-purple-400 mb-4">1. Numeric Data Types</h3>
-                <p className="text-gray-300 mb-6">Python supports three numeric types: integers, floating-point numbers, and complex numbers.</p>
+                
+                <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                  <h4 className="text-lg font-bold text-blue-300 mb-3">🔢 Understanding Numeric Types in Python</h4>
+                  <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                    Python provides three distinct numeric types, each designed for specific mathematical operations and use cases. 
+                    Understanding these types is crucial for scientific computing, data analysis, and general programming tasks.
+                  </p>
+                  <div className="bg-gray-700/50 p-4 rounded-lg">
+                    <h5 className="font-bold text-white mb-2">Numeric Type Characteristics:</h5>
+                    <ul className="text-gray-300 text-sm space-y-2">
+                      <li>• <strong className="text-white">Integers (int):</strong> Whole numbers with unlimited precision</li>
+                      <li>• <strong className="text-white">Floats (float):</strong> Decimal numbers with fixed precision (IEEE 754 double precision)</li>
+                      <li>• <strong className="text-white">Complex (complex):</strong> Numbers with real and imaginary parts</li>
+                      <li>• <strong className="text-white">Type Coercion:</strong> Automatic conversion between compatible numeric types</li>
+                      <li>• <strong className="text-white">Memory Efficiency:</strong> Different types use different amounts of memory</li>
+                    </ul>
+                  </div>
+                </div>
                 
                 <div className="space-y-6 mb-8">
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
-                    <h4 className="font-bold text-white mb-4 text-lg">Integer (int)</h4>
+                    <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg mb-4">
+                      <h4 className="font-bold text-green-300 mb-3">🔢 Integer (int) - The Foundation of Counting</h4>
+                      <p className="text-gray-300 mb-3 text-sm leading-relaxed">
+                        Integers in Python represent whole numbers and are implemented with <strong className="text-white">unlimited precision</strong>. 
+                        Unlike many programming languages that have fixed-size integer types, Python's integers can grow as large as your system's memory allows.
+                      </p>
+                      <div className="bg-gray-700/50 p-3 rounded-lg">
+                        <h5 className="font-bold text-white mb-2 text-xs">Key Integer Properties:</h5>
+                        <ul className="text-gray-300 text-xs space-y-1">
+                          <li>• <strong className="text-white">Unlimited Precision:</strong> No maximum or minimum value limits</li>
+                          <li>• <strong className="text-white">Memory Efficient:</strong> Uses variable-length representation internally</li>
+                          <li>• <strong className="text-white">Immutable:</strong> Cannot be changed after creation</li>
+                          <li>• <strong className="text-white">Mathematical Operations:</strong> Support all basic arithmetic operations</li>
+                          <li>• <strong className="text-white">Number Bases:</strong> Support binary, octal, and hexadecimal literals</li>
+                        </ul>
+                      </div>
+                    </div>
                     <pre className="text-white font-mono text-sm bg-gray-900 p-4 rounded">
 {`# Integer examples
 age = 25                    # Positive integer
@@ -2545,7 +3564,23 @@ print(isinstance(age, int)) # True`}
                   </div>
                   
                   <div className="bg-gray-700 p-6 rounded border border-gray-600">
-                    <h4 className="font-bold text-white mb-4 text-lg">Float (float)</h4>
+                    <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg mb-4">
+                      <h4 className="font-bold text-blue-300 mb-3">🌊 Float (float) - Precision in Decimal Numbers</h4>
+                      <p className="text-gray-300 mb-3 text-sm leading-relaxed">
+                        Floating-point numbers in Python represent real numbers and are implemented using <strong className="text-white">IEEE 754 double precision</strong> 
+                        standard. This provides approximately 15-17 decimal digits of precision, which is sufficient for most scientific and engineering applications.
+                      </p>
+                      <div className="bg-gray-700/50 p-3 rounded-lg">
+                        <h5 className="font-bold text-white mb-2 text-xs">Float Characteristics:</h5>
+                        <ul className="text-gray-300 text-xs space-y-1">
+                          <li>• <strong className="text-white">Fixed Precision:</strong> Limited to ~15-17 significant digits</li>
+                          <li>• <strong className="text-white">IEEE 754 Standard:</strong> Follows international floating-point standard</li>
+                          <li>• <strong className="text-white">Rounding Errors:</strong> Some decimal numbers cannot be exactly represented</li>
+                          <li>• <strong className="text-white">Special Values:</strong> Supports infinity (inf) and Not a Number (NaN)</li>
+                          <li>• <strong className="text-white">Scientific Notation:</strong> Supports exponential notation for large/small numbers</li>
+                        </ul>
+                      </div>
+                    </div>
                     <pre className="text-white font-mono text-sm bg-gray-900 p-4 rounded">
 {`# Float examples
 pi = 3.14159               # Standard float
@@ -2578,7 +3613,23 @@ float_value = float(42)    # 42.0`}
                 </div>
                 
                 <div className="bg-gray-700 p-6 rounded border border-gray-600">
-                  <h4 className="font-bold text-purple-400 mb-4 text-lg">Complex Numbers</h4>
+                  <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg mb-4">
+                    <h4 className="font-bold text-purple-300 mb-3">🔮 Complex Numbers - Beyond the Real World</h4>
+                    <p className="text-gray-300 mb-3 text-sm leading-relaxed">
+                      Complex numbers extend the real number system to include numbers with both real and imaginary parts. 
+                      They are essential in advanced mathematics, physics, engineering, and signal processing applications.
+                    </p>
+                    <div className="bg-gray-700/50 p-3 rounded-lg">
+                      <h5 className="font-bold text-white mb-2 text-xs">Complex Number Properties:</h5>
+                      <ul className="text-gray-300 text-xs space-y-1">
+                        <li>• <strong className="text-white">Two Components:</strong> Real part and imaginary part</li>
+                        <li>• <strong className="text-white">Mathematical Foundation:</strong> Based on the imaginary unit 'i' (j in Python)</li>
+                        <li>• <strong className="text-white">Practical Applications:</strong> Signal processing, quantum mechanics, electrical engineering</li>
+                        <li>• <strong className="text-white">Built-in Support:</strong> Native complex arithmetic operations</li>
+                        <li>• <strong className="text-white">Polar Form:</strong> Can be represented in magnitude and phase form</li>
+                      </ul>
+                    </div>
+                  </div>
                   <pre className="text-white font-mono text-sm bg-gray-900 p-4 rounded">
 {`# Complex number examples
 z1 = 3 + 4j                # Complex number (3 + 4i)
@@ -3168,10 +4219,49 @@ Is alnum: False`}
               <h2 id="operators" className="text-3xl font-bold text-white mb-6">4. Type Casting & Operators</h2>
           
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Type Casting</h3>
+            <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+              <h3 className="text-xl font-bold text-blue-300 mb-4">🔄 Type Casting - Data Transformation</h3>
+              <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                Type casting, also known as type conversion, is the process of converting a value from one data type to another. 
+                Python provides both <strong className="text-white">implicit</strong> (automatic) and <strong className="text-white">explicit</strong> (manual) type conversion mechanisms.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-gray-700/50 p-4 rounded-lg">
+                  <h4 className="font-bold text-green-400 mb-3">Implicit Type Conversion</h4>
+                  <ul className="text-gray-300 text-sm space-y-2">
+                    <li>• <strong className="text-white">Automatic:</strong> Python handles conversion automatically</li>
+                    <li>• <strong className="text-white">Safe Operations:</strong> Only when no data loss occurs</li>
+                    <li>• <strong className="text-white">Widening Conversion:</strong> int → float → complex</li>
+                    <li>• <strong className="text-white">Example:</strong> <code className="text-green-400">3 + 4.5</code> becomes <code className="text-green-400">7.5</code></li>
+                  </ul>
+                </div>
+                <div className="bg-gray-700/50 p-4 rounded-lg">
+                  <h4 className="font-bold text-orange-400 mb-3">Explicit Type Conversion</h4>
+                  <ul className="text-gray-300 text-sm space-y-2">
+                    <li>• <strong className="text-white">Manual:</strong> Programmer controls the conversion</li>
+                    <li>• <strong className="text-white">Built-in Functions:</strong> int(), float(), str(), bool()</li>
+                    <li>• <strong className="text-white">Potential Data Loss:</strong> May truncate or modify values</li>
+                    <li>• <strong className="text-white">Example:</strong> <code className="text-orange-400">int(3.9)</code> becomes <code className="text-orange-400">3</code></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-gray-700/50 p-4 rounded-lg">
+                <h5 className="font-bold text-white mb-2">Type Conversion Rules:</h5>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• <strong className="text-white">String to Number:</strong> Must contain valid numeric characters</li>
+                  <li>• <strong className="text-white">Float to Int:</strong> Truncates decimal part (doesn't round)</li>
+                  <li>• <strong className="text-white">Boolean Conversion:</strong> False values: 0, "", [], None, False</li>
+                  <li>• <strong className="text-white">Error Handling:</strong> Invalid conversions raise ValueError</li>
+                  <li>• <strong className="text-white">Memory Considerations:</strong> Different types use different amounts of memory</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="bg-gray-900 p-4 rounded border border-gray-600 mb-4">
               <pre className="text-white font-mono text-sm">
-{`# Type conversion
+{`# Type conversion examples
 x = "123"
 y = int(x)      # Convert to integer
 z = float(x)    # Convert to float
@@ -3182,37 +4272,82 @@ int(), float(), str(), bool()`}
               </pre>
             </div>
             
-            <h3 className="text-xl font-bold text-purple-400 mb-4">Operators</h3>
+            <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-lg mb-6">
+              <h3 className="text-xl font-bold text-green-300 mb-4">⚡ Operators - The Building Blocks of Logic</h3>
+              <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                Operators are special symbols that perform specific operations on one or more operands (values). 
+                Python supports various types of operators that enable mathematical calculations, comparisons, logical operations, and more.
+              </p>
+              <div className="bg-gray-700/50 p-4 rounded-lg">
+                <h5 className="font-bold text-white mb-2">Operator Categories:</h5>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• <strong className="text-white">Arithmetic:</strong> Mathematical operations (+, -, *, /, %, **)</li>
+                  <li>• <strong className="text-white">Comparison:</strong> Relational operations (==, !=, {'>'}, {'<'}, {'>='}, {'<='})</li>
+                  <li>• <strong className="text-white">Logical:</strong> Boolean operations (and, or, not)</li>
+                  <li>• <strong className="text-white">Assignment:</strong> Value assignment (=, +=, -=, *=, /=)</li>
+                  <li>• <strong className="text-white">Identity:</strong> Object identity checks (is, is not)</li>
+                  <li>• <strong className="text-white">Membership:</strong> Container membership (in, not in)</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="space-y-4">
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-white mb-2">Arithmetic</h4>
+                <div className="bg-blue-900/20 border border-blue-500/30 p-3 rounded-lg mb-3">
+                  <h4 className="font-bold text-blue-300 mb-2">🔢 Arithmetic Operators</h4>
+                  <p className="text-gray-300 text-sm mb-2">
+                    Perform mathematical operations between numeric operands. Python supports all basic arithmetic operations 
+                    with automatic type promotion for mixed-type operations.
+                  </p>
+                </div>
                 <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• + Addition</li>
-                  <li>• - Subtraction</li>
-                  <li>• * Multiplication</li>
-                  <li>• / Division</li>
-                  <li>• % Modulus</li>
-                  <li>• ** Exponentiation</li>
+                  <li>• <strong className="text-white">+ Addition:</strong> Combines two numbers (3 + 4 = 7)</li>
+                  <li>• <strong className="text-white">- Subtraction:</strong> Subtracts second from first (10 - 3 = 7)</li>
+                  <li>• <strong className="text-white">* Multiplication:</strong> Multiplies two numbers (3 * 4 = 12)</li>
+                  <li>• <strong className="text-white">/ Division:</strong> Returns float division (10 / 3 = 3.333...)</li>
+                  <li>• <strong className="text-white">% Modulus:</strong> Returns remainder (10 % 3 = 1)</li>
+                  <li>• <strong className="text-white">** Exponentiation:</strong> Raises to power (2 ** 3 = 8)</li>
+                  <li>• <strong className="text-white">// Floor Division:</strong> Integer division (10 // 3 = 3)</li>
                 </ul>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-white mb-2">Comparison</h4>
+                <div className="bg-green-900/20 border border-green-500/30 p-3 rounded-lg mb-3">
+                  <h4 className="font-bold text-green-300 mb-2">⚖️ Comparison Operators</h4>
+                  <p className="text-gray-300 text-sm mb-2">
+                    Compare two values and return a boolean result (True or False). These operators are essential for 
+                    conditional statements, loops, and decision-making in programs.
+                  </p>
+                </div>
                 <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• == Equal to</li>
-                  <li>• != Not equal</li>
-                  <li>• &gt; Greater than</li>
-                  <li>• &lt; Less than</li>
-                  <li>• &gt;= Greater or equal</li>
-                  <li>• &lt;= Less or equal</li>
+                  <li>• <strong className="text-white">== Equal to:</strong> Checks if values are equal (5 == 5 → True)</li>
+                  <li>• <strong className="text-white">!= Not equal:</strong> Checks if values are different (5 != 3 → True)</li>
+                  <li>• <strong className="text-white">{'>'} Greater than:</strong> Left operand larger (7 {'>'} 3 → True)</li>
+                  <li>• <strong className="text-white">{'<'} Less than:</strong> Left operand smaller (2 {'<'} 5 → True)</li>
+                  <li>• <strong className="text-white">{'>='} Greater or equal:</strong> Left operand larger or equal (5 {'>='} 5 → True)</li>
+                  <li>• <strong className="text-white">{'<='} Less or equal:</strong> Left operand smaller or equal (4 {'<='} 4 → True)</li>
                 </ul>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">
-                <h4 className="font-bold text-purple-400 mb-2">Logical</h4>
+                <div className="bg-purple-900/20 border border-purple-500/30 p-3 rounded-lg mb-3">
+                  <h4 className="font-bold text-purple-300 mb-2">🧠 Logical Operators</h4>
+                  <p className="text-gray-300 text-sm mb-2">
+                    Combine boolean values and expressions to create complex logical conditions. Python uses short-circuit 
+                    evaluation, meaning it stops evaluating as soon as the result is determined.
+                  </p>
+                </div>
                 <ul className="text-gray-300 text-sm space-y-1">
-                  <li>• and - Logical AND</li>
-                  <li>• or - Logical OR</li>
-                  <li>• not - Logical NOT</li>
+                  <li>• <strong className="text-white">and:</strong> Both conditions must be True (True and False → False)</li>
+                  <li>• <strong className="text-white">or:</strong> At least one condition must be True (True or False → True)</li>
+                  <li>• <strong className="text-white">not:</strong> Inverts the boolean value (not True → False)</li>
                 </ul>
+                <div className="bg-gray-700/50 p-3 rounded-lg mt-3">
+                  <h5 className="font-bold text-white mb-2 text-xs">Short-Circuit Behavior:</h5>
+                  <ul className="text-gray-300 text-xs space-y-1">
+                    <li>• <strong className="text-white">and:</strong> Stops at first False value</li>
+                    <li>• <strong className="text-white">or:</strong> Stops at first True value</li>
+                    <li>• <strong className="text-white">Performance:</strong> Can improve efficiency in complex expressions</li>
+                  </ul>
+                </div>
               </div>
             </div>
               </div>
@@ -4102,6 +5237,237 @@ message = "Hello, %s! You are %d years old." % (name, age)`}
             </div>
               </div>
             </div>
+
+            {/* Q&A Section from PDF Documentation */}
+            <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 p-8 rounded-2xl mb-8">
+              <h3 className="text-2xl font-bold text-green-300 mb-6">🧠 Strings - Knowledge Check</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Test your understanding with these theoretical questions from Python documentation and best practices.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q1. What will be the output of the following code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`s = "Python"
+print(s[::-1])`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Python</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">nohtyP ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> [::-1] reverses the string by slicing with step -1.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q2. Which of the following is immutable in Python?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-green-300 font-semibold">String ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">List</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Dictionary</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Set</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Strings are immutable in Python - once created, they cannot be changed.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q3. What will the following code print?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`s = "OpenAI"
+print(s[1:5:2])`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Oe</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">pn ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">pe</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">pA</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> s[1:5:2] starts at index 1 ("p"), takes every 2nd character, so "p" and "n".
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q4. Which method removes whitespace from both ends of a string?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-green-300 font-semibold">strip() ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">lstrip()</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">rstrip()</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">trim()</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> strip() removes whitespace from both ends, lstrip() from left, rstrip() from right.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q5. Output of the code below?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`s = "banana"
+print(s.count("na"))`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">1</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">2 ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">3</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">0</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> "na" appears twice in "banana" at positions 2-3 and 4-5.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q6. What will print("Python".upper().isupper()) return?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-green-300 font-semibold">True ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">False</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> upper() converts to "PYTHON", then isupper() returns True.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q7. What is the output of this code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`text = "Hello World"
+print(text.split())`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Hello World</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">['Hello', 'World'] ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> split() without arguments splits on whitespace and returns a list.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q8. Which of the following is FALSE about Python strings?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Strings are immutable</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">Strings can be indexed</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Strings can be concatenated</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-green-300 font-semibold">Strings can be changed in-place ✓</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Strings are immutable - they cannot be changed in-place. You must create new strings.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                <p className="text-gray-300 text-sm">
+                  <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                  string methods reference, and Python's immutable string type. Understanding string immutability, 
+                  slicing, and string methods is essential for effective text processing in Python.
+                </p>
+              </div>
+            </div>
           </div>
         );
 
@@ -4803,6 +6169,240 @@ person["city"] = "NYC"`}
             </div>
               </div>
             </div>
+
+            {/* Q&A Section from PDF Documentation */}
+            <div className="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-500/30 p-8 rounded-2xl mb-8">
+              <h3 className="text-2xl font-bold text-orange-300 mb-6">🧠 Loops - Knowledge Check</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Test your understanding with these theoretical questions from Python documentation and best practices.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q1. Which loop in Python is more suitable when the number of iterations is not known in advance?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">for loop</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">while loop ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">do-while loop</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">foreach loop</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> While loops are ideal when you don't know how many iterations you need in advance.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q2. What does the pass statement do inside a loop?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Skips the current iteration</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">Exits the loop</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-green-300 font-semibold">Does nothing (acts as a placeholder) ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Raises an error</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'pass' is a null operation - it does nothing but serves as a placeholder for syntactically required code.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q3. What will this code output?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`for i in range(5):
+if i == 3:
+    break
+print(i, end=" ")`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">0 1 2 3</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">0 1 2 ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">0 1 2 3 4</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Nothing</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'break' exits the loop when i equals 3, so only 0, 1, 2 are printed.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q4. What will this code output?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`for i in range(5):
+if i == 2:
+    continue
+print(i, end=" ")`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-green-300 font-semibold">0 1 3 4 ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">0 1 2 3 4</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">0 1</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">2 3 4</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'continue' skips the current iteration when i equals 2, so 2 is not printed.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q5. What is the output of this code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`for i in range(3):
+pass
+print("Done")`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Nothing</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Done ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">pass</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'pass' does nothing, so the loop runs 3 times doing nothing, then prints "Done".
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q6. Which statement is true about nested loops?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">They are not allowed in Python</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Inner loop completes fully for each outer loop iteration ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Only while loops can be nested</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">They always create infinite loops</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> In nested loops, the inner loop runs completely for each iteration of the outer loop.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q7. What happens if you don't update the loop variable in a while loop?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">The loop runs once and stops</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">Python automatically updates it</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-green-300 font-semibold">You get an infinite loop ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">The loop doesn't run at all</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> If the condition never changes, the while loop will run forever.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q8. What is the difference between break and continue?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">They do the same thing</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">break exits the loop, continue skips to next iteration ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">continue exits the loop, break skips to next iteration</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Both exit the loop</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'break' completely exits the loop, while 'continue' skips the rest of the current iteration and continues with the next one.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                <p className="text-gray-300 text-sm">
+                  <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                  control flow concepts, and Python's loop mechanisms. Understanding loop control statements (break, continue, pass) 
+                  and the difference between for and while loops is crucial for writing efficient Python programs.
+                </p>
+              </div>
+            </div>
           </div>
         );
       
@@ -4810,24 +6410,337 @@ person["city"] = "NYC"`}
         return (
           <div className="animate-fade-in-up">
             <h1 id="functions" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
-              🐍 Functions
+              🐍 Python Functions - Complete Guide
             </h1>
             <p className="text-lg text-gray-400 mb-8 text-center">
-              Learn about functions and their usage in Python
+              Master functions from basics to advanced concepts with comprehensive examples
             </p>
             
             <div className="max-w-6xl mx-auto">
-              <h2 id="functions" className="text-3xl font-bold text-white mb-6">9. Functions</h2>
-              
-              <div className="bg-gray-800 p-8 rounded-2xl border border-gray-600 mb-8 hover:ring-2 hover:ring-green-500/30 hover:ring-opacity-50 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6 ">Understanding Functions in Python</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  Functions are reusable blocks of code that perform a specific task. They are one of the most important concepts in programming, 
-                  allowing you to organize your code, avoid repetition, and make your programs more modular and maintainable.
-                </p>
+              {/* Complete Theory Section */}
+              <div className="bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-500/20 p-8 rounded-2xl mb-8">
+                <h2 className="text-3xl font-bold text-purple-400 mb-6">📚 What Are Functions?</h2>
                 
-                <div className="bg-yellow-900 border border-yellow-700 p-4 rounded-lg mb-6">
-                  <p className="text-yellow-300 font-semibold">📌 Functions help you write DRY (Don't Repeat Yourself) code by allowing you to define a task once and use it multiple times throughout your program.</p>
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4">Complete Definition & Theory</h3>
+                    <p className="text-lg text-gray-300 mb-4 leading-relaxed">
+                      A <strong className="text-white">function</strong> is a self-contained block of code that performs a specific task or related group of tasks. 
+                      Functions are fundamental building blocks in Python programming that allow you to organize code into reusable, modular components.
+                    </p>
+                    <p className="text-gray-300 mb-4 leading-relaxed">
+                      Think of a function like a recipe in cooking: you define the steps once (the function definition), and then you can use 
+                      that recipe many times (function calls) to make the dish whenever you need it. Just like a recipe can take ingredients 
+                      (parameters) and produce a finished dish (return value), functions take inputs and produce outputs.
+                    </p>
+                    <p className="text-gray-300 leading-relaxed">
+                      In computer science terms, functions implement the principle of <strong className="text-white">procedural abstraction</strong> - 
+                      they hide the complexity of how a task is performed while providing a simple interface to use that functionality.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4">Why Functions Are Essential</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-gray-800 p-4 rounded-lg">
+                        <h4 className="text-green-400 font-bold mb-3">✅ Advantages</h4>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">Code Reusability:</strong> Write once, use everywhere</li>
+                          <li>• <strong className="text-white">Modularity:</strong> Break complex programs into manageable pieces</li>
+                          <li>• <strong className="text-white">Maintainability:</strong> Fix bugs in one place</li>
+                          <li>• <strong className="text-white">Readability:</strong> Self-documenting code with meaningful names</li>
+                          <li>• <strong className="text-white">Testing:</strong> Test individual functions in isolation</li>
+                          <li>• <strong className="text-white">Abstraction:</strong> Hide implementation details</li>
+                          <li>• <strong className="text-white">Namespace:</strong> Avoid variable name conflicts</li>
+                          <li>• <strong className="text-white">Collaboration:</strong> Team members can work on different functions</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-gray-800 p-4 rounded-lg">
+                        <h4 className="text-yellow-400 font-bold mb-3">🎯 Real-World Examples</h4>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">calculate_tax():</strong> Compute tax on purchases</li>
+                          <li>• <strong className="text-white">send_email():</strong> Send emails to users</li>
+                          <li>• <strong className="text-white">validate_password():</strong> Check password strength</li>
+                          <li>• <strong className="text-white">process_payment():</strong> Handle transactions</li>
+                          <li>• <strong className="text-white">generate_report():</strong> Create business reports</li>
+                          <li>• <strong className="text-white">resize_image():</strong> Process image files</li>
+                          <li>• <strong className="text-white">fetch_data():</strong> Get data from APIs</li>
+                          <li>• <strong className="text-white">encrypt_data():</strong> Secure sensitive information</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-white mb-4">How Functions Work Internally</h3>
+                    <div className="space-y-4">
+                      <div className="bg-gray-800 p-4 rounded-lg">
+                        <h4 className="text-white font-bold mb-2">Step-by-Step Execution Process:</h4>
+                        <ol className="text-gray-300 text-sm space-y-2 list-decimal ml-5">
+                          <li><strong className="text-white">Function Definition:</strong> Python stores the function code in memory</li>
+                          <li><strong className="text-white">Function Call:</strong> Program execution jumps to the function</li>
+                          <li><strong className="text-white">Parameter Binding:</strong> Arguments are assigned to parameters</li>
+                          <li><strong className="text-white">Local Scope Creation:</strong> New namespace created for function variables</li>
+                          <li><strong className="text-white">Code Execution:</strong> Function body code runs line by line</li>
+                          <li><strong className="text-white">Return Value:</strong> Function sends result back to caller</li>
+                          <li><strong className="text-white">Scope Cleanup:</strong> Local variables are destroyed</li>
+                          <li><strong className="text-white">Resume Execution:</strong> Program continues after the function call</li>
+                        </ol>
+                      </div>
+
+                      <div className="bg-gray-800 p-4 rounded-lg">
+                        <h4 className="text-white font-bold mb-2">Memory and Stack Frames:</h4>
+                        <p className="text-gray-300 text-sm mb-3">
+                          When you call a function, Python creates a <strong className="text-white">stack frame</strong> (also called activation record) 
+                          that contains the function's local variables, parameters, and return address. This frame is pushed onto the 
+                          <strong className="text-white"> call stack</strong>. When the function returns, the frame is popped off the stack.
+                        </p>
+                        <div className="bg-gray-900 p-3 rounded font-mono text-xs text-green-400">
+{`# Visual representation of call stack
+main() starts                    ← Bottom of stack
+  ↓ calls function_a()
+    ↓ calls function_b()
+      ↓ calls function_c()       ← Top of stack (current execution)
+      ↓ function_c() returns
+    ↓ function_b() returns
+  ↓ function_a() returns
+main() continues`}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Basic Function Examples */}
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">🔰 Basic Functions - Step by Step</h2>
+                
+                <div className="space-y-8">
+                  {/* Example 1 */}
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-green-400 mb-4">Example 1: Simple Function Without Parameters</h3>
+                    <p className="text-gray-300 mb-4">
+                      The simplest type of function takes no input and just performs an action.
+                    </p>
+                    
+                    <div className="bg-gray-900 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Code:</p>
+                      <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`# Define a simple function
+def say_hello():
+    """This function prints a greeting message"""
+    print("Hello, World!")
+    print("Welcome to Python Functions!")
+    print("Let's learn together!")
+
+# Call the function
+say_hello()
+
+# Call it multiple times
+say_hello()
+say_hello()`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Output:</p>
+                      <pre className="text-yellow-300 font-mono text-sm">
+{`Hello, World!
+Welcome to Python Functions!
+Let's learn together!
+Hello, World!
+Welcome to Python Functions!
+Let's learn together!
+Hello, World!
+Welcome to Python Functions!
+Let's learn together!`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
+                      <p className="text-white font-semibold mb-2">💡 Detailed Explanation:</p>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">def:</strong> Keyword that starts function definition</li>
+                        <li>• <strong className="text-white">say_hello:</strong> Function name (follows snake_case convention)</li>
+                        <li>• <strong className="text-white">():</strong> Empty parentheses mean no parameters needed</li>
+                        <li>• <strong className="text-white">"""docstring""":</strong> Documentation explaining what function does</li>
+                        <li>• <strong className="text-white">Indentation:</strong> Function body must be indented (usually 4 spaces)</li>
+                        <li>• <strong className="text-white">Function call:</strong> say_hello() executes the code inside the function</li>
+                        <li>• <strong className="text-white">Reusability:</strong> Can call same function many times</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Example 2 */}
+                  <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-blue-400 mb-4">Example 2: Function With Parameters</h3>
+                    <p className="text-gray-300 mb-4">
+                      Parameters allow functions to accept input values and work with different data each time they're called.
+                    </p>
+                    
+                    <div className="bg-gray-900 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Code:</p>
+                      <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`# Function with one parameter
+def greet_person(name):
+    """Greets a person by name"""
+    print(f"Hello, {name}!")
+    print(f"Nice to meet you, {name}!")
+
+# Call with different arguments
+greet_person("Alice")
+greet_person("Bob")
+greet_person("Charlie")
+
+# Function with multiple parameters
+def introduce_person(name, age, city):
+    """Introduces a person with details"""
+    print(f"My name is {name}.")
+    print(f"I am {age} years old.")
+    print(f"I live in {city}.")
+    print("-" * 30)
+
+# Call with multiple arguments
+introduce_person("Alice", 25, "New York")
+introduce_person("Bob", 30, "London")
+introduce_person("Diana", 28, "Tokyo")`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Output:</p>
+                      <pre className="text-yellow-300 font-mono text-sm">
+{`Hello, Alice!
+Nice to meet you, Alice!
+Hello, Bob!
+Nice to meet you, Bob!
+Hello, Charlie!
+Nice to meet you, Charlie!
+My name is Alice.
+I am 25 years old.
+I live in New York.
+------------------------------
+My name is Bob.
+I am 30 years old.
+I live in London.
+------------------------------
+My name is Diana.
+I am 28 years old.
+I live in Tokyo.
+------------------------------`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
+                      <p className="text-white font-semibold mb-2">💡 Detailed Explanation:</p>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Parameters:</strong> Variables defined in function parentheses (name, age, city)</li>
+                        <li>• <strong className="text-white">Arguments:</strong> Actual values passed when calling ("Alice", 25, "New York")</li>
+                        <li>• <strong className="text-white">Positional Arguments:</strong> Order matters - first argument goes to first parameter</li>
+                        <li>• <strong className="text-white">Local Scope:</strong> Parameters only exist inside the function</li>
+                        <li>• <strong className="text-white">F-strings:</strong> Used for formatting output with variable values</li>
+                        <li>• <strong className="text-white">Flexibility:</strong> Same function works with different data</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Example 3 */}
+                  <div className="bg-gray-900/50 border border-purple-500/30 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold text-purple-400 mb-4">Example 3: Functions That Return Values</h3>
+                    <p className="text-gray-300 mb-4">
+                      Return statements allow functions to send results back to the code that called them.
+                    </p>
+                    
+                    <div className="bg-gray-900 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Code:</p>
+                      <pre className="text-green-400 font-mono text-sm overflow-x-auto">
+{`# Function that returns a value
+def add_numbers(a, b):
+    """Adds two numbers and returns the sum"""
+    total = a + b
+    return total
+
+# Call and store the return value
+result1 = add_numbers(5, 3)
+result2 = add_numbers(10, 20)
+result3 = add_numbers(100, 250)
+
+print(f"5 + 3 = {result1}")
+print(f"10 + 20 = {result2}")
+print(f"100 + 250 = {result3}")
+
+# Use return value directly in expressions
+double_sum = add_numbers(5, 10) * 2
+print(f"(5 + 10) * 2 = {double_sum}")
+
+# Function with multiple return values
+def get_rectangle_info(length, width):
+    """Calculates area and perimeter of rectangle"""
+    area = length * width
+    perimeter = 2 * (length + width)
+    return area, perimeter  # Returns tuple
+
+# Unpack multiple return values
+rect_area, rect_perimeter = get_rectangle_info(10, 5)
+print(f"Rectangle (10x5):")
+print(f"  Area = {rect_area}")
+print(f"  Perimeter = {rect_perimeter}")
+
+# Function with conditional returns
+def get_grade(score):
+    """Returns letter grade based on score"""
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+
+# Use the function
+grade1 = get_grade(95)
+grade2 = get_grade(82)
+grade3 = get_grade(58)
+print(f"Score 95: Grade {grade1}")
+print(f"Score 82: Grade {grade2}")
+print(f"Score 58: Grade {grade3}")`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                      <p className="text-white font-semibold mb-2">Output:</p>
+                      <pre className="text-yellow-300 font-mono text-sm">
+{`5 + 3 = 8
+10 + 20 = 30
+100 + 250 = 350
+(5 + 10) * 2 = 30
+Rectangle (10x5):
+  Area = 50
+  Perimeter = 30
+Score 95: Grade A
+Score 82: Grade B
+Score 58: Grade F`}
+                      </pre>
+                    </div>
+                    
+                    <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
+                      <p className="text-white font-semibold mb-2">💡 Detailed Explanation:</p>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">return keyword:</strong> Sends value back to caller and exits function</li>
+                        <li>• <strong className="text-white">Return value:</strong> Can be any data type (int, string, list, tuple, etc.)</li>
+                        <li>• <strong className="text-white">Multiple returns:</strong> Return tuple to send multiple values</li>
+                        <li>• <strong className="text-white">Tuple unpacking:</strong> Assign multiple return values to multiple variables</li>
+                        <li>• <strong className="text-white">Conditional returns:</strong> Different return values based on logic</li>
+                        <li>• <strong className="text-white">No return:</strong> Function returns None by default if no return statement</li>
+                        <li>• <strong className="text-white">Using returns:</strong> Can store in variables or use directly in expressions</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -5160,6 +7073,235 @@ def find_longest_word_in_file(filename):
                 </div>
               </div>
             </div>
+
+            {/* Q&A Section from PDF Documentation */}
+            <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 p-8 rounded-2xl mb-8">
+              <h3 className="text-2xl font-bold text-purple-300 mb-6">🧠 Functions - Knowledge Check</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Test your understanding with these theoretical questions from Python documentation and best practices.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q1. Which keyword is used to define a function in Python?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">func</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">def ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">function</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">define</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> The 'def' keyword is used to define functions in Python.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q2. What is the output of the following code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`def add(a, b=2):
+return a + b
+print(add(3))`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">3</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">5 ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> b has a default value of 2, so add(3) = 3 + 2 = 5.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q3. What is the default return value of a function that doesn't return anything explicitly?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">0</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">None ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">False</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Empty string</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Functions without explicit return statements return None by default.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q4. Which of the following are valid function arguments in Python?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Positional arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">Keyword arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Default arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-green-300 font-semibold">All of the above ✓</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Python supports all types of function arguments: positional, keyword, and default.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q5. What will be the output of this code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`def func(x, y=10):
+return x * y
+print(func(5))`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">10</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">15</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-green-300 font-semibold">50 ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> y defaults to 10, so func(5) = 5 * 10 = 50.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q6. Which statement is true about *args in functions?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Collects variable keyword arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Collects variable positional arguments ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Creates a list of arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Creates a dictionary of arguments</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> *args collects variable positional arguments into a tuple.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q7. What does **kwargs represent in Python functions?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Arbitrary positional arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Arbitrary keyword arguments as dictionary ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Default arguments</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Local variables</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> **kwargs collects keyword arguments into a dictionary.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q8. Which of the following is NOT a valid function name?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">my_func</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">_func</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-green-300 font-semibold">1func ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">func1</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Function names cannot start with a digit. They must start with a letter or underscore.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                <p className="text-gray-300 text-sm">
+                  <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                  function definition syntax, and Python's callable object system. Understanding function parameters, 
+                  return values, and scope is essential for writing modular and reusable Python code.
+                </p>
+              </div>
+            </div>
           </div>
         );
       
@@ -5198,6 +7340,245 @@ person.have_birthday()
 print(person.age)  # 26`}
               </pre>
             </div>
+              </div>
+            </div>
+
+            {/* Q&A Section from PDF Documentation */}
+            <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 p-8 rounded-2xl mb-8">
+              <h3 className="text-2xl font-bold text-blue-300 mb-6">🧠 Object-Oriented Programming - Knowledge Check</h3>
+              <p className="text-gray-300 mb-6 text-lg">
+                Test your understanding with these theoretical questions from Python documentation and best practices.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q1. What is the correct syntax to create a class in Python?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">class MyClass {}</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">class MyClass: ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">def MyClass():</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">new MyClass()</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Python uses 'class ClassName:' syntax, not braces or parentheses.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q2. What is the name of the special method used to initialize a class instance?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">__init__()</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">__init__ ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">constructor()</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">__new__()</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> __init__ is the constructor method in Python classes.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q3. What will be the output of this code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`class Person:
+    def __init__(self, name):
+        self.name = name
+
+p = Person("Alice")
+print(p.name)`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Alice ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Person</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> The instance variable self.name is set to "Alice" and can be accessed.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q4. Which keyword is used for inheritance in Python?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">extends</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">No keyword needed ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">inherits</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">super</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Python uses parentheses: class Child(Parent): instead of a keyword.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q5. What is the output of this code?</h4>
+                    <pre className="text-gray-300 text-xs bg-gray-900 p-2 rounded mb-2">{`class Animal:
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+d = Dog()
+print(d.speak())`}</pre>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Some sound</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Woof! ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Error</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">None</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> Method overriding - Dog's speak() method overrides Animal's speak().
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q6. What does 'self' represent in Python classes?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">The class itself</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">The instance of the class ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">A reserved keyword</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">The parent class</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> 'self' refers to the current instance of the class.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q7. Which of the following is NOT a principle of OOP?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Encapsulation</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-gray-300">Inheritance</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Polymorphism</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-green-300 font-semibold">Recursion ✓</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> The four pillars of OOP are Encapsulation, Inheritance, Polymorphism, and Abstraction.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                    <h4 className="font-bold text-white mb-2">Q8. What is the purpose of the super() function?</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">a)</span>
+                        <span className="text-gray-300">Create a new instance</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">b)</span>
+                        <span className="text-green-300 font-semibold">Access parent class methods ✓</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">c)</span>
+                        <span className="text-gray-300">Delete an object</span>
+                      </div>
+                      <div className="flex items-start">
+                        <span className="mr-2 text-gray-400">d)</span>
+                        <span className="text-gray-300">Override methods</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs mt-2">
+                      <strong>Explanation:</strong> super() allows access to methods in the parent class from the child class.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                <h4 className="font-bold text-blue-300 mb-2">📖 Theoretical Deep Dive</h4>
+                <p className="text-gray-300 text-sm">
+                  <strong>References:</strong> These questions are based on official Python documentation (docs.python.org), 
+                  OOP principles, and Python's object model. Understanding classes, inheritance, polymorphism, and 
+                  encapsulation is essential for writing maintainable and scalable Python applications.
+                </p>
               </div>
             </div>
           </div>
@@ -5361,6 +7742,1485 @@ from mymodule import my_function`}
                 <p className="text-gray-300 text-sm">Garbage collection and optimization</p>
               </div>
             </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      // New comprehensive sections
+      case 'python-versions':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="python-versions" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Versions & Installation
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Python Version History</h2>
+                
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Python 2.x (Legacy)</h3>
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Released: 2000-2020</li>
+                      <li>• Final version: 2.7.18</li>
+                      <li>• End of life: January 1, 2020</li>
+                      <li>• Legacy support only</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Python 3.x (Current)</h3>
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Released: 2008-Present</li>
+                      <li>• Current version: 3.12.x</li>
+                      <li>• Active development</li>
+                      <li>• Recommended for all new projects</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Major Python 3.x Releases</h3>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold">Python 3.8</h4>
+                      <p className="text-gray-300 text-sm">Walrus operator, positional-only parameters</p>
+                    </div>
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold">Python 3.9</h4>
+                      <p className="text-gray-300 text-sm">Dictionary merge operators, type hints</p>
+                    </div>
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold">Python 3.10</h4>
+                      <p className="text-gray-300 text-sm">Structural pattern matching</p>
+                    </div>
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold">Python 3.11</h4>
+                      <p className="text-gray-300 text-sm">Exception groups, self type</p>
+                    </div>
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold">Python 3.12</h4>
+                      <p className="text-gray-300 text-sm">F-strings improvements, typing enhancements</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Installation Methods</h2>
+                
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">🐍 Official Python.org</h3>
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <p className="text-gray-300 mb-2">Download from python.org:</p>
+                      <code className="text-green-400">https://www.python.org/downloads/</code>
+                    </div>
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Official installer for Windows, macOS, Linux</li>
+                      <li>• Includes pip package manager</li>
+                      <li>• Comes with IDLE development environment</li>
+                      <li>• Most reliable installation method</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">📦 Package Managers</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold">Windows</h4>
+                        <code className="text-green-400 text-sm">choco install python</code>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold">macOS</h4>
+                        <code className="text-green-400 text-sm">brew install python</code>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold">Ubuntu/Debian</h4>
+                        <code className="text-green-400 text-sm">sudo apt install python3</code>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold">CentOS/RHEL</h4>
+                        <code className="text-green-400 text-sm">sudo yum install python3</code>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">🐍 pyenv (Python Version Management)</h3>
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <p className="text-gray-300 mb-2">Install and manage multiple Python versions:</p>
+                      <div className="space-y-2">
+                        <code className="text-green-400 block">curl https://pyenv.run | bash</code>
+                        <code className="text-green-400 block">pyenv install 3.12.0</code>
+                        <code className="text-green-400 block">pyenv global 3.12.0</code>
+                      </div>
+                    </div>
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Switch between Python versions easily</li>
+                      <li>• Project-specific Python versions</li>
+                      <li>• No system-wide Python conflicts</li>
+                      <li>• Essential for professional development</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'virtual-environments':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="virtual-environments" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Virtual Environments
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">What are Virtual Environments?</h2>
+                
+                <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6 mb-6">
+                  <p className="text-gray-300 text-lg mb-4">
+                    A virtual environment is an isolated Python environment that allows you to install packages 
+                    and dependencies separately for each project, preventing conflicts between different projects.
+                  </p>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h3 className="text-white font-bold mb-3">✅ Benefits</h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li>• Isolated package installations</li>
+                        <li>• No version conflicts</li>
+                        <li>• Reproducible environments</li>
+                        <li>• Easy project cleanup</li>
+                        <li>• Professional development practice</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h3 className="text-white font-bold mb-3">❌ Without Virtual Environments</h3>
+                      <ul className="space-y-2 text-gray-300 text-sm">
+                        <li>• Global package conflicts</li>
+                        <li>• Different project requirements clash</li>
+                        <li>• Difficult to reproduce environments</li>
+                        <li>• System-wide package pollution</li>
+                        <li>• Deployment issues</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">venv (Built-in Virtual Environment)</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <h4 className="text-white font-bold mb-2">Basic Usage:</h4>
+                      <div className="space-y-2">
+                        <code className="text-green-400 block"># Create virtual environment</code>
+                        <code className="text-green-400 block">python -m venv myproject_env</code>
+                        <code className="text-green-400 block"># Activate (Windows)</code>
+                        <code className="text-green-400 block">myproject_env\Scripts\activate</code>
+                        <code className="text-green-400 block"># Activate (macOS/Linux)</code>
+                        <code className="text-green-400 block">source myproject_env/bin/activate</code>
+                        <code className="text-green-400 block"># Deactivate</code>
+                        <code className="text-green-400 block">deactivate</code>
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Built into Python 3.3+</li>
+                      <li>• No additional installation required</li>
+                      <li>• Standard tool for virtual environments</li>
+                      <li>• Works across all platforms</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">conda (Anaconda/Miniconda)</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <h4 className="text-white font-bold mb-2">Conda Commands:</h4>
+                      <div className="space-y-2">
+                        <code className="text-green-400 block"># Create environment</code>
+                        <code className="text-green-400 block">conda create -n myenv python=3.11</code>
+                        <code className="text-green-400 block"># Activate environment</code>
+                        <code className="text-green-400 block">conda activate myenv</code>
+                        <code className="text-green-400 block"># Install packages</code>
+                        <code className="text-green-400 block">conda install numpy pandas</code>
+                        <code className="text-green-400 block"># Deactivate</code>
+                        <code className="text-green-400 block">conda deactivate</code>
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Great for data science projects</li>
+                      <li>• Manages both Python and non-Python packages</li>
+                      <li>• Pre-built scientific computing packages</li>
+                      <li>• Cross-platform package management</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">pipenv (Modern Package Management)</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <h4 className="text-white font-bold mb-2">Pipenv Workflow:</h4>
+                      <div className="space-y-2">
+                        <code className="text-green-400 block"># Install pipenv</code>
+                        <code className="text-green-400 block">pip install pipenv</code>
+                        <code className="text-green-400 block"># Create Pipfile</code>
+                        <code className="text-green-400 block">pipenv install</code>
+                        <code className="text-green-400 block"># Install packages</code>
+                        <code className="text-green-400 block">pipenv install requests</code>
+                        <code className="text-green-400 block"># Activate shell</code>
+                        <code className="text-green-400 block">pipenv shell</code>
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-2 text-gray-300">
+                      <li>• Combines pip and virtualenv</li>
+                      <li>• Automatic dependency resolution</li>
+                      <li>• Pipfile for dependency tracking</li>
+                      <li>• Lockfile for reproducible builds</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'string-methods':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="string-methods" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python String Methods
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Essential String Methods</h2>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Case Methods</h3>
+                    <div className="space-y-3">
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.upper()</code>
+                        <p className="text-gray-300 text-sm mt-1">Convert to uppercase</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.lower()</code>
+                        <p className="text-gray-300 text-sm mt-1">Convert to lowercase</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.title()</code>
+                        <p className="text-gray-300 text-sm mt-1">Title case</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.capitalize()</code>
+                        <p className="text-gray-300 text-sm mt-1">Capitalize first letter</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Search & Replace</h3>
+                    <div className="space-y-3">
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.find(substring)</code>
+                        <p className="text-gray-300 text-sm mt-1">Find substring index</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.replace(old, new)</code>
+                        <p className="text-gray-300 text-sm mt-1">Replace substring</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.startswith(prefix)</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if starts with</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.endswith(suffix)</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if ends with</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">Formatting</h3>
+                    <div className="space-y-3">
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.strip()</code>
+                        <p className="text-gray-300 text-sm mt-1">Remove whitespace</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.split(separator)</code>
+                        <p className="text-gray-300 text-sm mt-1">Split into list</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.join(iterable)</code>
+                        <p className="text-gray-300 text-sm mt-1">Join elements</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.center(width)</code>
+                        <p className="text-gray-300 text-sm mt-1">Center string</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4">Validation</h3>
+                    <div className="space-y-3">
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.isdigit()</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if all digits</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.isalpha()</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if all letters</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.isalnum()</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if alphanumeric</p>
+                      </div>
+                      <div className="bg-gray-800 p-3 rounded">
+                        <code className="text-green-400">text.isspace()</code>
+                        <p className="text-gray-300 text-sm mt-1">Check if all spaces</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6 mt-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Practical Examples</h3>
+                  
+                  <div className="bg-gray-800 p-4 rounded mb-4">
+                    <h4 className="text-white font-bold mb-2">String Processing Example:</h4>
+                    <pre className="text-green-400 text-sm overflow-x-auto">
+{`# String manipulation example
+text = "  Hello, World!  "
+print(f"Original: '{text}'")
+print(f"Upper: '{text.upper()}'")
+print(f"Lower: '{text.lower()}'")
+print(f"Stripped: '{text.strip()}'")
+print(f"Title: '{text.strip().title()}'")
+print(f"Replace: '{text.replace('World', 'Python')}'")
+
+# Output:
+# Original: '  Hello, World!  '
+# Upper: '  HELLO, WORLD!  '
+# Lower: '  hello, world!  '
+# Stripped: 'Hello, World!'
+# Title: 'Hello, World!'
+# Replace: '  Hello, Python!  '`}
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'decorators':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="decorators" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Decorators
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Understanding Decorators</h2>
+                
+                <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6 mb-6">
+                  <p className="text-gray-300 text-lg mb-4">
+                    Decorators are a powerful Python feature that allows you to modify or enhance functions 
+                    without changing their original code. They are essentially functions that take another 
+                    function as input and return a modified version of that function.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Basic Decorator Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Simple decorator
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+
+# Output:
+# Something is happening before the function is called.
+# Hello!
+# Something is happening after the function is called.`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Decorators with Arguments</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Decorator with arguments
+def repeat(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+@repeat(3)
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+
+# Output:
+# Hello, Alice!
+# Hello, Alice!
+# Hello, Alice!`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">Built-in Decorators</h3>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold mb-2">@property</h4>
+                        <p className="text-gray-300 text-sm">Makes methods behave like attributes</p>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold mb-2">@staticmethod</h4>
+                        <p className="text-gray-300 text-sm">Static methods that don't need self</p>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold mb-2">@classmethod</h4>
+                        <p className="text-gray-300 text-sm">Methods that work with the class</p>
+                      </div>
+                      <div className="bg-gray-800 p-4 rounded">
+                        <h4 className="text-white font-bold mb-2">@functools.wraps</h4>
+                        <p className="text-gray-300 text-sm">Preserves function metadata</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4">Real-World Decorator Examples</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Timing decorator
+import time
+from functools import wraps
+
+def timing_decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} took {end_time - start_time:.4f} seconds")
+        return result
+    return wrapper
+
+@timing_decorator
+def slow_function():
+    time.sleep(1)
+    return "Done!"
+
+# Caching decorator
+def memoize(func):
+    cache = {}
+    @wraps(func)
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        result = func(*args)
+        cache[args] = result
+        return result
+    return wrapper
+
+@memoize
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'generators':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="generators" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Generators
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Understanding Generators</h2>
+                
+                <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6 mb-6">
+                  <p className="text-gray-300 text-lg mb-4">
+                    Generators are a special type of iterator that allow you to iterate over a sequence 
+                    of values without storing them all in memory at once. They use the `yield` keyword 
+                    to produce values one at a time, making them memory-efficient for large datasets.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Basic Generator Function</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Simple generator function
+def count_up_to(max_count):
+    count = 1
+    while count <= max_count:
+        yield count
+        count += 1
+
+# Using the generator
+counter = count_up_to(5)
+for num in counter:
+    print(num)
+
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Generator Expressions</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Generator expression (similar to list comprehension)
+squares = (x**2 for x in range(10))
+print(list(squares))  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Memory efficient - doesn't create the entire list in memory
+# until you consume the generator
+
+# Compare with list comprehension (creates entire list in memory)
+squares_list = [x**2 for x in range(10)]
+print(squares_list)  # Same result, but uses more memory`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">Advanced Generator Features</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Generator with send() method
+def accumulator():
+    total = 0
+    while True:
+        value = yield total
+        if value is not None:
+            total += value
+
+acc = accumulator()
+next(acc)  # Start the generator
+print(acc.send(10))  # 10
+print(acc.send(5))   # 15
+print(acc.send(3))   # 18
+
+# Generator with throw() and close()
+def safe_generator():
+    try:
+        while True:
+            value = yield
+            print(f"Received: {value}")
+    except GeneratorExit:
+        print("Generator closed")
+    except Exception as e:
+        print(f"Exception caught: {e}")
+
+gen = safe_generator()
+next(gen)
+gen.send("Hello")
+gen.throw(ValueError, "Test exception")
+gen.close()`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4">Real-World Generator Examples</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Reading large files efficiently
+def read_large_file(filename):
+    with open(filename, 'r') as file:
+        for line in file:
+            yield line.strip()
+
+# Process each line without loading entire file into memory
+for line in read_large_file('huge_file.txt'):
+    process(line)
+
+# Fibonacci generator
+def fibonacci_generator():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# Get first 10 Fibonacci numbers
+fib = fibonacci_generator()
+for i in range(10):
+    print(next(fib))
+
+# Infinite sequence generator
+def infinite_counter(start=0, step=1):
+    current = start
+    while True:
+        yield current
+        current += step
+
+counter = infinite_counter(10, 2)
+print([next(counter) for _ in range(5)])  # [10, 12, 14, 16, 18]`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'web-frameworks':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="web-frameworks" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Web Frameworks
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Popular Python Web Frameworks</h2>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">🌶️ Django</h3>
+                    <p className="text-gray-300 mb-4">
+                      High-level, full-featured web framework with batteries included.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Built-in admin interface</li>
+                      <li>• ORM (Object-Relational Mapping)</li>
+                      <li>• Authentication system</li>
+                      <li>• URL routing</li>
+                      <li>• Template engine</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">🔥 Flask</h3>
+                    <p className="text-gray-300 mb-4">
+                      Lightweight, micro web framework for quick development.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Minimal core</li>
+                      <li>• Extensible with extensions</li>
+                      <li>• Jinja2 templating</li>
+                      <li>• Werkzeug WSGI toolkit</li>
+                      <li>• Great for APIs</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-purple-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">⚡ FastAPI</h3>
+                    <p className="text-gray-300 mb-4">
+                      Modern, fast web framework for building APIs with automatic documentation.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Automatic API documentation</li>
+                      <li>• Type hints integration</li>
+                      <li>• Async support</li>
+                      <li>• High performance</li>
+                      <li>• Pydantic validation</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Django Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Django models.py
+from django.db import models
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title
+
+# Django views.py
+from django.shortcuts import render
+from .models import BlogPost
+
+def blog_list(request):
+    posts = BlogPost.objects.all()
+    return render(request, 'blog/list.html', {'posts': posts})
+
+# Django urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('blog/', views.blog_list, name='blog_list'),
+]`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Flask Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# Flask app.py
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/api/users', methods=['GET', 'POST'])
+def users():
+    if request.method == 'POST':
+        data = request.json
+        # Process user data
+        return jsonify({'message': 'User created', 'id': 1})
+    
+    return jsonify({'users': ['Alice', 'Bob', 'Charlie']})
+
+@app.route('/user/<int:user_id>')
+def get_user(user_id):
+    return jsonify({'id': user_id, 'name': f'User {user_id}'})
+
+if __name__ == '__main__':
+    app.run(debug=True)`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">FastAPI Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`# FastAPI main.py
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+
+app = FastAPI(title="My API", version="1.0.0")
+
+class User(BaseModel):
+    id: Optional[int] = None
+    name: str
+    email: str
+    age: int
+
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    age: int
+
+# In-memory storage (use database in production)
+users_db = []
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+@app.get("/users", response_model=List[User])
+async def get_users():
+    return users_db
+
+@app.post("/users", response_model=User)
+async def create_user(user: UserCreate):
+    new_user = User(
+        id=len(users_db) + 1,
+        name=user.name,
+        email=user.email,
+        age=user.age
+    )
+    users_db.append(new_user)
+    return new_user
+
+@app.get("/users/{user_id}", response_model=User)
+async def get_user(user_id: int):
+    user = next((u for u in users_db if u.id == user_id), None)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'data-analysis':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="data-analysis" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Data Analysis
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Essential Data Analysis Libraries</h2>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">📊 NumPy</h3>
+                    <p className="text-gray-300 mb-4">
+                      Fundamental package for numerical computing with Python.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• N-dimensional arrays</li>
+                      <li>• Mathematical functions</li>
+                      <li>• Linear algebra</li>
+                      <li>• Random number generation</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">🐼 Pandas</h3>
+                    <p className="text-gray-300 mb-4">
+                      Data manipulation and analysis library with DataFrame structures.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• DataFrames and Series</li>
+                      <li>• Data cleaning</li>
+                      <li>• Data aggregation</li>
+                      <li>• File I/O (CSV, Excel, JSON)</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-purple-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">📈 Matplotlib</h3>
+                    <p className="text-gray-300 mb-4">
+                      Comprehensive plotting library for creating visualizations.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Line plots, bar charts</li>
+                      <li>• Histograms, scatter plots</li>
+                      <li>• Customizable styling</li>
+                      <li>• Publication-quality figures</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">NumPy Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`import numpy as np
+
+# Create arrays
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Array 1:", arr1)
+print("Array 2 shape:", arr2.shape)
+print("Array 2:", arr2)
+
+# Mathematical operations
+print("Sum:", np.sum(arr1))
+print("Mean:", np.mean(arr1))
+print("Max:", np.max(arr1))
+print("Min:", np.min(arr1))
+
+# Array operations
+squared = arr1 ** 2
+print("Squared:", squared)
+
+# Random arrays
+random_arr = np.random.randn(3, 3)
+print("Random array:", random_arr)
+
+# Linear algebra
+matrix = np.array([[1, 2], [3, 4]])
+inverse = np.linalg.inv(matrix)
+print("Matrix:", matrix)
+print("Inverse:", inverse)`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">Pandas Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`import pandas as pd
+import numpy as np
+
+# Create DataFrame
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],
+    'Age': [25, 30, 35, 28],
+    'City': ['New York', 'London', 'Tokyo', 'Paris'],
+    'Salary': [50000, 60000, 70000, 55000]
+}
+
+df = pd.DataFrame(data)
+print("Original DataFrame:")
+print(df)
+
+# Data operations
+print("\\nBasic Statistics:")
+print(df.describe())
+
+print("\\nFilter by Age > 30:")
+print(df[df['Age'] > 30])
+
+print("\\nGroup by City and calculate mean salary:")
+print(df.groupby('City')['Salary'].mean())
+
+# Data manipulation
+df['Salary_Adjusted'] = df['Salary'] * 1.1
+print("\\nWith adjusted salary:")
+print(df[['Name', 'Salary', 'Salary_Adjusted']])
+
+# Reading and writing files
+# df.to_csv('employees.csv', index=False)
+# df_read = pd.read_csv('employees.csv')`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">Data Visualization Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`import matplotlib.pyplot as plt
+import numpy as np
+
+# Create sample data
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+# Create plots
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
+
+# Line plot
+ax1.plot(x, y1, label='sin(x)', color='blue')
+ax1.plot(x, y2, label='cos(x)', color='red')
+ax1.set_title('Trigonometric Functions')
+ax1.set_xlabel('X')
+ax1.set_ylabel('Y')
+ax1.legend()
+ax1.grid(True)
+
+# Scatter plot
+x_scatter = np.random.randn(100)
+y_scatter = 2 * x_scatter + np.random.randn(100)
+ax2.scatter(x_scatter, y_scatter, alpha=0.6, color='green')
+ax2.set_title('Scatter Plot')
+ax2.set_xlabel('X')
+ax2.set_ylabel('Y')
+ax2.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+# Bar chart example
+categories = ['A', 'B', 'C', 'D']
+values = [23, 45, 56, 78]
+
+plt.figure(figsize=(8, 6))
+plt.bar(categories, values, color=['red', 'green', 'blue', 'orange'])
+plt.title('Bar Chart Example')
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.show()`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'machine-learning':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="machine-learning" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Machine Learning
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Essential ML Libraries</h2>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">🤖 Scikit-learn</h3>
+                    <p className="text-gray-300 mb-4">
+                      Comprehensive machine learning library for Python.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Classification algorithms</li>
+                      <li>• Regression models</li>
+                      <li>• Clustering techniques</li>
+                      <li>• Model evaluation tools</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">🧠 TensorFlow</h3>
+                    <p className="text-gray-300 mb-4">
+                      Open-source platform for machine learning and AI.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Deep learning models</li>
+                      <li>• Neural networks</li>
+                      <li>• Keras integration</li>
+                      <li>• GPU acceleration</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-purple-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">🔥 PyTorch</h3>
+                    <p className="text-gray-300 mb-4">
+                      Dynamic neural network framework for research and production.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Dynamic computation graphs</li>
+                      <li>• Research-friendly</li>
+                      <li>• Strong community</li>
+                      <li>• Mobile deployment</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">Scikit-learn Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`from sklearn import datasets, model_selection, metrics
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+
+# Load dataset
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+
+# Split data
+X_train, X_test, y_train, y_test = model_selection.train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Scale features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Train model
+model = LogisticRegression(random_state=42)
+model.fit(X_train_scaled, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test_scaled)
+
+# Evaluate model
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+
+# Classification report
+print(metrics.classification_report(y_test, y_pred))`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">TensorFlow/Keras Example</h3>
+                    
+                    <div className="bg-gray-800 p-4 rounded mb-4">
+                      <pre className="text-green-400 text-sm overflow-x-auto">
+{`import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# Load and prepare data
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+# Normalize pixel values
+x_train = x_train.astype("float32") / 255.0
+x_test = x_test.astype("float32") / 255.0
+
+# Build model
+model = keras.Sequential([
+    layers.Flatten(input_shape=(28, 28)),
+    layers.Dense(128, activation="relu"),
+    layers.Dropout(0.2),
+    layers.Dense(10, activation="softmax")
+])
+
+# Compile model
+model.compile(
+    optimizer="adam",
+    loss="sparse_categorical_crossentropy",
+    metrics=["accuracy"]
+)
+
+# Train model
+model.fit(x_train, y_train, epochs=5, validation_split=0.1)
+
+# Evaluate model
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test accuracy: {test_acc:.2f}")`}
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'career-path':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="career-path" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Career Path
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Python Career Opportunities</h2>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-900/50 border border-blue-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">🌐 Web Developer</h3>
+                    <p className="text-gray-300 mb-4">
+                      Build web applications using Django, Flask, or FastAPI.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Full-stack development</li>
+                      <li>• API development</li>
+                      <li>• Database design</li>
+                      <li>• Frontend integration</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $60,000 - $120,000
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-green-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">📊 Data Scientist</h3>
+                    <p className="text-gray-300 mb-4">
+                      Analyze data and build predictive models using Python.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Statistical analysis</li>
+                      <li>• Machine learning</li>
+                      <li>• Data visualization</li>
+                      <li>• Business insights</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $70,000 - $140,000
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-purple-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">🤖 AI/ML Engineer</h3>
+                    <p className="text-gray-300 mb-4">
+                      Develop artificial intelligence and machine learning solutions.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Deep learning models</li>
+                      <li>• Neural networks</li>
+                      <li>• Model deployment</li>
+                      <li>• AI research</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $80,000 - $160,000
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-red-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-red-400 mb-4">🔧 DevOps Engineer</h3>
+                    <p className="text-gray-300 mb-4">
+                      Automate infrastructure and deployment using Python scripts.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Automation scripts</li>
+                      <li>• CI/CD pipelines</li>
+                      <li>• Infrastructure as code</li>
+                      <li>• Monitoring systems</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $70,000 - $130,000
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-yellow-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4">🎮 Game Developer</h3>
+                    <p className="text-gray-300 mb-4">
+                      Create games using Python frameworks like Pygame.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Game mechanics</li>
+                      <li>• Graphics programming</li>
+                      <li>• Physics simulation</li>
+                      <li>• User interface</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $50,000 - $100,000
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-indigo-500/30 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-indigo-400 mb-4">🔒 Cybersecurity Analyst</h3>
+                    <p className="text-gray-300 mb-4">
+                      Use Python for security analysis and penetration testing.
+                    </p>
+                    <ul className="space-y-2 text-gray-300 text-sm">
+                      <li>• Security scripts</li>
+                      <li>• Vulnerability assessment</li>
+                      <li>• Network analysis</li>
+                      <li>• Incident response</li>
+                    </ul>
+                    <div className="mt-4 text-yellow-400 font-bold">
+                      Salary: $65,000 - $125,000
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Career Progression Path</h3>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-gray-800 p-4 rounded border-l-4 border-green-500">
+                      <h4 className="text-white font-bold">Junior Python Developer (0-2 years)</h4>
+                      <p className="text-gray-300 text-sm">
+                        Focus on learning Python fundamentals, basic frameworks, and working with teams.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded border-l-4 border-blue-500">
+                      <h4 className="text-white font-bold">Mid-Level Developer (2-5 years)</h4>
+                      <p className="text-gray-300 text-sm">
+                        Specialize in specific domains, lead small projects, mentor junior developers.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded border-l-4 border-purple-500">
+                      <h4 className="text-white font-bold">Senior Developer (5+ years)</h4>
+                      <p className="text-gray-300 text-sm">
+                        Architect complex systems, lead large projects, make technical decisions.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded border-l-4 border-yellow-500">
+                      <h4 className="text-white font-bold">Tech Lead/Principal Engineer (7+ years)</h4>
+                      <p className="text-gray-300 text-sm">
+                        Set technical direction, manage engineering teams, drive innovation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'resources':
+        return (
+          <div className="animate-fade-in-up">
+            <h1 id="resources" className="text-4xl md:text-5xl font-extrabold mb-8 text-center">
+              🐍 Python Learning Resources
+            </h1>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8 mb-8">
+                <h2 className="text-3xl font-bold text-white mb-6">Essential Learning Resources</h2>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-400 mb-4">📚 Official Documentation</h3>
+                    <ul className="space-y-3 text-gray-300">
+                      <li>
+                        <a href="https://docs.python.org/" className="text-green-400 hover:text-green-300">
+                          Python Official Documentation
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://pep.python.org/" className="text-green-400 hover:text-green-300">
+                          Python Enhancement Proposals (PEPs)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.python.org/dev/peps/pep-0008/" className="text-green-400 hover:text-green-300">
+                          PEP 8 - Style Guide
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://docs.python.org/tutorial/" className="text-green-400 hover:text-green-300">
+                          Python Tutorial
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-green-400 mb-4">🎓 Online Courses</h3>
+                    <ul className="space-y-3 text-gray-300">
+                      <li>
+                        <a href="https://www.coursera.org/learn/python" className="text-green-400 hover:text-green-300">
+                          Coursera - Python for Everybody
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.edx.org/course/introduction-to-computer-science-and-programming-7" className="text-green-400 hover:text-green-300">
+                          MITx - Introduction to Computer Science
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.udemy.com/course/complete-python-bootcamp/" className="text-green-400 hover:text-green-300">
+                          Udemy - Complete Python Bootcamp
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.freecodecamp.org/" className="text-green-400 hover:text-green-300">
+                          FreeCodeCamp - Python Courses
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-purple-400 mb-4">📖 Books</h3>
+                    <ul className="space-y-3 text-gray-300">
+                      <li>
+                        <span className="text-white font-bold">"Python Crash Course"</span> by Eric Matthes
+                      </li>
+                      <li>
+                        <span className="text-white font-bold">"Automate the Boring Stuff"</span> by Al Sweigart
+                      </li>
+                      <li>
+                        <span className="text-white font-bold">"Fluent Python"</span> by Luciano Ramalho
+                      </li>
+                      <li>
+                        <span className="text-white font-bold">"Effective Python"</span> by Brett Slatkin
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4">🌐 Practice Platforms</h3>
+                    <ul className="space-y-3 text-gray-300">
+                      <li>
+                        <a href="https://leetcode.com/" className="text-green-400 hover:text-green-300">
+                          LeetCode - Coding Challenges
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.hackerrank.com/domains/python" className="text-green-400 hover:text-green-300">
+                          HackerRank - Python Challenges
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.codewars.com/" className="text-green-400 hover:text-green-300">
+                          Codewars - Programming Puzzles
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://projecteuler.net/" className="text-green-400 hover:text-green-300">
+                          Project Euler - Mathematical Problems
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-gray-900/50 border border-gray-600 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Community & Forums</h3>
+                  
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold mb-2">Reddit</h4>
+                      <ul className="space-y-1 text-gray-300 text-sm">
+                        <li>• r/Python</li>
+                        <li>• r/learnpython</li>
+                        <li>• r/MachineLearning</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold mb-2">Stack Overflow</h4>
+                      <p className="text-gray-300 text-sm">
+                        Q&A platform for programming questions and answers.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-gray-800 p-4 rounded">
+                      <h4 className="text-white font-bold mb-2">Discord/Slack</h4>
+                      <p className="text-gray-300 text-sm">
+                        Real-time chat communities for Python developers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
