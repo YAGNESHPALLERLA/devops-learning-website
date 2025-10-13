@@ -156,7 +156,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900/50 to-black/50">
+        <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900/50 to-black/50 relative z-10">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
@@ -167,7 +167,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
 
       {/* Right sidebar for desktop - Table of Contents */}
       {onThisPage.length > 0 && (
-        <aside className="hidden xl:block w-80 bg-gradient-to-b from-gray-900 to-black shadow-2xl border-l border-gray-700 sticky top-0 h-screen overflow-y-auto">
+        <aside className="hidden xl:block w-80 bg-gradient-to-b from-gray-900 to-black shadow-2xl border-l border-gray-700 sticky top-0 h-screen overflow-y-auto z-20">
           <div className="p-6">
             <h3 className="text-lg font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">On this page</h3>
             <nav className="space-y-2">

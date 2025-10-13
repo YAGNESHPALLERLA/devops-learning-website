@@ -530,7 +530,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-[#1a1a1a]">
+        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}

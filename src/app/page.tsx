@@ -215,9 +215,9 @@ export default function HomePage() {
           </div>
           
           <div className="flex justify-center space-x-8 mb-6">
-            <Link href="/docs/what-is-devops" className="text-gray-400 hover:text-rose-400 transition-colors">
+            <span className="text-gray-400 cursor-not-allowed opacity-50">
               Documentation
-            </Link>
+            </span>
             <Link href="/terminal" className="text-gray-400 hover:text-rose-400 transition-colors">
               Terminal
             </Link>
