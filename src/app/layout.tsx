@@ -52,9 +52,9 @@ export default function RootLayout({
                   <Link href="/" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
                     Home
                   </Link>
-                  <Link href="/docs/what-is-devops" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
+                  <span className="text-gray-400 cursor-not-allowed opacity-50 font-medium">
                     Docs
-                  </Link>
+                  </span>
                   <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
                     Terminal
                   </Link>
