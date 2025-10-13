@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { spawn } from 'child_process';
-import { writeFileSync, unlinkSync, mkdirSync } from 'fs';
+import { writeFileSync, unlinkSync, mkdirSync, rmSync } from 'fs';
 import { join } from 'path';
 import { randomUUID } from 'crypto';
 
@@ -184,8 +184,8 @@ export async function POST(request: NextRequest) {
 
     // Cleanup session directory
     try {
-      require('fs').rmSync(sessionDir, { recursive: true, force: true });
-    } catch (e) {
+      rmSync(sessionDir, { recursive: true, force: true });
+    } catch {
       // Ignore cleanup errors
     }
 

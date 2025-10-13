@@ -4307,7 +4307,7 @@ int(), float(), str(), bool()`}
                   <li>• <strong className="text-white">/ Division:</strong> Returns float division (10 / 3 = 3.333...)</li>
                   <li>• <strong className="text-white">% Modulus:</strong> Returns remainder (10 % 3 = 1)</li>
                   <li>• <strong className="text-white">** Exponentiation:</strong> Raises to power (2 ** 3 = 8)</li>
-                  <li>• <strong className="text-white">// Floor Division:</strong> Integer division (10 // 3 = 3)</li>
+                  <li>• <strong className="text-white">{'//'} Floor Division:</strong> Integer division (10 {'//'} 3 = 3)</li>
                 </ul>
               </div>
               <div className="bg-gray-700 p-4 rounded border border-gray-600">

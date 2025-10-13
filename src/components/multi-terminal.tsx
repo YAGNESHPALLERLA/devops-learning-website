@@ -18,7 +18,7 @@ interface Technology {
   icon: string;
   prompt: string;
   path: string;
-  commands: { [key: string]: (args: string[]) => string };
+  commands: { [key: string]: (args: string[]) => string | Promise<string> };
 }
 
 export default function MultiTerminal({ className = '' }: TerminalProps) {
