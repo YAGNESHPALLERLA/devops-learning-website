@@ -1,4 +1,5 @@
 import MultiTerminal from '@/components/multi-terminal';
+import CodeEditor from '@/components/code-editor';
 
 export default function TerminalPage() {
   return (
@@ -90,6 +91,89 @@ export default function TerminalPage() {
           
           <div className="p-8">
             <MultiTerminal className="w-full" />
+          </div>
+        </div>
+      </div>
+
+      {/* Code Editor Section */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-8 pb-16">
+        <div className="text-center mb-8">
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Live Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">Editor</span>
+          </h2>
+          <p className="text-gray-400 text-lg">Write and execute Python & Java code in real-time</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white mb-4">🐍 Python Editor</h3>
+            <CodeEditor 
+              language="python" 
+              onExecute={async (code) => {
+                try {
+                  const response = await fetch('/api/execute-code', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ language: 'python', code })
+                  });
+                  const result = await response.json();
+                  console.log('Python execution result:', result);
+                  // You could display this result in the terminal or a separate output area
+                } catch (error) {
+                  console.error('Python execution error:', error);
+                }
+              }}
+              className="w-full"
+            />
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white mb-4">☕ Java Editor</h3>
+            <CodeEditor 
+              language="java" 
+              onExecute={async (code) => {
+                try {
+                  const response = await fetch('/api/execute-code', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ language: 'java', code })
+                  });
+                  const result = await response.json();
+                  console.log('Java execution result:', result);
+                  // You could display this result in the terminal or a separate output area
+                } catch (error) {
+                  console.error('Java execution error:', error);
+                }
+              }}
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <div className="mt-8 bg-gradient-to-r from-blue-900/20 to-green-900/20 border border-blue-500/30 rounded-2xl p-6">
+          <div className="flex items-start space-x-4">
+            <div className="text-2xl">💡</div>
+            <div>
+              <h4 className="text-lg font-bold text-white mb-2">How to Use the Code Editor</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  <span>Write your Python or Java code in the editor above</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  <span>Click "Run Code" to execute your code in real-time</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  <span>Use "Reset" to restore the default example code</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  <span>Or use terminal commands like <code className="bg-gray-700 text-green-400 px-1 rounded">python -c "print('Hello')"</code> or <code className="bg-gray-700 text-green-400 px-1 rounded">run print('Hello')</code></span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -116,7 +116,8 @@ Untracked files:
   pip list         - List installed packages
   pip install [pkg] - Install package
   python [file]    - Run Python script
-  python -c [code] - Execute Python code
+  python -c [code] - Execute Python code (REAL EXECUTION!)
+  run [code]       - Execute Python code directly (REAL EXECUTION!)
   pip freeze       - Show installed packages
   virtualenv [env] - Create virtual environment
   activate [env]   - Activate virtual environment
@@ -125,27 +126,53 @@ Untracked files:
   clear            - Clear terminal
   exit             - Exit terminal`,
 
-        python: (args) => {
+        python: async (args) => {
           if (args[0] === '--version') {
             return `Python 3.9.7
 [GCC 7.5.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.`;
           }
           if (args[0] === '-c' && args[1]) {
+            const code = args.slice(1).join(' ');
             try {
-              // Simulate Python code execution
-              const code = args.slice(1).join(' ');
-              if (code.includes('print')) {
-                return `>>> ${code}\nHello World!`;
-              }
-              return `>>> ${code}\n<function result>`;
-            } catch {
-              return `>>> ${args.slice(1).join(' ')}\nSyntaxError: invalid syntax`;
+              const response = await fetch('/api/execute-code', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ language: 'python', code })
+              });
+              const result = await response.json();
+              return `>>> ${code}\n${result.output}`;
+            } catch (error) {
+              return `>>> ${code}\nError: Failed to execute code`;
             }
+          }
+          if (args[0] && args[0].endsWith('.py')) {
+            // Simulate running a Python file
+            return `Running ${args[0]}...
+Output: Python script executed successfully`;
           }
           return `Python 3.9.7 interactive shell
 Type "help()" for help.
 >>> `;
+        },
+
+        'run': async (args) => {
+          if (args.length === 0) {
+            return `Usage: run <code>
+Example: run print("Hello World")`;
+          }
+          const code = args.join(' ');
+          try {
+            const response = await fetch('/api/execute-code', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ language: 'python', code })
+            });
+            const result = await response.json();
+            return `Executing Python code:\n${code}\n\nOutput:\n${result.output}`;
+          } catch (error) {
+            return `Error: Failed to execute code`;
+          }
         },
 
         pip: (args) => {
@@ -196,6 +223,7 @@ drwxr-xr-x 2 python python 4096 Dec 15 10:20 venv`,
   java --version   - Check Java version
   javac [file]     - Compile Java file
   java [class]     - Run Java class
+  compile [code]   - Compile & execute Java code (REAL EXECUTION!)
   mvn compile      - Maven compile
   mvn test         - Maven run tests
   mvn package      - Maven build package
@@ -218,12 +246,32 @@ OpenJDK 64-Bit Server VM (build 11.0.12+7-Ubuntu-0ubuntu1.20.04, mixed mode, sha
        java [options] --module <module>[/<mainclass>] [args...]`;
         },
 
-        javac: (args) => {
+        javac: async (args) => {
           if (args.length === 0) {
             return 'javac: no source files given';
           }
+          // Simulate compilation - in real implementation, this would compile the file
           return `Compiling ${args[0]}...
 Generated ${args[0].replace('.java', '.class')}`;
+        },
+
+        'compile': async (args) => {
+          if (args.length === 0) {
+            return `Usage: compile <java_code>
+Example: compile System.out.println("Hello World");`;
+          }
+          const code = args.join(' ');
+          try {
+            const response = await fetch('/api/execute-code', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ language: 'java', code })
+            });
+            const result = await response.json();
+            return `Compiling and executing Java code:\n${code}\n\nOutput:\n${result.output}`;
+          } catch (error) {
+            return `Error: Failed to compile/execute code`;
+          }
         },
 
         mvn: (args) => {
@@ -356,12 +404,25 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
 
     setIsProcessing(true);
 
-    // Simulate command processing delay
+    // Simulate command processing delay for non-async commands
     await new Promise(resolve => setTimeout(resolve, 100));
 
     let output = '';
     if (tech.commands[commandKey]) {
-      output = tech.commands[commandKey](args);
+      const commandFunction = tech.commands[commandKey];
+      if (typeof commandFunction === 'function') {
+        try {
+          // Check if the function is async
+          const result = commandFunction(args);
+          if (result instanceof Promise) {
+            output = await result;
+          } else {
+            output = result;
+          }
+        } catch (error) {
+          output = `Error executing command: ${error}`;
+        }
+      }
     } else {
       output = `${cmd}: command not found\nType 'help' to see available commands for ${tech.name}.`;
     }
