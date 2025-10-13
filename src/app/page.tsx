@@ -71,12 +71,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <Link 
-              href="/docs/what-is-devops" 
+            <button 
+              onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-gradient-to-r from-rose-500 to-red-600 text-white font-bold rounded-lg shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 transform hover:-translate-y-1 transition-all duration-300"
             >
               🚀 Start Learning
-            </Link>
+            </button>
             <Link 
               href="/terminal" 
               className="px-8 py-4 bg-[#252525] text-white font-bold rounded-lg border-2 border-rose-500 hover:bg-rose-500/10 transform hover:-translate-y-1 transition-all duration-300"
@@ -91,7 +91,7 @@ export default function HomePage() {
       <StatsCounter />
 
       {/* Technologies Grid */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="courses" className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">
             Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">Technology</span>
