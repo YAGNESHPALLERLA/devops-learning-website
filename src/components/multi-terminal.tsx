@@ -412,7 +412,7 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
   const currentTechnology = technologies[currentTech];
 
   return (
-    <div className={`bg-black text-green-400 font-mono rounded-lg overflow-hidden ${className}`}>
+    <div className={`bg-black text-green-400 font-mono rounded-lg overflow-hidden text-lg ${className}`}>
       {/* Technology Switcher */}
       <div className="bg-gray-900 px-4 py-2 border-b border-gray-700">
         <div className="flex items-center justify-between">
@@ -437,32 +437,32 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
       </div>
 
       {/* Terminal Header */}
-      <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
+      <div className="bg-gray-800 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-gray-300 text-sm">{currentTechnology.name} Learning Environment</div>
+        <div className="text-gray-300 text-base font-semibold">{currentTechnology.name} Learning Environment</div>
         <div className="w-16"></div>
       </div>
 
       {/* Terminal Content */}
       <div 
         ref={terminalRef}
-        className="p-4 h-96 overflow-y-auto"
+        className="p-6 h-[600px] overflow-y-auto"
       >
         {history.map((entry, index) => (
-          <div key={index} className="mb-2">
-            <div className="flex items-center mb-1">
-              <span className="text-white">{currentTechnology.prompt}</span>
-              <span className="text-white">:</span>
-              <span className="text-yellow-400">{currentTechnology.path}</span>
-              <span className="text-white">$</span>
-              <span className="ml-2 text-white">{entry.command}</span>
+          <div key={index} className="mb-4">
+            <div className="flex items-center mb-2">
+              <span className="text-white text-lg">{currentTechnology.prompt}</span>
+              <span className="text-white text-lg">:</span>
+              <span className="text-yellow-400 text-lg">{currentTechnology.path}</span>
+              <span className="text-white text-lg">$</span>
+              <span className="ml-2 text-green-400 text-lg">{entry.command}</span>
             </div>
             {entry.output && (
-              <div className="text-green-400 whitespace-pre-wrap ml-4">
+              <div className="text-green-400 whitespace-pre-wrap ml-4 text-base leading-relaxed">
                 {entry.output}
               </div>
             )}
@@ -471,20 +471,20 @@ drwxr-xr-x 3 root root 4096 Dec 15 10:00 ..
         
         {/* Current Input Line */}
         <form onSubmit={handleSubmit} className="flex items-center">
-          <span className="text-white">{currentTechnology.prompt}</span>
-          <span className="text-white">:</span>
-          <span className="text-yellow-400">{currentTechnology.path}</span>
-          <span className="text-white">$</span>
+          <span className="text-white text-lg">{currentTechnology.prompt}</span>
+          <span className="text-white text-lg">:</span>
+          <span className="text-yellow-400 text-lg">{currentTechnology.path}</span>
+          <span className="text-white text-lg">$</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="ml-2 bg-transparent text-white outline-none flex-1"
+            className="ml-2 bg-transparent text-green-400 outline-none flex-1 text-lg"
             placeholder="Enter command..."
             disabled={isProcessing}
           />
-          {isProcessing && <span className="text-yellow-400 animate-pulse">⏳</span>}
+          {isProcessing && <span className="text-yellow-400 animate-pulse text-lg">⏳</span>}
         </form>
       </div>
     </div>

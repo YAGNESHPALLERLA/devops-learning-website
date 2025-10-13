@@ -69,26 +69,26 @@ export default function TerminalPage() {
       </div>
 
       {/* Terminal Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-8 pb-16">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-8 pb-16">
         <div className="bg-gradient-to-br from-gray-800/50 to-black/50 backdrop-blur-sm rounded-3xl border border-gray-600/50 shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-4 border-b border-gray-600">
+          <div className="bg-gradient-to-r from-gray-700 to-gray-800 px-8 py-6 border-b border-gray-600">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="flex items-center space-x-6">
+                <div className="flex space-x-3">
+                  <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+                  <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                  <div className="w-4 h-4 bg-green-500 rounded-full"></div>
                 </div>
-                <span className="text-white font-semibold">OneHubGlobal Terminal</span>
+                <span className="text-white font-bold text-lg">OneHubGlobal Terminal</span>
               </div>
-              <div className="flex items-center space-x-2 text-green-400 text-sm">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span>Live</span>
+              <div className="flex items-center space-x-3 text-green-400 text-base">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span>Live Terminal</span>
               </div>
             </div>
           </div>
           
-          <div className="p-6">
+          <div className="p-8">
             <MultiTerminal className="w-full" />
           </div>
         </div>
