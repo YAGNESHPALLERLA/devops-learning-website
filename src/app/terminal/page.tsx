@@ -1,3 +1,5 @@
+'use client';
+
 import MultiTerminal from '@/components/multi-terminal';
 import CodeEditor from '@/components/code-editor';
 
