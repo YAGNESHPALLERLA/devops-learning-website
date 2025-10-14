@@ -1007,7 +1007,26 @@ DELETE FROM Students;`}
               <div className="max-w-6xl mx-auto">
                 {/* Introduction to JOINS */}
                 <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">📘 Introduction to SQL JOINs</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">🔗 Advanced SQL JOINs & Relationships</h2>
+                  
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Understanding Relational Database Theory</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      JOINs are the cornerstone of relational database operations, enabling the combination of data from multiple tables based on logical relationships. 
+                      Understanding JOIN theory is essential for efficient data retrieval and complex business logic implementation.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">JOIN Fundamentals:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Cartesian Product:</strong> Mathematical foundation of all JOIN operations</li>
+                        <li>• <strong className="text-white">Relationship Types:</strong> One-to-One, One-to-Many, Many-to-Many</li>
+                        <li>• <strong className="text-white">Join Conditions:</strong> How tables are logically connected</li>
+                        <li>• <strong className="text-white">Performance Impact:</strong> Understanding JOIN execution costs</li>
+                        <li>• <strong className="text-white">Optimization Strategies:</strong> Index usage and query planning</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="space-y-6">
                     <p className="text-lg text-gray-300 leading-relaxed">
                       One of the most powerful features of relational databases is the ability to establish relationships between tables. 
@@ -3163,15 +3182,69 @@ GROUP BY department;`}
               <div className="max-w-6xl mx-auto">
                 {/* SQL Data Types */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">📘 SQL Data Types</h2>
-                  <p className="text-lg text-gray-300 mb-6">
-                    Data types define what kind of data can be stored in each column of a table.
-                    Choosing the right data type is crucial for data integrity and performance.
-                  </p>
+                  <h2 className="text-3xl font-bold text-white mb-6">📘 SQL Data Types & Database Design</h2>
+                  
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Understanding Data Types in Database Design</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Data types are the foundation of database schema design. They define what kind of data can be stored in each column, 
+                      how much space it will occupy, and what operations can be performed on it. Choosing appropriate data types is crucial 
+                      for data integrity, performance optimization, and storage efficiency.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Data Type Selection Principles:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Storage Efficiency:</strong> Choose the smallest type that accommodates your data</li>
+                        <li>• <strong className="text-white">Data Integrity:</strong> Prevent invalid data through type constraints</li>
+                        <li>• <strong className="text-white">Performance:</strong> Optimize for query speed and indexing</li>
+                        <li>• <strong className="text-white">Future-Proofing:</strong> Consider scalability and data growth</li>
+                        <li>• <strong className="text-white">Consistency:</strong> Use consistent types across related tables</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-purple-300 mb-4">🔢 Data Type Categories & Characteristics</h4>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Storage Characteristics:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">Fixed vs Variable:</strong> CHAR vs VARCHAR storage differences</li>
+                          <li>• <strong className="text-white">Precision vs Scale:</strong> DECIMAL precision for financial data</li>
+                          <li>• <strong className="text-white">Memory Usage:</strong> How data types affect memory consumption</li>
+                          <li>• <strong className="text-white">Index Efficiency:</strong> Impact on index performance</li>
+                        </ul>
+                      </div>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Operational Considerations:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">Sorting & Comparison:</strong> How types affect ORDER BY operations</li>
+                          <li>• <strong className="text-white">Mathematical Operations:</strong> Numeric type calculations</li>
+                          <li>• <strong className="text-white">String Operations:</strong> Text manipulation capabilities</li>
+                          <li>• <strong className="text-white">Date Arithmetic:</strong> Temporal calculations and functions</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                   
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold text-yellow-400 mb-4">Numeric Data Types</h3>
+                      <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg mb-4">
+                        <h3 className="text-xl font-bold text-green-300 mb-3">🔢 Numeric Data Types</h3>
+                        <p className="text-gray-300 text-sm mb-3">
+                          Numeric types are fundamental for mathematical operations, financial calculations, and data analysis. 
+                          Understanding precision, scale, and storage requirements is crucial for accurate data representation.
+                        </p>
+                        <div className="bg-gray-700/50 p-3 rounded-lg">
+                          <h5 className="font-bold text-white mb-2 text-xs">Key Considerations:</h5>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>• <strong className="text-white">Integer Types:</strong> Whole numbers with different ranges</li>
+                            <li>• <strong className="text-white">Decimal Types:</strong> Fixed-point for financial precision</li>
+                            <li>• <strong className="text-white">Floating Types:</strong> Approximate values for scientific data</li>
+                            <li>• <strong className="text-white">Precision Loss:</strong> Understanding floating-point limitations</li>
+                          </ul>
+                        </div>
+                      </div>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <code className="text-white">INT</code> - Integer numbers (-2,147,483,648 to 2,147,483,647)</li>
                         <li>• <code className="text-white">BIGINT</code> - Large integer numbers</li>
@@ -3181,7 +3254,22 @@ GROUP BY department;`}
                       </ul>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold text-yellow-400 mb-4">String Data Types</h3>
+                      <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg mb-4">
+                        <h3 className="text-xl font-bold text-blue-300 mb-3">📝 String Data Types</h3>
+                        <p className="text-gray-300 text-sm mb-3">
+                          String types handle textual data with different storage and performance characteristics. 
+                          Choosing between fixed and variable length affects storage efficiency and query performance.
+                        </p>
+                        <div className="bg-gray-700/50 p-3 rounded-lg">
+                          <h5 className="font-bold text-white mb-2 text-xs">Storage Optimization:</h5>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>• <strong className="text-white">Fixed Length:</strong> CHAR for consistent data lengths</li>
+                            <li>• <strong className="text-white">Variable Length:</strong> VARCHAR for space efficiency</li>
+                            <li>• <strong className="text-white">Large Text:</strong> TEXT for documents and content</li>
+                            <li>• <strong className="text-white">Binary Data:</strong> BLOB for files and media</li>
+                          </ul>
+                        </div>
+                      </div>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <code className="text-white">VARCHAR(n)</code> - Variable-length string (max n characters)</li>
                         <li>• <code className="text-white">CHAR(n)</code> - Fixed-length string (n characters)</li>
@@ -3193,7 +3281,22 @@ GROUP BY department;`}
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold text-yellow-400 mb-4">Date & Time Types</h3>
+                      <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg mb-4">
+                        <h3 className="text-xl font-bold text-purple-300 mb-3">📅 Date & Time Types</h3>
+                        <p className="text-gray-300 text-sm mb-3">
+                          Temporal data types handle dates, times, and timestamps with different precision levels. 
+                          Understanding timezone handling and temporal calculations is essential for business applications.
+                        </p>
+                        <div className="bg-gray-700/50 p-3 rounded-lg">
+                          <h5 className="font-bold text-white mb-2 text-xs">Temporal Considerations:</h5>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>• <strong className="text-white">Timezone Awareness:</strong> Handling global applications</li>
+                            <li>• <strong className="text-white">Precision Levels:</strong> Seconds, milliseconds, microseconds</li>
+                            <li>• <strong className="text-white">Auto-Updating:</strong> TIMESTAMP for audit trails</li>
+                            <li>• <strong className="text-white">Date Arithmetic:</strong> Calculations and comparisons</li>
+                          </ul>
+                        </div>
+                      </div>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <code className="text-white">DATE</code> - Date (YYYY-MM-DD)</li>
                         <li>• <code className="text-white">TIME</code> - Time (HH:MM:SS)</li>
@@ -3202,7 +3305,22 @@ GROUP BY department;`}
                       </ul>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h3 className="text-xl font-bold text-yellow-400 mb-4">Boolean & Other Types</h3>
+                      <div className="bg-orange-900/20 border border-orange-500/30 p-4 rounded-lg mb-4">
+                        <h3 className="text-xl font-bold text-orange-300 mb-3">🔘 Boolean & Specialized Types</h3>
+                        <p className="text-gray-300 text-sm mb-3">
+                          Specialized data types handle boolean logic, structured data, and unique identifiers. 
+                          These types provide semantic meaning and validation for specific use cases.
+                        </p>
+                        <div className="bg-gray-700/50 p-3 rounded-lg">
+                          <h5 className="font-bold text-white mb-2 text-xs">Specialized Features:</h5>
+                          <ul className="text-gray-300 text-xs space-y-1">
+                            <li>• <strong className="text-white">Boolean Logic:</strong> TRUE/FALSE operations</li>
+                            <li>• <strong className="text-white">Structured Data:</strong> JSON for flexible schemas</li>
+                            <li>• <strong className="text-white">Enumeration:</strong> Predefined value lists</li>
+                            <li>• <strong className="text-white">Unique IDs:</strong> UUID for distributed systems</li>
+                          </ul>
+                        </div>
+                      </div>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <code className="text-white">BOOLEAN</code> - TRUE/FALSE values</li>
                         <li>• <code className="text-white">JSON</code> - JSON formatted data</li>
@@ -3215,7 +3333,23 @@ GROUP BY department;`}
 
                 {/* Constraints */}
                 <div className="bg-gray-800 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">🔒 SQL Constraints</h2>
+                  <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-lg mb-6">
+                    <h2 className="text-3xl font-bold text-red-300 mb-4">🔒 SQL Constraints - Data Integrity Guardians</h2>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Constraints are rules that enforce data integrity and business logic at the database level. They act as guardians 
+                      ensuring that data remains consistent, valid, and follows the intended design patterns throughout the database lifecycle.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Constraint Benefits:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Data Integrity:</strong> Prevent invalid or inconsistent data</li>
+                        <li>• <strong className="text-white">Business Rules:</strong> Enforce organizational policies at database level</li>
+                        <li>• <strong className="text-white">Referential Integrity:</strong> Maintain relationships between tables</li>
+                        <li>• <strong className="text-white">Performance:</strong> Enable query optimization through constraint indexes</li>
+                        <li>• <strong className="text-white">Documentation:</strong> Self-documenting database design</li>
+                      </ul>
+                    </div>
+                  </div>
                   <p className="text-lg text-gray-300 mb-6">
                     Constraints are rules applied to columns that ensure data integrity and consistency.
                   </p>
@@ -4663,7 +4797,26 @@ WHERE category_id IN (
               <div className="max-w-6xl mx-auto space-y-8">
                 {/* Introduction */}
                 <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-purple-500/30">
-                  <h2 className="text-3xl font-bold text-white mb-6">📘 What is Database Design?</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">🏗️ Advanced Database Design & Architecture</h2>
+                  
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Database Design Theory & Principles</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Database design is both an art and a science, combining theoretical foundations with practical implementation considerations. 
+                      It requires understanding of data modeling, normalization theory, performance optimization, and scalability patterns.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Design Principles:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Normalization:</strong> Eliminating redundancy and dependency</li>
+                        <li>• <strong className="text-white">Denormalization:</strong> Strategic redundancy for performance</li>
+                        <li>• <strong className="text-white">Scalability:</strong> Designing for growth and load</li>
+                        <li>• <strong className="text-white">Flexibility:</strong> Accommodating changing requirements</li>
+                        <li>• <strong className="text-white">Maintainability:</strong> Clear structure and documentation</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="space-y-4 text-gray-300">
                     <p className="text-lg leading-relaxed">
                       <strong className="text-white">Database design</strong> is the process of creating a detailed data model of a database. 
@@ -5314,7 +5467,26 @@ CREATE INDEX idx_customer ON orders(customer_id);`}
               <div className="max-w-6xl mx-auto space-y-8">
                 {/* Introduction */}
                 <div className="bg-gradient-to-r from-red-900/20 to-purple-900/20 p-8 rounded-2xl border border-red-500/30">
-                  <h2 className="text-3xl font-bold text-white mb-6">🔒 What are Database Transactions?</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">🔒 Database Transactions & ACID Properties</h2>
+                  
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Transaction Theory & Database Reliability</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Transactions are the fundamental mechanism ensuring database reliability and consistency. They provide the theoretical foundation 
+                      for building robust, fault-tolerant database systems that can handle concurrent access and system failures gracefully.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Transaction Theory Foundations:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Atomicity:</strong> All-or-nothing execution guarantee</li>
+                        <li>• <strong className="text-white">Consistency:</strong> Database remains in valid state</li>
+                        <li>• <strong className="text-white">Isolation:</strong> Concurrent transaction independence</li>
+                        <li>• <strong className="text-white">Durability:</strong> Permanent data persistence</li>
+                        <li>• <strong className="text-white">Concurrency Control:</strong> Managing simultaneous access</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="space-y-4 text-gray-300">
                     <p className="text-lg leading-relaxed">
                       A <strong className="text-white">transaction</strong> is a sequence of database operations that are treated as a single unit of work. 
