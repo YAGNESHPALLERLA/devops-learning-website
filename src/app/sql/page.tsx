@@ -99,11 +99,24 @@ export default function SQLPage() {
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl mb-8">
                   <h2 className="text-3xl font-bold text-white mb-6">📘 What is a Database?</h2>
                   <div className="space-y-6">
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      A <strong className="text-white">database</strong> is an organized collection of structured data stored electronically in a computer system. 
-                      It&apos;s designed to efficiently store, retrieve, manage, and update large amounts of information. Think of it as an intelligent digital filing 
-                      cabinet that not only stores your data but also helps you find, sort, and analyze it quickly.
-                    </p>
+                    <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg">
+                      <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Database Fundamentals</h4>
+                      <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                        A <strong className="text-white">database</strong> is an organized collection of structured data stored electronically in a computer system. 
+                        It&apos;s designed to efficiently store, retrieve, manage, and update large amounts of information. Think of it as an intelligent digital filing 
+                        cabinet that not only stores your data but also helps you find, sort, and analyze it quickly.
+                      </p>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Database Characteristics:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">Persistence:</strong> Data survives application restarts and system failures</li>
+                          <li>• <strong className="text-white">Concurrency:</strong> Multiple users can access data simultaneously</li>
+                          <li>• <strong className="text-white">Integrity:</strong> Data remains consistent and accurate</li>
+                          <li>• <strong className="text-white">Security:</strong> Controlled access and data protection mechanisms</li>
+                          <li>• <strong className="text-white">Scalability:</strong> Can handle growing amounts of data and users</li>
+                        </ul>
+                      </div>
+                    </div>
                     
                     <div className="bg-gray-800 p-6 rounded-xl">
                       <h4 className="text-lg font-bold text-yellow-400 mb-4">Why Do We Need Databases?</h4>
@@ -161,6 +174,29 @@ export default function SQLPage() {
                       </div>
                     </div>
 
+                    <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-green-300 mb-3">🏗️ Database Architecture & Design</h4>
+                      <div className="space-y-4">
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-2">Database Architecture Layers:</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Physical Layer:</strong> How data is actually stored on disk (files, indexes, storage structures)</li>
+                            <li>• <strong className="text-white">Logical Layer:</strong> How data appears to users (tables, views, relationships)</li>
+                            <li>• <strong className="text-white">External Layer:</strong> How different applications view the data (user interfaces, reports)</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-2">Database Design Principles:</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Normalization:</strong> Organizing data to reduce redundancy and improve integrity</li>
+                            <li>• <strong className="text-white">Entity-Relationship Modeling:</strong> Designing relationships between data entities</li>
+                            <li>• <strong className="text-white">ACID Properties:</strong> Atomicity, Consistency, Isolation, Durability</li>
+                            <li>• <strong className="text-white">Data Integrity:</strong> Ensuring data accuracy and consistency</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-xl">
                       <h4 className="text-lg font-bold text-blue-300 mb-3">💡 Real-Life Analogy</h4>
                       <p className="text-gray-300">
@@ -176,10 +212,23 @@ export default function SQLPage() {
                 <div className="bg-gray-800 p-8 rounded-2xl mb-8">
                   <h2 className="text-3xl font-bold text-white mb-6">📚 What is SQL?</h2>
                   <div className="space-y-6">
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      <strong className="text-white">SQL (Structured Query Language)</strong> is a standardized programming language specifically designed for managing and manipulating relational databases. 
-                      Originally developed at IBM in the early 1970s by Donald D. Chamberlin and Raymond F. Boyce, SQL has become the universal language for database communication.
-                    </p>
+                    <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-lg mb-6">
+                      <h4 className="text-xl font-bold text-purple-300 mb-4">🔍 SQL - The Universal Database Language</h4>
+                      <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                        <strong className="text-white">SQL (Structured Query Language)</strong> is a standardized programming language specifically designed for managing and manipulating relational databases. 
+                        Originally developed at IBM in the early 1970s by Donald D. Chamberlin and Raymond F. Boyce, SQL has become the universal language for database communication.
+                      </p>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">SQL Language Characteristics:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-white">Declarative:</strong> You specify what you want, not how to get it</li>
+                          <li>• <strong className="text-white">Set-oriented:</strong> Operates on sets of rows rather than individual records</li>
+                          <li>• <strong className="text-white">Non-procedural:</strong> No need to specify step-by-step procedures</li>
+                          <li>• <strong className="text-white">High-level:</strong> Abstracts complex database operations into simple commands</li>
+                          <li>• <strong className="text-white">Portable:</strong> Works across different database systems with minimal changes</li>
+                        </ul>
+                      </div>
+                    </div>
                     
                     <div className="bg-gray-900 p-6 rounded-xl">
                       <h4 className="text-lg font-bold text-yellow-400 mb-4">History and Evolution</h4>
@@ -214,26 +263,56 @@ export default function SQLPage() {
                       </div>
                       <div className="bg-gray-700 p-6 rounded-xl">
                         <h3 className="text-xl font-bold text-yellow-400 mb-4">SQL Command Categories</h3>
-                        <div className="space-y-3 text-gray-300">
-                          <div>
-                            <p className="font-bold text-white mb-1">• DDL (Data Definition Language)</p>
-                            <p className="text-sm pl-4">Defines and manages database structure. CREATE TABLE, ALTER TABLE, DROP TABLE. Like building the blueprint of your database.</p>
+                        <div className="space-y-4 text-gray-300">
+                          <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
+                            <p className="font-bold text-blue-300 mb-2">• DDL (Data Definition Language)</p>
+                            <p className="text-sm mb-2">Defines and manages database structure. These commands change the schema (structure) of the database.</p>
+                            <ul className="text-xs space-y-1 ml-4">
+                              <li>• <strong className="text-white">CREATE:</strong> Creates new database objects (tables, indexes, views)</li>
+                              <li>• <strong className="text-white">ALTER:</strong> Modifies existing database objects</li>
+                              <li>• <strong className="text-white">DROP:</strong> Removes database objects</li>
+                              <li>• <strong className="text-white">TRUNCATE:</strong> Removes all data from a table but keeps structure</li>
+                            </ul>
                           </div>
-                          <div>
-                            <p className="font-bold text-white mb-1">• DML (Data Manipulation Language)</p>
-                            <p className="text-sm pl-4">Manipulates the actual data. INSERT, UPDATE, DELETE. Adding, changing, or removing information from your tables.</p>
+                          <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg">
+                            <p className="font-bold text-green-300 mb-2">• DML (Data Manipulation Language)</p>
+                            <p className="text-sm mb-2">Manipulates the actual data within tables. These commands affect the data content.</p>
+                            <ul className="text-xs space-y-1 ml-4">
+                              <li>• <strong className="text-white">INSERT:</strong> Adds new records to tables</li>
+                              <li>• <strong className="text-white">UPDATE:</strong> Modifies existing records</li>
+                              <li>• <strong className="text-white">DELETE:</strong> Removes records from tables</li>
+                              <li>• <strong className="text-white">SELECT:</strong> Retrieves data from tables (most commonly used)</li>
+                            </ul>
                           </div>
-                          <div>
-                            <p className="font-bold text-white mb-1">• DQL (Data Query Language)</p>
-                            <p className="text-sm pl-4">Retrieves data from databases. SELECT statement is the most used SQL command, helping you find exactly what you need.</p>
+                          <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg">
+                            <p className="font-bold text-purple-300 mb-2">• DQL (Data Query Language)</p>
+                            <p className="text-sm mb-2">Retrieves data from databases. SELECT is the most powerful and commonly used SQL command.</p>
+                            <ul className="text-xs space-y-1 ml-4">
+                              <li>• <strong className="text-white">SELECT:</strong> Retrieves data from one or more tables</li>
+                              <li>• <strong className="text-white">WHERE:</strong> Filters records based on conditions</li>
+                              <li>• <strong className="text-white">ORDER BY:</strong> Sorts results in ascending or descending order</li>
+                              <li>• <strong className="text-white">GROUP BY:</strong> Groups rows with same values into summary rows</li>
+                            </ul>
                           </div>
-                          <div>
-                            <p className="font-bold text-white mb-1">• DCL (Data Control Language)</p>
-                            <p className="text-sm pl-4">Controls access permissions. GRANT, REVOKE. Determines who can see or modify specific data.</p>
+                          <div className="bg-orange-900/20 border border-orange-500/30 p-4 rounded-lg">
+                            <p className="font-bold text-orange-300 mb-2">• DCL (Data Control Language)</p>
+                            <p className="text-sm mb-2">Controls access to database objects and data. Manages security and permissions.</p>
+                            <ul className="text-xs space-y-1 ml-4">
+                              <li>• <strong className="text-white">GRANT:</strong> Gives privileges to users or roles</li>
+                              <li>• <strong className="text-white">REVOKE:</strong> Removes privileges from users or roles</li>
+                              <li>• <strong className="text-white">DENY:</strong> Explicitly denies permissions (SQL Server)</li>
+                              <li>• <strong className="text-white">Role Management:</strong> Creates and manages user roles</li>
+                            </ul>
                           </div>
-                          <div>
-                            <p className="font-bold text-white mb-1">• TCL (Transaction Control Language)</p>
-                            <p className="text-sm pl-4">Manages database transactions. COMMIT, ROLLBACK. Ensures data consistency when performing multiple related operations.</p>
+                          <div className="bg-red-900/20 border border-red-500/30 p-4 rounded-lg">
+                            <p className="font-bold text-red-300 mb-2">• TCL (Transaction Control Language)</p>
+                            <p className="text-sm mb-2">Manages database transactions to ensure data integrity and consistency.</p>
+                            <ul className="text-xs space-y-1 ml-4">
+                              <li>• <strong className="text-white">COMMIT:</strong> Saves all changes made during transaction</li>
+                              <li>• <strong className="text-white">ROLLBACK:</strong> Undoes all changes made during transaction</li>
+                              <li>• <strong className="text-white">SAVEPOINT:</strong> Creates a point within transaction for partial rollback</li>
+                              <li>• <strong className="text-white">SET TRANSACTION:</strong> Sets transaction properties</li>
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -251,6 +330,69 @@ export default function SQLPage() {
                         <li>✓ <strong className="text-white">Foundation for Advanced Topics:</strong> Essential for data science, machine learning, and business intelligence</li>
                         <li>✓ <strong className="text-white">Timeless Technology:</strong> SQL has been around for 50+ years and will continue to be relevant</li>
                       </ul>
+                    </div>
+
+                    <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-purple-300 mb-4">🎯 SQL Learning Path: From Basics to Advanced</h4>
+                      <div className="grid md:grid-cols-3 gap-4">
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-green-400 mb-3">🟢 Beginner Level</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Database Fundamentals</strong></li>
+                            <li>• <strong className="text-white">Basic SELECT Queries</strong></li>
+                            <li>• <strong className="text-white">Data Types & Constraints</strong></li>
+                            <li>• <strong className="text-white">Creating & Managing Tables</strong></li>
+                            <li>• <strong className="text-white">INSERT, UPDATE, DELETE</strong></li>
+                            <li>• <strong className="text-white">Simple WHERE Conditions</strong></li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-yellow-400 mb-3">🟡 Intermediate Level</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Complex JOINs (INNER, LEFT, RIGHT)</strong></li>
+                            <li>• <strong className="text-white">Aggregate Functions (SUM, AVG, COUNT)</strong></li>
+                            <li>• <strong className="text-white">GROUP BY & HAVING</strong></li>
+                            <li>• <strong className="text-white">Subqueries & CTEs</strong></li>
+                            <li>• <strong className="text-white">Indexes & Performance</strong></li>
+                            <li>• <strong className="text-white">Views & Stored Procedures</strong></li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-red-400 mb-3">🔴 Advanced Level</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Window Functions (ROW_NUMBER, RANK)</strong></li>
+                            <li>• <strong className="text-white">Advanced JOINs (CROSS, FULL OUTER)</strong></li>
+                            <li>• <strong className="text-white">Recursive Queries & CTEs</strong></li>
+                            <li>• <strong className="text-white">Database Design & Normalization</strong></li>
+                            <li>• <strong className="text-white">Transactions & ACID Properties</strong></li>
+                            <li>• <strong className="text-white">Performance Optimization</strong></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-orange-900/20 border border-orange-500/30 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-orange-300 mb-4">🚀 Modern SQL Applications</h4>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-3">Data Analytics & Business Intelligence</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Reporting & Dashboards:</strong> Creating business reports and KPI dashboards</li>
+                            <li>• <strong className="text-white">Data Warehousing:</strong> ETL processes and data integration</li>
+                            <li>• <strong className="text-white">OLAP Operations:</strong> Multidimensional data analysis</li>
+                            <li>• <strong className="text-white">Trend Analysis:</strong> Time-series data analysis and forecasting</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-3">Software Development</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Backend Development:</strong> API data access and business logic</li>
+                            <li>• <strong className="text-white">Full-Stack Applications:</strong> Database integration in web apps</li>
+                            <li>• <strong className="text-white">Microservices:</strong> Data layer for distributed systems</li>
+                            <li>• <strong className="text-white">Real-time Systems:</strong> Streaming data and event processing</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -486,32 +628,46 @@ export default function SQLPage() {
               </p>
               
               <div className="max-w-6xl mx-auto">
-                {/* What is SQL */}
+                {/* SQL Fundamentals */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">📘 What is SQL?</h2>
-                  <p className="text-lg text-gray-300 mb-6">
-                    <strong>SQL (Structured Query Language)</strong> is a standard language for interacting with relational databases.
-                    Developed in the 1970s at IBM, it is now supported by all major RDBMS.
-                  </p>
+                  <h2 className="text-3xl font-bold text-white mb-6">🔧 SQL Basic Commands & Operations</h2>
                   
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Understanding SQL Command Structure</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      SQL commands follow a specific structure and syntax rules. Understanding these fundamentals is crucial for writing effective database queries.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">SQL Command Anatomy:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Keywords:</strong> Reserved words like SELECT, FROM, WHERE (case-insensitive)</li>
+                        <li>• <strong className="text-white">Clauses:</strong> Components that specify different aspects of the operation</li>
+                        <li>• <strong className="text-white">Expressions:</strong> Values, column names, functions, or calculations</li>
+                        <li>• <strong className="text-white">Operators:</strong> Symbols for comparisons, arithmetic, and logical operations</li>
+                        <li>• <strong className="text-white">Semicolon:</strong> Terminates SQL statements (optional in some systems)</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h4 className="text-lg font-bold text-yellow-400 mb-3">Key Features</h4>
+                      <h4 className="text-lg font-bold text-yellow-400 mb-3">SQL Command Categories</h4>
                       <ul className="text-gray-300 space-y-2">
-                        <li>• <strong>Declarative Language</strong> - Specify what you want, not how to get it</li>
-                        <li>• <strong>Standardized</strong> - Works across multiple databases</li>
-                        <li>• <strong>Powerful</strong> - Can handle millions of rows in seconds</li>
-                        <li>• <strong>Human-readable</strong> - English-like syntax</li>
+                        <li>• <strong className="text-white">DDL (Data Definition):</strong> CREATE, ALTER, DROP</li>
+                        <li>• <strong className="text-white">DML (Data Manipulation):</strong> INSERT, UPDATE, DELETE</li>
+                        <li>• <strong className="text-white">DQL (Data Query):</strong> SELECT (most important)</li>
+                        <li>• <strong className="text-white">DCL (Data Control):</strong> GRANT, REVOKE</li>
+                        <li>• <strong className="text-white">TCL (Transaction Control):</strong> COMMIT, ROLLBACK</li>
                       </ul>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-xl">
-                      <h4 className="text-lg font-bold text-yellow-400 mb-3">SQL Applications</h4>
+                      <h4 className="text-lg font-bold text-yellow-400 mb-3">Best Practices</h4>
                       <ul className="text-gray-300 space-y-2">
-                        <li>• <strong>Banking</strong> - Accounts, transactions, loans</li>
-                        <li>• <strong>E-commerce</strong> - Orders, payments, inventory</li>
-                        <li>• <strong>Healthcare</strong> - Patient records, prescriptions</li>
-                        <li>• <strong>Social Media</strong> - Posts, likes, followers</li>
-                        <li>• <strong>Data Science</strong> - Querying large datasets</li>
+                        <li>• <strong className="text-white">Use UPPERCASE</strong> for keywords (readability)</li>
+                        <li>• <strong className="text-white">Indent properly</strong> for complex queries</li>
+                        <li>• <strong className="text-white">Use meaningful aliases</strong> for tables and columns</li>
+                        <li>• <strong className="text-white">Comment complex logic</strong> for documentation</li>
+                        <li>• <strong className="text-white">Test queries</strong> on small datasets first</li>
                       </ul>
                     </div>
                   </div>
@@ -519,10 +675,22 @@ export default function SQLPage() {
 
                 {/* SELECT Statements */}
                 <div className="bg-gray-800 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">SELECT Statements</h2>
-                  <p className="text-lg text-gray-300 mb-6">
-                    The SELECT statement is the foundation of SQL. It allows you to retrieve data from database tables.
-                  </p>
+                  <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-lg mb-6">
+                    <h2 className="text-3xl font-bold text-green-300 mb-4">🔍 SELECT Statements - The Heart of SQL</h2>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      The SELECT statement is the foundation of SQL and the most frequently used command. It allows you to retrieve, filter, sort, and manipulate data from database tables with incredible precision and flexibility.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">SELECT Statement Power:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Data Retrieval:</strong> Extract specific data from one or multiple tables</li>
+                        <li>• <strong className="text-white">Data Transformation:</strong> Calculate new values, format output, combine columns</li>
+                        <li>• <strong className="text-white">Data Filtering:</strong> Use conditions to get exactly what you need</li>
+                        <li>• <strong className="text-white">Data Aggregation:</strong> Summarize data with functions like SUM, COUNT, AVG</li>
+                        <li>• <strong className="text-white">Data Joining:</strong> Combine data from multiple related tables</li>
+                      </ul>
+                    </div>
+                  </div>
                   
                   <div className="bg-gray-900 p-6 rounded-xl mb-6">
                     <h3 className="text-xl font-bold text-white mb-4">Basic SELECT Operations</h3>
@@ -561,10 +729,23 @@ SELECT * FROM Students LIMIT 10 OFFSET 20;`}
 
                 {/* WHERE Clause */}
                 <div className="bg-gray-800 p-8 rounded-2xl mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-6">WHERE Clause (Filtering Data)</h2>
-                  <p className="text-lg text-gray-300 mb-6">
-                    The WHERE clause filters rows based on specified conditions.
-                  </p>
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h2 className="text-3xl font-bold text-blue-300 mb-4">🎯 WHERE Clause - Precision Data Filtering</h2>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      The WHERE clause is the precision tool of SQL that allows you to filter rows based on specific conditions. It's like having a sophisticated search function that can find exactly the data you need from millions of records.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">WHERE Clause Capabilities:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Conditional Filtering:</strong> Use comparison operators (=, {'>'}, {'<'}, {'>='}, {'<='}, !=)</li>
+                        <li>• <strong className="text-white">Pattern Matching:</strong> LIKE operator with wildcards (% and _)</li>
+                        <li>• <strong className="text-white">Range Filtering:</strong> BETWEEN operator for value ranges</li>
+                        <li>• <strong className="text-white">List Filtering:</strong> IN operator for multiple values</li>
+                        <li>• <strong className="text-white">Null Handling:</strong> IS NULL and IS NOT NULL for missing data</li>
+                        <li>• <strong className="text-white">Logical Operations:</strong> AND, OR, NOT for complex conditions</li>
+                      </ul>
+                    </div>
+                  </div>
                   
                   <div className="bg-gray-900 p-6 rounded-xl mb-6">
                     <pre className="text-white font-mono text-sm overflow-x-auto">
@@ -1715,12 +1896,48 @@ WHERE EXISTS (
 
                     <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-xl">
                       <h4 className="text-lg font-bold text-blue-300 mb-3">💡 Key Components of Window Functions</h4>
-                      <ul className="text-gray-300 space-y-2 pl-4">
-                        <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded">OVER()</code> clause - Defines the window</li>
-                        <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded">PARTITION BY</code> - Divides rows into groups (like GROUP BY, but doesn&apos;t collapse rows)</li>
-                        <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded">ORDER BY</code> - Defines the order of rows within each partition</li>
-                        <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded">ROWS/RANGE</code> - Specifies the frame (subset of partition)</li>
-                      </ul>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-2">Window Function Anatomy:</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded text-xs">OVER()</code> - Defines the window scope</li>
+                            <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded text-xs">PARTITION BY</code> - Creates groups without collapsing</li>
+                            <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded text-xs">ORDER BY</code> - Sorts rows within partitions</li>
+                            <li>• <code className="text-white bg-gray-800 px-2 py-1 rounded text-xs">ROWS/RANGE</code> - Defines frame boundaries</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-700/50 p-4 rounded-lg">
+                          <h5 className="font-bold text-white mb-2">Window Function Types:</h5>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Ranking:</strong> ROW_NUMBER(), RANK(), DENSE_RANK()</li>
+                            <li>• <strong className="text-white">Aggregate:</strong> SUM(), AVG(), COUNT() OVER()</li>
+                            <li>• <strong className="text-white">Value:</strong> LAG(), LEAD(), FIRST_VALUE()</li>
+                            <li>• <strong className="text-white">Statistical:</strong> PERCENT_RANK(), CUME_DIST()</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-xl">
+                      <h4 className="text-lg font-bold text-green-300 mb-3">🚀 Window Functions vs Traditional Approaches</h4>
+                      <div className="bg-gray-700/50 p-4 rounded-lg">
+                        <h5 className="font-bold text-white mb-2">Traditional GROUP BY Limitations:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-red-400">Data Loss:</strong> Individual row details are lost when grouping</li>
+                          <li>• <strong className="text-red-400">Multiple Queries:</strong> Need separate queries for different aggregations</li>
+                          <li>• <strong className="text-red-400">Complex Joins:</strong> Requires self-joins for comparison calculations</li>
+                          <li>• <strong className="text-red-400">Performance:</strong> Multiple passes through data</li>
+                        </ul>
+                      </div>
+                      <div className="bg-gray-700/50 p-4 rounded-lg mt-4">
+                        <h5 className="font-bold text-white mb-2">Window Functions Advantages:</h5>
+                        <ul className="text-gray-300 text-sm space-y-2">
+                          <li>• <strong className="text-green-400">Preserve Details:</strong> Keep individual rows while adding calculations</li>
+                          <li>• <strong className="text-green-400">Single Query:</strong> Multiple calculations in one statement</li>
+                          <li>• <strong className="text-green-400">No Self-Joins:</strong> Direct access to related rows</li>
+                          <li>• <strong className="text-green-400">Performance:</strong> Optimized execution plans</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                   
@@ -4727,7 +4944,25 @@ SELECT * FROM products WHERE is_deleted = FALSE;`}
               <div className="max-w-6xl mx-auto space-y-8">
                 {/* Introduction */}
                 <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 p-8 rounded-2xl border border-green-500/30">
-                  <h2 className="text-3xl font-bold text-white mb-6">🚀 What are Database Indexes?</h2>
+                  <h2 className="text-3xl font-bold text-white mb-6">🚀 Database Performance & Indexing Mastery</h2>
+                  
+                  <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-blue-300 mb-4">🎯 Understanding Database Performance</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Database performance optimization is crucial for applications handling large amounts of data. Understanding indexing, query optimization, and performance monitoring is essential for building scalable systems.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Performance Factors:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Query Execution Time:</strong> How long queries take to complete</li>
+                        <li>• <strong className="text-white">Resource Utilization:</strong> CPU, memory, and I/O usage</li>
+                        <li>• <strong className="text-white">Scalability:</strong> Performance under increasing data loads</li>
+                        <li>• <strong className="text-white">Concurrency:</strong> Handling multiple simultaneous users</li>
+                        <li>• <strong className="text-white">Data Access Patterns:</strong> Read vs write operation ratios</li>
+                      </ul>
+                    </div>
+                  </div>
+
                   <div className="space-y-4 text-gray-300">
                     <p className="text-lg leading-relaxed">
                       A <strong className="text-white">database index</strong> is a data structure that improves the speed of data retrieval operations on a database table. 
@@ -4746,6 +4981,82 @@ SELECT * FROM products WHERE is_deleted = FALSE;`}
                         <li>• <strong className="text-white">Real Example:</strong> Finding a user by email in 1M records: 10 seconds → 0.001 seconds</li>
                         <li>• <strong className="text-white">Trade-off:</strong> Indexes use additional storage space and slow down INSERT/UPDATE/DELETE operations</li>
                       </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Query Optimization */}
+                <div className="bg-gray-800 p-8 rounded-2xl">
+                  <h2 className="text-3xl font-bold text-white mb-6">🔧 Query Optimization Techniques</h2>
+                  
+                  <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-lg mb-6">
+                    <h4 className="text-xl font-bold text-purple-300 mb-4">🎯 Understanding Query Optimization</h4>
+                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                      Query optimization is the process of improving the performance of SQL queries by analyzing execution plans, 
+                      identifying bottlenecks, and applying various optimization techniques.
+                    </p>
+                    <div className="bg-gray-700/50 p-4 rounded-lg">
+                      <h5 className="font-bold text-white mb-2">Optimization Strategies:</h5>
+                      <ul className="text-gray-300 text-sm space-y-2">
+                        <li>• <strong className="text-white">Execution Plan Analysis:</strong> Understanding how the database executes queries</li>
+                        <li>• <strong className="text-white">Index Strategy:</strong> Choosing the right indexes for query patterns</li>
+                        <li>• <strong className="text-white">Query Rewriting:</strong> Restructuring queries for better performance</li>
+                        <li>• <strong className="text-white">Statistics & Cardinality:</strong> Keeping database statistics updated</li>
+                        <li>• <strong className="text-white">Hardware Considerations:</strong> CPU, memory, and storage optimization</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gray-900 p-6 rounded-xl">
+                      <h3 className="text-xl font-bold text-yellow-400 mb-4">Query Performance Analysis</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="font-bold text-white mb-2">EXPLAIN Statement</h4>
+                          <pre className="text-white font-mono text-sm bg-gray-950 p-3 rounded">
+{`-- Analyze query execution plan
+EXPLAIN SELECT * FROM employees 
+WHERE department = 'IT' AND salary > 50000;
+
+-- Detailed execution plan
+EXPLAIN ANALYZE SELECT * FROM employees 
+WHERE department = 'IT';`}
+                          </pre>
+                        </div>
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="font-bold text-white mb-2">Performance Monitoring</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Execution Time:</strong> Monitor query duration</li>
+                            <li>• <strong className="text-white">Rows Examined:</strong> Check if full table scans occur</li>
+                            <li>• <strong className="text-white">Index Usage:</strong> Verify indexes are being used</li>
+                            <li>• <strong className="text-white">Memory Usage:</strong> Monitor temporary table usage</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-900 p-6 rounded-xl">
+                      <h3 className="text-xl font-bold text-yellow-400 mb-4">Common Optimization Techniques</h3>
+                      <div className="space-y-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="font-bold text-white mb-2">Index Optimization</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Covering Indexes:</strong> Include all needed columns</li>
+                            <li>• <strong className="text-white">Selective Indexes:</strong> High cardinality columns</li>
+                            <li>• <strong className="text-white">Composite Indexes:</strong> Multi-column indexes for complex queries</li>
+                            <li>• <strong className="text-white">Partial Indexes:</strong> Indexes on filtered data subsets</li>
+                          </ul>
+                        </div>
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="font-bold text-white mb-2">Query Structure</h4>
+                          <ul className="text-gray-300 text-sm space-y-2">
+                            <li>• <strong className="text-white">Avoid SELECT *:</strong> Select only needed columns</li>
+                            <li>• <strong className="text-white">Use LIMIT:</strong> Restrict result sets when possible</li>
+                            <li>• <strong className="text-white">Optimize JOINs:</strong> Join on indexed columns</li>
+                            <li>• <strong className="text-white">Subquery vs JOIN:</strong> Choose appropriate approach</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
