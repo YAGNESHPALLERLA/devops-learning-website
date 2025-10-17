@@ -74,9 +74,14 @@ export default function Navigation() {
       <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Terminal
       </Link>
-      <Link href="/apply-jobs" className="relative px-4 py-2 bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold rounded-lg shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 hover:bg-gradient-to-r hover:from-red-600 hover:to-rose-700 hover:text-white transform hover:-translate-y-1 transition-all duration-300 animate-pulse hover:animate-none overflow-hidden whitespace-nowrap">
+      <a 
+        href="https://jobcy-job-portal.vercel.app" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="relative px-4 py-2 bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold rounded-lg shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 hover:bg-gradient-to-r hover:from-red-600 hover:to-rose-700 hover:text-white transform hover:-translate-y-1 transition-all duration-300 animate-pulse hover:animate-none overflow-hidden whitespace-nowrap"
+      >
         💼 Apply Jobs
-      </Link>
+      </a>
     </div>
   );
 }
