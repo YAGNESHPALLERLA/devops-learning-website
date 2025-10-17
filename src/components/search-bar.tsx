@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface SearchResult {
@@ -62,6 +62,25 @@ export default function SearchBar() {
     setResults([]);
   };
 
+  // Handle escape key to close search
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        setQuery('');
+        setResults([]);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Search Button */}
@@ -114,19 +133,12 @@ export default function SearchBar() {
               )}
               
               {results.length === 0 && query === '' && (
-                <div className="p-8">
-                  <p className="text-gray-500 text-center mb-4">Popular Topics</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    {searchData.slice(0, 6).map((item) => (
-                      <button
-                        key={item.path}
-                        onClick={() => handleResultClick(item.path)}
-                        className="p-3 text-left rounded-lg bg-[#252525] hover:bg-[#2a2a2a] border border-gray-600 hover:border-rose-500 transition-all duration-300"
-                      >
-                        <div className="text-white font-medium">{item.title}</div>
-                      </button>
-                    ))}
-                  </div>
+                <div className="p-8 text-center text-gray-500">
+                  <svg className="w-12 h-12 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <p className="text-lg mb-2">Start typing to search</p>
+                  <p className="text-sm">Search for tutorials, documentation, and more...</p>
                 </div>
               )}
 
