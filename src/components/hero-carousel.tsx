@@ -162,9 +162,6 @@ export default function HeroCarousel() {
                 </button>
               </div>
             </div>
-            <div className="hidden lg:block absolute right-8 top-1/2 transform -translate-y-1/2 text-7xl opacity-30 z-10">
-              {slide.icon}
-            </div>
           </div>
         ))}
       </div>
