@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import SearchBar from "@/components/search-bar";
-import ScrollProgress from "@/components/scroll-progress";
-import ScrollToTop from "@/components/scroll-to-top";
+import Navigation from "@/components/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +30,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ScrollProgress />
         {/* Navigation Header */}
         <nav className="bg-[#1a1a1a] border-b border-gray-600 sticky top-0 z-40 backdrop-blur-sm bg-opacity-95">
           <div className="container mx-auto px-4">
@@ -45,27 +43,19 @@ export default function RootLayout({
                     <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
                   </svg>
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">OneHubGlobal</span>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">OneHubGlobal</span>
+                  <span className="text-sm font-semibold text-gray-400">OHG365</span>
+                </div>
               </Link>
               <div className="flex items-center space-x-4">
-                <div className="hidden md:flex space-x-6 mr-4">
-                  <Link href="/" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
-                    Home
-                  </Link>
-                  <span className="text-gray-400 cursor-not-allowed opacity-50 font-medium">
-                    Docs
-                  </span>
-                  <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
-                    Terminal
-                  </Link>
-                </div>
+                <Navigation />
                 <SearchBar />
               </div>
             </div>
           </div>
         </nav>
         {children}
-        <ScrollToTop />
       </body>
     </html>
   );
