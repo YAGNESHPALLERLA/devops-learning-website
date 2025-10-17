@@ -25,10 +25,26 @@ export default function HomePage() {
         <div className="absolute bottom-40 left-1/5 w-2.5 h-2.5 bg-yellow-400/40 rounded-full animate-bounce" style={{ animationDelay: '5s', animationDuration: '2.8s' }}></div>
         <div className="absolute bottom-60 right-1/5 w-1 h-1 bg-cyan-400/40 rounded-full animate-bounce" style={{ animationDelay: '6s', animationDuration: '4.2s' }}></div>
         
-        {/* Animated lines */}
-        <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose-500/20 to-transparent animate-pulse"></div>
-        <div className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent animate-pulse" style={{ animationDelay: '4s' }}></div>
+        {/* Additional floating particles */}
+        <div className="absolute top-32 left-1/6 w-1.5 h-1.5 bg-pink-400/30 rounded-full animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}></div>
+        <div className="absolute top-52 right-1/6 w-2 h-2 bg-indigo-400/30 rounded-full animate-bounce" style={{ animationDelay: '2.5s', animationDuration: '4.5s' }}></div>
+        <div className="absolute top-72 left-2/3 w-1 h-1 bg-orange-400/30 rounded-full animate-bounce" style={{ animationDelay: '3.5s', animationDuration: '3.2s' }}></div>
+        <div className="absolute bottom-32 right-1/3 w-2.5 h-2.5 bg-teal-400/30 rounded-full animate-bounce" style={{ animationDelay: '4.5s', animationDuration: '2.9s' }}></div>
+        <div className="absolute bottom-52 left-1/4 w-1.5 h-1.5 bg-violet-400/30 rounded-full animate-bounce" style={{ animationDelay: '5.5s', animationDuration: '4.1s' }}></div>
+        
+        {/* Geometric shapes */}
+        <div className="absolute top-24 right-1/5 w-4 h-4 bg-rose-500/20 rotate-45 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-48 left-1/8 w-3 h-3 bg-blue-500/20 rounded-full animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-72 right-1/8 w-5 h-5 bg-emerald-500/20 rotate-12 animate-pulse" style={{ animationDelay: '6s' }}></div>
+        <div className="absolute bottom-24 left-1/6 w-3 h-3 bg-purple-500/20 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-48 right-1/6 w-4 h-4 bg-yellow-500/20 rotate-45 animate-pulse" style={{ animationDelay: '5s' }}></div>
+        
+        {/* Floating orbs */}
+        <div className="absolute top-16 left-1/3 w-6 h-6 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full animate-float"></div>
+        <div className="absolute top-56 right-1/4 w-4 h-4 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-16 left-1/4 w-5 h-5 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-56 right-1/3 w-3 h-3 bg-gradient-to-br from-purple-400/20 to-violet-400/20 rounded-full animate-float" style={{ animationDelay: '6s' }}></div>
+        
       </div>
       {/* Hero Carousel Section - Top of Page */}
       <section className="w-full">
@@ -61,33 +77,6 @@ export default function HomePage() {
             interactive code terminals, and real-world applications. Start your journey today!
           </p>
 
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-6 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <button 
-              onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-red-600 text-white font-bold rounded-xl shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-                🚀 Start Learning
-              </span>
-            </button>
-            <Link 
-              href="/terminal" 
-              className="group relative px-8 py-4 bg-[#252525] text-white font-bold rounded-xl border-2 border-rose-500 hover:bg-rose-500/10 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-rose-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                </svg>
-                💻 Try Terminal
-              </span>
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -155,51 +144,54 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
             <Link 
               href="/tutorials/medical-coding"
-              className="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 rounded-xl p-8 transition-all duration-500 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow"
+              className="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 rounded-xl p-8 transition-all duration-500 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:animate-scale">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Medical Coding</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">Healthcare IT & Coding Systems</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Medical Coding</h3>
+                <p className="text-gray-400">Healthcare IT & Coding Systems</p>
               </div>
             </Link>
             
             <Link 
               href="/tutorials/programming"
-              className="group relative bg-gradient-to-br from-rose-500/20 to-red-500/20 border-2 border-rose-500/50 rounded-xl p-8 transition-all duration-500 hover:border-rose-400 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow"
+              className="group relative bg-gradient-to-br from-rose-500/20 to-red-500/20 border-2 border-rose-500/50 rounded-xl p-8 transition-all duration-500 hover:border-rose-400 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
               style={{ animationDelay: '0.2s' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-red-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-red-600 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:animate-scale">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-rose-400 transition-colors">Programming</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">Software Development & Technologies</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Programming</h3>
+                <p className="text-gray-400">Software Development & Technologies</p>
               </div>
             </Link>
             
             <Link 
               href="/tutorials/government-jobs"
-              className="group relative bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/50 rounded-xl p-8 transition-all duration-500 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow"
+              className="group relative bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/50 rounded-xl p-8 transition-all duration-500 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
               style={{ animationDelay: '0.4s' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:animate-scale">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Government Jobs</h3>
-                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">SBI & Bank Exam Preparation</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Government Jobs</h3>
+                <p className="text-gray-400">SBI & Bank Exam Preparation</p>
               </div>
             </Link>
           </div>
@@ -237,10 +229,10 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-red-500 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Video Tutorials
               </h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 150+ high-quality video tutorials with hands-on examples from industry experts. Learn at your own pace with comprehensive coverage of all topics.
               </p>
             </div>
@@ -251,10 +243,10 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-red-500 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Interactive Learning
               </h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 Practice with built-in code terminals, interactive exercises, and real-world projects. Get hands-on experience with cutting-edge technologies.
               </p>
             </div>
@@ -265,10 +257,10 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-red-500 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Industry Ready
               </h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 Learn in-demand skills with curriculum designed by professionals for real-world success. Get job-ready with industry-standard practices.
               </p>
             </div>
