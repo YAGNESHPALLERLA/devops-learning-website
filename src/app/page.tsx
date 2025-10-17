@@ -45,7 +45,7 @@ export default function HomePage() {
         <div className="absolute bottom-16 left-1/4 w-5 h-5 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
         <div className="absolute bottom-56 right-1/3 w-3 h-3 bg-gradient-to-br from-purple-400/20 to-violet-400/20 rounded-full animate-float" style={{ animationDelay: '6s' }}></div>
         
-      </div>
+        </div>
       {/* Hero Carousel Section - Top of Page */}
       <section className="w-full">
         <HeroCarousel />
@@ -122,7 +122,7 @@ export default function HomePage() {
               Be part of a thriving community of learners, developers, and professionals who are advancing their careers with our comprehensive programs.
             </p>
           </div>
-          <StatsCounter />
+      <StatsCounter />
         </div>
       </section>
 
@@ -194,8 +194,8 @@ export default function HomePage() {
                 <p className="text-gray-400">SBI & Bank Exam Preparation</p>
               </div>
             </Link>
-          </div>
-          
+        </div>
+        
           <div className="mt-12">
             <Link 
               href="/tutorials"
@@ -631,17 +631,15 @@ export default function HomePage() {
                   <span>Digital badges and verifiable certificates</span>
                 </li>
               </ul>
-              <a 
-                href="https://jobcy-job-portal.vercel.app" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link 
+                href="/jobs"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Explore Certifications
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* Internship Opportunities Card */}
@@ -684,17 +682,15 @@ export default function HomePage() {
                   <span>Potential for full-time job placement</span>
                 </li>
               </ul>
-              <a 
-                href="https://jobcy-job-portal.vercel.app" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link 
+                href="/jobs"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Apply for Internships
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -703,12 +699,12 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-gray-700 py-12 relative z-10">
         <div className="container mx-auto px-4 text-center">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500 mb-2">
-                OneHubGlobal
-              </h3>
-              <p className="text-gray-400">Your gateway to mastering modern technology</p>
-            </div>
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500 mb-2">
+              OneHubGlobal
+            </h3>
+            <p className="text-gray-400">Your gateway to mastering modern technology</p>
+          </div>
           
           <div className="flex justify-center space-x-8 mb-6">
             <span className="text-gray-400 cursor-not-allowed opacity-50">
