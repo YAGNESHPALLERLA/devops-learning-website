@@ -80,3 +80,7 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# JobCy Portal - Synced from submodule (generated during build)
+src/app/jobs/
+src/app/types/

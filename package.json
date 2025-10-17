@@ -4,15 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "node sync-jobcy-portal.js",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync-jobcy": "node sync-jobcy-portal.js",
+    "update-jobcy": "cd jobcy-portal && git pull origin master && cd .. && npm run sync-jobcy"
   },
   "dependencies": {
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.546.0",
     "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
