@@ -631,15 +631,17 @@ export default function HomePage() {
                   <span>Digital badges and verifiable certificates</span>
                 </li>
               </ul>
-              <Link 
-                href="/jobs"
+              <a 
+                href="https://jobcy-job-portal.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Explore Certifications
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </Link>
+              </a>
             </div>
 
             {/* Internship Opportunities Card */}
@@ -682,15 +684,17 @@ export default function HomePage() {
                   <span>Potential for full-time job placement</span>
                 </li>
               </ul>
-              <Link 
-                href="/jobs"
+              <a 
+                href="https://jobcy-job-portal.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Apply for Internships
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
