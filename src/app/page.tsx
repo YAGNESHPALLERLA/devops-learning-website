@@ -5,45 +5,93 @@ import Link from 'next/link';
 import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
+import { useState, useEffect } from 'react';
 
 export default function HomePage() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const scrollToContent = () => {
+    const contentSection = document.getElementById('main-content');
+    if (contentSection) {
+      contentSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] overflow-x-hidden relative">
-      {/* Global Background Effects */}
+      {/* Enhanced Global Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Large background orbs */}
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-rose-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-0 left-1/3 w-[700px] h-[700px] bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '6s' }}></div>
+        {/* Dynamic mouse-following orb */}
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-rose-500/10 to-purple-500/10 rounded-full blur-3xl transition-all duration-1000 ease-out"
+          style={{
+            left: mousePosition.x - 192,
+            top: mousePosition.y - 192,
+            transform: 'translateZ(0)'
+          }}
+        ></div>
+
+        {/* Large animated background orbs */}
+        <div className="absolute top-0 left-0 w-[1000px] h-[1000px] bg-gradient-to-br from-rose-500/8 to-pink-500/8 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-500/8 to-cyan-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-0 left-1/3 w-[900px] h-[900px] bg-gradient-to-br from-purple-500/8 to-violet-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-emerald-500/8 to-teal-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '6s' }}></div>
         
-        {/* Floating particles */}
-        <div className="absolute top-20 left-1/4 w-2 h-2 bg-rose-400/40 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
-        <div className="absolute top-40 right-1/3 w-1 h-1 bg-blue-400/40 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
-        <div className="absolute top-60 left-1/2 w-3 h-3 bg-purple-400/40 rounded-full animate-bounce" style={{ animationDelay: '3s', animationDuration: '2.5s' }}></div>
-        <div className="absolute top-80 right-1/4 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-bounce" style={{ animationDelay: '4s', animationDuration: '3.5s' }}></div>
-        <div className="absolute bottom-40 left-1/5 w-2.5 h-2.5 bg-yellow-400/40 rounded-full animate-bounce" style={{ animationDelay: '5s', animationDuration: '2.8s' }}></div>
-        <div className="absolute bottom-60 right-1/5 w-1 h-1 bg-cyan-400/40 rounded-full animate-bounce" style={{ animationDelay: '6s', animationDuration: '4.2s' }}></div>
+        {/* Enhanced floating particles with more variety */}
+        <div className="absolute top-20 left-1/4 w-3 h-3 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full animate-bounce shadow-lg shadow-rose-400/50" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
+        <div className="absolute top-40 right-1/3 w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-bounce shadow-lg shadow-blue-400/50" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+        <div className="absolute top-60 left-1/2 w-4 h-4 bg-gradient-to-r from-purple-400 to-violet-400 rounded-full animate-bounce shadow-lg shadow-purple-400/50" style={{ animationDelay: '3s', animationDuration: '2.5s' }}></div>
+        <div className="absolute top-80 right-1/4 w-2.5 h-2.5 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full animate-bounce shadow-lg shadow-emerald-400/50" style={{ animationDelay: '4s', animationDuration: '3.5s' }}></div>
+        <div className="absolute bottom-40 left-1/5 w-3.5 h-3.5 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-bounce shadow-lg shadow-yellow-400/50" style={{ animationDelay: '5s', animationDuration: '2.8s' }}></div>
+        <div className="absolute bottom-60 right-1/5 w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-bounce shadow-lg shadow-cyan-400/50" style={{ animationDelay: '6s', animationDuration: '4.2s' }}></div>
         
-        {/* Additional floating particles */}
-        <div className="absolute top-32 left-1/6 w-1.5 h-1.5 bg-pink-400/30 rounded-full animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}></div>
-        <div className="absolute top-52 right-1/6 w-2 h-2 bg-indigo-400/30 rounded-full animate-bounce" style={{ animationDelay: '2.5s', animationDuration: '4.5s' }}></div>
-        <div className="absolute top-72 left-2/3 w-1 h-1 bg-orange-400/30 rounded-full animate-bounce" style={{ animationDelay: '3.5s', animationDuration: '3.2s' }}></div>
-        <div className="absolute bottom-32 right-1/3 w-2.5 h-2.5 bg-teal-400/30 rounded-full animate-bounce" style={{ animationDelay: '4.5s', animationDuration: '2.9s' }}></div>
-        <div className="absolute bottom-52 left-1/4 w-1.5 h-1.5 bg-violet-400/30 rounded-full animate-bounce" style={{ animationDelay: '5.5s', animationDuration: '4.1s' }}></div>
+        {/* Additional floating particles with glow effects */}
+        <div className="absolute top-32 left-1/6 w-2 h-2 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full animate-bounce shadow-lg shadow-pink-400/40" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}></div>
+        <div className="absolute top-52 right-1/6 w-3 h-3 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-bounce shadow-lg shadow-indigo-400/40" style={{ animationDelay: '2.5s', animationDuration: '4.5s' }}></div>
+        <div className="absolute top-72 left-2/3 w-2 h-2 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full animate-bounce shadow-lg shadow-orange-400/40" style={{ animationDelay: '3.5s', animationDuration: '3.2s' }}></div>
+        <div className="absolute bottom-32 right-1/3 w-3.5 h-3.5 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full animate-bounce shadow-lg shadow-teal-400/40" style={{ animationDelay: '4.5s', animationDuration: '2.9s' }}></div>
+        <div className="absolute bottom-52 left-1/4 w-2.5 h-2.5 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full animate-bounce shadow-lg shadow-violet-400/40" style={{ animationDelay: '5.5s', animationDuration: '4.1s' }}></div>
         
-        {/* Geometric shapes */}
-        <div className="absolute top-24 right-1/5 w-4 h-4 bg-rose-500/20 rotate-45 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-48 left-1/8 w-3 h-3 bg-blue-500/20 rounded-full animate-pulse" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute top-72 right-1/8 w-5 h-5 bg-emerald-500/20 rotate-12 animate-pulse" style={{ animationDelay: '6s' }}></div>
-        <div className="absolute bottom-24 left-1/6 w-3 h-3 bg-purple-500/20 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute bottom-48 right-1/6 w-4 h-4 bg-yellow-500/20 rotate-45 animate-pulse" style={{ animationDelay: '5s' }}></div>
+        {/* Enhanced geometric shapes with rotation */}
+        <div className="absolute top-24 right-1/5 w-6 h-6 bg-gradient-to-r from-rose-500/30 to-pink-500/30 rotate-45 animate-spin shadow-lg shadow-rose-500/20" style={{ animationDelay: '2s', animationDuration: '8s' }}></div>
+        <div className="absolute top-48 left-1/8 w-5 h-5 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full animate-pulse shadow-lg shadow-blue-500/20" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-72 right-1/8 w-7 h-7 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rotate-12 animate-spin shadow-lg shadow-emerald-500/20" style={{ animationDelay: '6s', animationDuration: '6s' }}></div>
+        <div className="absolute bottom-24 left-1/6 w-5 h-5 bg-gradient-to-r from-purple-500/30 to-violet-500/30 rounded-full animate-pulse shadow-lg shadow-purple-500/20" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute bottom-48 right-1/6 w-6 h-6 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rotate-45 animate-spin shadow-lg shadow-yellow-500/20" style={{ animationDelay: '5s', animationDuration: '7s' }}></div>
         
-        {/* Floating orbs */}
-        <div className="absolute top-16 left-1/3 w-6 h-6 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full animate-float"></div>
-        <div className="absolute top-56 right-1/4 w-4 h-4 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-16 left-1/4 w-5 h-5 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute bottom-56 right-1/3 w-3 h-3 bg-gradient-to-br from-purple-400/20 to-violet-400/20 rounded-full animate-float" style={{ animationDelay: '6s' }}></div>
+        {/* Enhanced floating orbs with glow */}
+        <div className="absolute top-16 left-1/3 w-8 h-8 bg-gradient-to-br from-rose-400/30 to-pink-400/30 rounded-full animate-float shadow-2xl shadow-rose-400/20"></div>
+        <div className="absolute top-56 right-1/4 w-6 h-6 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full animate-float shadow-2xl shadow-blue-400/20" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-16 left-1/4 w-7 h-7 bg-gradient-to-br from-emerald-400/30 to-teal-400/30 rounded-full animate-float shadow-2xl shadow-emerald-400/20" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-56 right-1/3 w-5 h-5 bg-gradient-to-br from-purple-400/30 to-violet-400/30 rounded-full animate-float shadow-2xl shadow-purple-400/20" style={{ animationDelay: '6s' }}></div>
+        
+        {/* Animated grid pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid grid-cols-12 grid-rows-12 h-full w-full">
+            {Array.from({ length: 144 }).map((_, i) => (
+              <div
+                key={i}
+                className="border border-white/10 animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.1}s`,
+                  animationDuration: '3s'
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
         
         </div>
       {/* Hero Carousel Section - Top of Page */}
@@ -51,37 +99,105 @@ export default function HomePage() {
         <HeroCarousel />
       </section>
 
-      {/* Hero Text Section */}
-      <section className="relative text-center py-20 px-4 z-10">
-
+      {/* Enhanced Hero Text Section */}
+      <section className="relative text-center py-32 px-4 z-10 min-h-screen flex items-center justify-center">
         <div className="container mx-auto relative z-10">
-          <div className="inline-flex items-center bg-gradient-to-r from-rose-500/10 to-red-500/10 backdrop-blur-sm text-rose-400 text-sm font-semibold px-6 py-3 rounded-full mb-8 border border-rose-500/20 animate-fade-in-up">
-            <svg className="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Animated welcome badge */}
+          <div className={`inline-flex items-center bg-gradient-to-r from-rose-500/20 to-red-500/20 backdrop-blur-sm text-rose-400 text-sm font-semibold px-8 py-4 rounded-full mb-12 border border-rose-500/30 shadow-2xl shadow-rose-500/20 transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <svg className="w-6 h-6 mr-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
             ✨ Welcome to OneHubGlobal
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-8 animate-fade-in-up">
+          {/* Enhanced main heading with more animations */}
+          <h1 className={`text-7xl md:text-9xl font-extrabold mb-8 transform transition-all duration-1500 ${isLoaded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-95'}`}>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-red-500 to-pink-500 animate-gradient">
-              Learn. Code. Master.
+              Learn.
+            </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient" style={{ animationDelay: '0.5s' }}>
+              Code.
+            </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 animate-gradient" style={{ animationDelay: '1s' }}>
+              Master.
             </span>
           </h1>
           
-          <p className="text-2xl md:text-3xl text-gray-300 mb-6 font-semibold animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Master the technologies that power modern software development
+          {/* Enhanced subtitle with staggered animation */}
+          <p className={`text-3xl md:text-4xl text-gray-300 mb-8 font-semibold transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+            Master the technologies that power{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500 animate-gradient">
+              modern software development
+            </span>
           </p>
           
-          <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.4s' }}>
+          {/* Enhanced description */}
+          <p className={`text-xl text-gray-400 mb-16 max-w-4xl mx-auto leading-relaxed transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '0.6s' }}>
             Choose your learning path and dive deep into comprehensive tutorials, hands-on projects, 
             interactive code terminals, and real-world applications. Start your journey today!
           </p>
 
+          {/* Enhanced Know More Button */}
+          <div className={`transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '0.9s' }}>
+            <button
+              onClick={scrollToContent}
+              className="group relative inline-flex items-center justify-center px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-rose-500 via-red-600 to-pink-600 rounded-2xl shadow-2xl shadow-rose-500/30 hover:shadow-rose-500/50 transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+            >
+              {/* Button background animation */}
+              <div className="absolute inset-0 bg-gradient-to-r from-rose-600 via-red-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Button content */}
+              <span className="relative z-10 flex items-center">
+                <span className="mr-3">Know More</span>
+                <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+              
+              {/* Animated border */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-rose-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+            </button>
+          </div>
+
+          {/* Floating action indicators */}
+          <div className={`mt-16 flex justify-center space-x-8 transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ animationDelay: '1.2s' }}>
+            <div className="flex flex-col items-center group cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <span className="text-sm text-gray-400 group-hover:text-rose-400 transition-colors">Learn</span>
+            </div>
+            
+            <div className="flex flex-col items-center group cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m-4 16l-4-4m4 4l4-4M6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
+                </svg>
+              </div>
+              <span className="text-sm text-gray-400 group-hover:text-blue-400 transition-colors">Code</span>
+            </div>
+            
+            <div className="flex flex-col items-center group cursor-pointer">
+              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+              </div>
+              <span className="text-sm text-gray-400 group-hover:text-emerald-400 transition-colors">Master</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* Logo Loop Section */}
-      <section className="py-16 relative z-10">
+      {/* Main Content Section - Scroll Target */}
+      <div id="main-content">
+        {/* Logo Loop Section */}
+        <section className="py-16 relative z-10">
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8">
@@ -203,6 +319,132 @@ export default function HomePage() {
             >
               📚 View All Tutorials
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Bank Coaching Section */}
+      <section className="py-20 relative z-10 bg-gradient-to-br from-blue-900/20 via-indigo-900/20 to-purple-900/20">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-500/20 to-indigo-500/20 backdrop-blur-sm text-blue-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-blue-500/30">
+              <svg className="w-5 h-5 mr-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+              🏦 Bank Coaching Excellence
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Banking Careers</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
+              Comprehensive bank coaching for SBI, IBPS, RBI, and other banking exams. 
+              Expert guidance, mock tests, and personalized study plans to help you succeed.
+            </p>
+          </div>
+
+          {/* Bank Coaching Features Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* SBI Coaching */}
+            <div className="group bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🏛️</div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                SBI Coaching
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                Complete preparation for SBI PO, Clerk, and Specialist Officer exams with expert faculty and comprehensive study material.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Mock Tests & Analysis
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Interview Preparation
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Current Affairs Updates
+                </li>
+              </ul>
+            </div>
+
+            {/* IBPS Coaching */}
+            <div className="group bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">💼</div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                IBPS Coaching
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                Specialized coaching for IBPS PO, Clerk, RRB, and Specialist Officer positions across all public sector banks.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Section-wise Preparation
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Previous Year Papers
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Doubt Clearing Sessions
+                </li>
+              </ul>
+            </div>
+
+            {/* RBI Coaching */}
+            <div className="group bg-gradient-to-br from-purple-500/10 to-violet-600/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🏦</div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                RBI Coaching
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                Elite coaching for RBI Grade B, Assistant, and other RBI examinations with focus on economic and financial concepts.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Economic Concepts
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Financial Awareness
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Phase-wise Preparation
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+          {/* Bank Coaching CTA */}
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-blue-500/20 to-indigo-500/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Ready to Start Your Banking Career?
+              </h3>
+              <p className="text-gray-300 mb-8 text-lg">
+                Join thousands of successful banking professionals who started their journey with OneHubGlobal Bank Coaching.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/bank-coaching"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/30"
+                >
+                  Start Bank Coaching
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 border border-blue-500/30 text-blue-400 font-bold rounded-xl hover:bg-blue-500/10 transition-all duration-300"
+                >
+                  Get Free Consultation
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -724,6 +966,7 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+      </div>
     </main>
   );
 }
