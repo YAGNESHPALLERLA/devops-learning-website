@@ -1,182 +1,179 @@
-# JobCy Portal Integration Guide
+# 🚀 Jobcy Job Portal Integration
 
-## 🔗 How It Works
+## Overview
 
-The JobCy Job Portal is integrated into OneHubGlobal using **Git Submodules** and an **automatic sync system**.
+The OneHubGlobal DevOps Learning Website is now integrated with the Jobcy Job Portal to provide job opportunities, internships, and career services to learners.
 
-### Architecture
+## Current Configuration
 
-```
-OneHubGlobal Repository
-├── jobcy-portal/              (Git Submodule → JobCy Repository)
-│   └── jobcy-frontend-main/
-│       └── src/app/           (Source of truth)
-├── sync-jobcy-portal.js       (Sync script)
-└── src/app/jobs/              (Synced content from JobCy)
-    ├── page.tsx               (Main landing page)
-    ├── admin/                 (Admin portal)
-    ├── company/               (Company portal)
-    ├── hr/                    (HR portal)
-    └── user/                  (User/Job seeker portal)
-```
+**Current Jobcy URL:** `https://github.com/Karthik2340/jobcy-job-portal`
 
-## 📦 What Gets Synced
+This URL is currently pointing to the GitHub repository. Once you deploy the Jobcy portal to a production URL (Vercel, Netlify, etc.), you'll need to update all the links.
 
-The following are automatically synced from the JobCy repository:
-- ✅ Main landing page (`page.tsx`)
-- ✅ Admin portal (`/admin`)
-- ✅ Company portal (`/company`)
-- ✅ HR portal (`/hr`)
-- ✅ User/Job seeker portal (`/user`)
-- ✅ Type definitions (`/types`)
+## Integration Points
 
-## 🚀 Deployment Process
+The following buttons/links on the homepage now redirect to the Jobcy portal:
 
-### Automatic Sync on Build
+### 1. **Jobs & Careers Section** (New Section Added)
+   - **Location:** After "Quick Access Section" and before "Bank Coaching Section"
+   - **Main CTA Button:** "Apply Now - Browse Jobs"
+   - **Purpose:** Primary call-to-action for job seekers
 
-The sync happens **automatically** during build:
+### 2. **Professional Certifications**
+   - **Location:** "Certifications & Internships" section
+   - **Button:** "Explore Certifications"
 
-```bash
-npm run build
-```
+### 3. **Internship Opportunities**
+   - **Location:** "Certifications & Internships" section
+   - **Button:** "Apply for Internships"
 
-This runs:
-1. `prebuild` hook → Syncs JobCy portal
-2. `build` → Builds the complete OneHubGlobal app with integrated JobCy portal
+### 4. **Bank Coaching CTAs**
+   - **Location:** "Bank Coaching" section
+   - **Buttons:**
+     - "Start Bank Coaching"
+     - "Get Free Consultation"
 
-### Manual Sync
+## How to Update URLs After Deployment
 
-To manually sync the JobCy portal:
+### Option 1: Using Find & Replace (Recommended for Production Deployment)
+
+When you deploy Jobcy to production (e.g., `https://jobcy.vercel.app`), update all URLs:
 
 ```bash
-npm run sync-jobcy
+# In the project root
+cd /home/dragon/devops-learning-website
+
+# Use find and replace (Linux/Mac)
+find src/app/page.tsx -type f -exec sed -i 's|https://github.com/Karthik2340/jobcy-job-portal|https://your-deployed-url.com|g' {} +
+
+# Or manually search and replace in your editor:
+# Find: https://github.com/Karthik2340/jobcy-job-portal
+# Replace with: https://your-deployed-url.com
 ```
 
-### Update from JobCy Repository
+### Option 2: Environment Variable (Best Practice)
 
-To pull the latest changes from the JobCy repository and sync:
+For a more maintainable approach, create an environment variable:
+
+1. **Create `.env.local` file:**
 
 ```bash
-npm run update-jobcy
+cd /home/dragon/devops-learning-website
+touch .env.local
 ```
 
-This will:
-1. Pull latest changes from JobCy repository
-2. Sync the updated content into OneHubGlobal
+2. **Add the Jobcy URL:**
 
-## 🌐 Live Deployment
+```env
+NEXT_PUBLIC_JOBCY_URL=https://your-deployed-url.com
+```
 
-### On Vercel/Production
+3. **Update `src/app/page.tsx` to use the environment variable:**
 
-When you deploy to Vercel or any other platform:
+Replace all instances of:
+```tsx
+href="https://github.com/Karthik2340/jobcy-job-portal"
+```
 
-1. **Git submodules are automatically initialized** during deployment
-2. **`prebuild` script runs** before building, syncing the latest JobCy portal
-3. **Your live site includes the JobCy portal** at `/jobs` route
-4. **No external redirects** - everything is on your domain
+With:
+```tsx
+href={process.env.NEXT_PUBLIC_JOBCY_URL || 'https://github.com/Karthik2340/jobcy-job-portal'}
+```
 
-### Example URLs
-
-- Main site: `https://yourdomain.com`
-- Jobs portal: `https://yourdomain.com/jobs`
-- Job seeker portal: `https://yourdomain.com/jobs/user/dashboard`
-- HR portal: `https://yourdomain.com/jobs/hr/dashboard`
-- Admin portal: `https://yourdomain.com/jobs/admin/dashboard`
-
-## 🔄 Keeping Updated
-
-### When JobCy Repository Updates
-
-To get the latest changes from the JobCy repository:
-
+4. **Restart the dev server:**
 ```bash
-# Option 1: Use the update script
-npm run update-jobcy
-
-# Option 2: Manual update
-cd jobcy-portal
-git pull origin master
-cd ..
-npm run sync-jobcy
+npm run dev
 ```
 
-Then commit and push:
+## Deployment Checklist
 
-```bash
-git add .
-git commit -m "Update JobCy portal to latest version"
-git push origin main
+### For Development (Current State)
+- ✅ All "Apply Now" buttons link to Jobcy GitHub repo
+- ✅ Links open in new tab (`target="_blank"`)
+- ✅ Security attributes added (`rel="noopener noreferrer"`)
+- ✅ No linter errors
+
+### For Production Deployment
+
+1. **Deploy Jobcy Portal to Vercel/Netlify**
+   - Follow the guides in `/home/dragon/job-portal/VERCEL_DEPLOYMENT_STEPS.md`
+   - Get your production URL (e.g., `https://jobcy-portal.vercel.app`)
+
+2. **Update Links in DevOps Website**
+   - Option A: Find & Replace all URLs
+   - Option B: Use environment variables (recommended)
+
+3. **Test All Links**
+   - [ ] Jobs & Careers "Apply Now" button
+   - [ ] Professional Certifications button
+   - [ ] Internship Opportunities button
+   - [ ] Bank Coaching buttons
+
+4. **Deploy DevOps Website**
+   ```bash
+   cd /home/dragon/devops-learning-website
+   npm run build
+   # Deploy to your hosting platform
+   ```
+
+## Jobcy Portal Routes
+
+When users click "Apply Now", they can navigate to these routes on the Jobcy portal:
+
+- **Homepage:** `/`
+- **Job Seeker Signup:** `/user/auth/signup`
+- **Job Seeker Login:** `/user/auth/login`
+- **Browse Jobs:** `/user/dashboard` (after login)
+- **HR Login:** `/hr/auth/login`
+- **Company Login:** `/company/auth/login`
+- **Admin Login:** `/admin/auth/login`
+
+## Optional: Deep Linking
+
+You can also link directly to specific pages:
+
+```tsx
+// Link directly to signup page
+href="https://your-jobcy-url.com/user/auth/signup"
+
+// Link directly to login page
+href="https://your-jobcy-url.com/user/auth/login"
 ```
 
-### Automatic Updates (CI/CD)
+## Features Highlighted in Integration
 
-You can set up GitHub Actions to automatically pull JobCy updates:
+The integration promotes these Jobcy features:
 
-```yaml
-# .github/workflows/update-jobcy.yml
-name: Update JobCy Portal
-on:
-  schedule:
-    - cron: '0 0 * * *' # Daily at midnight
-  workflow_dispatch: # Manual trigger
+1. **Job Listings**
+   - Fresher & Experienced positions
+   - Multiple industries & domains
+   - Regular job updates
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-      - name: Update JobCy submodule
-        run: |
-          cd jobcy-portal
-          git pull origin master
-          cd ..
-      - name: Sync JobCy portal
-        run: npm run sync-jobcy
-      - name: Commit changes
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git add .
-          git commit -m "Auto-update JobCy portal" || echo "No changes"
-          git push
-```
+2. **Easy Applications**
+   - One-click applications
+   - Application tracking
+   - Status notifications
 
-## ✅ Benefits
+3. **Connect & Network**
+   - Connect with professionals
+   - Real-time chat
+   - Interview scheduling
 
-1. **Single Domain**: Everything is on your domain (no external redirects)
-2. **Always Updated**: JobCy updates automatically sync to your site
-3. **No Code Duplication**: Using git submodules (single source of truth)
-4. **Automatic Builds**: Sync happens automatically during deployment
-5. **Easy Maintenance**: Simple commands to update
+## Support
 
-## 🛠️ Troubleshooting
+For issues with:
+- **Jobcy Portal:** Check `/home/dragon/job-portal/README.md`
+- **DevOps Website:** Check `/home/dragon/devops-learning-website/package.json`
+- **Integration:** Refer to this document
 
-### Submodule not initialized
+## Repository Links
 
-```bash
-git submodule update --init --recursive
-```
+- **Jobcy Portal:** https://github.com/Karthik2340/jobcy-job-portal
+- **DevOps Website:** (Your GitHub repo)
 
-### Sync not working
+---
 
-```bash
-# Re-run the sync script
-node sync-jobcy-portal.js
-```
-
-### Vercel deployment issues
-
-Make sure to configure Vercel:
-- **Build Command**: `npm run build` (prebuild will run automatically)
-- **Install Command**: `npm install`
-- **Git Submodules**: Enabled (in project settings)
-
-## 📝 Notes
-
-- The `jobcy-portal/` directory is a **git submodule** tracking the JobCy repository
-- The `src/app/jobs/` directory contains **synced content** (not tracked by git directly)
-- Changes to JobCy should be made in the JobCy repository, then synced
-- The sync script runs automatically before every build
+**Last Updated:** October 21, 2025
+**Integration Status:** ✅ Complete
+**Next Step:** Deploy Jobcy to production and update URLs
 

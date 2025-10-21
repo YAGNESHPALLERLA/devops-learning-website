@@ -323,6 +323,129 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Jobs & Careers Section - NEW */}
+      <section className="py-20 relative z-10 bg-gradient-to-br from-rose-900/20 via-red-900/20 to-pink-900/20">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-gradient-to-r from-rose-500/20 to-red-500/20 backdrop-blur-sm text-rose-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-rose-500/30">
+              <svg className="w-5 h-5 mr-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0h2a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h2"></path>
+              </svg>
+              🚀 Jobs & Career Opportunities
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">Career Journey</span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
+              Browse thousands of job opportunities, internships, and career openings. Connect with top companies and take the next step in your professional journey.
+            </p>
+          </div>
+
+          {/* Job Portal Features */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-rose-500/10 to-red-600/10 backdrop-blur-sm border border-rose-500/20 rounded-2xl p-8 hover:border-rose-500/40 transition-all duration-500">
+              <div className="text-6xl mb-6">💼</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Job Listings</h3>
+              <p className="text-gray-300 mb-4">
+                Browse through curated job listings from top companies across various industries and skill levels.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-rose-400 mr-2">✓</span>
+                  Fresher & Experienced positions
+                </li>
+                <li className="flex items-center">
+                  <span className="text-rose-400 mr-2">✓</span>
+                  Multiple industries & domains
+                </li>
+                <li className="flex items-center">
+                  <span className="text-rose-400 mr-2">✓</span>
+                  Regular job updates
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500">
+              <div className="text-6xl mb-6">📝</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Easy Applications</h3>
+              <p className="text-gray-300 mb-4">
+                Apply to jobs with just a few clicks. Upload your resume and track all your applications in one place.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-blue-400 mr-2">✓</span>
+                  One-click applications
+                </li>
+                <li className="flex items-center">
+                  <span className="text-blue-400 mr-2">✓</span>
+                  Application tracking
+                </li>
+                <li className="flex items-center">
+                  <span className="text-blue-400 mr-2">✓</span>
+                  Status notifications
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500">
+              <div className="text-6xl mb-6">🤝</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Connect & Network</h3>
+              <p className="text-gray-300 mb-4">
+                Build your professional network, connect with recruiters, and get real-time updates on opportunities.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-center">
+                  <span className="text-emerald-400 mr-2">✓</span>
+                  Connect with professionals
+                </li>
+                <li className="flex items-center">
+                  <span className="text-emerald-400 mr-2">✓</span>
+                  Real-time chat
+                </li>
+                <li className="flex items-center">
+                  <span className="text-emerald-400 mr-2">✓</span>
+                  Interview scheduling
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Main CTA */}
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-rose-500/20 to-red-500/20 backdrop-blur-sm border border-rose-500/30 rounded-2xl p-12 max-w-4xl mx-auto">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Ready to Find Your Dream Job?
+              </h3>
+              <p className="text-gray-300 mb-8 text-lg">
+                Join thousands of job seekers who have successfully launched their careers through our platform.
+              </p>
+              <Link
+                href="/jobcy"
+                className="group inline-flex items-center justify-center px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-rose-500 via-red-600 to-pink-600 rounded-2xl shadow-2xl shadow-rose-500/30 hover:shadow-rose-500/50 transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+              >
+                {/* Button background animation */}
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-600 via-red-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Button content */}
+                <span className="relative z-10 flex items-center">
+                  <span className="mr-3">Apply Now - Browse Jobs</span>
+                  <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                  </svg>
+                </span>
+                
+                {/* Animated border */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-rose-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+              </Link>
+              
+              <p className="text-sm text-gray-400 mt-6">
+                🔒 Secure Platform • 📊 Track Applications • 💬 Real-time Chat • 🎯 Career Guidance
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bank Coaching Section */}
       <section className="py-20 relative z-10 bg-gradient-to-br from-blue-900/20 via-indigo-900/20 to-purple-900/20">
         <div className="container mx-auto px-4 relative z-10">
@@ -432,13 +555,13 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/bank-coaching"
+                  href="/jobcy"
                   className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/30"
                 >
                   Start Bank Coaching
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/jobcy"
                   className="px-8 py-4 border border-blue-500/30 text-blue-400 font-bold rounded-xl hover:bg-blue-500/10 transition-all duration-300"
                 >
                   Get Free Consultation
@@ -874,7 +997,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <Link 
-                href="/jobs"
+                href="/jobcy"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Explore Certifications
@@ -925,7 +1048,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <Link 
-                href="/jobs"
+                href="/jobcy"
                 className="inline-flex items-center justify-center w-full bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
                 Apply for Internships

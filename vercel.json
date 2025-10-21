@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    {
+      "source": "/jobcy/(.*)",
+      "destination": "/jobcy/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/jobcy",
+      "destination": "/jobcy/",
+      "permanent": true
+    }
+  ]
+}
