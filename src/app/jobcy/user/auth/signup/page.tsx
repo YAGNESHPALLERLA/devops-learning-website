@@ -181,7 +181,7 @@ export default function SignupPage() {
         localStorage.setItem("user", JSON.stringify(loginData.user));
         setIsSuccess(true);
       } else {
-        window.location.href = "/user/auth/login";
+        window.location.href = "/jobcy/user/auth/login";
       }
     } catch {
       setErrors({ general: "An error occurred. Please try again." });
@@ -569,7 +569,7 @@ export default function SignupPage() {
 
           <div className="mt-6 text-center">
             <a
-              href="/user/auth/login"
+              href="/jobcy/user/auth/login"
               className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
             >
               Already have an account? Sign In

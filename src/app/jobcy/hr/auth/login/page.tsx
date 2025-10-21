@@ -79,11 +79,11 @@ export default function HRLogin() {
 
         // Redirect based on role
         if (data.user.role === "admin") {
-          window.location.href = "/admin/dashboard";
+          window.location.href = "/jobcy/admin/dashboard";
         } else if (data.user.role === "hr") {
-          window.location.href = "/hr/dashboard";
+          window.location.href = "/jobcy/hr/dashboard";
         } else {
-          window.location.href = "/user/dashboard";
+          window.location.href = "/jobcy/user/dashboard";
         }
       }
     } catch (error) {
@@ -279,7 +279,7 @@ export default function HRLogin() {
             <p className="text-sm text-slate-600 dark:text-slate-400">
               New HR?{" "}
               <a
-                href="/user/auth/signup?mode=hr-signup"
+                href="/jobcy/user/auth/signup?mode=hr-signup"
                 className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 font-semibold transition-colors"
               >
                 Create HR Account

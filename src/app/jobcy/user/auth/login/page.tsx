@@ -80,11 +80,11 @@ export default function UserLogin() {
 
         // Redirect based on role
         if (data.user.role === "admin") {
-          window.location.href = "/admin/dashboard";
+          window.location.href = "/jobcy/admin/dashboard";
         } else if (data.user.role === "hr") {
-          window.location.href = "/hr/dashboard";
+          window.location.href = "/jobcy/hr/dashboard";
         } else {
-          window.location.href = "/user/dashboard";
+          window.location.href = "/jobcy/user/dashboard";
         }
       }
     } catch (error) {
@@ -280,7 +280,7 @@ export default function UserLogin() {
             <p className="text-sm text-slate-600 dark:text-slate-400">
               New to our platform?{" "}
               <a
-                href="/user/auth/signup"
+                href="/jobcy/user/auth/signup"
                 className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors"
               >
                 Create Account

@@ -99,7 +99,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
           if (dashRes.status === 401) {
             setError("Unauthorized. Please log in again.");
             localStorage.removeItem("token");
-            window.location.href = "/hr/auth/login";
+            window.location.href = "/jobcy/hr/auth/login";
             return;
           }
           throw new Error(`Failed to fetch dashboard info: ${dashRes.status}`);
@@ -461,7 +461,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                 className="flex items-center space-x-2 px-4 py-2.5 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all hover:scale-105 group"
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.href = "/hr/auth/login";
+                  window.location.href = "/jobcy/hr/auth/login";
                 }}
               >
                 <LogOut className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -492,7 +492,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
               <Download className="w-5 h-5" />
               <span>Export</span>
             </button>
-            <Link href="/hr/jobs-management">
+            <Link href="/jobcy/hr/jobs-management">
               <button className="flex items-center space-x-2 bg-gradient-to-r from-blue-200 to-indigo-200 hover:from-blue-300 hover:to-indigo-300 text-slate-800 px-6 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 group">
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Manage Jobs</span>
@@ -603,7 +603,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                     Try adjusting your search criteria or create a new job
                     posting to get started
                   </p>
-                  <Link href="/hr/jobs-management">
+                  <Link href="/jobcy/hr/jobs-management">
                     <button className="px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
                       Create New Job
                     </button>

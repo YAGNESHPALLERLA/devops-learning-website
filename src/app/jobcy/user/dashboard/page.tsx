@@ -43,11 +43,11 @@ export default function JobSeekerDashboard() {
         if (user.role !== "user") {
           console.log("⚠️ Unauthorized access to user dashboard. Redirecting...");
           if (user.role === "hr") {
-            window.location.href = "/hr/dashboard";
+            window.location.href = "/jobcy/hr/dashboard";
           } else if (user.role === "admin") {
-            window.location.href = "/admin/dashboard";
+            window.location.href = "/jobcy/admin/dashboard";
           } else {
-            window.location.href = "/user/auth/login";
+            window.location.href = "/jobcy/user/auth/login";
           }
         }
       } catch (error) {
