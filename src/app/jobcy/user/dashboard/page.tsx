@@ -76,7 +76,7 @@ export default function JobSeekerDashboard() {
     if (confirm("Are you sure you want to logout?")) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      window.location.href = "/user/auth/login";
+      window.location.href = "/jobcy/user/auth/login";
     }
   };
 
