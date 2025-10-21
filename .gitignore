@@ -84,3 +84,6 @@ jspm_packages/
 # JobCy Portal - Synced from submodule (generated during build)
 src/app/jobs/
 src/app/types/
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
