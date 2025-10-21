@@ -39,7 +39,7 @@ export function useChat() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://https://jobcy-job-portal.vercel.app", {
+    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "https://jobcy-job-portal.vercel.app", {
       auth: {
         token: token
       }
