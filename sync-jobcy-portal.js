@@ -9,8 +9,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const JOBCY_FRONTEND = path.join(__dirname, 'jobcy-portal', 'jobcy-frontend-main', 'src', 'app');
-const JOBCY_SRC = path.join(__dirname, 'jobcy-portal', 'jobcy-frontend-main', 'src');
+const JOBCY_FRONTEND = path.join(__dirname, 'jobcy-frontend', 'src', 'app');
+const JOBCY_SRC = path.join(__dirname, 'jobcy-frontend', 'src');
 const TARGET_JOBS_DIR = path.join(__dirname, 'src', 'app', 'jobs');
 const TARGET_APP_DIR = path.join(__dirname, 'src', 'app');
 
