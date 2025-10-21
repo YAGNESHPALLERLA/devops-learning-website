@@ -8,7 +8,7 @@ import {
   Connection,
   Interview,
   UserProfile,
-} from "@/app/types/dashboard";
+} from "../../../types/dashboard";
 import {
   mockProfile,
   mockEducation,
