@@ -124,7 +124,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setErrors({}); // Clear previous errors
   
   try {
-    const apiUrl = "https://jobcy-job-portal.vercel.app/api";
+    const apiUrl = "https://jobcy-job-portal.vercel.app/api" || "http://https://jobcy-job-portal.vercel.app/api";
     const endpoint = `${apiUrl}/hr/jobs`;
     
     console.log("🔄 Fetching HR jobs from:", endpoint);
@@ -164,7 +164,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   } catch (e) {
     console.error("❌ Fetch jobs error:", e);
     if (e instanceof Error) {
-      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on https://jobcy-job-portal.vercel.app/api` });
+      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on ${"https://jobcy-job-portal.vercel.app/api" || "http://https://jobcy-job-portal.vercel.app"}` });
     } else {
       setErrors({ general: "An unexpected error occurred while fetching jobs" });
     }

@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { Interview } from "../../../types/dashboard";
+import { Interview } from "@/app/types/dashboard";
 
 interface InterviewsTabProps {
   interviews: Interview[];

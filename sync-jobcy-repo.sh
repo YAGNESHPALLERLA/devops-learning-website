@@ -6,7 +6,7 @@
 echo "🚀 Starting Jobcy Portal Sync..."
 
 # Configuration
-JOBCY_REPO_URL="https://github.com/YAGNESHPALLERLA/job-portal.git"
+JOBCY_REPO_URL="https://github.com/Karthik2340/jobcy-job-portal.git"
 JOBCY_BACKEND_URL="https://jobcy-job-portal.vercel.app"
 TEMP_DIR="jobcy-temp"
 

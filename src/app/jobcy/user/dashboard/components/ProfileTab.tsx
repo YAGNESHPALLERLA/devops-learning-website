@@ -1,6 +1,6 @@
 "use client";
-import { Experience } from "../../../types/type1";
-import { Education, Project, Language, UserProfile } from "../../../types/dashboard";
+import { Experience } from "@/app/types/type1";
+import { Education, Project, Language, UserProfile } from "@/app/types/dashboard";
 
 import {
   Edit,

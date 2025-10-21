@@ -22,7 +22,7 @@ jobs:
         
     - name: Clone Jobcy Portal
       run: |
-        git clone https://github.com/YAGNESHPALLERLA/job-portal.git jobcy-temp
+        git clone https://github.com/Karthik2340/jobcy-job-portal.git jobcy-temp
         cd jobcy-temp
         git checkout main
         
