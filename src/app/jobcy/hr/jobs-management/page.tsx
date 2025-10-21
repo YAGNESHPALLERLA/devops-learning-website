@@ -164,7 +164,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   } catch (e) {
     console.error("❌ Fetch jobs error:", e);
     if (e instanceof Error) {
-      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on ${"https://jobcy-job-portal.vercel.app/api" || "https://jobcy-job-portal.vercel.app"}` });
+      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on https://jobcy-job-portal.vercel.app/api` });
     } else {
       setErrors({ general: "An unexpected error occurred while fetching jobs" });
     }
