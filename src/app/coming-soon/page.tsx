@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function ComingSoon() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
@@ -41,18 +43,18 @@ export default function ComingSoon() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <Link 
               href="/"
               className="px-6 py-3 bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold rounded-lg hover:from-red-600 hover:to-rose-700 transition-all duration-300 transform hover:scale-105"
             >
               Back to Home
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/tutorials"
               className="px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300"
             >
               Explore Tutorials
-            </a>
+            </Link>
           </div>
         </div>
         
