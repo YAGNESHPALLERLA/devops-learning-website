@@ -181,7 +181,7 @@ export default function SignupPage() {
         localStorage.setItem("user", JSON.stringify(loginData.user));
         setIsSuccess(true);
       } else {
-        window.location.href = "/user/auth/login";
+        window.location.href = "/jobcy/user/auth/login";
       }
     } catch {
       setErrors({ general: "An error occurred. Please try again." });
@@ -261,7 +261,7 @@ export default function SignupPage() {
                 <button
                   onClick={() => {
                     const user = JSON.parse(localStorage.getItem("user") || "{}");
-                    const dashboardPath = user.role === "admin" ? "/admin/dashboard" : user.role === "hr" ? "/hr/dashboard" : "/user/dashboard";
+                    const dashboardPath = user.role === "admin" ? "/jobcy/admin/dashboard" : user.role === "hr" ? "/jobcy/hr/dashboard" : "/jobcy/user/dashboard";
                     window.location.href = dashboardPath;
                   }}
                   className="flex items-center justify-center space-x-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg"
@@ -569,7 +569,7 @@ export default function SignupPage() {
 
           <div className="mt-6 text-center">
             <a
-              href="/user/auth/login"
+              href="/jobcy/user/auth/login"
               className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
             >
               Already have an account? Sign In
