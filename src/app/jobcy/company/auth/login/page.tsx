@@ -173,7 +173,7 @@ export default function CompanyLogin() {
               </button>
               <span className="text-gray-300">|</span>
               <button
-                onClick={() => router.push("/user/auth/login")}
+                onClick={() => router.push("/jobcy/user/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 Job Seeker Login

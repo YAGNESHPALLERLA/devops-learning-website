@@ -52,11 +52,11 @@ export default function Home() {
   }, [testimonials.length]);
 
   const handleSignIn = () => {
-    router.push("/user/auth/login");
+    router.push("/jobcy/user/auth/login");
   };
 
   const handleSignUp = () => {
-    router.push("/user/auth/signup");
+    router.push("/jobcy/user/auth/signup");
   };
 
   return (
@@ -336,7 +336,7 @@ export default function Home() {
               <h4 className={`font-semibold mb-4 text-center ${isDark ? "text-white" : "text-slate-900"}`}>Access Portals</h4>
               <div className="flex flex-wrap justify-center gap-3">
                 <button
-                  onClick={() => router.push("/user/auth/login")}
+                  onClick={() => router.push("/jobcy/user/auth/login")}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${isDark ? "bg-slate-600 text-slate-200 hover:bg-slate-500" : "bg-white text-slate-700 hover:bg-slate-50"} shadow-sm hover:shadow-md`}
                 >
                   Job Seeker Portal
