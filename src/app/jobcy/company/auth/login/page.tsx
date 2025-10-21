@@ -20,7 +20,7 @@ export default function CompanyLogin() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login-company`, {
+      const res = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/auth/login-company`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

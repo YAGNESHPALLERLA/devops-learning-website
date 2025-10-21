@@ -613,7 +613,7 @@ export default function ProfileEditModal({
   const addExperience = async (expData: Omit<Experience, 'id'>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/experience`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -636,7 +636,7 @@ export default function ProfileEditModal({
   const updateExperience = async (id: string | number, expData: Partial<Experience>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/experience/${id}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -660,7 +660,7 @@ export default function ProfileEditModal({
     if (!confirm("Are you sure you want to delete this experience entry?")) return;
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/experience/${id}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

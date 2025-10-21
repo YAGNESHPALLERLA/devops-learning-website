@@ -39,7 +39,7 @@ export function useChat() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000", {
+    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://https://jobcy-job-portal.vercel.app", {
       auth: {
         token: token
       }
@@ -83,7 +83,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/chats`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chats`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/chat/${userId}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chat/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/messages/${chatId}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/messages/${chatId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

@@ -144,7 +144,7 @@ export default function SignupPage() {
     setErrors({});
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/register`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,7 +165,7 @@ export default function SignupPage() {
       }
 
       // Auto login
-      const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      const loginResponse = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

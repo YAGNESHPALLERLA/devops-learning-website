@@ -56,9 +56,9 @@ export default function UserLogin() {
     setLoginError("");
 
     try {
-      console.log("Login URL:", `${process.env.NEXT_PUBLIC_API_URL}/login`);
+      console.log("Login URL:", `${"https://jobcy-job-portal.vercel.app/api"}/login`);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

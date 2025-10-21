@@ -102,13 +102,13 @@ export default function CompanyDashboard() {
     try {
       setLoading(true);
       const [statsRes, jobsRes, applicationsRes] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/dashboard`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/dashboard`, {
           headers: getAuthHeaders(),
         }),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/jobs`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/jobs`, {
           headers: getAuthHeaders(),
         }),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/applications`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/applications`, {
           headers: getAuthHeaders(),
         }),
       ]);
@@ -137,7 +137,7 @@ export default function CompanyDashboard() {
   const handleStatusUpdate = async (applicationId: string, newStatus: string) => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/company/applications/${applicationId}/status`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/company/applications/${applicationId}/status`,
         {
           method: "PUT",
           headers: getAuthHeaders(),
@@ -509,7 +509,7 @@ export default function CompanyDashboard() {
                     <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
                       {app.userId.resume && (
                         <a
-                          href={`${process.env.NEXT_PUBLIC_API_URL}${app.userId.resume}`}
+                          href={`${"https://jobcy-job-portal.vercel.app/api"}${app.userId.resume}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg font-medium transition-colors"

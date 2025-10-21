@@ -101,7 +101,7 @@ export default function CompanyManagement() {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/admin/companies`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`,
         {
           headers: getAuthHeaders(),
         }
@@ -205,8 +205,8 @@ export default function CompanyManagement() {
     try {
       const url =
         modalMode === "create"
-          ? `${process.env.NEXT_PUBLIC_API_URL}/admin/companies`
-          : `${process.env.NEXT_PUBLIC_API_URL}/admin/companies/${selectedCompany?._id}`;
+          ? `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`
+          : `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${selectedCompany?._id}`;
 
       const response = await fetch(url, {
         method: modalMode === "create" ? "POST" : "PUT",
@@ -243,7 +243,7 @@ export default function CompanyManagement() {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/admin/companies/${companyId}`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${companyId}`,
         {
           method: "DELETE",
           headers: getAuthHeaders(),
@@ -296,7 +296,7 @@ export default function CompanyManagement() {
 
       // Fetch HRs for this company
       const hrsResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/admin/hrs`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/hrs`,
         {
           headers: getAuthHeaders(),
         }
@@ -342,7 +342,7 @@ export default function CompanyManagement() {
 
       // Fetch all jobs using the general jobs endpoint (accessible to admin)
       const jobsResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/jobs`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/jobs`,
         {
           headers: getAuthHeaders(),
         }
@@ -376,7 +376,7 @@ export default function CompanyManagement() {
         try {
           console.log(`📨 Fetching applications for job ${jobId}`);
           const appResponse = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/jobs/${jobId}/applications`,
+            `${"https://jobcy-job-portal.vercel.app/api"}/jobs/${jobId}/applications`,
             {
               headers: getAuthHeaders(),
             }
