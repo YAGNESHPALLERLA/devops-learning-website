@@ -1,12 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function JobcyPortal() {
+  const router = useRouter();
+
   useEffect(() => {
-    // Redirect to the actual Jobcy application
-    window.location.href = 'https://jobcy-job-portal.vercel.app';
-  }, []);
+    // Redirect to the Jobcy portal landing page within the same domain
+    router.push('/jobcy/user/auth/login');
+  }, [router]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">

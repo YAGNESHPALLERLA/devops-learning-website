@@ -4,12 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node sync-jobcy-portal.js",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "sync-jobcy": "node sync-jobcy-portal.js",
-    "update-jobcy": "cd jobcy-portal && git pull origin master && cd .. && npm run sync-jobcy"
+    "lint": "eslint"
   },
   "dependencies": {
     "jwt-decode": "^4.0.0",

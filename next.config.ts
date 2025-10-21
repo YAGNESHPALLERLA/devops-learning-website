@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -13,6 +12,15 @@ const nextConfig: NextConfig = {
         pathname: '/vi/**',
       },
     ],
+  },
+  // Configure rewrites for Jobcy portal routes
+  async rewrites() {
+    return [
+      {
+        source: '/jobcy/:path*',
+        destination: '/jobcy/:path*',
+      },
+    ];
   },
 };
 

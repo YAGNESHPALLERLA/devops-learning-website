@@ -1,15 +1,24 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/jobcy/(.*)",
-      "destination": "/jobcy/$1"
+      "src": "package.json",
+      "use": "@vercel/next"
     }
   ],
-  "redirects": [
+  "routes": [
     {
-      "source": "/jobcy",
-      "destination": "/jobcy/",
-      "permanent": true
+      "src": "/jobcy/(.*)",
+      "dest": "/jobcy/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
-  ]
+  ],
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
