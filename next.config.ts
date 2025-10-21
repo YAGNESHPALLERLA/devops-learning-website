@@ -13,15 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Configure rewrites for Jobcy portal routes
-  async rewrites() {
-    return [
-      {
-        source: '/jobcy/:path*',
-        destination: '/jobcy/:path*',
-      },
-    ];
-  },
 };
 
 export default nextConfig;
