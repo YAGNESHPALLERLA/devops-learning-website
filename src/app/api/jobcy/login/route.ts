@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     // Generate JWT token
     const jwt = await import('jsonwebtoken');
-    const token = jwt.sign(
+    const token = jwt.default.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET || 'fallback-secret',
       { expiresIn: '30d' }
