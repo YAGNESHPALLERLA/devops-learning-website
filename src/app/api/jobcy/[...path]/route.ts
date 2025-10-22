@@ -26,7 +26,7 @@ async function handleRequest(request: NextRequest, params: Promise<{ path: strin
     if (method === 'POST' || method === 'PUT') {
       try {
         body = await request.json();
-      } catch (e) {
+      } catch {
         // No body or invalid JSON
       }
     }
@@ -54,7 +54,7 @@ async function handleRequest(request: NextRequest, params: Promise<{ path: strin
   }
 }
 
-async function handleJobcyAPI(path: string, method: string, body: any, request: NextRequest) {
+async function handleJobcyAPI(path: string, method: string, body: unknown, request: NextRequest) {
   try {
     // Import MongoDB connection
     const { connectDB } = await import('../../../../lib/mongodb');
@@ -86,9 +86,9 @@ async function handleJobcyAPI(path: string, method: string, body: any, request: 
 }
 
 // Authentication handlers
-async function handleLogin(body: any, db: any) {
+async function handleLogin(body: unknown, db: unknown) {
   try {
-    const { email, password } = body;
+    const { email, password } = body as { email: string; password: string };
     
     if (!email || !password) {
       return { status: 400, data: { error: 'Email and password are required' } };
@@ -102,7 +102,7 @@ async function handleLogin(body: any, db: any) {
     }
 
     // Verify password (assuming it's hashed in the database)
-    const bcrypt = require('bcryptjs');
+    const bcrypt = await import('bcryptjs');
     const isPasswordValid = await bcrypt.compare(password, user.password);
     
     if (!isPasswordValid) {
@@ -110,7 +110,7 @@ async function handleLogin(body: any, db: any) {
     }
 
     // Generate JWT token
-    const jwt = require('jsonwebtoken');
+    const jwt = await import('jsonwebtoken');
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
@@ -153,9 +153,9 @@ async function handleLogin(body: any, db: any) {
   }
 }
 
-async function handleRegister(body: any, db: any) {
+async function handleRegister(body: unknown, db: unknown) {
   try {
-    const { name, email, password, role } = body;
+    const { name, email, password, role } = body as { name: string; email: string; password: string; role?: string };
     
     if (!name || !email || !password) {
       return { status: 400, data: { error: 'Name, email, and password are required' } };
@@ -168,7 +168,7 @@ async function handleRegister(body: any, db: any) {
     }
 
     // Hash password properly
-    const bcrypt = require('bcryptjs');
+    const bcrypt = await import('bcryptjs');
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create new user with minimal data
@@ -214,7 +214,7 @@ async function handleRegister(body: any, db: any) {
   }
 }
 
-async function handleUserProfile(request: NextRequest, db: any) {
+async function handleUserProfile(request: NextRequest, db: unknown) {
   try {
     // Get user ID from JWT token in Authorization header
     const authHeader = request.headers.get('authorization');
@@ -223,12 +223,12 @@ async function handleUserProfile(request: NextRequest, db: any) {
     }
 
     const token = authHeader.substring(7);
-    const jwt = require('jsonwebtoken');
+    const jwt = await import('jsonwebtoken');
     
     let decoded;
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (error) {
+      decoded = jwt.verify(token, process.env.JWT_SECRET!);
+    } catch {
       return { status: 401, data: { error: 'Invalid token' } };
     }
 
@@ -275,17 +275,17 @@ async function handleUserProfile(request: NextRequest, db: any) {
   }
 }
 
-async function handleGitHubAuth(request: NextRequest, db: any) {
+async function handleGitHubAuth(_request: NextRequest, _db: unknown) {
   // GitHub OAuth implementation
   return { status: 200, data: { message: 'GitHub auth endpoint' } };
 }
 
-async function handleJobs(method: string, body: any, db: any) {
+async function handleJobs(_method: string, _body: unknown, _db: unknown) {
   // Jobs API implementation
   return { status: 200, data: { message: 'Jobs endpoint' } };
 }
 
-async function handleUsers(method: string, body: any, db: any) {
+async function handleUsers(_method: string, _body: unknown, _db: unknown) {
   // Users API implementation
   return { status: 200, data: { message: 'Users endpoint' } };
 }

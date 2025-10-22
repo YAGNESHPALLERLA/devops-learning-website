@@ -41,7 +41,7 @@ export async function closeDB() {
 export function toObjectId(id: string) {
   try {
     return new ObjectId(id);
-  } catch (error) {
+  } catch {
     throw new Error('Invalid ObjectId format');
   }
 }
