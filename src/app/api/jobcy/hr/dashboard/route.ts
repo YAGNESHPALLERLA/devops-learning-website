@@ -38,7 +38,16 @@ export async function GET(request: NextRequest) {
     }
 
     // Get company details for this HR
-    const company = hrUser.companyId ? await db.collection('companies').findOne({ _id: toObjectId(hrUser.companyId) }) : null;
+    let company = null;
+    if (hrUser.companyId) {
+      company = await db.collection('companies').findOne({ _id: toObjectId(hrUser.companyId) });
+    } else if (hrUser.company && typeof hrUser.company === 'object') {
+      // If company is an object, use it directly
+      company = hrUser.company;
+    } else if (hrUser.company && typeof hrUser.company === 'string') {
+      // If company is a string, create a company object
+      company = { name: hrUser.company };
+    }
     
     // Get jobs posted by this HR
     const jobs = await db.collection('jobs').find({ postedBy: toObjectId(decoded.id) }).toArray();
@@ -86,6 +95,12 @@ export async function GET(request: NextRequest) {
       pendingReviews: stats.pendingApplications
     };
 
+    console.log('HR User company data:', {
+      companyId: hrUser.companyId,
+      company: hrUser.company,
+      companyType: typeof hrUser.company
+    });
+    console.log('Resolved company:', company);
     console.log('HR Dashboard data:', dashboardData);
     console.log('HR Dashboard data fetched successfully');
     return NextResponse.json(dashboardData);
