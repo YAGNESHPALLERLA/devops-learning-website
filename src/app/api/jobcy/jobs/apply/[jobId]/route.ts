@@ -7,7 +7,9 @@ export async function POST(
 ) {
   try {
     const { jobId } = await params;
-    console.log('Job application request for job:', jobId);
+    console.log('🔍 DEBUG: Job application request for job:', jobId);
+    console.log('🔍 DEBUG: Request method:', request.method);
+    console.log('🔍 DEBUG: Request URL:', request.url);
     
     // Get user ID from JWT token
     const authHeader = request.headers.get('authorization');
@@ -72,6 +74,28 @@ export async function POST(
     });
   } catch (error) {
     console.error('Job application error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ jobId: string }> }
+) {
+  try {
+    const { jobId } = await params;
+    console.log('🔍 DEBUG: Job application GET request for job:', jobId);
+    console.log('🔍 DEBUG: Request method:', request.method);
+    console.log('🔍 DEBUG: Request URL:', request.url);
+    
+    return NextResponse.json({
+      message: 'Job application endpoint is working',
+      jobId: jobId,
+      method: 'GET',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Job application GET error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
