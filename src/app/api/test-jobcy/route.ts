@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -21,9 +21,10 @@ export async function GET() {
       url: response.url
     });
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ 
       error: 'Failed to reach Jobcy backend',
-      details: error.message 
+      details: errorMessage 
     }, { status: 500 });
   }
 }
