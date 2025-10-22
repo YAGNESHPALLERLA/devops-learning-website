@@ -187,8 +187,19 @@ export function useDashboardData() {
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
         console.log('Jobs API response:', { isArray: Array.isArray(jobsData), type: typeof jobsData, length: Array.isArray(jobsData) ? jobsData.length : 'N/A' });
-        // Ensure jobsData is an array
-        const jobsArray = Array.isArray(jobsData) ? jobsData : [];
+        
+        // Handle different response formats
+        let jobsArray = [];
+        if (Array.isArray(jobsData)) {
+          jobsArray = jobsData;
+        } else if (jobsData && Array.isArray(jobsData.jobs)) {
+          jobsArray = jobsData.jobs;
+        } else if (jobsData && Array.isArray(jobsData.data)) {
+          jobsArray = jobsData.data;
+        } else {
+          console.warn('Jobs API returned unexpected format:', jobsData);
+          jobsArray = [];
+        }
         setAllJobs(
           jobsArray.map((job: RawJob) => ({
             id: job.id || job._id || Math.random().toString(),
@@ -221,8 +232,19 @@ export function useDashboardData() {
       if (connectionsRes.ok) {
         const usersData = await connectionsRes.json();
         console.log('Users API response:', { isArray: Array.isArray(usersData), type: typeof usersData, length: Array.isArray(usersData) ? usersData.length : 'N/A' });
-        // Ensure usersData is an array
-        const usersArray = Array.isArray(usersData) ? usersData : [];
+        
+        // Handle different response formats
+        let usersArray = [];
+        if (Array.isArray(usersData)) {
+          usersArray = usersData;
+        } else if (usersData && Array.isArray(usersData.users)) {
+          usersArray = usersData.users;
+        } else if (usersData && Array.isArray(usersData.data)) {
+          usersArray = usersData.data;
+        } else {
+          console.warn('Users API returned unexpected format:', usersData);
+          usersArray = [];
+        }
         setConnections(
           usersArray.map((u: RawUser) => ({
             id: u._id || u.id || Math.random().toString(),
@@ -272,8 +294,19 @@ export function useDashboardData() {
       );
       if (appliedJobsRes.ok) {
         const appliedJobsData = await appliedJobsRes.json();
-        // Ensure appliedJobsData is an array
-        const appliedArray = Array.isArray(appliedJobsData) ? appliedJobsData : [];
+        
+        // Handle different response formats
+        let appliedArray = [];
+        if (Array.isArray(appliedJobsData)) {
+          appliedArray = appliedJobsData;
+        } else if (appliedJobsData && Array.isArray(appliedJobsData.applications)) {
+          appliedArray = appliedJobsData.applications;
+        } else if (appliedJobsData && Array.isArray(appliedJobsData.data)) {
+          appliedArray = appliedJobsData.data;
+        } else {
+          console.warn('Applications API returned unexpected format:', appliedJobsData);
+          appliedArray = [];
+        }
         setAppliedJobs(appliedArray);
       }
 
@@ -284,8 +317,19 @@ export function useDashboardData() {
       );
       if (interviewsRes.ok) {
         const interviewsData = await interviewsRes.json();
-        // Ensure interviewsData is an array
-        const interviewsArray = Array.isArray(interviewsData) ? interviewsData : [];
+        
+        // Handle different response formats
+        let interviewsArray = [];
+        if (Array.isArray(interviewsData)) {
+          interviewsArray = interviewsData;
+        } else if (interviewsData && Array.isArray(interviewsData.interviews)) {
+          interviewsArray = interviewsData.interviews;
+        } else if (interviewsData && Array.isArray(interviewsData.data)) {
+          interviewsArray = interviewsData.data;
+        } else {
+          console.warn('Interviews API returned unexpected format:', interviewsData);
+          interviewsArray = [];
+        }
         setInterviews(
           interviewsArray.map((int: RawInterview) => ({
             id: String(int.id || int._id || Math.random()),
