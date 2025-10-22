@@ -333,11 +333,11 @@ export default function CompanyManagement() {
         });
         
         console.log(`✅ Filtered: ${hrs.length} HRs belong to this company out of ${hrsData.hrs.length} total`);
-        console.log("✅ Filtered HR names:", hrs.map(h => h.name));
+        console.log("✅ Filtered HR names:", Array.isArray(hrs) ? hrs.map(h => h.name) : []);
       }
 
       // Get HR IDs
-      const hrIds = hrs.map((hr: HRData) => hr._id);
+      const hrIds = Array.isArray(hrs) ? hrs.map((hr: HRData) => hr._id) : [];
       console.log("👥 HR IDs for this company:", hrIds);
 
       // Fetch all jobs using the general jobs endpoint (accessible to admin)
@@ -367,7 +367,7 @@ export default function CompanyManagement() {
       }
 
       // Fetch all applications for these jobs
-      const jobIds = jobs.map((job: JobData) => job._id || job.id);
+      const jobIds = Array.isArray(jobs) ? jobs.map((job: JobData) => job._id || job.id) : [];
       console.log("📋 Job IDs to fetch applications for:", jobIds);
       
       // Fetch applications using the jobs endpoint
@@ -552,7 +552,7 @@ export default function CompanyManagement() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCompanies.map((company) => (
+            {Array.isArray(filteredCompanies) ? filteredCompanies.map((company) => (
               <div
                 key={company._id}
                 className={`${
@@ -664,7 +664,7 @@ export default function CompanyManagement() {
                   {company.registeredBy && ` by ${company.registeredBy.name}`}
                 </div>
               </div>
-            ))}
+            )) : []}
           </div>
         )}
       </div>
@@ -940,7 +940,7 @@ export default function CompanyManagement() {
                     <p className="text-gray-600 text-center py-4">No HR staff registered for this company yet</p>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {companyDetails.hrs.map((hr) => (
+                      {Array.isArray(companyDetails.hrs) ? companyDetails.hrs.map((hr) => (
                         <div key={hr._id} className="bg-white p-4 rounded-lg border border-gray-200">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
@@ -953,7 +953,7 @@ export default function CompanyManagement() {
                             </div>
                           </div>
                         </div>
-                      ))}
+                      )) : []}
                     </div>
                   )}
                 </div>
@@ -968,7 +968,7 @@ export default function CompanyManagement() {
                     <p className="text-gray-600 text-center py-4">No jobs posted yet</p>
                   ) : (
                     <div className="space-y-2">
-                      {companyDetails.jobs.map((job) => (
+                      {Array.isArray(companyDetails.jobs) ? companyDetails.jobs.map((job) => (
                         <div key={job._id} className="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between">
                           <div className="flex-1">
                             <p className="font-semibold text-gray-900">{job.title}</p>
@@ -978,7 +978,7 @@ export default function CompanyManagement() {
                             Active
                           </span>
                         </div>
-                      ))}
+                      )) : []}
                     </div>
                   )}
                 </div>
@@ -993,7 +993,7 @@ export default function CompanyManagement() {
                     <p className="text-gray-600 text-center py-4">No applications received yet</p>
                   ) : (
                     <div className="space-y-2 max-h-96 overflow-y-auto">
-                      {companyDetails.applications.map((app) => (
+                      {Array.isArray(companyDetails.applications) ? companyDetails.applications.map((app) => (
                         <div key={app._id} className="bg-white p-4 rounded-lg border border-gray-200">
                           <div className="flex items-center justify-between">
                             <div className="flex-1">
@@ -1021,7 +1021,7 @@ export default function CompanyManagement() {
                             </div>
                           </div>
                         </div>
-                      ))}
+                      )) : []}
                     </div>
                   )}
                 </div>

@@ -253,7 +253,7 @@ const handleInputChange = (
 
         const data = await res.json();
         setHrUsers((prev) =>
-          prev.map((hr) => (hr._id === selectedHR._id ? data.hr : hr))
+          Array.isArray(prev) ? prev.map((hr) => (hr._id === selectedHR._id ? data.hr : hr)) : []
         );
         setSuccessMessage("HR user updated successfully!");
       }
@@ -425,7 +425,7 @@ const handleInputChange = (
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {filteredHRs.map((hr) => (
+              {Array.isArray(filteredHRs) ? filteredHRs.map((hr) => (
                 <tr key={hr._id} className="hover:bg-gray-50 transition-colors">
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
@@ -489,7 +489,7 @@ const handleInputChange = (
                     </div>
                   </td>
                 </tr>
-              ))}
+              )) : []}
             </tbody>
           </table>
         </div>
@@ -680,11 +680,11 @@ const handleInputChange = (
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
               >
                 <option value="">-- Select a company (or enter manually below) --</option>
-                {companies.map((company) => (
+                {Array.isArray(companies) ? companies.map((company) => (
                   <option key={company._id} value={company._id}>
                     {company.name} ({company.email})
                   </option>
-                ))}
+                )) : []}
               </select>
               <p className="mt-1 text-xs text-gray-500">
                 Select an existing company from the dropdown, or enter company details manually below

@@ -117,7 +117,7 @@ export default function AdminDashboard() {
         fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/users/list`, {
+        fetch(`${"/api/jobcy"}/user/list`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
         fetch(`${"/api/jobcy"}/jobs/browse`, {
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
           fetch(`${"/api/jobcy"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/users/list`, {
+          fetch(`${"/api/jobcy"}/user/list`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
           fetch(`${"/api/jobcy"}/jobs/browse`, {
@@ -741,7 +741,7 @@ export default function AdminDashboard() {
                       </h3>
 
                       <div className="space-y-4">
-                        {recentActivity.map((activity) => (
+                        {Array.isArray(recentActivity) ? recentActivity.map((activity) => (
                           <div key={activity.id} className="flex items-start space-x-3">
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -785,7 +785,7 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                        ))}
+                        )) : []}
                       </div>
 
                       <button
@@ -808,7 +808,7 @@ export default function AdminDashboard() {
                     User Management
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {users.map((user: RawUser) => (
+                    {Array.isArray(users) ? users.map((user: RawUser) => (
                       <div key={user._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
@@ -820,7 +820,7 @@ export default function AdminDashboard() {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    )) : []}
                   </div>
                 </div>
               );
@@ -831,13 +831,13 @@ export default function AdminDashboard() {
                     Job Listings
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {jobs.map((job: RawJob) => (
+                    {Array.isArray(jobs) ? jobs.map((job: RawJob) => (
                       <div key={job.id || job._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
                         <h3 className={`font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}>{job.title}</h3>
                         <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.company}</p>
                         <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.location}</p>
                       </div>
-                    ))}
+                    )) : []}
                   </div>
                 </div>
               );
@@ -883,21 +883,23 @@ export default function AdminDashboard() {
                         </p>
                       </div>
                     ) : (
-                      applications.map((app: RawApplication) => (
-                        <div key={app._id || app.id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-                          <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                            {app.jobId?.title || 'Unknown Job'} - {app.userId?.name || 'Unknown User'}
-                          </p>
-                          <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-                            Status: {app.status || 'Applied'} | Applied: {new Date(app.appliedDate || app.createdAt || Date.now()).toLocaleDateString()}
-                          </p>
-                          {app.userId?.email && (
-                            <p className={`text-xs mt-1 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
-                              Email: {app.userId.email}
+                      <div className="space-y-4">
+                        {Array.isArray(applications) ? applications.map((app: RawApplication) => (
+                          <div key={app._id || app.id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
+                            <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+                              {app.jobId?.title || 'Unknown Job'} - {app.userId?.name || 'Unknown User'}
                             </p>
-                          )}
-                        </div>
-                      ))
+                            <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                              Status: {app.status || 'Applied'} | Applied: {new Date(app.appliedDate || app.createdAt || Date.now()).toLocaleDateString()}
+                            </p>
+                            {app.userId?.email && (
+                              <p className={`text-xs mt-1 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
+                                Email: {app.userId.email}
+                              </p>
+                            )}
+                          </div>
+                        )) : []}
+                      </div>
                     )}
                   </div>
                 </div>
