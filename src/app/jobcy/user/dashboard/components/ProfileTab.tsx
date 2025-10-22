@@ -328,7 +328,7 @@ export default function ProfileTab({
           </button>
         </div>
         <div className="flex flex-wrap gap-3">
-          {userProfile.skills?.map((skill: string, index: number) => (
+          {Array.isArray(userProfile.skills) ? userProfile.skills.map((skill: string, index: number) => (
   <span
     key={index}
     className={`px-4 py-2 ${
@@ -339,7 +339,7 @@ export default function ProfileTab({
   >
     {skill}
   </span>
-))}
+)) : []}
 
         </div>
       </div>
@@ -370,7 +370,7 @@ export default function ProfileTab({
         </div>
         {userProfile.projects && userProfile.projects.length > 0 ? (
   <div className="space-y-6">
-    {userProfile.projects.map((project: Project, index: number) => (
+    {Array.isArray(userProfile.projects) ? userProfile.projects.map((project: Project, index: number) => (
       <div
         key={index}
         className={`${index !== 0 ? "border-t pt-6" : ""} ${
@@ -398,7 +398,7 @@ export default function ProfileTab({
           </a>
         )}
       </div>
-    ))}
+    )) : []}
   </div>
 ) : (
   <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-500"}`}>
@@ -433,7 +433,7 @@ export default function ProfileTab({
           </button>
         </div>
         <div className="space-y-6">
-          {education.map((edu: Education, index: number) => (
+          {Array.isArray(education) ? education.map((edu: Education, index: number) => (
             <div
               key={edu.id || `edu-${index}`}
               className={`border-t pt-6 ${
@@ -470,7 +470,7 @@ export default function ProfileTab({
                 </div>
               </div>
             </div>
-          ))}
+          )) : []}
         </div>
       </div>
 
@@ -499,7 +499,7 @@ export default function ProfileTab({
           </button>
         </div>
         <div className="space-y-6">
-          {experience.map((exp: Experience, index: number) => (
+          {Array.isArray(experience) ? experience.map((exp: Experience, index: number) => (
             <div
               key={exp.id || `exp-${index}`}
               className={`border-t pt-6 ${
@@ -544,7 +544,7 @@ export default function ProfileTab({
                 </div>
               </div>
             </div>
-          ))}
+          )) : []}
         </div>
       </div>
 
@@ -666,7 +666,7 @@ export default function ProfileTab({
         </div>
         {userProfile.languages && userProfile.languages.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {userProfile.languages.map((lang: Language, index: number) => (
+            {Array.isArray(userProfile.languages) ? userProfile.languages.map((lang: Language, index: number) => (
               <div
                 key={`lang-${index}`}
                 className={`p-4 ${
@@ -688,7 +688,7 @@ export default function ProfileTab({
                   {lang.proficiency || "Proficient"}
                 </p>
               </div>
-            ))}
+            )) : []}
           </div>
         ) : (
           <p
