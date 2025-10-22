@@ -37,8 +37,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
 
-    // Hash password
-    const hashedPassword = Buffer.from(password).toString('base64');
+    // Hash password using bcrypt
+    const bcrypt = await import('bcryptjs');
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new HR user
     const newUser = {
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
       password: hashedPassword,
       role: 'hr',
       mobile: `+1${Math.floor(Math.random() * 9000000000) + 1000000000}`,
-      company: company || {},
+      company: company || { name: 'Unknown Company' },
       phone: '',
       location: '',
       salary: '',
@@ -70,11 +71,15 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({
       message: 'HR user created successfully',
-      user: {
+      hr: {
+        _id: result.insertedId,
         id: result.insertedId,
         name: newUser.name,
         email: newUser.email,
-        role: newUser.role
+        role: newUser.role,
+        company: newUser.company,
+        status: 'Active',
+        createdDate: newUser.createdAt
       }
     }, { status: 201 });
   } catch (error) {

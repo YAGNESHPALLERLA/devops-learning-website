@@ -339,11 +339,12 @@ const handleInputChange = (
     setSelectedHR(null);
   };
 
-  const filteredHRs = Array.isArray(hrUsers) ? hrUsers.filter((hr) =>
-    hr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    hr.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (hr.company?.name.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
-  ) : [];
+  const filteredHRs = Array.isArray(hrUsers) ? hrUsers.filter((hr) => {
+    if (!hr || !hr.name || !hr.email) return false;
+    return hr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           hr.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           (hr.company?.name && hr.company.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  }) : [];
 
 
   const renderListView = () => (
@@ -425,17 +426,19 @@ const handleInputChange = (
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {Array.isArray(filteredHRs) ? filteredHRs.map((hr) => (
+              {Array.isArray(filteredHRs) ? filteredHRs.map((hr) => {
+                if (!hr || !hr._id) return null;
+                return (
                 <tr key={hr._id} className="hover:bg-gray-50 transition-colors">
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                         <span className="text-blue-600 font-semibold text-sm">
-                          {hr.name.charAt(0)}
+                          {hr.name ? hr.name.charAt(0).toUpperCase() : '?'}
                         </span>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">{hr.name}</p>
+                        <p className="font-medium text-gray-900">{hr.name || 'Unknown'}</p>
                       </div>
                     </div>
                   </td>
@@ -489,7 +492,8 @@ const handleInputChange = (
                     </div>
                   </td>
                 </tr>
-              )) : []}
+                );
+              }) : []}
             </tbody>
           </table>
         </div>
@@ -680,11 +684,14 @@ const handleInputChange = (
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
               >
                 <option value="">-- Select a company (or enter manually below) --</option>
-                {Array.isArray(companies) ? companies.map((company) => (
-                  <option key={company._id} value={company._id}>
-                    {company.name} ({company.email})
-                  </option>
-                )) : []}
+                {Array.isArray(companies) ? companies.map((company) => {
+                  if (!company || !company._id) return null;
+                  return (
+                    <option key={company._id} value={company._id}>
+                      {company.name || 'Unknown Company'} ({company.email || 'No email'})
+                    </option>
+                  );
+                }) : []}
               </select>
               <p className="mt-1 text-xs text-gray-500">
                 Select an existing company from the dropdown, or enter company details manually below
