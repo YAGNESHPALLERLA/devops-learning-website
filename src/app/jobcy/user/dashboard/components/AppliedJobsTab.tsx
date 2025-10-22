@@ -44,7 +44,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         return;
       }
 
-      const response = await fetch(`${"/api/jobcy-backend"}/users/applications`, {
+      const response = await fetch(`${"/api/jobcy"}/users/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

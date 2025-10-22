@@ -34,7 +34,7 @@ export default function ConnectionRequestsTab({ isDark = false }: ConnectionRequ
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"/api/jobcy-backend"}/connections/received`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/received`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +59,7 @@ export default function ConnectionRequestsTab({ isDark = false }: ConnectionRequ
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"/api/jobcy-backend"}/connections/${requestId}/accept`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/accept`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -85,7 +85,7 @@ export default function ConnectionRequestsTab({ isDark = false }: ConnectionRequ
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"/api/jobcy-backend"}/connections/${requestId}/reject`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/reject`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -101,7 +101,7 @@ export default function CompanyManagement() {
     try {
       setLoading(true);
       const response = await fetch(
-        `${"/api/jobcy-backend"}/admin/companies`,
+        `${"/api/jobcy"}/admin/companies`,
         {
           headers: getAuthHeaders(),
         }
@@ -205,8 +205,8 @@ export default function CompanyManagement() {
     try {
       const url =
         modalMode === "create"
-          ? `${"/api/jobcy-backend"}/admin/companies`
-          : `${"/api/jobcy-backend"}/admin/companies/${selectedCompany?._id}`;
+          ? `${"/api/jobcy"}/admin/companies`
+          : `${"/api/jobcy"}/admin/companies/${selectedCompany?._id}`;
 
       const response = await fetch(url, {
         method: modalMode === "create" ? "POST" : "PUT",
@@ -243,7 +243,7 @@ export default function CompanyManagement() {
 
     try {
       const response = await fetch(
-        `${"/api/jobcy-backend"}/admin/companies/${companyId}`,
+        `${"/api/jobcy"}/admin/companies/${companyId}`,
         {
           method: "DELETE",
           headers: getAuthHeaders(),
@@ -296,7 +296,7 @@ export default function CompanyManagement() {
 
       // Fetch HRs for this company
       const hrsResponse = await fetch(
-        `${"/api/jobcy-backend"}/admin/hrs`,
+        `${"/api/jobcy"}/admin/hrs`,
         {
           headers: getAuthHeaders(),
         }
@@ -342,7 +342,7 @@ export default function CompanyManagement() {
 
       // Fetch all jobs using the general jobs endpoint (accessible to admin)
       const jobsResponse = await fetch(
-        `${"/api/jobcy-backend"}/jobs`,
+        `${"/api/jobcy"}/jobs`,
         {
           headers: getAuthHeaders(),
         }
@@ -376,7 +376,7 @@ export default function CompanyManagement() {
         try {
           console.log(`📨 Fetching applications for job ${jobId}`);
           const appResponse = await fetch(
-            `${"/api/jobcy-backend"}/jobs/${jobId}/applications`,
+            `${"/api/jobcy"}/jobs/${jobId}/applications`,
             {
               headers: getAuthHeaders(),
             }

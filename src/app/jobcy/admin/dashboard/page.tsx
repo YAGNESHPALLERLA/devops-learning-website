@@ -111,19 +111,19 @@ export default function AdminDashboard() {
     setRefreshing(true);
     try {
       const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-        fetch(`${"/api/jobcy-backend"}/admin/stats`, {
+        fetch(`${"/api/jobcy"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy-backend"}/admin/activity`, {
+        fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy-backend"}/users/list`, {
+        fetch(`${"/api/jobcy"}/users/list`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy-backend"}/jobs/browse`, {
+        fetch(`${"/api/jobcy"}/jobs/browse`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy-backend"}/admin/applications`, {
+        fetch(`${"/api/jobcy"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -166,19 +166,19 @@ export default function AdminDashboard() {
     const fetchDashboardData = async () => {
       try {
         const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-          fetch(`${"/api/jobcy-backend"}/admin/stats`, {
+          fetch(`${"/api/jobcy"}/admin/stats`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy-backend"}/admin/activity`, {
+          fetch(`${"/api/jobcy"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy-backend"}/users/list`, {
+          fetch(`${"/api/jobcy"}/users/list`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy-backend"}/jobs/browse`, {
+          fetch(`${"/api/jobcy"}/jobs/browse`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy-backend"}/admin/applications`, {
+          fetch(`${"/api/jobcy"}/admin/applications`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -233,7 +233,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token && activeTab === "applications") {
-        fetch(`${"/api/jobcy-backend"}/admin/applications`, {
+        fetch(`${"/api/jobcy"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -257,7 +257,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"/api/jobcy-backend"}/admin/stats`, {
+        fetch(`${"/api/jobcy"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -283,7 +283,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"/api/jobcy-backend"}/admin/activity`, {
+        fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {

@@ -1,4 +1,4 @@
-import { MongoClient, Db } from 'mongodb';
+import { MongoClient, Db, ObjectId } from 'mongodb';
 
 let client: MongoClient;
 let db: Db;
@@ -8,9 +8,9 @@ export async function connectDB(): Promise<Db> {
     return db;
   }
 
-  const uri = process.env.MONGO_URI;
+  const uri = process.env.MONGO_URI || process.env.DATABASE_URL;
   if (!uri) {
-    throw new Error('MONGO_URI environment variable is not set');
+    throw new Error('MONGO_URI or DATABASE_URL environment variable is not set');
   }
 
   // Create new client for each connection in serverless environment
@@ -23,6 +23,7 @@ export async function connectDB(): Promise<Db> {
   try {
     await client.connect();
     db = client.db('jobcy-data');
+    console.log('✅ MongoDB connected successfully');
     return db;
   } catch (error) {
     console.error('MongoDB connection error:', error);
@@ -33,5 +34,14 @@ export async function connectDB(): Promise<Db> {
 export async function closeDB() {
   if (client) {
     await client.close();
+  }
+}
+
+// Helper function to convert string ID to ObjectId
+export function toObjectId(id: string) {
+  try {
+    return new ObjectId(id);
+  } catch (error) {
+    throw new Error('Invalid ObjectId format');
   }
 }

@@ -124,7 +124,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setErrors({}); // Clear previous errors
   
   try {
-    const apiUrl = "/api/jobcy-backend";
+    const apiUrl = "/api/jobcy";
     const endpoint = `${apiUrl}/hr/jobs`;
     
     console.log("🔄 Fetching HR jobs from:", endpoint);
@@ -164,7 +164,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   } catch (e) {
     console.error("❌ Fetch jobs error:", e);
     if (e instanceof Error) {
-      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on /api/jobcy-backend` });
+      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on /api/jobcy` });
     } else {
       setErrors({ general: "An unexpected error occurred while fetching jobs" });
     }
@@ -175,7 +175,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 
 
   const createJob = async (jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
-    const res = await fetch(`${"/api/jobcy-backend"}/hr/jobs`, {
+    const res = await fetch(`${"/api/jobcy"}/hr/jobs`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(jobPayload),
@@ -189,7 +189,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 
   const updateJob = async (id: string | undefined, jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
     const res = await fetch(
-      `${"/api/jobcy-backend"}/hr/jobs/${id}`,
+      `${"/api/jobcy"}/hr/jobs/${id}`,
       {
         method: "PUT",
         headers: getAuthHeaders(),
@@ -204,7 +204,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   };
 
   const deleteJob = async (id: string): Promise<void> => {
-  const res = await fetch(`${"/api/jobcy-backend"}/hr/jobs/${id}`, {
+  const res = await fetch(`${"/api/jobcy"}/hr/jobs/${id}`, {
     method: "DELETE",
     headers: getAuthHeaders(),
   });
@@ -219,7 +219,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   id: string,
   newStatus: Job["status"]
 ): Promise<Job> => {
-  const res = await fetch(`${"/api/jobcy-backend"}/hr/jobs/${id}`, {
+  const res = await fetch(`${"/api/jobcy"}/hr/jobs/${id}`, {
     method: "PUT",
     headers: getAuthHeaders(),
     body: JSON.stringify({ status: newStatus }),

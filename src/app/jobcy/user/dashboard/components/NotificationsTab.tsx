@@ -34,7 +34,7 @@ export default function NotificationsTab({ isDark }: NotificationsTabProps) {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"/api/jobcy-backend"}/user/notifications`, {
+      const response = await fetch(`${"/api/jobcy"}/user/notifications`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function NotificationsTab({ isDark }: NotificationsTabProps) {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"/api/jobcy-backend"}/user/notifications/${notificationId}/read`, {
+      const response = await fetch(`${"/api/jobcy"}/user/notifications/${notificationId}/read`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,

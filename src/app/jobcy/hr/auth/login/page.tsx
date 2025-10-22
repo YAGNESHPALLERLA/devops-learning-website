@@ -55,9 +55,9 @@ export default function HRLogin() {
     setLoginError("");
 
     try {
-      console.log("Login URL:", `${"/api/jobcy-backend"}/login`);
+      console.log("Login URL:", `${"/api/jobcy"}/login`);
 
-      const response = await fetch(`${"/api/jobcy-backend"}/login`, {
+      const response = await fetch(`${"/api/jobcy"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

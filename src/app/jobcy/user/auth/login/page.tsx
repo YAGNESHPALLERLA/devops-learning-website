@@ -56,7 +56,7 @@ export default function UserLogin() {
     setLoginError("");
 
     try {
-      console.log("Login URL:", `${"/api/jobcy-backend"}/login`);
+      console.log("Login URL:", `${"/api/jobcy"}/login`);
 
       const response = await fetch(`/api/jobcy/login`, {
         method: "POST",
