@@ -261,7 +261,7 @@ export default function SignupPage() {
                 <button
                   onClick={() => {
                     const user = JSON.parse(localStorage.getItem("user") || "{}");
-                    const dashboardPath = user.role === "admin" ? "/admin/dashboard" : user.role === "hr" ? "/hr/dashboard" : "/user/dashboard";
+                    const dashboardPath = user.role === "admin" ? "/jobcy/admin/dashboard" : user.role === "hr" ? "/jobcy/hr/dashboard" : "/jobcy/user/dashboard";
                     window.location.href = dashboardPath;
                   }}
                   className="flex items-center justify-center space-x-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg"
