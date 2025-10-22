@@ -41,12 +41,15 @@ export async function GET(request: NextRequest) {
     let company = null;
     if (hrUser.companyId) {
       company = await db.collection('companies').findOne({ _id: toObjectId(hrUser.companyId) });
-    } else if (hrUser.company && typeof hrUser.company === 'object') {
-      // If company is an object, use it directly
+    } else if (hrUser.company && typeof hrUser.company === 'object' && hrUser.company.name) {
+      // If company is an object with name, use it directly
       company = hrUser.company;
     } else if (hrUser.company && typeof hrUser.company === 'string') {
       // If company is a string, create a company object
       company = { name: hrUser.company };
+    } else if (hrUser.company && typeof hrUser.company === 'object' && !hrUser.company.name) {
+      // If company is an empty object, try to use companyEmail or default
+      company = { name: hrUser.companyEmail || 'Unknown Company' };
     }
     
     // Get jobs posted by this HR
