@@ -86,7 +86,7 @@ async function handleJobcyAPI(path: string, method: string, body: unknown, reque
 }
 
 // Authentication handlers
-async function handleLogin(body: unknown, db: unknown) {
+async function handleLogin(body: unknown, db: any) {
   try {
     const { email, password } = body as { email: string; password: string };
     
@@ -153,7 +153,7 @@ async function handleLogin(body: unknown, db: unknown) {
   }
 }
 
-async function handleRegister(body: unknown, db: unknown) {
+async function handleRegister(body: unknown, db: any) {
   try {
     const { name, email, password, role } = body as { name: string; email: string; password: string; role?: string };
     
@@ -214,7 +214,7 @@ async function handleRegister(body: unknown, db: unknown) {
   }
 }
 
-async function handleUserProfile(request: NextRequest, db: unknown) {
+async function handleUserProfile(request: NextRequest, db: any) {
   try {
     // Get user ID from JWT token in Authorization header
     const authHeader = request.headers.get('authorization');
@@ -275,17 +275,17 @@ async function handleUserProfile(request: NextRequest, db: unknown) {
   }
 }
 
-async function handleGitHubAuth(_request: NextRequest, _db: unknown) {
+async function handleGitHubAuth(_request: NextRequest, _db: any) {
   // GitHub OAuth implementation
   return { status: 200, data: { message: 'GitHub auth endpoint' } };
 }
 
-async function handleJobs(_method: string, _body: unknown, _db: unknown) {
+async function handleJobs(_method: string, _body: unknown, _db: any) {
   // Jobs API implementation
   return { status: 200, data: { message: 'Jobs endpoint' } };
 }
 
-async function handleUsers(_method: string, _body: unknown, _db: unknown) {
+async function handleUsers(_method: string, _body: unknown, _db: any) {
   // Users API implementation
   return { status: 200, data: { message: 'Users endpoint' } };
 }
