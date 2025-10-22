@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
     MONGO_URI: 'mongodb+srv://onehubglobal365_db_user:yEmIiGaAWTXABoYV@jobcy-cluster.pxbj6n1.mongodb.net/jobcy-data',
     NEXT_PUBLIC_SOCKET_URL: process.env.NODE_ENV === 'development' 
       ? 'http://localhost:5000' 
-      : 'https://jobcy-job-portal.vercel.app',
+      : 'https://jobcy-job-portal-production.up.railway.app',
   },
   // Rewrites for API routes
   async rewrites() {

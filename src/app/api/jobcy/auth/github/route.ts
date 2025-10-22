@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     // Forward the request to the Jobcy backend
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? 'http://127.0.0.1:5000/api/auth/github'
-      : 'https://jobcy-job-portal.vercel.app/api/auth/github';
+      : 'https://jobcy-job-portal-production.up.railway.app/api/auth/github';
     
     const url = new URL(backendUrl);
     if (code) url.searchParams.set('code', code);
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     // Forward the request to the Jobcy backend
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? 'http://127.0.0.1:5000/api/auth/github'
-      : 'https://jobcy-job-portal.vercel.app/api/auth/github';
+      : 'https://jobcy-job-portal-production.up.railway.app/api/auth/github';
     
     console.log('GitHub auth POST request:', body);
     

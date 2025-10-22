@@ -7,7 +7,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/auth/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/auth/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/auth/${path}`;
     
     const url = new URL(backendUrl);
     // Copy all search params from the original request
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/auth/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/auth/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/auth/${path}`;
     
     console.log('Auth POST request to:', backendUrl);
     console.log('Auth POST body:', body);
@@ -92,7 +92,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/auth/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/auth/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/auth/${path}`;
     
     console.log('Auth PUT request to:', backendUrl);
     
@@ -130,7 +130,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/auth/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/auth/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/auth/${path}`;
     
     console.log('Auth DELETE request to:', backendUrl);
     

@@ -7,7 +7,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const path = resolvedParams.path.join('/');
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/${path}`;
     
     const url = backendUrl;
     
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const path = resolvedParams.path.join('/');
     const backendUrl = process.env.NODE_ENV === 'development' 
       ? `http://127.0.0.1:5000/api/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/${path}`;
+      : `https://jobcy-job-portal-production.up.railway.app/api/${path}`;
     
     const url = backendUrl;
     

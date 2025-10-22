@@ -4,33 +4,28 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    console.log('Mock registration request:', body);
+    // Forward the request to the real Jobcy backend
+    const backendUrl = process.env.NODE_ENV === 'development' 
+      ? 'http://127.0.0.1:5000/api/user/register'
+      : 'https://jobcy-job-portal-production.up.railway.app/api/user/register';
     
-    // Mock registration logic
-    const { name, email, password, role } = body;
+    console.log('Proxy registration request:', body);
+    console.log('Backend URL:', backendUrl);
     
-    if (!name || !email || !password) {
-      return NextResponse.json({ 
-        error: 'Missing required fields',
-        message: 'Name, email, and password are required'
-      }, { status: 400 });
-    }
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+    console.log('Backend registration response:', data);
     
-    // Mock successful registration
-    const mockResponse = {
-      message: 'User registered successfully',
-      user: {
-        id: 'user-' + Date.now(),
-        name: name,
-        email: email,
-        role: role || 'user',
-        company: {}
-      }
-    };
-    
-    console.log('Mock registration successful:', mockResponse);
-    return NextResponse.json(mockResponse, {
-      status: 201,
+    return NextResponse.json(data, {
+      status: response.status,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -39,7 +34,8 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Proxy error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }
 }
 
