@@ -1,7 +1,8 @@
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 async function testConnection() {
-  const uri = process.env.MONGO_URI || 'mongodb+srv://yagneshpallerla:yagneshpallerla@cluster0.mongodb.net/jobcy-data?retryWrites=true&w=majority';
+  const uri = process.env.MONGO_URI;
   
   console.log('Testing MongoDB connection...');
   console.log('URI:', uri.replace(/\/\/.*@/, '//***:***@')); // Hide credentials in output
