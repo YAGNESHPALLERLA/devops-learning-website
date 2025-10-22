@@ -47,15 +47,7 @@ export async function GET(request: NextRequest) {
     
     console.log('Found jobs:', jobs.length);
     
-    return NextResponse.json({
-      jobs,
-      pagination: {
-        page,
-        limit,
-        total,
-        pages: Math.ceil(total / limit)
-      }
-    });
+    return NextResponse.json(jobs);
   } catch (error) {
     console.error('Jobs browse error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

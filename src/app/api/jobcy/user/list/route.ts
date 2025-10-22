@@ -48,15 +48,7 @@ export async function GET(request: NextRequest) {
     
     console.log('Found users:', users.length);
     
-    return NextResponse.json({
-      users,
-      pagination: {
-        page,
-        limit,
-        total,
-        pages: Math.ceil(total / limit)
-      }
-    });
+    return NextResponse.json(users);
   } catch (error) {
     console.error('User list error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

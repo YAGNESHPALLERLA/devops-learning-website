@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     
     console.log('Found connections:', connections.length);
     
-    return NextResponse.json({ connections });
+    return NextResponse.json(connections);
   } catch (error) {
     console.error('Connections error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
