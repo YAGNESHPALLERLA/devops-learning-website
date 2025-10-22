@@ -5,7 +5,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const body = await request.json();
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
-    const url = `https://jobcy-job-portal.vercel.app/api/${path}`;
+    const url = `http://localhost:5000/api/${path}`;
     
     console.log('Proxy request to:', url);
     console.log('Request body:', body);
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   try {
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
-    const url = `https://jobcy-job-portal.vercel.app/api/${path}`;
+    const url = `http://localhost:5000/api/${path}`;
     
     console.log('Proxy GET request to:', url);
     
