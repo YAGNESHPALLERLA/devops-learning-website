@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
     // Create new job
     const newJob = {
       ...body,
+      postedBy: decoded.id,
       createdBy: decoded.id,
       createdAt: new Date(),
       updatedAt: new Date()
