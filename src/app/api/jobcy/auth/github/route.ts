@@ -1,70 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function GET(request: NextRequest) {
   try {
-    const body = await request.json();
-    const resolvedParams = await params;
-    const path = resolvedParams.path.join('/');
-    const backendUrl = process.env.NODE_ENV === 'development' 
-      ? `http://127.0.0.1:5000/api/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/${path}`;
-    
-    const url = backendUrl;
-    
-    console.log('Proxy request to:', url);
-    console.log('Request body:', body);
+    const { searchParams } = new URL(request.url);
+    const code = searchParams.get('code');
+    const state = searchParams.get('state');
     
     // Forward the request to the Jobcy backend
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    console.log('Backend response status:', response.status);
-    const data = await response.json();
-    console.log('Backend response data:', data);
-    
-    return NextResponse.json(data, { 
-      status: response.status,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      }
-    });
-  } catch (error) {
-    console.error('Proxy error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
-  }
-}
-
-export async function GET(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
-  try {
-    const resolvedParams = await params;
-    const path = resolvedParams.path.join('/');
     const backendUrl = process.env.NODE_ENV === 'development' 
-      ? `http://127.0.0.1:5000/api/${path}`
-      : `https://jobcy-job-portal.vercel.app/api/${path}`;
+      ? 'http://127.0.0.1:5000/api/auth/github'
+      : 'https://jobcy-job-portal.vercel.app/api/auth/github';
     
-    const url = backendUrl;
+    const url = new URL(backendUrl);
+    if (code) url.searchParams.set('code', code);
+    if (state) url.searchParams.set('state', state);
     
-    console.log('Proxy GET request to:', url);
+    console.log('GitHub auth request to:', url.toString());
     
-    // Forward the request to the Jobcy backend
-    const response = await fetch(url, {
+    const response = await fetch(url.toString(), {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
     });
 
-    console.log('Backend response status:', response.status);
     const data = await response.json();
-    console.log('Backend response data:', data);
+    console.log('GitHub auth response:', data);
     
     return NextResponse.json(data, { 
       status: response.status,
@@ -75,7 +37,45 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       }
     });
   } catch (error) {
-    console.error('Proxy error:', error);
+    console.error('GitHub auth proxy error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    
+    // Forward the request to the Jobcy backend
+    const backendUrl = process.env.NODE_ENV === 'development' 
+      ? 'http://127.0.0.1:5000/api/auth/github'
+      : 'https://jobcy-job-portal.vercel.app/api/auth/github';
+    
+    console.log('GitHub auth POST request:', body);
+    
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+    console.log('GitHub auth POST response:', data);
+    
+    return NextResponse.json(data, { 
+      status: response.status,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+    });
+  } catch (error) {
+    console.error('GitHub auth POST proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }

@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     
     // Forward the request to the Jobcy backend
     const backendUrl = process.env.NODE_ENV === 'development' 
-      ? 'http://localhost:5000/api/user/register'
+      ? 'http://127.0.0.1:5000/api/user/register'
       : 'https://jobcy-job-portal.vercel.app/api/user/register';
     
     const response = await fetch(backendUrl, {
