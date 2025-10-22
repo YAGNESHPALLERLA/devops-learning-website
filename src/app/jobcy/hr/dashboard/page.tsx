@@ -106,6 +106,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         }
 
         const dashJson = await dashRes.json();
+        console.log('HR Dashboard API Response:', dashJson);
 
         setHrData({
           name: dashJson.name || "HR User",
@@ -139,6 +140,9 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         }
 
         const jobsJson = await jobsRes.json();
+        console.log('HR Jobs API Response:', jobsJson);
+        console.log('Jobs Data Type:', typeof jobsJson);
+        console.log('Jobs Data Length:', Array.isArray(jobsJson) ? jobsJson.length : 'Not an array');
         setJobsData(jobsJson || []);
       } catch (err: unknown) {
         console.error("Fetch error:", err);
