@@ -356,7 +356,7 @@ export default function CompanyManagement() {
         // Filter jobs posted by this company's HRs
         jobs = jobsData.filter((job: JobData) => {
           const posterId = typeof job.postedBy === 'object' ? job.postedBy?._id : job.postedBy;
-          const matches = hrIds.some((hrId: string) => hrId.toString() === posterId?.toString());
+          const matches = Array.isArray(hrIds) ? hrIds.some((hrId: string) => hrId.toString() === posterId?.toString()) : false;
           if (matches) {
             console.log(`✅ Job "${job.title}" posted by company's HR`);
           }

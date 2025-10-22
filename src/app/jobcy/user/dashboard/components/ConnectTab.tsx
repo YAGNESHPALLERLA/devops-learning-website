@@ -173,18 +173,18 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
   // Helper to check if user is already connected
   const isUserConnected = (userId: string | number) => {
-    return actualConnections.some(conn => 
+    return Array.isArray(actualConnections) ? actualConnections.some(conn => 
       conn.id?.toString() === userId?.toString()
-    );
+    ) : false;
   };
 
   // Helper to check if there's a pending request to/from this user
   const hasPendingRequest = (userId: string | number) => {
-    return pendingRequests.some(req => 
+    return (Array.isArray(pendingRequests) ? pendingRequests.some(req => 
       req.sender._id?.toString() === userId?.toString()
-    ) || sentRequests.some(req => 
+    ) : false) || (Array.isArray(sentRequests) ? sentRequests.some(req => 
       req.receiver?._id?.toString() === userId?.toString()
-    );
+    ) : false);
   };
 
   const filteredConnections = connectionsState.filter((conn) => {
@@ -316,7 +316,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
   const handleMessage = async (connection: Connection | ActualConnection) => {
     // Check if this user is in actual connections
-    const isConnected = actualConnections.some(conn => conn.id.toString() === connection.id.toString());
+    const isConnected = Array.isArray(actualConnections) ? actualConnections.some(conn => conn.id.toString() === connection.id.toString()) : false;
     
     if (isConnected) {
       try {
