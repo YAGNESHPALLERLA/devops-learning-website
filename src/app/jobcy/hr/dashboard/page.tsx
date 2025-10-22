@@ -86,7 +86,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
 
       try {
         const dashRes = await fetch(
-          `${"https://jobcy-job-portal.vercel.app/api"}/hr/dashboard`,
+          `${"/api/jobcy-backend"}/hr/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -125,7 +125,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         });
 
         const jobsRes = await fetch(
-          `${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs`,
+          `${"/api/jobcy-backend"}/hr/jobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
