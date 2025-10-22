@@ -231,7 +231,7 @@ export function useDashboardData() {
             experience: u.experience || "Not specified",
             education: u.education || "Not specified",
             skills: u.skills || [],
-            status: u.status || "employed",
+            status: (u.status === "seeking" || u.status === "open" || u.status === "employed") ? u.status : "employed",
             connected: false,
           }))
         );
@@ -246,14 +246,14 @@ export function useDashboardData() {
         const connectedData = await connectedRes.json();
         // Ensure connectedData is an array
         const connectedArray = Array.isArray(connectedData) ? connectedData : [];
-        const connectedUsers = connectedArray.map((u: ConnectedUser) => ({
+        const connectedUsers: Connection[] = connectedArray.map((u: ConnectedUser) => ({
           id: u.id || Math.random().toString(),
           name: u.name || "Unknown User",
           title: u.title || "Job Seeker",
           experience: u.experience || "Not specified",
           education: u.education || "Not specified",
           skills: u.skills || [],
-          status: u.status || "employed",
+          status: (u.status === "seeking" || u.status === "open" || u.status === "employed") ? u.status : "employed" as "seeking" | "open" | "employed",
           connected: true,
         }));
 
