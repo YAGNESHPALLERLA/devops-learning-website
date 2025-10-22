@@ -95,9 +95,9 @@ async function testComprehensiveDashboard() {
   console.log('\n3️⃣ Testing Authentication Endpoints...');
   
   const authEndpoints = [
-    { name: 'User Login', url: '/login' },
-    { name: 'User Register', url: '/register' },
-    { name: 'Company Login', url: '/company/login' },
+    { name: 'User Login', url: '/user/auth/login' },
+    { name: 'User Register', url: '/user/auth/signup' },
+    { name: 'Company Login', url: '/company/auth/login' },
     { name: 'HR Login', url: '/hr/auth/login' },
     { name: 'Admin Login', url: '/admin/auth/login' }
   ];
