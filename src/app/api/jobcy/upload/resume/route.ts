@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '../../../../../../../lib/mongodb';
+import { connectDB } from '@/lib/mongodb';
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     // Connect to database
     const db = await connectDB();
-    const { toObjectId } = await import('../../../../lib/mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
     // Update user resume
     const result = await db.collection('users').updateOne(

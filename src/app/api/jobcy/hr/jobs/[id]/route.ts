@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '../../../../../../../lib/mongodb';
+import { connectDB } from '@/lib/mongodb';
 
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -27,7 +27,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
     // Connect to database
     const db = await connectDB();
-    const { toObjectId } = await import('../../../../../../../lib/mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
     // Update job
     const result = await db.collection('jobs').updateOne(
@@ -80,7 +80,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
     // Connect to database
     const db = await connectDB();
-    const { toObjectId } = await import('../../../../../../../lib/mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
     // Delete job
     const result = await db.collection('jobs').deleteOne(

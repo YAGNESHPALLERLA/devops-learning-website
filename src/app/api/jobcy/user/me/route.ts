@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '../../../../../../../lib/mongodb';
+import { connectDB } from '@/lib/mongodb';
 
 export async function GET(request: NextRequest) {
   try {
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const db = await connectDB();
     
     // Find user in database
-    const { toObjectId } = await import('../../../../../lib/mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     
     console.log('User found in database:', user ? 'Yes' : 'No');
