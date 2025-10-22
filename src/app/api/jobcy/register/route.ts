@@ -4,23 +4,33 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Forward the request to the Jobcy backend
-    const backendUrl = process.env.NODE_ENV === 'development' 
-      ? 'http://127.0.0.1:5000/api/user/register'
-      : 'https://jobcy-job-portal.vercel.app/api/user/register';
+    console.log('Mock registration request:', body);
     
-    const response = await fetch(backendUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await response.json();
+    // Mock registration logic
+    const { name, email, password, role } = body;
     
-    return NextResponse.json(data, { 
-      status: response.status,
+    if (!name || !email || !password) {
+      return NextResponse.json({ 
+        error: 'Missing required fields',
+        message: 'Name, email, and password are required'
+      }, { status: 400 });
+    }
+    
+    // Mock successful registration
+    const mockResponse = {
+      message: 'User registered successfully',
+      user: {
+        id: 'user-' + Date.now(),
+        name: name,
+        email: email,
+        role: role || 'user',
+        company: {}
+      }
+    };
+    
+    console.log('Mock registration successful:', mockResponse);
+    return NextResponse.json(mockResponse, {
+      status: 201,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
