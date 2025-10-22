@@ -342,19 +342,19 @@ export default function Home() {
                   Job Seeker Portal
                 </button>
                 <button
-                  onClick={() => router.push("/hr/auth/login")}
+                  onClick={() => router.push("/jobcy/hr/auth/login")}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${isDark ? "bg-slate-600 text-slate-200 hover:bg-slate-500" : "bg-white text-slate-700 hover:bg-slate-50"} shadow-sm hover:shadow-md`}
                 >
                   HR Portal
                 </button>
                 <button
-                  onClick={() => router.push("/company/auth/login")}
+                  onClick={() => router.push("/jobcy/company/auth/login")}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${isDark ? "bg-slate-600 text-slate-200 hover:bg-slate-500" : "bg-white text-slate-700 hover:bg-slate-50"} shadow-sm hover:shadow-md`}
                 >
                   Company Portal
                 </button>
                 <button
-                  onClick={() => router.push("/admin/auth/login")}
+                  onClick={() => router.push("/jobcy/admin/auth/login")}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${isDark ? "bg-slate-600 text-slate-200 hover:bg-slate-500" : "bg-white text-slate-700 hover:bg-slate-50"} shadow-sm hover:shadow-md`}
                 >
                   Admin Portal

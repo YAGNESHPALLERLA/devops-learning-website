@@ -159,14 +159,14 @@ export default function CompanyLogin() {
           <div className="mt-6 pt-6 border-t border-gray-200">
             <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
               <button
-                onClick={() => router.push("/hr/auth/login")}
+                onClick={() => router.push("/jobcy/hr/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 HR Login
               </button>
               <span className="text-gray-300">|</span>
               <button
-                onClick={() => router.push("/admin/auth/login")}
+                onClick={() => router.push("/jobcy/admin/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 Admin Login

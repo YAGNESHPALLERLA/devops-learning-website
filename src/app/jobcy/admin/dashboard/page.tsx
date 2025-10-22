@@ -159,7 +159,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/admin/auth/login"); // redirect if not logged in
+      router.push("/jobcy/admin/auth/login"); // redirect if not logged in
       return;
     }
 
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
         } else {
           console.error("Stats fetch failed:", statsRes.status, statsRes.statusText);
           if (statsRes.status === 403) {
-            router.push("/admin/auth/login");
+            router.push("/jobcy/admin/auth/login");
             return;
           }
         }
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error("Dashboard data fetch error:", err);
-        router.push("/admin/auth/login"); // if token expired, go back to login
+        router.push("/jobcy/admin/auth/login"); // if token expired, go back to login
       } finally {
         setLoading(false);
       }

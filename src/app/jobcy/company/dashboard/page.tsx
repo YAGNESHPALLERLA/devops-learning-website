@@ -160,13 +160,13 @@ export default function CompanyDashboard() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    router.push("/admin/auth/login");
+    router.push("/jobcy/admin/auth/login");
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/admin/auth/login");
+      router.push("/jobcy/admin/auth/login");
       return;
     }
 
