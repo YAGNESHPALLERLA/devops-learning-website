@@ -129,6 +129,10 @@ export async function PUT(request: NextRequest) {
     // Return updated user data
     const updatedUser = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     
+    if (!updatedUser) {
+      return NextResponse.json({ error: 'User not found after update' }, { status: 404 });
+    }
+    
     return NextResponse.json({
       id: updatedUser._id,
       name: updatedUser.name,
