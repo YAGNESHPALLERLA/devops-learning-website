@@ -272,7 +272,7 @@ export default function JobSeekerDashboard() {
 
           {activeTab === "jobs" && (
             <JobsTab
-              allJobs={allJobs.map((j) => ({ ...j, id: String(j.id) }))}
+              allJobs={Array.isArray(allJobs) ? allJobs.map((j) => ({ ...j, id: String(j.id) })) : []}
               isDark={isDark}
               onApplyJob={handleJobApplication}
             />
@@ -286,7 +286,7 @@ export default function JobSeekerDashboard() {
 
           {activeTab === "notifications" && <NotificationsTab isDark={isDark} />}
 
-          {activeTab === "interviews" && interviews.length > 0 && (
+          {activeTab === "interviews" && Array.isArray(interviews) && interviews.length > 0 && (
             <InterviewsTab
   interviews={interviews.map((i) => ({
     ...i,
@@ -296,7 +296,7 @@ export default function JobSeekerDashboard() {
   isDark={isDark}
 />
           )}
-          {activeTab === "interviews" && interviews.length === 0 && (
+          {activeTab === "interviews" && (!Array.isArray(interviews) || interviews.length === 0) && (
             <div className="text-center mt-16 text-slate-500 dark:text-slate-400">No interviews scheduled yet.</div>
           )}
         </main>
@@ -314,8 +314,8 @@ export default function JobSeekerDashboard() {
             // normalize optional fields to satisfy types
             const normalizedData: Partial<UserProfile> = {
               ...data,
-              education: data.education?.map((e) => ({ ...e, endDate: e.endDate || "" })),
-              experienceList: data.experienceList?.map((e) => ({ ...e, endDate: e.endDate || "" })),
+              education: Array.isArray(data.education) ? data.education.map((e) => ({ ...e, endDate: e.endDate || "" })) : [],
+              experienceList: Array.isArray(data.experienceList) ? data.experienceList.map((e) => ({ ...e, endDate: e.endDate || "" })) : [],
             };
             const result = await updateProfile(normalizedData);
             if (result.success) {

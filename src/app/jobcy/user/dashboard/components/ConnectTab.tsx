@@ -107,7 +107,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   // Debug actual connections
   React.useEffect(() => {
     console.log("ConnectTab - actualConnections:", actualConnections);
-    console.log("ConnectTab - actualConnections IDs:", actualConnections.map(c => c.id));
+    console.log("ConnectTab - actualConnections IDs:", Array.isArray(actualConnections) ? actualConnections.map(c => c.id) : []);
   }, [actualConnections]);
 
   // Fetch connection requests and actual connections
@@ -215,7 +215,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   console.log("ConnectTab - connectedConnections:", connectedConnections);
   console.log("ConnectTab - filteredConnections count:", filteredConnections.length);
   console.log("ConnectTab - connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})):", 
-    connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})));
+    Array.isArray(connectionsState) ? connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})) : []);
 
   const handleConnect = async (connection: Connection) => {
     const token = localStorage.getItem("token");
@@ -512,7 +512,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {filteredConnections.map((conn) => (
+                  {Array.isArray(filteredConnections) ? filteredConnections.map((conn) => (
                     <ConnectionCard
                       key={conn.id}
                       connection={conn}
@@ -520,7 +520,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                       onConnect={handleConnect}
                       onMessage={handleMessage}
                     />
-                  ))}
+                  )) : []}
                 </div>
               )}
             </div>
@@ -549,7 +549,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {pendingRequests.map((request, index) => (
+                  {Array.isArray(pendingRequests) ? pendingRequests.map((request, index) => (
                     <div
                       key={request._id}
                       className={`p-5 rounded-2xl ${
@@ -616,7 +616,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )) : []}
                 </div>
               )}
             </div>
@@ -651,7 +651,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {connectedConnections
+                  {Array.isArray(connectedConnections) ? connectedConnections
                     .filter((conn) => {
                       if (!searchQuery) return true;
                       return conn.name?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -706,7 +706,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                           </p>
                         )}
                       </div>
-                    ))}
+                    )) : []}
                 </div>
               )}
             </div>
@@ -779,11 +779,11 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="p-3 space-y-2">
-                  {chats.map((chat, index) => {
+                  {Array.isArray(chats) ? chats.map((chat, index) => {
                     // Only show chats with actual connections
-                    const isActualConnection = actualConnections.some(conn => 
+                    const isActualConnection = Array.isArray(actualConnections) ? actualConnections.some(conn => 
                       conn.id === chat.otherParticipant.id
-                    );
+                    ) : false;
                     
                     if (!isActualConnection) return null;
                     
@@ -833,7 +833,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         </div>
                       </div>
                     );
-                  })}
+                  }) : []}
                 </div>
               )}
             </div>
@@ -980,7 +980,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
           </div>
         ) : (
           <>
-            {messages.map((msg, index) => {
+            {Array.isArray(messages) ? messages.map((msg, index) => {
               const currentUserId = getCurrentUserId();
               const isOwnMessage = msg.sender.id === currentUserId || msg.sender._id === currentUserId;
               return (
@@ -1016,7 +1016,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
                   </div>
                 </div>
               );
-            })}
+            }) : []}
             <div ref={messagesEndRef} />
           </>
         )}
