@@ -7,9 +7,7 @@ export async function POST(
 ) {
   try {
     const { jobId } = await params;
-    console.log('🔍 DEBUG: Job application request for job:', jobId);
-    console.log('🔍 DEBUG: Request method:', request.method);
-    console.log('🔍 DEBUG: Request URL:', request.url);
+    console.log('🚀 NEW: Job application request for job:', jobId);
     
     // Get user ID from JWT token
     const authHeader = request.headers.get('authorization');
@@ -28,7 +26,6 @@ export async function POST(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    // Get request body
     const body = await request.json();
     const { coverLetter = '' } = body;
 
@@ -65,7 +62,7 @@ export async function POST(
 
     const result = await db.collection('applications').insertOne(application);
     
-    console.log('Application created:', result.insertedId);
+    console.log('🚀 NEW: Application created:', result.insertedId);
     
     return NextResponse.json({
       success: true,
@@ -73,7 +70,7 @@ export async function POST(
       message: 'Application submitted successfully'
     });
   } catch (error) {
-    console.error('Job application error:', error);
+    console.error('🚀 NEW: Job application error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -84,9 +81,7 @@ export async function GET(
 ) {
   try {
     const { jobId } = await params;
-    console.log('🔍 DEBUG: Job application GET request for job:', jobId);
-    console.log('🔍 DEBUG: Request method:', request.method);
-    console.log('🔍 DEBUG: Request URL:', request.url);
+    console.log('🚀 NEW: Job application GET request for job:', jobId);
     
     return NextResponse.json({
       message: 'Job application endpoint is working',
@@ -95,7 +90,7 @@ export async function GET(
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Job application GET error:', error);
+    console.error('🚀 NEW: Job application GET error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
