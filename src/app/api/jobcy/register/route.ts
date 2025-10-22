@@ -5,7 +5,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Forward the request to the Jobcy backend
-    const response = await fetch('http://localhost:5000/api/user/register', {
+    const backendUrl = process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:5000/api/user/register'
+      : 'https://jobcy-job-portal.vercel.app/api/user/register';
+    
+    const response = await fetch(backendUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -3,10 +3,17 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    console.log('Proxy login request:', body);
     
     // Forward the request to the Jobcy backend
-    const response = await fetch('http://localhost:5000/api/login', {
+    const backendUrl = process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:5000/api/login'
+      : 'https://jobcy-job-portal.vercel.app/api/login';
+    
+    console.log('Proxy login request:', body);
+    console.log('Environment:', process.env.NODE_ENV);
+    console.log('Backend URL:', backendUrl);
+    
+    const response = await fetch(backendUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
