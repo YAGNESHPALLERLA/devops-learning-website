@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '../../../../../../lib/mongodb';
+import { connectDB } from '../../../../../../../lib/mongodb';
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ requestId: string }> }) {
   try {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
 
     // Connect to database
     const db = await connectDB();
-    const { toObjectId } = await import('../../../../../../lib/mongodb');
+    const { toObjectId } = await import('../../../../../../../lib/mongodb');
     
     // Update connection status to accepted
     const result = await db.collection('connections').updateOne(
