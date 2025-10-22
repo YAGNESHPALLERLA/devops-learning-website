@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/jobcy",
-      "destination": "https://jobcy-job-portal.vercel.app"
-    },
-    {
-      "source": "/jobcy/(.*)",
-      "destination": "https://jobcy-job-portal.vercel.app/$1"
-    }
-  ],
   "headers": [
     {
-      "source": "/jobcy/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Frame-Options",
