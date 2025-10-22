@@ -186,8 +186,11 @@ export function useDashboardData() {
 
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
+        console.log('Jobs API response:', { isArray: Array.isArray(jobsData), type: typeof jobsData, length: Array.isArray(jobsData) ? jobsData.length : 'N/A' });
+        // Ensure jobsData is an array
+        const jobsArray = Array.isArray(jobsData) ? jobsData : [];
         setAllJobs(
-          jobsData.map((job: RawJob) => ({
+          jobsArray.map((job: RawJob) => ({
             id: job.id || job._id || Math.random().toString(),
             title: job.title,
             company: job.company,
@@ -217,8 +220,11 @@ export function useDashboardData() {
       );
       if (connectionsRes.ok) {
         const usersData = await connectionsRes.json();
+        console.log('Users API response:', { isArray: Array.isArray(usersData), type: typeof usersData, length: Array.isArray(usersData) ? usersData.length : 'N/A' });
+        // Ensure usersData is an array
+        const usersArray = Array.isArray(usersData) ? usersData : [];
         setConnections(
-          usersData.map((u: RawUser) => ({
+          usersArray.map((u: RawUser) => ({
             id: u._id || u.id || Math.random().toString(),
             name: u.name || "Unknown User",
             title: u.professionalRole || u.role || u.title || "Job Seeker",
@@ -238,7 +244,9 @@ export function useDashboardData() {
       );
       if (connectedRes.ok) {
         const connectedData = await connectedRes.json();
-        const connectedUsers = connectedData.map((u: ConnectedUser) => ({
+        // Ensure connectedData is an array
+        const connectedArray = Array.isArray(connectedData) ? connectedData : [];
+        const connectedUsers = connectedArray.map((u: ConnectedUser) => ({
           id: u.id || Math.random().toString(),
           name: u.name || "Unknown User",
           title: u.title || "Job Seeker",
@@ -264,7 +272,9 @@ export function useDashboardData() {
       );
       if (appliedJobsRes.ok) {
         const appliedJobsData = await appliedJobsRes.json();
-        setAppliedJobs(appliedJobsData);
+        // Ensure appliedJobsData is an array
+        const appliedArray = Array.isArray(appliedJobsData) ? appliedJobsData : [];
+        setAppliedJobs(appliedArray);
       }
 
       // Fetch interviews
@@ -274,8 +284,10 @@ export function useDashboardData() {
       );
       if (interviewsRes.ok) {
         const interviewsData = await interviewsRes.json();
+        // Ensure interviewsData is an array
+        const interviewsArray = Array.isArray(interviewsData) ? interviewsData : [];
         setInterviews(
-          interviewsData.map((int: RawInterview) => ({
+          interviewsArray.map((int: RawInterview) => ({
             id: String(int.id || int._id || Math.random()),
             jobId: int.jobId ? String(int.jobId) : undefined,
             company: int.company || "Unknown Company",
