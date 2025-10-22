@@ -134,7 +134,10 @@ export default function HRManagement() {
 
         if (res.ok) {
           const data = await res.json();
-          setCompanies(Array.isArray(data) ? data : []);
+          console.log('Companies API response:', data);
+          const companies = Array.isArray(data.companies) ? data.companies : [];
+          console.log('Setting companies:', companies);
+          setCompanies(companies);
         }
       } catch (err) {
         console.error("Failed to fetch companies", err);
@@ -686,6 +689,7 @@ const handleInputChange = (
                 <option value="">-- Select a company (or enter manually below) --</option>
                 {Array.isArray(companies) ? companies.map((company) => {
                   if (!company || !company._id) return null;
+                  console.log('Rendering company option:', company);
                   return (
                     <option key={company._id} value={company._id}>
                       {company.name || 'Unknown Company'} ({company.email || 'No email'})
