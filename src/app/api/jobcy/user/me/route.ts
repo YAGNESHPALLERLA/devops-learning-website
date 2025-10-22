@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     
     let decoded: { id: string; role: string; [key: string]: unknown };
     try {
-      const verified = jwt.default.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
       console.log('Decoded user ID:', decoded.id);
     } catch (error) {

@@ -4,10 +4,26 @@ import { connectDB } from '../../../../../lib/mongodb';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, password, role } = body;
+    const { name, email, password, company } = body;
+    console.log('Create HR request:', { name, email, company });
     
-    console.log('Registration request:', { name, email, role });
+    // Get user ID from JWT token
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    const jwt = await import('jsonwebtoken');
     
+    let decoded: { id: string; role: string; [key: string]: unknown };
+    try {
+      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      decoded = verified as { id: string; role: string; [key: string]: unknown };
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+    }
+
     if (!name || !email || !password) {
       return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
     }
@@ -21,17 +37,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
 
-    // Hash password - using simple hash for now
+    // Hash password
     const hashedPassword = Buffer.from(password).toString('base64');
 
-    // Create new user
+    // Create new HR user
     const newUser = {
       name,
       email,
       password: hashedPassword,
-      role: role || 'user',
-      mobile: `+1${Math.floor(Math.random() * 9000000000) + 1000000000}`, // Generate unique mobile number
-      company: {},
+      role: 'hr',
+      mobile: `+1${Math.floor(Math.random() * 9000000000) + 1000000000}`,
+      company: company || {},
       phone: '',
       location: '',
       salary: '',
@@ -50,10 +66,10 @@ export async function POST(request: NextRequest) {
 
     const result = await db.collection('users').insertOne(newUser);
     
-    console.log('User created successfully:', result.insertedId);
+    console.log('HR user created successfully:', result.insertedId);
     
     return NextResponse.json({
-      message: 'User registered successfully',
+      message: 'HR user created successfully',
       user: {
         id: result.insertedId,
         name: newUser.name,
@@ -62,7 +78,7 @@ export async function POST(request: NextRequest) {
       }
     }, { status: 201 });
   } catch (error) {
-    console.error('Registration error:', error);
+    console.error('Create HR error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

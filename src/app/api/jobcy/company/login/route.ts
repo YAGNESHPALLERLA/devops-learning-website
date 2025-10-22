@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { email, password } = body;
     
-    console.log('Login request:', { email });
+    console.log('Company login request:', { email });
     
     if (!email || !password) {
       return NextResponse.json({ error: 'Email and password are required' }, { status: 400 });
@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Find user in database
-    const user = await db.collection('users').findOne({ email });
+    // Find company user in database
+    const user = await db.collection('users').findOne({ email, role: 'company' });
     
     if (!user) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       }
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Company login error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
