@@ -286,33 +286,31 @@ async function handleUserProfile(request: NextRequest, db: Db) {
       return { status: 404, data: { error: 'User not found' } };
     }
 
-    // Return user profile data
+    // Return user profile data directly (not wrapped in data.user)
     return {
       status: 200,
       data: {
-        user: {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          company: user.company || {},
-          phone: user.phone,
-          location: user.location,
-          salary: user.salary,
-          experience: user.experience,
-          about: user.about,
-          skills: user.skills,
-          education: user.education,
-          projects: user.projects,
-          profileViews: user.profileViews,
-          applications: user.applications,
-          profileScore: user.profileScore,
-          resume: user.resume,
-          githubId: user.githubId,
-          githubUsername: user.githubUsername,
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt
-        }
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        company: user.company || {},
+        phone: user.phone,
+        location: user.location,
+        salary: user.salary,
+        experience: user.experience,
+        about: user.about,
+        skills: user.skills,
+        education: user.education,
+        projects: user.projects,
+        profileViews: user.profileViews,
+        applications: user.applications,
+        profileScore: user.profileScore,
+        resume: user.resume,
+        githubId: user.githubId,
+        githubUsername: user.githubUsername,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt
       }
     };
   } catch (error) {
