@@ -113,7 +113,7 @@ async function handleLogin(body: unknown, db: any) {
     const jwt = await import('jsonwebtoken');
     const token = jwt.sign(
       { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET || 'fallback-secret',
       { expiresIn: '30d' }
     );
 
@@ -225,9 +225,9 @@ async function handleUserProfile(request: NextRequest, db: any) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    let decoded;
+    let decoded: any;
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET!);
+      decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
     } catch {
       return { status: 401, data: { error: 'Invalid token' } };
     }
