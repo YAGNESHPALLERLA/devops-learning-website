@@ -353,7 +353,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     </div>
   );
 
-  const filteredJobs = jobsData.filter((job) => {
+  const filteredJobs = Array.isArray(jobsData) ? jobsData.filter((job) => {
     const lowerSearch = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
 
@@ -369,7 +369,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
       (typeof job.status === "string" && job.status.toLowerCase() === filter);
 
     return matchSearch && matchFilter;
-  });
+  }) : [];
 
   if (loading) {
     return (

@@ -435,7 +435,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setIsLoading(true);
   try {
     await deleteJob(id); // Now TypeScript knows id is a string
-    setJobs((prev) => prev.filter((job) => job.id !== id && job._id !== id));
+    setJobs((prev) => Array.isArray(prev) ? prev.filter((job) => job.id !== id && job._id !== id) : []);
     setSuccessMessage("Job deleted successfully!");
     setTimeout(() => setSuccessMessage(""), 3000);
   } catch (error) {
@@ -482,7 +482,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 };
 
 
-  const filteredJobs = jobs.filter((job) => {
+  const filteredJobs = Array.isArray(jobs) ? jobs.filter((job) => {
     const term = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
     return (
@@ -491,17 +491,17 @@ const fetchJobs = useCallback(async (): Promise<void> => {
         job.location.toLowerCase().includes(term)) &&
       (filterStatus === "all" || job.status.toLowerCase() === filter)
     );
-  });
+  }) : [];
 
   // Calculate job management specific stats
   const jobStats = {
-  needsReview: jobs.filter(
+  needsReview: Array.isArray(jobs) ? jobs.filter(
     (job) => job.status === "Active" && (job.applications || 0) > 0
-  ).length,
+  ).length : 0,
 
-  drafts: jobs.filter((job) => job.status === "Draft").length,
+  drafts: Array.isArray(jobs) ? jobs.filter((job) => job.status === "Draft").length : 0,
 
-  expiringSoon: jobs.filter((job) => {
+  expiringSoon: Array.isArray(jobs) ? jobs.filter((job) => {
     if (!job.applicationDeadline) return false;
 
     const deadline = new Date(job.applicationDeadline).getTime(); // ✅ convert to number safely
@@ -509,9 +509,9 @@ const fetchJobs = useCallback(async (): Promise<void> => {
     const daysUntil = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
 
     return daysUntil > 0 && daysUntil <= 7;
-  }).length,
+  }).length : 0,
 
-  recentlyUpdated: jobs.filter((job) => {
+  recentlyUpdated: Array.isArray(jobs) ? jobs.filter((job) => {
     if (!job.updatedAt) return false;
 
     const updated = new Date(job.updatedAt).getTime(); // ✅ convert to number safely
@@ -519,7 +519,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
     const daysSince = Math.ceil((now - updated) / (1000 * 60 * 60 * 24));
 
     return daysSince <= 3;
-  }).length,
+  }).length : 0,
 };
 
 

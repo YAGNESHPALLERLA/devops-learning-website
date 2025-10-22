@@ -127,12 +127,12 @@ export default function CompanyManagement() {
   }, [fetchCompanies]);
 
   useEffect(() => {
-    const filtered = companies.filter(
+    const filtered = Array.isArray(companies) ? companies.filter(
       (company) =>
         company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.industry?.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    ) : [];
     setFilteredCompanies(filtered);
   }, [searchQuery, companies]);
 
@@ -309,7 +309,7 @@ export default function CompanyManagement() {
         console.log("🏢 Looking for company ID:", company._id);
         
         // Filter HRs that belong to this company
-        hrs = hrsData.hrs.filter((hr: HRData) => {
+        hrs = Array.isArray(hrsData.hrs) ? hrsData.hrs.filter((hr: HRData) => {
           // Only consider HRs that have a companyId set
           if (!hr.companyId) {
             console.log(`⚠️ HR ${hr.name} has no companyId - skipping`);
@@ -330,7 +330,7 @@ export default function CompanyManagement() {
           }
           
           return matches;
-        });
+        }) : [];
         
         console.log(`✅ Filtered: ${hrs.length} HRs belong to this company out of ${hrsData.hrs.length} total`);
         console.log("✅ Filtered HR names:", Array.isArray(hrs) ? hrs.map(h => h.name) : []);
@@ -354,14 +354,14 @@ export default function CompanyManagement() {
         console.log("📋 All jobs fetched:", jobsData.length);
         
         // Filter jobs posted by this company's HRs
-        jobs = jobsData.filter((job: JobData) => {
+        jobs = Array.isArray(jobsData) ? jobsData.filter((job: JobData) => {
           const posterId = typeof job.postedBy === 'object' ? job.postedBy?._id : job.postedBy;
           const matches = Array.isArray(hrIds) ? hrIds.some((hrId: string) => hrId.toString() === posterId?.toString()) : false;
           if (matches) {
             console.log(`✅ Job "${job.title}" posted by company's HR`);
           }
           return matches;
-        });
+        }) : [];
         
         console.log(`✅ Filtered ${jobs.length} jobs for this company`);
       }
@@ -499,7 +499,7 @@ export default function CompanyManagement() {
                   Active Companies
                 </p>
                 <p className={`text-3xl font-bold mt-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                  {companies.filter((c) => c.status === "Active").length}
+                  {Array.isArray(companies) ? companies.filter((c) => c.status === "Active").length : 0}
                 </p>
               </div>
               <div className="p-3 bg-green-500 rounded-full">
@@ -515,7 +515,7 @@ export default function CompanyManagement() {
                   Pending Approval
                 </p>
                 <p className={`text-3xl font-bold mt-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                  {companies.filter((c) => c.status === "Pending").length}
+                  {Array.isArray(companies) ? companies.filter((c) => c.status === "Pending").length : 0}
                 </p>
               </div>
               <div className="p-3 bg-amber-500 rounded-full">

@@ -376,7 +376,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
   };
 
   // Filtered applications based on job, status, and search term
-  const filteredApplications = applications.filter((app) => {
+  const filteredApplications = Array.isArray(applications) ? applications.filter((app) => {
     const matchesJob =
       selectedJob === "all" || app.jobId.toString() === selectedJob || app.jobTitle === selectedJob;
     const matchesStatus =
@@ -387,7 +387,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
       app.jobTitle.toLowerCase().includes(searchTerm.toLowerCase());
     console.log('Filtering app:', app.jobTitle, 'selectedJob:', selectedJob, 'matchesJob:', matchesJob);
     return matchesJob && matchesStatus && matchesSearch;
-  });
+  }) : [];
 
   // Group applications by job title
   const groupedApplications = filteredApplications.reduce<Record<string,Application[]>>((groups, app) => {
@@ -913,45 +913,45 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                           <span
                             className="text-yellow-600"
                             aria-label={`${
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "pending"
-                              ).length
+                              ).length : 0
                             } pending`}
                           >
                             {
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "pending"
-                              ).length
+                              ).length : 0
                             }{" "}
                             pending
                           </span>
                           <span
                             className="text-green-600"
                             aria-label={`${
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "shortlisted"
-                              ).length
+                              ).length : 0
                             } shortlisted`}
                           >
                             {
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "shortlisted"
-                              ).length
+                              ).length : 0
                             }{" "}
                             shortlisted
                           </span>
                           <span
                             className="text-red-600"
                             aria-label={`${
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "rejected"
-                              ).length
+                              ).length : 0
                             } rejected`}
                           >
                             {
-                              jobApplications.filter(
+                              Array.isArray(jobApplications) ? jobApplications.filter(
                                 (app) => app.status === "rejected"
-                              ).length
+                              ).length : 0
                             }{" "}
                             rejected
                           </span>

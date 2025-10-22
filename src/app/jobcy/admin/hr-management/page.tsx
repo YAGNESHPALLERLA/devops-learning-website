@@ -308,7 +308,7 @@ const handleInputChange = (
           throw new Error(errorData.message || "Failed to delete HR");
         }
 
-        setHrUsers((prev) => prev.filter((hr) => hr._id !== id));
+        setHrUsers((prev) => Array.isArray(prev) ? prev.filter((hr) => hr._id !== id) : []);
         setSuccessMessage("HR user deleted successfully!");
         setTimeout(() => setSuccessMessage(""), 3000);
       } catch (error: unknown) {
@@ -339,11 +339,11 @@ const handleInputChange = (
     setSelectedHR(null);
   };
 
-  const filteredHRs = hrUsers.filter((hr) =>
+  const filteredHRs = Array.isArray(hrUsers) ? hrUsers.filter((hr) =>
     hr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     hr.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (hr.company?.name.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
-  );
+  ) : [];
 
 
   const renderListView = () => (
