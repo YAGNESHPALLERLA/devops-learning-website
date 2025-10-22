@@ -122,7 +122,7 @@ const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
       {/* Jobs List */}
       {filteredJobs.length > 0 ? (
         <div className="space-y-4">
-          {filteredJobs.map((job) => (
+          {Array.isArray(filteredJobs) ? filteredJobs.map((job) => (
             <div
               key={job.id}
               className={`p-5 rounded-xl border ${
@@ -258,7 +258,7 @@ const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
                 </button>
               </div>
             </div>
-          ))}
+          )) : []}
         </div>
       ) : (
         <div className={`text-center py-12 ${

@@ -174,7 +174,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         </div>
       ) : (
         <div className="grid gap-4">
-          {appliedJobs.map((application) => (
+          {Array.isArray(appliedJobs) ? appliedJobs.map((application) => (
             <div
               key={application.id}
               className={`${
@@ -233,7 +233,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
                 </div>
               </div>
             </div>
-          ))}
+          )) : []}
         </div>
       )}
     </div>

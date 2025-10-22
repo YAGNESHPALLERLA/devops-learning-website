@@ -12,7 +12,7 @@ interface InterviewsTabProps {
 const InterviewsTab: React.FC<InterviewsTabProps> = ({ interviews, isDark }) => {
   return (
     <div>
-      {interviews.map((interview) => (
+      {Array.isArray(interviews) ? interviews.map((interview) => (
         <div
           key={interview.id}
           className={`p-4 mb-4 rounded-lg border ${
@@ -29,7 +29,7 @@ const InterviewsTab: React.FC<InterviewsTabProps> = ({ interviews, isDark }) => 
             Status: {interview.status} | Type: {interview.type || "N/A"} | Interviewer: {interview.interviewer || "N/A"}
           </p>
         </div>
-      ))}
+      )) : []}
     </div>
   );
 };
