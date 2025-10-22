@@ -3,12 +3,24 @@
 import { useState, useEffect } from 'react';
 
 export default function TestEnvironmentPage() {
-  const [testResults, setTestResults] = useState<any>(null);
+  const [testResults, setTestResults] = useState<{
+    database?: { status: number; success: boolean; collections: number; userCount: number };
+    jobs?: { status: number; isArray: boolean; count: number };
+    users?: { status: number; isArray: boolean; count: number };
+    environment?: { nodeEnv?: string; apiUrl?: string; socketUrl?: string };
+    error?: string;
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const runTests = async () => {
     setIsLoading(true);
-    const results: any = {};
+    const results: {
+      database?: { status: number; success: boolean; collections: number; userCount: number };
+      jobs?: { status: number; isArray: boolean; count: number };
+      users?: { status: number; isArray: boolean; count: number };
+      environment?: { nodeEnv?: string; apiUrl?: string; socketUrl?: string };
+      error?: string;
+    } = {};
 
     try {
       // Test 1: Database Connection
@@ -50,7 +62,7 @@ export default function TestEnvironmentPage() {
       };
 
     } catch (error) {
-      results.error = error.message;
+      results.error = error instanceof Error ? error.message : 'Unknown error occurred';
     }
 
     setTestResults(results);
