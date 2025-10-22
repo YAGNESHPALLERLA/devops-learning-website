@@ -35,7 +35,7 @@ export default function CompanyLogin() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      router.push("/company/dashboard");
+      router.push("/jobcy/company/dashboard");
     } catch (err: unknown) {
       const error = err as Error;
       setError(error.message || "An error occurred");
@@ -148,7 +148,7 @@ export default function CompanyLogin() {
             <p className="text-sm text-gray-600">
               Not registered yet?{" "}
               <button
-                onClick={() => router.push("/admin/company-management")}
+                onClick={() => router.push("/jobcy/admin/company-management")}
                 className="text-blue-600 hover:text-blue-700 font-semibold"
               >
                 Contact Admin

@@ -697,7 +697,7 @@ export default function AdminDashboard() {
                             description="Manage HR users, approvals, and permissions"
                             icon={Users}
                             color="bg-blue-500"
-                            onClick={() => router.push("/admin/hr-management")}
+                            onClick={() => router.push("/jobcy/admin/hr-management")}
                           />
                           <QuickActionCard
                             title="Job Listings"
@@ -718,7 +718,7 @@ export default function AdminDashboard() {
                             description="Manage company registrations and profiles"
                             icon={Building2}
                             color="bg-red-500"
-                            onClick={() => router.push("/admin/company-management")}
+                            onClick={() => router.push("/jobcy/admin/company-management")}
                           />
                         </div>
                       </div>
