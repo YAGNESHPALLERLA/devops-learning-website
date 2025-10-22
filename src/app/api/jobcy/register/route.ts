@@ -21,8 +21,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
 
-    // Hash password - using simple hash for now
-    const hashedPassword = Buffer.from(password).toString('base64');
+    // Hash password using bcrypt
+    const bcrypt = await import('bcryptjs');
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user
     const newUser = {

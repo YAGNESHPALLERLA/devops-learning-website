@@ -1,0 +1,77 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { connectDB } from '@/lib/mongodb';
+
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ jobId: string }> }
+) {
+  try {
+    const { jobId } = await params;
+    console.log('Job application request for job:', jobId);
+    
+    // Get user ID from JWT token
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    const jwt = await import('jsonwebtoken');
+    
+    let decoded: { id: string; role: string; [key: string]: unknown };
+    try {
+      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      decoded = verified as { id: string; role: string; [key: string]: unknown };
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+    }
+
+    // Get request body
+    const body = await request.json();
+    const { coverLetter = '' } = body;
+
+    // Connect to database
+    const db = await connectDB();
+    
+    // Check if job exists
+    const { toObjectId } = await import('@/lib/mongodb');
+    const job = await db.collection('jobs').findOne({ _id: toObjectId(jobId) });
+    if (!job) {
+      return NextResponse.json({ error: 'Job not found' }, { status: 404 });
+    }
+
+    // Check if user already applied
+    const existingApplication = await db.collection('applications').findOne({
+      userId: decoded.id,
+      jobId: jobId
+    });
+
+    if (existingApplication) {
+      return NextResponse.json({ error: 'Already applied for this job' }, { status: 400 });
+    }
+
+    // Create application
+    const application = {
+      userId: decoded.id,
+      jobId: jobId,
+      coverLetter,
+      status: 'applied',
+      appliedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    const result = await db.collection('applications').insertOne(application);
+    
+    console.log('Application created:', result.insertedId);
+    
+    return NextResponse.json({
+      success: true,
+      applicationId: result.insertedId,
+      message: 'Application submitted successfully'
+    });
+  } catch (error) {
+    console.error('Job application error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
