@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     
     console.log('Found notifications:', notifications.length);
     
-    return NextResponse.json({ notifications });
+    return NextResponse.json(notifications);
   } catch (error) {
     console.error('User notifications error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

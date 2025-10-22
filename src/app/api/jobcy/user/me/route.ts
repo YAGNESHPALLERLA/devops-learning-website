@@ -72,3 +72,88 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
+export async function PUT(request: NextRequest) {
+  try {
+    console.log('User profile update request');
+    
+    // Get user ID from JWT token
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    const jwt = await import('jsonwebtoken');
+    
+    let decoded: { id: string; role: string; [key: string]: unknown };
+    try {
+      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      decoded = verified as { id: string; role: string; [key: string]: unknown };
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+    }
+
+    // Get request body
+    const body = await request.json();
+    const { name, phone, location, about, skills, experience, salary } = body;
+
+    // Connect to database
+    const db = await connectDB();
+    
+    // Update user profile
+    const { toObjectId } = await import('@/lib/mongodb');
+    const updateData: Record<string, unknown> = {
+      updatedAt: new Date()
+    };
+
+    if (name) updateData.name = name;
+    if (phone) updateData.phone = phone;
+    if (location) updateData.location = location;
+    if (about) updateData.about = about;
+    if (skills) updateData.skills = skills;
+    if (experience) updateData.experience = experience;
+    if (salary) updateData.salary = salary;
+
+    const result = await db.collection('users').updateOne(
+      { _id: toObjectId(decoded.id) },
+      { $set: updateData }
+    );
+
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    console.log('User profile updated successfully');
+
+    // Return updated user data
+    const updatedUser = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
+    
+    return NextResponse.json({
+      id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      role: updatedUser.role,
+      company: updatedUser.company || {},
+      phone: updatedUser.phone,
+      location: updatedUser.location,
+      salary: updatedUser.salary,
+      experience: updatedUser.experience,
+      about: updatedUser.about,
+      skills: updatedUser.skills,
+      education: updatedUser.education,
+      projects: updatedUser.projects,
+      profileViews: updatedUser.profileViews,
+      applications: updatedUser.applications,
+      profileScore: updatedUser.profileScore,
+      resume: updatedUser.resume,
+      githubId: updatedUser.githubId,
+      githubUsername: updatedUser.githubUsername,
+      createdAt: updatedUser.createdAt,
+      updatedAt: updatedUser.updatedAt
+    });
+  } catch (error) {
+    console.error('User profile update error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}

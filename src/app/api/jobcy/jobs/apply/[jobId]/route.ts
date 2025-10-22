@@ -43,7 +43,7 @@ export async function POST(
     // Check if user already applied
     const existingApplication = await db.collection('applications').findOne({
       userId: decoded.id,
-      jobId: jobId
+      jobId: toObjectId(jobId)
     });
 
     if (existingApplication) {
@@ -53,7 +53,7 @@ export async function POST(
     // Create application
     const application = {
       userId: decoded.id,
-      jobId: jobId,
+      jobId: toObjectId(jobId),
       coverLetter,
       status: 'applied',
       appliedAt: new Date(),
