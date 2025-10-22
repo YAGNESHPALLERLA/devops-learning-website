@@ -9,15 +9,7 @@ import {
   Interview,
   UserProfile,
 } from "../../../types/dashboard";
-import {
-  mockProfile,
-  mockEducation,
-  mockExperience,
-  mockJobs,
-  mockAppliedJobs,
-  mockConnections,
-  mockInterviews,
-} from "../utils/mockData";
+// Removed mock data imports - using live data only
 
 type UserProfileUpdate = Partial<UserProfile>;
 
@@ -89,18 +81,7 @@ export function useDashboardData() {
   const [appliedJobs, setAppliedJobs] = useState<AppliedJob[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const [interviews, setInterviews] = useState<Interview[]>([]);
-  const [useMockData, setUseMockData] = useState(false);
-
-  // ✅ Helper for mock fallback
-  const applyMockData = () => {
-    setUserProfile(mockProfile);
-    setEducation(mockEducation);
-    setExperience(mockExperience);
-    setAllJobs(mockJobs);
-    setAppliedJobs(mockAppliedJobs);
-    setConnections(mockConnections);
-    setInterviews(mockInterviews);
-  };
+  // Removed mock data functionality - using live data only
 
   // ✅ Common function to fetch dashboard data (called on mount and token change)
   const fetchDashboardData = useCallback(async (token: string) => {
@@ -353,9 +334,8 @@ export function useDashboardData() {
         try {
           const user = JSON.parse(userStr);
           if (user.role === "user") {
-            console.log("📊 Using mock data as fallback for user");
-            applyMockData();
-            setUseMockData(true);
+            console.log("📊 User role detected - ensuring API endpoints work");
+            // No mock data fallback - ensure API endpoints work properly
           }
         } catch (parseError) {
           console.error("Error parsing user:", parseError);
@@ -371,8 +351,6 @@ export function useDashboardData() {
     const token =
       localStorage.getItem("token") || localStorage.getItem("userToken");
     if (!token) {
-      applyMockData();
-      setUseMockData(true);
       setIsLoading(false);
       return;
     }
@@ -494,7 +472,6 @@ export function useDashboardData() {
     connections,
     interviews,
     updateProfile,
-    useMockData,
     handleJobApplication,
     refetch: () => {
       const token = localStorage.getItem("token") || localStorage.getItem("userToken");
