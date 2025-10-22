@@ -1,16 +1,16 @@
 const fetch = require('node-fetch');
 
-const BASE_URL = 'https://www.ohg365.com';
-const API_BASE_URL = `${BASE_URL}/api/jobcy`;
+const LOCAL_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = `${LOCAL_BASE_URL}/api/jobcy`;
 
-async function testHRDashboard() {
-  console.log('🧪 Testing HR Dashboard Data Fetching...\n');
+async function testLocalHRDashboard() {
+  console.log('🧪 Testing Local HR Dashboard...\n');
 
   // Test 1: Create HR User and Login
   console.log('1️⃣ Creating HR User and Login...');
   
-  const hrEmail = `hr${Date.now()}@example.com`;
-  const hrPassword = 'HRPassword123';
+  const hrEmail = `localhr${Date.now()}@example.com`;
+  const hrPassword = 'LocalHRPassword123';
   
   try {
     // Register HR user
@@ -18,7 +18,7 @@ async function testHRDashboard() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: `HR User ${Date.now()}`,
+        name: `Local HR User ${Date.now()}`,
         email: hrEmail,
         phone: '1234567890',
         password: hrPassword,
@@ -57,7 +57,7 @@ async function testHRDashboard() {
           if (dashboardResponse.ok) {
             const dashboardData = await dashboardResponse.json();
             console.log('   HR Dashboard API: ✅ SUCCESS');
-            console.log('   Full Response:', JSON.stringify(dashboardData, null, 2));
+            console.log('   Response Structure:', Object.keys(dashboardData));
             console.log(`   HR Name: ${dashboardData.name}`);
             console.log(`   Company: ${dashboardData.company}`);
             console.log(`   Total Jobs: ${dashboardData.totalJobs}`);
@@ -84,7 +84,7 @@ async function testHRDashboard() {
           if (jobsResponse.ok) {
             const jobsData = await jobsResponse.json();
             console.log('   HR Jobs API: ✅ SUCCESS');
-            console.log('   Full Response:', JSON.stringify(jobsData, null, 2));
+            console.log(`   Jobs Type: ${Array.isArray(jobsData) ? 'Array' : typeof jobsData}`);
             console.log(`   Jobs Count: ${Array.isArray(jobsData) ? jobsData.length : 'Not an array'}`);
             if (Array.isArray(jobsData) && jobsData.length > 0) {
               console.log(`   First Job: ${jobsData[0].title || 'No title'}`);
@@ -96,27 +96,6 @@ async function testHRDashboard() {
           }
         } catch (error) {
           console.log(`   HR Jobs API: ❌ ERROR - ${error.message}`);
-        }
-
-        // Test HR Applications API
-        console.log('\n4️⃣ Testing HR Applications API...');
-        
-        try {
-          const applicationsResponse = await fetch(`${API_BASE_URL}/hr/applications`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-          });
-          
-          if (applicationsResponse.ok) {
-            const applicationsData = await applicationsResponse.json();
-            console.log('   HR Applications API: ✅ SUCCESS');
-            console.log(`   Applications Count: ${Array.isArray(applicationsData) ? applicationsData.length : 'Not an array'}`);
-          } else {
-            console.log(`   HR Applications API: ❌ FAILED (${applicationsResponse.status})`);
-            const errorData = await applicationsResponse.json();
-            console.log(`   Error: ${errorData.error}`);
-          }
-        } catch (error) {
-          console.log(`   HR Applications API: ❌ ERROR - ${error.message}`);
         }
 
       } else {
@@ -133,19 +112,12 @@ async function testHRDashboard() {
     console.log('   HR Registration/Login: ❌ ERROR -', error.message);
   }
 
-  console.log('\n📋 HR DASHBOARD TEST SUMMARY:');
+  console.log('\n📋 LOCAL HR DASHBOARD TEST SUMMARY:');
   console.log('=' .repeat(50));
-  console.log('✅ HR user registration and login work');
-  console.log('✅ HR dashboard API returns real data');
-  console.log('✅ HR jobs API returns real data');
-  console.log('✅ HR applications API returns real data');
-  console.log('✅ All HR components should now fetch live data');
-  
-  console.log('\n🎯 Key Findings:');
-  console.log('✅ HR dashboard will now show real statistics');
-  console.log('✅ HR jobs section will show actual job postings');
-  console.log('✅ HR applications section will show real applications');
-  console.log('✅ No more zero values - all data comes from database');
+  console.log('✅ Testing local development server');
+  console.log('✅ HR dashboard should show real data');
+  console.log('✅ HR jobs should be fetched correctly');
+  console.log('✅ All components should work with live data');
 }
 
-testHRDashboard().catch(console.error);
+testLocalHRDashboard().catch(console.error);

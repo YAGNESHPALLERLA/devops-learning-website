@@ -25,12 +25,15 @@ export async function GET(request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Get jobs for HR's company
-    const jobs = await db.collection('jobs').find({}).toArray();
+    // Get jobs posted by this HR
+    const { toObjectId } = await import('@/lib/mongodb');
+    const jobs = await db.collection('jobs').find({ postedBy: toObjectId(decoded.id) }).toArray();
     
     console.log('Found jobs:', jobs.length);
+    console.log('Jobs data:', jobs);
     
-    return NextResponse.json({ jobs });
+    // Return jobs array directly (not wrapped in object)
+    return NextResponse.json(jobs);
   } catch (error) {
     console.error('HR jobs error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

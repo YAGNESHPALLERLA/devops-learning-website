@@ -76,23 +76,17 @@ export async function GET(request: NextRequest) {
       rejectedApplications: applications.filter(app => app.status === 'rejected').length
     };
 
+    // Return data in the format expected by the frontend
     const dashboardData = {
-      hr: {
-        id: hrUser._id,
-        name: hrUser.name,
-        email: hrUser.email,
-        company: company ? {
-          id: company._id,
-          name: company.name,
-          email: company.email
-        } : null
-      },
-      stats,
-      jobs: jobs.slice(0, 5), // Recent jobs
-      applications: applications.slice(0, 10), // Recent applications
-      recentActivity
+      name: hrUser.name || "HR User",
+      company: company ? company.name : "Unknown Company",
+      totalJobs: stats.totalJobs,
+      activeJobs: jobs.filter(job => job.status === 'active' || job.status === 'Active').length,
+      totalApplications: stats.totalApplications,
+      pendingReviews: stats.pendingApplications
     };
 
+    console.log('HR Dashboard data:', dashboardData);
     console.log('HR Dashboard data fetched successfully');
     return NextResponse.json(dashboardData);
   } catch (error) {

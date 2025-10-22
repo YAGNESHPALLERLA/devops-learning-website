@@ -86,7 +86,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
 
       try {
         const dashRes = await fetch(
-          `${"/api/jobcy"}/hr/dashboard`,
+          `/api/jobcy/hr/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -125,7 +125,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         });
 
         const jobsRes = await fetch(
-          `${"/api/jobcy"}/hr/jobs`,
+          `/api/jobcy/hr/jobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
