@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Db } from 'mongodb';
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   return handleRequest(request, params, 'GET');
@@ -86,7 +87,7 @@ async function handleJobcyAPI(path: string, method: string, body: unknown, reque
 }
 
 // Authentication handlers
-async function handleLogin(body: unknown, db: any) {
+async function handleLogin(body: unknown, db: Db) {
   try {
     const { email, password } = body as { email: string; password: string };
     
@@ -153,7 +154,7 @@ async function handleLogin(body: unknown, db: any) {
   }
 }
 
-async function handleRegister(body: unknown, db: any) {
+async function handleRegister(body: unknown, db: Db) {
   try {
     const { name, email, password, role } = body as { name: string; email: string; password: string; role?: string };
     
@@ -214,7 +215,7 @@ async function handleRegister(body: unknown, db: any) {
   }
 }
 
-async function handleUserProfile(request: NextRequest, db: any) {
+async function handleUserProfile(request: NextRequest, db: Db) {
   try {
     // Get user ID from JWT token in Authorization header
     const authHeader = request.headers.get('authorization');
@@ -225,9 +226,10 @@ async function handleUserProfile(request: NextRequest, db: any) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    let decoded: any;
+    let decoded: { id: string; role: string; [key: string]: unknown };
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+      decoded = verified as { id: string; role: string; [key: string]: unknown };
     } catch {
       return { status: 401, data: { error: 'Invalid token' } };
     }
@@ -275,17 +277,17 @@ async function handleUserProfile(request: NextRequest, db: any) {
   }
 }
 
-async function handleGitHubAuth(_request: NextRequest, _db: any) {
+async function handleGitHubAuth(_request: NextRequest, _db: Db) {
   // GitHub OAuth implementation
   return { status: 200, data: { message: 'GitHub auth endpoint' } };
 }
 
-async function handleJobs(_method: string, _body: unknown, _db: any) {
+async function handleJobs(_method: string, _body: unknown, _db: Db) {
   // Jobs API implementation
   return { status: 200, data: { message: 'Jobs endpoint' } };
 }
 
-async function handleUsers(_method: string, _body: unknown, _db: any) {
+async function handleUsers(_method: string, _body: unknown, _db: Db) {
   // Users API implementation
   return { status: 200, data: { message: 'Users endpoint' } };
 }

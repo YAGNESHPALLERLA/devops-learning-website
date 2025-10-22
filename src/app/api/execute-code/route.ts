@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
       // Cleanup
       try {
         unlinkSync(pythonFile);
-      } catch (e) {
+      } catch {
         // Ignore cleanup errors
       }
 
@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
         try {
           unlinkSync(javaFile);
           unlinkSync(join(sessionDir, `${className}.class`));
-        } catch (e) {
+        } catch {
           // Ignore cleanup errors
         }
       }
