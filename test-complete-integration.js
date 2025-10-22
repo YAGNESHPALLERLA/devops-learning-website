@@ -1,136 +1,118 @@
-const fetch = require('node-fetch');
+const http = require('http');
+require('dotenv').config();
 
-async function testIntegratedBackend() {
-  console.log('🚀 Testing Complete Jobcy Integration...\n');
-  
-  const baseUrl = 'http://localhost:3001'; // For local testing
-  const productionUrl = 'https://www.ohg365.com'; // For production
-  
-  console.log('🔍 Testing Integrated Backend API...\n');
-  
-  try {
-    // Test login endpoint
-    const loginResponse = await fetch(`${baseUrl}/api/jobcy-backend/login`, {
-      method: 'POST',
+function makeRequest(path, method = 'GET', data = null) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'localhost',
+      port: 3000,
+      path: path,
+      method: method,
       headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: 'abcd@gmail.com',
-        password: 'Nani@123'
-      }),
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const req = http.request(options, (res) => {
+      let responseData = '';
+      res.on('data', (chunk) => responseData += chunk);
+      res.on('end', () => {
+        try {
+          const result = JSON.parse(responseData);
+          resolve({ status: res.statusCode, data: result });
+        } catch (error) {
+          resolve({ status: res.statusCode, data: responseData });
+        }
+      });
     });
 
-    const loginData = await loginResponse.json();
+    req.on('error', reject);
     
-    console.log('✅ Integrated Backend Login Response:');
-    console.log(`Status: ${loginResponse.status}`);
-    console.log('Data:', JSON.stringify(loginData, null, 2));
+    if (data) {
+      req.write(JSON.stringify(data));
+    }
     
-    if (loginResponse.ok && loginData.token) {
-      console.log('🎉 INTEGRATED BACKEND LOGIN WORKS!');
-      
-      // Test admin login
-      const adminResponse = await fetch(`${baseUrl}/api/jobcy-backend/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: 'admin@ohg365.com',
-          password: 'Admin@123'
-        }),
-      });
+    req.end();
+  });
+}
 
-      const adminData = await adminResponse.json();
+async function testCompleteIntegration() {
+  console.log('🧪 Testing Complete Jobcy Integration...\n');
+
+  try {
+    // Test 1: Database Connection
+    console.log('1️⃣ Testing database connection...');
+    const dbTest = await makeRequest('/api/jobcy/test-connection');
+    if (dbTest.status === 200 && dbTest.data.success) {
+      console.log('✅ Database connection: SUCCESS');
+      console.log(`   Collections: ${dbTest.data.collections.length}`);
+      console.log(`   Users: ${dbTest.data.userCount}`);
+    } else {
+      console.log('❌ Database connection: FAILED');
+      return;
+    }
+
+    // Test 2: User Registration
+    console.log('\n2️⃣ Testing user registration...');
+    const testUser = {
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'TestPassword123',
+      role: 'user'
+    };
+    
+    const registerTest = await makeRequest('/api/jobcy/register', 'POST', testUser);
+    if (registerTest.status === 201) {
+      console.log('✅ User registration: SUCCESS');
+    } else {
+      console.log('❌ User registration: FAILED');
+      console.log('   Error:', registerTest.data.error);
+    }
+
+    // Test 3: User Login
+    console.log('\n3️⃣ Testing user login...');
+    const loginTest = await makeRequest('/api/jobcy/login', 'POST', {
+      email: 'test@example.com',
+      password: 'TestPassword123'
+    });
+    
+    if (loginTest.status === 200 && loginTest.data.token) {
+      console.log('✅ User login: SUCCESS');
+      console.log('   Token received:', loginTest.data.token ? 'Yes' : 'No');
       
-      console.log('\n✅ Integrated Backend Admin Response:');
-      console.log(`Status: ${adminResponse.status}`);
-      console.log('Data:', JSON.stringify(adminData, null, 2));
+      // Test 4: User Profile
+      console.log('\n4️⃣ Testing user profile fetch...');
+      const profileTest = await makeRequest('/api/jobcy/user/me', 'GET', null, {
+        'Authorization': `Bearer ${loginTest.data.token}`
+      });
       
-      if (adminResponse.ok && adminData.token && adminData.user.role === 'admin') {
-        console.log('🎉 INTEGRATED BACKEND ADMIN LOGIN WORKS!');
-        return true;
+      if (profileTest.status === 200) {
+        console.log('✅ User profile: SUCCESS');
+        console.log('   User name:', profileTest.data.name);
       } else {
-        console.log('❌ INTEGRATED BACKEND ADMIN LOGIN FAILED!');
-        return false;
+        console.log('❌ User profile: FAILED');
       }
     } else {
-      console.log('❌ INTEGRATED BACKEND LOGIN FAILED!');
-      return false;
+      console.log('❌ User login: FAILED');
+      console.log('   Error:', loginTest.data.error);
     }
-  } catch (error) {
-    console.log('❌ Integrated backend test failed:', error.message);
-    return false;
-  }
-}
 
-async function testGitHubOAuth() {
-  console.log('\n🐙 Testing GitHub OAuth Integration...\n');
-  
-  const baseUrl = 'http://localhost:3001';
-  
-  try {
-    // Test GitHub OAuth endpoint
-    const githubResponse = await fetch(`${baseUrl}/api/jobcy-backend/auth/github`, {
-      method: 'GET',
-    });
-    
-    console.log('✅ GitHub OAuth Response:');
-    console.log(`Status: ${githubResponse.status}`);
-    console.log(`Status Text: ${githubResponse.statusText}`);
-    
-    if (githubResponse.status === 302 || githubResponse.status === 200) {
-      console.log('🎉 GITHUB OAUTH ENDPOINT WORKS!');
-      return true;
+    // Test 5: Jobs API
+    console.log('\n5️⃣ Testing jobs API...');
+    const jobsTest = await makeRequest('/api/jobcy/jobs');
+    if (jobsTest.status === 200) {
+      console.log('✅ Jobs API: SUCCESS');
     } else {
-      console.log('❌ GITHUB OAUTH ENDPOINT FAILED!');
-      return false;
+      console.log('❌ Jobs API: FAILED');
     }
+
+    console.log('\n🎉 Integration test completed!');
+    console.log('📝 If all tests passed, the dashboard should now show real data instead of mock data.');
+
   } catch (error) {
-    console.log('❌ GitHub OAuth test failed:', error.message);
-    return false;
+    console.log('❌ Test failed:', error.message);
   }
 }
 
-async function main() {
-  console.log('🔍 Testing Complete Jobcy Integration...\n');
-  console.log('=' .repeat(60));
-  
-  const backendWorks = await testIntegratedBackend();
-  const githubWorks = await testGitHubOAuth();
-  
-  console.log('\n' + '=' .repeat(60));
-  console.log('📋 INTEGRATION TEST SUMMARY:');
-  
-  if (backendWorks) {
-    console.log('✅ Integrated Backend: WORKING');
-  } else {
-    console.log('❌ Integrated Backend: FAILED');
-  }
-  
-  if (githubWorks) {
-    console.log('✅ GitHub OAuth: WORKING');
-  } else {
-    console.log('❌ GitHub OAuth: FAILED');
-  }
-  
-  if (backendWorks && githubWorks) {
-    console.log('\n🎉 COMPLETE INTEGRATION SUCCESSFUL!');
-    console.log('✅ Ready for production deployment');
-    console.log('✅ No external dependencies');
-    console.log('✅ Everything runs on your Vercel account');
-    console.log('✅ Authentication working');
-    console.log('✅ GitHub OAuth working');
-    console.log('\n🚀 Next steps:');
-    console.log('1. Add environment variables to Vercel dashboard');
-    console.log('2. Configure GitHub OAuth app');
-    console.log('3. Deploy to production');
-    console.log('4. Test on https://www.ohg365.com/jobcy');
-  } else {
-    console.log('\n❌ Some integration tests failed');
-    console.log('🔧 Check the implementation and try again');
-  }
-}
-
-main().catch(console.error);
+// Wait for server to start, then run tests
+setTimeout(testCompleteIntegration, 3000);
