@@ -96,7 +96,8 @@ export async function GET(_request: NextRequest) {
     
     // Log each job for debugging
     jobsWithApplications.forEach((job, index) => {
-      console.log(`Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status} - Applications: ${job.applications} - postedBy: ${job.postedBy}`);
+      const jobData = job as Record<string, unknown>;
+      console.log(`Job ${index + 1}: ${jobData.title} - Company: ${jobData.company} - Status: ${jobData.status} - Applications: ${job.applications} - postedBy: ${jobData.postedBy}`);
     });
     
     // Return jobs array with application counts
