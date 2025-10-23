@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(// __request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
     const { name, email, password, company } = body;
@@ -16,11 +16,11 @@ export async function POST(// __request: NextRequest) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    // let decoded: { id: string; role: string; [key: string]: unknown };
+    let decoded: { id: string; role: string; [key: string]: unknown };
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -82,7 +82,7 @@ export async function POST(// __request: NextRequest) {
         createdDate: newUser.createdAt
       }
     }, { status: 201 });
-  } catch {
+  } catch (error) {
     console.error('Create HR error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

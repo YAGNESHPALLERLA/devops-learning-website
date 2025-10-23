@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(// __request: NextRequest, { params }: { params: Promise<{ requestId: string }> }) {
+export async function POST(_request: NextRequest, { params }: { params: Promise<{ requestId: string }> }) {
   try {
     const resolvedParams = await params;
     const { requestId } = resolvedParams;
@@ -20,7 +20,7 @@ export async function POST(// __request: NextRequest, { params }: { params: Prom
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -52,7 +52,7 @@ export async function POST(// __request: NextRequest, { params }: { params: Prom
     return NextResponse.json({
       message: 'Connection request accepted successfully'
     });
-  } catch {
+  } catch (error) {
     console.error('Accept connection error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

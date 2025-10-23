@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function DELETE(// __request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
@@ -16,11 +16,11 @@ export async function DELETE(// __request: NextRequest, { params }: { params: Pr
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    // let decoded: { id: string; role: string; [key: string]: unknown };
+    let decoded: { id: string; role: string; [key: string]: unknown };
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -42,7 +42,7 @@ export async function DELETE(// __request: NextRequest, { params }: { params: Pr
     return NextResponse.json({
       message: 'HR user deleted successfully'
     });
-  } catch {
+  } catch (error) {
     console.error('Delete HR error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

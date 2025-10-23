@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// __request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     console.log('HR jobs request');
     
@@ -18,7 +18,7 @@ export async function GET(// __request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -34,13 +34,13 @@ export async function GET(// __request: NextRequest) {
     
     // Return jobs array directly (not wrapped in object)
     return NextResponse.json(jobs);
-  } catch {
+  } catch (error) {
     console.error('HR jobs error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function POST(// __request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
     console.log('Create job request:', body);
@@ -58,7 +58,7 @@ export async function POST(// __request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -85,7 +85,7 @@ export async function POST(// __request: NextRequest) {
         ...newJob
       }
     }, { status: 201 });
-  } catch {
+  } catch (error) {
     console.error('Create job error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

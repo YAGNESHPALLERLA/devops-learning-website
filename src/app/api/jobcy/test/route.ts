@@ -7,7 +7,7 @@ export async function GET() {
   });
 }
 
-export async function POST(// __request: NextRequest) {
+export async function POST(_request: NextRequest) {
   const body = await _request.json();
   return NextResponse.json({ 
     message: 'Jobcy API test POST working',

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// __request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     console.log('Received connections request');
     
@@ -18,7 +18,7 @@ export async function GET(// __request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -34,7 +34,7 @@ export async function GET(// __request: NextRequest) {
     console.log('Found received connections:', connections.length);
     
     return NextResponse.json({ connections });
-  } catch {
+  } catch (error) {
     console.error('Received connections error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

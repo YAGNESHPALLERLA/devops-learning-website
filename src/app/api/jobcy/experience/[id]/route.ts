@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
@@ -21,7 +21,7 @@ export async function PUT(// __request: NextRequest, { params }: { params: Promi
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -74,13 +74,13 @@ export async function PUT(// __request: NextRequest, { params }: { params: Promi
       message: 'Experience updated successfully',
       experience: updatedExperience
     });
-  } catch {
+  } catch (error) {
     console.error('Update experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function DELETE(// __request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
@@ -99,7 +99,7 @@ export async function DELETE(// __request: NextRequest, { params }: { params: Pr
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -145,7 +145,7 @@ export async function DELETE(// __request: NextRequest, { params }: { params: Pr
     return NextResponse.json({
       message: 'Experience deleted successfully'
     });
-  } catch {
+  } catch (error) {
     console.error('Delete experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

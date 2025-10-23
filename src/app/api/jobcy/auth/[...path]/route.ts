@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function GET(_request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
@@ -37,14 +37,14 @@ export async function GET(// __request: NextRequest, { params }: { params: Promi
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
     });
-  } catch {
+  } catch (error) {
     console.error('Auth GET proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }
 }
 
-export async function POST(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function POST(_request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const body = await _request.json();
     const resolvedParams = await params;
@@ -77,14 +77,14 @@ export async function POST(// __request: NextRequest, { params }: { params: Prom
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
     });
-  } catch {
+  } catch (error) {
     console.error('Auth POST proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }
 }
 
-export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function PUT(_request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const body = await _request.json();
     const resolvedParams = await params;
@@ -116,14 +116,14 @@ export async function PUT(// __request: NextRequest, { params }: { params: Promi
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
     });
-  } catch {
+  } catch (error) {
     console.error('Auth PUT proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }
 }
 
-export async function DELETE(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
@@ -153,7 +153,7 @@ export async function DELETE(// __request: NextRequest, { params }: { params: Pr
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       }
     });
-  } catch {
+  } catch (error) {
     console.error('Auth DELETE proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });

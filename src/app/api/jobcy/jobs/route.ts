@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// __request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     console.log('Jobs request');
     
@@ -14,13 +14,13 @@ export async function GET(// __request: NextRequest) {
     console.log('Found jobs:', jobs.length);
     
     return NextResponse.json({ jobs });
-  } catch {
+  } catch (error) {
     console.error('Jobs error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function POST(// __request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
     console.log('Create job request:', body);
@@ -46,7 +46,7 @@ export async function POST(// __request: NextRequest) {
         ...newJob
       }
     }, { status: 201 });
-  } catch {
+  } catch (error) {
     console.error('Create job error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

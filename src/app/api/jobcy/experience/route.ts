@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// __request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     console.log('Experience request');
     
@@ -18,7 +18,7 @@ export async function GET(// __request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -39,13 +39,13 @@ export async function GET(// __request: NextRequest) {
     console.log('Found experience from user profile:', experience.length);
     
     return NextResponse.json(experience);
-  } catch {
+  } catch (error) {
     console.error('Experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function POST(// __request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
     console.log('Create experience request:', body);
@@ -63,7 +63,7 @@ export async function POST(// __request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
+    } catch (error) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -98,7 +98,7 @@ export async function POST(// __request: NextRequest) {
       message: 'Experience created successfully',
       experience: newExperience
     }, { status: 201 });
-  } catch {
+  } catch (error) {
     console.error('Create experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
