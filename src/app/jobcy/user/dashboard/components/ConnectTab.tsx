@@ -405,24 +405,37 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   };
 
   const handleMessage = async (connection: Connection | ActualConnection) => {
+    console.log('handleMessage called with:', connection);
+    
     // Check if this user is in actual connections
     const isConnected = Array.isArray(actualConnections) ? actualConnections.some(conn => conn && conn.id && conn.id.toString() === connection.id.toString()) : false;
+    console.log('Is connected:', isConnected);
+    console.log('Actual connections:', actualConnections);
     
     if (isConnected) {
       try {
+        console.log('Attempting to get or create chat with user:', connection.id);
         // Get or create chat with this user
         const chat = await getOrCreateChat(connection.id.toString());
+        console.log('Chat result:', chat);
+        
         if (chat) {
+          console.log('Setting selected connection and current chat');
           setSelectedConnection(connection as Connection);
           setCurrentChat(chat);
           joinChat(chat.id);
           await fetchMessages(chat.id);
+          console.log('Chat setup complete');
+        } else {
+          console.error('Failed to create chat - chat is null');
+          alert("Failed to create chat");
         }
       } catch (error) {
         console.error("Error opening chat:", error);
-        alert("Failed to open chat");
+        alert("Failed to open chat: " + (error instanceof Error ? error.message : 'Unknown error'));
       }
     } else {
+      console.log('User not connected, cannot message');
       alert("You can only message accepted connections");
     }
   };

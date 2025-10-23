@@ -50,7 +50,26 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     
     console.log('Chat found/created:', chat._id);
     
-    return NextResponse.json({ chat });
+    // Get participant details
+    const { toObjectId } = await import('@/lib/mongodb');
+    const user1 = await db.collection('users').findOne({ _id: toObjectId(chat.userId1) });
+    const user2 = await db.collection('users').findOne({ _id: toObjectId(chat.userId2) });
+    
+    const participants = [
+      { _id: user1?._id, id: user1?._id, name: user1?.name, email: user1?.email },
+      { _id: user2?._id, id: user2?._id, name: user2?.name, email: user2?.email }
+    ];
+    
+    console.log('Chat participants:', participants);
+    
+    return NextResponse.json({ 
+      chat: {
+        id: chat._id,
+        participants,
+        lastMessage: null,
+        lastMessageTime: null
+      }
+    });
   } catch (error) {
     console.error('Chat with user error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
