@@ -25,31 +25,86 @@ export async function GET(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Get HR user details to find their company
+    // Get HR user details
     const { toObjectId } = await import('@/lib/mongodb');
     const hrUser = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     if (!hrUser) {
       return NextResponse.json({ error: 'HR user not found' }, { status: 404 });
     }
     
-    // Get company ID from HR user
-    const companyId = hrUser.company || hrUser.companyId;
-    if (!companyId) {
-      return NextResponse.json({ error: 'HR user has no associated company' }, { status: 400 });
+    // Get jobs posted by this HR user (handle both ObjectId and string formats)
+    const { ObjectId } = await import('mongodb');
+    const hrObjectId = new ObjectId(decoded.id);
+    
+    // Query for both ObjectId and string formats
+    const objectIdJobs = await db.collection('jobs').find({ postedBy: hrObjectId }).toArray();
+    const stringJobs = await db.collection('jobs').find({ postedBy: decoded.id }).toArray();
+    
+    console.log('HR Applications - Found jobs with ObjectId postedBy:', objectIdJobs.length);
+    console.log('HR Applications - Found jobs with string postedBy:', stringJobs.length);
+    
+    // Combine both results and remove duplicates
+    const allJobs = [...objectIdJobs, ...stringJobs];
+    const uniqueJobs = allJobs.filter((job, index, self) => 
+      index === self.findIndex(j => j._id.toString() === job._id.toString())
+    );
+    
+    console.log('HR Applications - Total unique jobs found:', uniqueJobs.length);
+    
+    // Get job IDs for applications query
+    const jobIds = uniqueJobs.map(job => job._id);
+    
+    if (jobIds.length === 0) {
+      return NextResponse.json({ applications: [] });
     }
     
-    // Get applications for jobs posted by this company
-    const applications = await db.collection('applications').find({}).toArray();
+    // Get applications for jobs posted by this HR
+    const applications = await db.collection('applications').find({ 
+      jobId: { $in: jobIds } 
+    }).toArray();
     
-    // Filter applications for jobs posted by this company
-    const companyApplications = await Promise.all(
+    console.log('HR Applications - Found applications:', applications.length);
+    
+    // Populate applications with job and user details
+    const populatedApplications = await Promise.all(
       applications.map(async (app) => {
-        const job = await db.collection('jobs').findOne({ _id: app.jobId });
-        if (!job || job.companyId !== companyId) {
-          return null;
+        const job = uniqueJobs.find(j => j._id.toString() === app.jobId.toString());
+        
+        // Try to find user with both ObjectId and string formats
+        let user = null;
+        
+        // First try with the userId as-is (could be ObjectId or string)
+        try {
+          user = await db.collection('users').findOne({ _id: app.userId });
+        } catch (error) {
+          console.log('Error finding user with original ID, trying ObjectId conversion:', app.userId);
         }
         
-        const user = await db.collection('users').findOne({ _id: app.userId });
+        // If not found, try converting to ObjectId
+        if (!user) {
+          try {
+            const { ObjectId } = await import('mongodb');
+            const userObjectId = new ObjectId(app.userId);
+            user = await db.collection('users').findOne({ _id: userObjectId });
+          } catch (objectIdError) {
+            console.log('Error converting to ObjectId, trying string format:', app.userId);
+          }
+        }
+        
+        // If still not found, try as string
+        if (!user) {
+          try {
+            user = await db.collection('users').findOne({ _id: app.userId.toString() });
+          } catch (stringError) {
+            console.log('Error finding user with string ID:', app.userId);
+          }
+        }
+        
+        console.log('Application user lookup:', { 
+          userId: app.userId, 
+          foundUser: !!user, 
+          userName: user?.name 
+        });
         
         return {
           _id: app._id,
@@ -60,7 +115,7 @@ export async function GET(_request: NextRequest) {
           appliedAt: app.appliedAt,
           createdAt: app.createdAt,
           updatedAt: app.updatedAt,
-          job: {
+          job: job ? {
             _id: job._id,
             title: job.title,
             company: job.company,
@@ -68,23 +123,35 @@ export async function GET(_request: NextRequest) {
             salary: job.salary,
             type: job.type,
             description: job.description
-          },
+          } : null,
           user: user ? {
             _id: user._id,
             name: user.name,
             email: user.email,
-            phone: user.phone
-          } : null
+            phone: user.phone,
+            mobile: user.mobile,
+            currentLocation: user.currentLocation,
+            skills: user.skills,
+            resume: user.resume
+          } : {
+            _id: app.userId,
+            name: 'Unknown User',
+            email: '',
+            phone: '',
+            mobile: '',
+            currentLocation: '',
+            skills: [],
+            resume: null
+          }
         };
       })
     );
     
-    // Filter out null applications
-    const filteredApplications = companyApplications.filter(app => app !== null);
+    console.log('HR Applications - Populated applications:', populatedApplications.length);
     
-    console.log('Found company applications:', filteredApplications.length);
+    console.log('HR Applications - Final populated applications:', populatedApplications.length);
     
-    return NextResponse.json({ applications: filteredApplications });
+    return NextResponse.json(populatedApplications);
   } catch (error) {
     console.error('HR applications error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

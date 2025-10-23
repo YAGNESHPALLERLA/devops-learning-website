@@ -302,7 +302,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                   className="p-2.5 text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-110"
                   title="View Applications"
                   onClick={() => {
-                    window.location.href = `/hr/application-management?job=${encodeURIComponent(safeRender(job._id || job.id))}`;
+                    window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(safeRender(job._id || job.id))}`;
                   }}
                 >
                   <Eye className="w-4 h-4" />
