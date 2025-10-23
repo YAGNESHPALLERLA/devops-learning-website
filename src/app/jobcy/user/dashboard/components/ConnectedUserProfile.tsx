@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { usePersistedState } from '../hooks/usePersistedState';
 import { X, MessageCircle, MapPin, Briefcase, GraduationCap, Star, Calendar, Mail, Users } from 'lucide-react';
 
 interface ConnectedUser {
@@ -27,7 +28,8 @@ interface ConnectedUserProfileProps {
 }
 
 export default function ConnectedUserProfile({ user, isDark, onClose, onMessage }: ConnectedUserProfileProps) {
-  const [activeTab, setActiveTab] = useState<'overview' | 'experience' | 'education' | 'skills'>('overview');
+  const [activeTab, setActiveTab] = usePersistedState<'overview' | 'experience' | 'education' | 'skills'>('connectedUserProfileTab', 'overview');
+
 
   const getGradientColors = (name: string) => {
     const colors = [

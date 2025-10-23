@@ -5,6 +5,7 @@ import { Search, Users, MessageCircle, Send, X, Sparkles, UserCheck, Clock, Chec
 import ConnectionCard from "./ConnectionCard";
 import ConnectedUserProfile from "./ConnectedUserProfile";
 import { useChat } from "../hooks/useChat";
+import { usePersistedState } from "../hooks/usePersistedState";
 
 // ✅ Import the same Connection type we defined for ConnectionCard
 // (You can also move this interface to a shared `types.ts` file)
@@ -68,12 +69,12 @@ interface ConnectTabProps {
 
 export default function ConnectTab({ connections, isDark = false }: ConnectTabProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedConnection, setSelectedConnection] = useState<Connection | null>(null);
+  const [selectedConnection, setSelectedConnection] = usePersistedState<Connection | null>('selectedConnection', null);
   const [connectionsState, setConnectionsState] = useState<Connection[]>(connections);
   const [pendingRequests, setPendingRequests] = useState<ConnectionRequest[]>([]);
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
   const [actualConnections, setActualConnections] = useState<ActualConnection[]>([]);
-  const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'connections'>('discover');
+  const [activeTab, setActiveTab] = usePersistedState<'discover' | 'requests' | 'connections'>('connectTabActiveTab', 'discover');
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [selectedConnectedUser, setSelectedConnectedUser] = useState<Connection | null>(null);
   
@@ -152,6 +153,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     stopTyping,
     setCurrentChat
   } = useChat();
+
 
   // Sync with prop changes
   React.useEffect(() => {

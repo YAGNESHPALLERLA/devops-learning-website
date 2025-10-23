@@ -25,14 +25,16 @@ import ProfileEditModal from "../../user/dashboard/components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
 
 import { UserProfile } from "../../types/dashboard";
+import { usePersistedState } from "./hooks/usePersistedState";
 
 export default function JobSeekerDashboard() {
-  const [activeTab, setActiveTab] = useState("profile");
+  const [activeTab, setActiveTab] = usePersistedState('dashboardActiveTab', 'profile');
   const [isDark, setIsDark] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [profileModalSection, setProfileModalSection] = useState<string>("personal");
+  const [profileModalSection, setProfileModalSection] = usePersistedState('profileModalSection', 'personal');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+
 
   // Check if user has correct role
   useEffect(() => {

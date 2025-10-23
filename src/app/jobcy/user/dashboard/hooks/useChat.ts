@@ -29,10 +29,31 @@ export function useChat() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [chats, setChats] = useState<Chat[]>([]);
-  const [currentChat, setCurrentChat] = useState<Chat | null>(null);
+  const [currentChat, setCurrentChat] = useState<Chat | null>(() => {
+    // Try to restore chat state from localStorage
+    if (typeof window !== 'undefined') {
+      try {
+        const savedChat = localStorage.getItem('currentChat');
+        return savedChat ? JSON.parse(savedChat) : null;
+      } catch (error) {
+        console.error('Error parsing saved chat:', error);
+        return null;
+      }
+    }
+    return null;
+  });
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Save currentChat to localStorage whenever it changes
+  useEffect(() => {
+    if (currentChat) {
+      localStorage.setItem('currentChat', JSON.stringify(currentChat));
+    } else {
+      localStorage.removeItem('currentChat');
+    }
+  }, [currentChat]);
 
   // Initialize socket connection
   useEffect(() => {
@@ -55,6 +76,14 @@ export function useChat() {
       // No cleanup needed for mock socket
     };
   }, []);
+
+  // Restore chat state and fetch messages on mount if there's a saved chat
+  useEffect(() => {
+    if (currentChat) {
+      console.log('Restoring chat state:', currentChat);
+      fetchMessages(currentChat.id);
+    }
+  }, [currentChat?.id]); // Only run when chat ID changes
 
   // Get all chats for the user
   const fetchChats = useCallback(async () => {
