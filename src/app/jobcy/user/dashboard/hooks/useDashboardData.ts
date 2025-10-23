@@ -213,9 +213,11 @@ export function useDashboardData() {
         `/api/jobcy/user/list`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log('Connections fetch response:', connectionsRes.status, connectionsRes.statusText);
       if (connectionsRes.ok) {
         const usersData = await connectionsRes.json();
         console.log('Users API response:', { isArray: Array.isArray(usersData), type: typeof usersData, length: Array.isArray(usersData) ? usersData.length : 'N/A' });
+        console.log('Sample users data:', usersData.slice(0, 3));
         
         // Handle different response formats
         let usersArray = [];

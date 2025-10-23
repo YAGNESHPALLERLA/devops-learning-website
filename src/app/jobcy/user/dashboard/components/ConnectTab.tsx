@@ -205,7 +205,18 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     // Search filter
     const nameMatch = conn.name?.toLowerCase().includes(searchQuery.toLowerCase());
     const titleMatch = conn.title?.toLowerCase().includes(searchQuery.toLowerCase());
-    return nameMatch || titleMatch;
+    const searchMatch = nameMatch || titleMatch;
+    
+    console.log(`Search filter for ${conn.name}:`, {
+      searchQuery,
+      nameMatch,
+      titleMatch,
+      searchMatch,
+      connName: conn.name,
+      connTitle: conn.title
+    });
+    
+    return searchMatch;
   });
 
   // Use actual connections from backend
