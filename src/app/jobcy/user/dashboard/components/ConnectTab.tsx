@@ -167,6 +167,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   React.useEffect(() => {
     console.log("ConnectTab - actualConnections:", actualConnections);
     console.log("ConnectTab - actualConnections IDs:", Array.isArray(actualConnections) ? actualConnections.map(c => c.id) : []);
+    console.log("ConnectTab - actualConnections names:", Array.isArray(actualConnections) ? actualConnections.map(c => ({ id: c.id, name: c.name, title: c.title })) : []);
   }, [actualConnections]);
 
   // Fetch connection requests and actual connections
@@ -199,7 +200,12 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       });
       if (connectionsRes.ok) {
         const data = await connectionsRes.json();
+        console.log('Connections API response:', data);
         setActualConnections(data);
+      } else {
+        console.error('Connections API failed:', connectionsRes.status, connectionsRes.statusText);
+        const errorData = await connectionsRes.json().catch(() => ({}));
+        console.error('Connections API error data:', errorData);
       }
     } catch (error) {
       console.error("Error fetching connection data:", error);
