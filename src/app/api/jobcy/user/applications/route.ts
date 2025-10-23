@@ -33,7 +33,43 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found applications:', applications.length);
     
-    return NextResponse.json(applications);
+    // Populate applications with job details
+    const populatedApplications = await Promise.all(
+      applications.map(async (app) => {
+        const job = await db.collection('jobs').findOne({ _id: app.jobId });
+        const user = await db.collection('users').findOne({ _id: app.userId });
+        
+        return {
+          _id: app._id,
+          jobId: app.jobId,
+          userId: app.userId,
+          coverLetter: app.coverLetter,
+          status: app.status,
+          appliedAt: app.appliedAt,
+          createdAt: app.createdAt,
+          updatedAt: app.updatedAt,
+          job: job ? {
+            _id: job._id,
+            title: job.title,
+            company: job.company,
+            location: job.location,
+            salary: job.salary,
+            type: job.type,
+            description: job.description
+          } : null,
+          user: user ? {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            phone: user.phone
+          } : null
+        };
+      })
+    );
+    
+    console.log('Populated applications:', populatedApplications.length);
+    
+    return NextResponse.json(populatedApplications);
   } catch (error) {
     console.error('User applications error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

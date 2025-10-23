@@ -52,7 +52,24 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
 
       if (response.ok) {
         const data = await response.json();
-        setAppliedJobs(data);
+        console.log('Applied jobs data:', data);
+        
+        // Transform the data to match our interface
+        const transformedJobs = data.map((app: any) => ({
+          id: app._id || app.id,
+          jobId: app.jobId || app._id,
+          title: app.job?.title || 'Unknown Job',
+          company: app.job?.company || 'Unknown Company',
+          location: app.job?.location || 'Location not specified',
+          salary: app.job?.salary || 'Salary not disclosed',
+          status: app.status || 'Applied',
+          appliedDate: app.appliedAt ? new Date(app.appliedAt).toLocaleDateString() : 'Unknown date',
+          type: app.job?.type || 'Full-time',
+          coverLetter: app.coverLetter || ''
+        }));
+        
+        setAppliedJobs(transformedJobs);
+        setError("");
       } else {
         setError("Failed to fetch applied jobs");
       }
