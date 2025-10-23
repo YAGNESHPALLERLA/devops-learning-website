@@ -143,6 +143,14 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         console.log('HR Jobs API Response:', jobsJson);
         console.log('Jobs Data Type:', typeof jobsJson);
         console.log('Jobs Data Length:', Array.isArray(jobsJson) ? jobsJson.length : 'Not an array');
+        
+        // Log each job received
+        if (Array.isArray(jobsJson)) {
+          jobsJson.forEach((job, index) => {
+            console.log(`Received Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status}`);
+          });
+        }
+        
         setJobsData(jobsJson || []);
       } catch (err: unknown) {
         console.error("Fetch error:", err);
@@ -357,6 +365,8 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     </div>
   );
 
+  console.log('Filtering jobs - jobsData length:', jobsData?.length, 'searchTerm:', searchTerm, 'filterStatus:', filterStatus);
+  
   const filteredJobs = Array.isArray(jobsData) ? jobsData.filter((job) => {
     const lowerSearch = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
@@ -374,6 +384,8 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
     return matchSearch && matchFilter;
   }) : [];
+  
+  console.log('Filtered jobs count:', filteredJobs.length);
 
   if (loading) {
     return (

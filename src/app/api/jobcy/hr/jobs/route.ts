@@ -44,6 +44,11 @@ export async function GET(_request: NextRequest) {
     console.log('Final jobs count:', jobs.length);
     console.log('Jobs data:', jobs);
     
+    // Log each job for debugging
+    jobs.forEach((job, index) => {
+      console.log(`Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status} - postedBy: ${job.postedBy}`);
+    });
+    
     // Return jobs array directly (not wrapped in object)
     return NextResponse.json(jobs);
   } catch (error) {
