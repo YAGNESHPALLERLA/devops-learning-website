@@ -18,6 +18,13 @@ const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
   const [showModal, setShowModal] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
+  // Debug logging
+  console.log('JobsTab received allJobs:', {
+    count: allJobs?.length || 0,
+    isArray: Array.isArray(allJobs),
+    sample: allJobs?.[0] || 'No jobs'
+  });
+
   const handleViewDetails = (job: Job) => {
     setSelectedJob(job);
     setShowModal(true);

@@ -181,28 +181,31 @@ export function useDashboardData() {
           console.warn('Jobs API returned unexpected format:', jobsData);
           jobsArray = [];
         }
-        setAllJobs(
-          jobsArray.map((job: RawJob) => ({
-            id: job.id || job._id || Math.random().toString(),
-            title: job.title || "Untitled Job",
-            company: job.company || "Unknown Company",
-            location: job.location || "Location not specified",
-            salary:
-              typeof job.salary === "number"
-                ? `$${job.salary.toLocaleString()}`
-                : job.salary || "Salary not disclosed",
-            type: job.type || "Full-time",
-            posted: job.posted
-              ? new Date(job.posted).toLocaleDateString()
-              : "Recently posted",
-            applicants: job.applicants || 0,
-            description: job.description || "No description available",
-            hasApplied: job.hasApplied || false,
-            experienceLevel: job.careerLevel || job.experienceLevel, // Map from backend's careerLevel field
-            applicationDeadline: job.applicationDeadline,
-            qualifications: job.qualifications || [],
-          }))
-        );
+        console.log('Processing jobs array:', jobsArray.length, 'jobs');
+        const mappedJobs = jobsArray.map((job: RawJob) => ({
+          id: job.id || job._id || Math.random().toString(),
+          title: job.title || "Untitled Job",
+          company: job.company || "Unknown Company",
+          location: job.location || "Location not specified",
+          salary:
+            typeof job.salary === "number"
+              ? `$${job.salary.toLocaleString()}`
+              : job.salary || "Salary not disclosed",
+          type: job.type || "Full-time",
+          posted: job.postedDate 
+            ? new Date(job.postedDate).toLocaleDateString()
+            : job.createdAt 
+            ? new Date(job.createdAt).toLocaleDateString()
+            : "Recently posted",
+          applicants: job.applicants || 0,
+          description: job.description || "No description available",
+          hasApplied: job.hasApplied || false,
+          experienceLevel: job.careerLevel || job.experienceLevel, // Map from backend's careerLevel field
+          applicationDeadline: job.applicationDeadline,
+          qualifications: job.qualifications || [],
+        }));
+        console.log('Mapped jobs:', mappedJobs.length, 'jobs ready for display');
+        setAllJobs(mappedJobs);
       } else {
         console.error('Jobs fetch failed:', jobsRes.status, jobsRes.statusText);
         setAllJobs([]);
