@@ -61,52 +61,6 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen ${isDark ? "bg-slate-900" : "bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50"}`}>
-      {/* Header */}
-      <header className={`${isDark ? "bg-slate-800/95 backdrop-blur-sm border-slate-700" : "bg-white/95 backdrop-blur-sm border-slate-200"} border-b sticky top-0 z-50 shadow-lg`}>
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-xl animate-pulse">
-                <Briefcase className="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h1 className={`text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Jobcy</h1>
-                <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>Your Career Journey Starts Here</p>
-              </div>
-            </div>
-
-            {/* Theme Toggle & Actions */}
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className={`p-3 rounded-xl transition-all duration-300 ${
-                  isDark ? "bg-slate-700 text-yellow-400 hover:bg-slate-600 hover:scale-105" : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:scale-105"
-                } shadow-md`}
-                title={isDark ? "Light Mode" : "Dark Mode"}
-              >
-                {isDark ? "☀️" : "🌙"}
-              </button>
-
-              <button
-                onClick={handleSignIn}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  isDark ? "bg-slate-700 text-slate-300 hover:bg-slate-600 hover:scale-105" : "bg-slate-100 text-slate-700 hover:bg-slate-200 hover:scale-105"
-                } shadow-md`}
-              >
-                Sign In
-              </button>
-
-              <button
-                onClick={handleSignUp}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              >
-                Get Started
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <main className="relative overflow-hidden">
