@@ -67,13 +67,40 @@ export async function GET(_request: NextRequest) {
     console.log('Final jobs count:', jobs.length);
     console.log('Jobs data:', jobs);
     
+    // Get application counts for each job
+    const jobsWithApplications = await Promise.all(
+      jobs.map(async (job) => {
+        try {
+          // Count applications for this job
+          const applicationCount = await db.collection('applications').countDocuments({ 
+            jobId: job._id 
+          });
+          
+          console.log(`Job "${job.title}" has ${applicationCount} applications`);
+          
+          return {
+            ...job,
+            applications: applicationCount,
+            applicationCount: applicationCount // Alternative field name
+          };
+        } catch (error) {
+          console.error(`Error counting applications for job ${job._id}:`, error);
+          return {
+            ...job,
+            applications: 0,
+            applicationCount: 0
+          };
+        }
+      })
+    );
+    
     // Log each job for debugging
-    jobs.forEach((job, index) => {
-      console.log(`Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status} - postedBy: ${job.postedBy}`);
+    jobsWithApplications.forEach((job, index) => {
+      console.log(`Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status} - Applications: ${job.applications} - postedBy: ${job.postedBy}`);
     });
     
-    // Return jobs array directly (not wrapped in object)
-    return NextResponse.json(jobs);
+    // Return jobs array with application counts
+    return NextResponse.json(jobsWithApplications);
   } catch (error) {
     console.error('HR jobs error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
