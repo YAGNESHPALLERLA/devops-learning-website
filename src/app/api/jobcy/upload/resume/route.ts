@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(// request: NextRequest) {
+export async function POST(// __request: NextRequest) {
   try {
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }

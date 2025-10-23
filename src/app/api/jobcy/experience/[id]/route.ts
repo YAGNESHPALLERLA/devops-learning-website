@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(// request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
-    const body = await request.json();
+    const body = await _request.json();
     console.log('Update experience request:', { id, body });
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }
@@ -80,14 +80,14 @@ export async function PUT(// request: NextRequest, { params }: { params: Promise
   }
 }
 
-export async function DELETE(// request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(// __request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
     console.log('Delete experience request:', { id });
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }

@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(// request: NextRequest, { params }: { params: Promise<{ applicationId: string }> }) {
+export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ applicationId: string }> }) {
   try {
     const resolvedParams = await params;
     const { applicationId } = resolvedParams;
-    const body = await request.json();
+    const body = await _request.json();
     const { status } = body;
     console.log('Update application status:', { applicationId, status });
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }

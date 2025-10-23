@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// request: NextRequest) {
+export async function GET(// __request: NextRequest) {
   try {
     console.log('User profile request');
     
     // Get user ID from JWT token in Authorization header
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     console.log('Auth header:', authHeader ? 'Present' : 'Missing');
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -90,12 +90,12 @@ export async function GET(// request: NextRequest) {
   }
 }
 
-export async function PUT(// request: NextRequest) {
+export async function PUT(// __request: NextRequest) {
   try {
     console.log('User profile update request');
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }
@@ -112,7 +112,7 @@ export async function PUT(// request: NextRequest) {
     }
 
     // Get request body
-    const body = await request.json();
+    const body = await _request.json();
     const { 
       name, 
       mobile, 

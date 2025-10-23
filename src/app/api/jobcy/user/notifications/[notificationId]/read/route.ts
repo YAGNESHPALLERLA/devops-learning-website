@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(// request: NextRequest, { params }: { params: Promise<{ notificationId: string }> }) {
+export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ notificationId: string }> }) {
   try {
     const resolvedParams = await params;
     const { notificationId } = resolvedParams;
     console.log('Mark notification as read:', { notificationId });
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }

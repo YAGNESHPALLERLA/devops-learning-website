@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(// request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function GET(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
@@ -11,7 +11,7 @@ export async function GET(// request: NextRequest, { params }: { params: Promise
     
     const url = new URL(backendUrl);
     // Copy all search params from the original request
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     searchParams.forEach((value, key) => {
       url.searchParams.set(key, value);
     });
@@ -44,9 +44,9 @@ export async function GET(// request: NextRequest, { params }: { params: Promise
   }
 }
 
-export async function POST(// request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function POST(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
     
@@ -84,9 +84,9 @@ export async function POST(// request: NextRequest, { params }: { params: Promis
   }
 }
 
-export async function PUT(// request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function PUT(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');
     
@@ -123,7 +123,7 @@ export async function PUT(// request: NextRequest, { params }: { params: Promise
   }
 }
 
-export async function DELETE(// request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+export async function DELETE(// __request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
     const resolvedParams = await params;
     const path = resolvedParams.path.join('/');

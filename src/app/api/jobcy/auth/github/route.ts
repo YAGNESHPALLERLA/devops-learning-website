@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(// request: NextRequest) {
+export async function GET(// __request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const code = searchParams.get('code');
     const state = searchParams.get('state');
     
@@ -43,9 +43,9 @@ export async function GET(// request: NextRequest) {
   }
 }
 
-export async function POST(// request: NextRequest) {
+export async function POST(// __request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     
     // Forward the request to the Jobcy backend
     const backendUrl = process.env.NODE_ENV === 'development' 

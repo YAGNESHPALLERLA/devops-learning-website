@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
-  // request: NextRequest,
+  // __request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
     const { jobId } = await params;
     console.log('Dynamic route test - jobId:', jobId);
     
-    const body = await request.json();
+    const body = await _request.json();
     console.log('Request body:', body);
     
     return NextResponse.json({
@@ -24,7 +24,7 @@ export async function POST(
 }
 
 export async function GET(
-  // request: NextRequest,
+  // __request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {

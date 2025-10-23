@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(// request: NextRequest, { params }: { params: Promise<{ chatId: string }> }) {
+export async function GET(// __request: NextRequest, { params }: { params: Promise<{ chatId: string }> }) {
   try {
     const resolvedParams = await params;
     const { chatId } = resolvedParams;
     console.log('Chat messages request:', { chatId });
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }

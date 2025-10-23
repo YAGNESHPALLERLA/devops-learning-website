@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(// request: NextRequest) {
+export async function POST(// __request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { name, email, password, role } = body;
     
     console.log('Simple registration request:', { name, email, role });

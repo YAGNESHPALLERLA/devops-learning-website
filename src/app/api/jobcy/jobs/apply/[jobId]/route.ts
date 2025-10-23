@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
 export async function POST(
-  // request: NextRequest,
+  // __request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
@@ -10,7 +10,7 @@ export async function POST(
     console.log('🚀 NEW: Job application request for job:', jobId);
     
     // Get user ID from JWT token
-    const authHeader = request.headers.get('authorization');
+    const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }
@@ -26,7 +26,7 @@ export async function POST(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await _request.json();
     const { coverLetter = '' } = body;
 
     // Connect to database
@@ -76,7 +76,7 @@ export async function POST(
 }
 
 export async function GET(
-  // request: NextRequest,
+  // __request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
