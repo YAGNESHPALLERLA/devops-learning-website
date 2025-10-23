@@ -131,7 +131,13 @@ export async function PUT(_request: NextRequest) {
       projects,
       languages,
       experienceList,
-      personalDetails
+      personalDetails,
+      // Individual personal detail fields
+      dob,
+      gender,
+      category,
+      maritalStatus,
+      nationality
     } = body;
 
     // Connect to database
@@ -156,6 +162,13 @@ export async function PUT(_request: NextRequest) {
     if (languages) updateData.languages = languages;
     if (experienceList) updateData.experienceList = experienceList;
     if (personalDetails) updateData.personalDetails = personalDetails;
+    
+    // Handle individual personal detail fields
+    if (dob) updateData.dob = dob;
+    if (gender) updateData.gender = gender;
+    if (category) updateData.category = category;
+    if (maritalStatus) updateData.maritalStatus = maritalStatus;
+    if (nationality) updateData.nationality = nationality;
 
     const result = await db.collection('users').updateOne(
       { _id: toObjectId(decoded.id) },
