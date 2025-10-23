@@ -70,29 +70,17 @@ export async function GET(_request: NextRequest) {
       applications.map(async (app) => {
         const job = uniqueJobs.find(j => j._id.toString() === app.jobId.toString());
         
-        // Try to find user with both ObjectId and string formats
+        // Try to find user with simplified approach
         let user = null;
         
-        // First try with the userId as-is (could be ObjectId or string)
         try {
-          user = await db.collection('users').findOne({ _id: app.userId });
-        } catch (error) {
-          console.log('Error finding user with original ID, trying ObjectId conversion:', app.userId);
-        }
-        
-        // If not found, try converting to ObjectId
-        if (!user) {
-          try {
-            const { ObjectId } = await import('mongodb');
-            const userObjectId = new ObjectId(app.userId);
-            user = await db.collection('users').findOne({ _id: userObjectId });
-          } catch (objectIdError) {
-            console.log('Error converting to ObjectId, trying string format:', app.userId);
-          }
-        }
-        
-        // If still not found, try as string
-        if (!user) {
+          // First try with ObjectId conversion
+          const { ObjectId } = await import('mongodb');
+          const userObjectId = new ObjectId(app.userId);
+          user = await db.collection('users').findOne({ _id: userObjectId });
+        } catch (objectIdError) {
+          console.log('Error converting to ObjectId, trying string format:', app.userId);
+          // If ObjectId conversion fails, try as string
           try {
             user = await db.collection('users').findOne({ _id: app.userId.toString() });
           } catch (stringError) {
@@ -154,6 +142,15 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(populatedApplications);
   } catch (error) {
     console.error('HR applications error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      name: error instanceof Error ? error.name : 'Unknown'
+    });
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    }, { status: 500 });
   }
 }
