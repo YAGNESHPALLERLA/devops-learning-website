@@ -25,12 +25,38 @@ export async function GET(request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Get all applications
+    // Get all applications with populated data
     const applications = await db.collection('applications').find({}).toArray();
     
-    console.log('Found admin applications:', applications.length);
+    // Populate job and user data for each application
+    const populatedApplications = await Promise.all(
+      applications.map(async (app) => {
+        const job = await db.collection('jobs').findOne({ _id: app.jobId });
+        const user = await db.collection('users').findOne({ _id: app.userId });
+        
+        return {
+          _id: app._id,
+          id: app._id,
+          jobId: {
+            _id: job?._id,
+            title: job?.title,
+            company: job?.company
+          },
+          userId: {
+            _id: user?._id,
+            name: user?.name,
+            email: user?.email
+          },
+          status: app.status || 'applied',
+          appliedDate: app.appliedAt || app.createdAt,
+          createdAt: app.createdAt
+        };
+      })
+    );
     
-    return NextResponse.json({ applications });
+    console.log('Found admin applications:', populatedApplications.length);
+    
+    return NextResponse.json(populatedApplications);
   } catch (error) {
     console.error('Admin applications error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

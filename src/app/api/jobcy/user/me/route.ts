@@ -43,27 +43,38 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    // Return user profile data directly
+    // Return user profile data with proper structure
     return NextResponse.json({
       id: user._id,
-      name: user.name,
+      _id: user._id,
+      name: user.name || "",
       email: user.email,
       role: user.role,
-      company: user.company || {},
-      phone: user.phone,
-      location: user.location,
-      salary: user.salary,
+      mobile: user.phone || user.mobile,
+      phone: user.phone || user.mobile,
+      currentLocation: user.location || user.currentLocation,
+      location: user.location || user.currentLocation,
+      professionalRole: user.professionalRole || user.title,
+      title: user.title || user.professionalRole,
       experience: user.experience,
-      about: user.about,
-      skills: user.skills,
-      education: user.education,
-      projects: user.projects,
-      profileViews: user.profileViews,
-      applications: user.applications,
-      profileScore: user.profileScore,
-      resume: user.resume,
+      currentCTC: user.salary || user.currentCTC,
+      salary: user.salary || user.currentCTC,
+      bio: user.about || user.bio,
+      about: user.about || user.bio,
+      skills: user.skills || [],
+      education: user.education || [],
+      projects: user.projects || [],
+      languages: user.languages || [],
+      experienceList: user.experienceList || [],
+      profileCompletion: user.profileCompletion || 0,
+      connections: user.connections || 0,
+      personalDetails: user.personalDetails || [],
+      resume: user.resume || {},
       githubId: user.githubId,
       githubUsername: user.githubUsername,
+      profileViews: user.profileViews || 0,
+      applications: user.applications || [],
+      profileScore: user.profileScore || 0,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     });
@@ -96,7 +107,26 @@ export async function PUT(request: NextRequest) {
 
     // Get request body
     const body = await request.json();
-    const { name, phone, location, about, skills, experience, salary } = body;
+    const { 
+      name, 
+      mobile, 
+      phone, 
+      currentLocation, 
+      location, 
+      professionalRole, 
+      title, 
+      bio, 
+      about, 
+      skills, 
+      experience, 
+      currentCTC, 
+      salary,
+      education,
+      projects,
+      languages,
+      experienceList,
+      personalDetails
+    } = body;
 
     // Connect to database
     const db = await connectDB();
@@ -108,12 +138,18 @@ export async function PUT(request: NextRequest) {
     };
 
     if (name) updateData.name = name;
-    if (phone) updateData.phone = phone;
-    if (location) updateData.location = location;
-    if (about) updateData.about = about;
+    if (mobile || phone) updateData.phone = mobile || phone;
+    if (currentLocation || location) updateData.location = currentLocation || location;
+    if (professionalRole || title) updateData.professionalRole = professionalRole || title;
+    if (bio || about) updateData.about = bio || about;
     if (skills) updateData.skills = skills;
     if (experience) updateData.experience = experience;
-    if (salary) updateData.salary = salary;
+    if (currentCTC || salary) updateData.salary = currentCTC || salary;
+    if (education) updateData.education = education;
+    if (projects) updateData.projects = projects;
+    if (languages) updateData.languages = languages;
+    if (experienceList) updateData.experienceList = experienceList;
+    if (personalDetails) updateData.personalDetails = personalDetails;
 
     const result = await db.collection('users').updateOne(
       { _id: toObjectId(decoded.id) },
@@ -135,24 +171,35 @@ export async function PUT(request: NextRequest) {
     
     return NextResponse.json({
       id: updatedUser._id,
-      name: updatedUser.name,
+      _id: updatedUser._id,
+      name: updatedUser.name || "",
       email: updatedUser.email,
       role: updatedUser.role,
-      company: updatedUser.company || {},
-      phone: updatedUser.phone,
-      location: updatedUser.location,
-      salary: updatedUser.salary,
+      mobile: updatedUser.phone || updatedUser.mobile,
+      phone: updatedUser.phone || updatedUser.mobile,
+      currentLocation: updatedUser.location || updatedUser.currentLocation,
+      location: updatedUser.location || updatedUser.currentLocation,
+      professionalRole: updatedUser.professionalRole || updatedUser.title,
+      title: updatedUser.title || updatedUser.professionalRole,
       experience: updatedUser.experience,
-      about: updatedUser.about,
-      skills: updatedUser.skills,
-      education: updatedUser.education,
-      projects: updatedUser.projects,
-      profileViews: updatedUser.profileViews,
-      applications: updatedUser.applications,
-      profileScore: updatedUser.profileScore,
-      resume: updatedUser.resume,
+      currentCTC: updatedUser.salary || updatedUser.currentCTC,
+      salary: updatedUser.salary || updatedUser.currentCTC,
+      bio: updatedUser.about || updatedUser.bio,
+      about: updatedUser.about || updatedUser.bio,
+      skills: updatedUser.skills || [],
+      education: updatedUser.education || [],
+      projects: updatedUser.projects || [],
+      languages: updatedUser.languages || [],
+      experienceList: updatedUser.experienceList || [],
+      profileCompletion: updatedUser.profileCompletion || 0,
+      connections: updatedUser.connections || 0,
+      personalDetails: updatedUser.personalDetails || [],
+      resume: updatedUser.resume || {},
       githubId: updatedUser.githubId,
       githubUsername: updatedUser.githubUsername,
+      profileViews: updatedUser.profileViews || 0,
+      applications: updatedUser.applications || [],
+      profileScore: updatedUser.profileScore || 0,
       createdAt: updatedUser.createdAt,
       updatedAt: updatedUser.updatedAt
     });

@@ -37,11 +37,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/jobcy/:path*',
-        destination: '/api/jobcy-backend/:path*',
+        destination: '/api/jobcy/:path*',
       },
       {
         source: '/jobcy/api/:path*',
-        destination: '/api/jobcy-backend/:path*',
+        destination: '/api/jobcy/:path*',
       },
     ];
   },

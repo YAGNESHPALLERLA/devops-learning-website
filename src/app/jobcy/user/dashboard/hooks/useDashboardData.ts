@@ -161,7 +161,7 @@ export function useDashboardData() {
 
       // Fetch jobs
       const jobsRes = await fetch(
-        `${"/api/jobcy"}/jobs/browse`,
+        `/api/jobcy/jobs/browse`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -184,8 +184,8 @@ export function useDashboardData() {
         setAllJobs(
           jobsArray.map((job: RawJob) => ({
             id: job.id || job._id || Math.random().toString(),
-            title: job.title,
-            company: job.company,
+            title: job.title || "Untitled Job",
+            company: job.company || "Unknown Company",
             location: job.location || "Location not specified",
             salary:
               typeof job.salary === "number"
@@ -200,14 +200,17 @@ export function useDashboardData() {
             hasApplied: job.hasApplied || false,
             experienceLevel: job.careerLevel || job.experienceLevel, // Map from backend's careerLevel field
             applicationDeadline: job.applicationDeadline,
-            qualifications: job.qualifications,
+            qualifications: job.qualifications || [],
           }))
         );
+      } else {
+        console.error('Jobs fetch failed:', jobsRes.status, jobsRes.statusText);
+        setAllJobs([]);
       }
 
       // Fetch connections
       const connectionsRes = await fetch(
-        `${"/api/jobcy"}/user/list`,
+        `/api/jobcy/user/list`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (connectionsRes.ok) {
@@ -238,11 +241,14 @@ export function useDashboardData() {
             connected: false,
           }))
         );
+      } else {
+        console.error('Connections fetch failed:', connectionsRes.status, connectionsRes.statusText);
+        setConnections([]);
       }
 
       // Fetch connected users for chat
       const connectedRes = await fetch(
-        `${"/api/jobcy"}/connections/connections`,
+        `/api/jobcy/connections/connections`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (connectedRes.ok) {
@@ -266,11 +272,13 @@ export function useDashboardData() {
           const newConnections = connectedUsers.filter((c: Connection) => !existingIds.has(c.id));
           return [...prevConnections, ...newConnections];
         });
+      } else {
+        console.error('Connected users fetch failed:', connectedRes.status, connectedRes.statusText);
       }
 
       // Fetch applied jobs
       const appliedJobsRes = await fetch(
-        `${"/api/jobcy"}/user/applications`,
+        `/api/jobcy/user/applications`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (appliedJobsRes.ok) {
@@ -289,11 +297,14 @@ export function useDashboardData() {
           appliedArray = [];
         }
         setAppliedJobs(appliedArray);
+      } else {
+        console.error('Applied jobs fetch failed:', appliedJobsRes.status, appliedJobsRes.statusText);
+        setAppliedJobs([]);
       }
 
       // Fetch interviews
       const interviewsRes = await fetch(
-        `${"/api/jobcy"}/user/interviews`,
+        `/api/jobcy/user/interviews`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (interviewsRes.ok) {
@@ -324,6 +335,9 @@ export function useDashboardData() {
             interviewer: int.interviewer || "Not assigned",
           }))
         );
+      } else {
+        console.error('Interviews fetch failed:', interviewsRes.status, interviewsRes.statusText);
+        setInterviews([]);
       }
     } catch (error) {
       console.error("❌ Dashboard fetch error:", error);
