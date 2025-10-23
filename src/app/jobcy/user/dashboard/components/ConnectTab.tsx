@@ -112,8 +112,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           email: u.email
         }));
         
-        setConnectionsState(searchResults);
-        console.log('Search results set:', searchResults.length);
+        // Filter out any invalid search results
+        const validSearchResults = searchResults.filter((conn: Connection) => conn && conn.id);
+        setConnectionsState(validSearchResults);
+        console.log('Search results set:', validSearchResults.length);
       } else {
         console.error('Search failed:', response.status, response.statusText);
       }
@@ -154,7 +156,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   // Sync with prop changes
   React.useEffect(() => {
     console.log("ConnectTab useEffect - connections prop:", connections);
-    setConnectionsState(connections);
+    // Filter out any invalid connections before setting state
+    const validConnections = Array.isArray(connections) ? connections.filter(conn => conn && conn.id) : [];
+    console.log("ConnectTab useEffect - valid connections:", validConnections.length);
+    setConnectionsState(validConnections);
   }, [connections]);
 
   // Debug when connectionsState changes
@@ -166,8 +171,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   // Debug actual connections
   React.useEffect(() => {
     console.log("ConnectTab - actualConnections:", actualConnections);
-    console.log("ConnectTab - actualConnections IDs:", Array.isArray(actualConnections) ? actualConnections.map(c => c.id) : []);
-    console.log("ConnectTab - actualConnections names:", Array.isArray(actualConnections) ? actualConnections.map(c => ({ id: c.id, name: c.name, title: c.title })) : []);
+    console.log("ConnectTab - actualConnections IDs:", Array.isArray(actualConnections) ? actualConnections.map(c => c && c.id ? c.id : 'undefined').filter(id => id !== 'undefined') : []);
+    console.log("ConnectTab - actualConnections names:", Array.isArray(actualConnections) ? actualConnections.map(c => c && c.id ? ({ id: c.id, name: c.name, title: c.title }) : null).filter(Boolean) : []);
   }, [actualConnections]);
 
   // Fetch connection requests and actual connections
@@ -256,17 +261,23 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   };
 
   const filteredConnections = connectionsState.filter((conn) => {
+    // Skip if conn is null/undefined or missing required properties
+    if (!conn || !conn.id) {
+      console.log('Skipping invalid connection object:', conn);
+      return false;
+    }
+    
     // Don't show if already connected
     const connected = isUserConnected(conn.id);
     if (connected) {
-      console.log(`✓ Filtering out ${conn.name} (${conn.id}) - already connected`);
+      console.log(`✓ Filtering out ${conn.name || 'Unknown'} (${conn.id}) - already connected`);
       return false;
     }
     
     // Don't show if there's a pending request
     const pending = hasPendingRequest(conn.id);
     if (pending) {
-      console.log(`✓ Filtering out ${conn.name} (${conn.id}) - has pending request`);
+      console.log(`✓ Filtering out ${conn.name || 'Unknown'} (${conn.id}) - has pending request`);
       return false;
     }
     
