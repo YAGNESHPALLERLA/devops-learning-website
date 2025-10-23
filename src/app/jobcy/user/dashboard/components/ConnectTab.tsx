@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Search, Users, MessageCircle, Send, X, Sparkles, UserCheck, Clock, CheckCircle, XCircle, Bell } from "lucide-react";
 import ConnectionCard from "./ConnectionCard";
+import ConnectedUserProfile from "./ConnectedUserProfile";
 import { useChat } from "../hooks/useChat";
 
 // ✅ Import the same Connection type we defined for ConnectionCard
@@ -74,6 +75,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   const [actualConnections, setActualConnections] = useState<ActualConnection[]>([]);
   const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'connections'>('discover');
   const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [selectedConnectedUser, setSelectedConnectedUser] = useState<Connection | null>(null);
   
   // Search users function
   const searchUsers = useCallback(async (query: string) => {
@@ -298,7 +300,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          receiverId: connection.id,
+          toUserId: connection.id,
           message: `Hi ${connection.name}, I would like to connect with you!`
         }),
       });
@@ -307,9 +309,11 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
       if (response.ok) {
         alert(`Connection request sent to ${connection.name}!`);
+        // Remove the user from the discover list since request was sent
+        setConnectionsState(prev => prev.filter(conn => conn.id !== connection.id));
         await fetchConnectionData(); // Refresh connection data
       } else {
-        alert(data.message || "Failed to send connection request");
+        alert(data.error || data.message || "Failed to send connection request");
       }
     } catch (error) {
       console.error("Error sending connection request:", error);
@@ -323,7 +327,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
     try {
       const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/accept`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -355,7 +359,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
     try {
       const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/reject`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -739,7 +743,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         style={{
                           animation: `fadeInUp 0.3s ease-out ${index * 0.05}s both`
                         }}
-                        onClick={() => handleMessage(conn)}
+                        onClick={() => setSelectedConnectedUser(conn)}
                       >
                         <div className="flex items-center gap-4 mb-4">
                           <div className={`w-14 h-14 bg-gradient-to-br ${getGradientColors(conn.name)} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200`}>
@@ -912,6 +916,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           </div>
         )}
       </div>
+
+      {/* Connected User Profile Modal */}
+      {selectedConnectedUser && (
+        <ConnectedUserProfile
+          user={selectedConnectedUser}
+          isDark={isDark}
+          onClose={() => setSelectedConnectedUser(null)}
+          onMessage={(user) => {
+            setSelectedConnectedUser(null);
+            handleMessage(user);
+          }}
+        />
+      )}
     </div>
   );
 }
