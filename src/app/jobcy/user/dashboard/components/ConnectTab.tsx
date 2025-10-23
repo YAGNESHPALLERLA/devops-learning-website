@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Search, Users, MessageCircle, Send, X, Sparkles, UserCheck, Clock, CheckCircle, XCircle, Bell } from "lucide-react";
 import ConnectionCard from "./ConnectionCard";
 import { useChat } from "../hooks/useChat";
@@ -73,6 +73,63 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
   const [actualConnections, setActualConnections] = useState<ActualConnection[]>([]);
   const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'connections'>('discover');
+  const [isSearching, setIsSearching] = useState<boolean>(false);
+  
+  // Search users function
+  const searchUsers = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setConnectionsState(connections);
+      return;
+    }
+    
+    setIsSearching(true);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+      
+      const response = await fetch(`/api/jobcy/user/list?search=${encodeURIComponent(query)}&limit=50`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      if (response.ok) {
+        const usersData = await response.json();
+        console.log('Search API response:', usersData);
+        
+        const searchResults = usersData.map((u: { id?: string; _id?: string; name?: string; title?: string; professionalRole?: string; experience?: string; education?: string; skills?: string[]; status?: string; avatar?: string; bio?: string; location?: string; email?: string }) => ({
+          id: u.id || u._id || Math.random().toString(),
+          name: u.name || "Unknown User",
+          title: u.title || u.professionalRole || "Professional",
+          experience: u.experience || "Not specified",
+          education: u.education || "Not specified",
+          skills: u.skills || [],
+          status: u.status || 'employed',
+          connected: false,
+          avatar: u.avatar || null,
+          bio: u.bio || '',
+          location: u.location || 'Location not specified',
+          email: u.email
+        }));
+        
+        setConnectionsState(searchResults);
+        console.log('Search results set:', searchResults.length);
+      } else {
+        console.error('Search failed:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Search error:', error);
+    } finally {
+      setIsSearching(false);
+    }
+  }, [connections]);
+  
+  // Trigger search when query changes
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      searchUsers(searchQuery);
+    }, 300); // Debounce search by 300ms
+    
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
   
   // Real-time chat functionality
   const {
@@ -202,21 +259,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       return false;
     }
     
-    // Search filter
-    const nameMatch = conn.name?.toLowerCase().includes(searchQuery.toLowerCase());
-    const titleMatch = conn.title?.toLowerCase().includes(searchQuery.toLowerCase());
-    const searchMatch = nameMatch || titleMatch;
+    // If we have a search query, the server-side search already filtered the results
+    // So we just return true for all connections in the state
+    if (searchQuery.trim()) {
+      console.log(`Server-side search result for ${conn.name}:`, {
+        searchQuery,
+        connName: conn.name,
+        connTitle: conn.title
+      });
+      return true;
+    }
     
-    console.log(`Search filter for ${conn.name}:`, {
-      searchQuery,
-      nameMatch,
-      titleMatch,
-      searchMatch,
-      connName: conn.name,
-      connTitle: conn.title
-    });
-    
-    return searchMatch;
+    // If no search query, show all connections
+    return true;
   });
 
   // Use actual connections from backend
@@ -490,7 +545,13 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 className={`flex-1 bg-transparent border-none focus:outline-none text-base ${
                   isDark ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400"
                 }`}
+                disabled={isSearching}
               />
+              {isSearching && (
+                <div className="ml-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                </div>
+              )}
             </div>
           </div>
         )}

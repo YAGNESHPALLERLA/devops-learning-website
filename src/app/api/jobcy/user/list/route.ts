@@ -34,14 +34,22 @@ export async function GET(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Build query
-    const query: Record<string, unknown> = {};
+    // Build query - Only get regular users (not HR, admin, or company)
+    const query: Record<string, unknown> = {
+      role: { $nin: ['hr', 'admin', 'company'] } // Exclude HR, admin, and company users
+    };
     
     if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: 'i' } },
-        { title: { $regex: search, $options: 'i' } },
-        { email: { $regex: search, $options: 'i' } }
+      query.$and = [
+        { role: { $nin: ['hr', 'admin', 'company'] } },
+        {
+          $or: [
+            { name: { $regex: search, $options: 'i' } },
+            { title: { $regex: search, $options: 'i' } },
+            { email: { $regex: search, $options: 'i' } },
+            { professionalRole: { $regex: search, $options: 'i' } }
+          ]
+        }
       ];
     }
     
@@ -67,10 +75,27 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found users:', users.length);
     console.log('Query used:', query);
-    console.log('Sample users:', users.slice(0, 3).map(u => ({ id: u._id, name: u.name, email: u.email })));
+    console.log('Sample users:', users.slice(0, 3).map(u => ({ 
+      id: u._id, 
+      name: u.name, 
+      email: u.email, 
+      role: u.role,
+      professionalRole: u.professionalRole 
+    })));
+    
+    // Additional filtering to ensure we only return proper users
+    const filteredUsers = users.filter(user => 
+      user.role !== 'hr' && 
+      user.role !== 'admin' && 
+      user.role !== 'company' &&
+      user.name && 
+      user.email
+    );
+    
+    console.log('Filtered users after additional checks:', filteredUsers.length);
     
     // Format users for frontend
-    const formattedUsers = users.map(user => ({
+    const formattedUsers = filteredUsers.map(user => ({
       id: user._id,
       name: user.name || 'Unknown User',
       title: user.professionalRole || user.title || 'Professional',
