@@ -96,14 +96,30 @@ export async function GET(_request: NextRequest) {
       }))
     ].sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()).slice(0, 10);
 
-    // Calculate statistics
+    // Calculate statistics with case-insensitive status matching
     const stats = {
       totalJobs: jobs.length,
       totalApplications: applications.length,
-      pendingApplications: applications.filter(app => app.status === 'applied').length,
-      approvedApplications: applications.filter(app => app.status === 'approved').length,
-      rejectedApplications: applications.filter(app => app.status === 'rejected').length
+      pendingApplications: applications.filter(app => 
+        app.status?.toLowerCase() === 'applied' || 
+        app.status?.toLowerCase() === 'under review'
+      ).length,
+      approvedApplications: applications.filter(app => 
+        app.status?.toLowerCase() === 'approved' || 
+        app.status?.toLowerCase() === 'shortlisted'
+      ).length,
+      rejectedApplications: applications.filter(app => 
+        app.status?.toLowerCase() === 'rejected'
+      ).length
     };
+    
+    console.log('Dashboard stats calculation:', {
+      totalJobs: stats.totalJobs,
+      totalApplications: stats.totalApplications,
+      pendingApplications: stats.pendingApplications,
+      approvedApplications: stats.approvedApplications,
+      rejectedApplications: stats.rejectedApplications
+    });
 
     // Return data in the format expected by the frontend
     const dashboardData = {
