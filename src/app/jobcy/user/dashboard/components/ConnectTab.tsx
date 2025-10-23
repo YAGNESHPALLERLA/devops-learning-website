@@ -303,7 +303,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   console.log("ConnectTab - connectedConnections:", connectedConnections);
   console.log("ConnectTab - filteredConnections count:", filteredConnections.length);
   console.log("ConnectTab - connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})):", 
-    Array.isArray(connectionsState) ? connectionsState.map(conn => conn ? ({id: conn.id, name: conn.name, connected: conn.connected}) : null).filter(Boolean) : []);
+    Array.isArray(connectionsState) ? connectionsState.map(conn => conn && conn.id ? ({id: conn.id, name: conn.name, connected: conn.connected}) : null).filter(Boolean) : []);
 
   const handleConnect = async (connection: Connection) => {
     const token = localStorage.getItem("token");
@@ -330,7 +330,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       if (response.ok) {
         alert(`Connection request sent to ${connection.name}!`);
         // Remove the user from the discover list since request was sent
-        setConnectionsState(prev => prev.filter(conn => conn.id !== connection.id));
+        setConnectionsState(prev => prev.filter(conn => conn && conn.id && conn.id !== connection.id));
         await fetchConnectionData(); // Refresh connection data
       } else {
         alert(data.error || data.message || "Failed to send connection request");
@@ -878,7 +878,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                   {Array.isArray(chats) ? chats.map((chat, index) => {
                     // Only show chats with actual connections
                     const isActualConnection = Array.isArray(actualConnections) ? actualConnections.some(conn => 
-                      conn && conn.id && conn.id === chat.otherParticipant.id
+                      conn && conn.id && chat.otherParticipant && conn.id === chat.otherParticipant.id
                     ) : false;
                     
                     if (!isActualConnection) return null;
@@ -887,8 +887,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                       <div
                         key={chat.id}
                         onClick={() => handleMessage({ 
-                          id: chat.otherParticipant.id, 
-                          name: chat.otherParticipant.name, 
+                          id: chat.otherParticipant?.id || '', 
+                          name: chat.otherParticipant?.name || 'Unknown', 
                           connected: true 
                         })}
                         className={`group p-4 rounded-xl cursor-pointer transition-all duration-200 ${
@@ -1091,7 +1091,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
           <>
             {Array.isArray(messages) ? messages.map((msg, index) => {
               const currentUserId = getCurrentUserId();
-              const isOwnMessage = msg.sender.id === currentUserId || msg.sender._id === currentUserId;
+              const isOwnMessage = (msg.sender && msg.sender.id === currentUserId) || (msg.sender && msg.sender._id === currentUserId);
               return (
                 <div 
                   key={msg.id} 
