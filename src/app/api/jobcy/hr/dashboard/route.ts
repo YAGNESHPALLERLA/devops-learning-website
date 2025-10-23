@@ -52,8 +52,25 @@ export async function GET(_request: NextRequest) {
       company = { name: hrUser.companyEmail || 'Unknown Company' };
     }
     
-    // Get jobs posted by this HR
-    const jobs = await db.collection('jobs').find({ postedBy: toObjectId(decoded.id) }).toArray();
+    // Get jobs posted by this HR - handle both ObjectId and string formats
+    const { ObjectId } = await import('mongodb');
+    const hrObjectId = new ObjectId(decoded.id);
+    
+    // Query for both ObjectId and string formats
+    const objectIdJobs = await db.collection('jobs').find({ postedBy: hrObjectId }).toArray();
+    const stringJobs = await db.collection('jobs').find({ postedBy: decoded.id }).toArray();
+    
+    console.log('Dashboard - Found jobs with ObjectId postedBy:', objectIdJobs.length);
+    console.log('Dashboard - Found jobs with string postedBy:', stringJobs.length);
+    
+    // Combine both results and remove duplicates
+    const allJobs = [...objectIdJobs, ...stringJobs];
+    const uniqueJobs = allJobs.filter((job, index, self) => 
+      index === self.findIndex(j => j._id.toString() === job._id.toString())
+    );
+    
+    const jobs = uniqueJobs;
+    console.log('Dashboard - Total unique jobs found:', jobs.length);
     
     // Get applications for jobs posted by this HR
     const jobIds = jobs.map(job => job._id);
