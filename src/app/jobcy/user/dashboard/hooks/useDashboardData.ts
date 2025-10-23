@@ -423,8 +423,12 @@ export function useDashboardData() {
         }
       } else {
         const errorData = await response.json();
-        console.error("Job application failed:", errorData);
-        alert(`Application failed: ${errorData.message || 'Unknown error'}`);
+        console.error("Job application failed:", {
+          status: response.status,
+          statusText: response.statusText,
+          errorData: errorData
+        });
+        alert(`Application failed: ${errorData.error || errorData.message || `HTTP ${response.status}: ${response.statusText}`}`);
       }
     } catch (error) {
       console.error("Error applying for job:", error);

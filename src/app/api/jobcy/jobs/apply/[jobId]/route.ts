@@ -34,9 +34,22 @@ export async function POST(
     
     // Check if job exists
     const { toObjectId } = await import('@/lib/mongodb');
-    const job = await db.collection('jobs').findOne({ _id: toObjectId(jobId) });
+    let job;
+    try {
+      job = await db.collection('jobs').findOne({ _id: toObjectId(jobId) });
+    } catch (dbError) {
+      console.error('Database error finding job:', dbError);
+      return NextResponse.json({ 
+        error: 'Database error', 
+        message: 'Failed to find job in database' 
+      }, { status: 500 });
+    }
+    
     if (!job) {
-      return NextResponse.json({ error: 'Job not found' }, { status: 404 });
+      return NextResponse.json({ 
+        error: 'Job not found', 
+        message: `Job with ID ${jobId} does not exist` 
+      }, { status: 404 });
     }
 
     // Check if user already applied
@@ -60,7 +73,16 @@ export async function POST(
       updatedAt: new Date()
     };
 
-    const result = await db.collection('applications').insertOne(application);
+    let result;
+    try {
+      result = await db.collection('applications').insertOne(application);
+    } catch (insertError) {
+      console.error('Database error creating application:', insertError);
+      return NextResponse.json({ 
+        error: 'Database error', 
+        message: 'Failed to create application in database' 
+      }, { status: 500 });
+    }
     
     console.log('🚀 NEW: Application created:', result.insertedId);
     
@@ -71,7 +93,12 @@ export async function POST(
     });
   } catch (error) {
     console.error('🚀 NEW: Job application error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return NextResponse.json({ 
+      error: 'Internal server error', 
+      message: errorMessage,
+      details: error instanceof Error ? error.stack : undefined
+    }, { status: 500 });
   }
 }
 
