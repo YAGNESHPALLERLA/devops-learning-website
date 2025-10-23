@@ -55,7 +55,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         console.log('Applied jobs data:', data);
         
         // Transform the data to match our interface
-        const transformedJobs = data.map((app: any) => ({
+        const transformedJobs = data.map((app: { _id?: string; id?: string; jobId?: string; job?: { title?: string; company?: string; location?: string; salary?: string; type?: string }; status?: string; appliedAt?: string; coverLetter?: string }) => ({
           id: app._id || app.id,
           jobId: app.jobId || app._id,
           title: app.job?.title || 'Unknown Job',

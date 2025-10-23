@@ -18,7 +18,7 @@ export async function GET(_request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -26,7 +26,8 @@ export async function GET(_request: NextRequest) {
     const db = await connectDB();
     
     // Get HR user details to find their company
-    const hrUser = await db.collection('users').findOne({ _id: decoded.id });
+    const { toObjectId } = await import('@/lib/mongodb');
+    const hrUser = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     if (!hrUser) {
       return NextResponse.json({ error: 'HR user not found' }, { status: 404 });
     }

@@ -22,6 +22,8 @@ interface RawJob {
   salary?: number | string;
   type?: string;
   posted?: string;
+  postedDate?: string;
+  createdAt?: string;
   applicants?: number;
   description?: string;
   hasApplied?: boolean;
