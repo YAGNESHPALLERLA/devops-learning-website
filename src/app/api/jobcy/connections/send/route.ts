@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   try {
     const body = await request.json();
     const { toUserId } = body;
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         ...newConnection
       }
     }, { status: 201 });
-  } catch (error) {
+  } catch {
     console.error('Send connection error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

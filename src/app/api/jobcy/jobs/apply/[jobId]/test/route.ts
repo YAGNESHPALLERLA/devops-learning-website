@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
-  request: NextRequest,
+  // request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
@@ -17,14 +17,14 @@ export async function POST(
       jobId: jobId,
       data: body
     });
-  } catch (error) {
+  } catch {
     console.error('Dynamic route test error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
 export async function GET(
-  request: NextRequest,
+  // request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
@@ -36,7 +36,7 @@ export async function GET(
       jobId: jobId,
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     console.error('Dynamic route GET test error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

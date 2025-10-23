@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
+export async function GET(// request: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   try {
     const resolvedParams = await params;
     const { userId } = resolvedParams;
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     console.log('Chat found/created:', chat._id);
     
     return NextResponse.json({ chat });
-  } catch (error) {
+  } catch {
     console.error('Chat with user error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

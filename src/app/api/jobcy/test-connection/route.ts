@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('Testing database connection...');
     
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       userCount,
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     console.error('Database connection test failed:', error);
     return NextResponse.json({
       success: false,

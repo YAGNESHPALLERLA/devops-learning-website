@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('Chat chats request');
     
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     console.log('Found chats:', chats.length);
     
     return NextResponse.json({ chats });
-  } catch (error) {
+  } catch {
     console.error('Chat chats error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

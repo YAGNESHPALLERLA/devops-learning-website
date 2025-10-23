@@ -7,7 +7,7 @@ export async function GET() {
   });
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   const body = await request.json();
   return NextResponse.json({ 
     message: 'Simple jobcy POST working',

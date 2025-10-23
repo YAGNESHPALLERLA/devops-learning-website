@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ notificationId: string }> }) {
+export async function PUT(// request: NextRequest, { params }: { params: Promise<{ notificationId: string }> }) {
   try {
     const resolvedParams = await params;
     const { notificationId } = resolvedParams;
@@ -20,7 +20,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -51,7 +51,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     return NextResponse.json({
       message: 'Notification marked as read successfully'
     });
-  } catch (error) {
+  } catch {
     console.error('Mark notification as read error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

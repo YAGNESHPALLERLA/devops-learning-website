@@ -72,7 +72,7 @@ export default function DevOpsPage() {
     { id: 'summary', title: 'Summary' }
   ];
 
-  const devopsVideos = getVideosForTopic('devops');
+  // const devopsVideos = getVideosForTopic('devops');
 
   // Handle URL hash changes to set active section
   useEffect(() => {

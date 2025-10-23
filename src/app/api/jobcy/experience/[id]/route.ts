@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(// request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
@@ -21,7 +21,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -38,7 +38,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     
     // Find the experience entry in the user's experienceList
     const experienceList = user.experienceList || [];
-    const experienceIndex = experienceList.findIndex((exp: any) => exp.id === id);
+    const experienceIndex = experienceList.findIndex((exp: { id: string }) => exp.id === id);
     
     if (experienceIndex === -1) {
       return NextResponse.json({ error: 'Experience not found' }, { status: 404 });
@@ -74,13 +74,13 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       message: 'Experience updated successfully',
       experience: updatedExperience
     });
-  } catch (error) {
+  } catch {
     console.error('Update experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(// request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const resolvedParams = await params;
     const { id } = resolvedParams;
@@ -99,7 +99,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -116,7 +116,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     
     // Find the experience entry in the user's experienceList
     const experienceList = user.experienceList || [];
-    const experienceIndex = experienceList.findIndex((exp: any) => exp.id === id);
+    const experienceIndex = experienceList.findIndex((exp: { id: string }) => exp.id === id);
     
     if (experienceIndex === -1) {
       return NextResponse.json({ error: 'Experience not found' }, { status: 404 });
@@ -145,7 +145,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     return NextResponse.json({
       message: 'Experience deleted successfully'
     });
-  } catch (error) {
+  } catch {
     console.error('Delete experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

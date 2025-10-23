@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
 export async function POST(
-  request: NextRequest,
+  // request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
@@ -22,7 +22,7 @@ export async function POST(
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -69,14 +69,14 @@ export async function POST(
       applicationId: result.insertedId,
       message: 'Application submitted successfully'
     });
-  } catch (error) {
+  } catch {
     console.error('🚀 NEW: Job application error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
 export async function GET(
-  request: NextRequest,
+  // request: NextRequest,
   { params }: { params: Promise<{ jobId: string }> }
 ) {
   try {
@@ -89,7 +89,7 @@ export async function GET(
       method: 'GET',
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     console.error('🚀 NEW: Job application GET error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

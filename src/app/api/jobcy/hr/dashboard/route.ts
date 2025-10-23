@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('HR Dashboard request');
     
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     }).toArray();
     
     // Get recent activity (applications, job posts, etc.)
-    const recentActivity = [
+    // const recentActivity = [
       ...applications.map(app => ({
         id: `app_${app._id}`,
         type: 'application',
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest) {
     console.log('HR Dashboard data:', dashboardData);
     console.log('HR Dashboard data fetched successfully');
     return NextResponse.json(dashboardData);
-  } catch (error) {
+  } catch {
     console.error('HR Dashboard error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

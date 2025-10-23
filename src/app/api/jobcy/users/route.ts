@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('Users request');
     
@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     }));
     
     return NextResponse.json({ users: safeUsers });
-  } catch (error) {
+  } catch {
     console.error('Users error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

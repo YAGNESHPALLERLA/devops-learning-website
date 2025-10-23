@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const code = searchParams.get('code');
@@ -36,14 +36,14 @@ export async function GET(request: NextRequest) {
         'Access-Control-Allow-Headers': 'Content-Type',
       }
     });
-  } catch (error) {
+  } catch {
     console.error('GitHub auth proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   try {
     const body = await request.json();
     
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         'Access-Control-Allow-Headers': 'Content-Type',
       }
     });
-  } catch (error) {
+  } catch {
     console.error('GitHub auth POST proxy error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ error: 'Internal server error', details: errorMessage }, { status: 500 });

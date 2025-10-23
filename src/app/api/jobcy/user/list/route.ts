@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('User list request');
     
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     }
     
     // Get total count
-    const total = await db.collection('users').countDocuments(query);
+    // const total = await db.collection('users').countDocuments(query);
     
     // Get users with pagination
     const users = await db.collection('users')
@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
     console.log('Found users:', users.length);
     
     return NextResponse.json(users);
-  } catch (error) {
+  } catch {
     console.error('User list error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

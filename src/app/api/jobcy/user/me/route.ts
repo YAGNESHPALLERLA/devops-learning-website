@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('User profile request');
     
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
       console.log('Decoded user ID:', decoded.id);
-    } catch (error) {
+    } catch {
       console.log('JWT verification failed:', error);
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
@@ -84,13 +84,13 @@ export async function GET(request: NextRequest) {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     });
-  } catch (error) {
+  } catch {
     console.error('User profile error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(// request: NextRequest) {
   try {
     console.log('User profile update request');
     
@@ -107,7 +107,7 @@ export async function PUT(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -209,7 +209,7 @@ export async function PUT(request: NextRequest) {
       createdAt: updatedUser.createdAt,
       updatedAt: updatedUser.updatedAt
     });
-  } catch (error) {
+  } catch {
     console.error('User profile update error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

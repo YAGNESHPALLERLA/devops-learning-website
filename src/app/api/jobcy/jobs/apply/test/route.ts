@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   try {
     const body = await request.json();
     const { jobId, coverLetter = '' } = body;
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -69,13 +69,13 @@ export async function POST(request: NextRequest) {
       applicationId: result.insertedId,
       message: 'Application submitted successfully'
     });
-  } catch (error) {
+  } catch {
     console.error('🚀 WORKING: Job application error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   return NextResponse.json({
     message: 'Test job application endpoint - GET method working',
     timestamp: new Date().toISOString()

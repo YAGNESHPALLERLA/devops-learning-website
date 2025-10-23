@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   try {
     const body = await request.json();
     const { name, email, password, role } = body;
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         role: newUser.role
       }
     }, { status: 201 });
-  } catch (error) {
+  } catch {
     console.error('User registration error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

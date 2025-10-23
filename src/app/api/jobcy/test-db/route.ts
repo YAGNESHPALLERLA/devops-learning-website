@@ -18,7 +18,7 @@ export async function GET() {
       userCount: userCount,
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     console.error('Database test error:', error);
     return NextResponse.json({ 
       error: 'Database connection failed',

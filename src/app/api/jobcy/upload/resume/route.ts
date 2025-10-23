@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function POST(request: NextRequest) {
+export async function POST(// request: NextRequest) {
   try {
     // Get user ID from JWT token
     const authHeader = request.headers.get('authorization');
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       fileName: file.name,
       filePath: `/resumes/${file.name}` // Virtual path for display
     });
-  } catch (error) {
+  } catch {
     console.error('Upload resume error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

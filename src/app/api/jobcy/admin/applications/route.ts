@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
-export async function GET(request: NextRequest) {
+export async function GET(// request: NextRequest) {
   try {
     console.log('Admin applications request');
     
@@ -14,11 +14,11 @@ export async function GET(request: NextRequest) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    let decoded: { id: string; role: string; [key: string]: unknown };
+    // let decoded: { id: string; role: string; [key: string]: unknown };
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     console.log('Found admin applications:', populatedApplications.length);
     
     return NextResponse.json(populatedApplications);
-  } catch (error) {
+  } catch {
     console.error('Admin applications error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
