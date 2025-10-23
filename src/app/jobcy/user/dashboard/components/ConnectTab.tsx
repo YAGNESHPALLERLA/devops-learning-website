@@ -201,7 +201,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       if (connectionsRes.ok) {
         const data = await connectionsRes.json();
         console.log('Connections API response:', data);
-        setActualConnections(data);
+        // Filter out any null/undefined objects
+        const validConnections = Array.isArray(data) ? data.filter(conn => conn && conn.id) : [];
+        console.log('Valid connections after filtering:', validConnections);
+        setActualConnections(validConnections);
       } else {
         console.error('Connections API failed:', connectionsRes.status, connectionsRes.statusText);
         const errorData = await connectionsRes.json().catch(() => ({}));
@@ -239,16 +242,16 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   // Helper to check if user is already connected
   const isUserConnected = (userId: string | number) => {
     return Array.isArray(actualConnections) ? actualConnections.some(conn => 
-      conn.id?.toString() === userId?.toString()
+      conn && conn.id && conn.id?.toString() === userId?.toString()
     ) : false;
   };
 
   // Helper to check if there's a pending request to/from this user
   const hasPendingRequest = (userId: string | number) => {
     return (Array.isArray(pendingRequests) ? pendingRequests.some(req => 
-      req.sender._id?.toString() === userId?.toString()
+      req && req.sender && req.sender._id?.toString() === userId?.toString()
     ) : false) || (Array.isArray(sentRequests) ? sentRequests.some(req => 
-      req.receiver?._id?.toString() === userId?.toString()
+      req && req.receiver && req.receiver?._id?.toString() === userId?.toString()
     ) : false);
   };
 
@@ -289,7 +292,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   console.log("ConnectTab - connectedConnections:", connectedConnections);
   console.log("ConnectTab - filteredConnections count:", filteredConnections.length);
   console.log("ConnectTab - connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})):", 
-    Array.isArray(connectionsState) ? connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})) : []);
+    Array.isArray(connectionsState) ? connectionsState.map(conn => conn ? ({id: conn.id, name: conn.name, connected: conn.connected}) : null).filter(Boolean) : []);
 
   const handleConnect = async (connection: Connection) => {
     const token = localStorage.getItem("token");
@@ -392,7 +395,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
   const handleMessage = async (connection: Connection | ActualConnection) => {
     // Check if this user is in actual connections
-    const isConnected = Array.isArray(actualConnections) ? actualConnections.some(conn => conn.id.toString() === connection.id.toString()) : false;
+    const isConnected = Array.isArray(actualConnections) ? actualConnections.some(conn => conn && conn.id && conn.id.toString() === connection.id.toString()) : false;
     
     if (isConnected) {
       try {
@@ -864,7 +867,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                   {Array.isArray(chats) ? chats.map((chat, index) => {
                     // Only show chats with actual connections
                     const isActualConnection = Array.isArray(actualConnections) ? actualConnections.some(conn => 
-                      conn.id === chat.otherParticipant.id
+                      conn && conn.id && conn.id === chat.otherParticipant.id
                     ) : false;
                     
                     if (!isActualConnection) return null;
