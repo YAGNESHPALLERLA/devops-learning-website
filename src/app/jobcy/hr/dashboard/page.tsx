@@ -371,21 +371,26 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     const lowerSearch = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
 
-    const matchSearch =
+    // If no search term, show all jobs
+    const matchSearch = searchTerm === "" || 
       (typeof job.title === "string" &&
         job.title.toLowerCase().includes(lowerSearch)) ||
-      (typeof job.department === "string" &&
-        job.department.toLowerCase().includes(lowerSearch)) ||
+      (typeof job.company === "string" &&
+        job.company.toLowerCase().includes(lowerSearch)) ||
       (typeof job.location === "string" &&
         job.location.toLowerCase().includes(lowerSearch));
+    
     const matchFilter =
       filter === "all" ||
       (typeof job.status === "string" && job.status.toLowerCase() === filter);
 
+    console.log(`Job: ${job.title} - matchSearch: ${matchSearch}, matchFilter: ${matchFilter}, final: ${matchSearch && matchFilter}`);
     return matchSearch && matchFilter;
   }) : [];
   
   console.log('Filtered jobs count:', filteredJobs.length);
+  console.log('All jobs data:', jobsData);
+  console.log('Filtered jobs:', filteredJobs);
 
   if (loading) {
     return (
