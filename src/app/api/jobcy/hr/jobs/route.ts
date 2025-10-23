@@ -27,9 +27,21 @@ export async function GET(_request: NextRequest) {
     
     // Get jobs posted by this HR
     const { toObjectId } = await import('@/lib/mongodb');
-    const jobs = await db.collection('jobs').find({ postedBy: toObjectId(decoded.id) }).toArray();
+    const hrObjectId = toObjectId(decoded.id);
+    console.log('HR ID:', decoded.id, 'HR ObjectId:', hrObjectId);
     
-    console.log('Found jobs:', jobs.length);
+    let jobs = await db.collection('jobs').find({ postedBy: hrObjectId }).toArray();
+    
+    console.log('Found jobs with ObjectId postedBy:', jobs.length);
+    
+    // If no jobs found with ObjectId, check for string postedBy (fallback for existing data)
+    if (jobs.length === 0) {
+      const stringPostedByJobs = await db.collection('jobs').find({ postedBy: decoded.id }).toArray();
+      console.log('Jobs with string postedBy:', stringPostedByJobs.length);
+      jobs = stringPostedByJobs;
+    }
+    
+    console.log('Final jobs count:', jobs.length);
     console.log('Jobs data:', jobs);
     
     // Return jobs array directly (not wrapped in object)
@@ -66,10 +78,11 @@ export async function POST(_request: NextRequest) {
     const db = await connectDB();
     
     // Create new job
+    const { toObjectId } = await import('@/lib/mongodb');
     const newJob = {
       ...body,
-      postedBy: decoded.id,
-      createdBy: decoded.id,
+      postedBy: toObjectId(decoded.id),
+      createdBy: toObjectId(decoded.id),
       createdAt: new Date(),
       updatedAt: new Date()
     };
