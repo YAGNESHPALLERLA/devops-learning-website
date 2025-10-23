@@ -373,7 +373,7 @@ export default function SignupPage() {
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   }`}
-                  placeholder="John Doe"
+                  placeholder="One Hub Global"
                   disabled={isSubmitting}
                 />
                 <User className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -402,7 +402,7 @@ export default function SignupPage() {
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   }`}
-                  placeholder="john.doe@example.com"
+                  placeholder="ohg@example.com"
                   disabled={isSubmitting}
                 />
                 <Mail className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />

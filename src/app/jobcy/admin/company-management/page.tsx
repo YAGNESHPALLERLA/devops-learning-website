@@ -717,7 +717,7 @@ export default function CompanyManagement() {
                   className={`w-full px-4 py-3 border ${
                     errors.email ? "border-red-500" : isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 bg-white text-gray-900"
                   } rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500`}
-                  placeholder="company@example.com"
+                  placeholder="ohg@example.com"
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>

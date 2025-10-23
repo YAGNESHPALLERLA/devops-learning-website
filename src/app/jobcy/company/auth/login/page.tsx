@@ -91,7 +91,7 @@ export default function CompanyLogin() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
-                  placeholder="company@example.com"
+                  placeholder="ohg@example.com"
                 />
               </div>
             </div>

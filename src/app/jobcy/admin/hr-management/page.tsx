@@ -577,7 +577,7 @@ const handleInputChange = (
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 }`}
-                placeholder="Enter full name"
+                placeholder="One Hub Global"
               />
               {errors.name && (
                 <p className="mt-2 text-sm text-red-600">{errors.name}</p>
@@ -598,7 +598,7 @@ const handleInputChange = (
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 }`}
-                placeholder="Enter email address"
+                placeholder="ohg@example.com"
               />
               {errors.email && (
                 <p className="mt-2 text-sm text-red-600">{errors.email}</p>

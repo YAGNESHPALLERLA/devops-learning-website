@@ -144,7 +144,7 @@ export default function AdminLogin() {
                       ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
                       : "border-slate-300 dark:border-slate-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/50"
                   }`}
-                  placeholder="admin@example.com"
+                  placeholder="ohg@example.com"
                   disabled={isLoading}
                 />
                 <Mail className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />

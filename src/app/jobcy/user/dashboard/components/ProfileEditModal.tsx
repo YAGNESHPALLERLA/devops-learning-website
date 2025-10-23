@@ -772,7 +772,7 @@ export default function ProfileEditModal({
                           ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
                           : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
                       }`}
-                      placeholder="Enter your full name"
+                      placeholder="One Hub Global"
                     />
                   </div>
                   <div>
@@ -788,7 +788,7 @@ export default function ProfileEditModal({
                           ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
                           : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
                       }`}
-                      placeholder="Enter your email"
+                      placeholder="ohg@example.com"
                     />
                   </div>
                   <div>
