@@ -27,18 +27,35 @@ export async function GET(_request: NextRequest) {
     
     // Get jobs posted by this HR
     const { toObjectId } = await import('@/lib/mongodb');
-    const hrObjectId = toObjectId(decoded.id);
+    let hrObjectId;
+    try {
+      hrObjectId = toObjectId(decoded.id);
+    } catch (error) {
+      console.error('Error converting HR ID to ObjectId:', error);
+      return NextResponse.json({ 
+        error: 'Invalid user ID format', 
+        message: 'Failed to convert user ID to ObjectId' 
+      }, { status: 400 });
+    }
     console.log('HR ID:', decoded.id, 'HR ObjectId:', hrObjectId);
     
-    let jobs = await db.collection('jobs').find({ postedBy: hrObjectId }).toArray();
-    
-    console.log('Found jobs with ObjectId postedBy:', jobs.length);
-    
-    // If no jobs found with ObjectId, check for string postedBy (fallback for existing data)
-    if (jobs.length === 0) {
-      const stringPostedByJobs = await db.collection('jobs').find({ postedBy: decoded.id }).toArray();
-      console.log('Jobs with string postedBy:', stringPostedByJobs.length);
-      jobs = stringPostedByJobs;
+    let jobs;
+    try {
+      jobs = await db.collection('jobs').find({ postedBy: hrObjectId }).toArray();
+      console.log('Found jobs with ObjectId postedBy:', jobs.length);
+      
+      // If no jobs found with ObjectId, check for string postedBy (fallback for existing data)
+      if (jobs.length === 0) {
+        const stringPostedByJobs = await db.collection('jobs').find({ postedBy: decoded.id }).toArray();
+        console.log('Jobs with string postedBy:', stringPostedByJobs.length);
+        jobs = stringPostedByJobs;
+      }
+    } catch (dbError) {
+      console.error('Database error fetching jobs:', dbError);
+      return NextResponse.json({ 
+        error: 'Database error', 
+        message: 'Failed to fetch jobs from database' 
+      }, { status: 500 });
     }
     
     console.log('Final jobs count:', jobs.length);
