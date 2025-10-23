@@ -44,7 +44,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         return;
       }
 
-      const response = await fetch(`${"/api/jobcy"}/users/applications`, {
+      const response = await fetch(`${"/api/jobcy"}/user/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,11 +71,17 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         setAppliedJobs(transformedJobs);
         setError("");
       } else {
-        setError("Failed to fetch applied jobs");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Failed to fetch applied jobs:", {
+          status: response.status,
+          statusText: response.statusText,
+          errorData: errorData
+        });
+        setError(`Failed to load applications: ${errorData.error || errorData.message || `HTTP ${response.status}`}`);
       }
     } catch (err) {
       console.error("Error fetching applied jobs:", err);
-      setError("Unable to load applied jobs");
+      setError(`Unable to load applied jobs: ${err instanceof Error ? err.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }

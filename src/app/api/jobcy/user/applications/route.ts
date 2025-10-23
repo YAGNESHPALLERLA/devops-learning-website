@@ -26,10 +26,19 @@ export async function GET(_request: NextRequest) {
     const db = await connectDB();
     
     // Get user applications
-    const applications = await db.collection('applications')
-      .find({ userId: decoded.id })
-      .sort({ appliedAt: -1 })
-      .toArray();
+    let applications;
+    try {
+      applications = await db.collection('applications')
+        .find({ userId: decoded.id })
+        .sort({ appliedAt: -1 })
+        .toArray();
+    } catch (dbError) {
+      console.error('Database error fetching applications:', dbError);
+      return NextResponse.json({ 
+        error: 'Database error', 
+        message: 'Failed to fetch applications from database' 
+      }, { status: 500 });
+    }
     
     console.log('Found applications:', applications.length);
     
@@ -72,6 +81,11 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(populatedApplications);
   } catch (error) {
     console.error('User applications error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return NextResponse.json({ 
+      error: 'Internal server error', 
+      message: errorMessage,
+      details: error instanceof Error ? error.stack : undefined
+    }, { status: 500 });
   }
 }
