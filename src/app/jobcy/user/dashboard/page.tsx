@@ -310,6 +310,10 @@ export default function JobSeekerDashboard() {
           isDark={isDark}
           initialSection={profileModalSection}
           onClose={() => setShowProfileModal(false)}
+          onExperienceChange={() => {
+            // Refresh dashboard data when experience changes
+            refetch();
+          }}
           onSave={async (data: Partial<UserProfile>) => {
             // normalize optional fields to satisfy types
             const normalizedData: Partial<UserProfile> = {

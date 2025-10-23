@@ -10,6 +10,7 @@ interface ProfileEditModalProps {
   isDark?: boolean;
   onClose: () => void;
   onSave: (profile: UserProfile) => Promise<{ success: boolean; message?: string }>;
+  onExperienceChange?: () => void; // Callback to refresh dashboard data
   initialSection?: string;
 }
 
@@ -557,6 +558,7 @@ export default function ProfileEditModal({
   isDark = false,
   onClose,
   onSave,
+  onExperienceChange,
   initialSection = "personal",
 }: ProfileEditModalProps) {
   const [editingProfile, setEditingProfile] = useState<UserProfile>({ ...userProfile });
@@ -624,6 +626,8 @@ export default function ProfileEditModal({
       if (response.ok) {
         const newExp = await response.json();
         setModalExperience([...modalExperience, newExp]);
+        // Trigger dashboard refresh
+        onExperienceChange?.();
       } else {
         alert("Failed to add experience");
       }
@@ -646,7 +650,9 @@ export default function ProfileEditModal({
       });
       if (response.ok) {
         const updatedExp = await response.json();
-        setModalExperience(modalExperience.map(exp => exp.id === id ? updatedExp : exp));
+        setModalExperience(modalExperience.map(exp => exp.id === id ? updatedExp.experience : exp));
+        // Trigger dashboard refresh
+        onExperienceChange?.();
       } else {
         alert("Failed to update experience");
       }
@@ -666,6 +672,8 @@ export default function ProfileEditModal({
       });
       if (response.ok) {
         setModalExperience(modalExperience.filter(exp => exp.id !== id));
+        // Trigger dashboard refresh
+        onExperienceChange?.();
       } else {
         alert("Failed to delete experience");
       }
