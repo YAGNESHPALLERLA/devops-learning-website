@@ -29,20 +29,50 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const db = await connectDB();
     const { toObjectId } = await import('@/lib/mongodb');
     
-    // Update experience
-    const result = await db.collection('experience').updateOne(
-      { _id: toObjectId(id), userId: decoded.id },
-      { $set: { ...body, updatedAt: new Date() } }
-    );
+    // Get user to find the experience entry
+    const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     
-    if (result.matchedCount === 0) {
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+    
+    // Find the experience entry in the user's experienceList
+    const experienceList = user.experienceList || [];
+    const experienceIndex = experienceList.findIndex((exp: any) => exp.id === id);
+    
+    if (experienceIndex === -1) {
       return NextResponse.json({ error: 'Experience not found' }, { status: 404 });
     }
     
-    console.log('Experience updated successfully');
+    // Update the experience entry
+    const updatedExperience = {
+      ...experienceList[experienceIndex],
+      ...body,
+      updatedAt: new Date()
+    };
+    
+    experienceList[experienceIndex] = updatedExperience;
+    
+    // Update the user's experienceList
+    const result = await db.collection('users').updateOne(
+      { _id: toObjectId(decoded.id) },
+      { 
+        $set: { 
+          experienceList: experienceList,
+          updatedAt: new Date()
+        } 
+      }
+    );
+    
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: 'Failed to update experience' }, { status: 500 });
+    }
+    
+    console.log('Experience updated successfully in user profile');
     
     return NextResponse.json({
-      message: 'Experience updated successfully'
+      message: 'Experience updated successfully',
+      experience: updatedExperience
     });
   } catch (error) {
     console.error('Update experience error:', error);
@@ -77,16 +107,40 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     const db = await connectDB();
     const { toObjectId } = await import('@/lib/mongodb');
     
-    // Delete experience
-    const result = await db.collection('experience').deleteOne(
-      { _id: toObjectId(id), userId: decoded.id }
-    );
+    // Get user to find the experience entry
+    const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     
-    if (result.deletedCount === 0) {
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+    
+    // Find the experience entry in the user's experienceList
+    const experienceList = user.experienceList || [];
+    const experienceIndex = experienceList.findIndex((exp: any) => exp.id === id);
+    
+    if (experienceIndex === -1) {
       return NextResponse.json({ error: 'Experience not found' }, { status: 404 });
     }
     
-    console.log('Experience deleted successfully');
+    // Remove the experience entry from the array
+    experienceList.splice(experienceIndex, 1);
+    
+    // Update the user's experienceList
+    const result = await db.collection('users').updateOne(
+      { _id: toObjectId(decoded.id) },
+      { 
+        $set: { 
+          experienceList: experienceList,
+          updatedAt: new Date()
+        } 
+      }
+    );
+    
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: 'Failed to delete experience' }, { status: 500 });
+    }
+    
+    console.log('Experience deleted successfully from user profile');
     
     return NextResponse.json({
       message: 'Experience deleted successfully'
