@@ -35,7 +35,32 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found connections:', connections.length);
     
-    return NextResponse.json(connections);
+    // Populate user details for each connection
+    const populatedConnections = await Promise.all(
+      connections.map(async (conn) => {
+        const isFromUser = conn.fromUserId === decoded.id;
+        const otherUserId = isFromUser ? conn.toUserId : conn.fromUserId;
+        
+        const otherUser = await db.collection('users').findOne({ _id: otherUserId });
+        
+        return {
+          id: otherUser?._id,
+          name: otherUser?.name || 'Unknown User',
+          title: otherUser?.professionalRole || otherUser?.title || 'Professional',
+          location: otherUser?.location || otherUser?.currentLocation || 'Location not specified',
+          email: otherUser?.email,
+          experience: otherUser?.experience || 'Not specified',
+          skills: otherUser?.skills || [],
+          status: otherUser?.status || 'employed',
+          connected: true,
+          avatar: otherUser?.avatar || null,
+          bio: otherUser?.about || otherUser?.bio || '',
+          connectedAt: conn.updatedAt || conn.createdAt
+        };
+      })
+    );
+    
+    return NextResponse.json(populatedConnections);
   } catch (error) {
     console.error('Connections error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

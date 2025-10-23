@@ -48,7 +48,23 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found users:', users.length);
     
-    return NextResponse.json(users);
+    // Format users for frontend
+    const formattedUsers = users.map(user => ({
+      id: user._id,
+      name: user.name || 'Unknown User',
+      title: user.professionalRole || user.title || 'Professional',
+      location: user.location || user.currentLocation || 'Location not specified',
+      email: user.email,
+      experience: user.experience || 'Not specified',
+      skills: user.skills || [],
+      status: user.status || 'employed',
+      connected: false, // Will be determined by frontend based on connections
+      avatar: user.avatar || null,
+      bio: user.about || user.bio || '',
+      createdAt: user.createdAt
+    }));
+    
+    return NextResponse.json(formattedUsers);
   } catch (error) {
     console.error('User list error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

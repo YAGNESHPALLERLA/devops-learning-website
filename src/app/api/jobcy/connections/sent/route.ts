@@ -33,7 +33,32 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found sent connections:', connections.length);
     
-    return NextResponse.json({ connections });
+    // Populate receiver details
+    const populatedConnections = await Promise.all(
+      connections.map(async (conn) => {
+        const receiver = await db.collection('users').findOne({ _id: conn.toUserId });
+        return {
+          _id: conn._id,
+          sender: {
+            _id: conn.fromUserId,
+            name: 'Current User' // This is the current user
+          },
+          receiver: {
+            _id: receiver?._id,
+            name: receiver?.name || 'Unknown User',
+            email: receiver?.email,
+            professionalRole: receiver?.professionalRole || receiver?.title,
+            currentLocation: receiver?.location || receiver?.currentLocation,
+            avatar: receiver?.avatar
+          },
+          message: conn.message || '',
+          status: conn.status,
+          createdAt: conn.createdAt
+        };
+      })
+    );
+    
+    return NextResponse.json(populatedConnections);
   } catch (error) {
     console.error('Sent connections error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
