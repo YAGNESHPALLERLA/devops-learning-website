@@ -34,6 +34,11 @@ export async function GET(_request: NextRequest) {
     }).toArray();
     
     console.log('Found connections:', connections.length);
+    console.log('Connection details:', connections.map(c => ({ 
+      fromUserId: c.fromUserId, 
+      toUserId: c.toUserId, 
+      status: c.status 
+    })));
     
     // Populate user details for each connection
     const populatedConnections = await Promise.all(
@@ -41,7 +46,10 @@ export async function GET(_request: NextRequest) {
         const isFromUser = conn.fromUserId === decoded.id;
         const otherUserId = isFromUser ? conn.toUserId : conn.fromUserId;
         
-        const otherUser = await db.collection('users').findOne({ _id: otherUserId });
+        const { toObjectId } = await import('@/lib/mongodb');
+        const otherUser = await db.collection('users').findOne({ _id: toObjectId(otherUserId) });
+        
+        console.log('Looking up user:', { otherUserId, foundUser: !!otherUser, userName: otherUser?.name });
         
         return {
           id: otherUser?._id,
