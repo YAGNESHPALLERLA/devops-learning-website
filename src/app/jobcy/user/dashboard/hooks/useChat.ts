@@ -155,18 +155,50 @@ export function useChat() {
 
   // Send a message
   const sendMessage = async (content: string) => {
-    if (!socket || !currentChat) return;
+    if (!currentChat) return;
 
     try {
-      // Send via Socket.IO for real-time delivery
-      // The server will save to DB and broadcast to all participants
-      socket.emit("send-message", {
-        chatId: currentChat.id,
-        content: content
+      setIsLoading(true);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("No authentication token");
+        return;
+      }
+
+      // Send via REST API
+      const response = await fetch(`/api/jobcy/chat/messages/${currentChat.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ content }),
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Message sent successfully:", data);
+        
+        // Add the message to local state immediately for better UX
+        const newMessage = {
+          id: data.message.id,
+          content: data.message.content,
+          sender: data.message.sender,
+          isRead: data.message.isRead,
+          createdAt: data.message.createdAt
+        };
+        
+        setMessages(prev => [...prev, newMessage]);
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to send message:", errorData);
+        setError("Failed to send message");
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       setError("Failed to send message");
+    } finally {
+      setIsLoading(false);
     }
   };
 
