@@ -24,13 +24,21 @@ export async function GET(request: NextRequest) {
 
     // Connect to database
     const db = await connectDB();
+    const { toObjectId } = await import('@/lib/mongodb');
     
-    // Get user experience
-    const experience = await db.collection('experience').find({ userId: decoded.id }).toArray();
+    // Get user profile to extract experience data
+    const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     
-    console.log('Found experience:', experience.length);
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
     
-    return NextResponse.json({ experience });
+    // Return experience from user profile
+    const experience = user.experienceList || [];
+    
+    console.log('Found experience from user profile:', experience.length);
+    
+    return NextResponse.json(experience);
   } catch (error) {
     console.error('Experience error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
@@ -61,25 +69,34 @@ export async function POST(request: NextRequest) {
 
     // Connect to database
     const db = await connectDB();
+    const { toObjectId } = await import('@/lib/mongodb');
     
-    // Create new experience
+    // Create new experience with ID
     const newExperience = {
+      id: new Date().getTime().toString(), // Generate unique ID
       ...body,
-      userId: decoded.id,
       createdAt: new Date(),
       updatedAt: new Date()
     };
 
-    const result = await db.collection('experience').insertOne(newExperience);
+    // Add experience to user's experienceList
+    const result = await db.collection('users').updateOne(
+      { _id: toObjectId(decoded.id) },
+      { 
+        $push: { experienceList: newExperience },
+        $set: { updatedAt: new Date() }
+      }
+    );
     
-    console.log('Experience created successfully:', result.insertedId);
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+    
+    console.log('Experience added to user profile successfully');
     
     return NextResponse.json({
       message: 'Experience created successfully',
-      experience: {
-        id: result.insertedId,
-        ...newExperience
-      }
+      experience: newExperience
     }, { status: 201 });
   } catch (error) {
     console.error('Create experience error:', error);

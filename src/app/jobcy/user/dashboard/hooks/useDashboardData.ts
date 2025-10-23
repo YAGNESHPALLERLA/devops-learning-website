@@ -138,10 +138,10 @@ export function useDashboardData() {
         experienceList: profileData.experienceList || [],
         profileCompletion: profileData.profileCompletion,
         connections: profileData.connections,
-        dob: profileData.personalDetails?.[0]?.dob,
-        gender: profileData.personalDetails?.[0]?.gender,
-        category: profileData.personalDetails?.[0]?.category,
-        maritalStatus: profileData.personalDetails?.[0]?.maritalStatus,
+        dob: profileData.dob || profileData.personalDetails?.[0]?.dob,
+        gender: profileData.gender || profileData.personalDetails?.[0]?.gender,
+        category: profileData.category || profileData.personalDetails?.[0]?.category,
+        maritalStatus: profileData.maritalStatus || profileData.personalDetails?.[0]?.maritalStatus,
         resume: profileData.resume?.name,
       };
 

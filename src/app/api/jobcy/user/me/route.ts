@@ -69,6 +69,12 @@ export async function GET(request: NextRequest) {
       profileCompletion: user.profileCompletion || 0,
       connections: user.connections || 0,
       personalDetails: user.personalDetails || [],
+      // Extract personal details as individual fields for easier access
+      dob: user.personalDetails?.[0]?.dob || user.dob,
+      gender: user.personalDetails?.[0]?.gender || user.gender,
+      category: user.personalDetails?.[0]?.category || user.category,
+      maritalStatus: user.personalDetails?.[0]?.maritalStatus || user.maritalStatus,
+      nationality: user.personalDetails?.[0]?.nationality || user.nationality,
       resume: user.resume || {},
       githubId: user.githubId,
       githubUsername: user.githubUsername,
