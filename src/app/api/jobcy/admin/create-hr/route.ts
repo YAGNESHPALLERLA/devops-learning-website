@@ -4,8 +4,8 @@ import { connectDB } from '@/lib/mongodb';
 export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
-    const { name, email, password, company } = body;
-    console.log('Create HR request:', { name, email, company });
+    const { name, email, password, company, companyId, companyName, industry, companySize, website, phone, address } = body;
+    console.log('Create HR request:', { name, email, company, companyId });
     
     // Get user ID from JWT token
     const authHeader = _request.headers.get('authorization');
@@ -47,9 +47,14 @@ export async function POST(_request: NextRequest) {
       email,
       password: hashedPassword,
       role: 'hr',
-      mobile: `+1${Math.floor(Math.random() * 9000000000) + 1000000000}`,
-      company: company || { name: 'Unknown Company' },
-      phone: '',
+      mobile: `hr_${Date.now()}`, // Generate unique mobile to avoid duplicate key error
+      companyId: companyId || null, // Link HR to company
+      company: company || { name: companyName || 'Unknown Company' },
+      phone: phone || '',
+      address: address || '',
+      industry: industry || '',
+      companySize: companySize || '',
+      website: website || '',
       location: '',
       salary: '',
       experience: '',

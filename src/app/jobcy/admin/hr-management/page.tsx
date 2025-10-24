@@ -135,7 +135,8 @@ export default function HRManagement() {
         if (res.ok) {
           const data = await res.json();
           console.log('Companies API response:', data);
-          const companies = Array.isArray(data.companies) ? data.companies : [];
+          // API returns companies array directly, not wrapped in data.companies
+          const companies = Array.isArray(data) ? data : [];
           console.log('Setting companies:', companies);
           setCompanies(companies);
         }

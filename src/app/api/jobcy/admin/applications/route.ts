@@ -34,6 +34,25 @@ export async function GET(_request: NextRequest) {
         const job = await db.collection('jobs').findOne({ _id: app.jobId });
         const user = await db.collection('users').findOne({ _id: app.userId });
         
+        // Get HR user who posted the job to get company info
+        let companyInfo = null;
+        if (job?.postedBy) {
+          const hrUser = await db.collection('users').findOne({ 
+            $or: [
+              { _id: job.postedBy },
+              { _id: job.postedBy.toString() }
+            ]
+          });
+          if (hrUser) {
+            companyInfo = {
+              _id: hrUser.companyId,
+              name: hrUser.company?.name || 'Unknown Company',
+              industry: hrUser.industry,
+              size: hrUser.companySize
+            };
+          }
+        }
+        
         return {
           _id: app._id,
           id: app._id,
@@ -47,6 +66,7 @@ export async function GET(_request: NextRequest) {
             name: user?.name,
             email: user?.email
           },
+          company: companyInfo,
           status: app.status || 'applied',
           appliedDate: app.appliedAt || app.createdAt,
           createdAt: app.createdAt
