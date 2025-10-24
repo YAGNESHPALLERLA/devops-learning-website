@@ -756,12 +756,37 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
               {/* Preview Button - Always available */}
               <button
-                onClick={() => {
-                  // Preview functionality - could open resume in new tab or show more details
-                  if (applicant.resumeUrl) {
-                    window.open(applicant.resumeUrl, '_blank');
-                  } else {
-                    alert('No resume available for preview');
+                onClick={async () => {
+                  try {
+                    const token = localStorage.getItem("token");
+                    if (!token) {
+                      alert('No authentication token found. Please login again.');
+                      return;
+                    }
+
+                    // Fetch resume from database
+                    const response = await fetch(`/api/jobcy/hr/resume/${applicant.userId}`, {
+                      headers: {
+                        'Authorization': `Bearer ${token}`,
+                      },
+                    });
+
+                    if (response.ok) {
+                      const blob = await response.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      window.open(url, '_blank');
+                      // Clean up the URL after a delay
+                      setTimeout(() => window.URL.revokeObjectURL(url), 10000);
+                    } else if (response.status === 404) {
+                      alert('No resume available for preview');
+                    } else if (response.status === 403) {
+                      alert('Access denied. Please make sure you are logged in as HR.');
+                    } else {
+                      alert('Failed to load resume for preview');
+                    }
+                  } catch (error) {
+                    console.error('Error previewing resume:', error);
+                    alert('Error loading resume for preview');
                   }
                 }}
                 className="flex items-center space-x-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
