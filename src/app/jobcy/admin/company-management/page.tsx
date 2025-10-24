@@ -433,7 +433,7 @@ export default function CompanyManagement() {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const filteredApplications = allApplications.filter((app: { jobId?: any }) => {
               const appJobId = typeof app.jobId === 'object' ? app.jobId?._id : app.jobId;
-              const matches = appJobId ? jobIds.some(jobId => jobId.toString() === appJobId.toString()) : false;
+              const matches = appJobId ? jobIds.some(jobId => jobId && jobId.toString() === appJobId.toString()) : false;
               if (matches) {
                 console.log(`✅ Application for job ${appJobId} matches company job`);
               }
