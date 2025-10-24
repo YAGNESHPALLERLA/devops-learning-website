@@ -43,7 +43,14 @@ export async function GET(
       user = await db.collection('users').findOne({ _id: userObjectId });
     } catch (error) {
       console.log('Error converting userId to ObjectId, trying string format:', userId);
-      user = await db.collection('users').findOne({ _id: userId });
+      // Try with string ID as fallback
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        user = await db.collection('users').findOne({ _id: userId as any });
+      } catch (stringError) {
+        console.log('Error finding user with string ID:', userId);
+        user = null;
+      }
     }
     
     if (!user) {
