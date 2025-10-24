@@ -15,10 +15,8 @@ export async function GET(_request: NextRequest) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    let decoded: { id: string; role: string; [key: string]: unknown };
     try {
-      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
-      decoded = verified as { id: string; role: string; [key: string]: unknown };
+      jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
     } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
@@ -60,10 +58,8 @@ export async function POST(request: NextRequest) {
     const token = authHeader.substring(7);
     const jwt = await import('jsonwebtoken');
     
-    let decoded: { id: string; role: string; [key: string]: unknown };
     try {
-      const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
-      decoded = verified as { id: string; role: string; [key: string]: unknown };
+      jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
     } catch {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
