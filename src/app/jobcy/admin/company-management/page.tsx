@@ -430,7 +430,7 @@ export default function CompanyManagement() {
             console.log(`✅ Found ${allApplications.length} total applications`);
             
             // Filter applications for this company's jobs
-            const filteredApplications = allApplications.filter((app: any) => {
+            const filteredApplications = allApplications.filter((app: { jobId?: { _id?: string } | string }) => {
               const appJobId = app.jobId?._id || app.jobId;
               const matches = jobIds.some(jobId => jobId.toString() === appJobId?.toString());
               if (matches) {
