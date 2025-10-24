@@ -382,8 +382,13 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                     window.URL.revokeObjectURL(url);
                   } else {
                     console.error('Failed to download resume:', response.status, response.statusText);
+                    const errorData = await response.json().catch(() => ({}));
                     if (response.status === 404) {
-                      alert('No resume found for this user.');
+                      if (errorData.details && errorData.details.includes('file was uploaded but is no longer available')) {
+                        alert('Resume file not found on server. The user may need to re-upload their resume.');
+                      } else {
+                        alert('No resume found for this user.');
+                      }
                     } else if (response.status === 403) {
                       alert('Access denied. Please make sure you are logged in as HR.');
                     } else {
@@ -618,8 +623,13 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                         window.URL.revokeObjectURL(url);
                       } else {
                         console.error('Failed to download resume:', response.status, response.statusText);
+                        const errorData = await response.json().catch(() => ({}));
                         if (response.status === 404) {
-                          alert('No resume found for this user.');
+                          if (errorData.details && errorData.details.includes('file was uploaded but is no longer available')) {
+                            alert('Resume file not found on server. The user may need to re-upload their resume.');
+                          } else {
+                            alert('No resume found for this user.');
+                          }
                         } else if (response.status === 403) {
                           alert('Access denied. Please make sure you are logged in as HR.');
                         } else {
