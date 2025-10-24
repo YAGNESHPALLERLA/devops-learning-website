@@ -165,24 +165,49 @@ export default function AdminDashboard() {
 
     const fetchDashboardData = async () => {
       try {
-        const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
+        // Add timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+        // Load critical data first (stats and HR users)
+        const [statsRes, usersRes] = await Promise.all([
           fetch(`${"/api/jobcy"}/admin/stats`, {
             headers: { Authorization: `Bearer ${token}` },
-          }),
-          fetch(`${"/api/jobcy"}/admin/activity`, {
-            headers: { Authorization: `Bearer ${token}` },
+            signal: controller.signal,
           }),
           fetch(`${"/api/jobcy"}/admin/hrs`, {
             headers: { Authorization: `Bearer ${token}` },
-          }),
-          fetch(`${"/api/jobcy"}/jobs/browse`, {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          fetch(`${"/api/jobcy"}/admin/applications`, {
-            headers: { Authorization: `Bearer ${token}` },
+            signal: controller.signal,
           }),
         ]);
 
+        clearTimeout(timeoutId);
+
+        // Set loading to false after critical data loads
+        setLoading(false);
+
+        // Load secondary data in background with timeout
+        const secondaryController = new AbortController();
+        const secondaryTimeoutId = setTimeout(() => secondaryController.abort(), 15000); // 15 second timeout
+
+        const [activityRes, jobsRes, applicationsRes] = await Promise.all([
+          fetch(`${"/api/jobcy"}/admin/activity`, {
+            headers: { Authorization: `Bearer ${token}` },
+            signal: secondaryController.signal,
+          }),
+          fetch(`${"/api/jobcy"}/jobs/browse`, {
+            headers: { Authorization: `Bearer ${token}` },
+            signal: secondaryController.signal,
+          }),
+          fetch(`${"/api/jobcy"}/admin/applications`, {
+            headers: { Authorization: `Bearer ${token}` },
+            signal: secondaryController.signal,
+          }),
+        ]);
+
+        clearTimeout(secondaryTimeoutId);
+
+        // Handle critical data first
         if (statsRes.ok) {
           const statsData = await statsRes.json();
           setStats(statsData);
@@ -193,24 +218,29 @@ export default function AdminDashboard() {
             return;
           }
         }
+
+        if (usersRes.ok) {
+          const usersData = await usersRes.json();
+          setUsers(usersData.hrs || []);
+        } else {
+          console.error("HRs fetch failed:", usersRes.status, usersRes.statusText);
+        }
+
+        // Handle secondary data (non-blocking)
         if (activityRes.ok) {
           const activityData = await activityRes.json();
           setRecentActivity(activityData);
         } else {
           console.error("Activity fetch failed:", activityRes.status, activityRes.statusText);
         }
-      if (usersRes.ok) {
-        const usersData = await usersRes.json();
-        setUsers(usersData.hrs || []);
-      } else {
-        console.error("HRs fetch failed:", usersRes.status, usersRes.statusText);
-      }
+
         if (jobsRes.ok) {
           const jobsData = await jobsRes.json();
           setJobs(jobsData);
         } else {
           console.error("Jobs fetch failed:", jobsRes.status, jobsRes.statusText);
         }
+
         if (applicationsRes.ok) {
           const applicationsData = await applicationsRes.json();
           setApplications(applicationsData);
@@ -219,16 +249,18 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error("Dashboard data fetch error:", err);
-        router.push("/jobcy/admin/auth/login"); // if token expired, go back to login
-      } finally {
-        setLoading(false);
+        setLoading(false); // Ensure loading is set to false even on error
+        // Don't redirect on network errors, only on auth errors
+        if (err instanceof Error && err.message.includes('401')) {
+          router.push("/jobcy/admin/auth/login");
+        }
       }
     };
 
     fetchDashboardData();
   }, [router]);
 
-  // Auto-refresh applications data every 5 seconds when on applications tab
+  // Auto-refresh applications data every 30 seconds when on applications tab
   useEffect(() => {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
@@ -247,12 +279,12 @@ export default function AdminDashboard() {
           .then(data => setApplications(data))
           .catch(err => console.error("Auto-refresh applications error:", err));
       }
-    }, 5000); // 5 seconds
+    }, 30000); // 30 seconds - reduced frequency
 
     return () => clearInterval(interval);
   }, [activeTab]);
 
-  // Auto-refresh stats data every 5 seconds
+  // Auto-refresh stats data every 60 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
@@ -273,12 +305,12 @@ export default function AdminDashboard() {
           })
           .catch(err => console.error("Auto-refresh stats error:", err));
       }
-    }, 5000); // 5 seconds
+    }, 60000); // 60 seconds - reduced frequency
 
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-refresh recent activity data every 30 seconds
+  // Auto-refresh recent activity data every 2 minutes
   useEffect(() => {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
@@ -297,7 +329,7 @@ export default function AdminDashboard() {
           .then(data => setRecentActivity(data))
           .catch(err => console.error("Auto-refresh activity error:", err));
       }
-    }, 30000); // 30 seconds
+    }, 120000); // 2 minutes - reduced frequency
 
     return () => clearInterval(interval);
   }, []);
