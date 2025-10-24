@@ -3,10 +3,11 @@ import { connectDB } from '@/lib/mongodb';
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
-    console.log('HR resume download request for user:', params.userId);
+    const { userId } = await params;
+    console.log('HR resume download request for user:', userId);
     
     // Get user ID from JWT token
     const authHeader = _request.headers.get('authorization');
@@ -38,11 +39,11 @@ export async function GET(
     let user;
     
     try {
-      const userObjectId = toObjectId(params.userId);
+      const userObjectId = toObjectId(userId);
       user = await db.collection('users').findOne({ _id: userObjectId });
     } catch (error) {
-      console.log('Error converting userId to ObjectId, trying string format:', params.userId);
-      user = await db.collection('users').findOne({ _id: params.userId });
+      console.log('Error converting userId to ObjectId, trying string format:', userId);
+      user = await db.collection('users').findOne({ _id: userId });
     }
     
     if (!user) {
