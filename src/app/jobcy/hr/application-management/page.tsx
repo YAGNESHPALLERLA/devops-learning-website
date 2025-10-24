@@ -545,6 +545,32 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               <span>Reconsider</span>
             </button>
           )}
+          
+          {/* Fallback: Show buttons for any unhandled status */}
+          {!["pending", "Applied", "shortlisted", "Under Review", "rejected", "Rejected", "accepted", "Accepted"].includes(application.status) && (
+            <>
+              <button
+                onClick={() =>
+                  updateApplicationStatus(application.id, "accepted")
+                }
+                disabled={isLoading}
+                className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+              >
+                <CheckCircle className="w-4 h-4" />
+                <span>Accept</span>
+              </button>
+              <button
+                onClick={() =>
+                  updateApplicationStatus(application.id, "rejected")
+                }
+                disabled={isLoading}
+                className="flex items-center space-x-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+              >
+                <XCircle className="w-4 h-4" />
+                <span>Reject</span>
+              </button>
+            </>
+          )}
         </div>
         <button
           onClick={() => {
