@@ -370,8 +370,10 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                   
                   // Validate token before making request
                   if (!token) {
-                    alert('No authentication token found. Please login again.');
-                    window.location.href = '/jobcy/login';
+                    const shouldLogin = confirm('No authentication token found. Would you like to login again?');
+                    if (shouldLogin) {
+                      window.location.href = '/jobcy/hr/auth/login/';
+                    }
                     return;
                   }
                   
@@ -380,17 +382,19 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                     const payload = JSON.parse(atob(token.split('.')[1]));
                     const currentTime = Math.floor(Date.now() / 1000);
                     if (payload.exp && payload.exp < currentTime) {
-                      alert('Your session has expired. Please login again.');
-                      localStorage.removeItem('token');
-                      localStorage.removeItem('user');
-                      window.location.href = '/jobcy/login';
+                      const shouldLogin = confirm('Your session has expired. Would you like to login again?');
+                      if (shouldLogin) {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        window.location.href = '/jobcy/hr/auth/login/';
+                      }
                       return;
                     }
                   } catch (e) {
                     alert('Invalid authentication token. Please login again.');
                     localStorage.removeItem('token');
                     localStorage.removeItem('user');
-                    window.location.href = '/jobcy/login';
+                    window.location.href = '/jobcy/hr/auth/login/';
                     return;
                   }
                   
@@ -427,7 +431,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                       // Clear invalid token and redirect to login
                       localStorage.removeItem('token');
                       localStorage.removeItem('user');
-                      window.location.href = '/jobcy/login';
+                      window.location.href = '/jobcy/hr/auth/login/';
                     } else {
                       alert('Failed to download resume. Please try again.');
                     }
@@ -647,8 +651,10 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                       
                       // Validate token before making request
                       if (!token) {
-                        alert('No authentication token found. Please login again.');
-                        window.location.href = '/jobcy/login';
+                        const shouldLogin = confirm('No authentication token found. Would you like to login again?');
+                        if (shouldLogin) {
+                          window.location.href = '/jobcy/hr/auth/login/';
+                        }
                         return;
                       }
                       
@@ -657,17 +663,19 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                         const payload = JSON.parse(atob(token.split('.')[1]));
                         const currentTime = Math.floor(Date.now() / 1000);
                         if (payload.exp && payload.exp < currentTime) {
-                          alert('Your session has expired. Please login again.');
-                          localStorage.removeItem('token');
-                          localStorage.removeItem('user');
-                          window.location.href = '/jobcy/login';
+                          const shouldLogin = confirm('Your session has expired. Would you like to login again?');
+                          if (shouldLogin) {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('user');
+                            window.location.href = '/jobcy/hr/auth/login/';
+                          }
                           return;
                         }
                       } catch (e) {
                         alert('Invalid authentication token. Please login again.');
                         localStorage.removeItem('token');
                         localStorage.removeItem('user');
-                        window.location.href = '/jobcy/login';
+                        window.location.href = '/jobcy/hr/auth/login/';
                         return;
                       }
                       
@@ -704,7 +712,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                           // Clear invalid token and redirect to login
                           localStorage.removeItem('token');
                           localStorage.removeItem('user');
-                          window.location.href = '/jobcy/login';
+                          window.location.href = '/jobcy/hr/auth/login/';
                         } else {
                           alert('Failed to download resume. Please try again.');
                         }
