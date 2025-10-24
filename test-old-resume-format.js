@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-async function checkSpecificUser() {
-  console.log('🔍 Checking Specific User Resume...\n');
+async function testOldResumeFormat() {
+  console.log('🧪 Testing Old Resume Format Handling...\n');
 
   try {
     // Create HR user for testing
@@ -40,11 +40,11 @@ async function checkSpecificUser() {
     const loginData = await loginResponse.json();
     const token = loginData.token;
 
-    // Test the specific user ID that's failing
-    const failingUserId = '68e8dfd024cf96ebf48aaf05';
-    console.log(`Testing resume download for user: ${failingUserId}`);
+    // Test the specific user ID that has old format resume
+    const oldFormatUserId = '68e8dfd024cf96ebf48aaf05';
+    console.log(`Testing resume download for user with old format: ${oldFormatUserId}`);
     
-    const resumeResponse = await fetch(`http://localhost:3000/api/jobcy/hr/resume/${failingUserId}`, {
+    const resumeResponse = await fetch(`http://localhost:3000/api/jobcy/hr/resume/${oldFormatUserId}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -63,13 +63,11 @@ async function checkSpecificUser() {
       const errorText = await resumeResponse.text();
       console.log('Error details:', errorText);
       
-      if (resumeResponse.status === 403) {
-        console.log('\n🔍 403 Error Analysis:');
-        console.log('- This means the user either:');
-        console.log('  1. Does not have a resume uploaded');
-        console.log('  2. The user does not exist');
-        console.log('  3. The user ID is invalid');
-        console.log('  4. The user was created without resume data');
+      if (resumeResponse.status === 400) {
+        console.log('\n🔍 400 Error Analysis:');
+        console.log('- This means the user has an old format resume (file path)');
+        console.log('- The user needs to re-upload their resume in the new format');
+        console.log('- This is expected behavior for old format resumes');
       }
     }
 
@@ -78,4 +76,4 @@ async function checkSpecificUser() {
   }
 }
 
-checkSpecificUser();
+testOldResumeFormat();

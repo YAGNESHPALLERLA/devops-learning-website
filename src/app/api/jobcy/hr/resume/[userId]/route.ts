@@ -60,34 +60,150 @@ export async function GET(
     console.log('Found user:', user.name, 'Resume data:', user.resume);
     
     // Check if user has a resume
-    if (!user.resume || !user.resume.data) {
+    if (!user.resume) {
       return NextResponse.json({ error: 'No resume found for this user' }, { status: 404 });
     }
     
-    // Get resume data
-    const resumeData = user.resume.data;
-    const resumeName = user.resume.name || 'resume.pdf';
-    const resumeType = user.resume.type || 'application/pdf';
+    // Handle different resume storage formats
+    let buffer;
+    let resumeName = user.resume.name || 'resume.pdf';
+    let resumeType = user.resume.type || 'application/pdf';
     
     console.log('Resume details:', {
       name: resumeName,
       type: resumeType,
-      dataLength: resumeData ? resumeData.length : 0
+      data: user.resume.data ? 'has data' : 'no data',
+      path: user.resume.path || 'no path',
+      resumeType: typeof user.resume,
+      resumeValue: user.resume
     });
     
-    // Convert base64 to buffer
-    let buffer;
-    try {
-      if (typeof resumeData === 'string') {
-        // Remove data URL prefix if present
-        const base64Data = resumeData.includes(',') ? resumeData.split(',')[1] : resumeData;
-        buffer = Buffer.from(base64Data, 'base64');
-      } else {
-        buffer = Buffer.from(resumeData);
+    // Check if resume is stored as a string (file path)
+    if (typeof user.resume === 'string' && user.resume.includes('/')) {
+      // Old format: resume stored as file path string
+      console.log('Using file path string format:', user.resume);
+      
+      try {
+        const fs = await import('fs');
+        const path = await import('path');
+        
+        // Construct the full file path
+        const filePath = path.join(process.cwd(), user.resume);
+        console.log('Reading file from:', filePath);
+        
+        // Check if file exists
+        if (!fs.existsSync(filePath)) {
+          console.log('File not found at:', filePath);
+          return NextResponse.json({ 
+            error: 'Resume file not found on server',
+            details: 'The resume file was uploaded but is no longer available on the server.'
+          }, { status: 404 });
+        }
+        
+        // Read the file
+        const fileBuffer = fs.readFileSync(filePath);
+        buffer = fileBuffer;
+        
+        // Extract filename from path
+        resumeName = path.basename(filePath);
+        
+        // Determine content type based on file extension
+        const ext = path.extname(filePath).toLowerCase();
+        if (ext === '.pdf') {
+          resumeType = 'application/pdf';
+        } else if (ext === '.doc') {
+          resumeType = 'application/msword';
+        } else if (ext === '.docx') {
+          resumeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        } else {
+          resumeType = 'application/octet-stream';
+        }
+        
+        console.log('File read successfully:', {
+          name: resumeName,
+          type: resumeType,
+          size: fileBuffer.length
+        });
+        
+      } catch (error) {
+        console.error('Error reading resume file:', error);
+        return NextResponse.json({ 
+          error: 'Failed to read resume file',
+          details: 'There was an error reading the resume file from the server.'
+        }, { status: 500 });
       }
-    } catch (error) {
-      console.error('Error converting resume data:', error);
-      return NextResponse.json({ error: 'Invalid resume data format' }, { status: 400 });
+    } else if (user.resume.data) {
+      // New format: base64 data
+      console.log('Using base64 data format');
+      const resumeData = user.resume.data;
+      
+      try {
+        if (typeof resumeData === 'string') {
+          // Remove data URL prefix if present
+          const base64Data = resumeData.includes(',') ? resumeData.split(',')[1] : resumeData;
+          buffer = Buffer.from(base64Data, 'base64');
+        } else {
+          buffer = Buffer.from(resumeData);
+        }
+      } catch (error) {
+        console.error('Error converting base64 resume data:', error);
+        return NextResponse.json({ error: 'Invalid resume data format' }, { status: 400 });
+      }
+    } else if (user.resume.path) {
+      // Old format: file path - read from filesystem
+      console.log('Using file path format:', user.resume.path);
+      
+      try {
+        const fs = await import('fs');
+        const path = await import('path');
+        
+        // Construct the full file path
+        const filePath = path.join(process.cwd(), user.resume.path);
+        console.log('Reading file from:', filePath);
+        
+        // Check if file exists
+        if (!fs.existsSync(filePath)) {
+          console.log('File not found at:', filePath);
+          return NextResponse.json({ 
+            error: 'Resume file not found on server',
+            details: 'The resume file was uploaded but is no longer available on the server.'
+          }, { status: 404 });
+        }
+        
+        // Read the file
+        const fileBuffer = fs.readFileSync(filePath);
+        buffer = fileBuffer;
+        
+        // Extract filename from path
+        resumeName = path.basename(filePath);
+        
+        // Determine content type based on file extension
+        const ext = path.extname(filePath).toLowerCase();
+        if (ext === '.pdf') {
+          resumeType = 'application/pdf';
+        } else if (ext === '.doc') {
+          resumeType = 'application/msword';
+        } else if (ext === '.docx') {
+          resumeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        } else {
+          resumeType = 'application/octet-stream';
+        }
+        
+        console.log('File read successfully:', {
+          name: resumeName,
+          type: resumeType,
+          size: fileBuffer.length
+        });
+        
+      } catch (error) {
+        console.error('Error reading resume file:', error);
+        return NextResponse.json({ 
+          error: 'Failed to read resume file',
+          details: 'There was an error reading the resume file from the server.'
+        }, { status: 500 });
+      }
+    } else {
+      return NextResponse.json({ error: 'No resume data found for this user' }, { status: 404 });
     }
     
     // Return the resume file
