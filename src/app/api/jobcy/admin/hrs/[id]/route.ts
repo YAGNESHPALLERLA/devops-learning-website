@@ -28,10 +28,14 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
     const db = await connectDB();
     const { toObjectId } = await import('@/lib/mongodb');
     
-    // Delete HR user
-    const result = await db.collection('users').deleteOne(
-      { _id: toObjectId(id), role: 'hr' }
-    );
+    // Delete HR user (handle both lowercase and uppercase roles)
+    const result = await db.collection('users').deleteOne({
+      _id: toObjectId(id),
+      $or: [
+        { role: 'hr' },
+        { role: 'HR' }
+      ]
+    });
     
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: 'HR user not found' }, { status: 404 });

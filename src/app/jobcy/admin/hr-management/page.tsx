@@ -297,32 +297,43 @@ const handleInputChange = (
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this HR user?")) {
+    if (window.confirm("Are you sure you want to delete this HR user? This action cannot be undone.")) {
       try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setErrors({ general: "No authentication token found. Please login again." });
+          return;
+        }
+
         const res = await fetch(`/api/jobcy/admin/hrs/${id}`, {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         });
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.message || "Failed to delete HR");
+          throw new Error(errorData.error || errorData.message || "Failed to delete HR user");
         }
 
+        // Remove the deleted user from the list
         setHrUsers((prev) => Array.isArray(prev) ? prev.filter((hr) => hr._id !== id) : []);
         setSuccessMessage("HR user deleted successfully!");
         setTimeout(() => setSuccessMessage(""), 3000);
+        
+        // Clear any previous errors
+        setErrors({});
       } catch (error: unknown) {
-        let message = "An error occurred. Please try again.";
+        let message = "An error occurred while deleting the HR user. Please try again.";
         if (error instanceof Error) {
           message = error.message;
         }
 
         setErrors({ general: message });
-     }
-
+        console.error("Delete HR error:", error);
+      }
     }
   };
 
