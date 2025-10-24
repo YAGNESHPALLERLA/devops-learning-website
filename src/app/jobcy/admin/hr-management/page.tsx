@@ -384,7 +384,7 @@ const handleInputChange = (
               placeholder="Search HR users..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 bg-white text-gray-900"
             />
           </div>
           <button className="flex items-center space-x-2 ml-4 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
@@ -572,12 +572,12 @@ const handleInputChange = (
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
                   errors.name
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 }`}
-                placeholder="One Hub Global"
+                placeholder="Enter full name"
               />
               {errors.name && (
                 <p className="mt-2 text-sm text-red-600">{errors.name}</p>
@@ -593,12 +593,12 @@ const handleInputChange = (
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
                   errors.email
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                 }`}
-                placeholder="ohg@example.com"
+                placeholder="Enter email address"
               />
               {errors.email && (
                 <p className="mt-2 text-sm text-red-600">{errors.email}</p>
@@ -620,7 +620,7 @@ const handleInputChange = (
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
+                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
                     errors.password
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -657,7 +657,7 @@ const handleInputChange = (
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
                 placeholder="Enter phone number"
               />
             </div>
@@ -684,7 +684,7 @@ const handleInputChange = (
                     company: selectedCompany ? selectedCompany.name : prev.company,
                   }));
                 }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
               >
                 <option value="">-- Select a company (or enter manually below) --</option>
                 {Array.isArray(companies) ? companies.map((company) => {
@@ -711,7 +711,7 @@ const handleInputChange = (
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
                   errors.company
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -731,7 +731,7 @@ const handleInputChange = (
                 name="industry"
                 value={formData.industry}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
                   errors.industry
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -760,7 +760,7 @@ const handleInputChange = (
                 name="companySize"
                 value={formData.companySize}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
               >
                 <option value="">Select company size</option>
                 <option value="1-10">1-10 employees</option>
@@ -781,7 +781,7 @@ const handleInputChange = (
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
                 placeholder="https://company.com"
               />
             </div>
@@ -798,7 +798,7 @@ const handleInputChange = (
             value={formData.address}
             onChange={handleInputChange}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
             placeholder="Enter company address"
           />
         </div>
