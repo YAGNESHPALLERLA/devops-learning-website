@@ -487,7 +487,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
       </div>
       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
         <div className="flex space-x-2">
-          {application.status === "pending" && (
+          {(application.status === "pending" || application.status === "Applied") && (
             <>
               <button
                 onClick={() =>
@@ -497,7 +497,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                 className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
               >
                 <CheckCircle className="w-4 h-4" />
-                <span>Shortlist</span>
+                <span>Accept</span>
               </button>
               <button
                 onClick={() =>
@@ -511,17 +511,17 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               </button>
             </>
           )}
-          {application.status === "shortlisted" && (
+          {(application.status === "shortlisted" || application.status === "Under Review") && (
             <>
               <button
                 onClick={() =>
-                  updateApplicationStatus(application.id, "pending")
+                  updateApplicationStatus(application.id, "accepted")
                 }
                 disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+                className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
               >
-                <Clock className="w-4 h-4" />
-                <span>Move to Pending</span>
+                <CheckCircle className="w-4 h-4" />
+                <span>Final Accept</span>
               </button>
               <button
                 onClick={() =>
@@ -535,7 +535,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               </button>
             </>
           )}
-          {application.status === "rejected" && (
+          {(application.status === "rejected" || application.status === "Rejected") && (
             <button
               onClick={() => updateApplicationStatus(application.id, "pending")}
               disabled={isLoading}
