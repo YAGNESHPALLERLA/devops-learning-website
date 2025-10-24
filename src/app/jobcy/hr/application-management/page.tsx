@@ -137,7 +137,7 @@ export default function ApplicationsManagement() {
             coverLetter: app.coverLetter || 'No cover letter provided',
             skills: app.user?.skills || [],
             rating: 4.0,
-            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.user?.resume),
+            hasResume: !!(app.user?.resume && (app.user.resume.data || app.user.resume.name)),
           }));
 
           console.log('Transformed applications:', transformedApplications);
@@ -382,7 +382,13 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                     window.URL.revokeObjectURL(url);
                   } else {
                     console.error('Failed to download resume:', response.status, response.statusText);
-                    alert('Failed to download resume. Please try again.');
+                    if (response.status === 404) {
+                      alert('No resume found for this user.');
+                    } else if (response.status === 403) {
+                      alert('Access denied. Please make sure you are logged in as HR.');
+                    } else {
+                      alert('Failed to download resume. Please try again.');
+                    }
                   }
                 } catch (error) {
                   console.error('Error downloading resume:', error);
@@ -612,7 +618,13 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                         window.URL.revokeObjectURL(url);
                       } else {
                         console.error('Failed to download resume:', response.status, response.statusText);
-                        alert('Failed to download resume. Please try again.');
+                        if (response.status === 404) {
+                          alert('No resume found for this user.');
+                        } else if (response.status === 403) {
+                          alert('Access denied. Please make sure you are logged in as HR.');
+                        } else {
+                          alert('Failed to download resume. Please try again.');
+                        }
                       }
                     } catch (error) {
                       console.error('Error downloading resume:', error);
