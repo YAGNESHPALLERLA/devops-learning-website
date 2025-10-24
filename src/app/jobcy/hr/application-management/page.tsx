@@ -113,6 +113,7 @@ export default function ApplicationsManagement() {
         if (response.ok) {
           const applicationsData = await response.json();
           console.log('Frontend received applications:', applicationsData);
+          console.log('First application structure:', applicationsData[0]);
 
           // Handle both array and object response formats
           const applicationsArray = Array.isArray(applicationsData) ? applicationsData : applicationsData.applications || [];
@@ -121,22 +122,22 @@ export default function ApplicationsManagement() {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const transformedApplications: Application[] = applicationsArray.map((app: any, index: number) => ({
             id: app._id || index + 1,
-            jobId: app.jobId?._id || app.jobId,
-            jobTitle: app.jobId?.title || 'Unknown Job',
-            applicantName: app.userId?.name || 'Unknown User',
-            email: app.userId?.email || '',
-            phone: app.userId?.mobile || '',
-            location: app.userId?.currentLocation || '',
-            appliedDate: app.appliedDate || app.createdAt,
+            jobId: app.job?._id || app.jobId,
+            jobTitle: app.job?.title || 'Unknown Job',
+            applicantName: app.user?.name || 'Unknown User',
+            email: app.user?.email || '',
+            phone: app.user?.mobile || app.user?.phone || '',
+            location: app.user?.currentLocation || '',
+            appliedDate: app.appliedAt || app.createdAt,
             status: app.status === 'Applied' ? 'pending' : app.status?.toLowerCase() || 'pending',
             experience: 'Not specified',
             education: 'Not specified',
-            resumeUrl: app.resume?.name || app.userId?.resume?.name || null,
-            userId: app.userId?._id || app.userId,
+            resumeUrl: app.resume?.name || app.user?.resume?.name || null,
+            userId: app.user?._id || app.userId,
             coverLetter: app.coverLetter || 'No cover letter provided',
-            skills: app.userId?.skills || [],
+            skills: app.user?.skills || [],
             rating: 4.0,
-            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.userId?.resume),
+            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.user?.resume),
           }));
 
           console.log('Transformed applications:', transformedApplications);
@@ -253,13 +254,16 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
   // Filtered applications based on job, status, and search term
   const filteredApplications = Array.isArray(applications) ? applications.filter((app) => {
     const matchesJob =
-      selectedJob === "all" || app.jobId.toString() === selectedJob || app.jobTitle === selectedJob;
+      selectedJob === "all" || 
+      app.jobId?.toString() === selectedJob || 
+      app.jobTitle === selectedJob ||
+      app.jobTitle?.toLowerCase() === selectedJob?.toLowerCase();
     const matchesStatus =
       selectedStatus === "all" || app.status === selectedStatus;
     const matchesSearch =
-      app.applicantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      app.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      app.jobTitle.toLowerCase().includes(searchTerm.toLowerCase());
+      app.applicantName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      app.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      app.jobTitle?.toLowerCase().includes(searchTerm.toLowerCase());
     console.log('Filtering app:', app.jobTitle, 'selectedJob:', selectedJob, 'matchesJob:', matchesJob);
     return matchesJob && matchesStatus && matchesSearch;
   }) : [];
