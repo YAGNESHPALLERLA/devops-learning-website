@@ -47,11 +47,12 @@ export async function GET(_request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('Admin create company request');
+    console.log('🚀 Admin create company request');
     
     // Get user ID from JWT token
     const authHeader = request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.log('❌ No token provided');
       return NextResponse.json({ error: 'No token provided' }, { status: 401 });
     }
 
@@ -60,31 +61,54 @@ export async function POST(request: NextRequest) {
     
     try {
       jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
-    } catch {
+      console.log('✅ JWT token verified');
+    } catch (error) {
+      console.log('❌ JWT verification failed:', error);
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
     const body = await request.json();
+    console.log('📄 Request body received:', body);
     const { name, email, password, industry, location, website, description, size, status } = body;
 
     // Validate required fields
     if (!name || !email || !password) {
+      console.log('❌ Missing required fields:', { name: !!name, email: !!email, password: !!password });
       return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
     }
 
+    console.log('✅ Required fields validated');
+
     // Connect to database
+    console.log('🔗 Connecting to database...');
     const db = await connectDB();
+    console.log('✅ Database connected');
+    
+    // Test database connection
+    try {
+      const testResult = await db.collection('users').countDocuments();
+      console.log('✅ Database test successful, total users:', testResult);
+    } catch (dbError) {
+      console.error('❌ Database test failed:', dbError);
+      throw dbError;
+    }
     
     // Check if company already exists
+    console.log('🔍 Checking if company already exists...');
     const existingCompany = await db.collection('users').findOne({ email });
     if (existingCompany) {
+      console.log('❌ Company already exists:', email);
       return NextResponse.json({ error: 'Company with this email already exists' }, { status: 400 });
     }
+    console.log('✅ Company email is unique');
 
     // Hash password
+    console.log('🔐 Hashing password...');
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log('✅ Password hashed');
 
     // Create new company user
+    console.log('📝 Creating new company object...');
     const newCompany = {
       name,
       email,
@@ -104,9 +128,12 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date()
     };
 
+    console.log('📄 New company object:', { ...newCompany, password: '[HIDDEN]' });
+
+    console.log('💾 Inserting company into database...');
     const result = await db.collection('users').insertOne(newCompany);
     
-    console.log('Company created:', result.insertedId);
+    console.log('✅ Company created successfully:', result.insertedId);
     
     return NextResponse.json({ 
       message: 'Company registered successfully',
@@ -124,7 +151,15 @@ export async function POST(request: NextRequest) {
       }
     });
   } catch (error) {
-    console.error('Admin create company error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('❌ Admin create company error:', error);
+    console.error('❌ Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      name: error instanceof Error ? error.name : undefined
+    });
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }
