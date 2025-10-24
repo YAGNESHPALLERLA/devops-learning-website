@@ -114,9 +114,12 @@ export default function ApplicationsManagement() {
           const applicationsData = await response.json();
           console.log('Frontend received applications:', applicationsData);
 
+          // Handle both array and object response formats
+          const applicationsArray = Array.isArray(applicationsData) ? applicationsData : applicationsData.applications || [];
+
           // Transform backend data to match frontend interface
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const transformedApplications: Application[] = applicationsData.map((app: any, index: number) => ({
+          const transformedApplications: Application[] = applicationsArray.map((app: any, index: number) => ({
             id: app._id || index + 1,
             jobId: app.jobId?._id || app.jobId,
             jobTitle: app.jobId?.title || 'Unknown Job',

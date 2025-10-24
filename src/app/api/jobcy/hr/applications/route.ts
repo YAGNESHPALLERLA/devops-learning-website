@@ -55,7 +55,7 @@ export async function GET(_request: NextRequest) {
     const jobIds = uniqueJobs.map(job => job._id);
     
     if (jobIds.length === 0) {
-      return NextResponse.json({ applications: [] });
+      return NextResponse.json([]);
     }
     
     // Get applications for jobs posted by this HR
