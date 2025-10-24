@@ -39,13 +39,13 @@ export async function POST(_request: NextRequest) {
       salary: body.salary || '',
       experience: body.experience || '',
       about: '',
-      skills: [],
-      education: [],
+      skills: body.skills || [],
+      education: body.education || [],
       projects: [],
       profileViews: 0,
       applications: 0,
       profileScore: 0,
-      resume: '',
+      resume: body.resume || null, // Handle resume data if provided
       createdAt: new Date(),
       updatedAt: new Date()
     };
