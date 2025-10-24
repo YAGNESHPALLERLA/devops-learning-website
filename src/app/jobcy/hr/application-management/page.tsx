@@ -366,6 +366,33 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
               onClick={async () => {
                 try {
                   const token = localStorage.getItem("token");
+                  
+                  // Validate token before making request
+                  if (!token) {
+                    alert('No authentication token found. Please login again.');
+                    window.location.href = '/jobcy/login';
+                    return;
+                  }
+                  
+                  // Check if token is expired
+                  try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    const currentTime = Math.floor(Date.now() / 1000);
+                    if (payload.exp && payload.exp < currentTime) {
+                      alert('Your session has expired. Please login again.');
+                      localStorage.removeItem('token');
+                      localStorage.removeItem('user');
+                      window.location.href = '/jobcy/login';
+                      return;
+                    }
+                  } catch (e) {
+                    alert('Invalid authentication token. Please login again.');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/jobcy/login';
+                    return;
+                  }
+                  
                   const response = await fetch(`${"/api/jobcy"}/hr/resume/${application.userId}`, {
                     headers: {
                       Authorization: `Bearer ${token}`,
@@ -390,7 +417,16 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                         alert('No resume found for this user.');
                       }
                     } else if (response.status === 403) {
-                      alert('Access denied. Please make sure you are logged in as HR.');
+                      const errorData = await response.json().catch(() => ({}));
+                      if (errorData.details && errorData.details.includes('User role is')) {
+                        alert(`Access denied: ${errorData.details}. Please login as HR.`);
+                      } else {
+                        alert('Access denied. Please make sure you are logged in as HR.');
+                      }
+                      // Clear invalid token and redirect to login
+                      localStorage.removeItem('token');
+                      localStorage.removeItem('user');
+                      window.location.href = '/jobcy/login';
                     } else {
                       alert('Failed to download resume. Please try again.');
                     }
@@ -607,6 +643,33 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                   onClick={async () => {
                     try {
                       const token = localStorage.getItem("token");
+                      
+                      // Validate token before making request
+                      if (!token) {
+                        alert('No authentication token found. Please login again.');
+                        window.location.href = '/jobcy/login';
+                        return;
+                      }
+                      
+                      // Check if token is expired
+                      try {
+                        const payload = JSON.parse(atob(token.split('.')[1]));
+                        const currentTime = Math.floor(Date.now() / 1000);
+                        if (payload.exp && payload.exp < currentTime) {
+                          alert('Your session has expired. Please login again.');
+                          localStorage.removeItem('token');
+                          localStorage.removeItem('user');
+                          window.location.href = '/jobcy/login';
+                          return;
+                        }
+                      } catch (e) {
+                        alert('Invalid authentication token. Please login again.');
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        window.location.href = '/jobcy/login';
+                        return;
+                      }
+                      
                       const response = await fetch(`${"/api/jobcy"}/hr/resume/${applicant.userId}`, {
                         headers: {
                           Authorization: `Bearer ${token}`,
@@ -631,7 +694,16 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                             alert('No resume found for this user.');
                           }
                         } else if (response.status === 403) {
-                          alert('Access denied. Please make sure you are logged in as HR.');
+                          const errorData = await response.json().catch(() => ({}));
+                          if (errorData.details && errorData.details.includes('User role is')) {
+                            alert(`Access denied: ${errorData.details}. Please login as HR.`);
+                          } else {
+                            alert('Access denied. Please make sure you are logged in as HR.');
+                          }
+                          // Clear invalid token and redirect to login
+                          localStorage.removeItem('token');
+                          localStorage.removeItem('user');
+                          window.location.href = '/jobcy/login';
                         } else {
                           alert('Failed to download resume. Please try again.');
                         }

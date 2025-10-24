@@ -22,14 +22,25 @@ export async function GET(
     try {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
-    } catch {
-      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+      console.log('✅ JWT token verified successfully. User ID:', decoded.id, 'Role:', decoded.role);
+    } catch (error) {
+      console.log('❌ JWT token verification failed:', error);
+      return NextResponse.json({ 
+        error: 'Invalid token',
+        details: 'Token verification failed. Please login again.'
+      }, { status: 401 });
     }
 
     // Check if user is HR
     if (decoded.role !== 'HR') {
-      return NextResponse.json({ error: 'Unauthorized - HR access required' }, { status: 403 });
+      console.log('❌ HR access denied. User role:', decoded.role, 'Expected: HR');
+      return NextResponse.json({ 
+        error: 'Unauthorized - HR access required',
+        details: `User role is '${decoded.role}', but 'HR' is required`
+      }, { status: 403 });
     }
+    
+    console.log('✅ HR authentication successful. User ID:', decoded.id, 'Role:', decoded.role);
 
     // Connect to database
     const db = await connectDB();
