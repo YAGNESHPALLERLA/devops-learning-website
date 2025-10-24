@@ -897,9 +897,9 @@ export default function AdminDashboard() {
                                 Email: {app.userId.email}
                               </p>
                             )}
-                            {(app as any).company && (
+                            {(app as { company?: { name: string; industry?: string } }).company && (
                               <p className={`text-xs mt-1 ${isDarkMode ? "text-blue-400" : "text-blue-600"}`}>
-                                Company: {(app as any).company.name} | Industry: {(app as any).company.industry || 'N/A'}
+                                Company: {(app as { company: { name: string; industry?: string } }).company.name} | Industry: {(app as { company: { name: string; industry?: string } }).company.industry || 'N/A'}
                               </p>
                             )}
                           </div>
