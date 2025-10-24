@@ -39,7 +39,7 @@ export default function ApplicationsManagement() {
     phone: string;
     location: string;
     appliedDate: string;
-    status: "pending" | "shortlisted" | "rejected" | "accepted";
+    status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted";
     experience: string;
     education: string;
     resumeUrl: string | null;
@@ -176,30 +176,38 @@ export default function ApplicationsManagement() {
   }, []);
 
   // Status badges styling & icons
-  const getStatusColor = (status: "pending" | "shortlisted" | "rejected" | "accepted") => {
+  const getStatusColor = (status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted") => {
   switch (status) {
     case "pending":
+    case "Applied":
       return "bg-yellow-100 text-yellow-800";
     case "shortlisted":
+    case "Under Review":
       return "bg-blue-100 text-blue-800";
     case "accepted":
+    case "Accepted":
       return "bg-green-100 text-green-800";
     case "rejected":
+    case "Rejected":
       return "bg-red-100 text-red-800";
     default:
       return "bg-gray-100 text-gray-800";
   }
 };
 
-const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepted") => {
+const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted") => {
   switch (status) {
     case "pending":
+    case "Applied":
       return <Clock className="w-4 h-4" />;
     case "shortlisted":
+    case "Under Review":
       return <AlertCircle className="w-4 h-4" />;
     case "accepted":
+    case "Accepted":
       return <CheckCircle className="w-4 h-4" />;
     case "rejected":
+    case "Rejected":
       return <XCircle className="w-4 h-4" />;
     default:
       return <Clock className="w-4 h-4" />;
@@ -796,7 +804,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               </button>
 
               {/* Status-based action buttons */}
-              {applicant.status === "pending" && (
+              {(applicant.status === "pending" || applicant.status === "Applied") && (
                 <>
                   <button
                     onClick={() => {
@@ -821,7 +829,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                 </>
               )}
 
-              {applicant.status === "shortlisted" && (
+              {(applicant.status === "shortlisted" || applicant.status === "Under Review") && (
                 <>
                   <button
                     onClick={() => {
@@ -846,7 +854,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                 </>
               )}
 
-              {applicant.status === "rejected" && (
+              {(applicant.status === "rejected" || applicant.status === "Rejected") && (
                 <button
                   onClick={() => {
                     updateApplicationStatus(applicant.id, "pending");
