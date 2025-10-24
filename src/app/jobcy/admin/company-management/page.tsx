@@ -301,6 +301,9 @@ export default function CompanyManagement() {
         email: string;
         mobile?: number;
         companyId?: string;
+        company?: {
+          name: string;
+        };
       }
 
       interface JobData {
