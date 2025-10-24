@@ -24,6 +24,7 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
+  AlertCircle,
 } from "lucide-react";
 
 export default function ApplicationsManagement() {
@@ -38,7 +39,7 @@ export default function ApplicationsManagement() {
     phone: string;
     location: string;
     appliedDate: string;
-    status: "pending" | "shortlisted" | "rejected";
+    status: "pending" | "shortlisted" | "rejected" | "accepted";
     experience: string;
     education: string;
     resumeUrl: string | null;
@@ -175,11 +176,13 @@ export default function ApplicationsManagement() {
   }, []);
 
   // Status badges styling & icons
-  const getStatusColor = (status: "pending" | "shortlisted" | "rejected") => {
+  const getStatusColor = (status: "pending" | "shortlisted" | "rejected" | "accepted") => {
   switch (status) {
     case "pending":
       return "bg-yellow-100 text-yellow-800";
     case "shortlisted":
+      return "bg-blue-100 text-blue-800";
+    case "accepted":
       return "bg-green-100 text-green-800";
     case "rejected":
       return "bg-red-100 text-red-800";
@@ -188,11 +191,13 @@ export default function ApplicationsManagement() {
   }
 };
 
-const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
+const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepted") => {
   switch (status) {
     case "pending":
       return <Clock className="w-4 h-4" />;
     case "shortlisted":
+      return <AlertCircle className="w-4 h-4" />;
+    case "accepted":
       return <CheckCircle className="w-4 h-4" />;
     case "rejected":
       return <XCircle className="w-4 h-4" />;
@@ -205,12 +210,20 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
   // Update application status
   const updateApplicationStatus = async (
     applicationId: number,
-    newStatus: "pending" | "shortlisted" | "rejected"
+    newStatus: "pending" | "shortlisted" | "rejected" | "accepted"
   ) => {
     setIsLoading(true);
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
+
+      // Map status to display values
+      const statusMap = {
+        "pending": "Applied",
+        "shortlisted": "Under Review", 
+        "rejected": "Rejected",
+        "accepted": "Accepted"
+      };
 
       const response = await fetch(`${"/api/jobcy"}/hr/applications/${applicationId}/status`, {
         method: 'PUT',
@@ -218,7 +231,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ status: newStatus === "shortlisted" ? "Under Review" : newStatus === "rejected" ? "Rejected" : newStatus === "pending" ? "Applied" : newStatus }),
+        body: JSON.stringify({ status: statusMap[newStatus] }),
       });
 
       if (response.ok) {
@@ -227,6 +240,16 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
             app.id === applicationId ? { ...app, status: newStatus } : app
           )
         );
+        
+        // Show appropriate success message
+        const successMessages = {
+          "pending": "Application moved to pending",
+          "shortlisted": "Application accepted for review", 
+          "rejected": "Application rejected",
+          "accepted": "Application accepted - candidate will be notified"
+        };
+        
+        alert(successMessages[newStatus]);
       } else {
         console.error('Failed to update application status');
         alert('Failed to update application status. Please try again.');
@@ -731,6 +754,23 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
             )}
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+              {/* Preview Button - Always available */}
+              <button
+                onClick={() => {
+                  // Preview functionality - could open resume in new tab or show more details
+                  if (applicant.resumeUrl) {
+                    window.open(applicant.resumeUrl, '_blank');
+                  } else {
+                    alert('No resume available for preview');
+                  }
+                }}
+                className="flex items-center space-x-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+              >
+                <Eye className="w-4 h-4" />
+                <span>Preview</span>
+              </button>
+
+              {/* Status-based action buttons */}
               {applicant.status === "pending" && (
                 <>
                   <button
@@ -741,7 +781,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                     className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-colors"
                   >
                     <CheckCircle className="w-4 h-4" />
-                    <span>Shortlist</span>
+                    <span>Accept</span>
                   </button>
                   <button
                     onClick={() => {
@@ -755,6 +795,45 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                   </button>
                 </>
               )}
+
+              {applicant.status === "shortlisted" && (
+                <>
+                  <button
+                    onClick={() => {
+                      updateApplicationStatus(applicant.id, "accepted");
+                      onClose();
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Final Accept</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      updateApplicationStatus(applicant.id, "rejected");
+                      onClose();
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
+                  >
+                    <XCircle className="w-4 h-4" />
+                    <span>Reject</span>
+                  </button>
+                </>
+              )}
+
+              {applicant.status === "rejected" && (
+                <button
+                  onClick={() => {
+                    updateApplicationStatus(applicant.id, "pending");
+                    onClose();
+                  }}
+                  className="flex items-center space-x-2 px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg transition-colors"
+                >
+                  <Clock className="w-4 h-4" />
+                  <span>Reconsider</span>
+                </button>
+              )}
+
               <button
                 onClick={onClose}
                 className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
