@@ -32,8 +32,8 @@ export async function GET(
     }
 
     // Check if user is HR
-    if (decoded.role !== 'HR') {
-      console.log('❌ HR access denied. User role:', decoded.role, 'Expected: HR');
+    if (decoded.role !== 'HR' && decoded.role !== 'hr') {
+      console.log('❌ HR access denied. User role:', decoded.role, 'Expected: HR or hr');
       return NextResponse.json({ 
         error: 'Unauthorized - HR access required',
         details: `User role is '${decoded.role}', but 'HR' is required`

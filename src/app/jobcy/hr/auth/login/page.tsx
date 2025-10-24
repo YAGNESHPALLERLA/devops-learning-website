@@ -80,7 +80,7 @@ export default function HRLogin() {
         // Redirect based on role
         if (data.user.role === "admin") {
           window.location.href = "/jobcy/admin/dashboard";
-        } else if (data.user.role === "hr") {
+        } else if (data.user.role === "hr" || data.user.role === "HR") {
           window.location.href = "/jobcy/hr/dashboard";
         } else {
           window.location.href = "/jobcy/user/dashboard";

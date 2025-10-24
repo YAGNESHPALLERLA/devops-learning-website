@@ -22,6 +22,14 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
+    // Check if user is HR
+    if (decoded.role !== 'HR' && decoded.role !== 'hr') {
+      return NextResponse.json({ 
+        error: 'Unauthorized - HR access required',
+        details: `User role is '${decoded.role}', but 'HR' is required`
+      }, { status: 403 });
+    }
+
     // Connect to database
     const db = await connectDB();
     
