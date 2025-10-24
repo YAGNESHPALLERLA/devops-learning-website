@@ -31,8 +31,24 @@ export async function GET(_request: NextRequest) {
     // Populate job and user data for each application
     const populatedApplications = await Promise.all(
       applications.map(async (app) => {
-        const job = await db.collection('jobs').findOne({ _id: app.jobId });
-        const user = await db.collection('users').findOne({ _id: app.userId });
+        console.log('Processing application:', app._id);
+        console.log('Job ID:', app.jobId);
+        console.log('User ID:', app.userId);
+        
+        // Convert string IDs to ObjectId if needed
+        const { ObjectId } = await import('mongodb');
+        const jobId = typeof app.jobId === 'string' ? new ObjectId(app.jobId) : app.jobId;
+        const userId = typeof app.userId === 'string' ? new ObjectId(app.userId) : app.userId;
+        
+        const job = await db.collection('jobs').findOne({ _id: jobId });
+        const user = await db.collection('users').findOne({ _id: userId });
+        
+        console.log('Found job:', job ? 'Yes' : 'No');
+        console.log('Found user:', user ? 'Yes' : 'No');
+        if (user) {
+          console.log('User name:', user.name);
+          console.log('User email:', user.email);
+        }
         
         // Get HR user who posted the job to get company info
         let companyInfo = null;
