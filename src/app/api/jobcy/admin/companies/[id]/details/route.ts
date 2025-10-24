@@ -52,10 +52,12 @@ export async function GET(
 
     // Get HR users for this company
     const hrs = await db.collection('users').find({
-      $or: [{ role: 'hr' }, { role: 'HR' }],
-      $or: [
-        { companyId: companyId },
-        { 'company._id': companyId }
+      $and: [
+        { $or: [{ role: 'hr' }, { role: 'HR' }] },
+        { $or: [
+          { companyId: companyId },
+          { 'company._id': companyId }
+        ]}
       ]
     }).toArray();
 
