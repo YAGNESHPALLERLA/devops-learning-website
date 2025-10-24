@@ -27,6 +27,38 @@ import {
 } from "lucide-react";
 
 export default function ApplicationsManagement() {
+  // Debug function to check authentication
+  const debugAuth = () => {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    
+    console.log('=== AUTH DEBUG ===');
+    console.log('Token exists:', !!token);
+    console.log('User exists:', !!user);
+    
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log('Token payload:', payload);
+        console.log('Token role:', payload.role);
+        console.log('Token exp:', new Date(payload.exp * 1000));
+        console.log('Token expired:', payload.exp < Math.floor(Date.now() / 1000));
+      } catch (e) {
+        console.log('Invalid token format');
+      }
+    }
+    
+    if (user) {
+      try {
+        const userData = JSON.parse(user);
+        console.log('User data:', userData);
+      } catch (e) {
+        console.log('Invalid user data format');
+      }
+    }
+    console.log('================');
+  };
+
   // Application type
   type Application = {
     id: number;
@@ -780,6 +812,27 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                 <p className="text-sm text-gray-600">
                   Review and manage job applications
                 </p>
+              </div>
+              <div className="flex space-x-2">
+                <button
+                  onClick={debugAuth}
+                  className="px-3 py-1 text-xs bg-blue-100 text-blue-600 rounded hover:bg-blue-200"
+                  title="Debug authentication"
+                >
+                  Debug Auth
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    alert('Authentication cleared! Please login again.');
+                    window.location.href = '/jobcy/login/';
+                  }}
+                  className="px-3 py-1 text-xs bg-red-100 text-red-600 rounded hover:bg-red-200"
+                  title="Clear authentication and logout"
+                >
+                  Clear Auth
+                </button>
               </div>
             </div>
           </div>
