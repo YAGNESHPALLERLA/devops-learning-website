@@ -114,6 +114,7 @@ export async function POST(request: NextRequest) {
       email,
       password: hashedPassword,
       role: 'company',
+      mobile: `company_${Date.now()}`, // Generate unique mobile to avoid duplicate key error
       industry: industry || '',
       location: location || '',
       website: website || '',
