@@ -132,12 +132,12 @@ export default function ApplicationsManagement() {
             status: app.status === 'Applied' ? 'pending' : app.status?.toLowerCase() || 'pending',
             experience: 'Not specified',
             education: 'Not specified',
-            resumeUrl: app.resume?.name || app.user?.resume?.name || null,
+            resumeUrl: app.resume?.name || app.user?.resume?.fileName || app.user?.resume?.name || (typeof app.user?.resume === 'string' ? app.user.resume.split('/').pop() : null),
             userId: app.user?._id || app.userId,
             coverLetter: app.coverLetter || 'No cover letter provided',
             skills: app.user?.skills || [],
             rating: 4.0,
-            hasResume: !!(app.user?.resume && (app.user.resume.data || app.user.resume.name)),
+            hasResume: !!(app.user?.resume && (app.user.resume.data || app.user.resume.fileName || app.user.resume.name || typeof app.user.resume === 'string')),
           }));
 
           console.log('Transformed applications:', transformedApplications);
