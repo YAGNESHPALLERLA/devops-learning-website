@@ -96,6 +96,7 @@ export default function CompanyDetailsPage() {
         return;
       }
 
+      console.log(`🔍 Fetching company details for ID: ${companyId}`);
       const response = await fetch(`/api/jobcy/admin/companies/${companyId}/details`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -103,14 +104,25 @@ export default function CompanyDetailsPage() {
         },
       });
 
+      console.log('📡 API response status:', response.status);
+      console.log('📡 API response headers:', Object.fromEntries(response.headers.entries()));
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch company details: ${response.status}`);
+        const errorText = await response.text();
+        console.error('❌ API Error Response:', errorText);
+        throw new Error(`Failed to fetch company details: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
+      console.log('✅ Raw API Response Data:', data);
+      console.log('📊 Company:', data.company);
+      console.log('👥 HRs:', data.hrs);
+      console.log('💼 Jobs:', data.jobs);
+      console.log('📋 Applications:', data.applications);
+      
       setCompanyDetails(data);
     } catch (error) {
-      console.error('Error fetching company details:', error);
+      console.error('❌ Error fetching company details:', error);
       setError(error instanceof Error ? error.message : 'Failed to load company details');
     } finally {
       setLoading(false);
