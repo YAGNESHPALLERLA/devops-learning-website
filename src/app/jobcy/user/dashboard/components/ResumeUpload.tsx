@@ -7,12 +7,14 @@ interface ResumeUploadProps {
   isDark?: boolean;
   onUploadSuccess?: (filePath: string) => void;
   currentResume?: string;
+  onResumeUpdate?: () => void;
 }
 
 export default function ResumeUpload({
   isDark = false,
   onUploadSuccess,
-  currentResume
+  currentResume,
+  onResumeUpdate
 }: ResumeUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -63,6 +65,9 @@ export default function ResumeUpload({
         setUploadSuccess(true);
         setUploadedFile(data.fileName);
         onUploadSuccess?.(data.filePath);
+        
+        // Trigger dashboard refresh to update resume display
+        onResumeUpdate?.();
 
         // Clear the file input
         if (fileInputRef.current) {

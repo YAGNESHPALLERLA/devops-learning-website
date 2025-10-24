@@ -303,6 +303,12 @@ export default function ProfileTab({
               await updateProfile({ resume: filePath });
             }
           }}
+          onResumeUpdate={() => {
+            // Refresh dashboard data to show updated resume
+            if (typeof window !== 'undefined') {
+              window.location.reload();
+            }
+          }}
         />
       </div>
 

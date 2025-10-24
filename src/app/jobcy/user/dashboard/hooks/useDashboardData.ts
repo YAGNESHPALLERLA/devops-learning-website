@@ -144,7 +144,7 @@ export function useDashboardData() {
         gender: profileData.gender || profileData.personalDetails?.[0]?.gender,
         category: profileData.category || profileData.personalDetails?.[0]?.category,
         maritalStatus: profileData.maritalStatus || profileData.personalDetails?.[0]?.maritalStatus,
-        resume: profileData.resume?.name,
+        resume: profileData.resume?.fileName || profileData.resume?.name || (typeof profileData.resume === 'string' ? profileData.resume.split('/').pop() : null),
       };
 
       setUserProfile(mappedProfile);
@@ -474,7 +474,7 @@ export function useDashboardData() {
           category: data.personalDetails?.[0]?.category,
           maritalStatus: data.personalDetails?.[0]?.maritalStatus,
           nationality: data.personalDetails?.[0]?.nationality,
-          resume: data.resume?.name,
+          resume: data.resume?.fileName || data.resume?.name || (typeof data.resume === 'string' ? data.resume.split('/').pop() : null),
         };
         setUserProfile(mappedProfile);
         return { success: true, data: mappedProfile };
