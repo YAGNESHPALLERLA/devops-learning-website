@@ -100,6 +100,9 @@ export default function CompanyManagement() {
   const fetchCompanies = useCallback(async () => {
     try {
       setLoading(true);
+      console.log('🔄 Fetching companies from:', `${"/api/jobcy"}/admin/companies`);
+      console.log('🔑 Auth headers:', getAuthHeaders());
+      
       const response = await fetch(
         `${"/api/jobcy"}/admin/companies`,
         {
@@ -107,16 +110,21 @@ export default function CompanyManagement() {
         }
       );
 
+      console.log('📡 Companies fetch response:', response.status, response.statusText);
+
       if (response.ok) {
         const data = await response.json();
+        console.log('📄 Companies data received:', data);
         setCompanies(data);
         setFilteredCompanies(data);
       } else {
-        setErrorMessage("Failed to fetch companies");
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ Failed to fetch companies:', errorData);
+        setErrorMessage(`Failed to fetch companies: ${errorData.error || response.statusText}`);
       }
     } catch (error) {
-      console.error("Error fetching companies:", error);
-      setErrorMessage("Error loading companies");
+      console.error("❌ Error fetching companies:", error);
+      setErrorMessage(`Error loading companies: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
@@ -189,14 +197,20 @@ export default function CompanyManagement() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
+    console.log('🔍 Validating form data:', formData);
+    console.log('🔍 Modal mode:', modalMode);
+
     if (!formData.name.trim()) newErrors.name = "Company name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     if (modalMode === "create" && !formData.password) {
       newErrors.password = "Password is required";
     }
 
+    console.log('🔍 Validation errors:', newErrors);
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+    console.log('🔍 Form is valid:', isValid);
+    return isValid;
   };
 
   const handleSubmit = async () => {
@@ -208,13 +222,23 @@ export default function CompanyManagement() {
           ? `${"/api/jobcy"}/admin/companies`
           : `${"/api/jobcy"}/admin/companies/${selectedCompany?._id}`;
 
+      console.log('🚀 Submitting company form:', {
+        url,
+        method: modalMode === "create" ? "POST" : "PUT",
+        formData,
+        headers: getAuthHeaders()
+      });
+
       const response = await fetch(url, {
         method: modalMode === "create" ? "POST" : "PUT",
         headers: getAuthHeaders(),
         body: JSON.stringify(formData),
       });
 
+      console.log('📡 Response status:', response.status, response.statusText);
+
       const data = await response.json();
+      console.log('📄 Response data:', data);
 
       if (response.ok) {
         setSuccessMessage(
@@ -226,12 +250,13 @@ export default function CompanyManagement() {
         handleCloseModal();
         fetchCompanies();
       } else {
-        setErrorMessage(data.message || "Operation failed");
+        console.error('❌ API Error:', data);
+        setErrorMessage(data.error || data.message || "Operation failed");
         setTimeout(() => setErrorMessage(""), 5000);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setErrorMessage("An error occurred");
+      console.error("❌ Error submitting form:", error);
+      setErrorMessage(`Network error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       setTimeout(() => setErrorMessage(""), 5000);
     }
   };
