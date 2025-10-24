@@ -1049,13 +1049,16 @@ export default function CompanyManagement() {
                     <p className="text-gray-600 text-center py-4">No applications received yet</p>
                   ) : (
                     <div className="space-y-2 max-h-96 overflow-y-auto">
-                      {Array.isArray(companyDetails.applications) ? companyDetails.applications.map((app) => (
+                      {Array.isArray(companyDetails.applications) ? companyDetails.applications.map((app) => {
+                        console.log('Application data:', app);
+                        console.log('User data:', app.userId);
+                        return (
                         <div key={app._id} className="bg-white p-4 rounded-lg border border-gray-200">
                           <div className="flex items-center justify-between">
                             <div className="flex-1">
-                              <p className="font-semibold text-gray-900">{app.userId.name}</p>
-                              <p className="text-sm text-gray-600">{app.userId.email}</p>
-                              <p className="text-xs text-gray-500 mt-1">Applied for: {app.jobId.title}</p>
+                              <p className="font-semibold text-gray-900">{app.userId?.name || 'Unknown User'}</p>
+                              <p className="text-sm text-gray-600">{app.userId?.email || 'No email'}</p>
+                              <p className="text-xs text-gray-500 mt-1">Applied for: {app.jobId?.title || 'Unknown Job'}</p>
                             </div>
                             <div className="text-right">
                               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -1077,7 +1080,8 @@ export default function CompanyManagement() {
                             </div>
                           </div>
                         </div>
-                      )) : []}
+                        );
+                      }) : []}
                     </div>
                   )}
                 </div>
