@@ -29,7 +29,12 @@ export async function GET(_request: NextRequest) {
     const totalUsers = await db.collection('users').countDocuments();
     const totalJobs = await db.collection('jobs').countDocuments();
     const totalApplications = await db.collection('applications').countDocuments();
-    const totalHRs = await db.collection('users').countDocuments({ role: 'hr' });
+    const totalHRs = await db.collection('users').countDocuments({ 
+      $or: [
+        { role: 'hr' },
+        { role: 'HR' }
+      ]
+    });
     const activeJobs = await db.collection('jobs').countDocuments({ status: { $in: ['active', 'Active'] } });
     
     console.log('Admin stats:', { totalUsers, totalJobs, totalApplications, totalHRs, activeJobs });

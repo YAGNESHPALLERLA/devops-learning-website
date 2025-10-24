@@ -117,7 +117,7 @@ export default function AdminDashboard() {
         fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/user/list`, {
+        fetch(`${"/api/jobcy"}/admin/hrs`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
         fetch(`${"/api/jobcy"}/jobs/browse`, {
@@ -138,7 +138,7 @@ export default function AdminDashboard() {
       }
       if (usersRes.ok) {
         const usersData = await usersRes.json();
-        setUsers(usersData);
+        setUsers(usersData.hrs || []);
       }
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
           fetch(`${"/api/jobcy"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/user/list`, {
+          fetch(`${"/api/jobcy"}/admin/hrs`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
           fetch(`${"/api/jobcy"}/jobs/browse`, {
@@ -199,12 +199,12 @@ export default function AdminDashboard() {
         } else {
           console.error("Activity fetch failed:", activityRes.status, activityRes.statusText);
         }
-        if (usersRes.ok) {
-          const usersData = await usersRes.json();
-          setUsers(usersData);
-        } else {
-          console.error("Users fetch failed:", usersRes.status, usersRes.statusText);
-        }
+      if (usersRes.ok) {
+        const usersData = await usersRes.json();
+        setUsers(usersData.hrs || []);
+      } else {
+        console.error("HRs fetch failed:", usersRes.status, usersRes.statusText);
+      }
         if (jobsRes.ok) {
           const jobsData = await jobsRes.json();
           setJobs(jobsData);
@@ -547,7 +547,7 @@ export default function AdminDashboard() {
           <nav className="flex space-x-8">
             {[
               { id: "overview", label: "Overview", icon: Activity },
-              { id: "users", label: "Users", icon: Users },
+              { id: "users", label: "HR Users", icon: Users },
               { id: "jobs", label: "Jobs", icon: Briefcase },
               { id: "applications", label: "Applications", icon: FileText },
             ].map((tab) => {
@@ -637,7 +637,7 @@ export default function AdminDashboard() {
                       change="12"
                       icon={Users}
                       color="bg-blue-500"
-                      onClick={() => setActiveTab("users")}
+                      onClick={() => router.push("/jobcy/admin/hr-management")}
                     />
                     <StatCard
                       title="Jobs Posted by HRs"
@@ -805,7 +805,7 @@ export default function AdminDashboard() {
               return (
                 <div className="mb-8">
                   <h2 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
-                    User Management
+                    HR Management
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {Array.isArray(users) ? users.map((user: RawUser) => (

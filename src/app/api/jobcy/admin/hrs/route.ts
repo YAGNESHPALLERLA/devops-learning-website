@@ -25,8 +25,13 @@ export async function GET(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Get all HR users
-    const hrs = await db.collection('users').find({ role: 'hr' }).toArray();
+    // Get all HR users (both lowercase and uppercase)
+    const hrs = await db.collection('users').find({ 
+      $or: [
+        { role: 'hr' },
+        { role: 'HR' }
+      ]
+    }).toArray();
     
     console.log('Found HRs:', hrs.length);
     
