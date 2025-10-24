@@ -13,7 +13,7 @@ export async function GET(_request: NextRequest) {
     
     console.log('Found jobs:', jobs.length);
     
-    return NextResponse.json({ jobs });
+    return NextResponse.json(jobs);
   } catch (error) {
     console.error('Jobs error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

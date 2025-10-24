@@ -335,23 +335,28 @@ export default function CompanyManagement() {
         
         // Filter HRs that belong to this company
         hrs = Array.isArray(hrsData.hrs) ? hrsData.hrs.filter((hr: HRData) => {
-          // Only consider HRs that have a companyId set
-          if (!hr.companyId) {
-            console.log(`⚠️ HR ${hr.name} has no companyId - skipping`);
-            return false;
-          }
+          console.log(`🔍 Checking HR ${hr.name}:`, {
+            hrCompanyId: hr.companyId,
+            hrCompanyName: hr.company?.name,
+            targetCompanyId: company._id,
+            targetCompanyName: company.name
+          });
           
-          const hrCompanyId = hr.companyId.toString();
-          const targetCompanyId = company._id.toString();
-          const targetCompanyId2 = company.id?.toString();
+          // Check if HR's company name matches the target company name
+          const companyNameMatch = hr.company?.name === company.name;
           
-          console.log(`🔍 Checking HR ${hr.name}: companyId="${hrCompanyId}", target="${targetCompanyId}"`);
+          // Also check companyId if it exists
+          const companyIdMatch = hr.companyId && (
+            hr.companyId.toString() === company._id.toString() ||
+            hr.companyId.toString() === company.id?.toString()
+          );
           
-          const matches = hrCompanyId === targetCompanyId || 
-                         (targetCompanyId2 && hrCompanyId === targetCompanyId2);
+          const matches = companyNameMatch || companyIdMatch;
           
           if (matches) {
             console.log(`✅ HR ${hr.name} belongs to this company`);
+          } else {
+            console.log(`❌ HR ${hr.name} does not belong to this company`);
           }
           
           return matches;
@@ -382,9 +387,19 @@ export default function CompanyManagement() {
         jobs = Array.isArray(jobsData) ? jobsData.filter((job: JobData) => {
           const posterId = typeof job.postedBy === 'object' ? job.postedBy?._id : job.postedBy;
           const matches = Array.isArray(hrIds) ? hrIds.some((hrId: string) => hrId.toString() === posterId?.toString()) : false;
+          
+          console.log(`🔍 Checking job "${job.title}":`, {
+            posterId,
+            hrIds,
+            matches
+          });
+          
           if (matches) {
             console.log(`✅ Job "${job.title}" posted by company's HR`);
+          } else {
+            console.log(`❌ Job "${job.title}" not posted by company's HR`);
           }
+          
           return matches;
         }) : [];
         
