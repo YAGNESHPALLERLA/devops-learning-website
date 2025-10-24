@@ -409,31 +409,43 @@ export default function CompanyManagement() {
         console.log(`✅ Filtered ${jobs.length} jobs for this company`);
       }
 
-      // Fetch all applications for these jobs
+      // Fetch all applications and filter by job IDs
       const jobIds = Array.isArray(jobs) ? jobs.map((job: JobData) => job._id || job.id) : [];
       console.log("📋 Job IDs to fetch applications for:", jobIds);
       
-      // Fetch applications using the jobs endpoint
+      // Fetch all applications from admin endpoint
       const applications: ApplicationData[] = [];
-      for (const jobId of jobIds) {
+      if (jobIds.length > 0) {
         try {
-          console.log(`📨 Fetching applications for job ${jobId}`);
+          console.log(`📨 Fetching all applications from admin endpoint`);
           const appResponse = await fetch(
-            `${"/api/jobcy"}/jobs/${jobId}/applications`,
+            `${"/api/jobcy"}/admin/applications`,
             {
               headers: getAuthHeaders(),
             }
           );
           
           if (appResponse.ok) {
-            const appData = await appResponse.json();
-            console.log(`✅ Found ${appData.length} applications for job ${jobId}`);
-            applications.push(...appData);
+            const allApplications = await appResponse.json();
+            console.log(`✅ Found ${allApplications.length} total applications`);
+            
+            // Filter applications for this company's jobs
+            const filteredApplications = allApplications.filter((app: any) => {
+              const appJobId = app.jobId?._id || app.jobId;
+              const matches = jobIds.some(jobId => jobId.toString() === appJobId?.toString());
+              if (matches) {
+                console.log(`✅ Application for job ${appJobId} matches company job`);
+              }
+              return matches;
+            });
+            
+            console.log(`✅ Filtered ${filteredApplications.length} applications for company jobs`);
+            applications.push(...filteredApplications);
           } else {
-            console.error(`❌ Failed to fetch applications for job ${jobId}:`, appResponse.status);
+            console.error(`❌ Failed to fetch applications:`, appResponse.status);
           }
         } catch (error) {
-          console.error(`❌ Error fetching applications for job ${jobId}:`, error);
+          console.error(`❌ Error fetching applications:`, error);
         }
       }
       
