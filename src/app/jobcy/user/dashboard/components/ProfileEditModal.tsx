@@ -82,11 +82,16 @@ function CustomDropdown({
   const { colleges: apiColleges, loading: apiLoading, setSearch: setApiSearch, sources } = useCollegeSearch(
     useApiSearch ? searchTerm : '',
     300, // debounce delay
-    true // enable external APIs
+    false // disable external APIs temporarily to fix dropdown issues
   );
 
   const filteredOptions = useApiSearch 
-    ? apiColleges.map(college => ({ value: college.value, label: college.label }))
+    ? (apiColleges.length > 0 
+        ? apiColleges.map(college => ({ value: college.value, label: college.label }))
+        : options.filter(option => 
+            option.label.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+      )
     : searchable 
       ? options.filter(option => 
           option.label.toLowerCase().includes(searchTerm.toLowerCase())
@@ -310,7 +315,163 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
     grade: education?.grade || "",
   });
 
-  // Institution options now loaded dynamically via API
+  // Institution options - Static fallback data
+  const institutionOptions: DropdownOption[] = [
+    // Telangana Universities
+    { value: "Osmania University", label: "Osmania University (TELANGANA)" },
+    { value: "Jawaharlal Nehru Technological University Hyderabad", label: "Jawaharlal Nehru Technological University Hyderabad (TELANGANA)" },
+    { value: "Kakatiya University", label: "Kakatiya University (TELANGANA)" },
+    { value: "Telangana University", label: "Telangana University (TELANGANA)" },
+    { value: "Mahatma Gandhi University", label: "Mahatma Gandhi University (TELANGANA)" },
+    { value: "Palamuru University", label: "Palamuru University (TELANGANA)" },
+    { value: "Satavahana University", label: "Satavahana University (TELANGANA)" },
+    { value: "Professor Jayashankar Telangana State Agricultural University", label: "Professor Jayashankar Telangana State Agricultural University (TELANGANA)" },
+    { value: "Dr. B.R. Ambedkar Open University", label: "Dr. B.R. Ambedkar Open University (TELANGANA)" },
+    { value: "English and Foreign Languages University", label: "English and Foreign Languages University (TELANGANA)" },
+    { value: "International Institute of Information Technology Hyderabad", label: "International Institute of Information Technology Hyderabad (TELANGANA)" },
+    { value: "Indian School of Business", label: "Indian School of Business (TELANGANA)" },
+    { value: "National Institute of Pharmaceutical Education and Research", label: "National Institute of Pharmaceutical Education and Research (TELANGANA)" },
+    { value: "Rajiv Gandhi University of Knowledge Technologies", label: "Rajiv Gandhi University of Knowledge Technologies (TELANGANA)" },
+    
+    // Telangana Engineering Colleges
+    { value: "Indian Institute of Technology Hyderabad", label: "Indian Institute of Technology Hyderabad (TELANGANA)" },
+    { value: "National Institute of Technology Warangal", label: "National Institute of Technology Warangal (TELANGANA)" },
+    { value: "Birla Institute of Technology and Science Pilani Hyderabad", label: "Birla Institute of Technology and Science Pilani Hyderabad (TELANGANA)" },
+    { value: "Vellore Institute of Technology Hyderabad", label: "Vellore Institute of Technology Hyderabad (TELANGANA)" },
+    { value: "Manipal Institute of Technology Hyderabad", label: "Manipal Institute of Technology Hyderabad (TELANGANA)" },
+    { value: "SRM Institute of Science and Technology Hyderabad", label: "SRM Institute of Science and Technology Hyderabad (TELANGANA)" },
+    { value: "Amity University Hyderabad", label: "Amity University Hyderabad (TELANGANA)" },
+    { value: "GITAM University Hyderabad", label: "GITAM University Hyderabad (TELANGANA)" },
+    { value: "KL University Hyderabad", label: "KL University Hyderabad (TELANGANA)" },
+    { value: "Chaitanya Bharathi Institute of Technology", label: "Chaitanya Bharathi Institute of Technology (TELANGANA)" },
+    { value: "Vasavi College of Engineering", label: "Vasavi College of Engineering (TELANGANA)" },
+    { value: "Gokaraju Rangaraju Institute of Engineering and Technology", label: "Gokaraju Rangaraju Institute of Engineering and Technology (TELANGANA)" },
+    { value: "Malla Reddy Engineering College", label: "Malla Reddy Engineering College (TELANGANA)" },
+    { value: "CMR Institute of Technology", label: "CMR Institute of Technology (TELANGANA)" },
+    { value: "Anurag University", label: "Anurag University (TELANGANA)" },
+    { value: "Vardhaman College of Engineering", label: "Vardhaman College of Engineering (TELANGANA)" },
+    { value: "Guru Nanak Institutions Technical Campus", label: "Guru Nanak Institutions Technical Campus (TELANGANA)" },
+    { value: "Institute of Aeronautical Engineering", label: "Institute of Aeronautical Engineering (TELANGANA)" },
+    { value: "Methodist College of Engineering and Technology", label: "Methodist College of Engineering and Technology (TELANGANA)" },
+    { value: "St. Mary's Group of Institutions", label: "St. Mary's Group of Institutions (TELANGANA)" },
+    { value: "Stanley College of Engineering and Technology for Women", label: "Stanley College of Engineering and Technology for Women (TELANGANA)" },
+    { value: "Vignan's Institute of Information Technology", label: "Vignan's Institute of Information Technology (TELANGANA)" },
+    { value: "Keshav Memorial Institute of Technology", label: "Keshav Memorial Institute of Technology (TELANGANA)" },
+    { value: "Muffakham Jah College of Engineering and Technology", label: "Muffakham Jah College of Engineering and Technology (TELANGANA)" },
+    { value: "Deccan College of Engineering and Technology", label: "Deccan College of Engineering and Technology (TELANGANA)" },
+    { value: "Sreenidhi Institute of Science and Technology", label: "Sreenidhi Institute of Science and Technology (TELANGANA)" },
+    { value: "MLR Institute of Technology", label: "MLR Institute of Technology (TELANGANA)" },
+    { value: "Guru Nanak Engineering College", label: "Guru Nanak Engineering College (TELANGANA)" },
+    { value: "TKR College of Engineering and Technology", label: "TKR College of Engineering and Technology (TELANGANA)" },
+    { value: "Aurora's Engineering College", label: "Aurora's Engineering College (TELANGANA)" },
+    { value: "Bhoj Reddy Engineering College for Women", label: "Bhoj Reddy Engineering College for Women (TELANGANA)" },
+    { value: "CVR College of Engineering", label: "CVR College of Engineering (TELANGANA)" },
+    { value: "Geethanjali College of Engineering and Technology", label: "Geethanjali College of Engineering and Technology (TELANGANA)" },
+    { value: "Holy Mary Institute of Technology and Science", label: "Holy Mary Institute of Technology and Science (TELANGANA)" },
+    { value: "JNTU College of Engineering Hyderabad", label: "JNTU College of Engineering Hyderabad (TELANGANA)" },
+    { value: "Kakatiya Institute of Technology and Science", label: "Kakatiya Institute of Technology and Science (TELANGANA)" },
+    { value: "Malla Reddy College of Engineering and Technology", label: "Malla Reddy College of Engineering and Technology (TELANGANA)" },
+    { value: "Nalla Malla Reddy Engineering College", label: "Nalla Malla Reddy Engineering College (TELANGANA)" },
+    { value: "Padmasri Dr. B.V. Raju Institute of Technology", label: "Padmasri Dr. B.V. Raju Institute of Technology (TELANGANA)" },
+    { value: "Raghu Engineering College", label: "Raghu Engineering College (TELANGANA)" },
+    { value: "Vasireddy Venkatadri Institute of Technology", label: "Vasireddy Venkatadri Institute of Technology (TELANGANA)" },
+    { value: "Vignan's Lara Institute of Technology and Science", label: "Vignan's Lara Institute of Technology and Science (TELANGANA)" },
+    { value: "Woxsen University", label: "Woxsen University (TELANGANA)" },
+    { value: "Hyderabad Institute of Technology and Management", label: "Hyderabad Institute of Technology and Management (TELANGANA)" },
+    { value: "Matrusri Engineering College", label: "Matrusri Engineering College (TELANGANA)" },
+    { value: "Nawab Shah Alam Khan College of Engineering and Technology", label: "Nawab Shah Alam Khan College of Engineering and Technology (TELANGANA)" },
+    { value: "Sphoorthy Engineering College", label: "Sphoorthy Engineering College (TELANGANA)" },
+    { value: "Teegala Krishna Reddy Engineering College", label: "Teegala Krishna Reddy Engineering College (TELANGANA)" },
+    { value: "Vidya Jyothi Institute of Technology", label: "Vidya Jyothi Institute of Technology (TELANGANA)" },
+    { value: "Aurora's Scientific Technological and Research Academy", label: "Aurora's Scientific Technological and Research Academy (TELANGANA)" },
+    { value: "Bharat Institute of Engineering and Technology", label: "Bharat Institute of Engineering and Technology (TELANGANA)" },
+    { value: "Brilliant Grammar School Educational Society", label: "Brilliant Grammar School Educational Society (TELANGANA)" },
+    
+    // Andhra Pradesh Universities
+    { value: "Andhra University", label: "Andhra University (ANDHRA PRADESH)" },
+    { value: "Sri Venkateswara University", label: "Sri Venkateswara University (ANDHRA PRADESH)" },
+    { value: "Acharya Nagarjuna University", label: "Acharya Nagarjuna University (ANDHRA PRADESH)" },
+    { value: "Sri Krishnadevaraya University", label: "Sri Krishnadevaraya University (ANDHRA PRADESH)" },
+    { value: "Rayalaseema University", label: "Rayalaseema University (ANDHRA PRADESH)" },
+    { value: "Yogi Vemana University", label: "Yogi Vemana University (ANDHRA PRADESH)" },
+    { value: "Dr. B.R. Ambedkar University", label: "Dr. B.R. Ambedkar University (ANDHRA PRADESH)" },
+    { value: "Krishna University", label: "Krishna University (ANDHRA PRADESH)" },
+    { value: "Dravidian University", label: "Dravidian University (ANDHRA PRADESH)" },
+    { value: "Jawaharlal Nehru Technological University Anantapur", label: "Jawaharlal Nehru Technological University Anantapur (ANDHRA PRADESH)" },
+    { value: "Jawaharlal Nehru Technological University Kakinada", label: "Jawaharlal Nehru Technological University Kakinada (ANDHRA PRADESH)" },
+    { value: "Indian Institute of Management Visakhapatnam", label: "Indian Institute of Management Visakhapatnam (ANDHRA PRADESH)" },
+    { value: "Indian Institute of Technology Tirupati", label: "Indian Institute of Technology Tirupati (ANDHRA PRADESH)" },
+    { value: "National Institute of Technology Andhra Pradesh", label: "National Institute of Technology Andhra Pradesh (ANDHRA PRADESH)" },
+    
+    // Karnataka Universities
+    { value: "Bangalore University", label: "Bangalore University (KARNATAKA)" },
+    { value: "Mysore University", label: "Mysore University (KARNATAKA)" },
+    { value: "Karnataka University", label: "Karnataka University (KARNATAKA)" },
+    { value: "Mangalore University", label: "Mangalore University (KARNATAKA)" },
+    { value: "Gulbarga University", label: "Gulbarga University (KARNATAKA)" },
+    { value: "Tumkur University", label: "Tumkur University (KARNATAKA)" },
+    { value: "Visvesvaraya Technological University", label: "Visvesvaraya Technological University (KARNATAKA)" },
+    { value: "Rajiv Gandhi University of Health Sciences", label: "Rajiv Gandhi University of Health Sciences (KARNATAKA)" },
+    { value: "Karnataka State Open University", label: "Karnataka State Open University (KARNATAKA)" },
+    { value: "Indian Institute of Science Bangalore", label: "Indian Institute of Science Bangalore (KARNATAKA)" },
+    { value: "Indian Institute of Management Bangalore", label: "Indian Institute of Management Bangalore (KARNATAKA)" },
+    { value: "Indian Institute of Technology Dharwad", label: "Indian Institute of Technology Dharwad (KARNATAKA)" },
+    { value: "National Institute of Technology Karnataka", label: "National Institute of Technology Karnataka (KARNATAKA)" },
+    { value: "Indian Institute of Science Education and Research Bangalore", label: "Indian Institute of Science Education and Research Bangalore (KARNATAKA)" },
+    
+    // Tamil Nadu Universities
+    { value: "University of Madras", label: "University of Madras (TAMIL NADU)" },
+    { value: "Anna University", label: "Anna University (TAMIL NADU)" },
+    { value: "Bharathiar University", label: "Bharathiar University (TAMIL NADU)" },
+    { value: "Bharathidasan University", label: "Bharathidasan University (TAMIL NADU)" },
+    { value: "Madurai Kamaraj University", label: "Madurai Kamaraj University (TAMIL NADU)" },
+    { value: "Alagappa University", label: "Alagappa University (TAMIL NADU)" },
+    { value: "Periyar University", label: "Periyar University (TAMIL NADU)" },
+    { value: "Tamil Nadu Agricultural University", label: "Tamil Nadu Agricultural University (TAMIL NADU)" },
+    { value: "Tamil Nadu Dr. Ambedkar Law University", label: "Tamil Nadu Dr. Ambedkar Law University (TAMIL NADU)" },
+    { value: "Tamil Nadu Open University", label: "Tamil Nadu Open University (TAMIL NADU)" },
+    { value: "Indian Institute of Technology Madras", label: "Indian Institute of Technology Madras (TAMIL NADU)" },
+    { value: "Indian Institute of Management Trichy", label: "Indian Institute of Management Trichy (TAMIL NADU)" },
+    { value: "National Institute of Technology Tiruchirappalli", label: "National Institute of Technology Tiruchirappalli (TAMIL NADU)" },
+    { value: "Indian Institute of Science Education and Research Thiruvananthapuram", label: "Indian Institute of Science Education and Research Thiruvananthapuram (TAMIL NADU)" },
+    
+    // Maharashtra Universities
+    { value: "University of Mumbai", label: "University of Mumbai (MAHARASHTRA)" },
+    { value: "Savitribai Phule Pune University", label: "Savitribai Phule Pune University (MAHARASHTRA)" },
+    { value: "Shivaji University", label: "Shivaji University (MAHARASHTRA)" },
+    { value: "Dr. Babasaheb Ambedkar Marathwada University", label: "Dr. Babasaheb Ambedkar Marathwada University (MAHARASHTRA)" },
+    { value: "Rashtrasant Tukadoji Maharaj Nagpur University", label: "Rashtrasant Tukadoji Maharaj Nagpur University (MAHARASHTRA)" },
+    { value: "North Maharashtra University", label: "North Maharashtra University (MAHARASHTRA)" },
+    { value: "Swami Ramanand Teerth Marathwada University", label: "Swami Ramanand Teerth Marathwada University (MAHARASHTRA)" },
+    { value: "Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya", label: "Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya (MAHARASHTRA)" },
+    { value: "Indian Institute of Technology Bombay", label: "Indian Institute of Technology Bombay (MAHARASHTRA)" },
+    { value: "Indian Institute of Management Ahmedabad", label: "Indian Institute of Management Ahmedabad (MAHARASHTRA)" },
+    { value: "Indian Institute of Technology Dharwad", label: "Indian Institute of Technology Dharwad (MAHARASHTRA)" },
+    { value: "National Institute of Technology Maharashtra", label: "National Institute of Technology Maharashtra (MAHARASHTRA)" },
+    { value: "Indian Institute of Science Education and Research Pune", label: "Indian Institute of Science Education and Research Pune (MAHARASHTRA)" },
+    
+    // Global Universities
+    { value: "Harvard University", label: "Harvard University (INTERNATIONAL)" },
+    { value: "Stanford University", label: "Stanford University (INTERNATIONAL)" },
+    { value: "Massachusetts Institute of Technology", label: "Massachusetts Institute of Technology (INTERNATIONAL)" },
+    { value: "University of California, Berkeley", label: "University of California, Berkeley (INTERNATIONAL)" },
+    { value: "Carnegie Mellon University", label: "Carnegie Mellon University (INTERNATIONAL)" },
+    { value: "University of Oxford", label: "University of Oxford (INTERNATIONAL)" },
+    { value: "University of Cambridge", label: "University of Cambridge (INTERNATIONAL)" },
+    { value: "Imperial College London", label: "Imperial College London (INTERNATIONAL)" },
+    { value: "ETH Zurich", label: "ETH Zurich (INTERNATIONAL)" },
+    { value: "National University of Singapore", label: "National University of Singapore (INTERNATIONAL)" },
+    { value: "University of Toronto", label: "University of Toronto (INTERNATIONAL)" },
+    { value: "University of British Columbia", label: "University of British Columbia (INTERNATIONAL)" },
+    { value: "McGill University", label: "McGill University (INTERNATIONAL)" },
+    { value: "University of Melbourne", label: "University of Melbourne (INTERNATIONAL)" },
+    { value: "University of Sydney", label: "University of Sydney (INTERNATIONAL)" },
+    { value: "University of New South Wales", label: "University of New South Wales (INTERNATIONAL)" },
+    { value: "University of Tokyo", label: "University of Tokyo (INTERNATIONAL)" },
+    { value: "Kyoto University", label: "Kyoto University (INTERNATIONAL)" },
+    { value: "Seoul National University", label: "Seoul National University (INTERNATIONAL)" },
+    { value: "KAIST - Korea Advanced Institute of Science and Technology", label: "KAIST - Korea Advanced Institute of Science and Technology (INTERNATIONAL)" }
+  ].sort((a, b) => a.label.localeCompare(b.label));
 
   // Degree options
   const degreeOptions: DropdownOption[] = [
@@ -402,7 +563,7 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
           Institution *
         </label>
         <CustomDropdown
-          options={[]} // Empty array since we're using API search
+          options={institutionOptions} // Use static options as fallback
           value={formData.institution}
           onChange={(value) => setFormData({ ...formData, institution: value })}
           placeholder="Search or select your institution"
