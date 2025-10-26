@@ -11,7 +11,7 @@ export default function AlumniScrollingGallery() {
   const duplicatedAlumni = [...alumni, ...alumni];
 
   return (
-    <div className="relative py-16 overflow-hidden">
+    <div className="relative py-16 overflow-hidden alumni-gallery">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900"></div>
       
@@ -48,7 +48,7 @@ export default function AlumniScrollingGallery() {
               >
                 <div className="relative">
                   {/* Photo container */}
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg group-hover:border-rose-400/60 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-rose-400/30">
+                  <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-rose-400/30 transition-all duration-300 focus:outline-none focus:ring-0">
                     {alumniProfile.profileImage ? (
                       <Image
                         src={alumniProfile.profileImage}

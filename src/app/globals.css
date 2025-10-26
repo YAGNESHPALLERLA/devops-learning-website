@@ -1224,3 +1224,15 @@ html {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Remove all focus outlines from alumni gallery */
+.alumni-gallery * {
+  outline: none !important;
+  border: none !important;
+}
+
+.alumni-gallery *:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
