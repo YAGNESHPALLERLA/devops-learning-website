@@ -5,7 +5,6 @@ import {
   MapPin,
   Briefcase,
   CheckCircle,
-  Loader2,
   Bookmark,
 } from "lucide-react";
 
@@ -34,6 +33,10 @@ interface JobCardProps {
 }
 
 const JobCard: React.FC<JobCardProps> = ({ job, isDark = false, onApply, onSave }) => {
+  const handleApplyClick = () => {
+    // Open the apply page in a new tab
+    window.open(`/jobcy/jobs/apply/${job.id}`, '_blank');
+  };
   return (
     <div
       className={`${
@@ -107,22 +110,15 @@ const JobCard: React.FC<JobCardProps> = ({ job, isDark = false, onApply, onSave 
 
         <div className="ml-4 flex flex-col space-y-2">
           <button
-            onClick={() => onApply?.(job)}
-            disabled={job.hasApplied || job.isApplying}
+            onClick={handleApplyClick}
+            disabled={job.hasApplied}
             className={`px-6 py-2 rounded-lg font-medium transition-colors min-w-[120px] flex items-center justify-center ${
               job.hasApplied
                 ? "bg-gray-400 text-gray-200 cursor-not-allowed"
-                : job.isApplying
-                ? "bg-blue-400 text-white cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700 text-white"
             }`}
           >
-            {job.isApplying ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                Applying...
-              </>
-            ) : job.hasApplied ? (
+            {job.hasApplied ? (
               "Applied"
             ) : (
               "Apply Now"

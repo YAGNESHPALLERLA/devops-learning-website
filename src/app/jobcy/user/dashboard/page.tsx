@@ -276,7 +276,6 @@ export default function JobSeekerDashboard() {
             <JobsTab
               allJobs={Array.isArray(allJobs) ? allJobs.map((j) => ({ ...j, id: String(j.id) })) : []}
               isDark={isDark}
-              onApplyJob={handleJobApplication}
             />
           )}
 
