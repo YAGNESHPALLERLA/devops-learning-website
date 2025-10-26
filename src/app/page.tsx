@@ -6,6 +6,7 @@ import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
 import AlumniCard from '@/components/AlumniCard';
+import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
 import { getActiveAlumni } from '@/data/alumni';
 import { useState, useEffect } from 'react';
 
@@ -869,6 +870,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Alumni Scrolling Gallery */}
+      <AlumniScrollingGallery />
 
       {/* Certifications & Internships Section - Coursera Style */}
       <section className="py-20 relative z-10">
