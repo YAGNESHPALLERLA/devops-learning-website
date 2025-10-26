@@ -73,14 +73,14 @@ export default function Home() {
         <div className="relative flex items-center justify-center px-6 py-20">
           <div className="w-full max-w-7xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500/10 to-red-500/10 px-4 py-2 rounded-full mb-6 border border-rose-500/20">
-                <Sparkles className="w-4 h-4 text-rose-400" />
-                <span className="text-sm font-medium text-rose-300">Trusted by 500+ Professionals</span>
+              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-gray-500/10 to-gray-600/10 px-4 py-2 rounded-full mb-6 border border-gray-500/20">
+                <Sparkles className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-medium text-gray-300">Trusted by 500+ Professionals</span>
               </div>
 
               <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white leading-tight">
                 Find Your
-                <span className="bg-gradient-to-r from-rose-400 via-red-500 to-pink-600 bg-clip-text text-transparent"> Dream Job</span>
+                <span className="bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent"> Dream Job</span>
                 <br />Today
               </h1>
 
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
                 <button
                   onClick={handleSignIn}
-                  className="group flex items-center justify-center space-x-3 px-10 py-5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-rose-500/25 hover:scale-105"
+                  className="group flex items-center justify-center space-x-3 px-10 py-5 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-gray-500/25 hover:scale-105"
                 >
                   <LogIn className="w-6 h-6" />
                   <span>Sign In to Explore</span>
@@ -113,25 +113,25 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Briefcase className="w-10 h-10 mx-auto mb-4 text-rose-400" />
+                <Briefcase className="w-10 h-10 mx-auto mb-4 text-gray-400" />
                 <div className="text-3xl font-bold mb-2 text-white">150+</div>
                 <div className="text-sm font-medium text-gray-400">Active Jobs</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Building2 className="w-10 h-10 mx-auto mb-4 text-red-400" />
+                <Building2 className="w-10 h-10 mx-auto mb-4 text-gray-400" />
                 <div className="text-3xl font-bold mb-2 text-white">25+</div>
                 <div className="text-sm font-medium text-gray-400">Companies</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Users className="w-10 h-10 mx-auto mb-4 text-pink-400" />
+                <Users className="w-10 h-10 mx-auto mb-4 text-gray-400" />
                 <div className="text-3xl font-bold mb-2 text-white">500+</div>
                 <div className="text-sm font-medium text-gray-400">Job Seekers</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <TrendingUp className="w-10 h-10 mx-auto mb-4 text-rose-500" />
+                <TrendingUp className="w-10 h-10 mx-auto mb-4 text-gray-400" />
                 <div className="text-3xl font-bold mb-2 text-white">85%</div>
                 <div className="text-sm font-medium text-gray-400">Success Rate</div>
               </div>
@@ -140,12 +140,12 @@ export default function Home() {
             {/* Features */}
             <div className="grid md:grid-cols-3 gap-8 mb-20">
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-rose-900/50 shadow-lg">
-                  <Briefcase className="w-8 h-8 text-rose-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
+                  <Briefcase className="w-8 h-8 text-gray-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For Job Seekers</h3>
                 <p className="text-base leading-relaxed text-gray-400">
-                  Browse thousands of job opportunities, apply with ease, and track your applications all in one place. Our AI-powered matching helps you find the perfect role.
+                  Browse hundreds of job opportunities, apply with ease, and track your applications all in one place. Our AI-powered matching helps you find the perfect role.
                 </p>
                 <div className="flex justify-center space-x-2 mt-4">
                   <CheckCircle className="w-5 h-5 text-green-500" />
@@ -155,8 +155,8 @@ export default function Home() {
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-red-900/50 shadow-lg">
-                  <Building2 className="w-8 h-8 text-red-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
+                  <Building2 className="w-8 h-8 text-gray-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For HR Professionals</h3>
                 <p className="text-base leading-relaxed text-gray-400">
@@ -170,8 +170,8 @@ export default function Home() {
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-pink-900/50 shadow-lg">
-                  <Users className="w-8 h-8 text-pink-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
+                  <Users className="w-8 h-8 text-gray-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For Administrators</h3>
                 <p className="text-base leading-relaxed text-gray-400">
@@ -223,7 +223,7 @@ export default function Home() {
                       onClick={() => setCurrentTestimonial(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         index === currentTestimonial
-                          ? "bg-rose-600 scale-125"
+                          ? "bg-gray-500 scale-125"
                           : "bg-gray-600"
                       }`}
                     />
@@ -242,7 +242,7 @@ export default function Home() {
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-rose-600 to-red-600 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center">
                     <Briefcase className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-xl font-bold text-white">Jobcy</span>
@@ -255,27 +255,27 @@ export default function Home() {
               <div>
                 <h4 className="font-semibold mb-4 text-white">For Job Seekers</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Browse Jobs</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Career Advice</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Resume Builder</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Browse Jobs</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Career Advice</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Resume Builder</a></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-4 text-white">For Employers</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Post a Job</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Find Candidates</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Recruiting Solutions</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Post a Job</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Find Candidates</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Recruiting Solutions</a></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-4 text-white">Support</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Help Center</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Contact Us</a></li>
-                  <li><a href="#" className="hover:text-rose-400 transition-colors">Privacy Policy</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Help Center</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Contact Us</a></li>
+                  <li><a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a></li>
                 </ul>
               </div>
             </div>
