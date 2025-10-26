@@ -19,14 +19,14 @@ export default function AlumniScrollingGallery() {
       <div className="relative z-10 container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-sm text-green-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-green-500/20">
+          <div className="inline-flex items-center bg-gradient-to-r from-rose-500/10 to-red-500/10 backdrop-blur-sm text-rose-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-rose-500/20">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             Our Success Stories
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Placed Students</span>
+            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">Placed Students</span>
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Real people, real success stories. See how our students have transformed their careers.
@@ -48,7 +48,7 @@ export default function AlumniScrollingGallery() {
               >
                 <div className="relative">
                   {/* Photo container */}
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg group-hover:border-green-400/60 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-green-400/30">
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-lg group-hover:border-rose-400/60 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-rose-400/30">
                     {alumniProfile.profileImage ? (
                       <Image
                         src={alumniProfile.profileImage}
@@ -61,12 +61,12 @@ export default function AlumniScrollingGallery() {
                           target.style.display = 'none';
                           const parent = target.parentElement;
                           if (parent) {
-                            parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><span class="text-2xl font-bold text-white">${alumniProfile.initials}</span></div>`;
+                            parent.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center"><span class="text-2xl font-bold text-white">${alumniProfile.initials}</span></div>`;
                           }
                         }}
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center">
                         <span className="text-2xl font-bold text-white">{alumniProfile.initials}</span>
                       </div>
                     )}
@@ -75,13 +75,13 @@ export default function AlumniScrollingGallery() {
                   {/* Info overlay on hover */}
                   <div className="absolute inset-0 rounded-full bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-2">
                     <h4 className="text-white font-bold text-sm mb-1">{alumniProfile.name}</h4>
-                    <p className="text-green-400 text-xs font-semibold">{alumniProfile.position}</p>
+                    <p className="text-rose-400 text-xs font-semibold">{alumniProfile.position}</p>
                     <p className="text-gray-300 text-xs">{alumniProfile.company}</p>
                     <p className="text-yellow-400 text-xs font-bold mt-1">{alumniProfile.package}</p>
                   </div>
                   
                   {/* Success badge */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center shadow-lg">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -96,15 +96,15 @@ export default function AlumniScrollingGallery() {
         <div className="text-center mt-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-400 mb-2">100+</div>
+              <div className="text-3xl font-bold text-rose-400 mb-2">100+</div>
               <div className="text-gray-300 text-sm">Students Placed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-400 mb-2">₹15L</div>
+              <div className="text-3xl font-bold text-rose-400 mb-2">₹15L</div>
               <div className="text-gray-300 text-sm">Average Package</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-400 mb-2">95%</div>
+              <div className="text-3xl font-bold text-rose-400 mb-2">95%</div>
               <div className="text-gray-300 text-sm">Success Rate</div>
             </div>
           </div>
