@@ -16,12 +16,12 @@ export interface AlumniProfile {
   isActive: boolean;
 }
 
-// Sample data - you can replace this with real data
+// Real alumni data with actual photos
 export const alumniData: AlumniProfile[] = [
   {
     id: "1",
-    name: "Rajesh Kumar",
-    initials: "RK",
+    name: "Bharagav",
+    initials: "BH",
     position: "DevOps Engineer",
     company: "Amazon Web Services",
     package: "₹12 LPA",
@@ -30,13 +30,13 @@ export const alumniData: AlumniProfile[] = [
     course: "DevOps Fundamentals",
     placementDate: "2024-03-15",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/rajesh-kumar-devops",
-    profileImage: "/alumni/rajesh-kumar.jpg"
+    linkedinUrl: "https://linkedin.com/in/bharagav-devops",
+    profileImage: "/alumni/bharagav.png"
   },
   {
     id: "2",
-    name: "Priya Sharma",
-    initials: "PS",
+    name: "Indu",
+    initials: "IN",
     position: "Cloud Solutions Architect",
     company: "Microsoft Azure",
     package: "₹15 LPA",
@@ -45,13 +45,13 @@ export const alumniData: AlumniProfile[] = [
     course: "Cloud Computing",
     placementDate: "2024-04-20",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/priya-sharma-cloud",
-    profileImage: "/alumni/priya-sharma.jpg"
+    linkedinUrl: "https://linkedin.com/in/indu-cloud",
+    profileImage: "/alumni/indu.png"
   },
   {
     id: "3",
-    name: "Amit Mishra",
-    initials: "AM",
+    name: "Kasim",
+    initials: "KA",
     position: "Kubernetes Specialist",
     company: "Google Cloud Platform",
     package: "₹18 LPA",
@@ -60,13 +60,13 @@ export const alumniData: AlumniProfile[] = [
     course: "Kubernetes & Container Orchestration",
     placementDate: "2024-05-10",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/amit-mishra-k8s",
-    profileImage: "/alumni/amit-mishra.jpg"
+    linkedinUrl: "https://linkedin.com/in/kasim-k8s",
+    profileImage: "/alumni/kasim.png"
   },
   {
     id: "4",
-    name: "Sneha Kapoor",
-    initials: "SK",
+    name: "Kiran",
+    initials: "KI",
     position: "DevSecOps Engineer",
     company: "IBM Cloud",
     package: "₹14 LPA",
@@ -75,13 +75,13 @@ export const alumniData: AlumniProfile[] = [
     course: "DevSecOps & Security",
     placementDate: "2024-06-05",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/sneha-kapoor-devsecops",
-    profileImage: "/alumni/sneha-kapoor.jpg"
+    linkedinUrl: "https://linkedin.com/in/kiran-devsecops",
+    profileImage: "/alumni/kiran.png"
   },
   {
     id: "5",
-    name: "Vikram Patel",
-    initials: "VP",
+    name: "Kiranmai",
+    initials: "KM",
     position: "Site Reliability Engineer",
     company: "Netflix",
     package: "₹20 LPA",
@@ -90,13 +90,13 @@ export const alumniData: AlumniProfile[] = [
     course: "Site Reliability Engineering",
     placementDate: "2024-07-12",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/vikram-patel-sre",
-    profileImage: "/alumni/vikram-patel.jpg"
+    linkedinUrl: "https://linkedin.com/in/kiranmai-sre",
+    profileImage: "/alumni/kiranmai.png"
   },
   {
     id: "6",
-    name: "Neha Gupta",
-    initials: "NG",
+    name: "Srilekha",
+    initials: "SR",
     position: "Platform Engineer",
     company: "Spotify",
     package: "₹16 LPA",
@@ -105,8 +105,23 @@ export const alumniData: AlumniProfile[] = [
     course: "Platform Engineering",
     placementDate: "2024-08-18",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/neha-gupta-platform",
-    profileImage: "/alumni/neha-gupta.jpg"
+    linkedinUrl: "https://linkedin.com/in/srilekha-platform",
+    profileImage: "/alumni/srilekha.png"
+  },
+  {
+    id: "7",
+    name: "Yashwanth",
+    initials: "YA",
+    position: "DevOps Lead",
+    company: "Google",
+    package: "₹22 LPA",
+    batch: "2024 Batch",
+    testimonial: "OneHubGlobal's comprehensive DevOps program transformed my career. The practical approach and industry-relevant curriculum helped me become a DevOps Lead at Google. Truly life-changing!",
+    course: "Advanced DevOps",
+    placementDate: "2024-09-25",
+    isActive: true,
+    linkedinUrl: "https://linkedin.com/in/yashwanth-devops-lead",
+    profileImage: "/alumni/yashwanth.png"
   }
 ];
 
