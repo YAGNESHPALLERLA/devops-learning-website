@@ -330,7 +330,7 @@ export default function HomePage() {
       </section>
 
       {/* Jobs & Careers Section - NEW */}
-      <section className="py-20 relative z-10 bg-gradient-to-br from-rose-900/20 via-red-900/20 to-pink-900/20">
+      <section className="py-20 relative z-10">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center bg-gradient-to-r from-rose-500/20 to-red-500/20 backdrop-blur-sm text-rose-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-rose-500/30">
