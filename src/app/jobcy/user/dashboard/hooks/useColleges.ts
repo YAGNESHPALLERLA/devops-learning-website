@@ -20,6 +20,10 @@ interface CollegesResponse {
     state: string;
     category: string;
   };
+  sources?: {
+    external: boolean;
+    fallback: boolean;
+  };
 }
 
 interface UseCollegesOptions {
@@ -29,6 +33,7 @@ interface UseCollegesOptions {
   limit?: number;
   offset?: number;
   enabled?: boolean;
+  useExternal?: boolean;
 }
 
 export function useColleges(options: UseCollegesOptions = {}) {
@@ -38,7 +43,8 @@ export function useColleges(options: UseCollegesOptions = {}) {
     category = '',
     limit = 50,
     offset = 0,
-    enabled = true
+    enabled = true,
+    useExternal = false
   } = options;
 
   const [data, setData] = useState<CollegesResponse | null>(null);
@@ -58,6 +64,7 @@ export function useColleges(options: UseCollegesOptions = {}) {
       if (category) params.append('category', category);
       params.append('limit', limit.toString());
       params.append('offset', offset.toString());
+      if (useExternal) params.append('external', 'true');
 
       const response = await fetch(`/api/jobcy/colleges?${params.toString()}`);
       
@@ -74,7 +81,7 @@ export function useColleges(options: UseCollegesOptions = {}) {
     } finally {
       setLoading(false);
     }
-  }, [search, state, category, limit, offset, enabled]);
+  }, [search, state, category, limit, offset, enabled, useExternal]);
 
   useEffect(() => {
     fetchColleges();
@@ -89,7 +96,7 @@ export function useColleges(options: UseCollegesOptions = {}) {
 }
 
 // Hook for searching colleges with debouncing
-export function useCollegeSearch(initialSearch = '', debounceMs = 300) {
+export function useCollegeSearch(initialSearch = '', debounceMs = 300, useExternal = false) {
   const [search, setSearch] = useState(initialSearch);
   const [debouncedSearch, setDebouncedSearch] = useState(initialSearch);
 
@@ -103,7 +110,8 @@ export function useCollegeSearch(initialSearch = '', debounceMs = 300) {
 
   const { data, loading, error } = useColleges({
     search: debouncedSearch,
-    limit: 100 // Show more results for search
+    limit: 100, // Show more results for search
+    useExternal
   });
 
   return {
@@ -112,6 +120,7 @@ export function useCollegeSearch(initialSearch = '', debounceMs = 300) {
     colleges: data?.colleges || [],
     loading,
     error,
-    total: data?.pagination.total || 0
+    total: data?.pagination.total || 0,
+    sources: data?.sources || { external: false, fallback: true }
   };
 }

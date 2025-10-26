@@ -1,7 +1,55 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Comprehensive college database
-const collegesData = {
+// External API configurations
+interface ApiConfig {
+  baseUrl: string;
+  endpoints: Record<string, string>;
+  apiKey?: string;
+}
+
+const EXTERNAL_APIS: Record<string, ApiConfig> = {
+  // UGC (University Grants Commission) - Official Indian universities
+  ugc: {
+    baseUrl: 'https://www.ugc.ac.in/api',
+    endpoints: {
+      universities: '/universities',
+      colleges: '/colleges'
+    }
+  },
+  
+  // AICTE (All India Council for Technical Education)
+  aicte: {
+    baseUrl: 'https://www.aicte-india.org/api',
+    endpoints: {
+      engineering: '/engineering-colleges',
+      management: '/management-colleges',
+      pharmacy: '/pharmacy-colleges'
+    }
+  },
+  
+  // CollegeDunia API (Third-party education portal)
+  collegeDunia: {
+    baseUrl: 'https://api.collegedunia.com/v1',
+    endpoints: {
+      search: '/colleges/search',
+      details: '/colleges/details'
+    },
+    apiKey: process.env.COLLEGE_DUNIA_API_KEY
+  },
+  
+  // Shiksha.com API
+  shiksha: {
+    baseUrl: 'https://api.shiksha.com/v1',
+    endpoints: {
+      search: '/colleges/search',
+      filters: '/colleges/filters'
+    },
+    apiKey: process.env.SHIKSHA_API_KEY
+  }
+};
+
+// Fallback static data (used when external APIs are unavailable)
+const FALLBACK_COLLEGES = {
   telangana: {
     universities: [
       "Osmania University",
@@ -174,131 +222,6 @@ const collegesData = {
       "Woxsen University College of Arts and Sciences"
     ]
   },
-  andhra_pradesh: {
-    universities: [
-      "Andhra University",
-      "Sri Venkateswara University",
-      "Acharya Nagarjuna University",
-      "Sri Krishnadevaraya University",
-      "Rayalaseema University",
-      "Yogi Vemana University",
-      "Dr. B.R. Ambedkar University",
-      "Krishna University",
-      "Dravidian University",
-      "Jawaharlal Nehru Technological University Anantapur",
-      "Jawaharlal Nehru Technological University Kakinada",
-      "Indian Institute of Management Visakhapatnam",
-      "Indian Institute of Technology Tirupati",
-      "National Institute of Technology Andhra Pradesh"
-    ],
-    engineering_colleges: [
-      "Indian Institute of Technology Tirupati",
-      "National Institute of Technology Andhra Pradesh",
-      "Indian Institute of Management Visakhapatnam",
-      "Vignan's Foundation for Science Technology and Research",
-      "GITAM University Visakhapatnam",
-      "KL University Vijayawada",
-      "SRM Institute of Science and Technology Andhra Pradesh",
-      "Amity University Andhra Pradesh",
-      "Vellore Institute of Technology Andhra Pradesh",
-      "Manipal Institute of Technology Andhra Pradesh",
-      "Birla Institute of Technology and Science Andhra Pradesh"
-    ]
-  },
-  karnataka: {
-    universities: [
-      "Bangalore University",
-      "Mysore University",
-      "Karnataka University",
-      "Mangalore University",
-      "Gulbarga University",
-      "Tumkur University",
-      "Visvesvaraya Technological University",
-      "Rajiv Gandhi University of Health Sciences",
-      "Karnataka State Open University",
-      "Indian Institute of Science Bangalore",
-      "Indian Institute of Management Bangalore",
-      "Indian Institute of Technology Dharwad",
-      "National Institute of Technology Karnataka",
-      "Indian Institute of Science Education and Research Bangalore"
-    ],
-    engineering_colleges: [
-      "Indian Institute of Science Bangalore",
-      "Indian Institute of Management Bangalore",
-      "Indian Institute of Technology Dharwad",
-      "National Institute of Technology Karnataka",
-      "Indian Institute of Science Education and Research Bangalore",
-      "Vellore Institute of Technology Bangalore",
-      "Manipal Institute of Technology",
-      "SRM Institute of Science and Technology Bangalore",
-      "Amity University Karnataka",
-      "GITAM University Bangalore",
-      "KL University Bangalore",
-      "Birla Institute of Technology and Science Bangalore"
-    ]
-  },
-  tamil_nadu: {
-    universities: [
-      "University of Madras",
-      "Anna University",
-      "Bharathiar University",
-      "Bharathidasan University",
-      "Madurai Kamaraj University",
-      "Alagappa University",
-      "Periyar University",
-      "Tamil Nadu Agricultural University",
-      "Tamil Nadu Dr. Ambedkar Law University",
-      "Tamil Nadu Open University",
-      "Indian Institute of Technology Madras",
-      "Indian Institute of Management Trichy",
-      "National Institute of Technology Tiruchirappalli",
-      "Indian Institute of Science Education and Research Thiruvananthapuram"
-    ],
-    engineering_colleges: [
-      "Indian Institute of Technology Madras",
-      "Indian Institute of Management Trichy",
-      "National Institute of Technology Tiruchirappalli",
-      "Indian Institute of Science Education and Research Thiruvananthapuram",
-      "Vellore Institute of Technology Chennai",
-      "Manipal Institute of Technology Chennai",
-      "SRM Institute of Science and Technology Chennai",
-      "Amity University Tamil Nadu",
-      "GITAM University Chennai",
-      "KL University Chennai",
-      "Birla Institute of Technology and Science Chennai"
-    ]
-  },
-  maharashtra: {
-    universities: [
-      "University of Mumbai",
-      "Savitribai Phule Pune University",
-      "Shivaji University",
-      "Dr. Babasaheb Ambedkar Marathwada University",
-      "Rashtrasant Tukadoji Maharaj Nagpur University",
-      "North Maharashtra University",
-      "Swami Ramanand Teerth Marathwada University",
-      "Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya",
-      "Indian Institute of Technology Bombay",
-      "Indian Institute of Management Ahmedabad",
-      "Indian Institute of Technology Dharwad",
-      "National Institute of Technology Maharashtra",
-      "Indian Institute of Science Education and Research Pune"
-    ],
-    engineering_colleges: [
-      "Indian Institute of Technology Bombay",
-      "Indian Institute of Management Ahmedabad",
-      "Indian Institute of Technology Dharwad",
-      "National Institute of Technology Maharashtra",
-      "Indian Institute of Science Education and Research Pune",
-      "Vellore Institute of Technology Mumbai",
-      "Manipal Institute of Technology Mumbai",
-      "SRM Institute of Science and Technology Mumbai",
-      "Amity University Maharashtra",
-      "GITAM University Mumbai",
-      "KL University Mumbai",
-      "Birla Institute of Technology and Science Mumbai"
-    ]
-  },
   international: {
     universities: [
       "Harvard University",
@@ -325,26 +248,74 @@ const collegesData = {
   }
 };
 
+// Helper function to fetch from external API with fallback
+async function fetchFromExternalAPI(apiName: string, endpoint: string, params: Record<string, string> = {}) {
+  try {
+    const api = EXTERNAL_APIS[apiName as keyof typeof EXTERNAL_APIS];
+    if (!api) throw new Error(`Unknown API: ${apiName}`);
+
+    const url = new URL(`${api.baseUrl}${endpoint}`);
+    Object.entries(params).forEach(([key, value]) => {
+      url.searchParams.append(key, value);
+    });
+
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'User-Agent': 'Jobcy-Education-Portal/1.0'
+    };
+
+    // Add API key if available
+    if (api.apiKey) {
+      headers['Authorization'] = `Bearer ${api.apiKey}`;
+    }
+
+    console.log(`Fetching from ${apiName}:`, url.toString());
+
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers,
+      // Add timeout
+      signal: AbortSignal.timeout(5000) // 5 second timeout
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log(`Successfully fetched from ${apiName}:`, data);
+    return data;
+
+  } catch (error) {
+    console.error(`Error fetching from ${apiName}:`, error);
+    throw error;
+  }
+}
+
 // Helper function to flatten colleges data
-function flattenCollegesData() {
-  const flattened: Array<{value: string, label: string, state: string, category: string}> = [];
+function flattenCollegesData(collegesData: Record<string, Record<string, string[]>>) {
+  const flattened: Array<{value: string, label: string, state: string, category: string, source: string}> = [];
   
   Object.entries(collegesData).forEach(([state, colleges]) => {
     Object.entries(colleges).forEach(([category, collegeList]) => {
-      collegeList.forEach(college => {
-        flattened.push({
-          value: college,
-          label: `${college} (${state.replace('_', ' ').toUpperCase()})`,
-          state: state.replace('_', ' ').toUpperCase(),
-          category: category.replace('_', ' ').toUpperCase()
+      if (Array.isArray(collegeList)) {
+        collegeList.forEach(college => {
+          flattened.push({
+            value: college,
+            label: `${college} (${state.replace('_', ' ').toUpperCase()})`,
+            state: state.replace('_', ' ').toUpperCase(),
+            category: category.replace('_', ' ').toUpperCase(),
+            source: 'fallback'
+          });
         });
-      });
+      }
     });
   });
   
   return flattened.sort((a, b) => a.label.localeCompare(b.label));
 }
 
+// Main API handler
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -353,10 +324,41 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category') || '';
     const limit = parseInt(searchParams.get('limit') || '50');
     const offset = parseInt(searchParams.get('offset') || '0');
+    const useExternal = searchParams.get('external') === 'true';
 
-    console.log('Colleges API request:', { search, state, category, limit, offset });
+    console.log('Colleges API request:', { search, state, category, limit, offset, useExternal });
 
-    let colleges = flattenCollegesData();
+    let colleges: Array<{value: string, label: string, state: string, category: string, source: string}> = [];
+
+    if (useExternal && search) {
+      // Try external APIs for search queries
+      try {
+        // Try CollegeDunia API first
+        if (EXTERNAL_APIS.collegeDunia.apiKey) {
+          const collegeDuniaResults = await fetchFromExternalAPI('collegeDunia', '/colleges/search', {
+            query: search,
+            limit: limit.toString()
+          });
+          
+          if (collegeDuniaResults && collegeDuniaResults.colleges) {
+            colleges = collegeDuniaResults.colleges.map((college: { name: string; state?: string; category?: string }) => ({
+              value: college.name,
+              label: `${college.name} (${college.state || 'INDIA'})`,
+              state: college.state || 'INDIA',
+              category: college.category || 'UNIVERSITY',
+              source: 'collegeDunia'
+            }));
+          }
+        }
+      } catch (error) {
+        console.log('External API failed, using fallback:', error);
+      }
+    }
+
+    // If no external results or external APIs failed, use fallback
+    if (colleges.length === 0) {
+      colleges = flattenCollegesData(FALLBACK_COLLEGES);
+    }
 
     // Apply filters
     if (search) {
@@ -396,6 +398,10 @@ export async function GET(request: NextRequest) {
         search,
         state,
         category
+      },
+      sources: {
+        external: useExternal,
+        fallback: colleges.length > 0 && colleges[0].source === 'fallback'
       }
     });
 
@@ -432,7 +438,8 @@ export async function POST(request: NextRequest) {
         value: name,
         label: `${name} (${state.toUpperCase()})`,
         state: state.toUpperCase(),
-        category: category.toUpperCase()
+        category: category.toUpperCase(),
+        source: 'user-added'
       }
     });
 

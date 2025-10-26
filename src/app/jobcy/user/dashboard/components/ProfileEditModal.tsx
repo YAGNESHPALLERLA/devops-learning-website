@@ -78,9 +78,11 @@ function CustomDropdown({
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Use API search for colleges
-  const { colleges: apiColleges, loading: apiLoading, setSearch: setApiSearch } = useCollegeSearch(
-    useApiSearch ? searchTerm : ''
+  // Use API search for colleges with external API support
+  const { colleges: apiColleges, loading: apiLoading, setSearch: setApiSearch, sources } = useCollegeSearch(
+    useApiSearch ? searchTerm : '',
+    300, // debounce delay
+    true // enable external APIs
   );
 
   const filteredOptions = useApiSearch 
@@ -230,7 +232,7 @@ function CustomDropdown({
               <div className={`p-3 text-sm ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                 <div className="flex items-center gap-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                  Searching colleges...
+                  {sources?.external ? "Searching external databases..." : "Searching colleges..."}
                 </div>
               </div>
             ) : filteredOptions.length === 0 ? (
@@ -254,6 +256,15 @@ function CustomDropdown({
                   {option.label}
                 </button>
               ))
+            )}
+            
+            {useApiSearch && filteredOptions.length > 0 && (
+              <div className={`p-2 border-t border-slate-600 text-xs ${isDark ? "text-slate-500" : "text-slate-400"}`}>
+                <div className="flex items-center gap-1">
+                  <div className={`w-2 h-2 rounded-full ${sources?.external ? "bg-green-500" : "bg-blue-500"}`}></div>
+                  {sources?.external ? "Live data from external APIs" : "Local database"}
+                </div>
+              </div>
             )}
             
             {allowCustom && (
