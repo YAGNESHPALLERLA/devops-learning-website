@@ -12,8 +12,6 @@ export default function AlumniScrollingGallery() {
 
   return (
     <div className="relative py-8 overflow-hidden alumni-gallery">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900"></div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
@@ -35,10 +33,6 @@ export default function AlumniScrollingGallery() {
 
         {/* Scrolling Gallery */}
         <div className="relative">
-          {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-800 to-transparent z-20 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-800 to-transparent z-20 pointer-events-none"></div>
-          
           {/* Scrolling container */}
           <div className="flex animate-scroll space-x-6 py-4">
             {duplicatedAlumni.map((alumniProfile, index) => (
