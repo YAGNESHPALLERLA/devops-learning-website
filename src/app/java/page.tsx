@@ -149,6 +149,39 @@ export default function JavaPage() {
                 </div>
               </div>
 
+              {/* Overview Section */}
+              <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-12">
+                <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 Java Course Overview</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4">What You'll Learn</h3>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Java syntax and fundamentals</li>
+                      <li>• Object-oriented programming</li>
+                      <li>• Collections and data structures</li>
+                      <li>• Exception handling</li>
+                      <li>• Multithreading and concurrency</li>
+                      <li>• Spring Framework</li>
+                      <li>• Enterprise application development</li>
+                      <li>• Best practices and design patterns</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-orange-400 mb-4">Career Opportunities</h3>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Java Developer</li>
+                      <li>• Enterprise Software Developer</li>
+                      <li>• Spring Framework Developer</li>
+                      <li>• Backend Developer</li>
+                      <li>• Android Developer</li>
+                      <li>• Full-Stack Developer</li>
+                      <li>• Software Architect</li>
+                      <li>• Technical Lead</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               {/* Why Learn Java */}
               <div className="max-w-6xl mx-auto mb-12">
                 <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-8">

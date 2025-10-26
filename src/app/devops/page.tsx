@@ -147,6 +147,39 @@ export default function DevOpsPage() {
                   </div>
                 </div>
 
+                {/* Overview Section */}
+                <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-8">
+                  <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 DevOps Course Overview</h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-4">What You'll Learn</h3>
+                      <ul className="text-gray-300 space-y-2">
+                        <li>• Linux fundamentals and command line</li>
+                        <li>• Docker containerization</li>
+                        <li>• Kubernetes orchestration</li>
+                        <li>• CI/CD pipeline development</li>
+                        <li>• Infrastructure as Code (IaC)</li>
+                        <li>• Cloud platforms (AWS, Azure, GCP)</li>
+                        <li>• Monitoring and observability</li>
+                        <li>• Security and compliance</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-4">Career Opportunities</h3>
+                      <ul className="text-gray-300 space-y-2">
+                        <li>• DevOps Engineer</li>
+                        <li>• Site Reliability Engineer (SRE)</li>
+                        <li>• Cloud Engineer</li>
+                        <li>• Platform Engineer</li>
+                        <li>• Infrastructure Engineer</li>
+                        <li>• Automation Engineer</li>
+                        <li>• Release Manager</li>
+                        <li>• Technical Consultant</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Comprehensive DevOps Introduction */}
                 <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-8 rounded-2xl border border-gray-600 mb-8">
                   <h2 id="introduction" className="text-3xl font-bold text-white mb-6">📚 What is DevOps? A Comprehensive Guide</h2>

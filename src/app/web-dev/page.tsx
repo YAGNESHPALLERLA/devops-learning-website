@@ -64,7 +64,7 @@ export default function WebDevPage() {
               
               <div className="max-w-6xl mx-auto">
                 {/* Overview */}
-                <div className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border border-blue-500/20 p-8 rounded-2xl mb-8">
+                <div id="overview" className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border border-blue-500/20 p-8 rounded-2xl mb-8">
                   <h2 className="text-3xl font-bold text-blue-400 mb-6">🚀 Web Development Overview</h2>
                   
                   <div className="space-y-6">

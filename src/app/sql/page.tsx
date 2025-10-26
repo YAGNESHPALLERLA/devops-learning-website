@@ -95,6 +95,39 @@ export default function SQLPage() {
               </p>
               
               <div className="max-w-6xl mx-auto">
+                {/* Overview Section */}
+                <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-8">
+                  <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 SQL Course Overview</h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-4">What You'll Learn</h3>
+                      <ul className="text-gray-300 space-y-2">
+                        <li>• SQL syntax and fundamentals</li>
+                        <li>• Database design and normalization</li>
+                        <li>• Query optimization</li>
+                        <li>• Data manipulation (CRUD operations)</li>
+                        <li>• Joins and relationships</li>
+                        <li>• Stored procedures and functions</li>
+                        <li>• Database administration</li>
+                        <li>• Performance tuning</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-4">Career Opportunities</h3>
+                      <ul className="text-gray-300 space-y-2">
+                        <li>• Database Administrator</li>
+                        <li>• Data Analyst</li>
+                        <li>• Business Intelligence Developer</li>
+                        <li>• Backend Developer</li>
+                        <li>• Data Engineer</li>
+                        <li>• Database Developer</li>
+                        <li>• Data Scientist</li>
+                        <li>• Systems Analyst</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 {/* What is a Database */}
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl mb-8">
                   <h2 className="text-3xl font-bold text-white mb-6">📘 What is a Database?</h2>

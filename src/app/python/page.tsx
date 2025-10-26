@@ -181,6 +181,39 @@ export default function PythonPage() {
                 </div>
               </div>
 
+              {/* Overview Section */}
+              <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-12">
+                <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 Python Course Overview</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-semibold text-green-400 mb-4">What You'll Learn</h3>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Python syntax and fundamentals</li>
+                      <li>• Data structures and algorithms</li>
+                      <li>• Object-oriented programming</li>
+                      <li>• Web development with Django/Flask</li>
+                      <li>• Data science and analysis</li>
+                      <li>• Machine learning basics</li>
+                      <li>• Automation and scripting</li>
+                      <li>• Best practices and debugging</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-green-400 mb-4">Career Opportunities</h3>
+                    <ul className="text-gray-300 space-y-2">
+                      <li>• Software Developer</li>
+                      <li>• Data Scientist</li>
+                      <li>• Web Developer</li>
+                      <li>• Machine Learning Engineer</li>
+                      <li>• DevOps Engineer</li>
+                      <li>• Automation Engineer</li>
+                      <li>• Research Scientist</li>
+                      <li>• Technical Consultant</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               {/* Why Learn Python */}
               <div className="max-w-6xl mx-auto mb-12">
                 <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-8">
