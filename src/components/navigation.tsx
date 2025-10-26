@@ -14,9 +14,9 @@ export default function Navigation() {
       <Link href="/menu" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Menu
       </Link>
-      <Link href="/docs/what-is-devops" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
+      <span className="text-gray-400 cursor-not-allowed opacity-50 font-medium">
         Docs
-      </Link>
+      </span>
       
       {/* Tutorials Dropdown */}
       <div className="relative">
