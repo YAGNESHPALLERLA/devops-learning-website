@@ -5,9 +5,7 @@ import Link from 'next/link';
 import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
-import AlumniCard from '@/components/AlumniCard';
 import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
-import { getActiveAlumni } from '@/data/alumni';
 import { useState, useEffect } from 'react';
 
 export default function HomePage() {
@@ -1069,89 +1067,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Success Stories - Our Placed Students */}
-      <section className="py-20 relative z-10">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-green-500/10 backdrop-blur-sm text-green-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-green-500/20">
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              Success Stories
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Placed Students</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Meet our successful graduates who have secured their dream jobs at top companies worldwide. Their journey from learning to earning is your inspiration.
-            </p>
-          </div>
-
-          {/* Success Stories Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {getActiveAlumni().map((alumni, index) => {
-              const gradients = [
-                "bg-gradient-to-br from-blue-500 to-purple-600",
-                "bg-gradient-to-br from-emerald-500 to-teal-600", 
-                "bg-gradient-to-br from-orange-500 to-red-600",
-                "bg-gradient-to-br from-purple-500 to-pink-600",
-                "bg-gradient-to-br from-cyan-500 to-blue-600",
-                "bg-gradient-to-br from-yellow-500 to-orange-600"
-              ];
-              
-              const colors = [
-                "text-blue-400",
-                "text-emerald-400",
-                "text-orange-400", 
-                "text-purple-400",
-                "text-cyan-400",
-                "text-yellow-400"
-              ];
-              
-              return (
-                <AlumniCard
-                  key={alumni.id}
-                  alumni={alumni}
-                  gradientClass={gradients[index % gradients.length]}
-                  positionColor={colors[index % colors.length]}
-                />
-              );
-            })}
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center mt-16">
-            <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Ready to Start Your Success Story?
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Join hundreds of students who have transformed their careers with OneHubGlobal. Your success story could be next!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/jobcy/user/auth/signup"
-                  className="inline-flex items-center justify-center bg-green-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200"
-                >
-                  Start Your Journey
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                  </svg>
-                </Link>
-                <Link 
-                  href="/devops"
-                  className="inline-flex items-center justify-center bg-gray-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
-                >
-                  Explore Courses
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="border-t border-gray-700 py-12 relative z-10">
