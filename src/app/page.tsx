@@ -5,6 +5,8 @@ import Link from 'next/link';
 import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
+import AlumniCard from '@/components/AlumniCard';
+import { getActiveAlumni } from '@/data/alumni';
 import { useState, useEffect } from 'react';
 
 export default function HomePage() {
@@ -1081,131 +1083,34 @@ export default function HomePage() {
 
           {/* Success Stories Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Student 1 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">RK</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Rajesh Kumar</h3>
-                <p className="text-blue-400 font-semibold mb-1">DevOps Engineer</p>
-                <p className="text-gray-400 text-sm">Amazon Web Services</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "OneHubGlobal's DevOps course gave me the practical skills I needed. The hands-on projects and real-world scenarios helped me land my dream job at AWS. The instructors are amazing!"
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹12 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
-
-            {/* Student 2 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">PS</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Priya Sharma</h3>
-                <p className="text-emerald-400 font-semibold mb-1">Cloud Solutions Architect</p>
-                <p className="text-gray-400 text-sm">Microsoft Azure</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "The comprehensive cloud training at OneHubGlobal was exactly what I needed. From basics to advanced concepts, everything was covered perfectly. Now I'm working with Microsoft Azure!"
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹15 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
-
-            {/* Student 3 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">AM</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Amit Mishra</h3>
-                <p className="text-orange-400 font-semibold mb-1">Kubernetes Specialist</p>
-                <p className="text-gray-400 text-sm">Google Cloud Platform</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "The Kubernetes training was exceptional! The practical labs and real-world projects prepared me for interviews. I'm now working as a Kubernetes Specialist at Google Cloud."
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹18 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
-
-            {/* Student 4 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">SK</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Sneha Kapoor</h3>
-                <p className="text-purple-400 font-semibold mb-1">DevSecOps Engineer</p>
-                <p className="text-gray-400 text-sm">IBM Cloud</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "OneHubGlobal's focus on security in DevOps was a game-changer. The DevSecOps modules helped me understand the importance of security in CI/CD pipelines. Now I'm at IBM!"
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹14 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
-
-            {/* Student 5 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">VP</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Vikram Patel</h3>
-                <p className="text-cyan-400 font-semibold mb-1">Site Reliability Engineer</p>
-                <p className="text-gray-400 text-sm">Netflix</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "The SRE training at OneHubGlobal was outstanding! The monitoring and observability modules were particularly helpful. I'm now ensuring Netflix's platform reliability!"
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹20 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
-
-            {/* Student 6 */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-white">NG</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Neha Gupta</h3>
-                <p className="text-yellow-400 font-semibold mb-1">Platform Engineer</p>
-                <p className="text-gray-400 text-sm">Spotify</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
-                <p className="text-gray-300 text-sm italic leading-relaxed">
-                  "The platform engineering course was comprehensive and practical. The hands-on experience with modern tools helped me secure a position at Spotify. Highly recommended!"
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-green-400 font-semibold">Package: ₹16 LPA</span>
-                <span className="text-gray-400">2024 Batch</span>
-              </div>
-            </div>
+            {getActiveAlumni().map((alumni, index) => {
+              const gradients = [
+                "bg-gradient-to-br from-blue-500 to-purple-600",
+                "bg-gradient-to-br from-emerald-500 to-teal-600", 
+                "bg-gradient-to-br from-orange-500 to-red-600",
+                "bg-gradient-to-br from-purple-500 to-pink-600",
+                "bg-gradient-to-br from-cyan-500 to-blue-600",
+                "bg-gradient-to-br from-yellow-500 to-orange-600"
+              ];
+              
+              const colors = [
+                "text-blue-400",
+                "text-emerald-400",
+                "text-orange-400", 
+                "text-purple-400",
+                "text-cyan-400",
+                "text-yellow-400"
+              ];
+              
+              return (
+                <AlumniCard
+                  key={alumni.id}
+                  alumni={alumni}
+                  gradientClass={gradients[index % gradients.length]}
+                  positionColor={colors[index % colors.length]}
+                />
+              );
+            })}
           </div>
 
           {/* Call to Action */}

@@ -30,7 +30,8 @@ export const alumniData: AlumniProfile[] = [
     course: "DevOps Fundamentals",
     placementDate: "2024-03-15",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/rajesh-kumar-devops"
+    linkedinUrl: "https://linkedin.com/in/rajesh-kumar-devops",
+    profileImage: "/alumni/rajesh-kumar.jpg"
   },
   {
     id: "2",
@@ -44,7 +45,8 @@ export const alumniData: AlumniProfile[] = [
     course: "Cloud Computing",
     placementDate: "2024-04-20",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/priya-sharma-cloud"
+    linkedinUrl: "https://linkedin.com/in/priya-sharma-cloud",
+    profileImage: "/alumni/priya-sharma.jpg"
   },
   {
     id: "3",
@@ -58,7 +60,8 @@ export const alumniData: AlumniProfile[] = [
     course: "Kubernetes & Container Orchestration",
     placementDate: "2024-05-10",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/amit-mishra-k8s"
+    linkedinUrl: "https://linkedin.com/in/amit-mishra-k8s",
+    profileImage: "/alumni/amit-mishra.jpg"
   },
   {
     id: "4",
@@ -72,7 +75,8 @@ export const alumniData: AlumniProfile[] = [
     course: "DevSecOps & Security",
     placementDate: "2024-06-05",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/sneha-kapoor-devsecops"
+    linkedinUrl: "https://linkedin.com/in/sneha-kapoor-devsecops",
+    profileImage: "/alumni/sneha-kapoor.jpg"
   },
   {
     id: "5",
@@ -86,7 +90,8 @@ export const alumniData: AlumniProfile[] = [
     course: "Site Reliability Engineering",
     placementDate: "2024-07-12",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/vikram-patel-sre"
+    linkedinUrl: "https://linkedin.com/in/vikram-patel-sre",
+    profileImage: "/alumni/vikram-patel.jpg"
   },
   {
     id: "6",
@@ -100,7 +105,8 @@ export const alumniData: AlumniProfile[] = [
     course: "Platform Engineering",
     placementDate: "2024-08-18",
     isActive: true,
-    linkedinUrl: "https://linkedin.com/in/neha-gupta-platform"
+    linkedinUrl: "https://linkedin.com/in/neha-gupta-platform",
+    profileImage: "/alumni/neha-gupta.jpg"
   }
 ];
 
