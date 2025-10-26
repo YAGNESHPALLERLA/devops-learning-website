@@ -7,8 +7,8 @@ import { getActiveAlumni } from '@/data/alumni';
 export default function AlumniScrollingGallery() {
   const alumni = getActiveAlumni();
   
-  // Duplicate the array to create seamless infinite scroll
-  const duplicatedAlumni = [...alumni, ...alumni];
+  // Show only the actual alumni photos (no duplication)
+  const displayAlumni = alumni;
 
   return (
     <div className="relative py-8 overflow-hidden alumni-gallery">
@@ -35,7 +35,7 @@ export default function AlumniScrollingGallery() {
         <div className="relative">
           {/* Scrolling container */}
           <div className="flex animate-scroll space-x-6 py-4">
-            {duplicatedAlumni.map((alumniProfile, index) => (
+            {displayAlumni.map((alumniProfile, index) => (
               <div
                 key={`${alumniProfile.id}-${index}`}
                 className="flex-shrink-0 group cursor-pointer"
