@@ -59,28 +59,28 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
 
       {/* Hero Section */}
       <main className="relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ef4444' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
 
         <div className="relative flex items-center justify-center px-6 py-20">
           <div className="w-full max-w-7xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-gray-500/10 to-gray-600/10 px-4 py-2 rounded-full mb-6 border border-gray-500/20">
-                <Sparkles className="w-4 h-4 text-gray-400" />
-                <span className="text-sm font-medium text-gray-300">Trusted by 500+ Professionals</span>
+              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500/10 to-red-500/10 px-4 py-2 rounded-full mb-6 border border-rose-500/20">
+                <Sparkles className="w-4 h-4 text-rose-400" />
+                <span className="text-sm font-medium text-rose-300">Trusted by 500+ Professionals</span>
               </div>
 
               <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white leading-tight">
                 Find Your
-                <span className="bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 bg-clip-text text-transparent"> Dream Job</span>
+                <span className="bg-gradient-to-r from-rose-400 via-red-500 to-pink-600 bg-clip-text text-transparent"> Dream Job</span>
                 <br />Today
               </h1>
 
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
                 <button
                   onClick={handleSignIn}
-                  className="group flex items-center justify-center space-x-3 px-10 py-5 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-gray-500/25 hover:scale-105"
+                  className="group flex items-center justify-center space-x-3 px-10 py-5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-rose-500/25 hover:scale-105"
                 >
                   <LogIn className="w-6 h-6" />
                   <span>Sign In to Explore</span>
@@ -113,25 +113,25 @@ export default function Home() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Briefcase className="w-10 h-10 mx-auto mb-4 text-gray-400" />
+                <Briefcase className="w-10 h-10 mx-auto mb-4 text-rose-400" />
                 <div className="text-3xl font-bold mb-2 text-white">150+</div>
                 <div className="text-sm font-medium text-gray-400">Active Jobs</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Building2 className="w-10 h-10 mx-auto mb-4 text-gray-400" />
+                <Building2 className="w-10 h-10 mx-auto mb-4 text-red-400" />
                 <div className="text-3xl font-bold mb-2 text-white">25+</div>
                 <div className="text-sm font-medium text-gray-400">Companies</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <Users className="w-10 h-10 mx-auto mb-4 text-gray-400" />
+                <Users className="w-10 h-10 mx-auto mb-4 text-pink-400" />
                 <div className="text-3xl font-bold mb-2 text-white">500+</div>
                 <div className="text-sm font-medium text-gray-400">Job Seekers</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
-                <TrendingUp className="w-10 h-10 mx-auto mb-4 text-gray-400" />
+                <TrendingUp className="w-10 h-10 mx-auto mb-4 text-rose-500" />
                 <div className="text-3xl font-bold mb-2 text-white">85%</div>
                 <div className="text-sm font-medium text-gray-400">Success Rate</div>
               </div>
@@ -140,8 +140,8 @@ export default function Home() {
             {/* Features */}
             <div className="grid md:grid-cols-3 gap-8 mb-20">
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
-                  <Briefcase className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-rose-900/50 shadow-lg">
+                  <Briefcase className="w-8 h-8 text-rose-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For Job Seekers</h3>
                 <p className="text-base leading-relaxed text-gray-400">
@@ -155,8 +155,8 @@ export default function Home() {
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
-                  <Building2 className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-red-900/50 shadow-lg">
+                  <Building2 className="w-8 h-8 text-red-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For HR Professionals</h3>
                 <p className="text-base leading-relaxed text-gray-400">
@@ -170,8 +170,8 @@ export default function Home() {
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gray-700/50 shadow-lg">
-                  <Users className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-pink-900/50 shadow-lg">
+                  <Users className="w-8 h-8 text-pink-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">For Administrators</h3>
                 <p className="text-base leading-relaxed text-gray-400">
