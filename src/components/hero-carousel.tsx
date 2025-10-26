@@ -109,11 +109,11 @@ export default function HeroCarousel() {
   return (
     <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden z-10">
       {/* Professional Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40 z-5"></div>
       
       {/* Main Carousel Container */}
       <div
-        className="relative w-full h-full transition-all duration-1000 ease-in-out flex"
+        className="relative w-full h-full transition-all duration-1000 ease-in-out flex z-20"
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
         }}
@@ -147,7 +147,7 @@ export default function HeroCarousel() {
               <div className="flex flex-col sm:flex-row gap-4 relative z-30 mt-6">
                 <Link
                   href={slide.buttonLink}
-                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40"
+                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto"
                 >
                   {slide.buttonText}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,7 +156,7 @@ export default function HeroCarousel() {
                 </Link>
                 <Link
                   href={`${slide.buttonLink}#overview`}
-                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40"
+                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
