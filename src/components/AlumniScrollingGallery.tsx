@@ -7,8 +7,8 @@ import { getActiveAlumni } from '@/data/alumni';
 export default function AlumniScrollingGallery() {
   const alumni = getActiveAlumni();
   
-  // Show only the actual alumni photos (no duplication)
-  const displayAlumni = alumni;
+  // Duplicate the array to create seamless infinite scroll
+  const displayAlumni = [...alumni, ...alumni];
 
   return (
     <div className="relative py-8 overflow-hidden alumni-gallery">
