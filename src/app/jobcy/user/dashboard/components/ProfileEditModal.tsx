@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { X, Save, User, Briefcase, GraduationCap, Folder, FileText, Globe, Plus, Edit, Trash2, TrendingUp } from "lucide-react";
 import { UserProfile, Education, Experience, Project, Language } from "../../../types/dashboard";
 
@@ -42,6 +42,220 @@ interface LanguageFormProps {
   isDark?: boolean;
 }
 
+// Custom Dropdown Component
+interface DropdownOption {
+  value: string;
+  label: string;
+}
+
+interface CustomDropdownProps {
+  options: DropdownOption[];
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  isDark?: boolean;
+  allowCustom?: boolean;
+  searchable?: boolean;
+  required?: boolean;
+}
+
+function CustomDropdown({ 
+  options, 
+  value, 
+  onChange, 
+  placeholder, 
+  isDark = false, 
+  allowCustom = false,
+  searchable = false,
+  required = false 
+}: CustomDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [customValue, setCustomValue] = useState("");
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const filteredOptions = searchable 
+    ? options.filter(option => 
+        option.label.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : options;
+
+  const handleSelect = (optionValue: string) => {
+    onChange(optionValue);
+    setIsOpen(false);
+    setSearchTerm("");
+    setFocusedIndex(-1);
+  };
+
+  const handleCustomSubmit = () => {
+    if (customValue.trim()) {
+      onChange(customValue.trim());
+      setIsOpen(false);
+      setCustomValue("");
+      setFocusedIndex(-1);
+    }
+  };
+
+  const selectedOption = options.find(opt => opt.value === value);
+
+  // Handle clicks outside dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setSearchTerm("");
+        setFocusedIndex(-1);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isOpen) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        setIsOpen(true);
+        setFocusedIndex(0);
+      }
+      return;
+    }
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setFocusedIndex(prev => 
+          prev < filteredOptions.length - 1 ? prev + 1 : 0
+        );
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setFocusedIndex(prev => 
+          prev > 0 ? prev - 1 : filteredOptions.length - 1
+        );
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
+          handleSelect(filteredOptions[focusedIndex].value);
+        }
+        break;
+      case 'Escape':
+        setIsOpen(false);
+        setSearchTerm("");
+        setFocusedIndex(-1);
+        break;
+    }
+  };
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
+        className={`w-full px-4 py-3 rounded-lg border transition-colors text-left flex items-center justify-between ${
+          isDark
+            ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
+            : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
+        }`}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+      >
+        <span className={selectedOption ? "" : "text-gray-400"}>
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <svg 
+          className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className={`absolute z-50 w-full mt-1 rounded-lg border shadow-lg ${
+          isDark 
+            ? "bg-slate-700 border-slate-600" 
+            : "bg-white border-slate-300"
+        }`} role="listbox">
+          {searchable && (
+            <div className="p-2 border-b border-slate-600">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search..."
+                className={`w-full px-3 py-2 rounded border text-sm ${
+                  isDark
+                    ? "bg-slate-800 border-slate-500 text-white placeholder-slate-400"
+                    : "bg-white border-slate-300 text-slate-900 placeholder-slate-500"
+                }`}
+                autoFocus
+              />
+            </div>
+          )}
+          
+          <div className="max-h-60 overflow-y-auto">
+            {filteredOptions.map((option, index) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => handleSelect(option.value)}
+                className={`w-full px-4 py-2 text-left hover:bg-blue-500 hover:text-white transition-colors ${
+                  isDark ? "text-slate-300" : "text-slate-700"
+                } ${value === option.value ? "bg-blue-500 text-white" : ""} ${
+                  focusedIndex === index ? "bg-blue-500 text-white" : ""
+                }`}
+                role="option"
+                aria-selected={value === option.value}
+              >
+                {option.label}
+              </button>
+            ))}
+            
+            {allowCustom && (
+              <div className="p-2 border-t border-slate-600">
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={customValue}
+                    onChange={(e) => setCustomValue(e.target.value)}
+                    placeholder="Add custom option..."
+                    className={`flex-1 px-3 py-2 rounded border text-sm ${
+                      isDark
+                        ? "bg-slate-800 border-slate-500 text-white placeholder-slate-400"
+                        : "bg-white border-slate-300 text-slate-900 placeholder-slate-500"
+                    }`}
+                    onKeyPress={(e) => e.key === 'Enter' && handleCustomSubmit()}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleCustomSubmit}
+                    className="px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Education Form Component
 function EducationForm({ education, onSave, onCancel, isDark = false }: EducationFormProps) {
   const [formData, setFormData] = useState({
@@ -52,6 +266,116 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
     endDate: education?.endDate || "",
     grade: education?.grade || "",
   });
+
+  // Institution options - Global and Indian universities
+  const institutionOptions: DropdownOption[] = [
+    // Indian Institutes
+    { value: "Indian Institute of Technology Delhi", label: "Indian Institute of Technology Delhi" },
+    { value: "Indian Institute of Technology Bombay", label: "Indian Institute of Technology Bombay" },
+    { value: "Indian Institute of Technology Madras", label: "Indian Institute of Technology Madras" },
+    { value: "Indian Institute of Technology Kanpur", label: "Indian Institute of Technology Kanpur" },
+    { value: "Indian Institute of Technology Kharagpur", label: "Indian Institute of Technology Kharagpur" },
+    { value: "Indian Institute of Technology Roorkee", label: "Indian Institute of Technology Roorkee" },
+    { value: "Indian Institute of Technology Guwahati", label: "Indian Institute of Technology Guwahati" },
+    { value: "Indian Institute of Technology Hyderabad", label: "Indian Institute of Technology Hyderabad" },
+    { value: "Indian Institute of Technology Indore", label: "Indian Institute of Technology Indore" },
+    { value: "Indian Institute of Technology Bhubaneswar", label: "Indian Institute of Technology Bhubaneswar" },
+    
+    // NITs
+    { value: "National Institute of Technology Trichy", label: "National Institute of Technology Trichy" },
+    { value: "National Institute of Technology Surathkal", label: "National Institute of Technology Surathkal" },
+    { value: "National Institute of Technology Warangal", label: "National Institute of Technology Warangal" },
+    { value: "National Institute of Technology Calicut", label: "National Institute of Technology Calicut" },
+    { value: "National Institute of Technology Rourkela", label: "National Institute of Technology Rourkela" },
+    
+    // Other Indian Universities
+    { value: "Delhi University", label: "Delhi University" },
+    { value: "Jawaharlal Nehru University", label: "Jawaharlal Nehru University" },
+    { value: "Anna University", label: "Anna University" },
+    { value: "University of Mumbai", label: "University of Mumbai" },
+    { value: "University of Calcutta", label: "University of Calcutta" },
+    { value: "University of Madras", label: "University of Madras" },
+    { value: "Banaras Hindu University", label: "Banaras Hindu University" },
+    { value: "Aligarh Muslim University", label: "Aligarh Muslim University" },
+    { value: "Jadavpur University", label: "Jadavpur University" },
+    { value: "Birla Institute of Technology and Science", label: "Birla Institute of Technology and Science" },
+    
+    // Private Universities
+    { value: "Vellore Institute of Technology", label: "Vellore Institute of Technology" },
+    { value: "Manipal Institute of Technology", label: "Manipal Institute of Technology" },
+    { value: "SRM Institute of Science and Technology", label: "SRM Institute of Science and Technology" },
+    { value: "Amity University", label: "Amity University" },
+    { value: "Symbiosis International University", label: "Symbiosis International University" },
+    
+    // Global Universities
+    { value: "Harvard University", label: "Harvard University" },
+    { value: "Stanford University", label: "Stanford University" },
+    { value: "Massachusetts Institute of Technology", label: "Massachusetts Institute of Technology" },
+    { value: "University of California, Berkeley", label: "University of California, Berkeley" },
+    { value: "Carnegie Mellon University", label: "Carnegie Mellon University" },
+    { value: "University of Oxford", label: "University of Oxford" },
+    { value: "University of Cambridge", label: "University of Cambridge" },
+    { value: "Imperial College London", label: "Imperial College London" },
+    { value: "ETH Zurich", label: "ETH Zurich" },
+    { value: "National University of Singapore", label: "National University of Singapore" },
+  ];
+
+  // Degree options
+  const degreeOptions: DropdownOption[] = [
+    { value: "Bachelor of Science", label: "Bachelor of Science" },
+    { value: "Bachelor of Engineering", label: "Bachelor of Engineering" },
+    { value: "Bachelor of Technology", label: "Bachelor of Technology" },
+    { value: "Bachelor of Computer Science", label: "Bachelor of Computer Science" },
+    { value: "Bachelor of Information Technology", label: "Bachelor of Information Technology" },
+    { value: "Master of Science", label: "Master of Science" },
+    { value: "Master of Technology", label: "Master of Technology" },
+    { value: "Master of Engineering", label: "Master of Engineering" },
+    { value: "Master of Computer Science", label: "Master of Computer Science" },
+    { value: "Master of Business Administration", label: "Master of Business Administration" },
+    { value: "Master of Information Technology", label: "Master of Information Technology" },
+    { value: "Doctor of Philosophy", label: "Doctor of Philosophy" },
+    { value: "Diploma", label: "Diploma" },
+    { value: "Post Graduate Diploma", label: "Post Graduate Diploma" },
+    { value: "High School", label: "High School" },
+    { value: "Intermediate", label: "Intermediate" },
+    { value: "Associate Degree", label: "Associate Degree" },
+    { value: "Certificate", label: "Certificate" },
+    { value: "Other", label: "Other" },
+  ];
+
+  // Field of Study options
+  const fieldOfStudyOptions: DropdownOption[] = [
+    { value: "Computer Science", label: "Computer Science" },
+    { value: "Information Technology", label: "Information Technology" },
+    { value: "Electronics and Communication Engineering", label: "Electronics and Communication Engineering" },
+    { value: "Mechanical Engineering", label: "Mechanical Engineering" },
+    { value: "Civil Engineering", label: "Civil Engineering" },
+    { value: "Electrical Engineering", label: "Electrical Engineering" },
+    { value: "Chemical Engineering", label: "Chemical Engineering" },
+    { value: "Aerospace Engineering", label: "Aerospace Engineering" },
+    { value: "Biotechnology", label: "Biotechnology" },
+    { value: "Data Science", label: "Data Science" },
+    { value: "Artificial Intelligence", label: "Artificial Intelligence" },
+    { value: "Machine Learning", label: "Machine Learning" },
+    { value: "Cybersecurity", label: "Cybersecurity" },
+    { value: "Software Engineering", label: "Software Engineering" },
+    { value: "Computer Engineering", label: "Computer Engineering" },
+    { value: "Mathematics", label: "Mathematics" },
+    { value: "Physics", label: "Physics" },
+    { value: "Chemistry", label: "Chemistry" },
+    { value: "Biology", label: "Biology" },
+    { value: "Business Administration", label: "Business Administration" },
+    { value: "Management", label: "Management" },
+    { value: "Finance", label: "Finance" },
+    { value: "Marketing", label: "Marketing" },
+    { value: "Economics", label: "Economics" },
+    { value: "Psychology", label: "Psychology" },
+    { value: "Arts", label: "Arts" },
+    { value: "Literature", label: "Literature" },
+    { value: "History", label: "History" },
+    { value: "Political Science", label: "Political Science" },
+    { value: "Other", label: "Other" },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,51 +409,43 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Institution *
         </label>
-        <input
-          type="text"
+        <CustomDropdown
+          options={institutionOptions}
           value={formData.institution}
-          onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
-            isDark
-              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
-              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
-          }`}
-          placeholder="e.g. Harvard University"
-          required
+          onChange={(value) => setFormData({ ...formData, institution: value })}
+          placeholder="Search or select your institution"
+          isDark={isDark}
+          allowCustom={true}
+          searchable={true}
+          required={true}
         />
       </div>
       <div>
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Degree *
         </label>
-        <input
-          type="text"
+        <CustomDropdown
+          options={degreeOptions}
           value={formData.degree}
-          onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
-          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
-            isDark
-              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
-              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
-          }`}
-          placeholder="e.g. Bachelor of Science"
-          required
+          onChange={(value) => setFormData({ ...formData, degree: value })}
+          placeholder="Select your degree"
+          isDark={isDark}
+          allowCustom={true}
+          required={true}
         />
       </div>
       <div>
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Field of Study *
         </label>
-        <input
-          type="text"
+        <CustomDropdown
+          options={fieldOfStudyOptions}
           value={formData.fieldOfStudy}
-          onChange={(e) => setFormData({ ...formData, fieldOfStudy: e.target.value })}
-          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
-            isDark
-              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
-              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
-          }`}
-          placeholder="e.g. Computer Science"
-          required
+          onChange={(value) => setFormData({ ...formData, fieldOfStudy: value })}
+          placeholder="Select your field of study"
+          isDark={isDark}
+          allowCustom={true}
+          required={true}
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
