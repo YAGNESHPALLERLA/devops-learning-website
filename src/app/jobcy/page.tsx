@@ -75,7 +75,7 @@ export default function Home() {
             <div className="text-center mb-16">
               <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500/10 to-red-500/10 px-4 py-2 rounded-full mb-6 border border-rose-500/20">
                 <Sparkles className="w-4 h-4 text-rose-400" />
-                <span className="text-sm font-medium text-rose-300">Trusted by 50,000+ Professionals</span>
+                <span className="text-sm font-medium text-rose-300">Trusted by 500+ Professionals</span>
               </div>
 
               <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white leading-tight">
@@ -114,25 +114,25 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
                 <Briefcase className="w-10 h-10 mx-auto mb-4 text-rose-400" />
-                <div className="text-3xl font-bold mb-2 text-white">10,000+</div>
+                <div className="text-3xl font-bold mb-2 text-white">150+</div>
                 <div className="text-sm font-medium text-gray-400">Active Jobs</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
                 <Building2 className="w-10 h-10 mx-auto mb-4 text-red-400" />
-                <div className="text-3xl font-bold mb-2 text-white">500+</div>
+                <div className="text-3xl font-bold mb-2 text-white">25+</div>
                 <div className="text-sm font-medium text-gray-400">Companies</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
                 <Users className="w-10 h-10 mx-auto mb-4 text-pink-400" />
-                <div className="text-3xl font-bold mb-2 text-white">50,000+</div>
+                <div className="text-3xl font-bold mb-2 text-white">500+</div>
                 <div className="text-sm font-medium text-gray-400">Job Seekers</div>
               </div>
 
               <div className="text-center p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm shadow-xl border border-gray-700 hover:scale-105 transition-transform duration-300">
                 <TrendingUp className="w-10 h-10 mx-auto mb-4 text-rose-500" />
-                <div className="text-3xl font-bold mb-2 text-white">95%</div>
+                <div className="text-3xl font-bold mb-2 text-white">85%</div>
                 <div className="text-sm font-medium text-gray-400">Success Rate</div>
               </div>
             </div>

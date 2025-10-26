@@ -230,7 +230,7 @@ export default function HomePage() {
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
-              Trusted by Thousands
+              Trusted by Hundreds
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-blue-500">Growing Community</span>
@@ -343,7 +343,7 @@ export default function HomePage() {
               Launch Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">Career Journey</span>
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              Browse thousands of job opportunities, internships, and career openings. Connect with top companies and take the next step in your professional journey.
+              Browse hundreds of job opportunities, internships, and career openings. Connect with top companies and take the next step in your professional journey.
             </p>
           </div>
 
@@ -423,7 +423,7 @@ export default function HomePage() {
                 Ready to Find Your Dream Job?
               </h3>
               <p className="text-gray-300 mb-8 text-lg">
-                Join thousands of job seekers who have successfully launched their careers through our platform.
+                Join hundreds of job seekers who have successfully launched their careers through our platform.
               </p>
               <Link
                 href="/jobcy"
@@ -557,7 +557,7 @@ export default function HomePage() {
                 Ready to Start Your Banking Career?
               </h3>
               <p className="text-gray-300 mb-8 text-lg">
-                Join thousands of successful banking professionals who started their journey with OneHubGlobal Bank Coaching.
+                Join hundreds of successful banking professionals who started their journey with OneHubGlobal Bank Coaching.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
@@ -660,7 +660,7 @@ export default function HomePage() {
                 Three-tier ranking system with Bronze, Silver, and Gold levels
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Join our comprehensive weekly test series designed specifically for Government exam preparation. Track your progress through our unique three-tier ranking system and compete with thousands of aspirants to achieve your target level.
+                Join our comprehensive weekly test series designed specifically for Government exam preparation. Track your progress through our unique three-tier ranking system and compete with hundreds of aspirants to achieve your target level.
               </p>
             </div>
             <div className="flex justify-center">
