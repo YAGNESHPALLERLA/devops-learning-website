@@ -242,6 +242,11 @@ export default function HomePage() {
             </p>
           </div>
       <StatsCounter />
+          
+          {/* Alumni Scrolling Gallery */}
+          <div className="mt-16">
+            <AlumniScrollingGallery />
+          </div>
         </div>
       </section>
 
@@ -870,9 +875,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Alumni Scrolling Gallery */}
-      <AlumniScrollingGallery />
 
       {/* Certifications & Internships Section - Coursera Style */}
       <section className="py-20 relative z-10">
