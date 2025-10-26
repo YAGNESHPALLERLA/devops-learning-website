@@ -132,7 +132,7 @@ export default function HeroCarousel() {
                       '#0f0f0f'})`
             }}
           >
-            <div className="max-w-2xl text-left relative z-20">
+            <div className="max-w-2xl text-left relative z-30">
               <div className="inline-flex items-center bg-white/10 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-full mb-4 border border-white/20 shadow-lg">
                 <span className="w-1.5 h-1.5 bg-white rounded-full mr-2 animate-pulse"></span>
                 Featured Course
@@ -144,10 +144,10 @@ export default function HeroCarousel() {
               <p className="text-lg md:text-xl mb-8 max-w-xl text-white/90 leading-relaxed font-light">
                 {slide.description}
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-4 relative z-30 mt-6">
                 <Link
                   href={slide.buttonLink}
-                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px]"
+                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40"
                 >
                   {slide.buttonText}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,7 +156,7 @@ export default function HeroCarousel() {
                 </Link>
                 <Link
                   href={`${slide.buttonLink}#overview`}
-                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px]"
+                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
