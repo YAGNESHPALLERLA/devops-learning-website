@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "OneHubGlobal",
   description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
+  icons: {
+    icon: '/ohg365.png',
+    shortcut: '/ohg365.png',
+    apple: '/ohg365.png',
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/ohg365.png" type="image/png" />
+        <link rel="shortcut icon" href="/ohg365.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/ohg365.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
