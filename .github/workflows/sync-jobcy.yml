@@ -4,7 +4,7 @@ on:
   # schedule:
   #   - cron: '0 */6 * * *'  # Run every 6 hours
   workflow_dispatch:  # Allow manual trigger
-  push:  # Trigger on push to test the fix
+  # push:  # DISABLED - Prevent auto-sync from overriding fixes
 
 jobs:
   sync-jobcy:
