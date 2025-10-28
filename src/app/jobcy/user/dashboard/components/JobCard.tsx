@@ -33,7 +33,10 @@ interface JobCardProps {
   onSave?: (job: Job) => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, isDark = false, onApply, onSave }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, isDark = false, onSave }) => {
+  const handleApplyClick = () => {
+    window.open(`/jobcy/jobs/apply/${job.id}`, '_blank');
+  };
   return (
     <div
       className={`${
@@ -107,7 +110,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, isDark = false, onApply, onSave 
 
         <div className="ml-4 flex flex-col space-y-2">
           <button
-            onClick={() => onApply?.(job)}
+            onClick={handleApplyClick}
             disabled={job.hasApplied || job.isApplying}
             className={`px-6 py-2 rounded-lg font-medium transition-colors min-w-[120px] flex items-center justify-center ${
               job.hasApplied

@@ -8,15 +8,18 @@ import { Briefcase, GraduationCap, Users, Calendar, Clock } from "lucide-react";
 interface JobsTabProps {
   allJobs: Job[];
   isDark: boolean;
-  onApplyJob: (jobId: string) => void;
 }
 
 type FilterType = 'all' | 'fresher' | 'experienced';
 
-const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
+const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark }) => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+
+  const handleApplyJob = (jobId: string) => {
+    window.open(`/jobcy/jobs/apply/${jobId}`, '_blank');
+  };
 
   const handleViewDetails = (job: Job) => {
     setSelectedJob(job);
@@ -245,7 +248,7 @@ const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
                 </button>
                 <button
                   disabled={job.hasApplied}
-                  onClick={() => onApplyJob(job.id)}
+                  onClick={() => handleApplyJob(job.id)}
                   className={`px-3 py-1 rounded-lg ${
                     job.hasApplied
                       ? "bg-gray-500 cursor-not-allowed"
@@ -417,7 +420,7 @@ const JobsTab: React.FC<JobsTabProps> = ({ allJobs, isDark, onApplyJob }) => {
                 <button
                   disabled={selectedJob.hasApplied}
                   onClick={() => {
-                    onApplyJob(selectedJob.id);
+                    handleApplyJob(selectedJob.id);
                     closeModal();
                   }}
                   className={`px-6 py-2 rounded-lg font-medium ${
