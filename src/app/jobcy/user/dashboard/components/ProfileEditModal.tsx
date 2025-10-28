@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { X, Save, User, Briefcase, GraduationCap, Folder, FileText, Globe, Plus, Edit, Trash2, TrendingUp } from "lucide-react";
-import { UserProfile, Education, Experience, Project, Language } from "../../../types/dashboard";
-import { useCollegeSearch } from "../hooks/useColleges";
+import { UserProfile, Education, Experience, Project, Language } from "@/app/types/dashboard";
 
 interface ProfileEditModalProps {
   userProfile: UserProfile;
@@ -11,7 +10,6 @@ interface ProfileEditModalProps {
   isDark?: boolean;
   onClose: () => void;
   onSave: (profile: UserProfile) => Promise<{ success: boolean; message?: string }>;
-  onExperienceChange?: () => void; // Callback to refresh dashboard data
   initialSection?: string;
 }
 
@@ -43,267 +41,6 @@ interface LanguageFormProps {
   isDark?: boolean;
 }
 
-// Custom Dropdown Component
-interface DropdownOption {
-  value: string;
-  label: string;
-}
-
-interface CustomDropdownProps {
-  options: DropdownOption[];
-  value: string;
-  onChange: (value: string) => void;
-  placeholder: string;
-  isDark?: boolean;
-  allowCustom?: boolean;
-  searchable?: boolean;
-  required?: boolean;
-  useApiSearch?: boolean;
-}
-
-function CustomDropdown({ 
-  options, 
-  value, 
-  onChange, 
-  placeholder, 
-  isDark = false, 
-  allowCustom = false,
-  searchable = false,
-  required = false,
-  useApiSearch = false
-}: CustomDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [customValue, setCustomValue] = useState("");
-  const [focusedIndex, setFocusedIndex] = useState(-1);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Use API search for colleges with external API support
-  const { colleges: apiColleges, loading: apiLoading, setSearch: setApiSearch, sources } = useCollegeSearch(
-    useApiSearch ? searchTerm : '',
-    300, // debounce delay
-    false // disable external APIs temporarily to fix dropdown issues
-  );
-
-  const filteredOptions = useApiSearch 
-    ? (apiColleges.length > 0 
-        ? apiColleges.map(college => ({ value: college.value, label: college.label }))
-        : options.filter(option => 
-            option.label.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-      )
-    : searchable 
-      ? options.filter(option => 
-          option.label.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : options;
-
-  const handleSelect = (optionValue: string) => {
-    onChange(optionValue);
-    setIsOpen(false);
-    setSearchTerm("");
-    setFocusedIndex(-1);
-  };
-
-  const handleCustomSubmit = () => {
-    if (customValue.trim()) {
-      onChange(customValue.trim());
-      setIsOpen(false);
-      setCustomValue("");
-      setFocusedIndex(-1);
-    }
-  };
-
-  const selectedOption = options.find(opt => opt.value === value);
-
-  // Handle clicks outside dropdown
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        setSearchTerm("");
-        setFocusedIndex(-1);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
-
-  // Handle keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isOpen) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        setIsOpen(true);
-        setFocusedIndex(0);
-      }
-      return;
-    }
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setFocusedIndex(prev => 
-          prev < filteredOptions.length - 1 ? prev + 1 : 0
-        );
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setFocusedIndex(prev => 
-          prev > 0 ? prev - 1 : filteredOptions.length - 1
-        );
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
-          handleSelect(filteredOptions[focusedIndex].value);
-        }
-        break;
-      case 'Escape':
-        setIsOpen(false);
-        setSearchTerm("");
-        setFocusedIndex(-1);
-        break;
-    }
-  };
-
-  return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={handleKeyDown}
-        className={`w-full px-4 py-3 rounded-lg border transition-colors text-left flex items-center justify-between ${
-          isDark
-            ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
-            : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
-        }`}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-      >
-        <span className={selectedOption ? "" : "text-gray-400"}>
-          {selectedOption ? selectedOption.label : placeholder}
-        </span>
-        <svg 
-          className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      {isOpen && (
-        <div className={`absolute z-50 w-full mt-1 rounded-lg border shadow-lg ${
-          isDark 
-            ? "bg-slate-700 border-slate-600" 
-            : "bg-white border-slate-300"
-        }`} role="listbox">
-          {searchable && (
-            <div className="p-2 border-b border-slate-600">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => {
-                  const newSearchTerm = e.target.value;
-                  setSearchTerm(newSearchTerm);
-                  setFocusedIndex(-1);
-                  
-                  // Update API search if using API
-                  if (useApiSearch) {
-                    setApiSearch(newSearchTerm);
-                  }
-                }}
-                placeholder="Search..."
-                className={`w-full px-3 py-2 rounded border text-sm ${
-                  isDark
-                    ? "bg-slate-800 border-slate-500 text-white placeholder-slate-400"
-                    : "bg-white border-slate-300 text-slate-900 placeholder-slate-500"
-                }`}
-                autoFocus
-              />
-            </div>
-          )}
-          
-          <div className="max-h-60 overflow-y-auto">
-            {useApiSearch && apiLoading ? (
-              <div className={`p-3 text-sm ${isDark ? "text-slate-400" : "text-slate-500"}`}>
-                <div className="flex items-center gap-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                  {sources?.external ? "Searching external databases..." : "Searching colleges..."}
-                </div>
-              </div>
-            ) : filteredOptions.length === 0 ? (
-              <div className={`p-3 text-sm ${isDark ? "text-slate-400" : "text-slate-500"}`}>
-                {allowCustom ? "No colleges found. Add custom institution below." : "No colleges found."}
-              </div>
-            ) : (
-              filteredOptions.map((option, index) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => handleSelect(option.value)}
-                  className={`w-full px-4 py-2 text-left hover:bg-blue-500 hover:text-white transition-colors ${
-                    isDark ? "text-slate-300" : "text-slate-700"
-                  } ${value === option.value ? "bg-blue-500 text-white" : ""} ${
-                    focusedIndex === index ? "bg-blue-500 text-white" : ""
-                  }`}
-                  role="option"
-                  aria-selected={value === option.value}
-                >
-                  {option.label}
-                </button>
-              ))
-            )}
-            
-            {useApiSearch && filteredOptions.length > 0 && (
-              <div className={`p-2 border-t border-slate-600 text-xs ${isDark ? "text-slate-500" : "text-slate-400"}`}>
-                <div className="flex items-center gap-1">
-                  <div className={`w-2 h-2 rounded-full ${sources?.external ? "bg-green-500" : "bg-blue-500"}`}></div>
-                  {sources?.external ? "Live data from external APIs" : "Local database"}
-                </div>
-              </div>
-            )}
-            
-            {allowCustom && (
-              <div className="p-2 border-t border-slate-600">
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={customValue}
-                    onChange={(e) => setCustomValue(e.target.value)}
-                    placeholder="Add custom option..."
-                    className={`flex-1 px-3 py-2 rounded border text-sm ${
-                      isDark
-                        ? "bg-slate-800 border-slate-500 text-white placeholder-slate-400"
-                        : "bg-white border-slate-300 text-slate-900 placeholder-slate-500"
-                    }`}
-                    onKeyPress={(e) => e.key === 'Enter' && handleCustomSubmit()}
-                  />
-                  <button
-                    type="button"
-                    onClick={handleCustomSubmit}
-                    className="px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700"
-                  >
-                    Add
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 // Education Form Component
 function EducationForm({ education, onSave, onCancel, isDark = false }: EducationFormProps) {
   const [formData, setFormData] = useState({
@@ -314,221 +51,6 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
     endDate: education?.endDate || "",
     grade: education?.grade || "",
   });
-
-  // Institution options - Static fallback data
-  const institutionOptions: DropdownOption[] = [
-    // Telangana Universities
-    { value: "Osmania University", label: "Osmania University (TELANGANA)" },
-    { value: "Jawaharlal Nehru Technological University Hyderabad", label: "Jawaharlal Nehru Technological University Hyderabad (TELANGANA)" },
-    { value: "Kakatiya University", label: "Kakatiya University (TELANGANA)" },
-    { value: "Telangana University", label: "Telangana University (TELANGANA)" },
-    { value: "Mahatma Gandhi University", label: "Mahatma Gandhi University (TELANGANA)" },
-    { value: "Palamuru University", label: "Palamuru University (TELANGANA)" },
-    { value: "Satavahana University", label: "Satavahana University (TELANGANA)" },
-    { value: "Professor Jayashankar Telangana State Agricultural University", label: "Professor Jayashankar Telangana State Agricultural University (TELANGANA)" },
-    { value: "Dr. B.R. Ambedkar Open University", label: "Dr. B.R. Ambedkar Open University (TELANGANA)" },
-    { value: "English and Foreign Languages University", label: "English and Foreign Languages University (TELANGANA)" },
-    { value: "International Institute of Information Technology Hyderabad", label: "International Institute of Information Technology Hyderabad (TELANGANA)" },
-    { value: "Indian School of Business", label: "Indian School of Business (TELANGANA)" },
-    { value: "National Institute of Pharmaceutical Education and Research", label: "National Institute of Pharmaceutical Education and Research (TELANGANA)" },
-    { value: "Rajiv Gandhi University of Knowledge Technologies", label: "Rajiv Gandhi University of Knowledge Technologies (TELANGANA)" },
-    
-    // Telangana Engineering Colleges
-    { value: "Indian Institute of Technology Hyderabad", label: "Indian Institute of Technology Hyderabad (TELANGANA)" },
-    { value: "National Institute of Technology Warangal", label: "National Institute of Technology Warangal (TELANGANA)" },
-    { value: "Birla Institute of Technology and Science Pilani Hyderabad", label: "Birla Institute of Technology and Science Pilani Hyderabad (TELANGANA)" },
-    { value: "Vellore Institute of Technology Hyderabad", label: "Vellore Institute of Technology Hyderabad (TELANGANA)" },
-    { value: "Manipal Institute of Technology Hyderabad", label: "Manipal Institute of Technology Hyderabad (TELANGANA)" },
-    { value: "SRM Institute of Science and Technology Hyderabad", label: "SRM Institute of Science and Technology Hyderabad (TELANGANA)" },
-    { value: "Amity University Hyderabad", label: "Amity University Hyderabad (TELANGANA)" },
-    { value: "GITAM University Hyderabad", label: "GITAM University Hyderabad (TELANGANA)" },
-    { value: "KL University Hyderabad", label: "KL University Hyderabad (TELANGANA)" },
-    { value: "Chaitanya Bharathi Institute of Technology", label: "Chaitanya Bharathi Institute of Technology (TELANGANA)" },
-    { value: "Vasavi College of Engineering", label: "Vasavi College of Engineering (TELANGANA)" },
-    { value: "Gokaraju Rangaraju Institute of Engineering and Technology", label: "Gokaraju Rangaraju Institute of Engineering and Technology (TELANGANA)" },
-    { value: "Malla Reddy Engineering College", label: "Malla Reddy Engineering College (TELANGANA)" },
-    { value: "CMR Institute of Technology", label: "CMR Institute of Technology (TELANGANA)" },
-    { value: "Anurag University", label: "Anurag University (TELANGANA)" },
-    { value: "Vardhaman College of Engineering", label: "Vardhaman College of Engineering (TELANGANA)" },
-    { value: "Guru Nanak Institutions Technical Campus", label: "Guru Nanak Institutions Technical Campus (TELANGANA)" },
-    { value: "Institute of Aeronautical Engineering", label: "Institute of Aeronautical Engineering (TELANGANA)" },
-    { value: "Methodist College of Engineering and Technology", label: "Methodist College of Engineering and Technology (TELANGANA)" },
-    { value: "St. Mary's Group of Institutions", label: "St. Mary's Group of Institutions (TELANGANA)" },
-    { value: "Stanley College of Engineering and Technology for Women", label: "Stanley College of Engineering and Technology for Women (TELANGANA)" },
-    { value: "Vignan's Institute of Information Technology", label: "Vignan's Institute of Information Technology (TELANGANA)" },
-    { value: "Keshav Memorial Institute of Technology", label: "Keshav Memorial Institute of Technology (TELANGANA)" },
-    { value: "Muffakham Jah College of Engineering and Technology", label: "Muffakham Jah College of Engineering and Technology (TELANGANA)" },
-    { value: "Deccan College of Engineering and Technology", label: "Deccan College of Engineering and Technology (TELANGANA)" },
-    { value: "Sreenidhi Institute of Science and Technology", label: "Sreenidhi Institute of Science and Technology (TELANGANA)" },
-    { value: "MLR Institute of Technology", label: "MLR Institute of Technology (TELANGANA)" },
-    { value: "Guru Nanak Engineering College", label: "Guru Nanak Engineering College (TELANGANA)" },
-    { value: "TKR College of Engineering and Technology", label: "TKR College of Engineering and Technology (TELANGANA)" },
-    { value: "Aurora's Engineering College", label: "Aurora's Engineering College (TELANGANA)" },
-    { value: "Bhoj Reddy Engineering College for Women", label: "Bhoj Reddy Engineering College for Women (TELANGANA)" },
-    { value: "CVR College of Engineering", label: "CVR College of Engineering (TELANGANA)" },
-    { value: "Geethanjali College of Engineering and Technology", label: "Geethanjali College of Engineering and Technology (TELANGANA)" },
-    { value: "Holy Mary Institute of Technology and Science", label: "Holy Mary Institute of Technology and Science (TELANGANA)" },
-    { value: "JNTU College of Engineering Hyderabad", label: "JNTU College of Engineering Hyderabad (TELANGANA)" },
-    { value: "Kakatiya Institute of Technology and Science", label: "Kakatiya Institute of Technology and Science (TELANGANA)" },
-    { value: "Malla Reddy College of Engineering and Technology", label: "Malla Reddy College of Engineering and Technology (TELANGANA)" },
-    { value: "Nalla Malla Reddy Engineering College", label: "Nalla Malla Reddy Engineering College (TELANGANA)" },
-    { value: "Padmasri Dr. B.V. Raju Institute of Technology", label: "Padmasri Dr. B.V. Raju Institute of Technology (TELANGANA)" },
-    { value: "Raghu Engineering College", label: "Raghu Engineering College (TELANGANA)" },
-    { value: "Vasireddy Venkatadri Institute of Technology", label: "Vasireddy Venkatadri Institute of Technology (TELANGANA)" },
-    { value: "Vignan's Lara Institute of Technology and Science", label: "Vignan's Lara Institute of Technology and Science (TELANGANA)" },
-    { value: "Woxsen University", label: "Woxsen University (TELANGANA)" },
-    { value: "Hyderabad Institute of Technology and Management", label: "Hyderabad Institute of Technology and Management (TELANGANA)" },
-    { value: "Matrusri Engineering College", label: "Matrusri Engineering College (TELANGANA)" },
-    { value: "Nawab Shah Alam Khan College of Engineering and Technology", label: "Nawab Shah Alam Khan College of Engineering and Technology (TELANGANA)" },
-    { value: "Sphoorthy Engineering College", label: "Sphoorthy Engineering College (TELANGANA)" },
-    { value: "Teegala Krishna Reddy Engineering College", label: "Teegala Krishna Reddy Engineering College (TELANGANA)" },
-    { value: "Vidya Jyothi Institute of Technology", label: "Vidya Jyothi Institute of Technology (TELANGANA)" },
-    { value: "Aurora's Scientific Technological and Research Academy", label: "Aurora's Scientific Technological and Research Academy (TELANGANA)" },
-    { value: "Bharat Institute of Engineering and Technology", label: "Bharat Institute of Engineering and Technology (TELANGANA)" },
-    { value: "Brilliant Grammar School Educational Society", label: "Brilliant Grammar School Educational Society (TELANGANA)" },
-    
-    // Andhra Pradesh Universities
-    { value: "Andhra University", label: "Andhra University (ANDHRA PRADESH)" },
-    { value: "Sri Venkateswara University", label: "Sri Venkateswara University (ANDHRA PRADESH)" },
-    { value: "Acharya Nagarjuna University", label: "Acharya Nagarjuna University (ANDHRA PRADESH)" },
-    { value: "Sri Krishnadevaraya University", label: "Sri Krishnadevaraya University (ANDHRA PRADESH)" },
-    { value: "Rayalaseema University", label: "Rayalaseema University (ANDHRA PRADESH)" },
-    { value: "Yogi Vemana University", label: "Yogi Vemana University (ANDHRA PRADESH)" },
-    { value: "Dr. B.R. Ambedkar University", label: "Dr. B.R. Ambedkar University (ANDHRA PRADESH)" },
-    { value: "Krishna University", label: "Krishna University (ANDHRA PRADESH)" },
-    { value: "Dravidian University", label: "Dravidian University (ANDHRA PRADESH)" },
-    { value: "Jawaharlal Nehru Technological University Anantapur", label: "Jawaharlal Nehru Technological University Anantapur (ANDHRA PRADESH)" },
-    { value: "Jawaharlal Nehru Technological University Kakinada", label: "Jawaharlal Nehru Technological University Kakinada (ANDHRA PRADESH)" },
-    { value: "Indian Institute of Management Visakhapatnam", label: "Indian Institute of Management Visakhapatnam (ANDHRA PRADESH)" },
-    { value: "Indian Institute of Technology Tirupati", label: "Indian Institute of Technology Tirupati (ANDHRA PRADESH)" },
-    { value: "National Institute of Technology Andhra Pradesh", label: "National Institute of Technology Andhra Pradesh (ANDHRA PRADESH)" },
-    
-    // Karnataka Universities
-    { value: "Bangalore University", label: "Bangalore University (KARNATAKA)" },
-    { value: "Mysore University", label: "Mysore University (KARNATAKA)" },
-    { value: "Karnataka University", label: "Karnataka University (KARNATAKA)" },
-    { value: "Mangalore University", label: "Mangalore University (KARNATAKA)" },
-    { value: "Gulbarga University", label: "Gulbarga University (KARNATAKA)" },
-    { value: "Tumkur University", label: "Tumkur University (KARNATAKA)" },
-    { value: "Visvesvaraya Technological University", label: "Visvesvaraya Technological University (KARNATAKA)" },
-    { value: "Rajiv Gandhi University of Health Sciences", label: "Rajiv Gandhi University of Health Sciences (KARNATAKA)" },
-    { value: "Karnataka State Open University", label: "Karnataka State Open University (KARNATAKA)" },
-    { value: "Indian Institute of Science Bangalore", label: "Indian Institute of Science Bangalore (KARNATAKA)" },
-    { value: "Indian Institute of Management Bangalore", label: "Indian Institute of Management Bangalore (KARNATAKA)" },
-    { value: "Indian Institute of Technology Dharwad", label: "Indian Institute of Technology Dharwad (KARNATAKA)" },
-    { value: "National Institute of Technology Karnataka", label: "National Institute of Technology Karnataka (KARNATAKA)" },
-    { value: "Indian Institute of Science Education and Research Bangalore", label: "Indian Institute of Science Education and Research Bangalore (KARNATAKA)" },
-    
-    // Tamil Nadu Universities
-    { value: "University of Madras", label: "University of Madras (TAMIL NADU)" },
-    { value: "Anna University", label: "Anna University (TAMIL NADU)" },
-    { value: "Bharathiar University", label: "Bharathiar University (TAMIL NADU)" },
-    { value: "Bharathidasan University", label: "Bharathidasan University (TAMIL NADU)" },
-    { value: "Madurai Kamaraj University", label: "Madurai Kamaraj University (TAMIL NADU)" },
-    { value: "Alagappa University", label: "Alagappa University (TAMIL NADU)" },
-    { value: "Periyar University", label: "Periyar University (TAMIL NADU)" },
-    { value: "Tamil Nadu Agricultural University", label: "Tamil Nadu Agricultural University (TAMIL NADU)" },
-    { value: "Tamil Nadu Dr. Ambedkar Law University", label: "Tamil Nadu Dr. Ambedkar Law University (TAMIL NADU)" },
-    { value: "Tamil Nadu Open University", label: "Tamil Nadu Open University (TAMIL NADU)" },
-    { value: "Indian Institute of Technology Madras", label: "Indian Institute of Technology Madras (TAMIL NADU)" },
-    { value: "Indian Institute of Management Trichy", label: "Indian Institute of Management Trichy (TAMIL NADU)" },
-    { value: "National Institute of Technology Tiruchirappalli", label: "National Institute of Technology Tiruchirappalli (TAMIL NADU)" },
-    { value: "Indian Institute of Science Education and Research Thiruvananthapuram", label: "Indian Institute of Science Education and Research Thiruvananthapuram (TAMIL NADU)" },
-    
-    // Maharashtra Universities
-    { value: "University of Mumbai", label: "University of Mumbai (MAHARASHTRA)" },
-    { value: "Savitribai Phule Pune University", label: "Savitribai Phule Pune University (MAHARASHTRA)" },
-    { value: "Shivaji University", label: "Shivaji University (MAHARASHTRA)" },
-    { value: "Dr. Babasaheb Ambedkar Marathwada University", label: "Dr. Babasaheb Ambedkar Marathwada University (MAHARASHTRA)" },
-    { value: "Rashtrasant Tukadoji Maharaj Nagpur University", label: "Rashtrasant Tukadoji Maharaj Nagpur University (MAHARASHTRA)" },
-    { value: "North Maharashtra University", label: "North Maharashtra University (MAHARASHTRA)" },
-    { value: "Swami Ramanand Teerth Marathwada University", label: "Swami Ramanand Teerth Marathwada University (MAHARASHTRA)" },
-    { value: "Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya", label: "Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya (MAHARASHTRA)" },
-    { value: "Indian Institute of Technology Bombay", label: "Indian Institute of Technology Bombay (MAHARASHTRA)" },
-    { value: "Indian Institute of Management Ahmedabad", label: "Indian Institute of Management Ahmedabad (MAHARASHTRA)" },
-    { value: "Indian Institute of Technology Dharwad", label: "Indian Institute of Technology Dharwad (MAHARASHTRA)" },
-    { value: "National Institute of Technology Maharashtra", label: "National Institute of Technology Maharashtra (MAHARASHTRA)" },
-    { value: "Indian Institute of Science Education and Research Pune", label: "Indian Institute of Science Education and Research Pune (MAHARASHTRA)" },
-    
-    // Global Universities
-    { value: "Harvard University", label: "Harvard University (INTERNATIONAL)" },
-    { value: "Stanford University", label: "Stanford University (INTERNATIONAL)" },
-    { value: "Massachusetts Institute of Technology", label: "Massachusetts Institute of Technology (INTERNATIONAL)" },
-    { value: "University of California, Berkeley", label: "University of California, Berkeley (INTERNATIONAL)" },
-    { value: "Carnegie Mellon University", label: "Carnegie Mellon University (INTERNATIONAL)" },
-    { value: "University of Oxford", label: "University of Oxford (INTERNATIONAL)" },
-    { value: "University of Cambridge", label: "University of Cambridge (INTERNATIONAL)" },
-    { value: "Imperial College London", label: "Imperial College London (INTERNATIONAL)" },
-    { value: "ETH Zurich", label: "ETH Zurich (INTERNATIONAL)" },
-    { value: "National University of Singapore", label: "National University of Singapore (INTERNATIONAL)" },
-    { value: "University of Toronto", label: "University of Toronto (INTERNATIONAL)" },
-    { value: "University of British Columbia", label: "University of British Columbia (INTERNATIONAL)" },
-    { value: "McGill University", label: "McGill University (INTERNATIONAL)" },
-    { value: "University of Melbourne", label: "University of Melbourne (INTERNATIONAL)" },
-    { value: "University of Sydney", label: "University of Sydney (INTERNATIONAL)" },
-    { value: "University of New South Wales", label: "University of New South Wales (INTERNATIONAL)" },
-    { value: "University of Tokyo", label: "University of Tokyo (INTERNATIONAL)" },
-    { value: "Kyoto University", label: "Kyoto University (INTERNATIONAL)" },
-    { value: "Seoul National University", label: "Seoul National University (INTERNATIONAL)" },
-    { value: "KAIST - Korea Advanced Institute of Science and Technology", label: "KAIST - Korea Advanced Institute of Science and Technology (INTERNATIONAL)" }
-  ].sort((a, b) => a.label.localeCompare(b.label));
-
-  // Degree options
-  const degreeOptions: DropdownOption[] = [
-    { value: "Bachelor of Science", label: "Bachelor of Science" },
-    { value: "Bachelor of Engineering", label: "Bachelor of Engineering" },
-    { value: "Bachelor of Technology", label: "Bachelor of Technology" },
-    { value: "Bachelor of Computer Science", label: "Bachelor of Computer Science" },
-    { value: "Bachelor of Information Technology", label: "Bachelor of Information Technology" },
-    { value: "Master of Science", label: "Master of Science" },
-    { value: "Master of Technology", label: "Master of Technology" },
-    { value: "Master of Engineering", label: "Master of Engineering" },
-    { value: "Master of Computer Science", label: "Master of Computer Science" },
-    { value: "Master of Business Administration", label: "Master of Business Administration" },
-    { value: "Master of Information Technology", label: "Master of Information Technology" },
-    { value: "Doctor of Philosophy", label: "Doctor of Philosophy" },
-    { value: "Diploma", label: "Diploma" },
-    { value: "Post Graduate Diploma", label: "Post Graduate Diploma" },
-    { value: "High School", label: "High School" },
-    { value: "Intermediate", label: "Intermediate" },
-    { value: "Associate Degree", label: "Associate Degree" },
-    { value: "Certificate", label: "Certificate" },
-    { value: "Other", label: "Other" },
-  ];
-
-  // Field of Study options
-  const fieldOfStudyOptions: DropdownOption[] = [
-    { value: "Computer Science", label: "Computer Science" },
-    { value: "Information Technology", label: "Information Technology" },
-    { value: "Electronics and Communication Engineering", label: "Electronics and Communication Engineering" },
-    { value: "Mechanical Engineering", label: "Mechanical Engineering" },
-    { value: "Civil Engineering", label: "Civil Engineering" },
-    { value: "Electrical Engineering", label: "Electrical Engineering" },
-    { value: "Chemical Engineering", label: "Chemical Engineering" },
-    { value: "Aerospace Engineering", label: "Aerospace Engineering" },
-    { value: "Biotechnology", label: "Biotechnology" },
-    { value: "Data Science", label: "Data Science" },
-    { value: "Artificial Intelligence", label: "Artificial Intelligence" },
-    { value: "Machine Learning", label: "Machine Learning" },
-    { value: "Cybersecurity", label: "Cybersecurity" },
-    { value: "Software Engineering", label: "Software Engineering" },
-    { value: "Computer Engineering", label: "Computer Engineering" },
-    { value: "Mathematics", label: "Mathematics" },
-    { value: "Physics", label: "Physics" },
-    { value: "Chemistry", label: "Chemistry" },
-    { value: "Biology", label: "Biology" },
-    { value: "Business Administration", label: "Business Administration" },
-    { value: "Management", label: "Management" },
-    { value: "Finance", label: "Finance" },
-    { value: "Marketing", label: "Marketing" },
-    { value: "Economics", label: "Economics" },
-    { value: "Psychology", label: "Psychology" },
-    { value: "Arts", label: "Arts" },
-    { value: "Literature", label: "Literature" },
-    { value: "History", label: "History" },
-    { value: "Political Science", label: "Political Science" },
-    { value: "Other", label: "Other" },
-  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -562,44 +84,51 @@ function EducationForm({ education, onSave, onCancel, isDark = false }: Educatio
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Institution *
         </label>
-        <CustomDropdown
-          options={institutionOptions} // Use static options as fallback
+        <input
+          type="text"
           value={formData.institution}
-          onChange={(value) => setFormData({ ...formData, institution: value })}
-          placeholder="Search or select your institution"
-          isDark={isDark}
-          allowCustom={true}
-          searchable={true}
-          required={true}
-          useApiSearch={true}
+          onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
+          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+            isDark
+              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
+              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
+          }`}
+          placeholder="e.g. Harvard University"
+          required
         />
       </div>
       <div>
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Degree *
         </label>
-        <CustomDropdown
-          options={degreeOptions}
+        <input
+          type="text"
           value={formData.degree}
-          onChange={(value) => setFormData({ ...formData, degree: value })}
-          placeholder="Select your degree"
-          isDark={isDark}
-          allowCustom={true}
-          required={true}
+          onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
+          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+            isDark
+              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
+              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
+          }`}
+          placeholder="e.g. Bachelor of Science"
+          required
         />
       </div>
       <div>
         <label className={`block text-sm font-medium mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
           Field of Study *
         </label>
-        <CustomDropdown
-          options={fieldOfStudyOptions}
+        <input
+          type="text"
           value={formData.fieldOfStudy}
-          onChange={(value) => setFormData({ ...formData, fieldOfStudy: value })}
-          placeholder="Select your field of study"
-          isDark={isDark}
-          allowCustom={true}
-          required={true}
+          onChange={(e) => setFormData({ ...formData, fieldOfStudy: e.target.value })}
+          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+            isDark
+              ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
+              : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
+          }`}
+          placeholder="e.g. Computer Science"
+          required
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
@@ -1028,7 +557,6 @@ export default function ProfileEditModal({
   isDark = false,
   onClose,
   onSave,
-  onExperienceChange,
   initialSection = "personal",
 }: ProfileEditModalProps) {
   const [editingProfile, setEditingProfile] = useState<UserProfile>({ ...userProfile });
@@ -1071,12 +599,6 @@ export default function ProfileEditModal({
       projects,
       languages,
       skills,
-      // Include personal details fields
-      dob: editingProfile.dob,
-      gender: editingProfile.gender,
-      category: editingProfile.category,
-      maritalStatus: editingProfile.maritalStatus,
-      nationality: editingProfile.nationality,
     };
     const result = await onSave(profileData);
     if (result.success) {
@@ -1091,7 +613,7 @@ export default function ProfileEditModal({
   const addExperience = async (expData: Omit<Experience, 'id'>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/experience`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1102,8 +624,6 @@ export default function ProfileEditModal({
       if (response.ok) {
         const newExp = await response.json();
         setModalExperience([...modalExperience, newExp]);
-        // Trigger dashboard refresh
-        onExperienceChange?.();
       } else {
         alert("Failed to add experience");
       }
@@ -1116,7 +636,7 @@ export default function ProfileEditModal({
   const updateExperience = async (id: string | number, expData: Partial<Experience>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/experience/${id}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -1126,9 +646,7 @@ export default function ProfileEditModal({
       });
       if (response.ok) {
         const updatedExp = await response.json();
-        setModalExperience(modalExperience.map(exp => exp.id === id ? updatedExp.experience : exp));
-        // Trigger dashboard refresh
-        onExperienceChange?.();
+        setModalExperience(modalExperience.map(exp => exp.id === id ? updatedExp : exp));
       } else {
         alert("Failed to update experience");
       }
@@ -1142,14 +660,12 @@ export default function ProfileEditModal({
     if (!confirm("Are you sure you want to delete this experience entry?")) return;
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/experience/${id}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
         setModalExperience(modalExperience.filter(exp => exp.id !== id));
-        // Trigger dashboard refresh
-        onExperienceChange?.();
       } else {
         alert("Failed to delete experience");
       }
@@ -1256,7 +772,7 @@ export default function ProfileEditModal({
                           ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
                           : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
                       }`}
-                      placeholder="One Hub Global"
+                      placeholder="Enter your full name"
                     />
                   </div>
                   <div>
@@ -1272,7 +788,7 @@ export default function ProfileEditModal({
                           ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500"
                           : "bg-white border-slate-300 text-slate-900 placeholder-slate-500 focus:border-blue-500"
                       }`}
-                      placeholder="ohg@example.com"
+                      placeholder="Enter your email"
                     />
                   </div>
                   <div>

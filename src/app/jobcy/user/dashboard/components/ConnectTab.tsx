@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Search, Users, MessageCircle, Send, X, Sparkles, UserCheck, Clock, CheckCircle, XCircle, Bell } from "lucide-react";
 import ConnectionCard from "./ConnectionCard";
-import ConnectedUserProfile from "./ConnectedUserProfile";
 import { useChat } from "../hooks/useChat";
-import { usePersistedState } from "../hooks/usePersistedState";
 
 // ✅ Import the same Connection type we defined for ConnectionCard
 // (You can also move this interface to a shared `types.ts` file)
@@ -69,72 +67,12 @@ interface ConnectTabProps {
 
 export default function ConnectTab({ connections, isDark = false }: ConnectTabProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedConnection, setSelectedConnection] = usePersistedState<Connection | null>('selectedConnection', null);
+  const [selectedConnection, setSelectedConnection] = useState<Connection | null>(null);
   const [connectionsState, setConnectionsState] = useState<Connection[]>(connections);
   const [pendingRequests, setPendingRequests] = useState<ConnectionRequest[]>([]);
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
   const [actualConnections, setActualConnections] = useState<ActualConnection[]>([]);
-  const [activeTab, setActiveTab] = usePersistedState<'discover' | 'requests' | 'connections'>('connectTabActiveTab', 'discover');
-  const [isSearching, setIsSearching] = useState<boolean>(false);
-  const [selectedConnectedUser, setSelectedConnectedUser] = useState<Connection | null>(null);
-  
-  // Search users function
-  const searchUsers = useCallback(async (query: string) => {
-    if (!query.trim()) {
-      setConnectionsState(connections);
-      return;
-    }
-    
-    setIsSearching(true);
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) return;
-      
-      const response = await fetch(`/api/jobcy/user/list?search=${encodeURIComponent(query)}&limit=50`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      
-      if (response.ok) {
-        const usersData = await response.json();
-        console.log('Search API response:', usersData);
-        
-        const searchResults = usersData.map((u: { id?: string; _id?: string; name?: string; title?: string; professionalRole?: string; experience?: string; education?: string; skills?: string[]; status?: string; avatar?: string; bio?: string; location?: string; email?: string }) => ({
-          id: u.id || u._id || Math.random().toString(),
-          name: u.name || "Unknown User",
-          title: u.title || u.professionalRole || "Professional",
-          experience: u.experience || "Not specified",
-          education: u.education || "Not specified",
-          skills: u.skills || [],
-          status: u.status || 'employed',
-          connected: false,
-          avatar: u.avatar || null,
-          bio: u.bio || '',
-          location: u.location || 'Location not specified',
-          email: u.email
-        }));
-        
-        // Filter out any invalid search results
-        const validSearchResults = searchResults.filter((conn: Connection) => conn && conn.id);
-        setConnectionsState(validSearchResults);
-        console.log('Search results set:', validSearchResults.length);
-      } else {
-        console.error('Search failed:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Search error:', error);
-    } finally {
-      setIsSearching(false);
-    }
-  }, [connections]);
-  
-  // Trigger search when query changes
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      searchUsers(searchQuery);
-    }, 300); // Debounce search by 300ms
-    
-    return () => clearTimeout(timeoutId);
-  }, [searchQuery]);
+  const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'connections'>('discover');
   
   // Real-time chat functionality
   const {
@@ -154,14 +92,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     setCurrentChat
   } = useChat();
 
-
   // Sync with prop changes
   React.useEffect(() => {
     console.log("ConnectTab useEffect - connections prop:", connections);
-    // Filter out any invalid connections before setting state
-    const validConnections = Array.isArray(connections) ? connections.filter(conn => conn && conn.id) : [];
-    console.log("ConnectTab useEffect - valid connections:", validConnections.length);
-    setConnectionsState(validConnections);
+    setConnectionsState(connections);
   }, [connections]);
 
   // Debug when connectionsState changes
@@ -173,8 +107,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   // Debug actual connections
   React.useEffect(() => {
     console.log("ConnectTab - actualConnections:", actualConnections);
-    console.log("ConnectTab - actualConnections IDs:", Array.isArray(actualConnections) ? actualConnections.map(c => c && c.id ? c.id : 'undefined').filter(id => id !== 'undefined') : []);
-    console.log("ConnectTab - actualConnections names:", Array.isArray(actualConnections) ? actualConnections.map(c => c && c.id ? ({ id: c.id, name: c.name, title: c.title }) : null).filter(Boolean) : []);
+    console.log("ConnectTab - actualConnections IDs:", actualConnections.map(c => c.id));
   }, [actualConnections]);
 
   // Fetch connection requests and actual connections
@@ -184,7 +117,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
     try {
       // Fetch received requests
-      const receivedRes = await fetch(`${"/api/jobcy"}/connections/received`, {
+      const receivedRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/received`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (receivedRes.ok) {
@@ -193,7 +126,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       }
 
       // Fetch sent requests
-      const sentRes = await fetch(`${"/api/jobcy"}/connections/sent`, {
+      const sentRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/sent`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (sentRes.ok) {
@@ -202,20 +135,12 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       }
 
       // Fetch actual connections
-      const connectionsRes = await fetch(`${"/api/jobcy"}/connections/connections`, {
+      const connectionsRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/connections`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (connectionsRes.ok) {
         const data = await connectionsRes.json();
-        console.log('Connections API response:', data);
-        // Filter out any null/undefined objects
-        const validConnections = Array.isArray(data) ? data.filter(conn => conn && conn.id) : [];
-        console.log('Valid connections after filtering:', validConnections);
-        setActualConnections(validConnections);
-      } else {
-        console.error('Connections API failed:', connectionsRes.status, connectionsRes.statusText);
-        const errorData = await connectionsRes.json().catch(() => ({}));
-        console.error('Connections API error data:', errorData);
+        setActualConnections(data);
       }
     } catch (error) {
       console.error("Error fetching connection data:", error);
@@ -248,54 +173,39 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
   // Helper to check if user is already connected
   const isUserConnected = (userId: string | number) => {
-    return Array.isArray(actualConnections) ? actualConnections.some(conn => 
-      conn && conn.id && conn.id?.toString() === userId?.toString()
-    ) : false;
+    return actualConnections.some(conn => 
+      conn.id?.toString() === userId?.toString()
+    );
   };
 
   // Helper to check if there's a pending request to/from this user
   const hasPendingRequest = (userId: string | number) => {
-    return (Array.isArray(pendingRequests) ? pendingRequests.some(req => 
-      req && req.sender && req.sender._id?.toString() === userId?.toString()
-    ) : false) || (Array.isArray(sentRequests) ? sentRequests.some(req => 
-      req && req.receiver && req.receiver?._id?.toString() === userId?.toString()
-    ) : false);
+    return pendingRequests.some(req => 
+      req.sender._id?.toString() === userId?.toString()
+    ) || sentRequests.some(req => 
+      req.receiver?._id?.toString() === userId?.toString()
+    );
   };
 
   const filteredConnections = connectionsState.filter((conn) => {
-    // Skip if conn is null/undefined or missing required properties
-    if (!conn || !conn.id) {
-      console.log('Skipping invalid connection object:', conn);
-      return false;
-    }
-    
     // Don't show if already connected
     const connected = isUserConnected(conn.id);
     if (connected) {
-      console.log(`✓ Filtering out ${conn.name || 'Unknown'} (${conn.id}) - already connected`);
+      console.log(`✓ Filtering out ${conn.name} (${conn.id}) - already connected`);
       return false;
     }
     
     // Don't show if there's a pending request
     const pending = hasPendingRequest(conn.id);
     if (pending) {
-      console.log(`✓ Filtering out ${conn.name || 'Unknown'} (${conn.id}) - has pending request`);
+      console.log(`✓ Filtering out ${conn.name} (${conn.id}) - has pending request`);
       return false;
     }
     
-    // If we have a search query, the server-side search already filtered the results
-    // So we just return true for all connections in the state
-    if (searchQuery.trim()) {
-      console.log(`Server-side search result for ${conn.name}:`, {
-        searchQuery,
-        connName: conn.name,
-        connTitle: conn.title
-      });
-      return true;
-    }
-    
-    // If no search query, show all connections
-    return true;
+    // Search filter
+    const nameMatch = conn.name?.toLowerCase().includes(searchQuery.toLowerCase());
+    const titleMatch = conn.title?.toLowerCase().includes(searchQuery.toLowerCase());
+    return nameMatch || titleMatch;
   });
 
   // Use actual connections from backend
@@ -305,7 +215,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   console.log("ConnectTab - connectedConnections:", connectedConnections);
   console.log("ConnectTab - filteredConnections count:", filteredConnections.length);
   console.log("ConnectTab - connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})):", 
-    Array.isArray(connectionsState) ? connectionsState.map(conn => conn && conn.id ? ({id: conn.id, name: conn.name, connected: conn.connected}) : null).filter(Boolean) : []);
+    connectionsState.map(conn => ({id: conn.id, name: conn.name, connected: conn.connected})));
 
   const handleConnect = async (connection: Connection) => {
     const token = localStorage.getItem("token");
@@ -315,14 +225,14 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     }
 
     try {
-      const response = await fetch(`${"/api/jobcy"}/connections/send`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          toUserId: connection.id,
+          receiverId: connection.id,
           message: `Hi ${connection.name}, I would like to connect with you!`
         }),
       });
@@ -331,11 +241,9 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
       if (response.ok) {
         alert(`Connection request sent to ${connection.name}!`);
-        // Remove the user from the discover list since request was sent
-        setConnectionsState(prev => prev.filter(conn => conn && conn.id && conn.id !== connection.id));
         await fetchConnectionData(); // Refresh connection data
       } else {
-        alert(data.error || data.message || "Failed to send connection request");
+        alert(data.message || "Failed to send connection request");
       }
     } catch (error) {
       console.error("Error sending connection request:", error);
@@ -348,8 +256,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     if (!token) return;
 
     try {
-      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/accept`, {
-        method: "POST",
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/${requestId}/accept`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -380,8 +288,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     if (!token) return;
 
     try {
-      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/reject`, {
-        method: "POST",
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/${requestId}/reject`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -407,37 +315,24 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   };
 
   const handleMessage = async (connection: Connection | ActualConnection) => {
-    console.log('handleMessage called with:', connection);
-    
     // Check if this user is in actual connections
-    const isConnected = Array.isArray(actualConnections) ? actualConnections.some(conn => conn && conn.id && conn.id.toString() === connection.id.toString()) : false;
-    console.log('Is connected:', isConnected);
-    console.log('Actual connections:', actualConnections);
+    const isConnected = actualConnections.some(conn => conn.id.toString() === connection.id.toString());
     
     if (isConnected) {
       try {
-        console.log('Attempting to get or create chat with user:', connection.id);
         // Get or create chat with this user
         const chat = await getOrCreateChat(connection.id.toString());
-        console.log('Chat result:', chat);
-        
         if (chat) {
-          console.log('Setting selected connection and current chat');
           setSelectedConnection(connection as Connection);
           setCurrentChat(chat);
           joinChat(chat.id);
           await fetchMessages(chat.id);
-          console.log('Chat setup complete');
-        } else {
-          console.error('Failed to create chat - chat is null');
-          alert("Failed to create chat");
         }
       } catch (error) {
         console.error("Error opening chat:", error);
-        alert("Failed to open chat: " + (error instanceof Error ? error.message : 'Unknown error'));
+        alert("Failed to open chat");
       }
     } else {
-      console.log('User not connected, cannot message');
       alert("You can only message accepted connections");
     }
   };
@@ -584,13 +479,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 className={`flex-1 bg-transparent border-none focus:outline-none text-base ${
                   isDark ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400"
                 }`}
-                disabled={isSearching}
               />
-              {isSearching && (
-                <div className="ml-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -623,7 +512,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {Array.isArray(filteredConnections) ? filteredConnections.map((conn) => (
+                  {filteredConnections.map((conn) => (
                     <ConnectionCard
                       key={conn.id}
                       connection={conn}
@@ -631,7 +520,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                       onConnect={handleConnect}
                       onMessage={handleMessage}
                     />
-                  )) : []}
+                  ))}
                 </div>
               )}
             </div>
@@ -660,7 +549,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {Array.isArray(pendingRequests) ? pendingRequests.map((request, index) => (
+                  {pendingRequests.map((request, index) => (
                     <div
                       key={request._id}
                       className={`p-5 rounded-2xl ${
@@ -727,7 +616,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         </div>
                       </div>
                     </div>
-                  )) : []}
+                  ))}
                 </div>
               )}
             </div>
@@ -762,7 +651,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {Array.isArray(connectedConnections) ? connectedConnections
+                  {connectedConnections
                     .filter((conn) => {
                       if (!searchQuery) return true;
                       return conn.name?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -778,7 +667,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         style={{
                           animation: `fadeInUp 0.3s ease-out ${index * 0.05}s both`
                         }}
-                        onClick={() => setSelectedConnectedUser(conn)}
+                        onClick={() => handleMessage(conn)}
                       >
                         <div className="flex items-center gap-4 mb-4">
                           <div className={`w-14 h-14 bg-gradient-to-br ${getGradientColors(conn.name)} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200`}>
@@ -817,7 +706,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                           </p>
                         )}
                       </div>
-                    )) : []}
+                    ))}
                 </div>
               )}
             </div>
@@ -890,11 +779,11 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 </div>
               ) : (
                 <div className="p-3 space-y-2">
-                  {Array.isArray(chats) ? chats.map((chat, index) => {
+                  {chats.map((chat, index) => {
                     // Only show chats with actual connections
-                    const isActualConnection = Array.isArray(actualConnections) ? actualConnections.some(conn => 
-                      conn && conn.id && chat.otherParticipant && conn.id === chat.otherParticipant.id
-                    ) : false;
+                    const isActualConnection = actualConnections.some(conn => 
+                      conn.id === chat.otherParticipant.id
+                    );
                     
                     if (!isActualConnection) return null;
                     
@@ -902,8 +791,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                       <div
                         key={chat.id}
                         onClick={() => handleMessage({ 
-                          id: chat.otherParticipant?.id || '', 
-                          name: chat.otherParticipant?.name || 'Unknown', 
+                          id: chat.otherParticipant.id, 
+                          name: chat.otherParticipant.name, 
                           connected: true 
                         })}
                         className={`group p-4 rounded-xl cursor-pointer transition-all duration-200 ${
@@ -944,26 +833,13 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         </div>
                       </div>
                     );
-                  }) : []}
+                  })}
                 </div>
               )}
             </div>
           </div>
         )}
       </div>
-
-      {/* Connected User Profile Modal */}
-      {selectedConnectedUser && (
-        <ConnectedUserProfile
-          user={selectedConnectedUser}
-          isDark={isDark}
-          onClose={() => setSelectedConnectedUser(null)}
-          onMessage={(user) => {
-            setSelectedConnectedUser(null);
-            handleMessage(user);
-          }}
-        />
-      )}
     </div>
   );
 }
@@ -1104,9 +980,9 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
           </div>
         ) : (
           <>
-            {Array.isArray(messages) ? messages.map((msg, index) => {
+            {messages.map((msg, index) => {
               const currentUserId = getCurrentUserId();
-              const isOwnMessage = (msg.sender && msg.sender.id === currentUserId) || (msg.sender && msg.sender._id === currentUserId);
+              const isOwnMessage = msg.sender.id === currentUserId || msg.sender._id === currentUserId;
               return (
                 <div 
                   key={msg.id} 
@@ -1140,7 +1016,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
                   </div>
                 </div>
               );
-            }) : []}
+            })}
             <div ref={messagesEndRef} />
           </>
         )}

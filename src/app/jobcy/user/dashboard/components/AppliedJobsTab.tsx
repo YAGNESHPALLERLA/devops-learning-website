@@ -44,7 +44,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         return;
       }
 
-      const response = await fetch(`${"/api/jobcy"}/user/applications`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,36 +52,13 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Applied jobs data:', data);
-        
-        // Transform the data to match our interface
-        const transformedJobs = data.map((app: { _id?: string; id?: string; jobId?: string; job?: { title?: string; company?: string; location?: string; salary?: string; type?: string }; status?: string; appliedAt?: string; coverLetter?: string }) => ({
-          id: app._id || app.id,
-          jobId: app.jobId || app._id,
-          title: app.job?.title || 'Unknown Job',
-          company: app.job?.company || 'Unknown Company',
-          location: app.job?.location || 'Location not specified',
-          salary: app.job?.salary || 'Salary not disclosed',
-          status: app.status || 'Applied',
-          appliedDate: app.appliedAt ? new Date(app.appliedAt).toLocaleDateString() : 'Unknown date',
-          type: app.job?.type || 'Full-time',
-          coverLetter: app.coverLetter || ''
-        }));
-        
-        setAppliedJobs(transformedJobs);
-        setError("");
+        setAppliedJobs(data);
       } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Failed to fetch applied jobs:", {
-          status: response.status,
-          statusText: response.statusText,
-          errorData: errorData
-        });
-        setError(`Failed to load applications: ${errorData.error || errorData.message || `HTTP ${response.status}`}`);
+        setError("Failed to fetch applied jobs");
       }
     } catch (err) {
       console.error("Error fetching applied jobs:", err);
-      setError(`Unable to load applied jobs: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      setError("Unable to load applied jobs");
     } finally {
       setLoading(false);
     }
@@ -197,7 +174,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         </div>
       ) : (
         <div className="grid gap-4">
-          {Array.isArray(appliedJobs) ? appliedJobs.map((application) => (
+          {appliedJobs.map((application) => (
             <div
               key={application.id}
               className={`${
@@ -256,7 +233,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
                 </div>
               </div>
             </div>
-          )) : []}
+          ))}
         </div>
       )}
     </div>

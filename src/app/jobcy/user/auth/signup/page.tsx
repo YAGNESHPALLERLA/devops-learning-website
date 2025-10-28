@@ -144,7 +144,7 @@ export default function SignupPage() {
     setErrors({});
 
     try {
-      const response = await fetch(`/api/jobcy/register`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/user/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,7 +165,7 @@ export default function SignupPage() {
       }
 
       // Auto login
-      const loginResponse = await fetch(`/api/jobcy/login`, {
+      const loginResponse = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -181,7 +181,7 @@ export default function SignupPage() {
         localStorage.setItem("user", JSON.stringify(loginData.user));
         setIsSuccess(true);
       } else {
-        window.location.href = "/jobcy/user/auth/login";
+        window.location.href = "/user/auth/login";
       }
     } catch {
       setErrors({ general: "An error occurred. Please try again." });
@@ -261,7 +261,7 @@ export default function SignupPage() {
                 <button
                   onClick={() => {
                     const user = JSON.parse(localStorage.getItem("user") || "{}");
-                    const dashboardPath = user.role === "admin" ? "/jobcy/admin/dashboard" : user.role === "hr" ? "/jobcy/hr/dashboard" : "/jobcy/user/dashboard";
+                    const dashboardPath = user.role === "admin" ? "/admin/dashboard" : user.role === "hr" ? "/hr/dashboard" : "/user/dashboard";
                     window.location.href = dashboardPath;
                   }}
                   className="flex items-center justify-center space-x-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg"
@@ -373,7 +373,7 @@ export default function SignupPage() {
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   }`}
-                  placeholder="One Hub Global"
+                  placeholder="John Doe"
                   disabled={isSubmitting}
                 />
                 <User className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -402,7 +402,7 @@ export default function SignupPage() {
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   }`}
-                  placeholder="ohg@example.com"
+                  placeholder="john.doe@example.com"
                   disabled={isSubmitting}
                 />
                 <Mail className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -569,7 +569,7 @@ export default function SignupPage() {
 
           <div className="mt-6 text-center">
             <a
-              href="/jobcy/user/auth/login"
+              href="/user/auth/login"
               className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
             >
               Already have an account? Sign In

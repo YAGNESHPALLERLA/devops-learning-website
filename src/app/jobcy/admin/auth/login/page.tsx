@@ -55,9 +55,9 @@ export default function AdminLogin() {
     setLoginError("");
 
     try {
-      console.log("Login URL:", `${"/api/jobcy"}/login`);
+      console.log("Login URL:", `${"https://jobcy-job-portal.vercel.app/api"}/login`);
 
-      const response = await fetch(`${"/api/jobcy"}/login`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -79,11 +79,11 @@ export default function AdminLogin() {
 
         // Redirect based on role
         if (data.user.role === "admin") {
-          window.location.href = "/jobcy/admin/dashboard";
+          window.location.href = "/admin/dashboard";
         } else if (data.user.role === "hr") {
-          window.location.href = "/jobcy/hr/dashboard";
+          window.location.href = "/hr/dashboard";
         } else {
-          window.location.href = "/jobcy/user/dashboard";
+          window.location.href = "/user/dashboard";
         }
       }
     } catch (error) {
@@ -144,7 +144,7 @@ export default function AdminLogin() {
                       ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
                       : "border-slate-300 dark:border-slate-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/50"
                   }`}
-                  placeholder="ohg@example.com"
+                  placeholder="admin@example.com"
                   disabled={isLoading}
                 />
                 <Mail className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -279,7 +279,7 @@ export default function AdminLogin() {
             <p className="text-sm text-slate-600 dark:text-slate-400">
               New admin?{" "}
               <a
-                href="/jobcy/user/auth/signup?mode=admin-signup"
+                href="/user/auth/signup?mode=admin-signup"
                 className="text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-semibold transition-colors"
               >
                 Create Admin Account

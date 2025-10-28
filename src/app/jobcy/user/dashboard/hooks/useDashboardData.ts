@@ -8,8 +8,16 @@ import {
   Connection,
   Interview,
   UserProfile,
-} from "../../../types/dashboard";
-// Removed mock data imports - using live data only
+} from "@/app/types/dashboard";
+import {
+  mockProfile,
+  mockEducation,
+  mockExperience,
+  mockJobs,
+  mockAppliedJobs,
+  mockConnections,
+  mockInterviews,
+} from "../utils/mockData";
 
 type UserProfileUpdate = Partial<UserProfile>;
 
@@ -22,8 +30,6 @@ interface RawJob {
   salary?: number | string;
   type?: string;
   posted?: string;
-  postedDate?: string;
-  createdAt?: string;
   applicants?: number;
   description?: string;
   hasApplied?: boolean;
@@ -83,7 +89,18 @@ export function useDashboardData() {
   const [appliedJobs, setAppliedJobs] = useState<AppliedJob[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const [interviews, setInterviews] = useState<Interview[]>([]);
-  // Removed mock data functionality - using live data only
+  const [useMockData, setUseMockData] = useState(false);
+
+  // ✅ Helper for mock fallback
+  const applyMockData = () => {
+    setUserProfile(mockProfile);
+    setEducation(mockEducation);
+    setExperience(mockExperience);
+    setAllJobs(mockJobs);
+    setAppliedJobs(mockAppliedJobs);
+    setConnections(mockConnections);
+    setInterviews(mockInterviews);
+  };
 
   // ✅ Common function to fetch dashboard data (called on mount and token change)
   const fetchDashboardData = useCallback(async (token: string) => {
@@ -107,7 +124,7 @@ export function useDashboardData() {
 
       // Fetch profile
       const profileRes = await fetch(
-        `/api/jobcy/user/me`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -140,11 +157,11 @@ export function useDashboardData() {
         experienceList: profileData.experienceList || [],
         profileCompletion: profileData.profileCompletion,
         connections: profileData.connections,
-        dob: profileData.dob || profileData.personalDetails?.[0]?.dob,
-        gender: profileData.gender || profileData.personalDetails?.[0]?.gender,
-        category: profileData.category || profileData.personalDetails?.[0]?.category,
-        maritalStatus: profileData.maritalStatus || profileData.personalDetails?.[0]?.maritalStatus,
-        resume: profileData.resume?.fileName || profileData.resume?.name || (typeof profileData.resume === 'string' ? profileData.resume.split('/').pop() : null),
+        dob: profileData.personalDetails?.[0]?.dob,
+        gender: profileData.personalDetails?.[0]?.gender,
+        category: profileData.personalDetails?.[0]?.category,
+        maritalStatus: profileData.personalDetails?.[0]?.maritalStatus,
+        resume: profileData.resume?.name,
       };
 
       setUserProfile(mappedProfile);
@@ -153,7 +170,7 @@ export function useDashboardData() {
 
       // Fetch experience separately
       const experienceRes = await fetch(
-        `${"/api/jobcy"}/experience`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/experience`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (experienceRes.ok) {
@@ -163,113 +180,72 @@ export function useDashboardData() {
 
       // Fetch jobs
       const jobsRes = await fetch(
-        `/api/jobcy/jobs/browse`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
-        console.log('Jobs API response:', { isArray: Array.isArray(jobsData), type: typeof jobsData, length: Array.isArray(jobsData) ? jobsData.length : 'N/A' });
-        
-        // Handle different response formats
-        let jobsArray = [];
-        if (Array.isArray(jobsData)) {
-          jobsArray = jobsData;
-        } else if (jobsData && Array.isArray(jobsData.jobs)) {
-          jobsArray = jobsData.jobs;
-        } else if (jobsData && Array.isArray(jobsData.data)) {
-          jobsArray = jobsData.data;
-        } else {
-          console.warn('Jobs API returned unexpected format:', jobsData);
-          jobsArray = [];
-        }
-        console.log('Processing jobs array:', jobsArray.length, 'jobs');
-        const mappedJobs = jobsArray.map((job: RawJob) => ({
-          id: job.id || job._id || Math.random().toString(),
-          title: job.title || "Untitled Job",
-          company: job.company || "Unknown Company",
-          location: job.location || "Location not specified",
-          salary:
-            typeof job.salary === "number"
-              ? `$${job.salary.toLocaleString()}`
-              : job.salary || "Salary not disclosed",
-          type: job.type || "Full-time",
-          posted: job.postedDate 
-            ? new Date(job.postedDate).toLocaleDateString()
-            : job.createdAt 
-            ? new Date(job.createdAt).toLocaleDateString()
-            : "Recently posted",
-          applicants: job.applicants || 0,
-          description: job.description || "No description available",
-          hasApplied: job.hasApplied || false,
-          experienceLevel: job.careerLevel || job.experienceLevel, // Map from backend's careerLevel field
-          applicationDeadline: job.applicationDeadline,
-          qualifications: job.qualifications || [],
-        }));
-        console.log('Mapped jobs:', mappedJobs.length, 'jobs ready for display');
-        setAllJobs(mappedJobs);
-      } else {
-        console.error('Jobs fetch failed:', jobsRes.status, jobsRes.statusText);
-        setAllJobs([]);
+        setAllJobs(
+          jobsData.map((job: RawJob) => ({
+            id: job.id || job._id || Math.random().toString(),
+            title: job.title,
+            company: job.company,
+            location: job.location || "Location not specified",
+            salary:
+              typeof job.salary === "number"
+                ? `$${job.salary.toLocaleString()}`
+                : job.salary || "Salary not disclosed",
+            type: job.type || "Full-time",
+            posted: job.posted
+              ? new Date(job.posted).toLocaleDateString()
+              : "Recently posted",
+            applicants: job.applicants || 0,
+            description: job.description || "No description available",
+            hasApplied: job.hasApplied || false,
+            experienceLevel: job.careerLevel || job.experienceLevel, // Map from backend's careerLevel field
+            applicationDeadline: job.applicationDeadline,
+            qualifications: job.qualifications,
+          }))
+        );
       }
 
       // Fetch connections
       const connectionsRes = await fetch(
-        `/api/jobcy/user/list`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/user/list`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log('Connections fetch response:', connectionsRes.status, connectionsRes.statusText);
       if (connectionsRes.ok) {
         const usersData = await connectionsRes.json();
-        console.log('Users API response:', { isArray: Array.isArray(usersData), type: typeof usersData, length: Array.isArray(usersData) ? usersData.length : 'N/A' });
-        console.log('Sample users data:', usersData.slice(0, 3));
-        
-        // Handle different response formats
-        let usersArray = [];
-        if (Array.isArray(usersData)) {
-          usersArray = usersData;
-        } else if (usersData && Array.isArray(usersData.users)) {
-          usersArray = usersData.users;
-        } else if (usersData && Array.isArray(usersData.data)) {
-          usersArray = usersData.data;
-        } else {
-          console.warn('Users API returned unexpected format:', usersData);
-          usersArray = [];
-        }
         setConnections(
-          usersArray.map((u: RawUser) => ({
+          usersData.map((u: RawUser) => ({
             id: u._id || u.id || Math.random().toString(),
             name: u.name || "Unknown User",
             title: u.professionalRole || u.role || u.title || "Job Seeker",
             experience: u.experience || "Not specified",
             education: u.education || "Not specified",
             skills: u.skills || [],
-            status: (u.status === "seeking" || u.status === "open" || u.status === "employed") ? u.status : "employed",
+            status: u.status || "employed",
             connected: false,
           }))
         );
-      } else {
-        console.error('Connections fetch failed:', connectionsRes.status, connectionsRes.statusText);
-        setConnections([]);
       }
 
       // Fetch connected users for chat
       const connectedRes = await fetch(
-        `/api/jobcy/connections/connections`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/connections/connections`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (connectedRes.ok) {
         const connectedData = await connectedRes.json();
-        // Ensure connectedData is an array
-        const connectedArray = Array.isArray(connectedData) ? connectedData : [];
-        const connectedUsers: Connection[] = connectedArray.map((u: ConnectedUser) => ({
+        const connectedUsers = connectedData.map((u: ConnectedUser) => ({
           id: u.id || Math.random().toString(),
           name: u.name || "Unknown User",
           title: u.title || "Job Seeker",
           experience: u.experience || "Not specified",
           education: u.education || "Not specified",
           skills: u.skills || [],
-          status: (u.status === "seeking" || u.status === "open" || u.status === "employed") ? u.status : "employed" as "seeking" | "open" | "employed",
+          status: u.status || "employed",
           connected: true,
         }));
 
@@ -279,58 +255,27 @@ export function useDashboardData() {
           const newConnections = connectedUsers.filter((c: Connection) => !existingIds.has(c.id));
           return [...prevConnections, ...newConnections];
         });
-      } else {
-        console.error('Connected users fetch failed:', connectedRes.status, connectedRes.statusText);
       }
 
       // Fetch applied jobs
       const appliedJobsRes = await fetch(
-        `/api/jobcy/user/applications`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/user/applications`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (appliedJobsRes.ok) {
         const appliedJobsData = await appliedJobsRes.json();
-        
-        // Handle different response formats
-        let appliedArray = [];
-        if (Array.isArray(appliedJobsData)) {
-          appliedArray = appliedJobsData;
-        } else if (appliedJobsData && Array.isArray(appliedJobsData.applications)) {
-          appliedArray = appliedJobsData.applications;
-        } else if (appliedJobsData && Array.isArray(appliedJobsData.data)) {
-          appliedArray = appliedJobsData.data;
-        } else {
-          console.warn('Applications API returned unexpected format:', appliedJobsData);
-          appliedArray = [];
-        }
-        setAppliedJobs(appliedArray);
-      } else {
-        console.error('Applied jobs fetch failed:', appliedJobsRes.status, appliedJobsRes.statusText);
-        setAppliedJobs([]);
+        setAppliedJobs(appliedJobsData);
       }
 
       // Fetch interviews
       const interviewsRes = await fetch(
-        `/api/jobcy/user/interviews`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/user/interviews`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (interviewsRes.ok) {
         const interviewsData = await interviewsRes.json();
-        
-        // Handle different response formats
-        let interviewsArray = [];
-        if (Array.isArray(interviewsData)) {
-          interviewsArray = interviewsData;
-        } else if (interviewsData && Array.isArray(interviewsData.interviews)) {
-          interviewsArray = interviewsData.interviews;
-        } else if (interviewsData && Array.isArray(interviewsData.data)) {
-          interviewsArray = interviewsData.data;
-        } else {
-          console.warn('Interviews API returned unexpected format:', interviewsData);
-          interviewsArray = [];
-        }
         setInterviews(
-          interviewsArray.map((int: RawInterview) => ({
+          interviewsData.map((int: RawInterview) => ({
             id: String(int.id || int._id || Math.random()),
             jobId: int.jobId ? String(int.jobId) : undefined,
             company: int.company || "Unknown Company",
@@ -342,9 +287,6 @@ export function useDashboardData() {
             interviewer: int.interviewer || "Not assigned",
           }))
         );
-      } else {
-        console.error('Interviews fetch failed:', interviewsRes.status, interviewsRes.statusText);
-        setInterviews([]);
       }
     } catch (error) {
       console.error("❌ Dashboard fetch error:", error);
@@ -355,8 +297,9 @@ export function useDashboardData() {
         try {
           const user = JSON.parse(userStr);
           if (user.role === "user") {
-            console.log("📊 User role detected - ensuring API endpoints work");
-            // No mock data fallback - ensure API endpoints work properly
+            console.log("📊 Using mock data as fallback for user");
+            applyMockData();
+            setUseMockData(true);
           }
         } catch (parseError) {
           console.error("Error parsing user:", parseError);
@@ -372,6 +315,8 @@ export function useDashboardData() {
     const token =
       localStorage.getItem("token") || localStorage.getItem("userToken");
     if (!token) {
+      applyMockData();
+      setUseMockData(true);
       setIsLoading(false);
       return;
     }
@@ -390,7 +335,7 @@ export function useDashboardData() {
       }
 
       // Call the backend API to apply for the job
-      const response = await fetch(`${"/api/jobcy"}/jobs/apply/${jobId}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/apply/${jobId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -414,7 +359,7 @@ export function useDashboardData() {
 
         // Refresh applied jobs data
         const appliedJobsRes = await fetch(
-          `/api/jobcy/user/me`,
+          `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (appliedJobsRes.ok) {
@@ -423,12 +368,8 @@ export function useDashboardData() {
         }
       } else {
         const errorData = await response.json();
-        console.error("Job application failed:", {
-          status: response.status,
-          statusText: response.statusText,
-          errorData: errorData
-        });
-        alert(`Application failed: ${errorData.error || errorData.message || `HTTP ${response.status}: ${response.statusText}`}`);
+        console.error("Job application failed:", errorData);
+        alert(`Application failed: ${errorData.message || 'Unknown error'}`);
       }
     } catch (error) {
       console.error("Error applying for job:", error);
@@ -441,7 +382,7 @@ export function useDashboardData() {
     if (!token) return { success: false, message: "No token found" };
     try {
       const res = await fetch(
-        `/api/jobcy/user/me`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
         {
           method: "PUT",
           headers: {
@@ -474,7 +415,7 @@ export function useDashboardData() {
           category: data.personalDetails?.[0]?.category,
           maritalStatus: data.personalDetails?.[0]?.maritalStatus,
           nationality: data.personalDetails?.[0]?.nationality,
-          resume: data.resume?.fileName || data.resume?.name || (typeof data.resume === 'string' ? data.resume.split('/').pop() : null),
+          resume: data.resume?.name,
         };
         setUserProfile(mappedProfile);
         return { success: true, data: mappedProfile };
@@ -497,6 +438,7 @@ export function useDashboardData() {
     connections,
     interviews,
     updateProfile,
+    useMockData,
     handleJobApplication,
     refetch: () => {
       const token = localStorage.getItem("token") || localStorage.getItem("userToken");

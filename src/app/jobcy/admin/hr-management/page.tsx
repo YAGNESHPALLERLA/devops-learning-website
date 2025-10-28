@@ -104,7 +104,7 @@ export default function HRManagement() {
   useEffect(() => {
     const fetchHRs = async () => {
       try {
-        const res = await fetch("/api/jobcy/admin/hrs", {
+        const res = await fetch("http://localhost:5000/api/admin/hrs", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -125,7 +125,7 @@ export default function HRManagement() {
 
     const fetchCompanies = async () => {
       try {
-        const res = await fetch("/api/jobcy/admin/companies", {
+        const res = await fetch("http://localhost:5000/api/admin/companies", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -134,11 +134,7 @@ export default function HRManagement() {
 
         if (res.ok) {
           const data = await res.json();
-          console.log('Companies API response:', data);
-          // API returns companies array directly, not wrapped in data.companies
-          const companies = Array.isArray(data) ? data : [];
-          console.log('Setting companies:', companies);
-          setCompanies(companies);
+          setCompanies(Array.isArray(data) ? data : []);
         }
       } catch (err) {
         console.error("Failed to fetch companies", err);
@@ -213,7 +209,7 @@ const handleInputChange = (
 
     try {
       if (currentView === "create") {
-        const res = await fetch("/api/jobcy/admin/create-hr", {
+        const res = await fetch("http://localhost:5000/api/admin/create-hr", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -238,7 +234,7 @@ const handleInputChange = (
   }
 
   const res = await fetch(
-    `/api/jobcy/admin/hrs/${selectedHR._id}`,
+    `http://localhost:5000/api/admin/hrs/${selectedHR._id}`,
     {
       method: "PUT",
       headers: {
@@ -257,7 +253,7 @@ const handleInputChange = (
 
         const data = await res.json();
         setHrUsers((prev) =>
-          Array.isArray(prev) ? prev.map((hr) => (hr._id === selectedHR._id ? data.hr : hr)) : []
+          prev.map((hr) => (hr._id === selectedHR._id ? data.hr : hr))
         );
         setSuccessMessage("HR user updated successfully!");
       }
@@ -298,43 +294,32 @@ const handleInputChange = (
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this HR user? This action cannot be undone.")) {
+    if (window.confirm("Are you sure you want to delete this HR user?")) {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          setErrors({ general: "No authentication token found. Please login again." });
-          return;
-        }
-
-        const res = await fetch(`/api/jobcy/admin/hrs/${id}`, {
+        const res = await fetch(`http://localhost:5000/api/admin/hrs/${id}`, {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.error || errorData.message || "Failed to delete HR user");
+          throw new Error(errorData.message || "Failed to delete HR");
         }
 
-        // Remove the deleted user from the list
-        setHrUsers((prev) => Array.isArray(prev) ? prev.filter((hr) => hr._id !== id) : []);
+        setHrUsers((prev) => prev.filter((hr) => hr._id !== id));
         setSuccessMessage("HR user deleted successfully!");
         setTimeout(() => setSuccessMessage(""), 3000);
-        
-        // Clear any previous errors
-        setErrors({});
       } catch (error: unknown) {
-        let message = "An error occurred while deleting the HR user. Please try again.";
+        let message = "An error occurred. Please try again.";
         if (error instanceof Error) {
           message = error.message;
         }
 
         setErrors({ general: message });
-        console.error("Delete HR error:", error);
-      }
+     }
+
     }
   };
 
@@ -354,12 +339,11 @@ const handleInputChange = (
     setSelectedHR(null);
   };
 
-  const filteredHRs = Array.isArray(hrUsers) ? hrUsers.filter((hr) => {
-    if (!hr || !hr.name || !hr.email) return false;
-    return hr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           hr.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           (hr.company?.name && hr.company.name.toLowerCase().includes(searchTerm.toLowerCase()))
-  }) : [];
+  const filteredHRs = hrUsers.filter((hr) =>
+    hr.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    hr.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (hr.company?.name.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
+  );
 
 
   const renderListView = () => (
@@ -396,7 +380,7 @@ const handleInputChange = (
               placeholder="Search HR users..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 bg-white text-gray-900"
+              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
             />
           </div>
           <button className="flex items-center space-x-2 ml-4 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
@@ -441,19 +425,17 @@ const handleInputChange = (
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {Array.isArray(filteredHRs) ? filteredHRs.map((hr) => {
-                if (!hr || !hr._id) return null;
-                return (
+              {filteredHRs.map((hr) => (
                 <tr key={hr._id} className="hover:bg-gray-50 transition-colors">
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                         <span className="text-blue-600 font-semibold text-sm">
-                          {hr.name ? hr.name.charAt(0).toUpperCase() : '?'}
+                          {hr.name.charAt(0)}
                         </span>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">{hr.name || 'Unknown'}</p>
+                        <p className="font-medium text-gray-900">{hr.name}</p>
                       </div>
                     </div>
                   </td>
@@ -507,8 +489,7 @@ const handleInputChange = (
                     </div>
                   </td>
                 </tr>
-                );
-              }) : []}
+              ))}
             </tbody>
           </table>
         </div>
@@ -584,7 +565,7 @@ const handleInputChange = (
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
                   errors.name
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -605,7 +586,7 @@ const handleInputChange = (
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
                   errors.email
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -632,7 +613,7 @@ const handleInputChange = (
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
+                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
                     errors.password
                       ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -669,7 +650,7 @@ const handleInputChange = (
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
                 placeholder="Enter phone number"
               />
             </div>
@@ -696,18 +677,14 @@ const handleInputChange = (
                     company: selectedCompany ? selectedCompany.name : prev.company,
                   }));
                 }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
               >
                 <option value="">-- Select a company (or enter manually below) --</option>
-                {Array.isArray(companies) ? companies.map((company) => {
-                  if (!company || !company._id) return null;
-                  console.log('Rendering company option:', company);
-                  return (
-                    <option key={company._id} value={company._id}>
-                      {company.name || 'Unknown Company'} ({company.email || 'No email'})
-                    </option>
-                  );
-                }) : []}
+                {companies.map((company) => (
+                  <option key={company._id} value={company._id}>
+                    {company.name} ({company.email})
+                  </option>
+                ))}
               </select>
               <p className="mt-1 text-xs text-gray-500">
                 Select an existing company from the dropdown, or enter company details manually below
@@ -723,7 +700,7 @@ const handleInputChange = (
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
                   errors.company
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -743,7 +720,7 @@ const handleInputChange = (
                 name="industry"
                 value={formData.industry}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 bg-white ${
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-colors text-gray-900 ${
                   errors.industry
                     ? "border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -772,7 +749,7 @@ const handleInputChange = (
                 name="companySize"
                 value={formData.companySize}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
               >
                 <option value="">Select company size</option>
                 <option value="1-10">1-10 employees</option>
@@ -793,7 +770,7 @@ const handleInputChange = (
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
                 placeholder="https://company.com"
               />
             </div>
@@ -810,7 +787,7 @@ const handleInputChange = (
             value={formData.address}
             onChange={handleInputChange}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900 bg-white"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
             placeholder="Enter company address"
           />
         </div>

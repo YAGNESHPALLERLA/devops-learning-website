@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { Socket } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
 interface Message {
   id: string;
@@ -29,68 +29,61 @@ export function useChat() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [chats, setChats] = useState<Chat[]>([]);
-  const [currentChat, setCurrentChat] = useState<Chat | null>(() => {
-    // Try to restore chat state from localStorage
-    if (typeof window !== 'undefined') {
-      try {
-        const savedChat = localStorage.getItem('currentChat');
-        return savedChat ? JSON.parse(savedChat) : null;
-      } catch (error) {
-        console.error('Error parsing saved chat:', error);
-        return null;
-      }
-    }
-    return null;
-  });
+  const [currentChat, setCurrentChat] = useState<Chat | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // Save currentChat to localStorage whenever it changes
-  useEffect(() => {
-    if (currentChat) {
-      localStorage.setItem('currentChat', JSON.stringify(currentChat));
-    } else {
-      localStorage.removeItem('currentChat');
-    }
-  }, [currentChat]);
 
   // Initialize socket connection
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    // Disable Socket.IO for now since we don't have a Socket.IO server
-    // const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "https://jobcy-job-portal.vercel.app", {
-    //   auth: {
-    //     token: token
-    //   }
-    // });
-    
-    // Mock socket connection for now - disable Socket.IO to prevent 404 errors
-    console.log("Socket.IO disabled - using mock connection");
-    setIsConnected(true);
-    setSocket(null);
+    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000", {
+      auth: {
+        token: token
+      }
+    });
+
+    newSocket.on("connect", () => {
+      console.log("Connected to chat server");
+      setIsConnected(true);
+    });
+
+    newSocket.on("disconnect", () => {
+      console.log("Disconnected from chat server");
+      setIsConnected(false);
+    });
+
+    newSocket.on("new-message", (message: Message) => {
+      setMessages(prev => [...prev, message]);
+    });
+
+    newSocket.on("user-typing", (data) => {
+      console.log(`${data.userName} is typing...`);
+    });
+
+    newSocket.on("user-stop-typing", (data) => {
+      console.log(`${data.userName} stopped typing`);
+    });
+
+    newSocket.on("message-error", (error) => {
+      setError(error.error);
+    });
+
+    setSocket(newSocket);
 
     return () => {
-      // No cleanup needed for mock socket
+      newSocket.close();
     };
   }, []);
-
-  // Restore chat state and fetch messages on mount if there's a saved chat
-  useEffect(() => {
-    if (currentChat) {
-      console.log('Restoring chat state:', currentChat);
-      fetchMessages(currentChat.id);
-    }
-  }, [currentChat?.id]); // Only run when chat ID changes
 
   // Get all chats for the user
   const fetchChats = useCallback(async () => {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/chat/chats`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chats`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -115,7 +108,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/chat/chat/${userId}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chat/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -162,7 +155,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/chat/messages/${chatId}`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/messages/${chatId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -184,50 +177,18 @@ export function useChat() {
 
   // Send a message
   const sendMessage = async (content: string) => {
-    if (!currentChat) return;
+    if (!socket || !currentChat) return;
 
     try {
-      setIsLoading(true);
-      const token = localStorage.getItem("token");
-      if (!token) {
-        setError("No authentication token");
-        return;
-      }
-
-      // Send via REST API
-      const response = await fetch(`/api/jobcy/chat/messages/${currentChat.id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ content }),
+      // Send via Socket.IO for real-time delivery
+      // The server will save to DB and broadcast to all participants
+      socket.emit("send-message", {
+        chatId: currentChat.id,
+        content: content
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Message sent successfully:", data);
-        
-        // Add the message to local state immediately for better UX
-        const newMessage = {
-          id: data.message.id,
-          content: data.message.content,
-          sender: data.message.sender,
-          isRead: data.message.isRead,
-          createdAt: data.message.createdAt
-        };
-        
-        setMessages(prev => [...prev, newMessage]);
-      } else {
-        const errorData = await response.json();
-        console.error("Failed to send message:", errorData);
-        setError("Failed to send message");
-      }
     } catch (error) {
       console.error("Error sending message:", error);
       setError("Failed to send message");
-    } finally {
-      setIsLoading(false);
     }
   };
 

@@ -111,19 +111,19 @@ export default function AdminDashboard() {
     setRefreshing(true);
     try {
       const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-        fetch(`${"/api/jobcy"}/admin/stats`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/admin/activity`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/admin/hrs`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/list`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/jobs/browse`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/admin/applications`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -138,7 +138,7 @@ export default function AdminDashboard() {
       }
       if (usersRes.ok) {
         const usersData = await usersRes.json();
-        setUsers(usersData.hrs || []);
+        setUsers(usersData);
       }
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
@@ -159,26 +159,26 @@ export default function AdminDashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/jobcy/admin/auth/login"); // redirect if not logged in
+      router.push("/admin/auth/login"); // redirect if not logged in
       return;
     }
 
     const fetchDashboardData = async () => {
       try {
         const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-          fetch(`${"/api/jobcy"}/admin/stats`, {
+          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/admin/activity`, {
+          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/admin/hrs`, {
+          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/list`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/jobs/browse`, {
+          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/admin/applications`, {
+          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
         } else {
           console.error("Stats fetch failed:", statsRes.status, statsRes.statusText);
           if (statsRes.status === 403) {
-            router.push("/jobcy/admin/auth/login");
+            router.push("/admin/auth/login");
             return;
           }
         }
@@ -199,12 +199,12 @@ export default function AdminDashboard() {
         } else {
           console.error("Activity fetch failed:", activityRes.status, activityRes.statusText);
         }
-      if (usersRes.ok) {
-        const usersData = await usersRes.json();
-        setUsers(usersData.hrs || []);
-      } else {
-        console.error("HRs fetch failed:", usersRes.status, usersRes.statusText);
-      }
+        if (usersRes.ok) {
+          const usersData = await usersRes.json();
+          setUsers(usersData);
+        } else {
+          console.error("Users fetch failed:", usersRes.status, usersRes.statusText);
+        }
         if (jobsRes.ok) {
           const jobsData = await jobsRes.json();
           setJobs(jobsData);
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error("Dashboard data fetch error:", err);
-        router.push("/jobcy/admin/auth/login"); // if token expired, go back to login
+        router.push("/admin/auth/login"); // if token expired, go back to login
       } finally {
         setLoading(false);
       }
@@ -233,7 +233,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token && activeTab === "applications") {
-        fetch(`${"/api/jobcy"}/admin/applications`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -257,7 +257,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"/api/jobcy"}/admin/stats`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -283,7 +283,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"/api/jobcy"}/admin/activity`, {
+        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -547,7 +547,7 @@ export default function AdminDashboard() {
           <nav className="flex space-x-8">
             {[
               { id: "overview", label: "Overview", icon: Activity },
-              { id: "users", label: "HR Users", icon: Users },
+              { id: "users", label: "Users", icon: Users },
               { id: "jobs", label: "Jobs", icon: Briefcase },
               { id: "applications", label: "Applications", icon: FileText },
             ].map((tab) => {
@@ -637,7 +637,7 @@ export default function AdminDashboard() {
                       change="12"
                       icon={Users}
                       color="bg-blue-500"
-                      onClick={() => router.push("/jobcy/admin/hr-management")}
+                      onClick={() => setActiveTab("users")}
                     />
                     <StatCard
                       title="Jobs Posted by HRs"
@@ -697,7 +697,7 @@ export default function AdminDashboard() {
                             description="Manage HR users, approvals, and permissions"
                             icon={Users}
                             color="bg-blue-500"
-                            onClick={() => router.push("/jobcy/admin/hr-management")}
+                            onClick={() => router.push("/admin/hr-management")}
                           />
                           <QuickActionCard
                             title="Job Listings"
@@ -718,7 +718,7 @@ export default function AdminDashboard() {
                             description="Manage company registrations and profiles"
                             icon={Building2}
                             color="bg-red-500"
-                            onClick={() => router.push("/jobcy/admin/company-management")}
+                            onClick={() => router.push("/admin/company-management")}
                           />
                         </div>
                       </div>
@@ -741,7 +741,7 @@ export default function AdminDashboard() {
                       </h3>
 
                       <div className="space-y-4">
-                        {Array.isArray(recentActivity) ? recentActivity.map((activity) => (
+                        {recentActivity.map((activity) => (
                           <div key={activity.id} className="flex items-start space-x-3">
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -785,7 +785,7 @@ export default function AdminDashboard() {
                               </p>
                             </div>
                           </div>
-                        )) : []}
+                        ))}
                       </div>
 
                       <button
@@ -805,10 +805,10 @@ export default function AdminDashboard() {
               return (
                 <div className="mb-8">
                   <h2 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
-                    HR Management
+                    User Management
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {Array.isArray(users) ? users.map((user: RawUser) => (
+                    {users.map((user: RawUser) => (
                       <div key={user._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
@@ -820,7 +820,7 @@ export default function AdminDashboard() {
                           </div>
                         </div>
                       </div>
-                    )) : []}
+                    ))}
                   </div>
                 </div>
               );
@@ -831,13 +831,13 @@ export default function AdminDashboard() {
                     Job Listings
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {Array.isArray(jobs) ? jobs.map((job: RawJob) => (
+                    {jobs.map((job: RawJob) => (
                       <div key={job.id || job._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
                         <h3 className={`font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}>{job.title}</h3>
                         <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.company}</p>
                         <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.location}</p>
                       </div>
-                    )) : []}
+                    ))}
                   </div>
                 </div>
               );
@@ -883,28 +883,21 @@ export default function AdminDashboard() {
                         </p>
                       </div>
                     ) : (
-                      <div className="space-y-4">
-                        {Array.isArray(applications) ? applications.map((app: RawApplication) => (
-                          <div key={app._id || app.id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-                            <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                              {app.jobId?.title || 'Unknown Job'} - {app.userId?.name || 'Unknown User'}
+                      applications.map((app: RawApplication) => (
+                        <div key={app._id || app.id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
+                          <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+                            {app.jobId?.title || 'Unknown Job'} - {app.userId?.name || 'Unknown User'}
+                          </p>
+                          <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                            Status: {app.status || 'Applied'} | Applied: {new Date(app.appliedDate || app.createdAt || Date.now()).toLocaleDateString()}
+                          </p>
+                          {app.userId?.email && (
+                            <p className={`text-xs mt-1 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
+                              Email: {app.userId.email}
                             </p>
-                            <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-                              Status: {app.status || 'Applied'} | Applied: {new Date(app.appliedDate || app.createdAt || Date.now()).toLocaleDateString()}
-                            </p>
-                            {app.userId?.email && (
-                              <p className={`text-xs mt-1 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
-                                Email: {app.userId.email}
-                              </p>
-                            )}
-                            {(app as { company?: { name: string; industry?: string } }).company && (
-                              <p className={`text-xs mt-1 ${isDarkMode ? "text-blue-400" : "text-blue-600"}`}>
-                                Company: {(app as { company: { name: string; industry?: string } }).company.name} | Industry: {(app as { company: { name: string; industry?: string } }).company.industry || 'N/A'}
-                              </p>
-                            )}
-                          </div>
-                        )) : []}
-                      </div>
+                          )}
+                        </div>
+                      ))
                     )}
                   </div>
                 </div>

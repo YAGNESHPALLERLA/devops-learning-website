@@ -124,7 +124,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setErrors({}); // Clear previous errors
   
   try {
-    const apiUrl = "/api/jobcy";
+    const apiUrl = "https://jobcy-job-portal.vercel.app/api" || "http://localhost:5000/api";
     const endpoint = `${apiUrl}/hr/jobs`;
     
     console.log("🔄 Fetching HR jobs from:", endpoint);
@@ -164,7 +164,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   } catch (e) {
     console.error("❌ Fetch jobs error:", e);
     if (e instanceof Error) {
-      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on /api/jobcy` });
+      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on ${"https://jobcy-job-portal.vercel.app/api" || "http://localhost:5000"}` });
     } else {
       setErrors({ general: "An unexpected error occurred while fetching jobs" });
     }
@@ -175,7 +175,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 
 
   const createJob = async (jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
-    const res = await fetch(`${"/api/jobcy"}/hr/jobs`, {
+    const res = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(jobPayload),
@@ -189,7 +189,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 
   const updateJob = async (id: string | undefined, jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
     const res = await fetch(
-      `${"/api/jobcy"}/hr/jobs/${id}`,
+      `${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs/${id}`,
       {
         method: "PUT",
         headers: getAuthHeaders(),
@@ -204,7 +204,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   };
 
   const deleteJob = async (id: string): Promise<void> => {
-  const res = await fetch(`${"/api/jobcy"}/hr/jobs/${id}`, {
+  const res = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs/${id}`, {
     method: "DELETE",
     headers: getAuthHeaders(),
   });
@@ -219,7 +219,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   id: string,
   newStatus: Job["status"]
 ): Promise<Job> => {
-  const res = await fetch(`${"/api/jobcy"}/hr/jobs/${id}`, {
+  const res = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs/${id}`, {
     method: "PUT",
     headers: getAuthHeaders(),
     body: JSON.stringify({ status: newStatus }),
@@ -435,7 +435,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setIsLoading(true);
   try {
     await deleteJob(id); // Now TypeScript knows id is a string
-    setJobs((prev) => Array.isArray(prev) ? prev.filter((job) => job.id !== id && job._id !== id) : []);
+    setJobs((prev) => prev.filter((job) => job.id !== id && job._id !== id));
     setSuccessMessage("Job deleted successfully!");
     setTimeout(() => setSuccessMessage(""), 3000);
   } catch (error) {
@@ -482,7 +482,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 };
 
 
-  const filteredJobs = Array.isArray(jobs) ? jobs.filter((job) => {
+  const filteredJobs = jobs.filter((job) => {
     const term = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
     return (
@@ -491,17 +491,17 @@ const fetchJobs = useCallback(async (): Promise<void> => {
         job.location.toLowerCase().includes(term)) &&
       (filterStatus === "all" || job.status.toLowerCase() === filter)
     );
-  }) : [];
+  });
 
   // Calculate job management specific stats
   const jobStats = {
-  needsReview: Array.isArray(jobs) ? jobs.filter(
+  needsReview: jobs.filter(
     (job) => job.status === "Active" && (job.applications || 0) > 0
-  ).length : 0,
+  ).length,
 
-  drafts: Array.isArray(jobs) ? jobs.filter((job) => job.status === "Draft").length : 0,
+  drafts: jobs.filter((job) => job.status === "Draft").length,
 
-  expiringSoon: Array.isArray(jobs) ? jobs.filter((job) => {
+  expiringSoon: jobs.filter((job) => {
     if (!job.applicationDeadline) return false;
 
     const deadline = new Date(job.applicationDeadline).getTime(); // ✅ convert to number safely
@@ -509,9 +509,9 @@ const fetchJobs = useCallback(async (): Promise<void> => {
     const daysUntil = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
 
     return daysUntil > 0 && daysUntil <= 7;
-  }).length : 0,
+  }).length,
 
-  recentlyUpdated: Array.isArray(jobs) ? jobs.filter((job) => {
+  recentlyUpdated: jobs.filter((job) => {
     if (!job.updatedAt) return false;
 
     const updated = new Date(job.updatedAt).getTime(); // ✅ convert to number safely
@@ -519,7 +519,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
     const daysSince = Math.ceil((now - updated) / (1000 * 60 * 60 * 24));
 
     return daysSince <= 3;
-  }).length : 0,
+  }).length,
 };
 
 
@@ -1290,7 +1290,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
                       </button>
                       <button
                         onClick={() => {
-                          window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(job.title)}`;
+                          window.location.href = `/hr/application-management?job=${encodeURIComponent(job.title)}`;
                         }}
                         className="p-3 text-blue-600 hover:bg-blue-50 bg-blue-50/50 rounded-xl transition-all hover:scale-110"
                         title="View Applications"
@@ -1335,7 +1335,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
                   </div>
                   <button
                     onClick={() => {
-                      window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(job.title)}`;
+                      window.location.href = `/hr/application-management?job=${encodeURIComponent(job.title)}`;
                     }}
                     className="flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-sm font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >

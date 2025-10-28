@@ -54,6 +54,26 @@ export default function CompanyManagement() {
   const [errorMessage, setErrorMessage] = useState("");
   const isDarkMode = false; // Light mode only for company management
   
+  // View Details Modal
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [detailsLoading, setDetailsLoading] = useState(false);
+  const [companyDetails, setCompanyDetails] = useState<{
+    company: Company | null;
+    hrs: Array<{ _id: string; name: string; email: string; mobile?: number }>;
+    jobs: Array<{ _id: string; title: string; applicants: number }>;
+    applications: Array<{
+      _id: string;
+      userId: { name: string; email: string };
+      jobId: { title: string };
+      status: string;
+      createdAt: string;
+    }>;
+  }>({
+    company: null,
+    hrs: [],
+    jobs: [],
+    applications: [],
+  });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -80,31 +100,23 @@ export default function CompanyManagement() {
   const fetchCompanies = useCallback(async () => {
     try {
       setLoading(true);
-      console.log('🔄 Fetching companies from:', `${"/api/jobcy"}/admin/companies`);
-      console.log('🔑 Auth headers:', getAuthHeaders());
-      
       const response = await fetch(
-        `${"/api/jobcy"}/admin/companies`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`,
         {
           headers: getAuthHeaders(),
         }
       );
 
-      console.log('📡 Companies fetch response:', response.status, response.statusText);
-
       if (response.ok) {
         const data = await response.json();
-        console.log('📄 Companies data received:', data);
         setCompanies(data);
         setFilteredCompanies(data);
       } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('❌ Failed to fetch companies:', errorData);
-        setErrorMessage(`Failed to fetch companies: ${errorData.error || response.statusText}`);
+        setErrorMessage("Failed to fetch companies");
       }
     } catch (error) {
-      console.error("❌ Error fetching companies:", error);
-      setErrorMessage(`Error loading companies: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error("Error fetching companies:", error);
+      setErrorMessage("Error loading companies");
     } finally {
       setLoading(false);
     }
@@ -115,12 +127,12 @@ export default function CompanyManagement() {
   }, [fetchCompanies]);
 
   useEffect(() => {
-    const filtered = Array.isArray(companies) ? companies.filter(
+    const filtered = companies.filter(
       (company) =>
         company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.industry?.toLowerCase().includes(searchQuery.toLowerCase())
-    ) : [];
+    );
     setFilteredCompanies(filtered);
   }, [searchQuery, companies]);
 
@@ -177,20 +189,14 @@ export default function CompanyManagement() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    console.log('🔍 Validating form data:', formData);
-    console.log('🔍 Modal mode:', modalMode);
-
     if (!formData.name.trim()) newErrors.name = "Company name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     if (modalMode === "create" && !formData.password) {
       newErrors.password = "Password is required";
     }
 
-    console.log('🔍 Validation errors:', newErrors);
     setErrors(newErrors);
-    const isValid = Object.keys(newErrors).length === 0;
-    console.log('🔍 Form is valid:', isValid);
-    return isValid;
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async () => {
@@ -199,15 +205,8 @@ export default function CompanyManagement() {
     try {
       const url =
         modalMode === "create"
-          ? `${"/api/jobcy"}/admin/companies`
-          : `${"/api/jobcy"}/admin/companies/${selectedCompany?._id}`;
-
-      console.log('🚀 Submitting company form:', {
-        url,
-        method: modalMode === "create" ? "POST" : "PUT",
-        formData,
-        headers: getAuthHeaders()
-      });
+          ? `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`
+          : `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${selectedCompany?._id}`;
 
       const response = await fetch(url, {
         method: modalMode === "create" ? "POST" : "PUT",
@@ -215,10 +214,7 @@ export default function CompanyManagement() {
         body: JSON.stringify(formData),
       });
 
-      console.log('📡 Response status:', response.status, response.statusText);
-
       const data = await response.json();
-      console.log('📄 Response data:', data);
 
       if (response.ok) {
         setSuccessMessage(
@@ -230,13 +226,12 @@ export default function CompanyManagement() {
         handleCloseModal();
         fetchCompanies();
       } else {
-        console.error('❌ API Error:', data);
-        setErrorMessage(data.error || data.message || "Operation failed");
+        setErrorMessage(data.message || "Operation failed");
         setTimeout(() => setErrorMessage(""), 5000);
       }
     } catch (error) {
-      console.error("❌ Error submitting form:", error);
-      setErrorMessage(`Network error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error("Error submitting form:", error);
+      setErrorMessage("An error occurred");
       setTimeout(() => setErrorMessage(""), 5000);
     }
   };
@@ -248,7 +243,7 @@ export default function CompanyManagement() {
 
     try {
       const response = await fetch(
-        `${"/api/jobcy"}/admin/companies/${companyId}`,
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${companyId}`,
         {
           method: "DELETE",
           headers: getAuthHeaders(),
@@ -271,8 +266,148 @@ export default function CompanyManagement() {
   };
 
   const handleViewDetails = async (company: Company) => {
-    // Navigate to the company details page
-    window.location.href = `/jobcy/admin/company-management/${company._id}`;
+    setDetailsLoading(true);
+    setShowDetailsModal(true);
+    
+    try {
+      interface HRData {
+        _id: string;
+        name: string;
+        email: string;
+        mobile?: number;
+        companyId?: string;
+      }
+
+      interface JobData {
+        _id: string;
+        id?: string;
+        title: string;
+        applicants: number;
+        postedBy?: { _id: string } | string;
+      }
+
+      interface ApplicationData {
+        _id: string;
+        userId: { name: string; email: string };
+        jobId: { _id?: string; title: string };
+        status: string;
+        createdAt: string;
+      }
+
+      // Fetch HRs for this company
+      const hrsResponse = await fetch(
+        `${"https://jobcy-job-portal.vercel.app/api"}/admin/hrs`,
+        {
+          headers: getAuthHeaders(),
+        }
+      );
+      
+      let hrs: HRData[] = [];
+      if (hrsResponse.ok) {
+        const hrsData = await hrsResponse.json();
+        console.log("📋 All HRs fetched:", hrsData.hrs.length);
+        console.log("🏢 Looking for company ID:", company._id);
+        
+        // Filter HRs that belong to this company
+        hrs = hrsData.hrs.filter((hr: HRData) => {
+          // Only consider HRs that have a companyId set
+          if (!hr.companyId) {
+            console.log(`⚠️ HR ${hr.name} has no companyId - skipping`);
+            return false;
+          }
+          
+          const hrCompanyId = hr.companyId.toString();
+          const targetCompanyId = company._id.toString();
+          const targetCompanyId2 = company.id?.toString();
+          
+          console.log(`🔍 Checking HR ${hr.name}: companyId="${hrCompanyId}", target="${targetCompanyId}"`);
+          
+          const matches = hrCompanyId === targetCompanyId || 
+                         (targetCompanyId2 && hrCompanyId === targetCompanyId2);
+          
+          if (matches) {
+            console.log(`✅ HR ${hr.name} belongs to this company`);
+          }
+          
+          return matches;
+        });
+        
+        console.log(`✅ Filtered: ${hrs.length} HRs belong to this company out of ${hrsData.hrs.length} total`);
+        console.log("✅ Filtered HR names:", hrs.map(h => h.name));
+      }
+
+      // Get HR IDs
+      const hrIds = hrs.map((hr: HRData) => hr._id);
+      console.log("👥 HR IDs for this company:", hrIds);
+
+      // Fetch all jobs using the general jobs endpoint (accessible to admin)
+      const jobsResponse = await fetch(
+        `${"https://jobcy-job-portal.vercel.app/api"}/jobs`,
+        {
+          headers: getAuthHeaders(),
+        }
+      );
+
+      let jobs: JobData[] = [];
+      if (jobsResponse.ok) {
+        const jobsData = await jobsResponse.json();
+        console.log("📋 All jobs fetched:", jobsData.length);
+        
+        // Filter jobs posted by this company's HRs
+        jobs = jobsData.filter((job: JobData) => {
+          const posterId = typeof job.postedBy === 'object' ? job.postedBy?._id : job.postedBy;
+          const matches = hrIds.some((hrId: string) => hrId.toString() === posterId?.toString());
+          if (matches) {
+            console.log(`✅ Job "${job.title}" posted by company's HR`);
+          }
+          return matches;
+        });
+        
+        console.log(`✅ Filtered ${jobs.length} jobs for this company`);
+      }
+
+      // Fetch all applications for these jobs
+      const jobIds = jobs.map((job: JobData) => job._id || job.id);
+      console.log("📋 Job IDs to fetch applications for:", jobIds);
+      
+      // Fetch applications using the jobs endpoint
+      const applications: ApplicationData[] = [];
+      for (const jobId of jobIds) {
+        try {
+          console.log(`📨 Fetching applications for job ${jobId}`);
+          const appResponse = await fetch(
+            `${"https://jobcy-job-portal.vercel.app/api"}/jobs/${jobId}/applications`,
+            {
+              headers: getAuthHeaders(),
+            }
+          );
+          
+          if (appResponse.ok) {
+            const appData = await appResponse.json();
+            console.log(`✅ Found ${appData.length} applications for job ${jobId}`);
+            applications.push(...appData);
+          } else {
+            console.error(`❌ Failed to fetch applications for job ${jobId}:`, appResponse.status);
+          }
+        } catch (error) {
+          console.error(`❌ Error fetching applications for job ${jobId}:`, error);
+        }
+      }
+      
+      console.log(`✅ Total applications fetched: ${applications.length}`);
+
+      setCompanyDetails({
+        company,
+        hrs,
+        jobs,
+        applications,
+      });
+    } catch (error) {
+      console.error("Error fetching company details:", error);
+      setErrorMessage("Failed to load company details");
+    } finally {
+      setDetailsLoading(false);
+    }
   };
 
   return (
@@ -283,7 +418,7 @@ export default function CompanyManagement() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => router.push("/jobcy/admin/dashboard")}
+                onClick={() => router.push("/admin/dashboard")}
                 className={`p-2 ${isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} rounded-lg transition-colors`}
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -364,7 +499,7 @@ export default function CompanyManagement() {
                   Active Companies
                 </p>
                 <p className={`text-3xl font-bold mt-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                  {Array.isArray(companies) ? companies.filter((c) => c.status === "Active").length : 0}
+                  {companies.filter((c) => c.status === "Active").length}
                 </p>
               </div>
               <div className="p-3 bg-green-500 rounded-full">
@@ -380,7 +515,7 @@ export default function CompanyManagement() {
                   Pending Approval
                 </p>
                 <p className={`text-3xl font-bold mt-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                  {Array.isArray(companies) ? companies.filter((c) => c.status === "Pending").length : 0}
+                  {companies.filter((c) => c.status === "Pending").length}
                 </p>
               </div>
               <div className="p-3 bg-amber-500 rounded-full">
@@ -417,7 +552,7 @@ export default function CompanyManagement() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.isArray(filteredCompanies) ? filteredCompanies.map((company) => (
+            {filteredCompanies.map((company) => (
               <div
                 key={company._id}
                 className={`${
@@ -529,7 +664,7 @@ export default function CompanyManagement() {
                   {company.registeredBy && ` by ${company.registeredBy.name}`}
                 </div>
               </div>
-            )) : []}
+            ))}
           </div>
         )}
       </div>
@@ -582,7 +717,7 @@ export default function CompanyManagement() {
                   className={`w-full px-4 py-3 border ${
                     errors.email ? "border-red-500" : isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 bg-white text-gray-900"
                   } rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500`}
-                  placeholder="ohg@example.com"
+                  placeholder="company@example.com"
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -728,6 +863,173 @@ export default function CompanyManagement() {
         </div>
       )}
 
+      {/* Company Details Modal */}
+      {showDetailsModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            {/* Header */}
+            <div className="p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {companyDetails.company?.name} - Details
+                  </h2>
+                  <p className="text-sm text-gray-600 mt-1">
+                    HRs, Jobs, and Applications Overview
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowDetailsModal(false)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {detailsLoading ? (
+              <div className="p-12 flex items-center justify-center">
+                <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              <div className="p-6 space-y-6">
+                {/* Statistics */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 bg-blue-500 rounded-lg">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">HR Staff</p>
+                        <p className="text-2xl font-bold text-gray-900">{companyDetails.hrs.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-green-50 p-4 rounded-xl border border-green-200">
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 bg-green-500 rounded-lg">
+                        <Briefcase className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">Jobs Posted</p>
+                        <p className="text-2xl font-bold text-gray-900">{companyDetails.jobs.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 bg-purple-500 rounded-lg">
+                        <FileText className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-600">Applications</p>
+                        <p className="text-2xl font-bold text-gray-900">{companyDetails.applications.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* HR Staff List */}
+                <div className="bg-gray-50 p-6 rounded-xl">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Users className="w-5 h-5 text-blue-600" />
+                    HR Staff Members
+                  </h3>
+                  {companyDetails.hrs.length === 0 ? (
+                    <p className="text-gray-600 text-center py-4">No HR staff registered for this company yet</p>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {companyDetails.hrs.map((hr) => (
+                        <div key={hr._id} className="bg-white p-4 rounded-lg border border-gray-200">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                              <span className="text-white font-bold">{hr.name.charAt(0)}</span>
+                            </div>
+                            <div>
+                              <p className="font-semibold text-gray-900">{hr.name}</p>
+                              <p className="text-sm text-gray-600">{hr.email}</p>
+                              {hr.mobile && <p className="text-xs text-gray-500">{hr.mobile}</p>}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Jobs List */}
+                <div className="bg-gray-50 p-6 rounded-xl">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Briefcase className="w-5 h-5 text-green-600" />
+                    Posted Jobs
+                  </h3>
+                  {companyDetails.jobs.length === 0 ? (
+                    <p className="text-gray-600 text-center py-4">No jobs posted yet</p>
+                  ) : (
+                    <div className="space-y-2">
+                      {companyDetails.jobs.map((job) => (
+                        <div key={job._id} className="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-between">
+                          <div className="flex-1">
+                            <p className="font-semibold text-gray-900">{job.title}</p>
+                            <p className="text-sm text-gray-600">{job.applicants} applicants</p>
+                          </div>
+                          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+                            Active
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Applications List */}
+                <div className="bg-gray-50 p-6 rounded-xl">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-purple-600" />
+                    Received Applications
+                  </h3>
+                  {companyDetails.applications.length === 0 ? (
+                    <p className="text-gray-600 text-center py-4">No applications received yet</p>
+                  ) : (
+                    <div className="space-y-2 max-h-96 overflow-y-auto">
+                      {companyDetails.applications.map((app) => (
+                        <div key={app._id} className="bg-white p-4 rounded-lg border border-gray-200">
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1">
+                              <p className="font-semibold text-gray-900">{app.userId.name}</p>
+                              <p className="text-sm text-gray-600">{app.userId.email}</p>
+                              <p className="text-xs text-gray-500 mt-1">Applied for: {app.jobId.title}</p>
+                            </div>
+                            <div className="text-right">
+                              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                                app.status === "Accepted"
+                                  ? "bg-green-100 text-green-700"
+                                  : app.status === "Rejected"
+                                  ? "bg-red-100 text-red-700"
+                                  : app.status === "Interview"
+                                  ? "bg-purple-100 text-purple-700"
+                                  : app.status === "Under Review"
+                                  ? "bg-blue-100 text-blue-700"
+                                  : "bg-gray-100 text-gray-700"
+                              }`}>
+                                {app.status}
+                              </span>
+                              <p className="text-xs text-gray-500 mt-1">
+                                {new Date(app.createdAt).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

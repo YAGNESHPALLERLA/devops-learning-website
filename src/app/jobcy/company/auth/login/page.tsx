@@ -20,7 +20,7 @@ export default function CompanyLogin() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${"/api/jobcy"}/company/login`, {
+      const res = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -35,7 +35,7 @@ export default function CompanyLogin() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      router.push("/jobcy/company/dashboard");
+      router.push("/company/dashboard");
     } catch (err: unknown) {
       const error = err as Error;
       setError(error.message || "An error occurred");
@@ -91,7 +91,7 @@ export default function CompanyLogin() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
-                  placeholder="ohg@example.com"
+                  placeholder="company@example.com"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function CompanyLogin() {
             <p className="text-sm text-gray-600">
               Not registered yet?{" "}
               <button
-                onClick={() => router.push("/jobcy/admin/company-management")}
+                onClick={() => router.push("/admin/company-management")}
                 className="text-blue-600 hover:text-blue-700 font-semibold"
               >
                 Contact Admin
@@ -159,21 +159,21 @@ export default function CompanyLogin() {
           <div className="mt-6 pt-6 border-t border-gray-200">
             <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
               <button
-                onClick={() => router.push("/jobcy/hr/auth/login")}
+                onClick={() => router.push("/hr/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 HR Login
               </button>
               <span className="text-gray-300">|</span>
               <button
-                onClick={() => router.push("/jobcy/admin/auth/login")}
+                onClick={() => router.push("/admin/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 Admin Login
               </button>
               <span className="text-gray-300">|</span>
               <button
-                onClick={() => router.push("/jobcy/user/auth/login")}
+                onClick={() => router.push("/user/auth/login")}
                 className="hover:text-gray-900 font-medium"
               >
                 Job Seeker Login

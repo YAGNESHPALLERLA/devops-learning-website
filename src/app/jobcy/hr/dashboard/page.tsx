@@ -86,7 +86,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
 
       try {
         const dashRes = await fetch(
-          `/api/jobcy/hr/dashboard`,
+          `${"https://jobcy-job-portal.vercel.app/api"}/hr/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -99,14 +99,13 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
           if (dashRes.status === 401) {
             setError("Unauthorized. Please log in again.");
             localStorage.removeItem("token");
-            window.location.href = "/jobcy/hr/auth/login";
+            window.location.href = "/hr/auth/login";
             return;
           }
           throw new Error(`Failed to fetch dashboard info: ${dashRes.status}`);
         }
 
         const dashJson = await dashRes.json();
-        console.log('HR Dashboard API Response:', dashJson);
 
         setHrData({
           name: dashJson.name || "HR User",
@@ -126,7 +125,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         });
 
         const jobsRes = await fetch(
-          `/api/jobcy/hr/jobs`,
+          `${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -140,17 +139,6 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         }
 
         const jobsJson = await jobsRes.json();
-        console.log('HR Jobs API Response:', jobsJson);
-        console.log('Jobs Data Type:', typeof jobsJson);
-        console.log('Jobs Data Length:', Array.isArray(jobsJson) ? jobsJson.length : 'Not an array');
-        
-        // Log each job received
-        if (Array.isArray(jobsJson)) {
-          jobsJson.forEach((job, index) => {
-            console.log(`Received Job ${index + 1}: ${job.title} - Company: ${job.company} - Status: ${job.status}`);
-          });
-        }
-        
         setJobsData(jobsJson || []);
       } catch (err: unknown) {
         console.error("Fetch error:", err);
@@ -302,7 +290,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                   className="p-2.5 text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-110"
                   title="View Applications"
                   onClick={() => {
-                    window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(safeRender(job._id || job.id))}`;
+                    window.location.href = `/hr/application-management?job=${encodeURIComponent(safeRender(job._id || job.id))}`;
                   }}
                 >
                   <Eye className="w-4 h-4" />
@@ -365,32 +353,23 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     </div>
   );
 
-  console.log('Filtering jobs - jobsData length:', jobsData?.length, 'searchTerm:', searchTerm, 'filterStatus:', filterStatus);
-  
-  const filteredJobs = Array.isArray(jobsData) ? jobsData.filter((job) => {
+  const filteredJobs = jobsData.filter((job) => {
     const lowerSearch = searchTerm.toLowerCase();
     const filter = filterStatus.toLowerCase();
 
-    // If no search term, show all jobs
-    const matchSearch = searchTerm === "" || 
+    const matchSearch =
       (typeof job.title === "string" &&
         job.title.toLowerCase().includes(lowerSearch)) ||
-      (typeof job.company === "string" &&
-        job.company.toLowerCase().includes(lowerSearch)) ||
+      (typeof job.department === "string" &&
+        job.department.toLowerCase().includes(lowerSearch)) ||
       (typeof job.location === "string" &&
         job.location.toLowerCase().includes(lowerSearch));
-    
     const matchFilter =
       filter === "all" ||
       (typeof job.status === "string" && job.status.toLowerCase() === filter);
 
-    console.log(`Job: ${job.title} - matchSearch: ${matchSearch}, matchFilter: ${matchFilter}, final: ${matchSearch && matchFilter}`);
     return matchSearch && matchFilter;
-  }) : [];
-  
-  console.log('Filtered jobs count:', filteredJobs.length);
-  console.log('All jobs data:', jobsData);
-  console.log('Filtered jobs:', filteredJobs);
+  });
 
   if (loading) {
     return (
@@ -482,7 +461,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                 className="flex items-center space-x-2 px-4 py-2.5 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all hover:scale-105 group"
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.href = "/jobcy/hr/auth/login";
+                  window.location.href = "/hr/auth/login";
                 }}
               >
                 <LogOut className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -513,7 +492,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
               <Download className="w-5 h-5" />
               <span>Export</span>
             </button>
-            <Link href="/jobcy/hr/jobs-management">
+            <Link href="/hr/jobs-management">
               <button className="flex items-center space-x-2 bg-gradient-to-r from-blue-200 to-indigo-200 hover:from-blue-300 hover:to-indigo-300 text-slate-800 px-6 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 group">
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Manage Jobs</span>
@@ -624,7 +603,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                     Try adjusting your search criteria or create a new job
                     posting to get started
                   </p>
-                  <Link href="/jobcy/hr/jobs-management">
+                  <Link href="/hr/jobs-management">
                     <button className="px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
                       Create New Job
                     </button>

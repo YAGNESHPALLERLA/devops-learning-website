@@ -7,14 +7,12 @@ interface ResumeUploadProps {
   isDark?: boolean;
   onUploadSuccess?: (filePath: string) => void;
   currentResume?: string;
-  onResumeUpdate?: () => void;
 }
 
 export default function ResumeUpload({
   isDark = false,
   onUploadSuccess,
-  currentResume,
-  onResumeUpdate
+  currentResume
 }: ResumeUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -52,7 +50,7 @@ export default function ResumeUpload({
       formData.append("resume", file);
 
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"/api/jobcy"}/upload/resume`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/upload/resume`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -65,9 +63,6 @@ export default function ResumeUpload({
         setUploadSuccess(true);
         setUploadedFile(data.fileName);
         onUploadSuccess?.(data.filePath);
-        
-        // Trigger dashboard refresh to update resume display
-        onResumeUpdate?.();
 
         // Clear the file input
         if (fileInputRef.current) {

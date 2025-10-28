@@ -24,11 +24,9 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
-  AlertCircle,
 } from "lucide-react";
 
 export default function ApplicationsManagement() {
-
   // Application type
   type Application = {
     id: number;
@@ -39,7 +37,7 @@ export default function ApplicationsManagement() {
     phone: string;
     location: string;
     appliedDate: string;
-    status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted";
+    status: "pending" | "shortlisted" | "rejected";
     experience: string;
     education: string;
     resumeUrl: string | null;
@@ -105,7 +103,7 @@ export default function ApplicationsManagement() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const response = await fetch(`${"/api/jobcy"}/hr/applications`, {
+        const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/applications`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -115,31 +113,27 @@ export default function ApplicationsManagement() {
         if (response.ok) {
           const applicationsData = await response.json();
           console.log('Frontend received applications:', applicationsData);
-          console.log('First application structure:', applicationsData[0]);
-
-          // Handle both array and object response formats
-          const applicationsArray = Array.isArray(applicationsData) ? applicationsData : applicationsData.applications || [];
 
           // Transform backend data to match frontend interface
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const transformedApplications: Application[] = applicationsArray.map((app: any, index: number) => ({
+          const transformedApplications: Application[] = applicationsData.map((app: any, index: number) => ({
             id: app._id || index + 1,
-            jobId: app.job?._id || app.jobId,
-            jobTitle: app.job?.title || 'Unknown Job',
-            applicantName: app.user?.name || 'Unknown User',
-            email: app.user?.email || '',
-            phone: app.user?.mobile || app.user?.phone || '',
-            location: app.user?.currentLocation || '',
-            appliedDate: app.appliedAt || app.createdAt,
+            jobId: app.jobId?._id || app.jobId,
+            jobTitle: app.jobId?.title || 'Unknown Job',
+            applicantName: app.userId?.name || 'Unknown User',
+            email: app.userId?.email || '',
+            phone: app.userId?.mobile || '',
+            location: app.userId?.currentLocation || '',
+            appliedDate: app.appliedDate || app.createdAt,
             status: app.status === 'Applied' ? 'pending' : app.status?.toLowerCase() || 'pending',
             experience: 'Not specified',
             education: 'Not specified',
-            resumeUrl: app.resume?.name || app.user?.resume?.fileName || app.user?.resume?.name || (typeof app.user?.resume === 'string' ? app.user.resume.split('/').pop() : null),
-            userId: app.user?._id || app.userId,
+            resumeUrl: app.resume?.name || app.userId?.resume?.name || null,
+            userId: app.userId?._id || app.userId,
             coverLetter: app.coverLetter || 'No cover letter provided',
-            skills: app.user?.skills || [],
+            skills: app.userId?.skills || [],
             rating: 4.0,
-            hasResume: !!(app.user?.resume && (app.user.resume.data || app.user.resume.fileName || app.user.resume.name || typeof app.user.resume === 'string')),
+            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.userId?.resume),
           }));
 
           console.log('Transformed applications:', transformedApplications);
@@ -158,14 +152,142 @@ export default function ApplicationsManagement() {
         }
       } catch (error) {
         console.error('Error fetching applications:', error);
-        // No mock data fallback - ensure API endpoints work properly
-        console.error('Failed to fetch applications from API');
+        // Fallback to mock data if API fails
+        loadMockData();
       }
     };
 
     fetchApplications();
 
-    // Removed mock data - using live API data only
+    const loadMockData = () => {
+      const mockJobs = [
+        { id: 1, title: "Senior Software Engineer", department: "Engineering" },
+        { id: 2, title: "Product Manager", department: "Product" },
+        { id: 3, title: "UX Designer", department: "Design" },
+        { id: 4, title: "Marketing Specialist", department: "Marketing" },
+        { id: 5, title: "Data Analyst", department: "Analytics" },
+      ];
+      const mockApplications: Application[] = [
+    {
+      id: 1,
+      jobId: 1,
+      jobTitle: "Senior Software Engineer",
+      applicantName: "John Smith",
+      email: "john.smith@email.com",
+      phone: "+1 (555) 123-4567",
+      location: "San Francisco, CA",
+      appliedDate: "2024-03-15",
+      status: "pending",
+      experience: "5+ years",
+      education: "MS Computer Science",
+      resumeUrl: "resume-john-smith.pdf",
+      coverLetter: "I am excited to apply for the Senior Software Engineer position...",
+      skills: ["React", "Node.js", "Python", "AWS", "TypeScript"],
+      rating: 4.5,
+      userId: "mock-user-1",
+      hasResume: true,
+    },
+  {
+    id: 2,
+    jobId: 1,
+    jobTitle: "Senior Software Engineer",
+    applicantName: "Sarah Johnson",
+    email: "sarah.j@email.com",
+    phone: "+1 (555) 987-6543",
+    location: "Austin, TX",
+    appliedDate: "2024-03-14",
+    status: "shortlisted",
+    experience: "7+ years",
+    education: "BS Software Engineering",
+    resumeUrl: "resume-sarah-johnson.pdf",
+    coverLetter: "Dear Hiring Manager, I am writing to express my strong interest...",
+    skills: ["JavaScript", "React", "Docker", "Kubernetes", "GraphQL"],
+    rating: 4.8,
+    userId: "mock-user-2",
+    hasResume: true,
+  },
+  {
+    id: 3,
+    jobId: 2,
+    jobTitle: "Product Manager",
+    applicantName: "Michael Chen",
+    email: "michael.chen@email.com",
+    phone: "+1 (555) 456-7890",
+    location: "Seattle, WA",
+    appliedDate: "2024-03-13",
+    status: "pending",
+    experience: "4+ years",
+    education: "MBA, BS Engineering",
+    resumeUrl: "resume-michael-chen.pdf",
+    coverLetter: "I am thrilled to apply for the Product Manager position...",
+    skills: ["Product Strategy", "Agile", "Analytics", "User Research", "SQL"],
+    rating: 4.3,
+    userId: "mock-user-3",
+    hasResume: true,
+  },
+  {
+    id: 4,
+    jobId: 2,
+    jobTitle: "Product Manager",
+    applicantName: "Emily Davis",
+    email: "emily.davis@email.com",
+    phone: "+1 (555) 321-0987",
+    location: "New York, NY",
+    appliedDate: "2024-03-12",
+    status: "rejected",
+    experience: "3+ years",
+    education: "BS Business Administration",
+    resumeUrl: "resume-emily-davis.pdf",
+    coverLetter: "Hello, I would like to be considered for the Product Manager role...",
+    skills: ["Project Management", "Scrum", "Jira", "Market Research"],
+    rating: 3.2,
+    userId: "mock-user-4",
+    hasResume: true,
+  },
+  {
+    id: 5,
+    jobId: 3,
+    jobTitle: "UX Designer",
+    applicantName: "Alex Rodriguez",
+    email: "alex.rodriguez@email.com",
+    phone: "+1 (555) 654-3210",
+    location: "Los Angeles, CA",
+    appliedDate: "2024-03-11",
+    status: "shortlisted",
+    experience: "6+ years",
+    education: "MFA Design",
+    resumeUrl: "resume-alex-rodriguez.pdf",
+    coverLetter: "I am passionate about creating user-centered designs...",
+    skills: ["Figma", "Sketch", "Prototyping", "User Research", "Design Systems"],
+    rating: 4.7,
+    userId: "mock-user-5",
+    hasResume: true,
+  },
+  {
+    id: 6,
+    jobId: 1,
+    jobTitle: "Senior Software Engineer",
+    applicantName: "David Wilson",
+    email: "david.wilson@email.com",
+    phone: "+1 (555) 789-0123",
+    location: "Denver, CO",
+    appliedDate: "2024-03-10",
+    status: "pending",
+    experience: "8+ years",
+    education: "PhD Computer Science",
+    resumeUrl: "resume-david-wilson.pdf",
+    coverLetter: "With a PhD in Computer Science and 8 years of industry experience...",
+    skills: ["Python", "Machine Learning", "PostgreSQL", "Redis", "Git"],
+    rating: 4.6,
+    userId: "mock-user-6",
+    hasResume: true,
+  },
+];
+
+
+    setJobs(mockJobs);
+    setApplications(mockApplications);
+    };
 
     // Add auto-refresh every 10 seconds
     const interval = setInterval(() => {
@@ -176,38 +298,26 @@ export default function ApplicationsManagement() {
   }, []);
 
   // Status badges styling & icons
-  const getStatusColor = (status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted") => {
+  const getStatusColor = (status: "pending" | "shortlisted" | "rejected") => {
   switch (status) {
     case "pending":
-    case "Applied":
       return "bg-yellow-100 text-yellow-800";
     case "shortlisted":
-    case "Under Review":
-      return "bg-blue-100 text-blue-800";
-    case "accepted":
-    case "Accepted":
       return "bg-green-100 text-green-800";
     case "rejected":
-    case "Rejected":
       return "bg-red-100 text-red-800";
     default:
       return "bg-gray-100 text-gray-800";
   }
 };
 
-const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepted" | "Applied" | "Under Review" | "Rejected" | "Accepted") => {
+const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
   switch (status) {
     case "pending":
-    case "Applied":
       return <Clock className="w-4 h-4" />;
     case "shortlisted":
-    case "Under Review":
-      return <AlertCircle className="w-4 h-4" />;
-    case "accepted":
-    case "Accepted":
       return <CheckCircle className="w-4 h-4" />;
     case "rejected":
-    case "Rejected":
       return <XCircle className="w-4 h-4" />;
     default:
       return <Clock className="w-4 h-4" />;
@@ -218,28 +328,20 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
   // Update application status
   const updateApplicationStatus = async (
     applicationId: number,
-    newStatus: "pending" | "shortlisted" | "rejected" | "accepted"
+    newStatus: "pending" | "shortlisted" | "rejected"
   ) => {
     setIsLoading(true);
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      // Map status to display values
-      const statusMap = {
-        "pending": "Applied",
-        "shortlisted": "Under Review", 
-        "rejected": "Rejected",
-        "accepted": "Accepted"
-      };
-
-      const response = await fetch(`${"/api/jobcy"}/hr/applications/${applicationId}/status`, {
+      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/applications/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ status: statusMap[newStatus] }),
+        body: JSON.stringify({ status: newStatus === "shortlisted" ? "Under Review" : newStatus === "rejected" ? "Rejected" : newStatus === "pending" ? "Applied" : newStatus }),
       });
 
       if (response.ok) {
@@ -248,16 +350,6 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
             app.id === applicationId ? { ...app, status: newStatus } : app
           )
         );
-        
-        // Show appropriate success message
-        const successMessages = {
-          "pending": "Application moved to pending",
-          "shortlisted": "Application accepted for review", 
-          "rejected": "Application rejected",
-          "accepted": "Application accepted - candidate will be notified"
-        };
-        
-        alert(successMessages[newStatus]);
       } else {
         console.error('Failed to update application status');
         alert('Failed to update application status. Please try again.');
@@ -284,21 +376,18 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
   };
 
   // Filtered applications based on job, status, and search term
-  const filteredApplications = Array.isArray(applications) ? applications.filter((app) => {
+  const filteredApplications = applications.filter((app) => {
     const matchesJob =
-      selectedJob === "all" || 
-      app.jobId?.toString() === selectedJob || 
-      app.jobTitle === selectedJob ||
-      app.jobTitle?.toLowerCase() === selectedJob?.toLowerCase();
+      selectedJob === "all" || app.jobId.toString() === selectedJob || app.jobTitle === selectedJob;
     const matchesStatus =
       selectedStatus === "all" || app.status === selectedStatus;
     const matchesSearch =
-      app.applicantName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      app.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      app.jobTitle?.toLowerCase().includes(searchTerm.toLowerCase());
+      app.applicantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      app.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      app.jobTitle.toLowerCase().includes(searchTerm.toLowerCase());
     console.log('Filtering app:', app.jobTitle, 'selectedJob:', selectedJob, 'matchesJob:', matchesJob);
     return matchesJob && matchesStatus && matchesSearch;
-  }) : [];
+  });
 
   // Group applications by job title
   const groupedApplications = filteredApplications.reduce<Record<string,Application[]>>((groups, app) => {
@@ -398,38 +487,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               onClick={async () => {
                 try {
                   const token = localStorage.getItem("token");
-                  
-                  // Validate token before making request
-                  if (!token) {
-                    const shouldLogin = confirm('No authentication token found. Would you like to login again?');
-                    if (shouldLogin) {
-                      window.location.href = '/jobcy/hr/auth/login/';
-                    }
-                    return;
-                  }
-                  
-                  // Check if token is expired
-                  try {
-                    const payload = JSON.parse(atob(token.split('.')[1]));
-                    const currentTime = Math.floor(Date.now() / 1000);
-                    if (payload.exp && payload.exp < currentTime) {
-                      const shouldLogin = confirm('Your session has expired. Would you like to login again?');
-                      if (shouldLogin) {
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
-                        window.location.href = '/jobcy/hr/auth/login/';
-                      }
-                      return;
-                    }
-                  } catch (e) {
-                    alert('Invalid authentication token. Please login again.');
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('user');
-                    window.location.href = '/jobcy/hr/auth/login/';
-                    return;
-                  }
-                  
-                  const response = await fetch(`${"/api/jobcy"}/hr/resume/${application.userId}`, {
+                  const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/resume/${application.userId}`, {
                     headers: {
                       Authorization: `Bearer ${token}`,
                     },
@@ -445,27 +503,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                     window.URL.revokeObjectURL(url);
                   } else {
                     console.error('Failed to download resume:', response.status, response.statusText);
-                    const errorData = await response.json().catch(() => ({}));
-                    if (response.status === 404) {
-                      if (errorData.details && errorData.details.includes('file was uploaded but is no longer available')) {
-                        alert('Resume file not found on server. The user may need to re-upload their resume.');
-                      } else {
-                        alert('No resume found for this user.');
-                      }
-                    } else if (response.status === 403) {
-                      const errorData = await response.json().catch(() => ({}));
-                      if (errorData.details && errorData.details.includes('User role is')) {
-                        alert(`Access denied: ${errorData.details}. Please login as HR.`);
-                      } else {
-                        alert('Access denied. Please make sure you are logged in as HR.');
-                      }
-                      // Clear invalid token and redirect to login
-                      localStorage.removeItem('token');
-                      localStorage.removeItem('user');
-                      window.location.href = '/jobcy/hr/auth/login/';
-                    } else {
-                      alert('Failed to download resume. Please try again.');
-                    }
+                    alert('Failed to download resume. Please try again.');
                   }
                 } catch (error) {
                   console.error('Error downloading resume:', error);
@@ -487,7 +525,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
       </div>
       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
         <div className="flex space-x-2">
-          {(application.status === "pending" || application.status === "Applied") && (
+          {application.status === "pending" && (
             <>
               <button
                 onClick={() =>
@@ -497,7 +535,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                 className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
               >
                 <CheckCircle className="w-4 h-4" />
-                <span>Accept</span>
+                <span>Shortlist</span>
               </button>
               <button
                 onClick={() =>
@@ -511,17 +549,17 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               </button>
             </>
           )}
-          {(application.status === "shortlisted" || application.status === "Under Review") && (
+          {application.status === "shortlisted" && (
             <>
               <button
                 onClick={() =>
-                  updateApplicationStatus(application.id, "accepted")
+                  updateApplicationStatus(application.id, "pending")
                 }
                 disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+                className="flex items-center space-x-1 px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
               >
-                <CheckCircle className="w-4 h-4" />
-                <span>Final Accept</span>
+                <Clock className="w-4 h-4" />
+                <span>Move to Pending</span>
               </button>
               <button
                 onClick={() =>
@@ -535,7 +573,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               </button>
             </>
           )}
-          {(application.status === "rejected" || application.status === "Rejected") && (
+          {application.status === "rejected" && (
             <button
               onClick={() => updateApplicationStatus(application.id, "pending")}
               disabled={isLoading}
@@ -544,32 +582,6 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
               <Clock className="w-4 h-4" />
               <span>Reconsider</span>
             </button>
-          )}
-          
-          {/* Fallback: Show buttons for any unhandled status */}
-          {!["pending", "Applied", "shortlisted", "Under Review", "rejected", "Rejected", "accepted", "Accepted"].includes(application.status) && (
-            <>
-              <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "accepted")
-                }
-                disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-              >
-                <CheckCircle className="w-4 h-4" />
-                <span>Accept</span>
-              </button>
-              <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "rejected")
-                }
-                disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-              >
-                <XCircle className="w-4 h-4" />
-                <span>Reject</span>
-              </button>
-            </>
           )}
         </div>
         <button
@@ -705,38 +717,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                   onClick={async () => {
                     try {
                       const token = localStorage.getItem("token");
-                      
-                      // Validate token before making request
-                      if (!token) {
-                        const shouldLogin = confirm('No authentication token found. Would you like to login again?');
-                        if (shouldLogin) {
-                          window.location.href = '/jobcy/hr/auth/login/';
-                        }
-                        return;
-                      }
-                      
-                      // Check if token is expired
-                      try {
-                        const payload = JSON.parse(atob(token.split('.')[1]));
-                        const currentTime = Math.floor(Date.now() / 1000);
-                        if (payload.exp && payload.exp < currentTime) {
-                          const shouldLogin = confirm('Your session has expired. Would you like to login again?');
-                          if (shouldLogin) {
-                            localStorage.removeItem('token');
-                            localStorage.removeItem('user');
-                            window.location.href = '/jobcy/hr/auth/login/';
-                          }
-                          return;
-                        }
-                      } catch (e) {
-                        alert('Invalid authentication token. Please login again.');
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
-                        window.location.href = '/jobcy/hr/auth/login/';
-                        return;
-                      }
-                      
-                      const response = await fetch(`${"/api/jobcy"}/hr/resume/${applicant.userId}`, {
+                      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/resume/${applicant.userId}`, {
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
@@ -752,27 +733,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                         window.URL.revokeObjectURL(url);
                       } else {
                         console.error('Failed to download resume:', response.status, response.statusText);
-                        const errorData = await response.json().catch(() => ({}));
-                        if (response.status === 404) {
-                          if (errorData.details && errorData.details.includes('file was uploaded but is no longer available')) {
-                            alert('Resume file not found on server. The user may need to re-upload their resume.');
-                          } else {
-                            alert('No resume found for this user.');
-                          }
-                        } else if (response.status === 403) {
-                          const errorData = await response.json().catch(() => ({}));
-                          if (errorData.details && errorData.details.includes('User role is')) {
-                            alert(`Access denied: ${errorData.details}. Please login as HR.`);
-                          } else {
-                            alert('Access denied. Please make sure you are logged in as HR.');
-                          }
-                          // Clear invalid token and redirect to login
-                          localStorage.removeItem('token');
-                          localStorage.removeItem('user');
-                          window.location.href = '/jobcy/hr/auth/login/';
-                        } else {
-                          alert('Failed to download resume. Please try again.');
-                        }
+                        alert('Failed to download resume. Please try again.');
                       }
                     } catch (error) {
                       console.error('Error downloading resume:', error);
@@ -788,49 +749,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
             )}
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-              {/* Preview Button - Always available */}
-              <button
-                onClick={async () => {
-                  try {
-                    const token = localStorage.getItem("token");
-                    if (!token) {
-                      alert('No authentication token found. Please login again.');
-                      return;
-                    }
-
-                    // Fetch resume from database
-                    const response = await fetch(`/api/jobcy/hr/resume/${applicant.userId}`, {
-                      headers: {
-                        'Authorization': `Bearer ${token}`,
-                      },
-                    });
-
-                    if (response.ok) {
-                      const blob = await response.blob();
-                      const url = window.URL.createObjectURL(blob);
-                      window.open(url, '_blank');
-                      // Clean up the URL after a delay
-                      setTimeout(() => window.URL.revokeObjectURL(url), 10000);
-                    } else if (response.status === 404) {
-                      alert('No resume available for preview');
-                    } else if (response.status === 403) {
-                      alert('Access denied. Please make sure you are logged in as HR.');
-                    } else {
-                      alert('Failed to load resume for preview');
-                    }
-                  } catch (error) {
-                    console.error('Error previewing resume:', error);
-                    alert('Error loading resume for preview');
-                  }
-                }}
-                className="flex items-center space-x-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
-              >
-                <Eye className="w-4 h-4" />
-                <span>Preview</span>
-              </button>
-
-              {/* Status-based action buttons */}
-              {(applicant.status === "pending" || applicant.status === "Applied") && (
+              {applicant.status === "pending" && (
                 <>
                   <button
                     onClick={() => {
@@ -840,7 +759,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                     className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-colors"
                   >
                     <CheckCircle className="w-4 h-4" />
-                    <span>Accept</span>
+                    <span>Shortlist</span>
                   </button>
                   <button
                     onClick={() => {
@@ -854,45 +773,6 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                   </button>
                 </>
               )}
-
-              {(applicant.status === "shortlisted" || applicant.status === "Under Review") && (
-                <>
-                  <button
-                    onClick={() => {
-                      updateApplicationStatus(applicant.id, "accepted");
-                      onClose();
-                    }}
-                    className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
-                  >
-                    <CheckCircle className="w-4 h-4" />
-                    <span>Final Accept</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      updateApplicationStatus(applicant.id, "rejected");
-                      onClose();
-                    }}
-                    className="flex items-center space-x-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
-                  >
-                    <XCircle className="w-4 h-4" />
-                    <span>Reject</span>
-                  </button>
-                </>
-              )}
-
-              {(applicant.status === "rejected" || applicant.status === "Rejected") && (
-                <button
-                  onClick={() => {
-                    updateApplicationStatus(applicant.id, "pending");
-                    onClose();
-                  }}
-                  className="flex items-center space-x-2 px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg transition-colors"
-                >
-                  <Clock className="w-4 h-4" />
-                  <span>Reconsider</span>
-                </button>
-              )}
-
               <button
                 onClick={onClose}
                 className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
@@ -1033,45 +913,45 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
                           <span
                             className="text-yellow-600"
                             aria-label={`${
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "pending"
-                              ).length : 0
+                              ).length
                             } pending`}
                           >
                             {
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "pending"
-                              ).length : 0
+                              ).length
                             }{" "}
                             pending
                           </span>
                           <span
                             className="text-green-600"
                             aria-label={`${
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "shortlisted"
-                              ).length : 0
+                              ).length
                             } shortlisted`}
                           >
                             {
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "shortlisted"
-                              ).length : 0
+                              ).length
                             }{" "}
                             shortlisted
                           </span>
                           <span
                             className="text-red-600"
                             aria-label={`${
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "rejected"
-                              ).length : 0
+                              ).length
                             } rejected`}
                           >
                             {
-                              Array.isArray(jobApplications) ? jobApplications.filter(
+                              jobApplications.filter(
                                 (app) => app.status === "rejected"
-                              ).length : 0
+                              ).length
                             }{" "}
                             rejected
                           </span>
@@ -1136,4 +1016,3 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected" | "accepte
     </div>
   );
 }
-// Deployment trigger - Fri Oct 24 12:14:49 AM IST 2025

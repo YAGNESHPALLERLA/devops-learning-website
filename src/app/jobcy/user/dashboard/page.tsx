@@ -24,17 +24,15 @@ import InterviewsTab from "../../user/dashboard/components/InterviewsTab";
 import ProfileEditModal from "../../user/dashboard/components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
 
-import { UserProfile } from "../../types/dashboard";
-import { usePersistedState } from "./hooks/usePersistedState";
+import { UserProfile } from "@/app/types/dashboard";
 
 export default function JobSeekerDashboard() {
-  const [activeTab, setActiveTab] = usePersistedState('dashboardActiveTab', 'profile');
+  const [activeTab, setActiveTab] = useState("profile");
   const [isDark, setIsDark] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [profileModalSection, setProfileModalSection] = usePersistedState('profileModalSection', 'personal');
+  const [profileModalSection, setProfileModalSection] = useState<string>("personal");
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-
 
   // Check if user has correct role
   useEffect(() => {
@@ -45,11 +43,11 @@ export default function JobSeekerDashboard() {
         if (user.role !== "user") {
           console.log("⚠️ Unauthorized access to user dashboard. Redirecting...");
           if (user.role === "hr") {
-            window.location.href = "/jobcy/hr/dashboard";
+            window.location.href = "/hr/dashboard";
           } else if (user.role === "admin") {
-            window.location.href = "/jobcy/admin/dashboard";
+            window.location.href = "/admin/dashboard";
           } else {
-            window.location.href = "/jobcy/user/auth/login";
+            window.location.href = "/user/auth/login";
           }
         }
       } catch (error) {
@@ -78,7 +76,7 @@ export default function JobSeekerDashboard() {
     if (confirm("Are you sure you want to logout?")) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      window.location.href = "/jobcy/user/auth/login";
+      window.location.href = "/user/auth/login";
     }
   };
 
@@ -274,8 +272,9 @@ export default function JobSeekerDashboard() {
 
           {activeTab === "jobs" && (
             <JobsTab
-              allJobs={Array.isArray(allJobs) ? allJobs.map((j) => ({ ...j, id: String(j.id) })) : []}
+              allJobs={allJobs.map((j) => ({ ...j, id: String(j.id) }))}
               isDark={isDark}
+              onApplyJob={handleJobApplication}
             />
           )}
 
@@ -287,7 +286,7 @@ export default function JobSeekerDashboard() {
 
           {activeTab === "notifications" && <NotificationsTab isDark={isDark} />}
 
-          {activeTab === "interviews" && Array.isArray(interviews) && interviews.length > 0 && (
+          {activeTab === "interviews" && interviews.length > 0 && (
             <InterviewsTab
   interviews={interviews.map((i) => ({
     ...i,
@@ -297,7 +296,7 @@ export default function JobSeekerDashboard() {
   isDark={isDark}
 />
           )}
-          {activeTab === "interviews" && (!Array.isArray(interviews) || interviews.length === 0) && (
+          {activeTab === "interviews" && interviews.length === 0 && (
             <div className="text-center mt-16 text-slate-500 dark:text-slate-400">No interviews scheduled yet.</div>
           )}
         </main>
@@ -311,16 +310,12 @@ export default function JobSeekerDashboard() {
           isDark={isDark}
           initialSection={profileModalSection}
           onClose={() => setShowProfileModal(false)}
-          onExperienceChange={() => {
-            // Refresh dashboard data when experience changes
-            refetch();
-          }}
           onSave={async (data: Partial<UserProfile>) => {
             // normalize optional fields to satisfy types
             const normalizedData: Partial<UserProfile> = {
               ...data,
-              education: Array.isArray(data.education) ? data.education.map((e) => ({ ...e, endDate: e.endDate || "" })) : [],
-              experienceList: Array.isArray(data.experienceList) ? data.experienceList.map((e) => ({ ...e, endDate: e.endDate || "" })) : [],
+              education: data.education?.map((e) => ({ ...e, endDate: e.endDate || "" })),
+              experienceList: data.experienceList?.map((e) => ({ ...e, endDate: e.endDate || "" })),
             };
             const result = await updateProfile(normalizedData);
             if (result.success) {
