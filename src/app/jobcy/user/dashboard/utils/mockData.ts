@@ -1,5 +1,5 @@
-import type { UserProfile, Education, Job, AppliedJob, Connection, Interview } from "@/app/types/dashboard";
-import { Experience } from "@/app/types/type1";
+import type { UserProfile, Education, Job, AppliedJob, Connection, Interview } from "@/app/jobcy/types/dashboard";
+import { Experience } from "@/app/jobcy/types/type1";
 export const mockProfile: UserProfile = {
   name: "John Doe",
   email: "john.doe@example.com",
