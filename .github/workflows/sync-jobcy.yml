@@ -9,12 +9,16 @@ on:
 jobs:
   sync-jobcy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
     
     steps:
     - name: Checkout DevOps Website
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
         
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -55,7 +59,7 @@ jobs:
           echo "No changes to commit"
         else
           git commit -m "🔄 Auto-sync: Update Jobcy portal from main repo"
-          git push
+          git push origin HEAD:main
         fi
         
     - name: Cleanup
