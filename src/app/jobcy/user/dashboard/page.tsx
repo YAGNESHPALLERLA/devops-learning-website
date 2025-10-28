@@ -24,7 +24,7 @@ import InterviewsTab from "../../user/dashboard/components/InterviewsTab";
 import ProfileEditModal from "../../user/dashboard/components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
 
-import { UserProfile } from "@/app/jobcy/types/dashboard";
+import { UserProfile } from "@/app/types/dashboard";
 
 export default function JobSeekerDashboard() {
   const [activeTab, setActiveTab] = useState("profile");

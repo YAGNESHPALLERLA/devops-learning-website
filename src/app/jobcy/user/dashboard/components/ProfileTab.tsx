@@ -1,6 +1,6 @@
 "use client";
-import { Experience } from "@/app/jobcy/types/type1";
-import { Education, Project, Language, UserProfile } from "@/app/jobcy/types/dashboard";
+import { Experience } from "@/app/types/type1";
+import { Education, Project, Language, UserProfile } from "@/app/types/dashboard";
 
 import {
   Edit,

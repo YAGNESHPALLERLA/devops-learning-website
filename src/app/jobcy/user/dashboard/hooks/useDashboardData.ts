@@ -8,7 +8,7 @@ import {
   Connection,
   Interview,
   UserProfile,
-} from "@/app/jobcy/types/dashboard";
+} from "@/app/types/dashboard";
 import {
   mockProfile,
   mockEducation,

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { X, Save, User, Briefcase, GraduationCap, Folder, FileText, Globe, Plus, Edit, Trash2, TrendingUp } from "lucide-react";
-import { UserProfile, Education, Experience, Project, Language } from "@/app/jobcy/types/dashboard";
+import { UserProfile, Education, Experience, Project, Language } from "@/app/types/dashboard";
 
 interface ProfileEditModalProps {
   userProfile: UserProfile;

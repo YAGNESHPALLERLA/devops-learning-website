@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Job } from "@/app/jobcy/types/dashboard";
+import { Job } from "@/app/types/dashboard";
 import { Briefcase, GraduationCap, Users, Calendar, Clock } from "lucide-react";
 
 interface JobsTabProps {
