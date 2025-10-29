@@ -124,7 +124,7 @@ export function useDashboardData() {
 
       // Fetch profile
       const profileRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
+        `${"/api/jobcy"}/user/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -170,7 +170,7 @@ export function useDashboardData() {
 
       // Fetch experience separately
       const experienceRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/experience`,
+        `${"/api/jobcy"}/experience`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (experienceRes.ok) {
@@ -180,7 +180,7 @@ export function useDashboardData() {
 
       // Fetch jobs
       const jobsRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`,
+        `${"/api/jobcy"}/jobs/browse`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -212,7 +212,7 @@ export function useDashboardData() {
 
       // Fetch connections
       const connectionsRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/user/list`,
+        `${"/api/jobcy"}/user/list`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (connectionsRes.ok) {
@@ -233,7 +233,7 @@ export function useDashboardData() {
 
       // Fetch connected users for chat
       const connectedRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/connections/connections`,
+        `${"/api/jobcy"}/connections/connections`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (connectedRes.ok) {
@@ -259,7 +259,7 @@ export function useDashboardData() {
 
       // Fetch applied jobs
       const appliedJobsRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/user/applications`,
+        `${"/api/jobcy"}/user/applications`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (appliedJobsRes.ok) {
@@ -269,7 +269,7 @@ export function useDashboardData() {
 
       // Fetch interviews
       const interviewsRes = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/user/interviews`,
+        `${"/api/jobcy"}/user/interviews`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (interviewsRes.ok) {
@@ -335,7 +335,7 @@ export function useDashboardData() {
       }
 
       // Call the backend API to apply for the job
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/apply/${jobId}`, {
+      const response = await fetch(`${"/api/jobcy"}/jobs/apply/${jobId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -359,7 +359,7 @@ export function useDashboardData() {
 
         // Refresh applied jobs data
         const appliedJobsRes = await fetch(
-          `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
+          `${"/api/jobcy"}/user/me`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (appliedJobsRes.ok) {
@@ -382,7 +382,7 @@ export function useDashboardData() {
     if (!token) return { success: false, message: "No token found" };
     try {
       const res = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/user/me`,
+        `${"/api/jobcy"}/user/me`,
         {
           method: "PUT",
           headers: {

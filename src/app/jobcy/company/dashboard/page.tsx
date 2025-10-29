@@ -102,13 +102,13 @@ export default function CompanyDashboard() {
     try {
       setLoading(true);
       const [statsRes, jobsRes, applicationsRes] = await Promise.all([
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/dashboard`, {
+        fetch(`${"/api/jobcy"}/company/dashboard`, {
           headers: getAuthHeaders(),
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/jobs`, {
+        fetch(`${"/api/jobcy"}/company/jobs`, {
           headers: getAuthHeaders(),
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/company/applications`, {
+        fetch(`${"/api/jobcy"}/company/applications`, {
           headers: getAuthHeaders(),
         }),
       ]);
@@ -137,7 +137,7 @@ export default function CompanyDashboard() {
   const handleStatusUpdate = async (applicationId: string, newStatus: string) => {
     try {
       const response = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/company/applications/${applicationId}/status`,
+        `${"/api/jobcy"}/company/applications/${applicationId}/status`,
         {
           method: "PUT",
           headers: getAuthHeaders(),
@@ -160,13 +160,13 @@ export default function CompanyDashboard() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    router.push("/admin/auth/login");
+    router.push("/jobcy/admin/auth/login");
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/admin/auth/login");
+      router.push("/jobcy/admin/auth/login");
       return;
     }
 
@@ -509,7 +509,7 @@ export default function CompanyDashboard() {
                     <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
                       {app.userId.resume && (
                         <a
-                          href={`${"https://jobcy-job-portal.vercel.app/api"}${app.userId.resume}`}
+                          href={`${"/api/jobcy"}${app.userId.resume}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg font-medium transition-colors"

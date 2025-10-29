@@ -111,19 +111,19 @@ export default function AdminDashboard() {
     setRefreshing(true);
     try {
       const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
+        fetch(`${"/api/jobcy"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
+        fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/list`, {
+        fetch(`${"/api/jobcy"}/users/list`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`, {
+        fetch(`${"/api/jobcy"}/jobs/browse`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
+        fetch(`${"/api/jobcy"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -159,26 +159,26 @@ export default function AdminDashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/admin/auth/login"); // redirect if not logged in
+      router.push("/jobcy/admin/auth/login"); // redirect if not logged in
       return;
     }
 
     const fetchDashboardData = async () => {
       try {
         const [statsRes, activityRes, usersRes, jobsRes, applicationsRes] = await Promise.all([
-          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
+          fetch(`${"/api/jobcy"}/admin/stats`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
+          fetch(`${"/api/jobcy"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/list`, {
+          fetch(`${"/api/jobcy"}/users/list`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/jobs/browse`, {
+          fetch(`${"/api/jobcy"}/jobs/browse`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
+          fetch(`${"/api/jobcy"}/admin/applications`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
         } else {
           console.error("Stats fetch failed:", statsRes.status, statsRes.statusText);
           if (statsRes.status === 403) {
-            router.push("/admin/auth/login");
+            router.push("/jobcy/admin/auth/login");
             return;
           }
         }
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error("Dashboard data fetch error:", err);
-        router.push("/admin/auth/login"); // if token expired, go back to login
+        router.push("/jobcy/admin/auth/login"); // if token expired, go back to login
       } finally {
         setLoading(false);
       }
@@ -233,7 +233,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token && activeTab === "applications") {
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/applications`, {
+        fetch(`${"/api/jobcy"}/admin/applications`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -257,7 +257,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/stats`, {
+        fetch(`${"/api/jobcy"}/admin/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -283,7 +283,7 @@ export default function AdminDashboard() {
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch(`${"https://jobcy-job-portal.vercel.app/api"}/admin/activity`, {
+        fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => {
@@ -697,7 +697,7 @@ export default function AdminDashboard() {
                             description="Manage HR users, approvals, and permissions"
                             icon={Users}
                             color="bg-blue-500"
-                            onClick={() => router.push("/admin/hr-management")}
+                            onClick={() => router.push("/jobcy/admin/hr-management")}
                           />
                           <QuickActionCard
                             title="Job Listings"
@@ -718,7 +718,7 @@ export default function AdminDashboard() {
                             description="Manage company registrations and profiles"
                             icon={Building2}
                             color="bg-red-500"
-                            onClick={() => router.push("/admin/company-management")}
+                            onClick={() => router.push("/jobcy/admin/company-management")}
                           />
                         </div>
                       </div>

@@ -44,7 +44,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         return;
       }
 
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/users/applications`, {
+      const response = await fetch(`${"/api/jobcy"}/users/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

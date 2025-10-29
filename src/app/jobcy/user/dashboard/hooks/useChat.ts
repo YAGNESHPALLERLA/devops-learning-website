@@ -83,7 +83,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chats`, {
+      const response = await fetch(`${"/api/jobcy"}/chat/chats`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/chat/${userId}`, {
+      const response = await fetch(`${"/api/jobcy"}/chat/chat/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ export function useChat() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/chat/messages/${chatId}`, {
+      const response = await fetch(`${"/api/jobcy"}/chat/messages/${chatId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

@@ -86,7 +86,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
 
       try {
         const dashRes = await fetch(
-          `${"https://jobcy-job-portal.vercel.app/api"}/hr/dashboard`,
+          `${"/api/jobcy"}/hr/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -125,7 +125,7 @@ const [jobsData, setJobsData] = useState<Job[]>([]);
         });
 
         const jobsRes = await fetch(
-          `${"https://jobcy-job-portal.vercel.app/api"}/hr/jobs`,
+          `${"/api/jobcy"}/hr/jobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -492,7 +492,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
               <Download className="w-5 h-5" />
               <span>Export</span>
             </button>
-            <Link href="/hr/jobs-management">
+            <Link href="/jobcy/hr/jobs-management">
               <button className="flex items-center space-x-2 bg-gradient-to-r from-blue-200 to-indigo-200 hover:from-blue-300 hover:to-indigo-300 text-slate-800 px-6 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 group">
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Manage Jobs</span>
@@ -603,7 +603,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                     Try adjusting your search criteria or create a new job
                     posting to get started
                   </p>
-                  <Link href="/hr/jobs-management">
+                  <Link href="/jobcy/hr/jobs-management">
                     <button className="px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
                       Create New Job
                     </button>

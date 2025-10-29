@@ -144,7 +144,7 @@ export default function SignupPage() {
     setErrors({});
 
     try {
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/user/register`, {
+      const response = await fetch(`${"/api/jobcy"}/user/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,7 +165,7 @@ export default function SignupPage() {
       }
 
       // Auto login
-      const loginResponse = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/login`, {
+      const loginResponse = await fetch(`${"/api/jobcy"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -179,9 +179,19 @@ export default function SignupPage() {
       if (loginResponse.ok) {
         localStorage.setItem("token", loginData.token);
         localStorage.setItem("user", JSON.stringify(loginData.user));
+        
+        // Auto-redirect to dashboard after successful registration and login
+        setTimeout(() => {
+          const user = loginData.user;
+          const dashboardPath = user.role === "admin" ? "/jobcy/admin/dashboard" : 
+                               user.role === "hr" ? "/jobcy/hr/dashboard" : 
+                               "/jobcy/user/dashboard";
+          window.location.href = dashboardPath;
+        }, 2000); // 2 second delay to show success message
+        
         setIsSuccess(true);
       } else {
-        window.location.href = "/user/auth/login";
+        window.location.href = "/jobcy/user/auth/login";
       }
     } catch {
       setErrors({ general: "An error occurred. Please try again." });
@@ -261,7 +271,7 @@ export default function SignupPage() {
                 <button
                   onClick={() => {
                     const user = JSON.parse(localStorage.getItem("user") || "{}");
-                    const dashboardPath = user.role === "admin" ? "/admin/dashboard" : user.role === "hr" ? "/hr/dashboard" : "/user/dashboard";
+                    const dashboardPath = user.role === "admin" ? "/jobcy/admin/dashboard" : user.role === "hr" ? "/jobcy/hr/dashboard" : "/jobcy/user/dashboard";
                     window.location.href = dashboardPath;
                   }}
                   className="flex items-center justify-center space-x-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg"
@@ -269,7 +279,7 @@ export default function SignupPage() {
                   <span>Go to Dashboard</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <p className="text-xs text-gray-500">Redirecting in 3 seconds...</p>
+                <p className="text-xs text-gray-500">Redirecting to dashboard in 2 seconds...</p>
               </div>
             </div>
           </div>
@@ -569,7 +579,7 @@ export default function SignupPage() {
 
           <div className="mt-6 text-center">
             <a
-              href="/user/auth/login"
+              href="/jobcy/user/auth/login"
               className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
             >
               Already have an account? Sign In

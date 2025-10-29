@@ -101,7 +101,7 @@ export default function CompanyManagement() {
     try {
       setLoading(true);
       const response = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`,
+        `${"/api/jobcy"}/admin/companies`,
         {
           headers: getAuthHeaders(),
         }
@@ -205,8 +205,8 @@ export default function CompanyManagement() {
     try {
       const url =
         modalMode === "create"
-          ? `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies`
-          : `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${selectedCompany?._id}`;
+          ? `${"/api/jobcy"}/admin/companies`
+          : `${"/api/jobcy"}/admin/companies/${selectedCompany?._id}`;
 
       const response = await fetch(url, {
         method: modalMode === "create" ? "POST" : "PUT",
@@ -243,7 +243,7 @@ export default function CompanyManagement() {
 
     try {
       const response = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/admin/companies/${companyId}`,
+        `${"/api/jobcy"}/admin/companies/${companyId}`,
         {
           method: "DELETE",
           headers: getAuthHeaders(),
@@ -296,7 +296,7 @@ export default function CompanyManagement() {
 
       // Fetch HRs for this company
       const hrsResponse = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/admin/hrs`,
+        `${"/api/jobcy"}/admin/hrs`,
         {
           headers: getAuthHeaders(),
         }
@@ -342,7 +342,7 @@ export default function CompanyManagement() {
 
       // Fetch all jobs using the general jobs endpoint (accessible to admin)
       const jobsResponse = await fetch(
-        `${"https://jobcy-job-portal.vercel.app/api"}/jobs`,
+        `${"/api/jobcy"}/jobs`,
         {
           headers: getAuthHeaders(),
         }
@@ -376,7 +376,7 @@ export default function CompanyManagement() {
         try {
           console.log(`📨 Fetching applications for job ${jobId}`);
           const appResponse = await fetch(
-            `${"https://jobcy-job-portal.vercel.app/api"}/jobs/${jobId}/applications`,
+            `${"/api/jobcy"}/jobs/${jobId}/applications`,
             {
               headers: getAuthHeaders(),
             }
@@ -418,7 +418,7 @@ export default function CompanyManagement() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => router.push("/admin/dashboard")}
+                onClick={() => router.push("/jobcy/admin/dashboard")}
                 className={`p-2 ${isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} rounded-lg transition-colors`}
               >
                 <ArrowLeft className="w-5 h-5" />

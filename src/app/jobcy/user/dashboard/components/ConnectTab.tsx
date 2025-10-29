@@ -117,7 +117,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
     try {
       // Fetch received requests
-      const receivedRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/received`, {
+      const receivedRes = await fetch(`${"/api/jobcy"}/connections/received`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (receivedRes.ok) {
@@ -126,7 +126,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       }
 
       // Fetch sent requests
-      const sentRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/sent`, {
+      const sentRes = await fetch(`${"/api/jobcy"}/connections/sent`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (sentRes.ok) {
@@ -135,7 +135,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       }
 
       // Fetch actual connections
-      const connectionsRes = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/connections`, {
+      const connectionsRes = await fetch(`${"/api/jobcy"}/connections/connections`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (connectionsRes.ok) {
@@ -225,7 +225,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     }
 
     try {
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/send`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -256,7 +256,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     if (!token) return;
 
     try {
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/${requestId}/accept`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/accept`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -288,7 +288,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     if (!token) return;
 
     try {
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/connections/${requestId}/reject`, {
+      const response = await fetch(`${"/api/jobcy"}/connections/${requestId}/reject`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

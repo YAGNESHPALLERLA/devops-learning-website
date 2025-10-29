@@ -11,6 +11,7 @@ interface ProfileEditModalProps {
   onClose: () => void;
   onSave: (profile: UserProfile) => Promise<{ success: boolean; message?: string }>;
   initialSection?: string;
+  onRefetch?: () => void;
 }
 
 interface EducationFormProps {
@@ -558,6 +559,7 @@ export default function ProfileEditModal({
   onClose,
   onSave,
   initialSection = "personal",
+  onRefetch,
 }: ProfileEditModalProps) {
   const [editingProfile, setEditingProfile] = useState<UserProfile>({ ...userProfile });
   const [activeSection, setActiveSection] = useState<string>(initialSection);
@@ -613,7 +615,7 @@ export default function ProfileEditModal({
   const addExperience = async (expData: Omit<Experience, 'id'>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience`, {
+      const response = await fetch(`${"/api/jobcy"}/experience`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -624,6 +626,11 @@ export default function ProfileEditModal({
       if (response.ok) {
         const newExp = await response.json();
         setModalExperience([...modalExperience, newExp]);
+        
+        // Refresh the main dashboard data
+        if (onRefetch) {
+          onRefetch();
+        }
       } else {
         alert("Failed to add experience");
       }
@@ -636,7 +643,7 @@ export default function ProfileEditModal({
   const updateExperience = async (id: string | number, expData: Partial<Experience>) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
+      const response = await fetch(`${"/api/jobcy"}/experience/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -660,7 +667,7 @@ export default function ProfileEditModal({
     if (!confirm("Are you sure you want to delete this experience entry?")) return;
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/experience/${id}`, {
+      const response = await fetch(`${"/api/jobcy"}/experience/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

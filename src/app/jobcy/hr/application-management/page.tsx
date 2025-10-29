@@ -103,7 +103,7 @@ export default function ApplicationsManagement() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/applications`, {
+        const response = await fetch(`${"/api/jobcy"}/hr/applications`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -335,7 +335,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/applications/${applicationId}/status`, {
+      const response = await fetch(`${"/api/jobcy"}/hr/applications/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -487,7 +487,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
               onClick={async () => {
                 try {
                   const token = localStorage.getItem("token");
-                  const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/resume/${application.userId}`, {
+                  const response = await fetch(`${"/api/jobcy"}/hr/resume/${application.userId}`, {
                     headers: {
                       Authorization: `Bearer ${token}`,
                     },
@@ -717,7 +717,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                   onClick={async () => {
                     try {
                       const token = localStorage.getItem("token");
-                      const response = await fetch(`${"https://jobcy-job-portal.vercel.app/api"}/hr/resume/${applicant.userId}`, {
+                      const response = await fetch(`${"/api/jobcy"}/hr/resume/${applicant.userId}`, {
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
