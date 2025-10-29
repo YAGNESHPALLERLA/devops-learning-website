@@ -398,11 +398,45 @@ export function useDashboardData() {
       );
       // Read as text first to avoid JSON parse errors when server returns HTML on error
       const raw = await res.text();
-      let data: any;
+      // Narrow response shape to avoid `any`
+      type ApiProfile = {
+        name?: string;
+        email?: string;
+        mobile?: string;
+        professionalRole?: string;
+        title?: string;
+        currentLocation?: string;
+        experience?: string;
+        currentCTC?: number | string;
+        bio?: string;
+        skills?: string[];
+        projects?: unknown[];
+        languages?: string[];
+        education?: Education[];
+        experienceList?: Experience[];
+        profileCompletion?: number;
+        connections?: number;
+        dob?: string;
+        gender?: string;
+        category?: string;
+        maritalStatus?: string;
+        nationality?: string;
+        resume?: { name?: string };
+        personalDetails?: Array<{
+          dob?: string;
+          gender?: string;
+          category?: string;
+          maritalStatus?: string;
+          nationality?: string;
+        }>;
+        message?: string;
+        error?: string;
+      };
+      let data: ApiProfile;
       try {
-        data = raw ? JSON.parse(raw) : {};
+        data = raw ? (JSON.parse(raw) as ApiProfile) : ({} as ApiProfile);
       } catch {
-        data = { error: raw };
+        data = { error: raw } as ApiProfile;
       }
       if (res.ok) {
         const mappedProfile: UserProfile = {
