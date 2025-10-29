@@ -9,6 +9,7 @@ import {
   Interview,
   UserProfile,
   Project,
+  Language,
 } from "@/app/jobcy/types/dashboard";
 import {
   mockProfile,
@@ -412,7 +413,7 @@ export function useDashboardData() {
         bio?: string;
         skills?: string[];
         projects?: Project[];
-        languages?: string[];
+        languages?: Language[];
         education?: Education[];
         experienceList?: Experience[];
         profileCompletion?: number;
@@ -451,7 +452,7 @@ export function useDashboardData() {
           bio: data.bio,
           skills: data.skills,
           projects: Array.isArray(data.projects) ? (data.projects as Project[]) : [],
-          languages: data.languages || [],
+          languages: Array.isArray(data.languages) ? (data.languages as Language[]) : [],
           education: data.education || [],
           experienceList: data.experienceList || [],
           profileCompletion: data.profileCompletion,
