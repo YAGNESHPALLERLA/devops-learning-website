@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
+import { ObjectId } from 'mongodb';
 
 export async function GET(_request: NextRequest) {
   try {
@@ -25,52 +26,76 @@ export async function GET(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
+    if (!db) {
+      return NextResponse.json({ 
+        error: 'Database connection failed', 
+        message: 'Unable to connect to database' 
+      }, { status: 500 });
+    }
+    
+    // Convert userId to ObjectId
+    let userId: ObjectId;
+    try {
+      userId = new ObjectId(decoded.id);
+    } catch {
+      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
+    }
+    
     // Get user applications
     let applications;
     try {
       applications = await db.collection('applications')
-        .find({ userId: decoded.id })
+        .find({ userId: userId })
         .sort({ appliedAt: -1 })
         .toArray();
     } catch (dbError) {
       console.error('Database error fetching applications:', dbError);
       return NextResponse.json({ 
         error: 'Database error', 
-        message: 'Failed to fetch applications from database' 
+        message: 'Failed to fetch applications from database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
       }, { status: 500 });
     }
     
     console.log('Found applications:', applications.length);
     
+    // If no applications, return empty array
+    if (!applications || applications.length === 0) {
+      return NextResponse.json([]);
+    }
+    
     // Populate applications with job details
     const populatedApplications = await Promise.all(
       applications.map(async (app) => {
-        const job = await db.collection('jobs').findOne({ _id: app.jobId });
-        const user = await db.collection('users').findOne({ _id: app.userId });
+        let job = null;
+        if (app.jobId) {
+          try {
+            const jobId = app.jobId instanceof ObjectId ? app.jobId : new ObjectId(app.jobId);
+            job = await db.collection('jobs').findOne({ _id: jobId });
+          } catch (e) {
+            console.error('Error fetching job for application:', e);
+          }
+        }
         
         return {
-          _id: app._id,
-          jobId: app.jobId,
-          userId: app.userId,
+          id: app._id?.toString(),
+          _id: app._id?.toString(),
+          jobId: app.jobId?.toString(),
+          userId: app.userId?.toString(),
           coverLetter: app.coverLetter,
-          status: app.status,
-          appliedAt: app.appliedAt,
+          status: app.status || 'applied',
+          appliedAt: app.appliedAt || app.createdAt,
           createdAt: app.createdAt,
           updatedAt: app.updatedAt,
           job: job ? {
-            _id: job._id,
+            id: job._id?.toString(),
+            _id: job._id?.toString(),
             title: job.title,
             company: job.company,
             location: job.location,
             salary: job.salary,
             type: job.type,
             description: job.description
-          } : null,
-          user: user ? {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            phone: user.phone
           } : null
         };
       })

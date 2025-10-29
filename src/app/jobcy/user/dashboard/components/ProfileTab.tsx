@@ -56,7 +56,7 @@ export default function ProfileTab({
         <div className="flex flex-col md:flex-row gap-6">
           {/* Profile Picture */}
           <div className="flex-shrink-0">
-            <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-32 h-32 bg-[var(--primary)] rounded-2xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-5xl">
                 {getInitial(userProfile.name)}
               </span>
@@ -74,17 +74,10 @@ export default function ProfileTab({
                 >
                   {userProfile.name}
                 </h1>
-                <p
-                  className={`text-lg ${
-                    isDark ? "text-slate-300" : "text-slate-700"
-                  } font-medium`}
-                >
-                  {userProfile.title}
-                </p>
               </div>
               <button
                 onClick={() => onEditProfile("personal")}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 font-medium"
+                className="bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 font-medium"
               >
                 <Edit className="w-4 h-4" />
                 <span>Edit</span>

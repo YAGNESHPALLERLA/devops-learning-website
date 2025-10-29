@@ -11,15 +11,7 @@ import {
   Project,
   Language,
 } from "@/app/jobcy/types/dashboard";
-import {
-  mockProfile,
-  mockEducation,
-  mockExperience,
-  mockJobs,
-  mockAppliedJobs,
-  mockConnections,
-  mockInterviews,
-} from "../utils/mockData";
+// Mock data removed - using real API data only
 
 type UserProfileUpdate = Partial<UserProfile>;
 
@@ -91,18 +83,6 @@ export function useDashboardData() {
   const [appliedJobs, setAppliedJobs] = useState<AppliedJob[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const [interviews, setInterviews] = useState<Interview[]>([]);
-  const [useMockData, setUseMockData] = useState(false);
-
-  // ✅ Helper for mock fallback
-  const applyMockData = () => {
-    setUserProfile(mockProfile);
-    setEducation(mockEducation);
-    setExperience(mockExperience);
-    setAllJobs(mockJobs);
-    setAppliedJobs(mockAppliedJobs);
-    setConnections(mockConnections);
-    setInterviews(mockInterviews);
-  };
 
   // ✅ Common function to fetch dashboard data (called on mount and token change)
   const fetchDashboardData = useCallback(async (token: string) => {
@@ -137,9 +117,7 @@ export function useDashboardData() {
 
       if (!profileRes.ok) {
         console.error("Profile fetch failed with status:", profileRes.status);
-        // Gracefully fallback to mock data instead of throwing to avoid UI crash
-        applyMockData();
-        setUseMockData(true);
+        // Show empty state instead of mock data
         setIsLoading(false);
         return;
       }
@@ -296,21 +274,7 @@ export function useDashboardData() {
       }
     } catch (error) {
       console.error("❌ Dashboard fetch error:", error);
-      
-      // Only apply mock data if we're actually a user (not HR/admin)
-      const userStr = localStorage.getItem("user");
-      if (userStr) {
-        try {
-          const user = JSON.parse(userStr);
-          if (user.role === "user") {
-            console.log("📊 Using mock data as fallback for user");
-            applyMockData();
-            setUseMockData(true);
-          }
-        } catch (parseError) {
-          console.error("Error parsing user:", parseError);
-        }
-      }
+      // Show empty state - no mock data fallback
     } finally {
       setIsLoading(false);
     }
@@ -321,8 +285,7 @@ export function useDashboardData() {
     const token =
       localStorage.getItem("token") || localStorage.getItem("userToken");
     if (!token) {
-      applyMockData();
-      setUseMockData(true);
+      // No token - show empty state, redirect handled elsewhere
       setIsLoading(false);
       return;
     }
@@ -486,7 +449,6 @@ export function useDashboardData() {
     connections,
     interviews,
     updateProfile,
-    useMockData,
     handleJobApplication,
     refetch: () => {
       const token = localStorage.getItem("token") || localStorage.getItem("userToken");

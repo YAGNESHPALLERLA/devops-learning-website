@@ -44,7 +44,8 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         return;
       }
 
-      const response = await fetch(`${"/api/jobcy"}/users/applications`, {
+      // Correct endpoint: singular 'user'
+      const response = await fetch(`${"/api/jobcy"}/user/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,9 +53,51 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
 
       if (response.ok) {
         const data = await response.json();
-        setAppliedJobs(data);
+        // Normalize shape to array
+        const dataObj = data as Record<string, unknown>;
+        const items = Array.isArray(data)
+          ? data
+          : Array.isArray(dataObj.items)
+          ? dataObj.items
+          : Array.isArray(dataObj.applications)
+          ? dataObj.applications
+          : [];
+        setAppliedJobs(
+          items.map((it: Record<string, unknown>) => {
+            const job = it.job as Record<string, unknown> | undefined;
+            const status = typeof it.status === 'string' ? it.status : '';
+            return {
+              id: String(it.id || it._id || Math.random()),
+              jobId: String(it.jobId || job?.id || job?._id || ""),
+              title: String(it.title || job?.title || ""),
+              company: String(it.company || job?.company || ""),
+              location: String(it.location || job?.location || ""),
+              salary: it.salary ? String(it.salary) : undefined,
+              status:
+                status === "rejected"
+                  ? "Rejected"
+                  : status === "accepted" || status === "offered"
+                  ? "Accepted"
+                  : status.toLowerCase().includes("interview")
+                  ? "Interview"
+                  : status.toLowerCase().includes("review")
+                  ? "Under Review"
+                  : "Applied" as const,
+              appliedDate: String(it.appliedAt || it.createdAt || new Date().toISOString()),
+              type: it.type ? String(it.type) : (job?.type ? String(job.type) : undefined),
+            };
+          })
+        );
+        setError(""); // Clear error on success
       } else {
-        setError("Failed to fetch applied jobs");
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.message || `Failed to fetch applied jobs (${response.status})`;
+        setError(errorMessage);
+        // If 401, redirect to login
+        if (response.status === 401) {
+          localStorage.removeItem("token");
+          window.location.href = "/jobcy/user/auth/login";
+        }
       }
     } catch (err) {
       console.error("Error fetching applied jobs:", err);
@@ -67,17 +110,17 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Applied":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400";
+        return "bg-[var(--primary-light)]/20 text-[var(--primary)] border border-[var(--primary)]/30";
       case "Under Review":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400";
+        return "bg-[var(--warning)]/20 text-[var(--warning)] border border-[var(--warning)]/30";
       case "Interview":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400";
+        return "bg-[var(--primary)]/20 text-[var(--primary)] border border-[var(--primary)]/30";
       case "Accepted":
-        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+        return "bg-green-500/20 text-green-400 border border-green-500/30";
       case "Rejected":
-        return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400";
+        return "bg-[var(--danger-light)]/20 text-[var(--danger-light)] border border-[var(--danger-light)]/30";
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
+        return "bg-[var(--surface-secondary)] text-[var(--foreground-muted)] border border-[var(--border)]";
     }
   };
 
@@ -103,8 +146,8 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
       <div className="flex items-center justify-center py-16">
         <div className="text-center">
           <div className="relative">
-            <div className="w-16 h-16 border-4 border-blue-200 dark:border-blue-900 rounded-full"></div>
-            <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+            <div className="w-16 h-16 border-4 border-[var(--primary)]/20 rounded-full"></div>
+            <div className="w-16 h-16 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
           </div>
           <p className={`mt-4 text-lg font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}>
             Loading your applications...
@@ -130,7 +173,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
         </p>
         <button
           onClick={fetchAppliedJobs}
-          className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+          className="mt-4 px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-lg transition-colors"
         >
           Try Again
         </button>

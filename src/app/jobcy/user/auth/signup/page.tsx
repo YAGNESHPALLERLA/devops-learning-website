@@ -290,20 +290,20 @@ export default function SignupPage() {
 
   if (currentStep === 2) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4">
-        <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-lg border p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)] p-4">
+        <div className="w-full max-w-md bg-[var(--surface)] rounded-xl shadow-lg border border-[var(--border)] p-8">
+          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4 text-center">
             Select Career Level
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 text-center">
+          <p className="text-[var(--foreground-muted)] mb-6 text-center">
             Tell us about your professional experience.
           </p>
           <div className="space-y-4 mb-6">
             <button
               className={`w-full py-3 rounded-lg border-2 transition-colors ${
                 careerLevel === "fresher"
-                  ? "border-blue-600 bg-blue-50 text-blue-700 font-semibold"
-                  : "border-gray-200 hover:border-blue-400"
+                  ? "border-[var(--primary)] bg-[var(--surface-secondary)] text-[var(--primary)] font-semibold"
+                  : "border-[var(--border)] hover:border-[var(--primary)]"
               }`}
               onClick={() => setCareerLevel("fresher")}
               disabled={isSubmitting}
@@ -313,8 +313,8 @@ export default function SignupPage() {
             <button
               className={`w-full py-3 rounded-lg border-2 transition-colors ${
                 careerLevel === "experienced"
-                  ? "border-blue-600 bg-blue-50 text-blue-700 font-semibold"
-                  : "border-gray-200 hover:border-blue-400"
+                  ? "border-[var(--primary)] bg-[var(--surface-secondary)] text-[var(--primary)] font-semibold"
+                  : "border-[var(--border)] hover:border-[var(--primary)]"
               }`}
               onClick={() => setCareerLevel("experienced")}
               disabled={isSubmitting}
@@ -323,7 +323,7 @@ export default function SignupPage() {
             </button>
           </div>
           {errors.general && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-red-600 text-sm flex items-center space-x-2">
+            <div className="bg-[var(--surface-secondary)] border border-[var(--danger)] rounded-lg p-4 mb-4 text-[var(--danger-light)] text-sm flex items-center space-x-2">
               <AlertCircle className="w-5 h-5" />
               <span>{errors.general}</span>
             </div>
@@ -331,7 +331,7 @@ export default function SignupPage() {
           <button
             onClick={handleCareerSubmit}
             disabled={isSubmitting || !careerLevel}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] disabled:bg-[var(--foreground-dim)] text-white font-semibold py-2.5 px-4 rounded-lg transition-colors"
           >
             {isSubmitting ? "Creating Account..." : "Complete Registration"}
           </button>
@@ -341,21 +341,21 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-600 rounded-lg mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--primary)] rounded-lg mb-4">
             <UserPlus className="w-7 h-7 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
             Create Your Account
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-[var(--foreground-muted)]">
             Start your professional journey today
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border p-8">
+        <div className="bg-[var(--surface)] rounded-xl shadow-lg border border-[var(--border)] p-8">
           <form onSubmit={handleStep1Submit} className="space-y-5">
             {errors.general && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start space-x-3">

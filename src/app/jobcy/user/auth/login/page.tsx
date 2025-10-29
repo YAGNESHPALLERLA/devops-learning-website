@@ -96,30 +96,30 @@ export default function UserLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-600 dark:bg-blue-500 rounded-lg mb-4 shadow-sm">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--primary)] rounded-lg mb-4 shadow-sm">
             <LogIn className="w-7 h-7 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
             Welcome Back
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-[var(--foreground-muted)]">
             Sign in to continue to your dashboard
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-8">
+        <div className="bg-[var(--surface)] rounded-xl shadow-lg border border-[var(--border)] p-8">
           <div className="space-y-5">
             {loginError && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start space-x-3">
-                <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 mt-0.5 flex-shrink-0" />
+              <div className="bg-[var(--surface-secondary)] border border-[var(--danger)] rounded-lg p-4 flex items-start space-x-3">
+                <AlertCircle className="w-5 h-5 text-[var(--danger-light)] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-red-800 dark:text-red-300 text-sm font-medium">
+                  <p className="text-[var(--foreground)] text-sm font-medium">
                     Sign In Failed
                   </p>
-                  <p className="text-red-600 dark:text-red-400 text-sm">
+                  <p className="text-[var(--danger-light)] text-sm">
                     {loginError}
                   </p>
                 </div>
@@ -129,7 +129,7 @@ export default function UserLogin() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-sm font-semibold text-[var(--foreground)] mb-2"
               >
                 Email Address
               </label>
@@ -140,18 +140,18 @@ export default function UserLogin() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-[var(--surface-secondary)] text-[var(--foreground)] placeholder:text-[var(--foreground-dim)] focus:bg-[var(--surface-tertiary)] focus:outline-none transition-colors ${
                     errors.email
-                      ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
-                      : "border-slate-300 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900/50"
+                      ? "border-[var(--danger)] focus:border-[var(--danger-light)] focus:ring-2 focus:ring-[var(--danger)]/20"
+                      : "border-[var(--border)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20"
                   }`}
                   placeholder="john.doe@example.com"
                   disabled={isLoading}
                 />
-                <Mail className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Mail className="w-5 h-5 text-[var(--foreground-dim)] absolute left-3 top-1/2 transform -translate-y-1/2" />
               </div>
               {errors.email && (
-                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-[var(--danger-light)] flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.email}</span>
                 </p>
@@ -161,7 +161,7 @@ export default function UserLogin() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-sm font-semibold text-[var(--foreground)] mb-2"
               >
                 Password
               </label>
@@ -172,19 +172,19 @@ export default function UserLogin() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-[var(--surface-secondary)] text-[var(--foreground)] placeholder:text-[var(--foreground-dim)] focus:bg-[var(--surface-tertiary)] focus:outline-none transition-colors ${
                     errors.password
-                      ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
-                      : "border-slate-300 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900/50"
+                      ? "border-[var(--danger)] focus:border-[var(--danger-light)] focus:ring-2 focus:ring-[var(--danger)]/20"
+                      : "border-[var(--border)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20"
                   }`}
                   placeholder="Enter your password"
                   disabled={isLoading}
                 />
-                <Lock className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Lock className="w-5 h-5 text-[var(--foreground-dim)] absolute left-3 top-1/2 transform -translate-y-1/2" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--foreground-dim)] hover:text-[var(--foreground)] transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? (
@@ -195,7 +195,7 @@ export default function UserLogin() {
                 </button>
               </div>
               {errors.password && (
-                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-[var(--danger-light)] flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.password}</span>
                 </p>
@@ -205,7 +205,7 @@ export default function UserLogin() {
             <div className="flex items-center justify-end">
               <a
                 href="#"
-                className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+                className="text-sm text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition-colors"
               >
                 Forgot password?
               </a>
@@ -214,7 +214,7 @@ export default function UserLogin() {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 dark:bg-blue-500 dark:hover:bg-blue-600 dark:disabled:bg-blue-800 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 disabled:cursor-not-allowed shadow-sm"
+              className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] disabled:bg-[var(--foreground-dim)] text-white font-semibold py-2.5 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 disabled:cursor-not-allowed shadow-sm"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -227,48 +227,48 @@ export default function UserLogin() {
             </button>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+          <div className="mt-6 pt-6 border-t border-[var(--border)]">
             <div className="grid grid-cols-2 gap-3">
               <div className="flex items-start space-x-2">
-                <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <Briefcase className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
+                  <p className="text-xs font-semibold text-[var(--foreground)]">
                     10,000+ Jobs
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-[var(--foreground-muted)]">
                     Active openings
                   </p>
                 </div>
               </div>
               <div className="flex items-start space-x-2">
-                <Building2 className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <Building2 className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
+                  <p className="text-xs font-semibold text-[var(--foreground)]">
                     500+ Companies
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-[var(--foreground-muted)]">
                     Hiring now
                   </p>
                 </div>
               </div>
               <div className="flex items-start space-x-2">
-                <Users className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <Users className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
+                  <p className="text-xs font-semibold text-[var(--foreground)]">
                     50,000+ Users
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-[var(--foreground-muted)]">
                     Trust our platform
                   </p>
                 </div>
               </div>
               <div className="flex items-start space-x-2">
-                <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <TrendingUp className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
+                  <p className="text-xs font-semibold text-[var(--foreground)]">
                     95% Success
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-[var(--foreground-muted)]">
                     Placement rate
                   </p>
                 </div>
@@ -277,11 +277,11 @@ export default function UserLogin() {
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-slate-600 dark:text-slate-400">
+            <p className="text-sm text-[var(--foreground-muted)]">
               New to our platform?{" "}
               <a
                 href="/jobcy/user/auth/signup"
-                className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors"
+                className="text-[var(--primary)] hover:text-[var(--primary-dark)] font-semibold transition-colors"
               >
                 Create Account
               </a>
@@ -290,7 +290,7 @@ export default function UserLogin() {
         </div>
 
         <div className="text-center mt-6">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-[var(--foreground-dim)]">
             © 2024 Job Portal. Connecting talent with opportunity.
           </p>
         </div>

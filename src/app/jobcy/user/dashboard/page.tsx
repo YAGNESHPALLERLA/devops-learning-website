@@ -1,4 +1,4 @@
-// src/app/user/dashboard/page.tsx
+// src/app/jobcy/user/dashboard/page.tsx - MODERN REDESIGN
 "use client";
 
 import { SetStateAction, useState, useEffect } from "react";
@@ -7,27 +7,34 @@ import {
   Bell,
   Settings,
   LogOut,
-  Search,
   Menu,
   X,
   ChevronDown,
+  TrendingUp,
+  Calendar,
+  Users,
+  FileCheck,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-import { useDashboardData } from "../../user/dashboard/hooks/useDashboardData";
-import Sidebar from "../../user/dashboard/components/Sidebar";
-import ProfileTab from "../../user/dashboard/components/ProfileTab";
-import JobsTab from "../../user/dashboard/components/JobsTab";
-import AppliedJobsTab from "../../user/dashboard/components/AppliedJobsTab";
-import ConnectTab from "../../user/dashboard/components/ConnectTab";
-import ConnectionRequestsTab from "../../user/dashboard/components/ConnectionRequestsTab";
-import InterviewsTab from "../../user/dashboard/components/InterviewsTab";
-import ProfileEditModal from "../../user/dashboard/components/ProfileEditModal";
+import { useDashboardData } from "./hooks/useDashboardData";
+import Sidebar from "./components/Sidebar";
+import ProfileTab from "./components/ProfileTab";
+import JobsTab from "./components/JobsTab";
+import AppliedJobsTab from "./components/AppliedJobsTab";
+import ConnectTab from "./components/ConnectTab";
+import ConnectionRequestsTab from "./components/ConnectionRequestsTab";
+import InterviewsTab from "./components/InterviewsTab";
+import ProfileEditModal from "./components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
-
+import { ApplicationTracker } from "./components/ApplicationTracker";
+import { StatsCard } from "../../components/ui/StatsCard";
+import { Card } from "../../components/ui/Card";
 import { UserProfile } from "@/app/jobcy/types/dashboard";
 
 export default function JobSeekerDashboard() {
-  const [activeTab, setActiveTab] = useState("profile");
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState("dashboard");
   const [isDark, setIsDark] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [profileModalSection, setProfileModalSection] = useState<string>("personal");
@@ -43,11 +50,11 @@ export default function JobSeekerDashboard() {
         if (user.role !== "user") {
           console.log("⚠️ Unauthorized access to user dashboard. Redirecting...");
           if (user.role === "hr") {
-            window.location.href = "/hr/dashboard";
+            window.location.href = "/jobcy/hr/dashboard";
           } else if (user.role === "admin") {
-            window.location.href = "/admin/dashboard";
+            window.location.href = "/jobcy/admin/dashboard";
           } else {
-            window.location.href = "/user/auth/login";
+            window.location.href = "/jobcy/user/auth/login";
           }
         }
       } catch (error) {
@@ -56,16 +63,23 @@ export default function JobSeekerDashboard() {
     }
   }, []);
 
+  // Theme detection
+  useEffect(() => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDark(prefersDark);
+    document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+  }, []);
+
   const {
     isLoading,
     userProfile,
     education,
     experience,
     allJobs,
+    appliedJobs,
     connections,
     interviews,
     updateProfile,
-    handleJobApplication,
     refetch,
   } = useDashboardData();
 
@@ -76,22 +90,68 @@ export default function JobSeekerDashboard() {
     if (confirm("Are you sure you want to logout?")) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      window.location.href = "/user/auth/login";
+      router.push("/jobcy/user/auth/login");
     }
   };
 
+  // Calculate stats
+  const stats = {
+    applications: appliedJobs?.length || 0,
+    interviews: interviews?.length || 0,
+    connections: connections?.length || 0,
+    savedJobs: 0, // TODO: Add saved jobs feature
+  };
+
+  // Transform applied jobs for Application Tracker
+  const normalizeStatus = (status: string | undefined): "applied" | "review" | "interview" | "offered" | "rejected" => {
+    if (!status) return "applied";
+    const normalized = status.toLowerCase().replace(/\s+/g, '').replace(/_/g, '');
+    if (normalized.includes('reject')) return "rejected";
+    if (normalized.includes('offer') || normalized.includes('accept')) return "offered";
+    if (normalized.includes('interview')) return "interview";
+    if (normalized.includes('review')) return "review";
+    return "applied";
+  };
+
+  interface AppliedJobData {
+    id?: string;
+    _id?: string;
+    status?: string;
+    appliedAt?: string;
+    createdAt?: string;
+    interviewDate?: string;
+    job?: {
+      title?: string;
+      company?: string;
+      location?: string;
+    };
+    title?: string;
+    company?: string;
+    location?: string;
+  }
+
+  const trackerApplications = (appliedJobs || []).map((app: AppliedJobData) => ({
+    id: String(app.id || app._id || Math.random()),
+    jobTitle: app.job?.title || app.title || "Unknown Position",
+    company: app.job?.company || app.company || "Unknown Company",
+    status: normalizeStatus(app.status),
+    appliedDate: app.appliedAt || app.createdAt || new Date().toISOString(),
+    interviewDate: app.interviewDate,
+    location: app.job?.location || app.location,
+  }));
+
   if (isLoading) {
     return (
-      <div className={`min-h-screen ${isDark ? "bg-slate-900" : "bg-slate-50"} flex items-center justify-center`}>
+      <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
         <div className="text-center">
           <div className="relative">
-            <div className="w-20 h-20 border-4 border-blue-200 dark:border-blue-900 rounded-full"></div>
-            <div className="w-20 h-20 border-4 border-blue-600 border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+            <div className="w-20 h-20 border-4 border-[var(--primary)]/20 rounded-full"></div>
+            <div className="w-20 h-20 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
           </div>
-          <p className={`mt-6 text-lg font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+          <p className="mt-6 text-lg font-medium text-[var(--foreground)]">
             Loading your dashboard...
           </p>
-          <p className={`mt-2 text-sm ${isDark ? "text-slate-500" : "text-slate-500"}`}>
+          <p className="mt-2 text-sm text-[var(--foreground-dim)]">
             Please wait while we fetch your data
           </p>
         </div>
@@ -100,74 +160,54 @@ export default function JobSeekerDashboard() {
   }
 
   return (
-    <div className={`min-h-screen ${isDark ? "bg-slate-900" : "bg-slate-50"}`}>
-      {/* Header */}
-      <header className={`${isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"} border-b sticky top-0 z-50 shadow-sm`}>
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      {/* Modern Header */}
+      <header className="sticky top-0 z-50 w-full border-b bg-[var(--surface)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--surface)]/80 border-[color:var(--border)] shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            {/* Left: Logo & Menu */}
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className={`lg:hidden p-2 rounded-lg ${isDark ? "hover:bg-slate-700" : "hover:bg-slate-100"}`}
+                className="lg:hidden p-2 rounded-lg hover:bg-[var(--surface-secondary)] transition-colors"
               >
-                {showMobileMenu ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {showMobileMenu ? (
+                  <X className="w-5 h-5 text-[var(--foreground)]" />
+                ) : (
+                  <Menu className="w-5 h-5 text-[var(--foreground)]" />
+                )}
               </button>
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              
+              <div 
+                className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => router.push("/jobcy/")}
+              >
+                <div className="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center shadow-lg">
                   <Briefcase className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <h1 className={`text-xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Jobcy</h1>
-                  <p className={`text-xs ${isDark ? "text-slate-400" : "text-slate-600"}`}>Find Your Dream Job</p>
+                <div className="hidden sm:block">
+                  <h1 className="text-xl font-bold text-[var(--foreground)]">Jobcy</h1>
+                  <p className="text-xs text-[var(--foreground-dim)]">Find Your Dream Job</p>
                 </div>
               </div>
             </div>
 
-            {/* Search */}
-            <div className="hidden md:flex flex-1 max-w-lg mx-8">
-              <div className={`relative w-full ${isDark ? "bg-slate-700" : "bg-slate-100"} rounded-xl`}>
-                <Search className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${isDark ? "text-slate-400" : "text-slate-500"}`} />
-                <input
-                  type="text"
-                  placeholder="Search jobs, companies, skills..."
-                  className={`w-full pl-12 pr-4 py-2.5 bg-transparent border-none focus:outline-none ${
-                    isDark ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400"
-                  }`}
-                />
-              </div>
-            </div>
 
-            {/* Actions */}
+            {/* Right: Actions */}
             <div className="flex items-center space-x-2">
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className={`p-2.5 rounded-xl transition-all ${
-                  isDark ? "bg-slate-700 text-yellow-400 hover:bg-slate-600" : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                }`}
-                title={isDark ? "Light Mode" : "Dark Mode"}
-              >
-                {isDark ? "☀️" : "🌙"}
-              </button>
-
               {/* Notifications */}
               <button
                 onClick={() => setActiveTab("notifications")}
-                className={`relative p-2.5 rounded-xl transition-colors ${
-                  isDark ? "text-slate-400 hover:bg-slate-700 hover:text-white" : "text-slate-600 hover:bg-slate-100"
-                }`}
+                className="relative p-2.5 rounded-xl bg-[var(--surface-secondary)] text-[var(--foreground-muted)] hover:bg-[var(--surface-tertiary)] hover:text-[var(--foreground)] transition-colors"
                 title="Notifications"
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                <span className="absolute top-1 right-1 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
               </button>
 
               {/* Settings */}
               <button
-                className={`p-2.5 rounded-xl transition-colors ${
-                  isDark ? "text-slate-400 hover:bg-slate-700 hover:text-white" : "text-slate-600 hover:bg-slate-100"
-                }`}
+                className="p-2.5 rounded-xl bg-[var(--surface-secondary)] text-[var(--foreground-muted)] hover:bg-[var(--surface-tertiary)] hover:text-[var(--foreground)] transition-colors"
                 title="Settings"
               >
                 <Settings className="w-5 h-5" />
@@ -177,45 +217,44 @@ export default function JobSeekerDashboard() {
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className={`flex items-center space-x-3 px-3 py-2 rounded-xl transition-colors ${isDark ? "hover:bg-slate-700" : "hover:bg-slate-100"}`}
+                  className="flex items-center space-x-3 px-3 py-2 rounded-xl hover:bg-[var(--surface-secondary)] transition-colors"
                 >
-                  <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold text-sm">{getInitial(userProfile.name)}</span>
+                  <div className="w-9 h-9 bg-[var(--primary)] rounded-lg flex items-center justify-center text-white text-sm font-semibold shadow-md">
+                    {getInitial(userProfile.name)}
                   </div>
                   <div className="hidden md:block text-left">
-                    <p className={`font-semibold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>{userProfile.name}</p>
-                    <p className={`text-xs ${isDark ? "text-slate-400" : "text-slate-600"}`}>{userProfile.title || "Job Seeker"}</p>
+                    <p className="text-sm font-semibold text-[var(--foreground)]">
+                      {userProfile.name}
+                    </p>
                   </div>
-                  <ChevronDown className={`w-4 h-4 hidden md:block ${isDark ? "text-slate-400" : "text-slate-600"}`} />
+                  <ChevronDown className="w-4 h-4 hidden md:block text-[var(--foreground-dim)]" />
                 </button>
 
                 {showUserMenu && (
-                  <div className={`absolute right-0 mt-2 w-56 ${isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"} border rounded-xl shadow-xl py-2 z-50`}>
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700">
-                      <p className={`font-semibold ${isDark ? "text-white" : "text-slate-900"}`}>{userProfile.name}</p>
-                      <p className={`text-xs ${isDark ? "text-slate-400" : "text-slate-600"}`}>{userProfile.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-xl py-2 z-50">
+                    <div className="px-4 py-3 border-b border-[var(--border)]">
+                      <p className="font-semibold text-[var(--foreground)]">{userProfile.name}</p>
+                      <p className="text-xs text-[var(--foreground-dim)]">{userProfile.email}</p>
                     </div>
                     <button
                       onClick={() => {
                         setShowProfileModal(true);
                         setShowUserMenu(false);
                       }}
-                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${isDark ? "text-slate-300 hover:bg-slate-700" : "text-slate-700 hover:bg-slate-100"}`}
+                      className="w-full text-left px-4 py-2.5 text-sm text-[var(--foreground)] hover:bg-[var(--surface-secondary)] transition-colors"
                     >
                       View Profile
                     </button>
-                    <button className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${isDark ? "text-slate-300 hover:bg-slate-700" : "text-slate-700 hover:bg-slate-100"}`}>
+                    <button className="w-full text-left px-4 py-2.5 text-sm text-[var(--foreground)] hover:bg-[var(--surface-secondary)] transition-colors">
                       Account Settings
                     </button>
-                    <div className="border-t border-slate-200 dark:border-slate-700 my-2"></div>
+                    <div className="border-t border-[var(--border)] my-2"></div>
                     <button
                       onClick={handleLogout}
-                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${isDark ? "text-red-400 hover:bg-red-900/20" : "text-red-600 hover:bg-red-50"}`}
+                      className="w-full text-left px-4 py-2.5 text-sm text-[var(--danger-light)] hover:bg-[var(--danger)]/10 transition-colors flex items-center space-x-2"
                     >
-                      <div className="flex items-center space-x-2">
-                        <LogOut className="w-4 h-4" />
-                        <span>Logout</span>
-                      </div>
+                      <LogOut className="w-4 h-4" />
+                      <span>Logout</span>
                     </button>
                   </div>
                 )}
@@ -227,6 +266,7 @@ export default function JobSeekerDashboard() {
 
       {/* Body */}
       <div className="flex">
+        {/* Sidebar */}
         <div className={`${showMobileMenu ? "block" : "hidden"} lg:block`}>
           <Sidebar
             activeTab={activeTab}
@@ -240,22 +280,96 @@ export default function JobSeekerDashboard() {
           />
         </div>
 
-        <main className="flex-1 p-6 overflow-x-hidden">
-          {/* Mobile Search */}
-          <div className="md:hidden mb-6">
-            <div className={`relative w-full ${isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"} border rounded-xl`}>
-              <Search className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${isDark ? "text-slate-400" : "text-slate-500"}`} />
-              <input
-                type="text"
-                placeholder="Search jobs..."
-                className={`w-full pl-12 pr-4 py-3 bg-transparent border-none focus:outline-none ${
-                  isDark ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400"
-                }`}
-              />
-            </div>
-          </div>
+        {/* Main Content */}
+        <main className="flex-1 p-6 lg:p-8 overflow-x-hidden max-w-7xl mx-auto w-full">
 
-          {/* Tabs */}
+          {/* Dashboard Overview Tab */}
+          {activeTab === "dashboard" && (
+            <div className="space-y-6 animate-fadeIn">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <StatsCard
+                  title="Applications Sent"
+                  value={stats.applications}
+                  icon={<Briefcase className="w-6 h-6" />}
+                  trend={{ value: 12, label: "this month", positive: true }}
+                />
+                <StatsCard
+                  title="Interviews Scheduled"
+                  value={stats.interviews}
+                  icon={<Calendar className="w-6 h-6" />}
+                  trend={{ value: 8, label: "upcoming", positive: true }}
+                />
+                <StatsCard
+                  title="Connections"
+                  value={stats.connections}
+                  icon={<Users className="w-6 h-6" />}
+                  trend={{ value: 15, label: "new", positive: true }}
+                />
+                <StatsCard
+                  title="Profile Views"
+                  value={userProfile.profileCompletion || 0}
+                  icon={<TrendingUp className="w-6 h-6" />}
+                  trend={{ value: 23, label: "this week", positive: true }}
+                />
+              </div>
+
+              {/* Application Tracker */}
+              <ApplicationTracker applications={trackerApplications} />
+
+              {/* Quick Actions */}
+              <Card variant="elevated">
+                <div className="p-6">
+                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-4">Quick Actions</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button
+                      onClick={() => setActiveTab("jobs")}
+                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                    >
+                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <Briefcase className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="font-semibold text-[var(--foreground)] mb-1">Find Jobs</h3>
+                      <p className="text-sm text-[var(--foreground-muted)]">
+                        Browse available positions
+                      </p>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setProfileModalSection("personal");
+                        setShowProfileModal(true);
+                      }}
+                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                    >
+                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <FileCheck className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="font-semibold text-[var(--foreground)] mb-1">
+                        Complete Profile
+                      </h3>
+                      <p className="text-sm text-[var(--foreground-muted)]">
+                        {userProfile.profileCompletion || 0}% complete
+                      </p>
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("connect")}
+                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                    >
+                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <Users className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="font-semibold text-[var(--foreground)] mb-1">Network</h3>
+                      <p className="text-sm text-[var(--foreground-muted)]">
+                        Connect with professionals
+                      </p>
+                    </button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
+
+          {/* Other Tabs */}
           {activeTab === "profile" && (
             <ProfileTab
               userProfile={userProfile}
@@ -277,7 +391,9 @@ export default function JobSeekerDashboard() {
             />
           )}
 
-          {activeTab === "applied" && <AppliedJobsTab isDark={isDark} />}
+          {activeTab === "applied" && (
+            <AppliedJobsTab isDark={isDark} />
+          )}
 
           {activeTab === "connect" && <ConnectTab connections={connections} isDark={isDark} />}
 
@@ -287,16 +403,18 @@ export default function JobSeekerDashboard() {
 
           {activeTab === "interviews" && interviews.length > 0 && (
             <InterviewsTab
-  interviews={interviews.map((i) => ({
-    ...i,
-    id: String(i.id),
-    jobId: i.jobId !== undefined ? String(i.jobId) : undefined, // <-- convert jobId to string
-  }))}
-  isDark={isDark}
-/>
+              interviews={interviews.map((i) => ({
+                ...i,
+                id: String(i.id),
+                jobId: i.jobId !== undefined ? String(i.jobId) : undefined,
+              }))}
+              isDark={isDark}
+            />
           )}
           {activeTab === "interviews" && interviews.length === 0 && (
-            <div className="text-center mt-16 text-slate-500 dark:text-slate-400">No interviews scheduled yet.</div>
+            <div className="text-center mt-16 text-[var(--foreground-dim)]">
+              No interviews scheduled yet.
+            </div>
           )}
         </main>
       </div>
@@ -311,7 +429,6 @@ export default function JobSeekerDashboard() {
           onClose={() => setShowProfileModal(false)}
           onRefetch={refetch}
           onSave={async (data: Partial<UserProfile>) => {
-            // normalize optional fields to satisfy types
             const normalizedData: Partial<UserProfile> = {
               ...data,
               education: data.education?.map((e) => ({ ...e, endDate: e.endDate || "" })),
@@ -327,8 +444,15 @@ export default function JobSeekerDashboard() {
       )}
 
       {/* Overlays */}
-      {showMobileMenu && <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30" onClick={() => setShowMobileMenu(false)}></div>}
-      {showUserMenu && <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)}></div>}
+      {showMobileMenu && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+          onClick={() => setShowMobileMenu(false)}
+        ></div>
+      )}
+      {showUserMenu && (
+        <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)}></div>
+      )}
     </div>
   );
 }

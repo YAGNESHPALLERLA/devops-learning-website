@@ -46,6 +46,7 @@ export default function Sidebar({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const navItems: NavItem[] = [
+    { id: "dashboard", label: "Dashboard", icon: TrendingUp },
     { id: "profile", label: "My Profile", icon: User },
     { id: "jobs", label: "Find Jobs", icon: Briefcase },
     { id: "applied", label: "Applied Jobs", icon: CheckSquare },
@@ -68,8 +69,8 @@ export default function Sidebar({
 
   const getCompletionColor = (percentage: number) => {
     if (percentage >= 80) return "bg-green-500";
-    if (percentage >= 50) return "bg-yellow-500";
-    return "bg-orange-500";
+    if (percentage >= 50) return "bg-[var(--primary)]";
+    return "bg-[var(--primary)]";
   };
 
   const getCompletionMessage = (percentage: number) => {
@@ -81,20 +82,12 @@ export default function Sidebar({
   return (
     <>
       <aside
-        className={`${isExpanded ? "w-72" : "w-20"} ${
-          isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"
-        } border-r min-h-[calc(100vh-73px)] sticky top-[73px] flex flex-col transition-all duration-300 ease-in-out relative`}
+        className={`${isExpanded ? "w-72" : "w-20"} bg-[var(--surface)] border-[var(--border)] border-r min-h-[calc(100vh-73px)] sticky top-[73px] flex flex-col transition-all duration-300 ease-in-out relative`}
       >
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`absolute -right-3 top-6 w-6 h-6 rounded-full ${
-            isDark
-              ? "bg-slate-700 hover:bg-slate-600"
-              : "bg-white hover:bg-slate-100"
-          } border ${
-            isDark ? "border-slate-600" : "border-slate-300"
-          } flex items-center justify-center shadow-lg transition-all z-10`}
+          className="absolute -right-3 top-6 w-6 h-6 rounded-full bg-[var(--surface-secondary)] hover:bg-[var(--surface-tertiary)] border border-[var(--border)] flex items-center justify-center shadow-lg transition-all z-10 text-[var(--foreground)]"
         >
           {isExpanded ? (
             <ChevronLeft className="w-4 h-4" />
@@ -105,9 +98,7 @@ export default function Sidebar({
 
         {/* Profile Card */}
         <div
-          className={`p-4 border-b ${
-            isDark ? "border-slate-700" : "border-slate-200"
-          }`}
+          className="p-4 border-b border-[var(--border)]"
         >
           <div
             className={`flex items-center ${
@@ -117,7 +108,7 @@ export default function Sidebar({
             <div
               className={`${
                 isExpanded ? "w-12 h-12" : "w-10 h-10"
-              } bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0 transition-all`}
+              } bg-[var(--primary)] rounded-xl flex items-center justify-center shadow-md flex-shrink-0 transition-all`}
             >
               <span
                 className={`text-white font-bold ${
@@ -130,19 +121,10 @@ export default function Sidebar({
             {isExpanded && (
               <div className="flex-1 min-w-0 animate-fade-in">
                 <h3
-                  className={`font-semibold truncate ${
-                    isDark ? "text-white" : "text-slate-900"
-                  }`}
+                  className="font-semibold truncate text-[var(--foreground)]"
                 >
                   {userProfile.name || "User"}
                 </h3>
-                <p
-                  className={`text-xs truncate ${
-                    isDark ? "text-slate-400" : "text-slate-600"
-                  }`}
-                >
-                  {userProfile.title || "Professional"}
-                </p>
               </div>
             )}
           </div>
@@ -151,55 +133,39 @@ export default function Sidebar({
           {isExpanded && (
             <div className="grid grid-cols-2 gap-3 animate-fade-in">
               <div
-                className={`${
-                  isDark ? "bg-slate-700" : "bg-slate-50"
-                } rounded-lg p-3`}
+                className="bg-[var(--surface-secondary)] rounded-lg p-3"
               >
                 <div className="flex items-center justify-between mb-1">
                   <TrendingUp
-                    className={`w-4 h-4 ${
-                      isDark ? "text-blue-400" : "text-blue-600"
-                    }`}
+                    className="w-4 h-4 text-[var(--primary)]"
                   />
                   <span
-                    className={`text-xs ${
-                      isDark ? "text-slate-400" : "text-slate-600"
-                    }`}
+                    className="text-xs text-[var(--foreground-dim)]"
                   >
                     Views
                   </span>
                 </div>
                 <p
-                  className={`text-lg font-bold ${
-                    isDark ? "text-white" : "text-slate-900"
-                  }`}
+                  className="text-lg font-bold text-[var(--foreground)]"
                 >
                   1.2K
                 </p>
               </div>
               <div
-                className={`${
-                  isDark ? "bg-slate-700" : "bg-slate-50"
-                } rounded-lg p-3`}
+                className="bg-[var(--surface-secondary)] rounded-lg p-3"
               >
                 <div className="flex items-center justify-between mb-1">
                   <Users
-                    className={`w-4 h-4 ${
-                      isDark ? "text-green-400" : "text-green-600"
-                    }`}
+                    className="w-4 h-4 text-[var(--primary)]"
                   />
                   <span
-                    className={`text-xs ${
-                      isDark ? "text-slate-400" : "text-slate-600"
-                    }`}
+                    className="text-xs text-[var(--foreground-dim)]"
                   >
                     Network
                   </span>
                 </div>
                 <p
-                  className={`text-lg font-bold ${
-                    isDark ? "text-white" : "text-slate-900"
-                  }`}
+                  className="text-lg font-bold text-[var(--foreground)]"
                 >
                   {userProfile.connections || 0}
                 </p>
@@ -212,9 +178,7 @@ export default function Sidebar({
         <nav className="p-4 space-y-2 flex-1">
           {isExpanded && (
             <p
-              className={`text-xs font-semibold uppercase tracking-wider mb-3 px-3 ${
-                isDark ? "text-slate-500" : "text-slate-400"
-              } animate-fade-in`}
+              className="text-xs font-semibold uppercase tracking-wider mb-3 px-3 text-[var(--foreground-dim)] animate-fade-in"
             >
               Menu
             </p>
@@ -232,16 +196,10 @@ export default function Sidebar({
                   isExpanded ? "space-x-3 px-4" : "justify-center px-2"
                 } py-3 rounded-xl transition-all group relative ${
                   isActive
-                    ? isDark
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-                      : "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
+                    ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/30"
                     : item.disabled
-                    ? isDark
-                      ? "text-slate-600 cursor-not-allowed"
-                      : "text-slate-400 cursor-not-allowed"
-                    : isDark
-                    ? "text-slate-300 hover:bg-slate-700 hover:text-white"
-                    : "text-slate-700 hover:bg-slate-100"
+                    ? "text-[var(--foreground-dim)] cursor-not-allowed opacity-50"
+                    : "text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)]"
                 }`}
               >
                 {isActive && isExpanded && (
@@ -254,7 +212,7 @@ export default function Sidebar({
                     } transition-transform`}
                   />
                   {(item.badge ?? 0) > 0 && !isExpanded && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
                   )}
                 </div>
                 {isExpanded && (
@@ -266,8 +224,8 @@ export default function Sidebar({
                       <span
                         className={`${
                           isActive
-                            ? "bg-white text-blue-600"
-                            : "bg-red-500 text-white"
+                            ? "bg-white text-[var(--primary)]"
+                            : "bg-[var(--primary)] text-white"
                         } text-xs px-2 py-1 rounded-full font-semibold animate-fade-in`}
                       >
                         {item.badge}
@@ -283,16 +241,10 @@ export default function Sidebar({
         {/* Profile Strength Card */}
         {isExpanded && (
           <div
-            className={`p-4 border-t ${
-              isDark ? "border-slate-700" : "border-slate-200"
-            } animate-fade-in`}
+            className="p-4 border-t border-[var(--border)] animate-fade-in"
           >
             <div
-              className={`${
-                isDark
-                  ? "bg-gradient-to-br from-slate-700 to-slate-800"
-                  : "bg-gradient-to-br from-slate-50 to-slate-100"
-              } rounded-xl p-5 shadow-sm`}
+              className="bg-[var(--surface-secondary)] rounded-xl p-5 shadow-sm"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center space-x-2">
@@ -300,30 +252,24 @@ export default function Sidebar({
                     className={`w-5 h-5 ${
                       completionPercentage >= 80
                         ? "text-green-500"
-                        : "text-orange-500"
+                        : "text-[var(--primary)]"
                     }`}
                   />
                   <p
-                    className={`text-sm font-semibold ${
-                      isDark ? "text-slate-200" : "text-slate-800"
-                    }`}
+                    className="text-sm font-semibold text-[var(--foreground)]"
                   >
                     Profile Strength
                   </p>
                 </div>
                 <span
-                  className={`text-xs font-bold ${
-                    isDark ? "text-slate-400" : "text-slate-600"
-                  }`}
+                  className="text-xs font-bold text-[var(--foreground-dim)]"
                 >
                   {completionPercentage}%
                 </span>
               </div>
 
               <div
-                className={`w-full ${
-                  isDark ? "bg-slate-600" : "bg-slate-200"
-                } rounded-full h-2.5 mb-3 overflow-hidden`}
+                className="w-full bg-[var(--surface-tertiary)] rounded-full h-2.5 mb-3 overflow-hidden"
               >
                 <div
                   className={`${getCompletionColor(
@@ -334,15 +280,13 @@ export default function Sidebar({
               </div>
 
               <p
-                className={`text-xs ${
-                  isDark ? "text-slate-400" : "text-slate-600"
-                } mb-3`}
+                className="text-xs text-[var(--foreground-dim)] mb-3"
               >
                 {getCompletionMessage(completionPercentage)}
               </p>
 
               {completionPercentage < 100 && (
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded-lg transition-colors">
+                <button className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white text-sm font-medium py-2 rounded-lg transition-colors">
                   Complete Profile
                 </button>
               )}
