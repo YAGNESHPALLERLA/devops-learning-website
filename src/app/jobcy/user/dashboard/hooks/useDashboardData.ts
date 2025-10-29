@@ -135,7 +135,11 @@ export function useDashboardData() {
 
       if (!profileRes.ok) {
         console.error("Profile fetch failed with status:", profileRes.status);
-        throw new Error("Profile fetch failed");
+        // Gracefully fallback to mock data instead of throwing to avoid UI crash
+        applyMockData();
+        setUseMockData(true);
+        setIsLoading(false);
+        return;
       }
       const profileData = await profileRes.json();
 
@@ -392,7 +396,14 @@ export function useDashboardData() {
           body: JSON.stringify(formData),
         }
       );
-      const data = await res.json();
+      // Read as text first to avoid JSON parse errors when server returns HTML on error
+      const raw = await res.text();
+      let data: any;
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        data = { error: raw };
+      }
       if (res.ok) {
         const mappedProfile: UserProfile = {
           name: data.name || "",
@@ -410,17 +421,18 @@ export function useDashboardData() {
           experienceList: data.experienceList || [],
           profileCompletion: data.profileCompletion,
           connections: data.connections,
-          dob: data.personalDetails?.[0]?.dob,
-          gender: data.personalDetails?.[0]?.gender,
-          category: data.personalDetails?.[0]?.category,
-          maritalStatus: data.personalDetails?.[0]?.maritalStatus,
-          nationality: data.personalDetails?.[0]?.nationality,
+          // Prefer top-level fields, fallback to nested personalDetails[0]
+          dob: data.dob ?? data.personalDetails?.[0]?.dob,
+          gender: data.gender ?? data.personalDetails?.[0]?.gender,
+          category: data.category ?? data.personalDetails?.[0]?.category,
+          maritalStatus: data.maritalStatus ?? data.personalDetails?.[0]?.maritalStatus,
+          nationality: data.nationality ?? data.personalDetails?.[0]?.nationality,
           resume: data.resume?.name,
         };
         setUserProfile(mappedProfile);
         return { success: true, data: mappedProfile };
       } else {
-        return { success: false, message: data.message || "Update failed" };
+        return { success: false, message: data.message || data.error || "Update failed" };
       }
     } catch (err) {
       console.error("Profile update error:", err);

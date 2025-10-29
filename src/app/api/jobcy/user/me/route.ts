@@ -70,11 +70,11 @@ export async function GET(_request: NextRequest) {
       connections: user.connections || 0,
       personalDetails: user.personalDetails || [],
       // Extract personal details as individual fields for easier access
-      dob: user.personalDetails?.[0]?.dob || user.dob,
-      gender: user.personalDetails?.[0]?.gender || user.gender,
-      category: user.personalDetails?.[0]?.category || user.category,
-      maritalStatus: user.personalDetails?.[0]?.maritalStatus || user.maritalStatus,
-      nationality: user.personalDetails?.[0]?.nationality || user.nationality,
+      dob: user.dob || user.personalDetails?.[0]?.dob,
+      gender: user.gender || user.personalDetails?.[0]?.gender,
+      category: user.category || user.personalDetails?.[0]?.category,
+      maritalStatus: user.maritalStatus || user.personalDetails?.[0]?.maritalStatus,
+      nationality: user.nationality || user.personalDetails?.[0]?.nationality,
       resume: user.resume || {},
       githubId: user.githubId,
       githubUsername: user.githubUsername,
@@ -170,6 +170,20 @@ export async function PUT(_request: NextRequest) {
     if (maritalStatus) updateData.maritalStatus = maritalStatus;
     if (nationality) updateData.nationality = nationality;
 
+    // Maintain a normalized personalDetails[0] object for backward compatibility
+    const hasPersonalFields = Boolean(dob || gender || category || maritalStatus || nationality);
+    if (hasPersonalFields) {
+      updateData.personalDetails = [
+        {
+          dob: dob,
+          gender: gender,
+          category: category,
+          maritalStatus: maritalStatus,
+          nationality: nationality,
+        },
+      ];
+    }
+
     const result = await db.collection('users').updateOne(
       { _id: toObjectId(decoded.id) },
       { $set: updateData }
@@ -213,6 +227,12 @@ export async function PUT(_request: NextRequest) {
       profileCompletion: updatedUser.profileCompletion || 0,
       connections: updatedUser.connections || 0,
       personalDetails: updatedUser.personalDetails || [],
+      // Include individual personal detail fields
+      dob: updatedUser.dob || updatedUser.personalDetails?.[0]?.dob,
+      gender: updatedUser.gender || updatedUser.personalDetails?.[0]?.gender,
+      category: updatedUser.category || updatedUser.personalDetails?.[0]?.category,
+      maritalStatus: updatedUser.maritalStatus || updatedUser.personalDetails?.[0]?.maritalStatus,
+      nationality: updatedUser.nationality || updatedUser.personalDetails?.[0]?.nationality,
       resume: updatedUser.resume || {},
       githubId: updatedUser.githubId,
       githubUsername: updatedUser.githubUsername,

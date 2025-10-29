@@ -601,6 +601,12 @@ export default function ProfileEditModal({
       projects,
       languages,
       skills,
+      // Include personal details fields
+      dob: editingProfile.dob,
+      gender: editingProfile.gender,
+      category: editingProfile.category,
+      maritalStatus: editingProfile.maritalStatus,
+      nationality: editingProfile.nationality,
     };
     const result = await onSave(profileData);
     if (result.success) {
