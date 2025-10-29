@@ -8,6 +8,7 @@ import {
   Connection,
   Interview,
   UserProfile,
+  Project,
 } from "@/app/jobcy/types/dashboard";
 import {
   mockProfile,
@@ -410,7 +411,7 @@ export function useDashboardData() {
         currentCTC?: number | string;
         bio?: string;
         skills?: string[];
-        projects?: unknown[];
+        projects?: Project[];
         languages?: string[];
         education?: Education[];
         experienceList?: Experience[];
@@ -449,7 +450,7 @@ export function useDashboardData() {
           currentCTC: data.currentCTC ? String(data.currentCTC) : undefined,
           bio: data.bio,
           skills: data.skills,
-          projects: data.projects || [],
+          projects: Array.isArray(data.projects) ? (data.projects as Project[]) : [],
           languages: data.languages || [],
           education: data.education || [],
           experienceList: data.experienceList || [],
