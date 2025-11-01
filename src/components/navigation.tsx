@@ -67,6 +67,16 @@ export default function Navigation() {
                 <span>Government Jobs (SBI Jobs)</span>
               </div>
             </Link>
+            <Link 
+              href="/tutorials"
+              className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200"
+              onClick={() => setShowDropdown(false)}
+            >
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">🎓</span>
+                <span>Courses</span>
+              </div>
+            </Link>
           </div>
         )}
       </div>

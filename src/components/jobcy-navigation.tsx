@@ -67,6 +67,16 @@ export default function JobcyNavigation() {
                 <span>Government Jobs (SBI Jobs)</span>
               </div>
             </Link>
+            <Link 
+              href="/tutorials"
+              className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200"
+              onClick={() => setShowDropdown(false)}
+            >
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">🎓</span>
+                <span>Courses</span>
+              </div>
+            </Link>
           </div>
         )}
       </div>
