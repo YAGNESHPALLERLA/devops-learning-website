@@ -76,6 +76,8 @@ export default function JobcyNavigation() {
       </Link>
       <Link 
         href="/jobcy"
+        target="_blank"
+        rel="noopener noreferrer"
         className="relative px-4 py-2 bg-[var(--primary)] text-white font-bold rounded-lg shadow-lg shadow-[var(--primary)]/30 hover:shadow-xl hover:shadow-[var(--primary)]/50 hover:bg-[var(--primary-dark)] transform hover:-translate-y-1 transition-all duration-300 overflow-hidden whitespace-nowrap"
       >
         💼 Apply Jobs

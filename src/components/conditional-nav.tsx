@@ -10,11 +10,16 @@ import JobcySearchBar from "@/components/jobcy-search-bar";
 export function ConditionalNav() {
   const pathname = usePathname();
   const isJobcyPage = pathname?.startsWith("/jobcy");
+  const isJobcyLanding = pathname === "/jobcy" || pathname === "/jobcy/";
   // Only show search bar on job browse/apply pages
   const isJobPage = pathname?.includes("/jobs") || pathname?.includes("/apply");
 
   // On Jobcy pages, match the background color and show navigation
   if (isJobcyPage) {
+    // Avoid double headers on the Jobcy landing page which has its own header
+    if (isJobcyLanding) {
+      return null;
+    }
     return (
       <nav className="bg-[var(--background)] border-b border-[var(--border)]/30 sticky top-0 z-40 backdrop-blur-sm">
         <div className="container mx-auto px-4">
