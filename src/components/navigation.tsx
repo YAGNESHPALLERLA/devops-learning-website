@@ -14,9 +14,6 @@ export default function Navigation() {
       <Link href="/menu" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Menu
       </Link>
-      <span className="text-gray-400 cursor-not-allowed opacity-50 font-medium">
-        Docs
-      </span>
       
       {/* Tutorials Dropdown */}
       <div className="relative">
