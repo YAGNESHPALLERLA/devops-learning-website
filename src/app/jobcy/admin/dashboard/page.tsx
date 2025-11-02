@@ -497,11 +497,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex items-center space-x-3">
                         <div
-                          className={`flex items-center ${
-                            isDarkMode
-                              ? "text-gray-300 bg-gray-800 border-gray-700"
-                              : "text-gray-600 bg-white border-gray-200"
-                          } px-3 py-2 rounded-lg border`}
+                          className="flex items-center text-gray-600 bg-white border-gray-200 px-3 py-2 rounded-lg border"
                         >
                           <Calendar className="w-4 h-4 mr-2" />
                           <span className="text-sm">
@@ -632,12 +628,10 @@ export default function AdminDashboard() {
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center ${
                                 activity.type === "hr_joined"
-                                    ? "bg-blue-900 bg-opacity-30"
-                                    : "bg-blue-100"
+                                  ? "bg-blue-100"
                                   : activity.type === "job_posted"
-                                    ? "bg-emerald-900 bg-opacity-30"
-                                    : "bg-emerald-100"
-                                  ? "bg-amber-900 bg-opacity-30"
+                                  ? "bg-emerald-100"
+                                  : "bg-amber-100"
                                   : "bg-amber-100"
                               }`}
                             >
@@ -673,9 +667,7 @@ export default function AdminDashboard() {
 
                       <button
                         className={`w-full mt-4 ${
-                          isDarkMode
-                            ? "text-emerald-400 hover:text-emerald-300 border-gray-600 hover:bg-gray-700"
-                            : "text-emerald-600 hover:text-emerald-700 border-gray-200 hover:bg-emerald-50"
+                          "text-[#0A66C2] hover:text-[#004182] border-gray-200 hover:bg-blue-50"
                         } text-sm font-medium py-2 border rounded-lg transition-colors`}
                       >
                         View All Activity
@@ -735,9 +727,7 @@ export default function AdminDashboard() {
                       onClick={refreshDashboardData}
                       disabled={refreshing}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                        isDarkMode
-                          ? "bg-gray-700 hover:bg-gray-600 text-white disabled:bg-gray-800"
-                          : "bg-blue-600 hover:bg-blue-700 text-white disabled:bg-blue-400"
+                        "bg-[#0A66C2] hover:bg-[#004182] text-white disabled:bg-gray-400"
                       } disabled:cursor-not-allowed`}
                     >
                       {refreshing ? (
