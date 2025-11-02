@@ -13,11 +13,32 @@ export function ConditionalNav() {
   const isJobcyLanding = pathname === "/jobcy" || pathname === "/jobcy/";
   // Only show search bar on job browse/apply pages
   const isJobPage = pathname?.includes("/jobs") || pathname?.includes("/apply");
+  
+  // Hide nav on authenticated Jobcy pages (dashboards, etc.) - only show on login/signup pages
+  const isJobcyAuthPage = pathname?.includes("/jobcy/user/auth/") || 
+                          pathname?.includes("/jobcy/hr/auth/") || 
+                          pathname?.includes("/jobcy/admin/auth/") || 
+                          pathname?.includes("/jobcy/company/auth/");
+  const isJobcyDashboard = pathname?.includes("/jobcy/user/dashboard") || 
+                           pathname?.includes("/jobcy/hr/dashboard") || 
+                           pathname?.includes("/jobcy/admin/dashboard") || 
+                           pathname?.includes("/jobcy/company/dashboard") ||
+                           pathname?.includes("/jobcy/hr/jobs-management") ||
+                           pathname?.includes("/jobcy/hr/application-management") ||
+                           pathname?.includes("/jobcy/admin/company-management");
 
   // On Jobcy pages, match the background color and show navigation
   if (isJobcyPage) {
-    // Avoid double headers on the Jobcy landing page which has its own header
+    // Hide nav on landing page (has its own header)
     if (isJobcyLanding) {
+      return null;
+    }
+    // Hide nav on dashboard and authenticated pages (after login)
+    if (isJobcyDashboard) {
+      return null;
+    }
+    // Show nav only on login/signup pages and job browse pages
+    if (!isJobcyAuthPage && !isJobPage) {
       return null;
     }
     return (
