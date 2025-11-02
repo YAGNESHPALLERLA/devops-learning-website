@@ -12,9 +12,17 @@ interface TechLayoutProps {
   setActiveSection?: (section: string) => void;
 }
 
+interface SidebarItem {
+  id: string;
+  title: string;
+  href: string;
+  icon?: string;
+  children?: SidebarItem[];
+}
+
 // Technology-specific navigation items
-const getTechNavigationItems = (tech: string) => {
-  const baseItems: any[] = [];
+const getTechNavigationItems = (tech: string): SidebarItem[] => {
+  const baseItems: SidebarItem[] = [];
 
   const techItems = {
     java: [

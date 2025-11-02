@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import React from 'react';
 
 interface CourseCardProps {
   title: string;
   description: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   link: string;
   gradient: string;
 }
