@@ -92,21 +92,17 @@ export default function ResumeUpload({
   };
 
   return (
-    <div className={`p-6 rounded-lg border ${
-      isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"
-    }`}>
+    <div className="p-6 rounded-xl border border-gray-200 bg-white">
       <div className="text-center">
-        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 ${
-          isDark ? "bg-slate-700" : "bg-slate-100"
-        }`}>
-          <FileText className={`w-8 h-8 ${isDark ? "text-slate-300" : "text-slate-600"}`} />
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 bg-gradient-to-br from-[#0A66C2]/10 to-[#004182]/10">
+          <FileText className="w-10 h-10 text-[#0A66C2]" />
         </div>
 
-        <h3 className={`text-lg font-semibold mb-2 ${isDark ? "text-white" : "text-slate-900"}`}>
+        <h3 className="text-xl font-bold mb-2 text-gray-900">
           Resume Upload
         </h3>
 
-        <p className={`text-sm mb-6 ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+        <p className="text-sm mb-6 text-gray-600">
           Upload your resume to showcase your qualifications
         </p>
 
@@ -123,12 +119,10 @@ export default function ResumeUpload({
         <button
           onClick={handleButtonClick}
           disabled={uploading}
-          className={`inline-flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all ${
+          className={`inline-flex items-center space-x-2 px-8 py-3 rounded-lg font-semibold transition-all shadow-sm ${
             uploading
-              ? "bg-slate-400 cursor-not-allowed text-white"
-              : isDark
-                ? "bg-blue-600 hover:bg-blue-700 text-white"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
+              ? "bg-gray-400 cursor-not-allowed text-white"
+              : "bg-[#0A66C2] hover:bg-[#004182] text-white hover:shadow-md"
           }`}
         >
           {uploading ? (
@@ -178,7 +172,7 @@ export default function ResumeUpload({
         )}
 
         {/* File requirements */}
-        <div className="mt-6 text-xs text-slate-500">
+        <div className="mt-6 text-xs text-gray-500 space-y-1">
           <p>Supported formats: PDF, DOC, DOCX</p>
           <p>Maximum file size: 5MB</p>
         </div>

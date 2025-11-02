@@ -212,7 +212,7 @@ export default function Sidebar({
                     } transition-transform`}
                   />
                   {(item.badge ?? 0) > 0 && !isExpanded && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#0A66C2] rounded-full"></span>
                   )}
                 </div>
                 {isExpanded && (
