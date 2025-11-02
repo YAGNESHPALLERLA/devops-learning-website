@@ -30,11 +30,31 @@ export async function GET(_request: NextRequest) {
     }
 
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
     
     // Find user in database
     const { toObjectId } = await import('@/lib/mongodb');
-    const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
+    let user;
+    try {
+      user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
+    } catch (dbError) {
+      console.error('Error finding user:', dbError);
+      return NextResponse.json({ 
+        error: 'Database query failed',
+        message: 'Unable to fetch user data',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
     
     console.log('User found in database:', user ? 'Yes' : 'No');
     
@@ -141,7 +161,17 @@ export async function PUT(_request: NextRequest) {
     } = body;
 
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
     
     // Update user profile
     const { toObjectId } = await import('@/lib/mongodb');
