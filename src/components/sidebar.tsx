@@ -39,10 +39,20 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
     // Check if the href is a hash link (client-side navigation)
     if (href.includes('#') && setActiveSection) {
       e.preventDefault();
-      const section = href.split('#')[1];
-      setActiveSection(section);
-      // Scroll to top smoothly
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const sectionId = href.split('#')[1];
+      setActiveSection(sectionId);
+      
+      // Scroll to the target section
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop - 100; // Account for fixed header
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
     }
   };
 
