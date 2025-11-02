@@ -500,7 +500,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1a1a1a]">
+    <div className="flex min-h-screen bg-[#1a1a1a] relative">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -511,15 +511,16 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
 
       {/* Sidebar */}
       <aside className={`
-        fixed lg:relative inset-y-0 left-0 z-[60] w-80 bg-[#1a1a1a] shadow-2xl lg:shadow-xl border-r border-gray-600
+        fixed top-0 left-0 bottom-0 z-[60] w-80 h-screen bg-[#1a1a1a] shadow-2xl border-r border-gray-600
         transform transition-transform duration-300 ease-in-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        lg:translate-x-0
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <Sidebar items={navigationItems} onThisPage={onThisPage || []} activeSection={activeSection} setActiveSection={setActiveSection} />
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div className="flex-1 flex flex-col min-h-screen lg:ml-80">
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
