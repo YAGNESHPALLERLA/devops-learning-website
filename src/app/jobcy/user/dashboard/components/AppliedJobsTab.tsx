@@ -94,7 +94,7 @@ export default function AppliedJobsTab({ isDark: _isDark = false }: AppliedJobsT
             console.error("Error mapping application:", mapError);
             return null;
           }
-        }).filter((app): app is AppliedJob => app !== null);
+        }).filter((app) => app !== null) as AppliedJob[];
         
         setAppliedJobs(mappedApplications);
         setError(""); // Clear error on success
