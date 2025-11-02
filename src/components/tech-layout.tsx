@@ -7,7 +7,7 @@ import Sidebar from './sidebar';
 interface TechLayoutProps {
   children: React.ReactNode;
   onThisPage?: { id: string; title: string }[];
-  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux';
+  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux' | 'azure-data-engineer';
   activeSection?: string;
   setActiveSection?: (section: string) => void;
 }
@@ -435,6 +435,62 @@ const getTechNavigationItems = (tech: string) => {
           { id: 'summary', title: 'Summary', href: '/linux#summary' }
         ]
       }
+    ],
+    'azure-data-engineer': [
+      {
+        id: 'azure-basics',
+        title: 'Azure Basics',
+        href: '/tutorials/azure-data-engineer',
+        icon: '📘',
+        children: [
+          { id: 'azure-basics', title: 'Azure Basics', href: '/tutorials/azure-data-engineer#azure-basics' }
+        ]
+      },
+      {
+        id: 'azure-data-storage',
+        title: 'Azure Data Storage',
+        href: '/tutorials/azure-data-engineer',
+        icon: '💾',
+        children: [
+          { id: 'azure-data-storage', title: 'Azure Data Storage', href: '/tutorials/azure-data-engineer#azure-data-storage' }
+        ]
+      },
+      {
+        id: 'data-pipelines',
+        title: 'Data Pipelines',
+        href: '/tutorials/azure-data-engineer',
+        icon: '🔄',
+        children: [
+          { id: 'data-pipelines', title: 'Data Pipelines', href: '/tutorials/azure-data-engineer#data-pipelines' }
+        ]
+      },
+      {
+        id: 'azure-databricks',
+        title: 'Azure Databricks',
+        href: '/tutorials/azure-data-engineer',
+        icon: '⚡',
+        children: [
+          { id: 'azure-databricks', title: 'Azure Databricks', href: '/tutorials/azure-data-engineer#azure-databricks' }
+        ]
+      },
+      {
+        id: 'azure-synapse',
+        title: 'Azure Synapse Analytics',
+        href: '/tutorials/azure-data-engineer',
+        icon: '📊',
+        children: [
+          { id: 'azure-synapse', title: 'Azure Synapse Analytics', href: '/tutorials/azure-data-engineer#azure-synapse' }
+        ]
+      },
+      {
+        id: 'data-security',
+        title: 'Data Security & Governance',
+        href: '/tutorials/azure-data-engineer',
+        icon: '🔒',
+        children: [
+          { id: 'data-security', title: 'Data Security & Governance', href: '/tutorials/azure-data-engineer#data-security' }
+        ]
+      }
     ]
   };
 
@@ -523,7 +579,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
                technology === 'web-dev' ? 'Web Development' :
                technology === 'data-science' ? 'Data Science' :
                technology === 'code-terminal' ? 'Code Terminal' :
-               technology === 'devops' ? 'DevOps' : 'OneHubGlobal'}
+               technology === 'devops' ? 'DevOps' :
+               technology === 'azure-data-engineer' ? 'Azure Data Engineer' : 'OneHubGlobal'}
             </h1>
             <div className="w-10" /> {/* Spacer for centering */}
           </div>
