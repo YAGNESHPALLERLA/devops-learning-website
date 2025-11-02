@@ -13,7 +13,17 @@ export async function GET(_request: NextRequest) {
     const company = searchParams.get('company') || '';
     
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
     
     // Build query
     const query: Record<string, unknown> = {};

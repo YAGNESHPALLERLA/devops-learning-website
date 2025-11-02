@@ -23,11 +23,31 @@ export async function GET(_request: NextRequest) {
     }
 
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
+    
+    const { ObjectId } = await import('mongodb');
+    
+    // Convert userId to ObjectId
+    let userId: typeof ObjectId.prototype;
+    try {
+      userId = new ObjectId(decoded.id);
+    } catch {
+      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
+    }
     
     // Get user interviews
     const interviews = await db.collection('interviews')
-      .find({ userId: decoded.id })
+      .find({ userId: userId })
       .sort({ scheduledDate: -1 })
       .toArray();
     

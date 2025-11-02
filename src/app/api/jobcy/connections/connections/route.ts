@@ -23,13 +23,33 @@ export async function GET(_request: NextRequest) {
     }
 
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
+    
+    const { ObjectId } = await import('mongodb');
+    
+    // Convert userId to ObjectId
+    let userId: typeof ObjectId.prototype;
+    try {
+      userId = new ObjectId(decoded.id);
+    } catch {
+      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
+    }
     
     // Get user connections
     const connections = await db.collection('connections').find({ 
       $or: [
-        { fromUserId: decoded.id, status: 'accepted' },
-        { toUserId: decoded.id, status: 'accepted' }
+        { fromUserId: userId, status: 'accepted' },
+        { toUserId: userId, status: 'accepted' }
       ]
     }).toArray();
     
@@ -43,32 +63,46 @@ export async function GET(_request: NextRequest) {
     // Populate user details for each connection
     const populatedConnections = await Promise.all(
       connections.map(async (conn) => {
-        const isFromUser = conn.fromUserId === decoded.id;
+        const isFromUser = conn.fromUserId?.toString() === userId.toString();
         const otherUserId = isFromUser ? conn.toUserId : conn.fromUserId;
         
-        const { toObjectId } = await import('@/lib/mongodb');
-        const otherUser = await db.collection('users').findOne({ _id: toObjectId(otherUserId) });
+        let otherUserObjId: typeof ObjectId.prototype;
+        try {
+          otherUserObjId = otherUserId instanceof ObjectId ? otherUserId : new ObjectId(otherUserId);
+        } catch {
+          console.error('Invalid otherUserId:', otherUserId);
+          return null;
+        }
         
-        console.log('Looking up user:', { otherUserId, foundUser: !!otherUser, userName: otherUser?.name });
+        const otherUser = await db.collection('users').findOne({ _id: otherUserObjId });
+        
+        console.log('Looking up user:', { otherUserId: otherUserObjId.toString(), foundUser: !!otherUser, userName: otherUser?.name });
+        
+        if (!otherUser) {
+          return null;
+        }
         
         return {
-          id: otherUser?._id,
-          name: otherUser?.name || 'Unknown User',
-          title: otherUser?.professionalRole || otherUser?.title || 'Professional',
-          location: otherUser?.location || otherUser?.currentLocation || 'Location not specified',
-          email: otherUser?.email,
-          experience: otherUser?.experience || 'Not specified',
-          skills: otherUser?.skills || [],
-          status: otherUser?.status || 'employed',
+          id: otherUser._id?.toString(),
+          name: otherUser.name || 'Unknown User',
+          title: otherUser.professionalRole || otherUser.title || 'Professional',
+          location: otherUser.location || otherUser.currentLocation || 'Location not specified',
+          email: otherUser.email,
+          experience: otherUser.experience || 'Not specified',
+          skills: otherUser.skills || [],
+          status: otherUser.status || 'employed',
           connected: true,
-          avatar: otherUser?.avatar || null,
-          bio: otherUser?.about || otherUser?.bio || '',
+          avatar: otherUser.avatar || null,
+          bio: otherUser.about || otherUser.bio || '',
           connectedAt: conn.updatedAt || conn.createdAt
         };
       })
     );
     
-    return NextResponse.json(populatedConnections);
+    // Filter out null results
+    const validConnections = populatedConnections.filter(conn => conn !== null);
+    
+    return NextResponse.json(validConnections);
   } catch (error) {
     console.error('Connections error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

@@ -32,7 +32,17 @@ export async function GET(_request: NextRequest) {
     console.log('User list params:', { page, limit, search, location, skills });
     
     // Connect to database
-    const db = await connectDB();
+    let db;
+    try {
+      db = await connectDB();
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return NextResponse.json({ 
+        error: 'Database connection failed',
+        message: 'Unable to connect to database',
+        details: dbError instanceof Error ? dbError.message : String(dbError)
+      }, { status: 500 });
+    }
     
     // Build query - Only get regular users (not HR, admin, or company)
     const query: Record<string, unknown> = {
