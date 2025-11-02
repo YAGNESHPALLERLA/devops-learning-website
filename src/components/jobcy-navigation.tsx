@@ -107,6 +107,21 @@ export default function JobcyNavigation() {
                       <span>Azure Data Engineer</span>
                     </div>
                   </Link>
+                  <Link 
+                    href="/tutorials/azure-basics"
+                    className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200"
+                    onClick={() => {
+                      setShowDropdown(false);
+                      setShowCoursesSubmenu(false);
+                    }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.482 18.394l6.625-3.844v7.688l-6.625-3.844zm7.875-10.463L12.606 2.65l-.096.056v7.694l8.849 5.138V7.93zm-9.481 5.138l-8.85-5.138L11.48 2.65l.096.056v10.462zm-.962 1.287L2.643 8.738v7.693l6.691 3.845v-7.688z" fill="#0078D4"/>
+                      </svg>
+                      <span>Azure Basics</span>
+                    </div>
+                  </Link>
                 </div>
               )}
             </div>
