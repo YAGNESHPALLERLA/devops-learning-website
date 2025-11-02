@@ -58,17 +58,6 @@ export default function CoursesPage() {
             link="/tutorials/azure-data-engineer"
             gradient="from-blue-500 to-cyan-500"
           />
-          <CourseCard
-            title="Azure Basics"
-            description="Learn Azure fundamentals, cloud services, and Microsoft Azure platform basics"
-            icon={
-              <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.482 18.394l6.625-3.844v7.688l-6.625-3.844zm7.875-10.463L12.606 2.65l-.096.056v7.694l8.849 5.138V7.93zm-9.481 5.138l-8.85-5.138L11.48 2.65l.096.056v10.462zm-.962 1.287L2.643 8.738v7.693l6.691 3.845v-7.688z" fill="#0078D4"/>
-              </svg>
-            }
-            link="/tutorials/azure-basics"
-            gradient="from-blue-600 to-indigo-600"
-          />
         </div>
       </div>
     </main>
