@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 export default function Navigation() {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showCoursesSubmenu, setShowCoursesSubmenu] = useState(false);
 
   return (
     <div className="hidden md:flex items-center space-x-6 mr-4">
@@ -65,63 +64,16 @@ export default function Navigation() {
                 <span>Government Jobs (SBI Jobs)</span>
               </div>
             </Link>
-            <div 
-              className="relative"
-              onMouseEnter={() => setShowCoursesSubmenu(true)}
-              onMouseLeave={() => setShowCoursesSubmenu(false)}
+            <Link 
+              href="/tutorials/courses"
+              className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200"
+              onClick={() => setShowDropdown(false)}
             >
-              <div className="block px-4 py-3 text-white hover:bg-rose-500/20 transition-all duration-200 cursor-pointer">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xl">🎓</span>
-                    <span>Courses</span>
-                  </div>
-                  <svg 
-                    className="w-4 h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">🎓</span>
+                <span>Courses</span>
               </div>
-              
-              {showCoursesSubmenu && (
-                <div className="absolute left-full top-0 ml-2 w-72 bg-[#252525] border border-gray-600 rounded-lg shadow-2xl shadow-black/50 py-2 z-50">
-                  <Link 
-                    href="/tutorials/azure-data-engineer"
-                    className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200"
-                    onClick={() => {
-                      setShowDropdown(false);
-                      setShowCoursesSubmenu(false);
-                    }}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.482 18.394l6.625-3.844v7.688l-6.625-3.844zm7.875-10.463L12.606 2.65l-.096.056v7.694l8.849 5.138V7.93zm-9.481 5.138l-8.85-5.138L11.48 2.65l.096.056v10.462zm-.962 1.287L2.643 8.738v7.693l6.691 3.845v-7.688z" fill="#0078D4"/>
-                      </svg>
-                      <span>Azure Data Engineer</span>
-                    </div>
-                  </Link>
-                  <Link 
-                    href="/tutorials/azure-basics"
-                    className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200"
-                    onClick={() => {
-                      setShowDropdown(false);
-                      setShowCoursesSubmenu(false);
-                    }}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.482 18.394l6.625-3.844v7.688l-6.625-3.844zm7.875-10.463L12.606 2.65l-.096.056v7.694l8.849 5.138V7.93zm-9.481 5.138l-8.85-5.138L11.48 2.65l.096.056v10.462zm-.962 1.287L2.643 8.738v7.693l6.691 3.845v-7.688z" fill="#0078D4"/>
-                      </svg>
-                      <span>Azure Basics</span>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
+            </Link>
           </div>
         )}
       </div>
