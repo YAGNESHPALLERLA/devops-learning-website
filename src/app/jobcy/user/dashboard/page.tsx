@@ -27,7 +27,7 @@ import ConnectionRequestsTab from "./components/ConnectionRequestsTab";
 import InterviewsTab from "./components/InterviewsTab";
 import ProfileEditModal from "./components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
-import { ApplicationTracker } from "./components/ApplicationTracker";
+import { ProfessionalApplicationTracker } from "./components/ProfessionalApplicationTracker";
 import { StatsCard } from "../../components/ui/StatsCard";
 import { Card } from "../../components/ui/Card";
 import { UserProfile } from "@/app/jobcy/types/dashboard";
@@ -314,8 +314,8 @@ export default function JobSeekerDashboard() {
                 />
               </div>
 
-              {/* Application Tracker */}
-              <ApplicationTracker applications={trackerApplications} />
+              {/* Professional Application Tracker */}
+              <ProfessionalApplicationTracker applications={trackerApplications} />
 
               {/* Quick Actions */}
               <Card variant="elevated">

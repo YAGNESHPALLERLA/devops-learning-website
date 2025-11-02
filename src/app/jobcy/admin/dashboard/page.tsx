@@ -18,8 +18,6 @@ import {
   Building2,
   UserCheck,
   Filter,
-  Moon,
-  Sun,
 } from "lucide-react";
 interface StatCardProps {
   title: string;
@@ -95,13 +93,8 @@ export default function AdminDashboard() {
   const [jobs, setJobs] = useState<RawJob[]>([]);
   const [applications, setApplications] = useState<RawApplication[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Toggle theme
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
   // Refresh dashboard data
   const refreshDashboardData = async () => {
@@ -304,11 +297,7 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div
-        className={`min-h-screen flex items-center justify-center ${
-          isDarkMode ? "bg-gray-900" : "bg-gray-50"
-        }`}
-      >
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -323,49 +312,33 @@ export default function AdminDashboard() {
     onClick,
   }) => (
     <div
-      className={`${
-        isDarkMode
-          ? "bg-gray-800 border-gray-700 hover:border-emerald-600"
-          : "bg-white border-gray-200 hover:border-emerald-500"
-      } rounded-xl p-6 shadow-sm border hover:shadow-lg transition-all cursor-pointer group ${
-        onClick ? "hover:scale-105 transform" : ""
-      }`}
+      className="bg-white border border-gray-200 hover:border-[#0A66C2] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p
-            className={`${
-              isDarkMode ? "text-gray-400" : "text-gray-600"
-            } text-sm font-medium`}
-          >
+          <p className="text-gray-600 text-sm font-medium">
             {title}
           </p>
-          <p
-            className={`text-3xl font-bold ${
-              isDarkMode ? "text-white" : "text-gray-900"
-            } mt-2`}
-          >
+          <p className="text-3xl font-bold text-gray-900 mt-2">
             {value}
           </p>
           {change && (
             <div className="flex items-center mt-2">
-              <TrendingUp className="w-4 h-4 text-emerald-500 mr-1" />
-              <span className="text-emerald-500 text-sm font-medium">
+              <TrendingUp className="w-4 h-4 text-green-600 mr-1" />
+              <span className="text-green-600 text-sm font-medium">
                 +{change}% this month
               </span>
             </div>
           )}
           {onClick && (
-            <div className={`flex items-center mt-3 text-xs font-semibold ${
-              isDarkMode ? "text-emerald-400" : "text-emerald-600"
-            } opacity-0 group-hover:opacity-100 transition-opacity`}>
+            <div className="flex items-center mt-3 text-xs font-semibold text-[#0A66C2] opacity-0 group-hover:opacity-100 transition-opacity">
               <span>View Details</span>
               <ArrowUpRight className="w-3 h-3 ml-1" />
             </div>
           )}
         </div>
-        <div className={`p-3 rounded-full ${color} group-hover:scale-110 transition-transform`}>
+        <div className={`p-3 rounded-lg bg-gradient-to-br from-[#0A66C2] to-[#004182] group-hover:scale-110 transition-transform shadow-md`}>
           <Icon className="w-6 h-6 text-white" />
         </div>
       </div>
@@ -380,43 +353,23 @@ export default function AdminDashboard() {
     onClick,
   }) => (
     <div
-      className={`${
-        isDarkMode
-          ? "bg-gray-800 border-gray-700 hover:border-emerald-600"
-          : "bg-white border-gray-200 hover:border-emerald-500"
-      } rounded-xl p-6 shadow-sm border hover:shadow-md hover:scale-105 transition-all cursor-pointer group`}
+      className="bg-white border border-gray-200 hover:border-[#0A66C2] rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1">
-          <h3
-            className={`text-lg font-semibold ${
-              isDarkMode
-                ? "text-white group-hover:text-emerald-400"
-                : "text-gray-900 group-hover:text-emerald-600"
-            } transition-colors`}
-          >
+          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#0A66C2] transition-colors">
             {title}
           </h3>
-          <p
-            className={`${
-              isDarkMode ? "text-gray-400" : "text-gray-600"
-            } text-sm mt-1`}
-          >
+          <p className="text-gray-600 text-sm mt-1">
             {description}
           </p>
         </div>
-        <div className={`p-2 rounded-lg ${color} ml-4`}>
+        <div className="p-2 rounded-lg bg-gradient-to-br from-[#0A66C2] to-[#004182] ml-4 shadow-sm">
           <Icon className="w-5 h-5 text-white" />
         </div>
       </div>
-      <div
-        className={`flex items-center ${
-          isDarkMode
-            ? "text-emerald-400 group-hover:text-emerald-300"
-            : "text-emerald-600 group-hover:text-emerald-700"
-        } text-sm font-medium mt-4`}
-      >
+      <div className="flex items-center text-[#0A66C2] group-hover:text-[#004182] text-sm font-medium mt-4">
         <span>Manage</span>
         <ArrowUpRight className="w-4 h-4 ml-1" />
       </div>
@@ -424,37 +377,21 @@ export default function AdminDashboard() {
   );
 
   return (
-    <div
-      className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
-    >
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header
-        className={`${
-          isDarkMode
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        } shadow-sm border-b`}
-      >
+      <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
-                  <Briefcase className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md">
+                  <Briefcase className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h1
-                    className={`text-xl font-bold ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
+                  <h1 className="text-xl font-bold text-gray-900">
                     Job Portal Admin
                   </h1>
-                  <p
-                    className={`text-sm ${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
+                  <p className="text-sm text-gray-600">
                     Dashboard Overview
                   </p>
                 </div>
@@ -464,76 +401,31 @@ export default function AdminDashboard() {
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <Search
-                  className={`w-5 h-5 ${
-                    isDarkMode ? "text-gray-500" : "text-gray-400"
-                  } absolute left-3 top-1/2 transform -translate-y-1/2`}
+                  className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
                 />
                 <input
                   type="text"
                   placeholder="Search..."
-                  className={`pl-10 pr-4 py-2 border ${
-                    isDarkMode
-                      ? "border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:bg-gray-600 focus:ring-emerald-500 focus:border-emerald-500"
-                      : "border-gray-300 bg-gray-50 focus:bg-white focus:ring-emerald-500 focus:border-emerald-500"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 w-64`}
+                  className="pl-10 pr-4 py-2 border border-gray-300 bg-gray-50 focus:bg-white focus:ring-[#0A66C2] focus:border-[#0A66C2] rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 w-64"
                 />
               </div>
 
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className={`p-2 ${
-                  isDarkMode
-                    ? "text-gray-400 hover:text-white hover:bg-gray-700"
-                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
-                } rounded-lg transition-colors`}
-              >
-                {isDarkMode ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </button>
 
-              <button
-                className={`p-2 ${
-                  isDarkMode
-                    ? "text-gray-400 hover:text-white hover:bg-gray-700"
-                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
-                } rounded-lg transition-colors`}
-              >
+              <button className="p-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                 <Bell className="w-5 h-5" />
               </button>
-              <button
-                className={`p-2 ${
-                  isDarkMode
-                    ? "text-gray-400 hover:text-white hover:bg-gray-700"
-                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
-                } rounded-lg transition-colors`}
-              >
+              <button className="p-2 text-gray-600 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                 <Settings className="w-5 h-5" />
               </button>
-              <button
-                className={`flex items-center space-x-2 ${
-                  isDarkMode
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-700 hover:text-gray-900"
-                } transition-colors`}
-              >
-                <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <span className="text-emerald-600 font-semibold text-sm">
+              <button className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-white font-semibold text-sm">
                     A
                   </span>
                 </div>
                 <span className="font-medium">Admin</span>
               </button>
-              <button
-                className={`p-2 ${
-                  isDarkMode
-                    ? "text-gray-400 hover:text-red-400 hover:bg-red-900 hover:bg-opacity-20"
-                    : "text-gray-400 hover:text-red-600 hover:bg-red-50"
-                } rounded-lg transition-colors`}
-              >
+              <button className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
                 <LogOut className="w-5 h-5" />
               </button>
             </div>
@@ -542,7 +434,7 @@ export default function AdminDashboard() {
       </header>
 
       {/* Tabs */}
-      <div className={`border-b ${isDarkMode ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}>
+      <div className="border-b border-gray-200 bg-white">
         <div className="px-6">
           <nav className="flex space-x-8">
             {[
@@ -594,14 +486,14 @@ export default function AdminDashboard() {
                       <div>
                         <h2
                           className={`text-2xl font-bold ${
-                            isDarkMode ? "text-white" : "text-gray-900"
+                            "text-gray-900"
                           }`}
                         >
                           Welcome back, Admin
                         </h2>
                         <p
                           className={`${
-                            isDarkMode ? "text-gray-400" : "text-gray-600"
+                            "text-gray-600"
                           } mt-1`}
                         >
                           Here it is what is happening with your job portal today.
@@ -679,14 +571,14 @@ export default function AdminDashboard() {
                         <div className="flex items-center justify-between mb-6">
                           <h3
                             className={`text-lg font-semibold ${
-                              isDarkMode ? "text-white" : "text-gray-900"
+                              "text-gray-900"
                             }`}
                           >
                             Quick Management
                           </h3>
                           <Filter
                             className={`w-5 h-5 ${
-                              isDarkMode ? "text-gray-500" : "text-gray-400"
+                              "text-gray-400"
                             }`}
                           />
                         </div>
@@ -734,7 +626,7 @@ export default function AdminDashboard() {
                     >
                       <h3
                         className={`text-lg font-semibold ${
-                          isDarkMode ? "text-white" : "text-gray-900"
+                          "text-gray-900"
                         } mb-6`}
                       >
                         Recent Activity
@@ -771,14 +663,14 @@ export default function AdminDashboard() {
                             <div className="flex-1">
                               <p
                                 className={`text-sm ${
-                                  isDarkMode ? "text-white" : "text-gray-900"
+                                  "text-gray-900"
                                 }`}
                               >
                                 {activity.message}
                               </p>
                               <p
                                 className={`text-xs ${
-                                  isDarkMode ? "text-gray-500" : "text-gray-500"
+                                  "text-gray-500"
                                 } mt-1`}
                               >
                                 {activity.time}
@@ -804,19 +696,19 @@ export default function AdminDashboard() {
             case "users":
               return (
                 <div className="mb-8">
-                  <h2 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
+                  <h2 className={`text-2xl font-bold ${"text-gray-900"} mb-4`}>
                     User Management
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {users.map((user: RawUser) => (
-                      <div key={user._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
+                      <div key={user._id} className={`p-4 rounded-lg border ${"bg-white border-gray-200"}`}>
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                             <span className="text-white font-bold">{user.name?.[0]?.toUpperCase()}</span>
                           </div>
                           <div>
-                            <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>{user.name}</p>
-                            <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{user.email}</p>
+                            <p className={`font-medium ${"text-gray-900"}`}>{user.name}</p>
+                            <p className={`text-sm ${"text-gray-600"}`}>{user.email}</p>
                           </div>
                         </div>
                       </div>
@@ -827,15 +719,15 @@ export default function AdminDashboard() {
             case "jobs":
               return (
                 <div className="mb-8">
-                  <h2 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
+                  <h2 className={`text-2xl font-bold ${"text-gray-900"} mb-4`}>
                     Job Listings
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {jobs.map((job: RawJob) => (
-                      <div key={job.id || job._id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-                        <h3 className={`font-semibold ${isDarkMode ? "text-white" : "text-gray-900"}`}>{job.title}</h3>
-                        <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.company}</p>
-                        <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{job.location}</p>
+                      <div key={job.id || job._id} className={`p-4 rounded-lg border ${"bg-white border-gray-200"}`}>
+                        <h3 className={`font-semibold ${"text-gray-900"}`}>{job.title}</h3>
+                        <p className={`text-sm ${"text-gray-600"}`}>{job.company}</p>
+                        <p className={`text-sm ${"text-gray-600"}`}>{job.location}</p>
                       </div>
                     ))}
                   </div>
@@ -845,7 +737,7 @@ export default function AdminDashboard() {
               return (
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+                    <h2 className={`text-2xl font-bold ${"text-gray-900"}`}>
                       Applications
                     </h2>
                     <button
@@ -874,25 +766,25 @@ export default function AdminDashboard() {
                   </div>
                   <div className="space-y-4">
                     {applications.length === 0 ? (
-                      <div className={`p-8 rounded-lg border text-center ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-                        <p className={`text-lg ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                      <div className={`p-8 rounded-lg border text-center ${"bg-white border-gray-200"}`}>
+                        <p className={`text-lg ${"text-gray-600"}`}>
                           No applications found
                         </p>
-                        <p className={`text-sm mt-2 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
+                        <p className={`text-sm mt-2 ${"text-gray-500"}`}>
                           Applications will appear here when users apply to jobs
                         </p>
                       </div>
                     ) : (
                       applications.map((app: RawApplication) => (
-                        <div key={app._id || app.id} className={`p-4 rounded-lg border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
-                          <p className={`font-medium ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+                        <div key={app._id || app.id} className={`p-4 rounded-lg border ${"bg-white border-gray-200"}`}>
+                          <p className={`font-medium ${"text-gray-900"}`}>
                             {app.jobId?.title || 'Unknown Job'} - {app.userId?.name || 'Unknown User'}
                           </p>
-                          <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                          <p className={`text-sm ${"text-gray-600"}`}>
                             Status: {app.status || 'Applied'} | Applied: {new Date(app.appliedDate || app.createdAt || Date.now()).toLocaleDateString()}
                           </p>
                           {app.userId?.email && (
-                            <p className={`text-xs mt-1 ${isDarkMode ? "text-gray-500" : "text-gray-500"}`}>
+                            <p className={`text-xs mt-1 ${"text-gray-500"}`}>
                               Email: {app.userId.email}
                             </p>
                           )}

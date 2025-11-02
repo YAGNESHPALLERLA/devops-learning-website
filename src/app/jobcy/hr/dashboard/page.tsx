@@ -193,19 +193,19 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     subtitle,
     trend,
   }) => (
-    <div className="group relative bg-[var(--surface-secondary)] rounded-3xl p-6 shadow-sm border border-[var(--border)] hover:shadow-2xl hover:border-[var(--primary)]/30 transition-all duration-500 overflow-hidden">
+    <div className="group relative bg-white rounded-xl p-6 shadow-md border border-gray-200 hover:shadow-lg hover:border-[#0A66C2]/30 transition-all duration-500 overflow-hidden">
       {/* Animated gradient background */}
       <div
-        className="absolute inset-0 bg-[var(--primary)] opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+        className="absolute inset-0 bg-[#0A66C2] opacity-0 group-hover:opacity-5 transition-opacity duration-500"
       ></div>
 
       {/* Decorative circles */}
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[var(--primary)]/10 rounded-full blur-2xl"></div>
+      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#0A66C2]/10 rounded-full blur-2xl"></div>
 
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-6">
           <div
-            className="p-4 bg-[var(--primary)] rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300"
+            className="p-4 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg shadow-md group-hover:scale-110 transition-transform duration-300"
           >
             <Icon className="w-6 h-6 text-white" />
           </div>
@@ -239,9 +239,9 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         </div>
 
         {/* Progress bar */}
-        <div className="mt-4 h-2 bg-[var(--surface-tertiary)] rounded-full overflow-hidden">
+        <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
-            className="h-full bg-[var(--primary)] rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-gradient-to-r from-[#0A66C2] to-[#004182] rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${Math.min(100, (Number(value) / 50) * 100)}%` }}
           ></div>
         </div>
@@ -251,9 +251,9 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
   
 
   const JobCard = ({ job }: { job: Job }) => (
-    <div className="group relative bg-[var(--surface-secondary)] rounded-2xl border border-[var(--border)] hover:border-[var(--primary)] hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <div className="group relative bg-white rounded-xl border border-gray-200 hover:border-[#0A66C2] hover:shadow-lg transition-all duration-300 overflow-hidden">
       {/* Gradient accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0A66C2] to-[#004182] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
@@ -332,19 +332,19 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
             {/* Stats */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-4 py-2 bg-[var(--primary)]/10 rounded-xl border border-[var(--primary)]/20">
-                <FileText className="w-4 h-4 text-[var(--primary)]" />
-                <span className="text-sm font-bold text-[var(--primary)]">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-lg border border-blue-100">
+                <FileText className="w-4 h-4 text-[#0A66C2]" />
+                <span className="text-sm font-bold text-[#0A66C2]">
                   {job.applicants || 0}
                 </span>
-                <span className="text-xs text-[var(--primary)]">applications</span>
+                <span className="text-xs text-[#0A66C2]">applications</span>
               </div>
-              <div className="flex items-center space-x-2 px-4 py-2 bg-[var(--primary)]/10 rounded-xl border border-[var(--primary)]/20">
-                <Eye className="w-4 h-4 text-[var(--primary)]" />
-                <span className="text-sm font-bold text-[var(--primary)]">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-lg border border-blue-100">
+                <Eye className="w-4 h-4 text-[#0A66C2]" />
+                <span className="text-sm font-bold text-[#0A66C2]">
                   {job.views || 0}
                 </span>
-                <span className="text-xs text-[var(--primary)]">views</span>
+                <span className="text-xs text-[#0A66C2]">views</span>
               </div>
             </div>
           </div>
@@ -373,7 +373,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="relative w-20 h-20 mx-auto mb-6">
             <div className="absolute inset-0 rounded-full border-4 border-primary-200"></div>
@@ -390,7 +390,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center max-w-md">
           <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
             <XCircle className="w-10 h-10 text-white" />
@@ -411,14 +411,14 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="min-h-screen bg-gray-50">
       {/* Enhanced Header */}
-      <header className="bg-[var(--surface)] backdrop-blur-xl shadow-lg border-b border-[var(--border)] sticky top-0 z-50">
+      <header className="bg-white backdrop-blur-xl shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="px-8 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-5">
               <div className="relative">
-                <div className="w-14 h-14 bg-[var(--primary)] rounded-2xl flex items-center justify-center shadow-xl">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-xl flex items-center justify-center shadow-md">
                   <span className="text-white font-bold text-lg">
                     {hrData.avatar}
                   </span>
@@ -478,7 +478,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         <div className="flex items-center justify-between mb-10">
           <div>
             <div className="flex items-center space-x-3 mb-3">
-              <h2 className="text-4xl font-bold text-[var(--foreground)]">
+              <h2 className="text-4xl font-bold text-gray-900">
                 Dashboard Overview
               </h2>
               <Sparkles className="w-8 h-8 text-amber-500 animate-pulse" />
@@ -488,12 +488,12 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             </p>
           </div>
           <div className="flex items-center space-x-3">
-            <button className="flex items-center space-x-2 px-5 py-3 bg-[var(--surface-secondary)] border-2 border-[var(--border)] hover:border-[var(--primary)] text-[var(--foreground)] rounded-xl font-semibold shadow-sm hover:shadow-lg transition-all hover:-translate-y-0.5">
+            <button className="flex items-center space-x-2 px-5 py-3 bg-white border-2 border-gray-300 hover:border-[#0A66C2] text-gray-700 rounded-lg font-semibold shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
               <Download className="w-5 h-5" />
               <span>Export</span>
             </button>
             <Link href="/jobcy/hr/jobs-management">
-              <button className="flex items-center space-x-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white px-6 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 group">
+              <button className="flex items-center space-x-2 bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-lg font-bold shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Manage Jobs</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -511,7 +511,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             change={12}
             trend="up"
             icon={Briefcase}
-            gradient="var(--primary)"
+            gradient="linear-gradient(135deg, #0A66C2 0%, #004182 100%)"
           />
           <StatCard
             title="Active Jobs"
@@ -520,7 +520,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             change={8}
             trend="up"
             icon={Target}
-            gradient="var(--primary)"
+            gradient="linear-gradient(135deg, #0A66C2 0%, #004182 100%)"
           />
           <StatCard
             title="Applications"
@@ -529,7 +529,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             change={23}
             trend="up"
             icon={FileText}
-            gradient="var(--primary)"
+            gradient="linear-gradient(135deg, #0A66C2 0%, #004182 100%)"
           />
           <StatCard
             title="Pending Reviews"
@@ -538,7 +538,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             change={-5}
             trend="down"
             icon={Clock}
-            gradient="var(--primary)"
+            gradient="linear-gradient(135deg, #0A66C2 0%, #004182 100%)"
           />
         </div>
 
@@ -604,7 +604,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                     posting to get started
                   </p>
                   <Link href="/jobcy/hr/jobs-management">
-                    <button className="px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                    <button className="px-6 py-3 bg-[#0A66C2] hover:bg-[#004182] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
                       Create New Job
                     </button>
                   </Link>
