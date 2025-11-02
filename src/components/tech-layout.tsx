@@ -509,10 +509,12 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar - Fixed below header on desktop */}
       <aside className={`
-        fixed top-0 left-0 bottom-0 z-[60] w-80 h-screen bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+        fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
         transform transition-transform duration-300 ease-in-out
+        top-0 h-screen
+        lg:top-[80px] lg:h-[calc(100vh-80px)]
         lg:translate-x-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
@@ -520,7 +522,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen lg:ml-80">
+      <div className="flex-1 flex flex-col min-h-screen w-full lg:ml-80">
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
@@ -547,7 +549,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10">
+        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10 pt-0 lg:pt-0">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
