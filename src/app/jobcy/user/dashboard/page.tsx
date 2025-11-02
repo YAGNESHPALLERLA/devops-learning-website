@@ -160,9 +160,9 @@ export default function JobSeekerDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       {/* Modern Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-[var(--surface)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--surface)]/80 border-[color:var(--border)] shadow-sm">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95 border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Left: Logo & Menu */}

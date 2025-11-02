@@ -45,10 +45,10 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
       <Card variant="elevated">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-[var(--primary)]">
+            <span className="text-2xl font-bold text-[#0A66C2]">
               Application Tracker
             </span>
-            <span className="text-sm font-medium text-[var(--foreground-dim)]">
+            <span className="text-sm font-medium text-gray-600">
               {applications.length} {applications.length === 1 ? "Application" : "Applications"}
             </span>
           </CardTitle>
@@ -56,9 +56,9 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
         <CardContent>
           {applications.length === 0 ? (
             <div className="text-center py-12">
-              <Briefcase className="w-16 h-16 mx-auto text-[var(--foreground-dim)] mb-4" />
-              <p className="text-[var(--foreground-muted)] mb-2">No applications yet</p>
-              <p className="text-sm text-[var(--foreground-dim)]">
+              <Briefcase className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+              <p className="text-gray-600 mb-2 font-medium">No applications yet</p>
+              <p className="text-sm text-gray-500">
                 Start applying to jobs to track your progress here
               </p>
             </div>
@@ -80,7 +80,7 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
                 return (
                   <div
                     key={app.id}
-                    className="p-6 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:shadow-lg transition-all"
+                    className="p-6 rounded-xl border border-gray-200 bg-white hover:shadow-md transition-all"
                   >
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">

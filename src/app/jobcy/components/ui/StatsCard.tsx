@@ -23,22 +23,22 @@ export function StatsCard({ title, value, icon, trend, gradient, className }: St
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <p className="text-sm font-medium text-[var(--foreground-muted)] mb-1">{title}</p>
-            <p className="text-3xl font-bold text-[var(--foreground)] mb-2">{value}</p>
+            <p className="text-sm font-medium text-gray-600 mb-1">{title}</p>
+            <p className="text-3xl font-bold text-gray-900 mb-2">{value}</p>
             {trend && (
               <div className={cn(
-                "flex items-center text-sm font-medium",
-                trend.positive ? "text-green-500" : "text-[var(--danger-light)]"
+                "flex items-center text-sm font-semibold",
+                trend.positive ? "text-green-600" : "text-red-600"
               )}>
                 <span className="mr-1">{trend.positive ? "↑" : "↓"}</span>
                 <span>{trend.value}%</span>
-                <span className="ml-1 text-[var(--foreground-dim)]">{trend.label}</span>
+                <span className="ml-1 text-gray-500 font-normal">{trend.label}</span>
               </div>
             )}
           </div>
           {icon && (
             <div className={cn(
-              "w-12 h-12 rounded-xl flex items-center justify-center bg-[var(--primary)]"
+              "w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0A66C2] to-[#004182] shadow-md"
             )}
             style={gradient ? { background: gradient } : undefined}
             >

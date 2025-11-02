@@ -22,12 +22,12 @@ export function Button({
   const baseStyles = "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
-    primary: "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)] shadow-lg hover:shadow-xl hover:scale-105 focus:ring-[var(--primary)]/50",
-    secondary: "bg-[var(--surface)] text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--primary)] hover:text-[var(--primary)] shadow-md hover:shadow-lg hover:scale-105 focus:ring-[var(--primary)]/50",
-    outline: "bg-transparent text-[var(--primary)] border-2 border-[var(--primary)] hover:bg-[var(--surface-secondary)] hover:border-[var(--primary-dark)] shadow-md hover:shadow-lg hover:scale-105 focus:ring-[var(--primary)]/50",
-    ghost: "bg-transparent text-[var(--foreground)] hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)] focus:ring-[var(--primary)]/50",
-    danger: "bg-[var(--danger)] text-white hover:bg-[var(--danger-dark)] shadow-lg hover:shadow-xl hover:scale-105 focus:ring-[var(--danger)]/50",
-    success: "bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-green-500",
+    primary: "bg-[#0A66C2] text-white hover:bg-[#004182] shadow-sm hover:shadow-md transition-all focus:ring-[#0A66C2]/50",
+    secondary: "bg-white text-gray-700 border border-gray-300 hover:border-[#0A66C2] hover:text-[#0A66C2] shadow-sm hover:shadow-md transition-all focus:ring-[#0A66C2]/50",
+    outline: "bg-transparent text-[#0A66C2] border-2 border-[#0A66C2] hover:bg-blue-50 transition-all focus:ring-[#0A66C2]/50",
+    ghost: "bg-transparent text-gray-700 hover:bg-gray-100 transition-all focus:ring-[#0A66C2]/50",
+    danger: "bg-red-600 text-white hover:bg-red-700 shadow-sm hover:shadow-md transition-all focus:ring-red-500/50",
+    success: "bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 shadow-sm hover:shadow-md transition-all focus:ring-green-500/50",
   };
 
   const sizes = {

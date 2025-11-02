@@ -1,21 +1,22 @@
 /**
  * Jobcy Portal - Modern Design System
- * Professional theme matching ohg365.com with LinkedIn-inspired aesthetics
+ * Professional LinkedIn/Indeed/Internshala-inspired theme
+ * Clean, modern, student-friendly interface
  */
 
 export const jobcyTheme = {
   colors: {
     primary: {
-      50: '#f0f9ff',
-      100: '#e0f2fe',
-      200: '#bae6fd',
-      300: '#7dd3fc',
-      400: '#38bdf8',
-      500: '#0ea5e9', // Main primary
-      600: '#0284c7',
-      700: '#0369a1',
-      800: '#075985',
-      900: '#0c4a6e',
+      50: '#f0f4ff',
+      100: '#e0e9ff',
+      200: '#c7d7fe',
+      300: '#a5b8fc',
+      400: '#818cf8',
+      500: '#0A66C2', // LinkedIn Blue - Main primary
+      600: '#004182', // LinkedIn Dark Blue
+      700: '#003d7a',
+      800: '#003469',
+      900: '#002d5a',
     },
     secondary: {
       50: '#faf5ff',
@@ -79,13 +80,22 @@ export const jobcyTheme = {
     },
     background: {
       light: '#ffffff',
+      default: '#f8f9fa', // LinkedIn-style light gray
+      card: '#ffffff',
+      hover: '#f3f2ef',
       dark: '#0f172a',
-      gray: '#f8fafc',
+      gray: '#f3f2ef', // LinkedIn light gray
+      section: '#fafafa',
+    },
+    border: {
+      light: '#e0e0e0',
+      default: '#d0d8dc',
+      dark: '#6c757d',
     },
   },
   typography: {
     fontFamily: {
-      sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      sans: ['Inter', 'Poppins', 'Roboto', 'system-ui', '-apple-system', 'sans-serif'],
       mono: ['JetBrains Mono', 'monospace'],
     },
     fontSize: {
@@ -153,15 +163,15 @@ export const jobcyTheme = {
 };
 
 export const gradients = {
-  primary: 'linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%)',
-  secondary: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-  success: 'linear-gradient(135deg, #22c55e 0%, #10b981 100%)',
+  primary: 'linear-gradient(135deg, #0A66C2 0%, #004182 100%)', // LinkedIn blue
+  secondary: 'linear-gradient(135deg, #0A66C2 0%, #6366f1 100%)',
+  success: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
   warm: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)',
-  cool: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
-  sunset: 'linear-gradient(135deg, #ec4899 0%, #f59e0b 100%)',
-  ocean: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
-  purple: 'linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%)',
-  background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
+  cool: 'linear-gradient(135deg, #0A66C2 0%, #3b82f6 100%)', // Blue gradient
+  ocean: 'linear-gradient(135deg, #0A66C2 0%, #06b6d4 100%)',
+  professional: 'linear-gradient(135deg, #0A66C2 0%, #004182 100%)',
+  light: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+  background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
   darkBackground: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
 };
 

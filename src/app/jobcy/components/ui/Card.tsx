@@ -13,10 +13,10 @@ export function Card({ variant = 'default', hover = false, className, children, 
   const baseStyles = "rounded-2xl transition-all duration-300";
   
   const variants = {
-    default: "bg-[var(--surface)] shadow-md border border-[var(--border)]",
-    elevated: "bg-[var(--surface)] shadow-xl border border-[var(--border)]",
-    outlined: "bg-[var(--surface)] border-2 border-[var(--border)]",
-    gradient: "bg-[var(--surface-secondary)] border border-[var(--border)] shadow-lg",
+    default: "bg-white shadow-sm border border-gray-200",
+    elevated: "bg-white shadow-md border border-gray-200 hover:shadow-lg transition-shadow",
+    outlined: "bg-white border-2 border-gray-300",
+    gradient: "bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 shadow-md",
   };
 
   const hoverStyles = hover ? "hover:shadow-2xl hover:-translate-y-1 cursor-pointer" : "";
@@ -33,7 +33,7 @@ export function Card({ variant = 'default', hover = false, className, children, 
 
 export function CardHeader({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("px-6 py-4 border-b border-[var(--border)]", className)} {...props}>
+    <div className={cn("px-6 py-4 border-b border-gray-200", className)} {...props}>
       {children}
     </div>
   );
@@ -41,7 +41,7 @@ export function CardHeader({ className, children, ...props }: HTMLAttributes<HTM
 
 export function CardTitle({ className, children, ...props }: HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h3 className={cn("text-xl font-bold text-[var(--foreground)]", className)} {...props}>
+    <h3 className={cn("text-xl font-bold text-gray-900", className)} {...props}>
       {children}
     </h3>
   );
@@ -57,7 +57,7 @@ export function CardContent({ className, children, ...props }: HTMLAttributes<HT
 
 export function CardFooter({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("px-6 py-4 border-t border-[var(--border)]", className)} {...props}>
+    <div className={cn("px-6 py-4 border-t border-gray-200 bg-gray-50", className)} {...props}>
       {children}
     </div>
   );
