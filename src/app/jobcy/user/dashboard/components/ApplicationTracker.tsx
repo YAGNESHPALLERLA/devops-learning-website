@@ -85,12 +85,12 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-[var(--foreground)] mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
                           {app.jobTitle}
                         </h3>
-                        <p className="text-sm text-[var(--foreground-muted)]">{app.company}</p>
+                        <p className="text-sm text-gray-600">{app.company}</p>
                         {app.location && (
-                          <p className="text-xs text-[var(--foreground-dim)] mt-1">
+                          <p className="text-xs text-gray-500 mt-1">
                             📍 {app.location}
                           </p>
                         )}
@@ -110,16 +110,16 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
                     {app.status !== "rejected" && (
                       <div className="mb-4">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-medium text-[var(--foreground-dim)]">
+                          <span className="text-xs font-medium text-gray-600">
                             Progress
                           </span>
-                          <span className="text-xs font-semibold text-[var(--primary)]">
+                          <span className="text-xs font-semibold text-[#0A66C2]">
                             {Math.round((currentStep / 4) * 100)}%
                           </span>
                         </div>
-                        <div className="relative h-2 bg-[var(--surface-secondary)] rounded-full overflow-hidden">
+                        <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div
-                            className="absolute top-0 left-0 h-full bg-[var(--primary)] transition-all duration-500 rounded-full"
+                            className="absolute top-0 left-0 h-full bg-[#0A66C2] transition-all duration-500 rounded-full"
                             style={{ width: `${(currentStep / 4) * 100}%` }}
                           />
                         </div>
@@ -137,23 +137,23 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
                                 key={step.key}
                                 className={cn(
                                   "flex flex-col items-center space-y-1",
-                                  isActive && "text-[var(--primary)]",
-                                  !isActive && "text-[var(--foreground-dim)]"
+                                  isActive && "text-[#0A66C2]",
+                                  !isActive && "text-gray-400"
                                 )}
                               >
                                 <div
                                   className={cn(
                                     "w-8 h-8 rounded-full flex items-center justify-center transition-all",
                                     isCurrent
-                                      ? "bg-[var(--primary)] text-white scale-110 shadow-lg"
+                                      ? "bg-[#0A66C2] text-white scale-110 shadow-md"
                                       : isActive
-                                      ? "bg-[var(--primary-light)]/20 text-[var(--primary)]"
-                                      : "bg-[var(--surface-secondary)] text-[var(--foreground-dim)]"
+                                      ? "bg-blue-50 text-[#0A66C2]"
+                                      : "bg-gray-100 text-gray-400"
                                   )}
                                 >
                                   <Icon className="w-4 h-4" />
                                 </div>
-                                <span className="text-xs font-medium text-center text-[var(--foreground-muted)]">{step.label}</span>
+                                <span className="text-xs font-medium text-center text-gray-600">{step.label}</span>
                               </div>
                             );
                           })}
@@ -162,7 +162,7 @@ export function ApplicationTracker({ applications, className }: ApplicationTrack
                     )}
 
                     {/* Dates */}
-                    <div className="flex items-center justify-between text-xs text-[var(--foreground-dim)] pt-4 border-t border-[var(--border)]">
+                    <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-gray-200">
                       <span>Applied: {new Date(app.appliedDate).toLocaleDateString()}</span>
                       {app.interviewDate && (
                         <span>Interview: {new Date(app.interviewDate).toLocaleDateString()}</span>

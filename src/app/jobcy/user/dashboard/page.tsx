@@ -142,16 +142,16 @@ export default function JobSeekerDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="relative">
-            <div className="w-20 h-20 border-4 border-[var(--primary)]/20 rounded-full"></div>
-            <div className="w-20 h-20 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+            <div className="w-20 h-20 border-4 border-[#0A66C2]/20 rounded-full"></div>
+            <div className="w-20 h-20 border-4 border-[#0A66C2] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
           </div>
-          <p className="mt-6 text-lg font-medium text-[var(--foreground)]">
+          <p className="mt-6 text-lg font-medium text-gray-900">
             Loading your dashboard...
           </p>
-          <p className="mt-2 text-sm text-[var(--foreground-dim)]">
+          <p className="mt-2 text-sm text-gray-600">
             Please wait while we fetch your data
           </p>
         </div>
@@ -169,25 +169,25 @@ export default function JobSeekerDashboard() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-2 rounded-lg hover:bg-[var(--surface-secondary)] transition-colors"
+                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 {showMobileMenu ? (
-                  <X className="w-5 h-5 text-[var(--foreground)]" />
+                  <X className="w-5 h-5 text-gray-700" />
                 ) : (
-                  <Menu className="w-5 h-5 text-[var(--foreground)]" />
+                  <Menu className="w-5 h-5 text-gray-700" />
                 )}
               </button>
               
               <div 
-                className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity group"
                 onClick={() => router.push("/jobcy/")}
               >
-                <div className="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center shadow-lg">
-                  <Briefcase className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                  <Briefcase className="w-5 h-5 text-white" />
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold text-[var(--foreground)]">Jobcy</h1>
-                  <p className="text-xs text-[var(--foreground-dim)]">Find Your Dream Job</p>
+                  <h1 className="text-xl font-bold text-gray-900 group-hover:text-[#0A66C2] transition-colors">Jobcy</h1>
+                  <p className="text-xs text-gray-600">Find Your Dream Job</p>
                 </div>
               </div>
             </div>
@@ -198,16 +198,16 @@ export default function JobSeekerDashboard() {
               {/* Notifications */}
               <button
                 onClick={() => setActiveTab("notifications")}
-                className="relative p-2.5 rounded-xl bg-[var(--surface-secondary)] text-[var(--foreground-muted)] hover:bg-[var(--surface-tertiary)] hover:text-[var(--foreground)] transition-colors"
+                className="relative p-2.5 rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors border border-gray-200"
                 title="Notifications"
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-[var(--primary)] rounded-full"></span>
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
               </button>
 
               {/* Settings */}
               <button
-                className="p-2.5 rounded-xl bg-[var(--surface-secondary)] text-[var(--foreground-muted)] hover:bg-[var(--surface-tertiary)] hover:text-[var(--foreground)] transition-colors"
+                className="p-2.5 rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors border border-gray-200"
                 title="Settings"
               >
                 <Settings className="w-5 h-5" />
@@ -217,41 +217,41 @@ export default function JobSeekerDashboard() {
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="flex items-center space-x-3 px-3 py-2 rounded-xl hover:bg-[var(--surface-secondary)] transition-colors"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
                 >
-                  <div className="w-9 h-9 bg-[var(--primary)] rounded-lg flex items-center justify-center text-white text-sm font-semibold shadow-md">
+                  <div className="w-9 h-9 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center text-white text-sm font-semibold shadow-sm">
                     {getInitial(userProfile.name)}
                   </div>
                   <div className="hidden md:block text-left">
-                    <p className="text-sm font-semibold text-[var(--foreground)]">
+                    <p className="text-sm font-semibold text-gray-900">
                       {userProfile.name}
                     </p>
                   </div>
-                  <ChevronDown className="w-4 h-4 hidden md:block text-[var(--foreground-dim)]" />
+                  <ChevronDown className="w-4 h-4 hidden md:block text-gray-600" />
                 </button>
 
                 {showUserMenu && (
-                  <div className="absolute right-0 mt-2 w-56 bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-xl py-2 z-50">
-                    <div className="px-4 py-3 border-b border-[var(--border)]">
-                      <p className="font-semibold text-[var(--foreground)]">{userProfile.name}</p>
-                      <p className="text-xs text-[var(--foreground-dim)]">{userProfile.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl py-1 z-50">
+                    <div className="px-4 py-3 border-b border-gray-200">
+                      <p className="font-semibold text-gray-900">{userProfile.name}</p>
+                      <p className="text-xs text-gray-600">{userProfile.email}</p>
                     </div>
                     <button
                       onClick={() => {
                         setShowProfileModal(true);
                         setShowUserMenu(false);
                       }}
-                      className="w-full text-left px-4 py-2.5 text-sm text-[var(--foreground)] hover:bg-[var(--surface-secondary)] transition-colors"
+                      className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                     >
                       View Profile
                     </button>
-                    <button className="w-full text-left px-4 py-2.5 text-sm text-[var(--foreground)] hover:bg-[var(--surface-secondary)] transition-colors">
+                    <button className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
                       Account Settings
                     </button>
-                    <div className="border-t border-[var(--border)] my-2"></div>
+                    <div className="border-t border-gray-200 my-1"></div>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2.5 text-sm text-[var(--danger-light)] hover:bg-[var(--danger)]/10 transition-colors flex items-center space-x-2"
+                      className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-2"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>Logout</span>
@@ -320,17 +320,17 @@ export default function JobSeekerDashboard() {
               {/* Quick Actions */}
               <Card variant="elevated">
                 <div className="p-6">
-                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-4">Quick Actions</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <button
                       onClick={() => setActiveTab("jobs")}
-                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
                     >
-                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                         <Briefcase className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-[var(--foreground)] mb-1">Find Jobs</h3>
-                      <p className="text-sm text-[var(--foreground-muted)]">
+                      <h3 className="font-semibold text-gray-900 mb-1">Find Jobs</h3>
+                      <p className="text-sm text-gray-600">
                         Browse available positions
                       </p>
                     </button>
@@ -339,27 +339,27 @@ export default function JobSeekerDashboard() {
                         setProfileModalSection("personal");
                         setShowProfileModal(true);
                       }}
-                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
                     >
-                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                         <FileCheck className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-[var(--foreground)] mb-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">
                         Complete Profile
                       </h3>
-                      <p className="text-sm text-[var(--foreground-muted)]">
+                      <p className="text-sm text-gray-600">
                         {userProfile.profileCompletion || 0}% complete
                       </p>
                     </button>
                     <button
                       onClick={() => setActiveTab("connect")}
-                      className="p-4 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] hover:border-[var(--primary)]/30 hover:shadow-lg transition-all text-left group"
+                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
                     >
-                      <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                         <Users className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-[var(--foreground)] mb-1">Network</h3>
-                      <p className="text-sm text-[var(--foreground-muted)]">
+                      <h3 className="font-semibold text-gray-900 mb-1">Network</h3>
+                      <p className="text-sm text-gray-600">
                         Connect with professionals
                       </p>
                     </button>
@@ -412,7 +412,7 @@ export default function JobSeekerDashboard() {
             />
           )}
           {activeTab === "interviews" && interviews.length === 0 && (
-            <div className="text-center mt-16 text-[var(--foreground-dim)]">
+            <div className="text-center mt-16 text-gray-500">
               No interviews scheduled yet.
             </div>
           )}
