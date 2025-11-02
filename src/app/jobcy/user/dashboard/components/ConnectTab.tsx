@@ -348,11 +348,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       {/* Left Side: Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Modern Header with Tabs */}
-        <div className={`relative mb-6 p-6 rounded-2xl overflow-hidden ${
-          isDark 
-            ? "bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-pink-900/30 border border-slate-700" 
-            : "bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border border-slate-200"
-        } backdrop-blur-sm`}>
+        <div className="relative mb-6 p-6 rounded-2xl overflow-hidden bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border border-gray-200 backdrop-blur-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="p-2.5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg">
@@ -370,9 +366,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             
             {/* Live Stats */}
             <div className="flex gap-3">
-              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
-                isDark ? "bg-slate-800/50" : "bg-white/80"
-              } backdrop-blur-sm border ${border-gray-200}`}>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200">
                 <div className={`w-2 h-2 rounded-full ${isConnected ? "bg-green-500 animate-pulse" : "bg-gray-400"}`}></div>
                 <span className="text-xs font-medium text-gray-700">
                   {isConnected ? "Online" : "Offline"}
@@ -387,12 +381,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
               onClick={() => setActiveTab('discover')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
                 activeTab === 'discover'
-                  ? isDark
-                    ? "bg-blue-600 text-white shadow-lg"
-                    : "bg-blue-500 text-white shadow-lg"
-                  : isDark
-                    ? "bg-slate-800/50 text-slate-400 hover:bg-slate-700/50"
-                    : "bg-white/50 text-slate-600 hover:bg-white"
+                  ? "bg-[#0A66C2] text-white shadow-md"
+                  : "bg-white/50 text-gray-600 hover:bg-white"
               }`}
             >
               <Sparkles className="w-4 h-4" />
@@ -400,7 +390,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
               <span className={`px-2 py-0.5 rounded-full text-xs ${
                 activeTab === 'discover'
                   ? "bg-white/20"
-                  : isDark ? "bg-slate-700" : "bg-slate-200"
+                  : "bg-gray-200"
               }`}>
                 {filteredConnections.length}
               </span>
@@ -410,12 +400,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
               onClick={() => setActiveTab('requests')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
                 activeTab === 'requests'
-                  ? isDark
-                    ? "bg-orange-600 text-white shadow-lg"
-                    : "bg-orange-500 text-white shadow-lg"
-                  : isDark
-                    ? "bg-slate-800/50 text-slate-400 hover:bg-slate-700/50"
-                    : "bg-white/50 text-slate-600 hover:bg-white"
+                  ? "bg-orange-500 text-white shadow-md"
+                  : "bg-white/50 text-gray-600 hover:bg-white"
               }`}
             >
               <Bell className="w-4 h-4" />
@@ -435,12 +421,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
               onClick={() => setActiveTab('connections')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
                 activeTab === 'connections'
-                  ? isDark
-                    ? "bg-green-600 text-white shadow-lg"
-                    : "bg-green-500 text-white shadow-lg"
-                  : isDark
-                    ? "bg-slate-800/50 text-slate-400 hover:bg-slate-700/50"
-                    : "bg-white/50 text-slate-600 hover:bg-white"
+                  ? "bg-green-500 text-white shadow-md"
+                  : "bg-white/50 text-gray-600 hover:bg-white"
               }`}
             >
               <UserCheck className="w-4 h-4" />
@@ -448,7 +430,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
               <span className={`px-2 py-0.5 rounded-full text-xs ${
                 activeTab === 'connections'
                   ? "bg-white/20"
-                  : isDark ? "bg-slate-700" : "bg-slate-200"
+                  : "bg-gray-200"
               }`}>
                 {connectedConnections.length}
               </span>
@@ -458,27 +440,17 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
         {/* Search Bar - Only show for Discover and Connections tabs */}
         {(activeTab === 'discover' || activeTab === 'connections') && (
-          <div className={`mb-6 relative group ${
-            bg-white
-          } backdrop-blur-xl rounded-xl border ${
-            border-gray-200
-          } p-4 shadow-lg hover:shadow-xl transition-all duration-300`}>
+          <div className="mb-6 relative group bg-white backdrop-blur-xl rounded-xl border border-gray-200 p-4 shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="flex items-center space-x-3">
-              <div className={`p-2 rounded-lg ${
-                isDark ? "bg-slate-700" : "bg-gradient-to-br from-blue-50 to-purple-50"
-              }`}>
-                <Search className={`w-5 h-5 ${
-                  isDark ? "text-blue-400" : "text-blue-600"
-                }`} />
+              <div className="p-2 rounded-lg bg-gradient-to-br from-blue-50 to-purple-50">
+                <Search className="w-5 h-5 text-[#0A66C2]" />
               </div>
               <input
                 type="text"
                 placeholder={activeTab === 'discover' ? "Search professionals..." : "Search your connections..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`flex-1 bg-transparent border-none focus:outline-none text-base ${
-                  isDark ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400"
-                }`}
+                className="flex-1 bg-transparent border-none focus:outline-none text-base text-gray-900 placeholder:text-gray-400"
               />
             </div>
           </div>
@@ -491,14 +463,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           {activeTab === 'discover' && (
             <div>
               {filteredConnections.length === 0 ? (
-                <div className={`${
-                  bg-white
-                } backdrop-blur-xl rounded-2xl border ${
-                  border-gray-200
-                } p-16 text-center shadow-lg`}>
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
-                    isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
-                  } flex items-center justify-center`}>
+                <div className="bg-white backdrop-blur-xl rounded-2xl border border-gray-200 p-16 text-center shadow-lg">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
                     <Users className="w-10 h-10 text-gray-400" />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900">
@@ -530,14 +496,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           {activeTab === 'requests' && (
             <div>
               {pendingRequests.length === 0 ? (
-                <div className={`${
-                  bg-white
-                } backdrop-blur-xl rounded-2xl border ${
-                  border-gray-200
-                } p-16 text-center shadow-lg`}>
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
-                    isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-orange-50 to-red-50"
-                  } flex items-center justify-center`}>
+                <div className="bg-white backdrop-blur-xl rounded-2xl border border-gray-200 p-16 text-center shadow-lg">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center">
                     <Clock className="w-10 h-10 text-gray-400" />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900">
@@ -576,9 +536,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                               {request.sender.professionalRole || "Professional"} • {request.sender.currentLocation || "Location not specified"}
                             </p>
                             {request.message && (
-                              <div className={`p-3 rounded-xl mt-3 ${
-                                isDark ? "bg-slate-700/50" : "bg-slate-50"
-                              }`}>
+                              <div className="p-3 rounded-xl mt-3 bg-gray-50">
                                 <p className="text-sm text-gray-700 italic">
                                   &ldquo;{request.message}&rdquo;
                                 </p>
@@ -626,14 +584,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           {activeTab === 'connections' && (
             <div>
               {connectedConnections.length === 0 ? (
-                <div className={`${
-                  bg-white
-                } backdrop-blur-xl rounded-2xl border ${
-                  border-gray-200
-                } p-16 text-center shadow-lg`}>
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
-                    isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-green-50 to-emerald-50"
-                  } flex items-center justify-center`}>
+                <div className="bg-white backdrop-blur-xl rounded-2xl border border-gray-200 p-16 text-center shadow-lg">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
                     <UserCheck className="w-10 h-10 text-gray-400" />
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900">
@@ -747,8 +699,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 <div className="flex items-center gap-2">
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
                     isConnected 
-                      ? isDark ? "bg-green-900/30 text-green-400 border border-green-800" : "bg-green-100 text-green-700 border border-green-200"
-                      : isDark ? "bg-red-900/30 text-red-400 border border-red-800" : "bg-red-100 text-red-700 border border-red-200"
+                      ? "bg-green-100 text-green-700 border border-green-200"
+                      : "bg-red-100 text-red-700 border border-red-200"
                   }`}>
                     <div className={`w-2 h-2 rounded-full ${isConnected ? "bg-green-500" : "bg-red-500"} animate-pulse`}></div>
                     {isConnected ? "Online" : "Offline"}
@@ -764,9 +716,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             <div className="flex-1 overflow-y-auto">
               {chats.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full p-8">
-                  <div className={`w-20 h-20 rounded-full ${
-                    isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
-                  } flex items-center justify-center mb-6`}>
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center mb-6">
                     <MessageCircle className="w-10 h-10 text-gray-400" />
                   </div>
                   <h4 className="text-lg font-bold mb-2 text-gray-900">
@@ -775,7 +725,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                   <p className="text-gray-600 text-center text-sm max-w-xs">
                     Start connecting with professionals to begin conversations
                   </p>
-                  {chatError && <div className={`mt-4 px-4 py-2 rounded-lg ${isDark ? "bg-red-900/20 text-red-400" : "bg-red-50 text-red-600"} text-xs`}>{chatError}</div>}
+                  {chatError && <div className="mt-4 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-xs">{chatError}</div>}
                 </div>
               ) : (
                 <div className="p-3 space-y-2">
@@ -795,13 +745,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                           name: chat.otherParticipant.name, 
                           connected: true 
                         })}
-                        className={`group p-4 rounded-xl cursor-pointer transition-all duration-200 ${
-                          isDark 
-                            ? "hover:bg-slate-700/50 hover:shadow-lg" 
-                            : "hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:shadow-md"
-                        } border ${
-                          isDark ? "border-transparent hover:border-slate-600" : "border-transparent hover:border-blue-200"
-                        }`}
+                        className="group p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:shadow-md border border-transparent hover:border-blue-200"
                         style={{
                           animation: `fadeInUp 0.3s ease-out ${index * 0.1}s both`
                         }}
@@ -813,7 +757,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                                 {chat.otherParticipant.name ? chat.otherParticipant.name.charAt(0).toUpperCase() : "U"}
                               </span>
                             </div>
-                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-slate-800"></div>
+                            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
@@ -847,7 +791,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 // Simple ChatBox Component
 interface ChatBoxProps {
   connection: Connection;
-  isDark: boolean;
+  isDark?: boolean; // Kept for backwards compatibility but not used
   onClose: () => void;
   currentChat: { id: string } | null;
   messages: ChatMessage[];
@@ -857,7 +801,7 @@ interface ChatBoxProps {
   isLoading: boolean;
 }
 
-function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessage, sendTyping, stopTyping, isLoading }: ChatBoxProps) {
+function ChatBox({ connection, isDark: _isDark, onClose, currentChat, messages, sendMessage, sendTyping, stopTyping, isLoading }: ChatBoxProps) {
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -921,11 +865,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
   return (
     <div className="flex flex-col h-full">
       {/* Modern Chat Header */}
-      <div className={`p-5 ${
-        isDark 
-          ? "bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-b border-slate-700" 
-          : "bg-gradient-to-r from-blue-50 to-purple-50 border-b border-slate-200"
-      }`}>
+      <div className="p-5 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`w-11 h-11 bg-gradient-to-br ${getGradientColors(connection.name)} rounded-xl flex items-center justify-center shadow-lg`}>
@@ -945,11 +885,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
           </div>
           <button 
             onClick={onClose} 
-            className={`p-2 rounded-lg transition-all duration-200 ${
-              isDark 
-                ? "hover:bg-slate-700 text-slate-400 hover:text-white" 
-                : "hover:bg-white/60 text-slate-600 hover:text-slate-900"
-            }`}
+            className="p-2 rounded-lg transition-all duration-200 hover:bg-white/60 text-gray-600 hover:text-gray-900"
           >
             <X className="w-5 h-5" />
           </button>
@@ -957,9 +893,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
       </div>
 
       {/* Messages Area */}
-      <div className={`flex-1 p-5 overflow-y-auto ${
-        isDark ? "bg-slate-800/30" : "bg-slate-50/50"
-      }`}>
+      <div className="flex-1 p-5 overflow-y-auto bg-gray-50/50">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center h-full">
             <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mb-4"></div>
@@ -969,9 +903,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
           </div>
         ) : messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full">
-            <div className={`w-16 h-16 rounded-full ${
-              isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
-            } flex items-center justify-center mb-4`}>
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center mb-4">
               <MessageCircle className="w-8 h-8 text-gray-400" />
             </div>
             <p className="text-gray-600 text-center text-sm">
@@ -991,26 +923,20 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
                     animation: `fadeInUp 0.3s ease-out ${index * 0.05}s both`
                   }}
                 >
-                  <div className={`max-w-[75%] ${isOwnMessage ? 'items-end' : 'items-start'} flex flex-col`}>
+                    <div className={`max-w-[75%] ${isOwnMessage ? 'items-end' : 'items-start'} flex flex-col`}>
                     <div className={`px-4 py-3 rounded-2xl shadow-md ${
                       isOwnMessage 
-                        ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-br-md' 
-                        : isDark 
-                          ? 'bg-slate-700/80 text-white rounded-bl-md border border-slate-600' 
-                          : 'bg-white text-slate-900 rounded-bl-md border border-slate-200'
+                        ? 'bg-gradient-to-br from-[#0A66C2] to-[#004182] text-white rounded-br-md' 
+                        : 'bg-white text-gray-900 rounded-bl-md border border-gray-200'
                     }`}>
                       <p className="text-sm leading-relaxed break-words">{msg.content}</p>
                     </div>
                     <div className="flex items-center gap-1.5 mt-1.5 px-1">
-                      <p className={`text-xs ${
-                        isOwnMessage 
-                          ? isDark ? 'text-slate-500' : 'text-slate-400'
-                          : isDark ? 'text-slate-500' : 'text-slate-500'
-                      }`}>
+                      <p className="text-xs text-gray-500">
                         {new Date(msg.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                       </p>
                       {isOwnMessage && (
-                        <span className={`text-xs ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>✓</span>
+                        <span className="text-xs text-[#0A66C2]">✓</span>
                       )}
                     </div>
                   </div>
@@ -1023,9 +949,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
       </div>
 
       {/* Modern Input Area */}
-      <div className={`p-4 border-t ${
-        isDark ? "border-slate-700 bg-slate-800/50" : "border-slate-200 bg-white"
-      }`}>
+      <div className="p-4 border-t border-gray-200 bg-white">
         <div className="flex items-end gap-3">
           <div className="flex-1">
             <input
@@ -1037,11 +961,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
               }}
               onKeyUp={handleStopTyping}
               placeholder="Type your message..."
-              className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 focus:outline-none ${
-                isDark 
-                  ? "bg-slate-700/50 border-slate-600 focus:border-blue-500 text-white placeholder:text-slate-500" 
-                  : "bg-slate-50 border-slate-200 focus:border-blue-400 text-slate-900 placeholder:text-slate-400"
-              }`}
+              className="w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 focus:outline-none bg-gray-50 border-gray-200 focus:border-[#0A66C2] text-gray-900 placeholder:text-gray-400"
               onKeyPress={(e) => {
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
@@ -1055,10 +975,8 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
             disabled={!newMessage.trim()}
             className={`p-3 rounded-xl transition-all duration-200 ${
               newMessage.trim()
-                ? "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl hover:scale-105"
-                : isDark 
-                  ? "bg-slate-700 text-slate-500 cursor-not-allowed" 
-                  : "bg-slate-200 text-slate-400 cursor-not-allowed"
+                ? "bg-gradient-to-r from-[#0A66C2] to-[#004182] hover:from-[#004182] hover:to-[#003366] text-white shadow-lg hover:shadow-xl hover:scale-105"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
             <Send className="w-5 h-5" />
