@@ -359,10 +359,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 <Users className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h2 className={`text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>
+                <h2 className={`text-2xl font-bold ${text-gray-900}`}>
                   Professional Network
                 </h2>
-                <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+                <p className={`text-sm ${text-gray-600}`}>
                   Build meaningful connections
                 </p>
               </div>
@@ -372,9 +372,9 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             <div className="flex gap-3">
               <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
                 isDark ? "bg-slate-800/50" : "bg-white/80"
-              } backdrop-blur-sm border ${isDark ? "border-slate-700" : "border-slate-200"}`}>
+              } backdrop-blur-sm border ${border-gray-200}`}>
                 <div className={`w-2 h-2 rounded-full ${isConnected ? "bg-green-500 animate-pulse" : "bg-gray-400"}`}></div>
-                <span className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+                <span className={`text-xs font-medium ${text-gray-700}`}>
                   {isConnected ? "Online" : "Offline"}
                 </span>
               </div>
@@ -459,9 +459,9 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
         {/* Search Bar - Only show for Discover and Connections tabs */}
         {(activeTab === 'discover' || activeTab === 'connections') && (
           <div className={`mb-6 relative group ${
-            isDark ? "bg-slate-800/50" : "bg-white"
+            bg-white
           } backdrop-blur-xl rounded-xl border ${
-            isDark ? "border-slate-700" : "border-slate-200"
+            border-gray-200
           } p-4 shadow-lg hover:shadow-xl transition-all duration-300`}>
             <div className="flex items-center space-x-3">
               <div className={`p-2 rounded-lg ${
@@ -492,19 +492,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             <div>
               {filteredConnections.length === 0 ? (
                 <div className={`${
-                  isDark ? "bg-slate-800/50" : "bg-white"
+                  bg-white
                 } backdrop-blur-xl rounded-2xl border ${
-                  isDark ? "border-slate-700" : "border-slate-200"
+                  border-gray-200
                 } p-16 text-center shadow-lg`}>
                   <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
                     isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
                   } flex items-center justify-center`}>
-                    <Users className={`w-10 h-10 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
+                    <Users className={`w-10 h-10 ${text-gray-400}`} />
                   </div>
-                  <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-slate-900"}`}>
+                  <h3 className={`text-xl font-bold mb-3 ${text-gray-900}`}>
                     {connections.length === 0 ? "No Professionals Available" : "No Results Found"}
                   </h3>
-                  <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-base max-w-md mx-auto`}>
+                  <p className={`${text-gray-600} text-base max-w-md mx-auto`}>
                     {connections.length === 0
                       ? "Be the first to grow your network. Check back soon for new connections!"
                       : "Try adjusting your search terms to discover more professionals"}
@@ -531,19 +531,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             <div>
               {pendingRequests.length === 0 ? (
                 <div className={`${
-                  isDark ? "bg-slate-800/50" : "bg-white"
+                  bg-white
                 } backdrop-blur-xl rounded-2xl border ${
-                  isDark ? "border-slate-700" : "border-slate-200"
+                  border-gray-200
                 } p-16 text-center shadow-lg`}>
                   <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
                     isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-orange-50 to-red-50"
                   } flex items-center justify-center`}>
-                    <Clock className={`w-10 h-10 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
+                    <Clock className={`w-10 h-10 ${text-gray-400}`} />
                   </div>
-                  <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-slate-900"}`}>
+                  <h3 className={`text-xl font-bold mb-3 ${text-gray-900}`}>
                     No Pending Requests
                   </h3>
-                  <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-base max-w-md mx-auto`}>
+                  <p className={`${text-gray-600} text-base max-w-md mx-auto`}>
                     You are all caught up! No connection requests at the moment.
                   </p>
                 </div>
@@ -569,22 +569,22 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                             </span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className={`font-bold text-lg mb-1 ${isDark ? "text-white" : "text-slate-900"}`}>
+                            <h4 className={`font-bold text-lg mb-1 ${text-gray-900}`}>
                               {request.sender.name}
                             </h4>
-                            <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"} mb-2`}>
+                            <p className={`text-sm ${text-gray-600} mb-2`}>
                               {request.sender.professionalRole || "Professional"} • {request.sender.currentLocation || "Location not specified"}
                             </p>
                             {request.message && (
                               <div className={`p-3 rounded-xl mt-3 ${
                                 isDark ? "bg-slate-700/50" : "bg-slate-50"
                               }`}>
-                                <p className={`text-sm ${isDark ? "text-slate-300" : "text-slate-700"} italic`}>
+                                <p className={`text-sm ${text-gray-700} italic`}>
                                   &ldquo;{request.message}&rdquo;
                                 </p>
                               </div>
                             )}
-                            <p className={`text-xs ${isDark ? "text-slate-500" : "text-slate-400"} mt-2`}>
+                            <p className={`text-xs ${text-gray-400} mt-2`}>
                               {new Date(request.createdAt).toLocaleDateString()} at {new Date(request.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                             </p>
                           </div>
@@ -627,19 +627,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
             <div>
               {connectedConnections.length === 0 ? (
                 <div className={`${
-                  isDark ? "bg-slate-800/50" : "bg-white"
+                  bg-white
                 } backdrop-blur-xl rounded-2xl border ${
-                  isDark ? "border-slate-700" : "border-slate-200"
+                  border-gray-200
                 } p-16 text-center shadow-lg`}>
                   <div className={`w-20 h-20 mx-auto mb-6 rounded-full ${
                     isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-green-50 to-emerald-50"
                   } flex items-center justify-center`}>
-                    <UserCheck className={`w-10 h-10 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
+                    <UserCheck className={`w-10 h-10 ${text-gray-400}`} />
                   </div>
-                  <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-slate-900"}`}>
+                  <h3 className={`text-xl font-bold mb-3 ${text-gray-900}`}>
                     No Connections Yet
                   </h3>
-                  <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-base max-w-md mx-auto mb-4`}>
+                  <p className={`${text-gray-600} text-base max-w-md mx-auto mb-4`}>
                     Start building your professional network by sending connection requests!
                   </p>
                   <button
@@ -676,10 +676,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                             </span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className={`font-bold text-base mb-1 ${isDark ? "text-white" : "text-slate-900"} truncate`}>
+                            <h4 className={`font-bold text-base mb-1 ${text-gray-900} truncate`}>
                               {conn.name}
                             </h4>
-                            <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"} truncate`}>
+                            <p className={`text-sm ${text-gray-600} truncate`}>
                               {conn.title || "Professional"}
                             </p>
                           </div>
@@ -701,7 +701,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                         </button>
                         
                         {conn.connectedAt && (
-                          <p className={`text-xs ${isDark ? "text-slate-500" : "text-slate-400"} mt-3 text-center`}>
+                          <p className={`text-xs ${text-gray-400} mt-3 text-center`}>
                             Connected {new Date(conn.connectedAt).toLocaleDateString()}
                           </p>
                         )}
@@ -716,9 +716,9 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
       {/* Right Side: Modern Chat Panel */}
       <div className={`w-[420px] ${
-        isDark ? "bg-slate-800/50" : "bg-white"
+        bg-white
       } backdrop-blur-xl rounded-2xl border ${
-        isDark ? "border-slate-700" : "border-slate-200"
+        border-gray-200
       } shadow-2xl overflow-hidden transition-all duration-300`}>
         {selectedConnection ? (
           <ChatBox 
@@ -741,7 +741,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                 : "bg-gradient-to-r from-blue-50 to-purple-50 border-b border-slate-200"
             }`}>
               <div className="flex items-center justify-between mb-2">
-                <h3 className={`text-lg font-bold ${isDark ? "text-white" : "text-slate-900"}`}>
+                <h3 className={`text-lg font-bold ${text-gray-900}`}>
                   Messages
                 </h3>
                 <div className="flex items-center gap-2">
@@ -755,7 +755,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                   </div>
                 </div>
               </div>
-              <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+              <p className={`text-sm ${text-gray-600}`}>
                 {chats.length} active conversation{chats.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -767,12 +767,12 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                   <div className={`w-20 h-20 rounded-full ${
                     isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
                   } flex items-center justify-center mb-6`}>
-                    <MessageCircle className={`w-10 h-10 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
+                    <MessageCircle className={`w-10 h-10 ${text-gray-400}`} />
                   </div>
-                  <h4 className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-slate-900"}`}>
+                  <h4 className={`text-lg font-bold mb-2 ${text-gray-900}`}>
                     No Messages Yet
                   </h4>
-                  <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-center text-sm max-w-xs`}>
+                  <p className={`${text-gray-600} text-center text-sm max-w-xs`}>
                     Start connecting with professionals to begin conversations
                   </p>
                   {chatError && <div className={`mt-4 px-4 py-2 rounded-lg ${isDark ? "bg-red-900/20 text-red-400" : "bg-red-50 text-red-600"} text-xs`}>{chatError}</div>}
@@ -817,16 +817,16 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <p className={`font-semibold text-sm ${isDark ? "text-white" : "text-slate-900"} truncate`}>
+                              <p className={`font-semibold text-sm ${text-gray-900} truncate`}>
                                 {chat.otherParticipant.name}
                               </p>
                               {chat.lastMessageTime && (
-                                <span className={`text-xs ${isDark ? "text-slate-500" : "text-slate-400"}`}>
+                                <span className={`text-xs ${text-gray-400}`}>
                                   {new Date(chat.lastMessageTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                                 </span>
                               )}
                             </div>
-                            <p className={`text-xs ${isDark ? "text-slate-400" : "text-slate-600"} truncate`}>
+                            <p className={`text-xs ${text-gray-600} truncate`}>
                               {chat.lastMessage || "Start a conversation..."}
                             </p>
                           </div>
@@ -934,12 +934,12 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
               </span>
             </div>
             <div>
-              <h3 className={`font-bold text-base ${isDark ? "text-white" : "text-slate-900"}`}>
+              <h3 className={`font-bold text-base ${text-gray-900}`}>
                 {connection.name}
               </h3>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className={`text-xs ${isDark ? "text-slate-400" : "text-slate-600"}`}>Active now</span>
+                <span className={`text-xs ${text-gray-600}`}>Active now</span>
               </div>
             </div>
           </div>
@@ -963,7 +963,7 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
         {isLoading ? (
           <div className="flex flex-col items-center justify-center h-full">
             <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mb-4"></div>
-            <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-sm`}>
+            <p className={`${text-gray-600} text-sm`}>
               Loading messages...
             </p>
           </div>
@@ -972,9 +972,9 @@ function ChatBox({ connection, isDark, onClose, currentChat, messages, sendMessa
             <div className={`w-16 h-16 rounded-full ${
               isDark ? "bg-slate-700/50" : "bg-gradient-to-br from-blue-50 to-purple-50"
             } flex items-center justify-center mb-4`}>
-              <MessageCircle className={`w-8 h-8 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
+              <MessageCircle className={`w-8 h-8 ${text-gray-400}`} />
             </div>
-            <p className={`${isDark ? "text-slate-400" : "text-slate-600"} text-center text-sm`}>
+            <p className={`${text-gray-600} text-center text-sm`}>
               No messages yet. <br />Start the conversation! 👋
             </p>
           </div>
