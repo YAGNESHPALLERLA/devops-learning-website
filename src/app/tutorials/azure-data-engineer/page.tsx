@@ -7,7 +7,11 @@ export default function AzureDataEngineerPage() {
   const [activeSection, setActiveSection] = useState('azure-basics');
 
   const pageHeadings = [
-    { id: 'azure-basics', title: 'Azure Basics' }
+    { id: 'azure-basics', title: 'Azure Basics' },
+    { id: 'azure-hierarchy', title: 'Azure Hierarchy' },
+    { id: 'resource-group', title: 'Resource Group' },
+    { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
+    { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
   ];
 
   // Handle URL hash changes
@@ -57,7 +61,7 @@ export default function AzureDataEngineerPage() {
           
           <div className="space-y-12">
             {/* Azure Hierarchy */}
-            <div className="bg-[#252525] rounded-xl p-8 border border-gray-600">
+            <div id="azure-hierarchy" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
               <h3 className="text-3xl font-bold text-white mb-6">1. Azure Hierarchy</h3>
               
               <div className="space-y-6">
@@ -110,7 +114,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Resource Group */}
-            <div className="bg-[#252525] rounded-xl p-8 border border-gray-600">
+            <div id="resource-group" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
               <h3 className="text-3xl font-bold text-white mb-6">2. Resource Group</h3>
               
               <div className="space-y-6">
@@ -162,7 +166,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Azure Blob Storage */}
-            <div className="bg-[#252525] rounded-xl p-8 border border-gray-600">
+            <div id="azure-blob-storage" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
               <h3 className="text-3xl font-bold text-white mb-6">3. Azure Blob Storage</h3>
               
               <p className="text-gray-300 mb-6 text-lg">
@@ -659,7 +663,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Azure Data Lake Storage Gen2 */}
-            <div className="bg-[#252525] rounded-xl p-8 border border-gray-600">
+            <div id="azure-data-lake" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
               <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
               
               <p className="text-gray-300 mb-6 text-lg">
