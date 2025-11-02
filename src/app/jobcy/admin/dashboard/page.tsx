@@ -608,16 +608,10 @@ export default function AdminDashboard() {
 
                     {/* Recent Activity */}
                     <div
-                      className={`${
-                        isDarkMode
-                          ? "bg-gray-800 border-gray-700"
-                          : "bg-white border-gray-200"
-                      } rounded-xl shadow-sm border p-6`}
+                      className="bg-white border-gray-200 rounded-xl shadow-sm border p-6"
                     >
                       <h3
-                        className={`text-lg font-semibold ${
-                          "text-gray-900"
-                        } mb-6`}
+                        className="text-lg font-semibold text-gray-900 mb-6"
                       >
                         Recent Activity
                       </h3>
