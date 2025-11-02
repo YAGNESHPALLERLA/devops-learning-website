@@ -667,15 +667,11 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       </div>
 
       {/* Right Side: Modern Chat Panel */}
-      <div className={`w-[420px] ${
-        bg-white
-      } backdrop-blur-xl rounded-2xl border ${
-        border-gray-200
-      } shadow-2xl overflow-hidden transition-all duration-300`}>
+      <div className="w-[420px] bg-white backdrop-blur-xl rounded-2xl border border-gray-200 shadow-2xl overflow-hidden transition-all duration-300">
         {selectedConnection ? (
           <ChatBox 
             connection={selectedConnection} 
-            isDark={isDark} 
+            isDark={false} 
             onClose={() => setSelectedConnection(null)}
             currentChat={currentChat}
             messages={messages}
@@ -687,11 +683,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
         ) : (
           <div className="flex flex-col h-full">
             {/* Chat Header */}
-            <div className={`p-6 ${
-              isDark 
-                ? "bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-b border-slate-700" 
-                : "bg-gradient-to-r from-blue-50 to-purple-50 border-b border-slate-200"
-            }`}>
+            <div className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-lg font-bold text-gray-900">
                   Messages
