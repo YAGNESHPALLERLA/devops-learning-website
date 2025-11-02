@@ -456,11 +456,7 @@ export default function AdminDashboard() {
                   }}
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === tab.id
-                      ? isDarkMode
-                        ? "border-emerald-400 text-emerald-400"
-                        : "border-emerald-500 text-emerald-600"
-                      : isDarkMode
-                      ? "border-transparent text-gray-400 hover:text-white hover:border-gray-300"
+                      ? "border-[#0A66C2] text-[#0A66C2]"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
@@ -563,9 +559,7 @@ export default function AdminDashboard() {
                     <div className="lg:col-span-2">
                       <div
                         className={`${
-                          isDarkMode
-                            ? "bg-gray-800 border-gray-700"
-                            : "bg-white border-gray-200"
+                          "bg-white border-gray-200"
                         } rounded-xl shadow-sm border p-6`}
                       >
                         <div className="flex items-center justify-between mb-6">
@@ -638,14 +632,11 @@ export default function AdminDashboard() {
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center ${
                                 activity.type === "hr_joined"
-                                  ? isDarkMode
                                     ? "bg-blue-900 bg-opacity-30"
                                     : "bg-blue-100"
                                   : activity.type === "job_posted"
-                                  ? isDarkMode
                                     ? "bg-emerald-900 bg-opacity-30"
                                     : "bg-emerald-100"
-                                  : isDarkMode
                                   ? "bg-amber-900 bg-opacity-30"
                                   : "bg-amber-100"
                               }`}
