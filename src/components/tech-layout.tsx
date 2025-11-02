@@ -445,51 +445,6 @@ const getTechNavigationItems = (tech: string) => {
         children: [
           { id: 'azure-basics', title: 'Azure Basics', href: '/tutorials/azure-data-engineer#azure-basics' }
         ]
-      },
-      {
-        id: 'azure-data-storage',
-        title: 'Azure Data Storage',
-        href: '/tutorials/azure-data-engineer',
-        icon: '💾',
-        children: [
-          { id: 'azure-data-storage', title: 'Azure Data Storage', href: '/tutorials/azure-data-engineer#azure-data-storage' }
-        ]
-      },
-      {
-        id: 'data-pipelines',
-        title: 'Data Pipelines',
-        href: '/tutorials/azure-data-engineer',
-        icon: '🔄',
-        children: [
-          { id: 'data-pipelines', title: 'Data Pipelines', href: '/tutorials/azure-data-engineer#data-pipelines' }
-        ]
-      },
-      {
-        id: 'azure-databricks',
-        title: 'Azure Databricks',
-        href: '/tutorials/azure-data-engineer',
-        icon: '⚡',
-        children: [
-          { id: 'azure-databricks', title: 'Azure Databricks', href: '/tutorials/azure-data-engineer#azure-databricks' }
-        ]
-      },
-      {
-        id: 'azure-synapse',
-        title: 'Azure Synapse Analytics',
-        href: '/tutorials/azure-data-engineer',
-        icon: '📊',
-        children: [
-          { id: 'azure-synapse', title: 'Azure Synapse Analytics', href: '/tutorials/azure-data-engineer#azure-synapse' }
-        ]
-      },
-      {
-        id: 'data-security',
-        title: 'Data Security & Governance',
-        href: '/tutorials/azure-data-engineer',
-        icon: '🔒',
-        children: [
-          { id: 'data-security', title: 'Data Security & Governance', href: '/tutorials/azure-data-engineer#data-security' }
-        ]
       }
     ]
   };
