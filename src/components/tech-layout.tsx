@@ -14,20 +14,7 @@ interface TechLayoutProps {
 
 // Technology-specific navigation items
 const getTechNavigationItems = (tech: string) => {
-  const baseItems = [
-    {
-      id: 'home',
-      title: 'Home',
-      href: '/',
-      icon: '🏠'
-    },
-    {
-      id: 'devops',
-      title: 'OneHubGlobal',
-      href: '/devops',
-      icon: '🚀'
-    }
-  ];
+  const baseItems: any[] = [];
 
   const techItems = {
     java: [

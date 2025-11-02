@@ -113,20 +113,6 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
 
   return (
     <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600 relative z-[60] overflow-y-auto">
-      {/* Logo/Brand */}
-      <div className="p-6 border-b border-gray-600 animate-fade-in-up">
-        <Link href="/" className="flex items-center space-x-3 group transition-all duration-300 hover:scale-105">
-          <div className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-xl border border-gray-600 transition-all duration-300 group-hover:bg-gray-600 group-hover:shadow-lg">
-            <svg className="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-              <path d="M18.178 8.178a4 4 0 0 0-5.656 0L12 8.7l-.522-.522a4 4 0 1 0-5.656 5.656L12 20.014l6.178-6.18a4 4 0 0 0 0-5.656z"/>
-              <path d="M5.822 15.822a4 4 0 0 0 5.656 0L12 15.3l.522.522a4 4 0 1 0 5.656-5.656L12 3.986 5.822 10.166a4 4 0 0 0 0 5.656z"/>
-              <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-            </svg>
-          </div>
-          <span className="text-xl font-bold text-white transition-all duration-300 group-hover:text-gray-300">OneHubGlobal</span>
-        </Link>
-      </div>
-
       {/* Navigation */}
       <nav className="flex-1 p-4 overflow-y-auto">
         <div className="space-y-1">
