@@ -16,10 +16,10 @@ interface AppliedJob {
 }
 
 interface AppliedJobsTabProps {
-  isDark: boolean;
+  isDark?: boolean;
 }
 
-export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
+export default function AppliedJobsTab({ isDark: _isDark = false }: AppliedJobsTabProps) {
   const [appliedJobs, setAppliedJobs] = useState<AppliedJob[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -27,10 +27,10 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
   useEffect(() => {
     fetchAppliedJobs();
 
-    // Auto-refresh every 10 seconds
+    // Auto-refresh every 30 seconds (reduced from 10s)
     const interval = setInterval(() => {
       fetchAppliedJobs();
-    }, 10000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
@@ -39,7 +39,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        setError("No authentication token found");
+        setError("Please log in to view your applications");
         setLoading(false);
         return;
       }
@@ -48,6 +48,7 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
       const response = await fetch(`${"/api/jobcy"}/user/applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -62,46 +63,63 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
           : Array.isArray(dataObj.applications)
           ? dataObj.applications
           : [];
-        setAppliedJobs(
-          items.map((it: Record<string, unknown>) => {
+        
+        // Safely map applications with error handling
+        const mappedApplications = items.map((it: Record<string, unknown>) => {
+          try {
             const job = it.job as Record<string, unknown> | undefined;
             const status = typeof it.status === 'string' ? it.status : '';
+            
             return {
               id: String(it.id || it._id || Math.random()),
               jobId: String(it.jobId || job?.id || job?._id || ""),
-              title: String(it.title || job?.title || ""),
-              company: String(it.company || job?.company || ""),
-              location: String(it.location || job?.location || ""),
-              salary: it.salary ? String(it.salary) : undefined,
+              title: String(it.title || job?.title || "Unknown Position"),
+              company: String(it.company || job?.company || "Unknown Company"),
+              location: String(it.location || job?.location || "Not specified"),
+              salary: it.salary ? String(it.salary) : (job?.salary ? String(job.salary) : undefined),
               status:
                 status === "rejected"
-                  ? "Rejected"
+                  ? "Rejected" as const
                   : status === "accepted" || status === "offered"
-                  ? "Accepted"
+                  ? "Accepted" as const
                   : status.toLowerCase().includes("interview")
-                  ? "Interview"
+                  ? "Interview" as const
                   : status.toLowerCase().includes("review")
-                  ? "Under Review"
+                  ? "Under Review" as const
                   : "Applied" as const,
               appliedDate: String(it.appliedAt || it.createdAt || new Date().toISOString()),
               type: it.type ? String(it.type) : (job?.type ? String(job.type) : undefined),
             };
-          })
-        );
+          } catch (mapError) {
+            console.error("Error mapping application:", mapError);
+            return null;
+          }
+        }).filter((app): app is AppliedJob => app !== null);
+        
+        setAppliedJobs(mappedApplications);
         setError(""); // Clear error on success
       } else {
-        const errorData = await response.json().catch(() => ({}));
-        const errorMessage = errorData.message || `Failed to fetch applied jobs (${response.status})`;
+        // Better error handling
+        let errorMessage = `Failed to fetch applications`;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorData.error || errorMessage;
+        } catch {
+          errorMessage = `Server error (${response.status})`;
+        }
+        
         setError(errorMessage);
+        
         // If 401, redirect to login
         if (response.status === 401) {
           localStorage.removeItem("token");
+          localStorage.removeItem("user");
           window.location.href = "/jobcy/user/auth/login";
         }
       }
     } catch (err) {
       console.error("Error fetching applied jobs:", err);
-      setError("Unable to load applied jobs");
+      setError("Unable to load applications. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -110,17 +128,17 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Applied":
-        return "bg-[var(--primary-light)]/20 text-[var(--primary)] border border-[var(--primary)]/30";
+        return "bg-blue-50 text-[#0A66C2] border border-blue-200";
       case "Under Review":
-        return "bg-[var(--warning)]/20 text-[var(--warning)] border border-[var(--warning)]/30";
+        return "bg-amber-50 text-amber-700 border border-amber-200";
       case "Interview":
-        return "bg-[var(--primary)]/20 text-[var(--primary)] border border-[var(--primary)]/30";
+        return "bg-indigo-50 text-indigo-700 border border-indigo-200";
       case "Accepted":
-        return "bg-green-500/20 text-green-400 border border-green-500/30";
+        return "bg-green-50 text-green-700 border border-green-200";
       case "Rejected":
-        return "bg-[var(--danger-light)]/20 text-[var(--danger-light)] border border-[var(--danger-light)]/30";
+        return "bg-red-50 text-red-700 border border-red-200";
       default:
-        return "bg-[var(--surface-secondary)] text-[var(--foreground-muted)] border border-[var(--border)]";
+        return "bg-gray-50 text-gray-700 border border-gray-200";
     }
   };
 
@@ -146,10 +164,10 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
       <div className="flex items-center justify-center py-16">
         <div className="text-center">
           <div className="relative">
-            <div className="w-16 h-16 border-4 border-[var(--primary)]/20 rounded-full"></div>
-            <div className="w-16 h-16 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+            <div className="w-16 h-16 border-4 border-[#0A66C2]/20 rounded-full"></div>
+            <div className="w-16 h-16 border-4 border-[#0A66C2] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
           </div>
-          <p className={`mt-4 text-lg font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+          <p className="mt-4 text-lg font-medium text-gray-700">
             Loading your applications...
           </p>
         </div>
@@ -160,20 +178,18 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
   if (error) {
     return (
       <div className="text-center py-16">
-        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 ${
-          isDark ? "bg-red-900/20" : "bg-red-100"
-        }`}>
-          <XCircle className={`w-8 h-8 ${isDark ? "text-red-400" : "text-red-600"}`} />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 bg-red-100">
+          <XCircle className="w-8 h-8 text-red-600" />
         </div>
-        <h3 className={`text-lg font-semibold mb-2 ${isDark ? "text-slate-200" : "text-slate-800"}`}>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">
           Error Loading Applications
         </h3>
-        <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+        <p className="text-sm text-gray-600 mb-4">
           {error}
         </p>
         <button
           onClick={fetchAppliedJobs}
-          className="mt-4 px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-lg transition-colors"
+          className="mt-4 px-6 py-2.5 bg-[#0A66C2] hover:bg-[#004182] text-white rounded-lg transition-colors font-semibold shadow-sm hover:shadow-md"
         >
           Try Again
         </button>
@@ -186,15 +202,15 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className={`text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>
+          <h2 className="text-2xl font-bold text-gray-900">
             Applied Jobs
           </h2>
-          <p className={`mt-1 ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+          <p className="mt-1 text-gray-600">
             Track your job applications and their status
           </p>
         </div>
-        <div className={`px-4 py-2 rounded-lg ${isDark ? "bg-slate-800" : "bg-slate-100"}`}>
-          <span className={`text-sm font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+        <div className="px-4 py-2 rounded-lg bg-gray-100">
+          <span className="text-sm font-medium text-gray-700">
             {appliedJobs.length} Application{appliedJobs.length !== 1 ? "s" : ""}
           </span>
         </div>
@@ -202,49 +218,45 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
 
       {/* Applications List */}
       {appliedJobs.length === 0 ? (
-        <div className="text-center py-16">
-          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 ${
-            isDark ? "bg-slate-800" : "bg-slate-100"
-          }`}>
-            <Briefcase className={`w-8 h-8 ${isDark ? "text-slate-400" : "text-slate-500"}`} />
+        <div className="text-center py-16 bg-white rounded-xl border border-gray-200">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 bg-gray-100">
+            <Briefcase className="w-8 h-8 text-gray-500" />
           </div>
-          <h3 className={`text-lg font-semibold mb-2 ${isDark ? "text-slate-200" : "text-slate-800"}`}>
+          <h3 className="text-lg font-semibold mb-2 text-gray-900">
             No Applications Yet
           </h3>
-          <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+          <p className="text-sm text-gray-600 mb-4">
             Start applying to jobs to see your applications here
           </p>
+          <button
+            onClick={() => window.location.href = "/jobcy/user/dashboard"}
+            className="px-6 py-2.5 bg-[#0A66C2] hover:bg-[#004182] text-white rounded-lg transition-colors font-semibold shadow-sm hover:shadow-md"
+          >
+            Browse Jobs
+          </button>
         </div>
       ) : (
         <div className="grid gap-4">
           {appliedJobs.map((application) => (
             <div
               key={application.id}
-              className={`${
-                isDark ? "bg-slate-800 border-slate-700" : "bg-white border-slate-200"
-              } border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow`}
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      isDark ? "bg-slate-700" : "bg-slate-100"
-                    }`}>
-                      <Briefcase className={`w-6 h-6 ${isDark ? "text-slate-300" : "text-slate-600"}`} />
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#0A66C2] to-[#004182] shadow-sm">
+                      <Briefcase className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-lg font-semibold truncate ${
-                        isDark ? "text-white" : "text-slate-900"
-                      }`}>
+                      <h3 className="text-lg font-semibold truncate text-gray-900">
                         {application.title}
                       </h3>
-                      <p className={`text-sm font-medium mb-2 ${
-                        isDark ? "text-slate-300" : "text-slate-700"
-                      }`}>
+                      <p className="text-sm font-medium mb-2 text-gray-700">
                         {application.company}
                       </p>
 
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                         <div className="flex items-center space-x-1">
                           <MapPin className="w-4 h-4" />
                           <span>{application.location}</span>
@@ -265,13 +277,13 @@ export default function AppliedJobsTab({ isDark }: AppliedJobsTabProps) {
                 </div>
 
                 <div className="flex flex-col items-end space-y-3">
-                  <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(application.status)}`}>
+                  <div className={`inline-flex items-center space-x-2 px-3 py-1.5 rounded-full text-sm font-medium ${getStatusColor(application.status)}`}>
                     {getStatusIcon(application.status)}
                     <span>{application.status}</span>
                   </div>
 
-                  <div className={`text-xs ${isDark ? "text-slate-500" : "text-slate-500"}`}>
-                    Applied {new Date(application.appliedDate).toLocaleDateString()}
+                  <div className="text-xs text-gray-500">
+                    Applied {new Date(application.appliedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </div>
                 </div>
               </div>
