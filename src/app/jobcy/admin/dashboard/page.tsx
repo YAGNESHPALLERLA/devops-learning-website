@@ -632,7 +632,6 @@ export default function AdminDashboard() {
                                   : activity.type === "job_posted"
                                   ? "bg-emerald-100"
                                   : "bg-amber-100"
-                                  : "bg-amber-100"
                               }`}
                             >
                               {activity.type === "hr_joined" && (
