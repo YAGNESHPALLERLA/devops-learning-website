@@ -432,19 +432,10 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
       }
     ],
     'azure-data-engineer': [
-      {
-        id: 'azure-basics',
-        title: 'Azure Basics',
-        href: '/tutorials/azure-data-engineer',
-        icon: '📘',
-        children: [
-          { id: 'azure-basics', title: 'Azure Basics', href: '/tutorials/azure-data-engineer#azure-basics' },
-          { id: 'azure-hierarchy', title: 'Azure Hierarchy', href: '/tutorials/azure-data-engineer#azure-hierarchy' },
-          { id: 'resource-group', title: 'Resource Group', href: '/tutorials/azure-data-engineer#resource-group' },
-          { id: 'azure-blob-storage', title: 'Azure Blob Storage', href: '/tutorials/azure-data-engineer#azure-blob-storage' },
-          { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake' }
-        ]
-      }
+      { id: 'azure-basics', title: 'Azure Basics', href: '/tutorials/azure-data-engineer#azure-basics', icon: '📘' },
+      { id: 'resource-group', title: 'Resource Group', href: '/tutorials/azure-data-engineer#resource-group', icon: '🗂️' },
+      { id: 'azure-blob-storage', title: 'Azure Blob Storage', href: '/tutorials/azure-data-engineer#azure-blob-storage', icon: '🧱' },
+      { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake', icon: '💧' }
     ]
   };
 

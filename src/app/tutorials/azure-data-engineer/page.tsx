@@ -103,18 +103,10 @@ const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
 
 const PAGE_HEADINGS = [
   { id: 'azure-basics', title: 'Azure Basics' },
-  { id: 'azure-hierarchy', title: 'Azure Hierarchy' },
   { id: 'resource-group', title: 'Resource Group' },
   { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
   { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
 ];
-
-const SECTION_GROUPS: Record<string, string[]> = {
-  'azure-basics': ['azure-basics', 'azure-hierarchy'],
-  'resource-group': ['resource-group'],
-  'azure-blob-storage': ['azure-blob-storage'],
-  'azure-data-lake': ['azure-data-lake']
-};
 
 export default function AzureDataEngineerPage() {
   const [activeSection, setActiveSection] = useState('azure-basics');
@@ -165,7 +157,7 @@ export default function AzureDataEngineerPage() {
         <section
           id="azure-basics"
           className="mb-20 scroll-mt-24"
-          style={{ display: SECTION_GROUPS['azure-basics'].includes(activeSection) ? 'block' : 'none' }}
+          style={{ display: activeSection === 'azure-basics' ? 'block' : 'none' }}
         >
           <h2 className="text-4xl font-bold text-white mb-8 border-l-4 border-red-500 pl-4">Azure Basics</h2>
           
@@ -231,7 +223,7 @@ export default function AzureDataEngineerPage() {
         <section
           id="resource-group"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: SECTION_GROUPS['resource-group'].includes(activeSection) ? 'block' : 'none' }}
+          style={{ display: activeSection === 'resource-group' ? 'block' : 'none' }}
         >
           <h3 className="text-3xl font-bold text-white mb-6">2. Resource Group</h3>
           
@@ -291,7 +283,7 @@ export default function AzureDataEngineerPage() {
         <section
           id="azure-blob-storage"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: SECTION_GROUPS['azure-blob-storage'].includes(activeSection) ? 'block' : 'none' }}
+          style={{ display: activeSection === 'azure-blob-storage' ? 'block' : 'none' }}
         >
           <h3 className="text-3xl font-bold text-white mb-6">3. Azure Blob Storage</h3>
           
@@ -806,7 +798,7 @@ export default function AzureDataEngineerPage() {
         <section
           id="azure-data-lake"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: SECTION_GROUPS['azure-data-lake'].includes(activeSection) ? 'block' : 'none' }}
+          style={{ display: activeSection === 'azure-data-lake' ? 'block' : 'none' }}
         >
           <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
           
