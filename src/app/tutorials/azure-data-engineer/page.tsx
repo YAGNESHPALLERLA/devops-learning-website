@@ -103,7 +103,6 @@ const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
 
 const PAGE_HEADINGS = [
   { id: 'azure-basics', title: 'Azure Basics' },
-  { id: 'azure-hierarchy', title: 'Azure Hierarchy' },
   { id: 'resource-group', title: 'Resource Group' },
   { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
   { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
@@ -794,7 +793,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Azure Data Lake Storage Gen2 */}
-            <div
+            <section
               id="azure-data-lake"
               className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
               style={{ display: activeSection === 'azure-data-lake' ? 'block' : 'none' }}
@@ -1061,7 +1060,7 @@ export default function AzureDataEngineerPage() {
 
                 <ImageGallery images={getImages('image53')} />
               </div>
-            </div>
+            </section>
           </div>
         </section>
       </div>
