@@ -2,17 +2,116 @@
 
 import TechLayout from '@/components/tech-layout';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+type GalleryImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
+const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
+  if (!images.length) return null;
+
+  return (
+    <div className="grid gap-8 mt-8 sm:grid-cols-1 lg:grid-cols-2">
+      {images.map((image, index) => (
+        <figure
+          key={`${image.src}-${index}`}
+          className="overflow-hidden rounded-2xl border border-gray-600 bg-white shadow-lg shadow-blue-500/10 transition hover:shadow-blue-500/25"
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            loading="lazy"
+            sizes="(min-width: 1280px) 48vw, (min-width: 768px) 75vw, 92vw"
+            className="h-auto w-full object-contain bg-white"
+          />
+          {image.caption && (
+            <figcaption className="border-t border-gray-300 px-4 py-3 text-sm text-gray-700">
+              {image.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+};
+
+const azureImages: Record<string, GalleryImage> = {
+  image1: { src: '/tutorials/azure/images/image1.png', width: 1658, height: 478, alt: 'Azure portal management groups cards' },
+  image2: { src: '/tutorials/azure/images/image2.png', width: 1653, height: 839, alt: 'Azure hierarchy view screenshot' },
+  image3: { src: '/tutorials/azure/images/image3.png', width: 1653, height: 463, alt: 'Azure subscriptions blade list' },
+  image4: { src: '/tutorials/azure/images/image4.png', width: 1797, height: 606, alt: 'Diagram of management groups and subscriptions' },
+  image5: { src: '/tutorials/azure/images/image5.png', width: 1666, height: 512, alt: 'Resource groups overview screen' },
+  image6: { src: '/tutorials/azure/images/image6.png', width: 1648, height: 458, alt: 'Resource group resources list' },
+  image7: { src: '/tutorials/azure/images/image7.png', width: 1663, height: 474, alt: 'Search for resource groups in Azure portal' },
+  image8: { src: '/tutorials/azure/images/image8.png', width: 1641, height: 915, alt: 'Create resource group basics tab' },
+  image9: { src: '/tutorials/azure/images/image9.png', width: 1622, height: 914, alt: 'Resource group creation form details' },
+  image10: { src: '/tutorials/azure/images/image10.png', width: 784, height: 920, alt: 'Review and create page for resource group' },
+  image11: { src: '/tutorials/azure/images/image11.png', width: 1638, height: 409, alt: 'Search storage accounts in Azure portal' },
+  image12: { src: '/tutorials/azure/images/image12.png', width: 1665, height: 411, alt: 'Storage accounts list with create button' },
+  image13: { src: '/tutorials/azure/images/image13.png', width: 1113, height: 923, alt: 'Storage account basics configuration' },
+  image14: { src: '/tutorials/azure/images/image14.png', width: 1247, height: 911, alt: 'Subscription selection step' },
+  image15: { src: '/tutorials/azure/images/image15.png', width: 1505, height: 671, alt: 'Choose resource group for storage account' },
+  image16: { src: '/tutorials/azure/images/image16.png', width: 1661, height: 514, alt: 'Resource group showing created storage account' },
+  image17: { src: '/tutorials/azure/images/image17.png', width: 1677, height: 904, alt: 'Azure storage services comparison graphic' },
+  image18: { src: '/tutorials/azure/images/image18.png', width: 1659, height: 899, alt: 'Storage account overview blade' },
+  image19: { src: '/tutorials/azure/images/image19.png', width: 1376, height: 657, alt: 'Containers tab inside storage account' },
+  image20: { src: '/tutorials/azure/images/image20.png', width: 1665, height: 614, alt: 'Create container dialog' },
+  image21: { src: '/tutorials/azure/images/image21.png', width: 1659, height: 544, alt: 'Container list after creation' },
+  image22: { src: '/tutorials/azure/images/image22.png', width: 1918, height: 535, alt: 'Upload dialog for blobs' },
+  image23: { src: '/tutorials/azure/images/image23.png', width: 1645, height: 591, alt: 'Blob container contents view' },
+  image24: { src: '/tutorials/azure/images/image24.png', width: 1920, height: 600, alt: 'Blob properties panel' },
+  image25: { src: '/tutorials/azure/images/image25.png', width: 1920, height: 870, alt: 'Change blob access tier dialog' },
+  image26: { src: '/tutorials/azure/images/image26.png', width: 1920, height: 609, alt: 'Blob storage hierarchy diagram' },
+  image27: { src: '/tutorials/azure/images/image27.png', width: 1668, height: 583, alt: 'Azure blob storage architecture graphic' },
+  image28: { src: '/tutorials/azure/images/image28.png', width: 737, height: 584, alt: 'Blob types comparison table' },
+  image29: { src: '/tutorials/azure/images/image29.png', width: 733, height: 859, alt: 'Block blob illustration' },
+  image30: { src: '/tutorials/azure/images/image30.png', width: 1920, height: 535, alt: 'Block blob workflow diagram' },
+  image31: { src: '/tutorials/azure/images/image31.png', width: 731, height: 860, alt: 'Append blob architecture diagram' },
+  image32: { src: '/tutorials/azure/images/image32.png', width: 1920, height: 535, alt: 'Storage access tier comparison chart' },
+  image33: { src: '/tutorials/azure/images/image33.png', width: 1669, height: 350, alt: 'Search storage accounts for ADLS' },
+  image34: { src: '/tutorials/azure/images/image34.png', width: 1233, height: 920, alt: 'ADLS storage account basics tab' },
+  image35: { src: '/tutorials/azure/images/image35.png', width: 1241, height: 916, alt: 'ADLS advanced settings screen' },
+  image36: { src: '/tutorials/azure/images/image36.png', width: 1257, height: 914, alt: 'ADLS networking configuration' },
+  image37: { src: '/tutorials/azure/images/image37.png', width: 1495, height: 617, alt: 'ADLS review and create screen' },
+  image38: { src: '/tutorials/azure/images/image38.png', width: 1669, height: 650, alt: 'Resource group showing ADLS account' },
+  image39: { src: '/tutorials/azure/images/image39.png', width: 1714, height: 915, alt: 'Data lake services comparison graphic' },
+  image40: { src: '/tutorials/azure/images/image40.png', width: 1669, height: 913, alt: 'ADLS storage account overview' },
+  image41: { src: '/tutorials/azure/images/image41.png', width: 1377, height: 618, alt: 'ADLS containers tab view' },
+  image42: { src: '/tutorials/azure/images/image42.png', width: 1678, height: 546, alt: 'Create ADLS container modal' },
+  image43: { src: '/tutorials/azure/images/image43.png', width: 1650, height: 550, alt: 'ADLS container list view' },
+  image44: { src: '/tutorials/azure/images/image44.png', width: 1376, height: 621, alt: 'ADLS upload dialog' },
+  image45: { src: '/tutorials/azure/images/image45.png', width: 1656, height: 536, alt: 'ADLS blob details view' },
+  image46: { src: '/tutorials/azure/images/image46.png', width: 1914, height: 863, alt: 'ADLS folder structure screenshot' },
+  image47: { src: '/tutorials/azure/images/image47.png', width: 1652, height: 573, alt: 'Create subfolder in ADLS container' },
+  image48: { src: '/tutorials/azure/images/image48.png', width: 1920, height: 592, alt: 'ADLS file upload dialog' },
+  image49: { src: '/tutorials/azure/images/image49.png', width: 1918, height: 763, alt: 'Select files to upload in ADLS' },
+  image50: { src: '/tutorials/azure/images/image50.png', width: 1920, height: 567, alt: 'ADLS upload progress screen' },
+  image51: { src: '/tutorials/azure/images/image51.png', width: 1669, height: 591, alt: 'ADLS uploaded file details' },
+  image52: { src: '/tutorials/azure/images/image52.png', width: 1669, height: 591, alt: 'ADLS blob types comparison table' },
+  image53: { src: '/tutorials/azure/images/image53.png', width: 1669, height: 591, alt: 'ADLS access tier comparison chart' }
+};
+
+const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
+  keys.map(key => azureImages[key]).filter(Boolean);
+
+const PAGE_HEADINGS = [
+  { id: 'azure-basics', title: 'Azure Basics' },
+  { id: 'azure-hierarchy', title: 'Azure Hierarchy' },
+  { id: 'resource-group', title: 'Resource Group' },
+  { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
+  { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
+];
 
 export default function AzureDataEngineerPage() {
   const [activeSection, setActiveSection] = useState('azure-basics');
-
-  const pageHeadings = [
-    { id: 'azure-basics', title: 'Azure Basics' },
-    { id: 'azure-hierarchy', title: 'Azure Hierarchy' },
-    { id: 'resource-group', title: 'Resource Group' },
-    { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
-    { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
-  ];
+  const pageHeadings = PAGE_HEADINGS;
 
   // Handle URL hash changes
   useEffect(() => {
@@ -29,7 +128,7 @@ export default function AzureDataEngineerPage() {
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, []);
+  }, [pageHeadings]);
 
   return (
     <TechLayout 
@@ -56,7 +155,11 @@ export default function AzureDataEngineerPage() {
         </div>
 
         {/* Azure Basics Section */}
-        <section id="azure-basics" className="mb-20 scroll-mt-24">
+        <section
+          id="azure-basics"
+          className="mb-20 scroll-mt-24"
+          style={{ display: activeSection === 'azure-basics' ? 'block' : 'none' }}
+        >
           <h2 className="text-4xl font-bold text-white mb-8 border-l-4 border-red-500 pl-4">Azure Basics</h2>
           
           <div className="space-y-12">
@@ -111,10 +214,16 @@ export default function AzureDataEngineerPage() {
                   <li><strong className="text-blue-400">Resources:</strong> The actual services you use in Azure.</li>
                 </ul>
               </div>
+
+              <ImageGallery images={getImages('image1', 'image2', 'image3', 'image4', 'image5', 'image6')} />
             </div>
 
             {/* Resource Group */}
-            <div id="resource-group" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
+            <div
+              id="resource-group"
+              className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
+              style={{ display: activeSection === 'resource-group' ? 'block' : 'none' }}
+            >
               <h3 className="text-3xl font-bold text-white mb-6">2. Resource Group</h3>
               
               <div className="space-y-6">
@@ -138,6 +247,8 @@ export default function AzureDataEngineerPage() {
                       <li>In the <strong>search</strong> menu, <strong>search</strong> for <strong>Resource groups</strong>.</li>
                       <li>Click on the resource group and click on the create button</li>
                     </ol>
+
+                    <ImageGallery images={getImages('image5')} />
                     
                     <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                       <h5 className="text-xl font-semibold text-white mb-3">Overview of resource group:</h5>
@@ -162,11 +273,17 @@ export default function AzureDataEngineerPage() {
                     </div>
                   </div>
                 </div>
+
+                <ImageGallery images={getImages('image7', 'image8', 'image9', 'image10', 'image6')} />
               </div>
             </div>
 
             {/* Azure Blob Storage */}
-            <div id="azure-blob-storage" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
+            <div
+              id="azure-blob-storage"
+              className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
+              style={{ display: activeSection === 'azure-blob-storage' ? 'block' : 'none' }}
+            >
               <h3 className="text-3xl font-bold text-white mb-6">3. Azure Blob Storage</h3>
               
               <p className="text-gray-300 mb-6 text-lg">
@@ -199,6 +316,8 @@ export default function AzureDataEngineerPage() {
                     <li>Click "Review + Create"</li>
                   </ol>
 
+                  <ImageGallery images={getImages('image11', 'image12', 'image13')} />
+
                   <div className="mt-6 space-y-6">
                     <div className="p-4 bg-gray-800 rounded-lg">
                       <h5 className="text-lg font-semibold text-white mb-2">1️⃣ Subscription</h5>
@@ -208,6 +327,8 @@ export default function AzureDataEngineerPage() {
                       <p className="text-blue-300">🟦 You selected: Azure subscription 1</p>
                     </div>
 
+                    <ImageGallery images={getImages('image14')} />
+
                     <div className="p-4 bg-gray-800 rounded-lg">
                       <h5 className="text-lg font-semibold text-white mb-2">2️⃣ Resource Group</h5>
                       <p className="mb-2">Choose or create a Resource Group to organize related Azure resources.</p>
@@ -215,6 +336,8 @@ export default function AzureDataEngineerPage() {
                       <p className="text-blue-300">🟦 In your case, you selected rg-ohg365-dev, which is perfect for development resources.</p>
                       <p className="mt-2 text-blue-400">💡 Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.</p>
                     </div>
+
+                    <ImageGallery images={getImages('image15')} />
 
                     <div className="p-4 bg-gray-800 rounded-lg">
                       <h5 className="text-lg font-semibold text-white mb-2">3️⃣ Storage Account Name</h5>
@@ -299,6 +422,8 @@ export default function AzureDataEngineerPage() {
                     <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> blobohg365dev (or whatever name you used)</p>
                     <p className="text-green-400">If it appears there, 🎉 congratulations — your Blob Storage account has been successfully created</p>
                   </div>
+
+                  <ImageGallery images={getImages('image16')} />
                 </div>
               </div>
 
@@ -327,7 +452,7 @@ export default function AzureDataEngineerPage() {
                         <li>Hosting static websites</li>
                       </ul>
                     </div>
-                    <p className="text-blue-400">📦 Example File Types: .txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak</p>
+                    <p className="text-blue-400">📦 Example Scenario: You have millions of IoT sensors sending temperature data — you can store this efficiently in <strong>Azure Table Storage</strong>.</p>
                   </div>
 
                   <div className="p-4 bg-gray-800 rounded-lg">
@@ -397,6 +522,8 @@ export default function AzureDataEngineerPage() {
                   </div>
                 </div>
 
+                <ImageGallery images={getImages('image17')} />
+
                 <div className="mt-6 overflow-x-auto">
                   <h5 className="text-xl font-semibold text-white mb-4">🧠 Summary Table</h5>
                   <table className="min-w-full border border-gray-600">
@@ -460,6 +587,8 @@ export default function AzureDataEngineerPage() {
                     <li>Click <strong>Create</strong></li>
                   </ol>
 
+                  <ImageGallery images={getImages('image18', 'image19', 'image20')} />
+
                   <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                     <h5 className="text-xl font-semibold text-white mb-3">Upload & Manage Blobs</h5>
                     <ol className="list-decimal list-inside space-y-2 ml-2">
@@ -473,6 +602,8 @@ export default function AzureDataEngineerPage() {
                       <li>Get the <strong>URL</strong> to access the file</li>
                       <li>Change the <strong>access tier</strong></li>
                     </ul>
+
+                    <ImageGallery images={getImages('image21', 'image22', 'image23', 'image24', 'image25', 'image26', 'image27')} />
                   </div>
 
                   <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
@@ -663,7 +794,11 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Azure Data Lake Storage Gen2 */}
-            <div id="azure-data-lake" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
+            <div
+              id="azure-data-lake"
+              className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
+              style={{ display: activeSection === 'azure-data-lake' ? 'block' : 'none' }}
+            >
               <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
               
               <p className="text-gray-300 mb-6 text-lg">
@@ -715,6 +850,7 @@ export default function AzureDataEngineerPage() {
                     <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> adlsohg365dev (or whatever name you used)</p>
                     <p className="text-green-400">If it appears there, 🎉 congratulations — your ADLS Gen2 Storage account has been successfully created</p>
                   </div>
+                  <ImageGallery images={getImages('image33', 'image34', 'image35', 'image36', 'image37', 'image38')} />
                 </div>
               </div>
 
@@ -745,6 +881,8 @@ export default function AzureDataEngineerPage() {
                     </div>
                     <p className="text-blue-400">📦 Supported File Types: .txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.</p>
                   </div>
+
+                  <ImageGallery images={getImages('image39')} />
 
                   {/* File Service, Queue Service, Table Service sections remain similar to above */}
                 </div>
@@ -812,6 +950,8 @@ export default function AzureDataEngineerPage() {
                     <li>Click <strong>Create</strong></li>
                   </ol>
 
+                  <ImageGallery images={getImages('image40', 'image41', 'image42', 'image43', 'image44', 'image45')} />
+
                   <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                     <h5 className="text-xl font-semibold text-white mb-3">Subfolder:</h5>
                     <p className="text-gray-300 mb-3">You can create subfolders within containers for better organization.</p>
@@ -837,6 +977,8 @@ export default function AzureDataEngineerPage() {
              └── Blob (the actual file)`}
                     </pre>
                   </div>
+
+                  <ImageGallery images={getImages('image46', 'image47', 'image48', 'image49', 'image50', 'image51')} />
                 </div>
               </div>
 
@@ -872,6 +1014,7 @@ export default function AzureDataEngineerPage() {
                 </div>
 
                 {/* Blob type details are the same as above */}
+                <ImageGallery images={getImages('image52')} />
               </div>
 
               <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
@@ -915,6 +1058,8 @@ export default function AzureDataEngineerPage() {
                     </tbody>
                   </table>
                 </div>
+
+                <ImageGallery images={getImages('image53')} />
               </div>
             </div>
           </div>
