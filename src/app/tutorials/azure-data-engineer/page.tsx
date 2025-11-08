@@ -193,7 +193,7 @@ export default function AzureDataEngineerPage() {
                   </div>
                 </div>
 
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
+                <div id="resource-group-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
                   <h4 className="text-2xl font-semibold text-white mb-4">3. Resource Groups (Sub-Containers)</h4>
                   <div className="space-y-3 text-gray-300">
                     <p><strong className="text-blue-400">What it is:</strong> Inside each subscription, you can have <strong>resource groups</strong>. These are containers that hold related resources.</p>
