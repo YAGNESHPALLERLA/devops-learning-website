@@ -17,9 +17,11 @@ interface SidebarProps {
   onThisPage?: { id: string; title: string }[];
   activeSection?: string;
   setActiveSection?: (section: string) => void;
+  activeSubsection?: string | null;
+  setActiveSubsection?: (section: string | null) => void;
 }
 
-export default function Sidebar({ items, onThisPage: _onThisPage, activeSection, setActiveSection }: SidebarProps) {
+export default function Sidebar({ items, onThisPage: _onThisPage, activeSection, setActiveSection, activeSubsection, setActiveSubsection }: SidebarProps) {
   void _onThisPage;
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
@@ -47,12 +49,16 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
     }
   };
 
-  const handleItemClick = (e: React.MouseEvent, itemId: string, href: string) => {
+  const handleItemClick = (e: React.MouseEvent, itemId: string, href: string, parentId?: string) => {
     // Check if the href is a hash link (client-side navigation)
     if (href.includes('#') && setActiveSection) {
       e.preventDefault();
       const sectionId = href.split('#')[1];
-      setActiveSection(sectionId);
+      const targetSection = parentId || sectionId;
+      setActiveSection(targetSection);
+      if (setActiveSubsection) {
+        setActiveSubsection(parentId ? sectionId : null);
+      }
 
       // Scroll to the target section
       setTimeout(() => {
@@ -76,11 +82,11 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
     }
   }, [items, activeSection]);
 
-  const renderSidebarItem = (item: SidebarItem, level = 0) => {
+  const renderSidebarItem = (item: SidebarItem, level = 0, parentId?: string) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.id);
-    const childActive = hasChildren && item.children!.some(child => child.id === activeSection);
-    const active = isActive(item.href) || (activeSection && (item.id === activeSection || childActive));
+    const childActive = hasChildren && item.children!.some(child => child.id === activeSubsection);
+    const active = isActive(item.href) || (activeSection && item.id === activeSection) || childActive;
 
     return (
       <div key={item.id} className="mb-1 animate-fade-in-up">
@@ -92,6 +98,9 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
                 if (setActiveSection) {
                   const sectionId = item.href.includes('#') ? item.href.split('#')[1] : item.id;
                   setActiveSection(sectionId);
+                  if (setActiveSubsection) {
+                    setActiveSubsection(null);
+                  }
                   setTimeout(() => {
                     scrollToSection(sectionId);
                   }, 100);
@@ -119,7 +128,7 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
           ) : (
             <Link
               href={item.href}
-              onClick={(e) => handleItemClick(e, item.id, item.href)}
+              onClick={(e) => handleItemClick(e, item.id, item.href, parentId)}
               className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] group focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
                 active
                   ? 'bg-gray-700 text-white border border-gray-600 shadow-lg'
@@ -134,7 +143,7 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
 
         {hasChildren && isExpanded && (
           <div className="ml-4 mt-1 space-y-1 animate-fade-in-up">
-            {item.children!.map(child => renderSidebarItem(child, level + 1))}
+            {item.children!.map(child => renderSidebarItem(child, level + 1, item.id))}
           </div>
         )}
       </div>

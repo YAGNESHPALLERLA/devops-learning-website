@@ -10,6 +10,8 @@ interface TechLayoutProps {
   technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux' | 'azure-data-engineer';
   activeSection?: string;
   setActiveSection?: (section: string) => void;
+  activeSubsection?: string | null;
+  setActiveSubsection?: (section: string | null) => void;
 }
 
 interface SidebarItem {
@@ -450,7 +452,7 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
   return [...baseItems, ...(techItems[tech as keyof typeof techItems] || [])];
 };
 
-export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection }: TechLayoutProps) {
+export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection }: TechLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [internalActiveSection, setInternalActiveSection] = useState('');
 
@@ -471,6 +473,9 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
           setActiveSection(section.id);
+          if (setActiveSubsection) {
+            setActiveSubsection(null);
+          }
           break;
         }
       }
@@ -478,7 +483,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [onThisPage, setActiveSection]);
+  }, [onThisPage, setActiveSection, setActiveSubsection]);
 
   return (
     <div className="flex min-h-screen bg-[#1a1a1a] relative">
@@ -499,7 +504,14 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         lg:translate-x-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
        `}>
-        <Sidebar items={navigationItems} onThisPage={onThisPage || []} activeSection={activeSection} setActiveSection={setActiveSection} />
+        <Sidebar
+          items={navigationItems}
+          onThisPage={onThisPage || []}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          activeSubsection={activeSubsection}
+          setActiveSubsection={setActiveSubsection}
+        />
       </aside>
 
       {/* Main Content */}
