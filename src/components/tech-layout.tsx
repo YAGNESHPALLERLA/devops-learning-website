@@ -432,10 +432,18 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
       }
     ],
     'azure-data-engineer': [
-      { id: 'azure-basics', title: 'Azure Basics', href: '/tutorials/azure-data-engineer#azure-basics', icon: '📘' },
-      { id: 'resource-group', title: 'Resource Group', href: '/tutorials/azure-data-engineer#resource-group', icon: '🗂️' },
-      { id: 'azure-blob-storage', title: 'Azure Blob Storage', href: '/tutorials/azure-data-engineer#azure-blob-storage', icon: '🧱' },
-      { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake', icon: '💧' }
+      {
+        id: 'azure-basics',
+        title: 'Azure Basics',
+        href: '/tutorials/azure-data-engineer#azure-basics',
+        icon: '📘',
+        children: [
+          { id: 'azure-hierarchy', title: 'Azure Hierarchy', href: '/tutorials/azure-data-engineer#azure-hierarchy' },
+          { id: 'resource-group', title: 'Resource Group', href: '/tutorials/azure-data-engineer#resource-group' },
+          { id: 'azure-blob-storage', title: 'Azure Blob Storage', href: '/tutorials/azure-data-engineer#azure-blob-storage' },
+          { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake' }
+        ]
+      }
     ]
   };
 
@@ -470,20 +478,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [onThisPage]);
-
-  // Handle smooth scroll to section
-  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop - 100; // Account for any fixed headers
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  };
+  }, [onThisPage, setActiveSection]);
 
   return (
     <div className="flex min-h-screen bg-[#1a1a1a] relative">
@@ -503,7 +498,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         lg:top-[80px] lg:h-[calc(100vh-80px)]
         lg:translate-x-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
+       `}>
         <Sidebar items={navigationItems} onThisPage={onThisPage || []} activeSection={activeSection} setActiveSection={setActiveSection} />
       </aside>
 

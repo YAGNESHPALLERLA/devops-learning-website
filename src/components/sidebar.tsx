@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SidebarItem {
   id: string;
@@ -19,13 +19,14 @@ interface SidebarProps {
   setActiveSection?: (section: string) => void;
 }
 
-export default function Sidebar({ items, onThisPage = [], activeSection, setActiveSection }: SidebarProps) {
+export default function Sidebar({ items, onThisPage: _onThisPage, activeSection, setActiveSection }: SidebarProps) {
+  void _onThisPage;
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const toggleExpanded = (itemId: string) => {
-    setExpandedItems(prev => 
-      prev.includes(itemId) 
+    setExpandedItems(prev =>
+      prev.includes(itemId)
         ? prev.filter(id => id !== itemId)
         : [...prev, itemId]
     );
@@ -35,41 +36,70 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
     return pathname === href;
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 100;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const handleItemClick = (e: React.MouseEvent, itemId: string, href: string) => {
     // Check if the href is a hash link (client-side navigation)
     if (href.includes('#') && setActiveSection) {
       e.preventDefault();
       const sectionId = href.split('#')[1];
       setActiveSection(sectionId);
-      
+
       // Scroll to the target section
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const offsetTop = element.offsetTop - 100; // Account for fixed header
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        }
+        scrollToSection(sectionId);
       }, 100);
     }
   };
 
+  useEffect(() => {
+    if (!activeSection) return;
+    const parentWithChildren = items.find(item => {
+      const hasChildren = item.children && item.children.length > 0;
+      if (!hasChildren) return false;
+      return item.id === activeSection || item.children!.some(child => child.id === activeSection);
+    });
+
+    if (parentWithChildren) {
+      setExpandedItems(prev =>
+        prev.includes(parentWithChildren.id) ? prev : [...prev, parentWithChildren.id]
+      );
+    }
+  }, [items, activeSection]);
+
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.id);
-    const active = isActive(item.href) || (activeSection && item.id === activeSection);
+    const childActive = hasChildren && item.children!.some(child => child.id === activeSection);
+    const active = isActive(item.href) || (activeSection && (item.id === activeSection || childActive));
 
     return (
       <div key={item.id} className="mb-1 animate-fade-in-up">
         <div className="flex items-center">
           {hasChildren ? (
             <button
-              onClick={() => toggleExpanded(item.id)}
+              onClick={() => {
+                toggleExpanded(item.id);
+                if (setActiveSection) {
+                  const sectionId = item.href.includes('#') ? item.href.split('#')[1] : item.id;
+                  setActiveSection(sectionId);
+                  setTimeout(() => {
+                    scrollToSection(sectionId);
+                  }, 100);
+                }
+              }}
               className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
-                active 
-                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg' 
+                active
+                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg'
                   : 'text-white hover:bg-gray-800/50 hover:border hover:border-gray-600 hover:shadow-md'
               }`}
             >
@@ -91,8 +121,8 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
               href={item.href}
               onClick={(e) => handleItemClick(e, item.id, item.href)}
               className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] group focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
-                active 
-                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg' 
+                active
+                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg'
                   : 'text-white hover:bg-gray-800/50 hover:border hover:border-gray-600 hover:shadow-md'
               }`}
             >
@@ -101,7 +131,7 @@ export default function Sidebar({ items, onThisPage = [], activeSection, setActi
             </Link>
           )}
         </div>
-        
+
         {hasChildren && isExpanded && (
           <div className="ml-4 mt-1 space-y-1 animate-fade-in-up">
             {item.children!.map(child => renderSidebarItem(child, level + 1))}
