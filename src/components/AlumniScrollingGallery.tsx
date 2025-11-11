@@ -90,11 +90,11 @@ export default function AlumniScrollingGallery() {
         <div className="text-center mt-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-rose-400 mb-2">100+</div>
+              <div className="text-3xl font-bold text-rose-400 mb-2">1000+</div>
               <div className="text-gray-300 text-sm">Students Placed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-rose-400 mb-2">₹15L</div>
+              <div className="text-3xl font-bold text-rose-400 mb-2">5lpa-25lpa</div>
               <div className="text-gray-300 text-sm">Average Package</div>
             </div>
             <div className="text-center">
