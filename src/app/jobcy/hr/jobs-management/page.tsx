@@ -1313,7 +1313,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
                       </button>
                       <button
                         onClick={() => {
-                          window.location.href = `/hr/application-management?job=${encodeURIComponent(job.title)}`;
+                          window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(job.title)}`;
                         }}
                         className="p-3 text-blue-600 hover:bg-blue-50 bg-blue-50/50 rounded-xl transition-all hover:scale-110"
                         title="View Applications"
@@ -1358,7 +1358,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
                   </div>
                   <button
                     onClick={() => {
-                      window.location.href = `/hr/application-management?job=${encodeURIComponent(job.title)}`;
+                      window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(job.title)}`;
                     }}
                     className="flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white text-sm font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >
