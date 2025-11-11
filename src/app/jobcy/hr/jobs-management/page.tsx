@@ -35,8 +35,32 @@ import {
   Archive,
 } from "lucide-react";
 
+const resolveApiBase = (): string => {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (!envUrl) {
+    return "/api/jobcy";
+  }
+
+  try {
+    const parsed = new URL(envUrl, typeof window !== "undefined" ? window.location.origin : undefined);
+    const pathname = parsed.pathname.replace(/\/$/, "");
+    if (typeof window !== "undefined") {
+      const currentOrigin = window.location.origin;
+      if (parsed.origin !== currentOrigin) {
+        return "/api/jobcy";
+      }
+      return pathname || "/api/jobcy";
+    }
+    return pathname || "/api/jobcy";
+  } catch {
+    return "/api/jobcy";
+  }
+};
+
 export default function JobManagement() {
   const [currentView, setCurrentView] = useState("list");
+  const apiBase = resolveApiBase();
   interface Job {
   id?: string;
   _id?: string;
@@ -124,11 +148,10 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   setErrors({}); // Clear previous errors
   
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "/api/jobcy";
-    const endpoint = `${apiUrl}/hr/jobs`;
+    const endpoint = `${apiBase}/hr/jobs`;
     
     console.log("🔄 Fetching HR jobs from:", endpoint);
-    console.log("🌍 API_URL:", apiUrl);
+    console.log("🌍 API_URL:", apiBase);
     
     const headers = getAuthHeaders();
     console.log("📋 Request headers:", headers);
@@ -164,18 +187,18 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   } catch (e) {
     console.error("❌ Fetch jobs error:", e);
     if (e instanceof Error) {
-      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on ${process.env.NEXT_PUBLIC_API_URL || "/api/jobcy"}` });
+      setErrors({ general: `Failed to fetch jobs: ${e.message}. Make sure backend is running on ${apiBase}` });
     } else {
       setErrors({ general: "An unexpected error occurred while fetching jobs" });
     }
   } finally {
     setIsLoading(false);
   }
-}, []);
+}, [apiBase]);
 
 
   const createJob = async (jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
-    const res = await fetch(`${"/api/jobcy"}/hr/jobs`, {
+    const res = await fetch(`${apiBase}/hr/jobs`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(jobPayload),
@@ -189,7 +212,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
 
   const updateJob = async (id: string | undefined, jobPayload: { title: string; company: string; location: string; type: string; salary: string; description: string; qualifications: string[]; careerLevel: string; experienceRange: string; status: string; applicationDeadline?: string; }) => {
     const res = await fetch(
-      `${"/api/jobcy"}/hr/jobs/${id}`,
+      `${apiBase}/hr/jobs/${id}`,
       {
         method: "PUT",
         headers: getAuthHeaders(),
@@ -204,7 +227,7 @@ const fetchJobs = useCallback(async (): Promise<void> => {
   };
 
   const deleteJob = async (id: string): Promise<void> => {
-  const res = await fetch(`${"/api/jobcy"}/hr/jobs/${id}`, {
+  const res = await fetch(`${apiBase}/hr/jobs/${id}`, {
     method: "DELETE",
     headers: getAuthHeaders(),
   });
