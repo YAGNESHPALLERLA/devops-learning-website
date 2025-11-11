@@ -28,46 +28,68 @@ import {
 
 import type { LucideIcon } from "lucide-react";
 
+type ApplicationStatus = "applied" | "under_review" | "interview" | "offered" | "rejected";
+
+type StatusAction = {
+  label: string;
+  target: ApplicationStatus;
+  icon: LucideIcon;
+  className: string;
+};
+
+type Application = {
+  id: number;
+  jobId: number;
+  jobTitle: string;
+  applicantName: string;
+  email: string;
+  phone: string;
+  location: string;
+  appliedDate: string;
+  status: ApplicationStatus;
+  experience: string;
+  education: string;
+  resumeUrl: string | null;
+  coverLetter: string;
+  skills: string[];
+  rating: number;
+  userId: string;
+  hasResume: boolean;
+};
+
+type Job = {
+  id: number;
+  title: string;
+  department: string;
+};
+
+const normalizeStatus = (status: unknown): ApplicationStatus => {
+  if (typeof status !== "string" || status.trim().length === 0) {
+    return "applied";
+  }
+
+  const normalized = status.toLowerCase();
+
+  if (normalized.includes("reject")) {
+    return "rejected";
+  }
+
+  if (normalized.includes("offer")) {
+    return "offered";
+  }
+
+  if (normalized.includes("interview")) {
+    return "interview";
+  }
+
+  if (normalized.includes("review")) {
+    return "under_review";
+  }
+
+  return "applied";
+};
+
 export default function ApplicationsManagement() {
-  // Status type shared across helpers
-  type ApplicationStatus = "applied" | "under_review" | "interview" | "offered" | "rejected";
-
-  // Action config type
-  type StatusAction = {
-    label: string;
-    target: ApplicationStatus;
-    icon: LucideIcon;
-    className: string;
-  };
-
-  // Application type
-  type Application = {
-    id: number;
-    jobId: number;
-    jobTitle: string;
-    applicantName: string;
-    email: string;
-    phone: string;
-    location: string;
-    appliedDate: string;
-    status: ApplicationStatus;
-    experience: string;
-    education: string;
-    resumeUrl: string | null;
-    coverLetter: string;
-    skills: string[];
-    rating: number;
-    userId: string;
-    hasResume: boolean;
-  };
-
-  // Job type
-  type Job = {
-    id: number;
-    title: string;
-    department: string;
-  };
-
   const STATUS_META: Record<
     ApplicationStatus,
     {
@@ -220,32 +242,6 @@ export default function ApplicationsManagement() {
     ],
   };
 
-  const normalizeStatus = (status: unknown): ApplicationStatus => {
-    if (typeof status !== "string" || status.trim().length === 0) {
-      return "applied";
-    }
-
-    const normalized = status.toLowerCase();
-
-    if (normalized.includes("reject")) {
-      return "rejected";
-    }
-
-    if (normalized.includes("offer")) {
-      return "offered";
-    }
-
-    if (normalized.includes("interview")) {
-      return "interview";
-    }
-
-    if (normalized.includes("review")) {
-      return "under_review";
-    }
-
-    return "applied";
-  };
-
   // State for all applications
   const [applications, setApplications] = useState<Application[]>([]);
 
@@ -330,7 +326,7 @@ export default function ApplicationsManagement() {
 
           // Extract unique jobs from applications
           const uniqueJobs = Array.from(
-            new Set(transformedApplications.map(app => app.jobTitle))
+            new Set(transformedApplications.map((app: Application) => app.jobTitle))
           ).map((title, index) => ({
             id: index + 1,
             title: title,
@@ -390,8 +386,8 @@ export default function ApplicationsManagement() {
       });
 
       if (response.ok) {
-        setApplications((prev) =>
-          prev.map((app) =>
+        setApplications((prev: Application[]) =>
+          prev.map((app: Application) =>
             app.id === applicationId ? { ...app, status: newStatus } : app
           )
         );
@@ -409,7 +405,7 @@ export default function ApplicationsManagement() {
 
   // Expand / collapse job group
   const toggleJobExpansion = (jobTitle: string) => {
-    setExpandedJobs((prev) => {
+    setExpandedJobs((prev: Set<string>) => {
       const newSet = new Set(prev);
       if (newSet.has(jobTitle)) {
         newSet.delete(jobTitle);
@@ -421,7 +417,7 @@ export default function ApplicationsManagement() {
   };
 
   // Filtered applications based on job, status, and search term
-  const filteredApplications = applications.filter((app) => {
+  const filteredApplications = applications.filter((app: Application) => {
     const matchesJob =
       selectedJob === "all" || app.jobId.toString() === selectedJob || app.jobTitle === selectedJob;
     const matchesStatus =
@@ -435,7 +431,7 @@ export default function ApplicationsManagement() {
   });
 
   // Group applications by job title
-  const groupedApplications = filteredApplications.reduce<Record<string,Application[]>>((groups, app) => {
+  const groupedApplications = filteredApplications.reduce<Record<string,Application[]>>((groups: Record<string, Application[]>, app: Application) => {
     const key = app.jobTitle;
     if (!groups[key]) {
       groups[key] = [];
@@ -501,7 +497,7 @@ export default function ApplicationsManagement() {
             </div>
           </div>
           <div className="flex flex-wrap gap-1 mb-3">
-            {application.skills.slice(0, 3).map((skill, index) => (
+            {application.skills.slice(0, 3).map((skill: string, index: number) => (
               <span
                 key={index}
                 className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
@@ -570,7 +566,7 @@ export default function ApplicationsManagement() {
       </div>
       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
         <div className="flex flex-wrap gap-2">
-          {STATUS_ACTIONS[application.status]?.map((action) => {
+          {STATUS_ACTIONS[application.status]?.map((action: StatusAction) => {
             const Icon = action.icon;
             return (
               <button
@@ -750,7 +746,7 @@ export default function ApplicationsManagement() {
             )}
             {/* Action Buttons */}
             <div className="flex flex-wrap justify-end gap-3 pt-6 border-t border-gray-200">
-              {STATUS_ACTIONS[applicant.status]?.map((action) => {
+              {STATUS_ACTIONS[applicant.status]?.map((action: StatusAction) => {
                 const Icon = action.icon;
                 return (
                   <button
@@ -818,19 +814,19 @@ export default function ApplicationsManagement() {
                   type="text"
                   placeholder="Search applicants..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 w-full sm:w-64"
                   aria-label="Search applicants"
                 />
               </div>
               <select
                 value={selectedJob}
-                onChange={(e) => setSelectedJob(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedJob(e.target.value)}
                 className="border border-gray-300 rounded-lg px-3 py-2 bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
                 aria-label="Filter by job"
               >
                 <option value="all">All Jobs</option>
-                {jobs.map((job) => (
+                {jobs.map((job: Job) => (
                   <option key={job.id} value={job.id.toString()}>
                     {job.title}
                   </option>
@@ -838,7 +834,7 @@ export default function ApplicationsManagement() {
               </select>
               <select
                 value={selectedStatus}
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                   setSelectedStatus(e.target.value as "all" | ApplicationStatus)
                 }
                 className="border border-gray-300 rounded-lg px-3 py-2 bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
@@ -870,7 +866,7 @@ export default function ApplicationsManagement() {
         {/* Applications grouped by job */}
         {Object.keys(groupedApplications).length > 0 ? (
           <div className="space-y-6">
-            {Object.entries(groupedApplications).map(
+            {(Object.entries(groupedApplications) as [string, Application[]][]).map(
               ([jobTitle, jobApplications]) => (
                 <div
                   key={jobTitle}
@@ -881,7 +877,7 @@ export default function ApplicationsManagement() {
                     onClick={() => toggleJobExpansion(jobTitle)}
                     role="button"
                     tabIndex={0}
-                    onKeyDown={(e) =>
+                    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) =>
                       (e.key === "Enter" || e.key === " ") &&
                       toggleJobExpansion(jobTitle)
                     }
@@ -905,8 +901,8 @@ export default function ApplicationsManagement() {
                       <div className="flex items-center space-x-4">
                         <div className="flex flex-wrap gap-3 text-sm">
                           {(["under_review", "interview", "offered", "rejected"] as ApplicationStatus[]).map(
-                            (status) => {
-                              const count = jobApplications.filter((app) => app.status === status).length;
+                            (status: ApplicationStatus) => {
+                              const count = jobApplications.filter((app: Application) => app.status === status).length;
                               if (count === 0) return null;
                               return (
                                 <span
@@ -941,7 +937,7 @@ export default function ApplicationsManagement() {
                       id={`group-${jobTitle.replace(/\s+/g, "-")}`}
                     >
                       <div className="grid grid-cols-1 gap-4">
-                        {jobApplications.map((application) => (
+                        {jobApplications.map((application: Application) => (
                           <ApplicationCard
                             key={application.id}
                             application={application}
