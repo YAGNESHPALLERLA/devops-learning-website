@@ -1,6 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? 'https://www.ohg365.com')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+const fallbackOrigin = allowedOrigins[0] ?? '*';
+
+function applyCors(request: NextRequest, response: NextResponse) {
+  const requestOrigin = request.headers.get('origin');
+  const originAllowed =
+    requestOrigin &&
+    (allowedOrigins.includes('*') || allowedOrigins.includes(requestOrigin));
+
+  const origin = originAllowed ? requestOrigin! : fallbackOrigin;
+
+  response.headers.set('Access-Control-Allow-Origin', origin);
+  response.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  response.headers.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With'
+  );
+  response.headers.set('Access-Control-Allow-Credentials', 'true');
+  response.headers.set('Vary', 'Origin');
+
+  return response;
+}
+
+export async function OPTIONS(request: NextRequest) {
+  const response = new NextResponse(null, { status: 204 });
+  return applyCors(request, response);
+}
+
 export async function GET(_request: NextRequest) {
   try {
     console.log('HR jobs request');
@@ -8,7 +39,10 @@ export async function GET(_request: NextRequest) {
     // Get user ID from JWT token
     const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+      return applyCors(
+        _request,
+        NextResponse.json({ error: 'No token provided' }, { status: 401 })
+      );
     }
 
     const token = authHeader.substring(7);
@@ -19,7 +53,10 @@ export async function GET(_request: NextRequest) {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
     } catch {
-      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+      return applyCors(
+        _request,
+        NextResponse.json({ error: 'Invalid token' }, { status: 401 })
+      );
     }
 
     // Connect to database
@@ -101,10 +138,13 @@ export async function GET(_request: NextRequest) {
     });
     
     // Return jobs array with application counts
-    return NextResponse.json(jobsWithApplications);
+    return applyCors(_request, NextResponse.json(jobsWithApplications));
   } catch (error) {
     console.error('HR jobs error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return applyCors(
+      _request,
+      NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    );
   }
 }
 
@@ -116,7 +156,10 @@ export async function POST(_request: NextRequest) {
     // Get user ID from JWT token
     const authHeader = _request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+      return applyCors(
+        _request,
+        NextResponse.json({ error: 'No token provided' }, { status: 401 })
+      );
     }
 
     const token = authHeader.substring(7);
@@ -127,7 +170,10 @@ export async function POST(_request: NextRequest) {
       const verified = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
       decoded = verified as { id: string; role: string; [key: string]: unknown };
     } catch {
-      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+      return applyCors(
+        _request,
+        NextResponse.json({ error: 'Invalid token' }, { status: 401 })
+      );
     }
 
     // Connect to database
@@ -147,15 +193,24 @@ export async function POST(_request: NextRequest) {
     
     console.log('Job created successfully:', result.insertedId);
     
-    return NextResponse.json({
-      message: 'Job created successfully',
-      job: {
-        id: result.insertedId,
-        ...newJob
-      }
-    }, { status: 201 });
+    return applyCors(
+      _request,
+      NextResponse.json(
+        {
+          message: 'Job created successfully',
+          job: {
+            id: result.insertedId,
+            ...newJob
+          }
+        },
+        { status: 201 }
+      )
+    );
   } catch (error) {
     console.error('Create job error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return applyCors(
+      _request,
+      NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    );
   }
 }
