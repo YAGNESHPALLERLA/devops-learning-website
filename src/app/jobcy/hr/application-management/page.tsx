@@ -41,6 +41,9 @@ type Application = {
   id: string;
   jobId: string;
   jobTitle: string;
+  jobCompany?: string;
+  jobLocation?: string;
+  jobType?: string;
   applicantName: string;
   email: string;
   phone: string;
@@ -334,24 +337,70 @@ export default function ApplicationsManagement() {
                 ? rawApplicationId.toString()
                 : String(rawApplicationId);
 
+            const jobInfo = app.job || app.jobId || {};
+            const userInfo = app.user || app.userId || {};
+
+            const getString = (value: unknown, fallback = "") =>
+              typeof value === "string" && value.trim().length > 0 ? value : fallback;
+
+            const skillsValue: string[] = Array.isArray(userInfo?.skills)
+              ? (userInfo.skills as string[])
+              : typeof userInfo?.skills === "string"
+              ? userInfo.skills.split(",").map((skill: string) => skill.trim()).filter(Boolean)
+              : Array.isArray(app.skills)
+              ? (app.skills as string[])
+              : [];
+
+            const appliedTimestampValue =
+              app.appliedAt || app.appliedDate || app.createdAt || app.updatedAt || new Date().toISOString();
+            const appliedTimestamp =
+              typeof appliedTimestampValue === "string"
+                ? appliedTimestampValue
+                : appliedTimestampValue instanceof Date
+                ? appliedTimestampValue.toISOString()
+                : new Date(appliedTimestampValue).toISOString();
+
             return {
             id: applicationId,
             jobId,
-            jobTitle: app.jobId?.title || 'Unknown Job',
-            applicantName: app.userId?.name || 'Unknown User',
-            email: app.userId?.email || '',
-            phone: app.userId?.mobile || '',
-            location: app.userId?.currentLocation || '',
-            appliedDate: app.appliedDate || app.createdAt,
+            jobTitle: getString(jobInfo?.title, 'Unknown Job'),
+            jobCompany: getString(jobInfo?.company),
+            jobLocation: getString(jobInfo?.location),
+            jobType: getString(jobInfo?.type),
+            applicantName: getString(userInfo?.name, 'Unknown User'),
+            email: getString(userInfo?.email),
+            phone: getString(userInfo?.phone || userInfo?.mobile),
+            location: getString(userInfo?.currentLocation),
+            appliedDate: appliedTimestamp,
             status: normalizeStatus(app.status),
-            experience: 'Not specified',
-            education: 'Not specified',
-            resumeUrl: app.resume?.name || app.userId?.resume?.name || null,
-            userId: app.userId?._id || app.userId,
+            experience:
+              getString(userInfo?.experience) ||
+              getString(userInfo?.experienceLevel) ||
+              getString(userInfo?.totalExperience) ||
+              'Not specified',
+            education:
+              getString(userInfo?.education) ||
+              getString(userInfo?.highestQualification) ||
+              'Not specified',
+            resumeUrl:
+              getString(userInfo?.resume?.url) ||
+              getString(userInfo?.resume?.name) ||
+              getString(app.resume?.url) ||
+              getString(app.resume?.name) ||
+              null,
+            userId:
+              (userInfo?._id && typeof userInfo._id === 'object' && 'toString' in userInfo._id
+                ? userInfo._id.toString()
+                : userInfo?._id) ||
+              (typeof app.userId === 'object' && app.userId && 'toString' in app.userId
+                ? app.userId.toString()
+                : String(app.userId)),
             coverLetter: app.coverLetter || 'No cover letter provided',
-            skills: app.userId?.skills || [],
+            skills: skillsValue,
             rating: 4.0,
-            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.userId?.resume)
+            hasResume:
+              !!(app.resume && (app.resume.data || app.resume.name || app.resume.url)) ||
+              !!userInfo?.resume,
           };
         });
 
