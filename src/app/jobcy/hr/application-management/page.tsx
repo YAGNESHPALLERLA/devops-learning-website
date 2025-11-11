@@ -288,7 +288,25 @@ export default function ApplicationsManagement() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const response = await fetch(`${"/api/jobcy"}/hr/applications`, {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const shouldUseProxy = (() => {
+          if (!baseUrl) return true;
+          try {
+            const parsed = new URL(baseUrl, typeof window !== "undefined" ? window.location.origin : undefined);
+            if (typeof window !== "undefined" && parsed.origin !== window.location.origin) {
+              return true;
+            }
+          } catch {
+            return true;
+          }
+          return false;
+        })();
+
+        const endpoint = shouldUseProxy
+          ? `${"/api/jobcy"}/hr/applications`
+          : `${(baseUrl ?? "").replace(/\/$/, "")}/hr/applications`;
+
+        const response = await fetch(endpoint, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
