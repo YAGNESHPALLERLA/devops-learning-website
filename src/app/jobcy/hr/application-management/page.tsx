@@ -38,8 +38,8 @@ type StatusAction = {
 };
 
 type Application = {
-  id: number;
-  jobId: number;
+  id: string;
+  jobId: string;
   jobTitle: string;
   applicantName: string;
   email: string;
@@ -58,7 +58,7 @@ type Application = {
 };
 
 type Job = {
-  id: number;
+  id: string;
   title: string;
   department: string;
 };
@@ -319,9 +319,24 @@ export default function ApplicationsManagement() {
 
           // Transform backend data to match frontend interface
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const transformedApplications: Application[] = applicationsData.map((app: any, index: number) => ({
-            id: app._id || index + 1,
-            jobId: app.jobId?._id || app.jobId,
+          const transformedApplications: Application[] = applicationsData.map((app: any, index: number) => {
+            const rawJobId = app.jobId?._id || app.jobId;
+            const jobId =
+              rawJobId && typeof rawJobId === 'object' && 'toString' in rawJobId
+                ? rawJobId.toString()
+                : rawJobId
+                ? String(rawJobId)
+                : `job-${index}`;
+
+            const rawApplicationId = app._id || app.id || index + 1;
+            const applicationId =
+              rawApplicationId && typeof rawApplicationId === 'object' && 'toString' in rawApplicationId
+                ? rawApplicationId.toString()
+                : String(rawApplicationId);
+
+            return {
+            id: applicationId,
+            jobId,
             jobTitle: app.jobId?.title || 'Unknown Job',
             applicantName: app.userId?.name || 'Unknown User',
             email: app.userId?.email || '',
@@ -336,22 +351,27 @@ export default function ApplicationsManagement() {
             coverLetter: app.coverLetter || 'No cover letter provided',
             skills: app.userId?.skills || [],
             rating: 4.0,
-            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.userId?.resume),
-          }));
+            hasResume: !!(app.resume && (app.resume.data || app.resume.name)) || !!(app.userId?.resume)
+          };
+        });
 
           console.log('Transformed applications:', transformedApplications);
           setApplications(transformedApplications);
 
           // Extract unique jobs from applications
-          const uniqueJobs = Array.from(
-            new Set(transformedApplications.map((app: Application) => app.jobTitle))
-          ).map((title, index) => ({
-            id: index + 1,
-            title: title,
+          const jobMap = new Map<string, string>();
+          transformedApplications.forEach((app) => {
+            if (app.jobId) {
+              jobMap.set(app.jobId, app.jobTitle);
+            }
+          });
+          const jobOptions = Array.from(jobMap.entries()).map(([id, title]) => ({
+            id,
+            title,
             department: 'General',
           }));
 
-          setJobs(uniqueJobs);
+          setJobs(jobOptions);
         }
       } catch (error) {
         console.error('Error fetching applications:', error);
@@ -386,7 +406,7 @@ export default function ApplicationsManagement() {
 
   // Update application status
   const updateApplicationStatus = async (
-    applicationId: number,
+    applicationId: string,
     newStatus: ApplicationStatus
   ) => {
     setIsLoading(true);
@@ -437,7 +457,7 @@ export default function ApplicationsManagement() {
   // Filtered applications based on job, status, and search term
   const filteredApplications = applications.filter((app: Application) => {
     const matchesJob =
-      selectedJob === "all" || app.jobId.toString() === selectedJob || app.jobTitle === selectedJob;
+      selectedJob === "all" || app.jobId === selectedJob;
     const matchesStatus =
       selectedStatus === "all" || app.status === selectedStatus;
     const matchesSearch =
