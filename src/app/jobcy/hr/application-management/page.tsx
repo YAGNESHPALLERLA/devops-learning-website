@@ -26,7 +26,20 @@ import {
   ChevronUp,
 } from "lucide-react";
 
+import type { LucideIcon } from "lucide-react";
+
 export default function ApplicationsManagement() {
+  // Status type shared across helpers
+  type ApplicationStatus = "applied" | "under_review" | "interview" | "offered" | "rejected";
+
+  // Action config type
+  type StatusAction = {
+    label: string;
+    target: ApplicationStatus;
+    icon: LucideIcon;
+    className: string;
+  };
+
   // Application type
   type Application = {
     id: number;
@@ -37,7 +50,7 @@ export default function ApplicationsManagement() {
     phone: string;
     location: string;
     appliedDate: string;
-    status: "pending" | "shortlisted" | "rejected";
+    status: ApplicationStatus;
     experience: string;
     education: string;
     resumeUrl: string | null;
@@ -53,6 +66,184 @@ export default function ApplicationsManagement() {
     id: number;
     title: string;
     department: string;
+  };
+
+  const STATUS_META: Record<
+    ApplicationStatus,
+    {
+      label: string;
+      chipClass: string;
+      summaryClass: string;
+      icon: LucideIcon;
+    }
+  > = {
+    applied: {
+      label: "Applied",
+      chipClass: "bg-blue-100 text-blue-800",
+      summaryClass: "text-blue-600",
+      icon: Clock,
+    },
+    under_review: {
+      label: "Under Review",
+      chipClass: "bg-amber-100 text-amber-800",
+      summaryClass: "text-amber-600",
+      icon: Search,
+    },
+    interview: {
+      label: "Interview",
+      chipClass: "bg-indigo-100 text-indigo-800",
+      summaryClass: "text-indigo-600",
+      icon: Calendar,
+    },
+    offered: {
+      label: "Offered",
+      chipClass: "bg-green-100 text-green-800",
+      summaryClass: "text-green-600",
+      icon: CheckCircle,
+    },
+    rejected: {
+      label: "Rejected",
+      chipClass: "bg-red-100 text-red-700",
+      summaryClass: "text-red-600",
+      icon: XCircle,
+    },
+  };
+
+  const STATUS_PAYLOAD: Record<ApplicationStatus, string> = {
+    applied: "Applied",
+    under_review: "Under Review",
+    interview: "Interview Scheduled",
+    offered: "Offered",
+    rejected: "Rejected",
+  };
+
+  const STATUS_ACTIONS: Record<ApplicationStatus, StatusAction[]> = {
+    applied: [
+      {
+        label: "Move to Under Review",
+        target: "under_review",
+        icon: Search,
+        className: "bg-amber-600 hover:bg-amber-700",
+      },
+      {
+        label: "Schedule Interview",
+        target: "interview",
+        icon: Calendar,
+        className: "bg-indigo-600 hover:bg-indigo-700",
+      },
+      {
+        label: "Mark Offered",
+        target: "offered",
+        icon: CheckCircle,
+        className: "bg-green-600 hover:bg-green-700",
+      },
+      {
+        label: "Reject",
+        target: "rejected",
+        icon: XCircle,
+        className: "bg-red-600 hover:bg-red-700",
+      },
+    ],
+    under_review: [
+      {
+        label: "Schedule Interview",
+        target: "interview",
+        icon: Calendar,
+        className: "bg-indigo-600 hover:bg-indigo-700",
+      },
+      {
+        label: "Mark Offered",
+        target: "offered",
+        icon: CheckCircle,
+        className: "bg-green-600 hover:bg-green-700",
+      },
+      {
+        label: "Move Back to Applied",
+        target: "applied",
+        icon: Clock,
+        className: "bg-blue-600 hover:bg-blue-700",
+      },
+      {
+        label: "Reject",
+        target: "rejected",
+        icon: XCircle,
+        className: "bg-red-600 hover:bg-red-700",
+      },
+    ],
+    interview: [
+      {
+        label: "Mark Offered",
+        target: "offered",
+        icon: CheckCircle,
+        className: "bg-green-600 hover:bg-green-700",
+      },
+      {
+        label: "Move Back to Review",
+        target: "under_review",
+        icon: Search,
+        className: "bg-amber-600 hover:bg-amber-700",
+      },
+      {
+        label: "Reject",
+        target: "rejected",
+        icon: XCircle,
+        className: "bg-red-600 hover:bg-red-700",
+      },
+    ],
+    offered: [
+      {
+        label: "Move Back to Interview",
+        target: "interview",
+        icon: Calendar,
+        className: "bg-indigo-600 hover:bg-indigo-700",
+      },
+      {
+        label: "Move Back to Review",
+        target: "under_review",
+        icon: Search,
+        className: "bg-amber-600 hover:bg-amber-700",
+      },
+      {
+        label: "Reject",
+        target: "rejected",
+        icon: XCircle,
+        className: "bg-red-600 hover:bg-red-700",
+      },
+    ],
+    rejected: [
+      {
+        label: "Reopen Application",
+        target: "applied",
+        icon: Clock,
+        className: "bg-blue-600 hover:bg-blue-700",
+      },
+    ],
+  };
+
+  const normalizeStatus = (status: unknown): ApplicationStatus => {
+    if (typeof status !== "string" || status.trim().length === 0) {
+      return "applied";
+    }
+
+    const normalized = status.toLowerCase();
+
+    if (normalized.includes("reject")) {
+      return "rejected";
+    }
+
+    if (normalized.includes("offer")) {
+      return "offered";
+    }
+
+    if (normalized.includes("interview")) {
+      return "interview";
+    }
+
+    if (normalized.includes("review")) {
+      return "under_review";
+    }
+
+    return "applied";
   };
 
   // State for all applications
@@ -75,9 +266,7 @@ export default function ApplicationsManagement() {
   }, []);
 
   // Currently selected status filter
-  const [selectedStatus, setSelectedStatus] = useState<
-    "all" | "pending" | "shortlisted" | "rejected"
-  >("all");
+  const [selectedStatus, setSelectedStatus] = useState<"all" | ApplicationStatus>("all");
 
   // Search input
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -125,7 +314,7 @@ export default function ApplicationsManagement() {
             phone: app.userId?.mobile || '',
             location: app.userId?.currentLocation || '',
             appliedDate: app.appliedDate || app.createdAt,
-            status: app.status === 'Applied' ? 'pending' : app.status?.toLowerCase() || 'pending',
+            status: normalizeStatus(app.status),
             experience: 'Not specified',
             education: 'Not specified',
             resumeUrl: app.resume?.name || app.userId?.resume?.name || null,
@@ -168,38 +357,23 @@ export default function ApplicationsManagement() {
     return () => clearInterval(interval);
   }, []);
 
-  // Status badges styling & icons
-  const getStatusColor = (status: "pending" | "shortlisted" | "rejected") => {
-  switch (status) {
-    case "pending":
-      return "bg-yellow-100 text-yellow-800";
-    case "shortlisted":
-      return "bg-green-100 text-green-800";
-    case "rejected":
-      return "bg-red-100 text-red-800";
-    default:
-      return "bg-gray-100 text-gray-800";
-  }
-};
+  // Status helpers
+  const getStatusLabel = (status: ApplicationStatus) =>
+    STATUS_META[status]?.label ?? STATUS_META.applied.label;
 
-const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
-  switch (status) {
-    case "pending":
-      return <Clock className="w-4 h-4" />;
-    case "shortlisted":
-      return <CheckCircle className="w-4 h-4" />;
-    case "rejected":
-      return <XCircle className="w-4 h-4" />;
-    default:
-      return <Clock className="w-4 h-4" />;
-  }
-};
+  const getStatusChipClass = (status: ApplicationStatus) =>
+    STATUS_META[status]?.chipClass ?? "bg-gray-100 text-gray-800";
+
+  const getStatusIcon = (status: ApplicationStatus) => {
+    const Icon = STATUS_META[status]?.icon ?? Clock;
+    return <Icon className="w-4 h-4" />;
+  };
 
 
   // Update application status
   const updateApplicationStatus = async (
     applicationId: number,
-    newStatus: "pending" | "shortlisted" | "rejected"
+    newStatus: ApplicationStatus
   ) => {
     setIsLoading(true);
     try {
@@ -212,7 +386,7 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ status: newStatus === "shortlisted" ? "Under Review" : newStatus === "rejected" ? "Rejected" : newStatus === "pending" ? "Applied" : newStatus }),
+        body: JSON.stringify({ status: STATUS_PAYLOAD[newStatus] }),
       });
 
       if (response.ok) {
@@ -312,12 +486,12 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
           </div>
           <div className="flex items-center space-x-2 mb-3">
             <span
-              className={`inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(
+              className={`inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusChipClass(
                 application.status
               )}`}
             >
               {getStatusIcon(application.status)}
-              <span className="capitalize">{application.status}</span>
+              <span>{getStatusLabel(application.status)}</span>
             </span>
             <div className="flex items-center space-x-1">
               <Star className="w-4 h-4 text-yellow-400 fill-current" />
@@ -395,65 +569,21 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
         </div>
       </div>
       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-        <div className="flex space-x-2">
-          {application.status === "pending" && (
-            <>
+        <div className="flex flex-wrap gap-2">
+          {STATUS_ACTIONS[application.status]?.map((action) => {
+            const Icon = action.icon;
+            return (
               <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "shortlisted")
-                }
+                key={`${application.id}-${action.label}`}
+                onClick={() => updateApplicationStatus(application.id, action.target)}
                 disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
+                className={`flex items-center space-x-1 px-3 py-1 text-white text-sm rounded-lg transition-colors disabled:opacity-50 ${action.className}`}
               >
-                <CheckCircle className="w-4 h-4" />
-                <span>Shortlist</span>
+                <Icon className="w-4 h-4" />
+                <span>{action.label}</span>
               </button>
-              <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "rejected")
-                }
-                disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-              >
-                <XCircle className="w-4 h-4" />
-                <span>Reject</span>
-              </button>
-            </>
-          )}
-          {application.status === "shortlisted" && (
-            <>
-              <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "pending")
-                }
-                disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-              >
-                <Clock className="w-4 h-4" />
-                <span>Move to Pending</span>
-              </button>
-              <button
-                onClick={() =>
-                  updateApplicationStatus(application.id, "rejected")
-                }
-                disabled={isLoading}
-                className="flex items-center space-x-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-              >
-                <XCircle className="w-4 h-4" />
-                <span>Reject</span>
-              </button>
-            </>
-          )}
-          {application.status === "rejected" && (
-            <button
-              onClick={() => updateApplicationStatus(application.id, "pending")}
-              disabled={isLoading}
-              className="flex items-center space-x-1 px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-lg transition-colors disabled:opacity-50"
-            >
-              <Clock className="w-4 h-4" />
-              <span>Reconsider</span>
-            </button>
-          )}
+            );
+          })}
         </div>
         <button
           onClick={() => {
@@ -505,12 +635,12 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
             {/* Status and Rating */}
             <div className="flex items-center space-x-4 mb-6">
               <span
-                className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium ${getStatusChipClass(
                   applicant.status
                 )}`}
               >
                 {getStatusIcon(applicant.status)}
-                <span className="capitalize">{applicant.status}</span>
+                <span>{getStatusLabel(applicant.status)}</span>
               </span>
               <div className="flex items-center space-x-2">
                 <Star className="w-5 h-5 text-yellow-400 fill-current" />
@@ -619,31 +749,23 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
               </div>
             )}
             {/* Action Buttons */}
-            <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-              {applicant.status === "pending" && (
-                <>
+            <div className="flex flex-wrap justify-end gap-3 pt-6 border-t border-gray-200">
+              {STATUS_ACTIONS[applicant.status]?.map((action) => {
+                const Icon = action.icon;
+                return (
                   <button
+                    key={`${applicant.id}-${action.label}`}
                     onClick={() => {
-                      updateApplicationStatus(applicant.id, "shortlisted");
+                      updateApplicationStatus(applicant.id, action.target);
                       onClose();
                     }}
-                    className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-colors"
+                    className={`flex items-center space-x-2 px-4 py-2 text-white rounded-lg transition-colors ${action.className}`}
                   >
-                    <CheckCircle className="w-4 h-4" />
-                    <span>Shortlist</span>
+                    <Icon className="w-4 h-4" />
+                    <span>{action.label}</span>
                   </button>
-                  <button
-                    onClick={() => {
-                      updateApplicationStatus(applicant.id, "rejected");
-                      onClose();
-                    }}
-                    className="flex items-center space-x-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
-                  >
-                    <XCircle className="w-4 h-4" />
-                    <span>Reject</span>
-                  </button>
-                </>
-              )}
+                );
+              })}
               <button
                 onClick={onClose}
                 className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
@@ -717,15 +839,16 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
               <select
                 value={selectedStatus}
                 onChange={(e) =>
-                  setSelectedStatus(e.target.value as "pending" | "shortlisted" | "rejected" | "all")
+                  setSelectedStatus(e.target.value as "all" | ApplicationStatus)
                 }
-
                 className="border border-gray-300 rounded-lg px-3 py-2 bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
                 aria-label="Filter by status"
               >
                 <option value="all">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="shortlisted">Shortlisted</option>
+                <option value="applied">Applied</option>
+                <option value="under_review">Under Review</option>
+                <option value="interview">Interview</option>
+                <option value="offered">Offered</option>
                 <option value="rejected">Rejected</option>
               </select>
             </div>
@@ -780,52 +903,22 @@ const getStatusIcon = (status: "pending" | "shortlisted" | "rejected") => {
                         </div>
                       </div>
                       <div className="flex items-center space-x-4">
-                        <div className="flex space-x-3 text-sm">
-                          <span
-                            className="text-yellow-600"
-                            aria-label={`${
-                              jobApplications.filter(
-                                (app) => app.status === "pending"
-                              ).length
-                            } pending`}
-                          >
-                            {
-                              jobApplications.filter(
-                                (app) => app.status === "pending"
-                              ).length
-                            }{" "}
-                            pending
-                          </span>
-                          <span
-                            className="text-green-600"
-                            aria-label={`${
-                              jobApplications.filter(
-                                (app) => app.status === "shortlisted"
-                              ).length
-                            } shortlisted`}
-                          >
-                            {
-                              jobApplications.filter(
-                                (app) => app.status === "shortlisted"
-                              ).length
-                            }{" "}
-                            shortlisted
-                          </span>
-                          <span
-                            className="text-red-600"
-                            aria-label={`${
-                              jobApplications.filter(
-                                (app) => app.status === "rejected"
-                              ).length
-                            } rejected`}
-                          >
-                            {
-                              jobApplications.filter(
-                                (app) => app.status === "rejected"
-                              ).length
-                            }{" "}
-                            rejected
-                          </span>
+                        <div className="flex flex-wrap gap-3 text-sm">
+                          {(["under_review", "interview", "offered", "rejected"] as ApplicationStatus[]).map(
+                            (status) => {
+                              const count = jobApplications.filter((app) => app.status === status).length;
+                              if (count === 0) return null;
+                              return (
+                                <span
+                                  key={`${jobTitle}-${status}`}
+                                  className={STATUS_META[status].summaryClass}
+                                  aria-label={`${count} ${STATUS_META[status].label.toLowerCase()}`}
+                                >
+                                  {count} {STATUS_META[status].label.toLowerCase()}
+                                </span>
+                              );
+                            }
+                          )}
                         </div>
                         {expandedJobs.has(jobTitle) ? (
                           <ChevronUp
