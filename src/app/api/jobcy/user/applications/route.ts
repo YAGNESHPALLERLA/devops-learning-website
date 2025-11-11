@@ -37,18 +37,20 @@ export async function GET(_request: NextRequest) {
     }
     
     // Convert userId to ObjectId
-    let userId: ObjectId;
+    const userIdVariants: (ObjectId | string)[] = [];
     try {
-      userId = new ObjectId(decoded.id);
+      const objectId = new ObjectId(decoded.id);
+      userIdVariants.push(objectId);
     } catch {
-      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
+      console.log('User applications: decoded id is not a valid ObjectId, continuing with string match');
     }
+    userIdVariants.push(decoded.id);
     
     // Get user applications
     let applications;
     try {
       applications = await db.collection('applications')
-        .find({ userId: userId })
+        .find({ userId: { $in: userIdVariants } })
         .sort({ appliedAt: -1 })
         .toArray();
     } catch (dbError) {
