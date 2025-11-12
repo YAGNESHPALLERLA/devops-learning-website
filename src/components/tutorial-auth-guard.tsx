@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import ContinueModal from '@/components/continue-modal';
 
 // Helper function to validate JWT token
 function isValidToken(token: string): boolean {
@@ -30,6 +31,8 @@ function isValidToken(token: string): boolean {
 export default function TutorialAuthGuard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [showContinueModal, setShowContinueModal] = useState(false);
+  const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
 
   useEffect(() => {
     // IMMEDIATE check - don't wait
@@ -46,10 +49,41 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
       if (token) {
         localStorage.removeItem('token');
       }
-      // IMMEDIATELY redirect to registration - use href for immediate redirect
+      
+      // Check for registered email
+      let email = localStorage.getItem('registeredEmail');
+      
+      // Fallback: check stored user object for email
+      if (!email || email.trim() === '') {
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+          try {
+            const user = JSON.parse(userStr);
+            if (user && user.email && typeof user.email === 'string') {
+              email = user.email;
+              if (email && email.trim() !== '') {
+                localStorage.setItem('registeredEmail', email);
+              }
+            }
+          } catch (e) {
+            // Ignore parse errors
+          }
+        }
+      }
+      
+      if (email && email.trim() !== '') {
+        // Show continue modal instead of redirecting
+        console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal');
+        setRegisteredEmail(email);
+        setShowContinueModal(true);
+        setIsAuthenticated(false);
+        return;
+      }
+      
+      // No registered email, redirect to registration
       const redirectUrl = `/register?redirect=${encodeURIComponent(currentPath)}`;
       console.log('[TUTORIAL_AUTH] Not authenticated, redirecting to:', redirectUrl);
-      window.location.href = redirectUrl; // Use href instead of replace for more immediate redirect
+      window.location.href = redirectUrl;
       setIsAuthenticated(false);
       return;
     }
@@ -58,11 +92,36 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
     setIsAuthenticated(true);
   }, [pathname]);
 
-  // Show nothing while checking or if not authenticated
-  if (isAuthenticated === null || isAuthenticated === false) {
+  // Show nothing while checking
+  if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
+
+  // Show continue modal if email found
+  if (showContinueModal && registeredEmail) {
+    return (
+      <>
+        <div className="min-h-screen bg-[#1a1a1a]">
+          {children}
+        </div>
+        <ContinueModal
+          registeredEmail={registeredEmail}
+          redirectTo={pathname || window.location.pathname}
+          onClose={() => setShowContinueModal(false)}
+        />
+      </>
+    );
+  }
+
+  // Show nothing if not authenticated (redirecting)
+  if (isAuthenticated === false) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
+        <div className="text-white">Redirecting...</div>
       </div>
     );
   }
