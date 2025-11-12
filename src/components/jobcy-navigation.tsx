@@ -8,16 +8,36 @@ export default function JobcyNavigation() {
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
+  const isValidToken = () => {
+    if (typeof window === 'undefined') return false;
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') return false;
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) return false;
+      const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      const payload = JSON.parse(atob(base64));
+      if (payload && payload.exp && typeof payload.exp === 'number') {
+        const now = Math.floor(Date.now() / 1000);
+        if (now >= payload.exp) {
+          return false;
+        }
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const handleTutorialClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setShowDropdown(false);
     
-    // Check if user is authenticated
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    
-    if (!token) {
+    // Check if user is authenticated and token valid
+    const authed = isValidToken();
+    if (!authed) {
       // Redirect to signup with the tutorial URL as redirect parameter
-      window.location.href = `/signup?redirect=${encodeURIComponent(href)}`;
+      window.location.replace(`/signup?redirect=${encodeURIComponent(href)}`);
     } else {
       // User is authenticated, navigate normally
       router.push(href);
