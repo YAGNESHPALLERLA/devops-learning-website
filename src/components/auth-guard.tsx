@@ -42,7 +42,6 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     if (token) {
       setIsAuthenticated(true);
     } else {
-      setIsAuthenticated(false);
       // Check if trying to access tutorials or courses - redirect to login
       const isTutorialOrCourse = 
         pathname.startsWith("/tutorials") ||
@@ -54,18 +53,26 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         pathname === "/web-dev" ||
         pathname === "/data-science" ||
         pathname === "/code-terminal" ||
-        pathname === "/terminal";
+        pathname === "/terminal" ||
+        pathname === "/menu";
       
       if (isTutorialOrCourse) {
-        // Redirect to login for tutorials/courses
-        router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+        // Immediately redirect to login for tutorials/courses
+        setIsAuthenticated(false);
+        window.location.href = `/login?redirect=${encodeURIComponent(pathname)}`;
+        return;
       } else if (pathname === "/") {
         // Redirect root to landing page
-        router.replace("/landing");
+        setIsAuthenticated(false);
+        window.location.href = "/landing";
+        return;
       } else if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
         // Redirect other protected routes to landing
-        router.replace("/landing");
+        setIsAuthenticated(false);
+        window.location.href = "/landing";
+        return;
       }
+      setIsAuthenticated(false);
     }
   }, [pathname, router]);
 
