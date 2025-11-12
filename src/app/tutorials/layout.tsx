@@ -3,6 +3,30 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
+// Helper function to validate JWT token
+function isValidToken(token: string): boolean {
+  if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+    return false;
+  }
+  
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      return false; // Invalid JWT format
+    }
+    
+    // Check if token is expired
+    const payload = JSON.parse(atob(parts[1]));
+    if (payload.exp && payload.exp * 1000 < Date.now()) {
+      return false; // Token expired
+    }
+    
+    return true; // Token is valid
+  } catch (e) {
+    return false; // Invalid token format
+  }
+}
+
 export default function TutorialsLayout({
   children,
 }: {
@@ -18,14 +42,18 @@ export default function TutorialsLayout({
     const token = localStorage.getItem('token');
     const currentPath = window.location.pathname || '/tutorials';
     
-    // If no token or invalid token, redirect IMMEDIATELY
-    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+    // Validate token
+    if (!isValidToken(token || '')) {
+      // Remove invalid token
+      if (token) {
+        localStorage.removeItem('token');
+      }
       // Use replace for immediate redirect - prevents back button
       window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
       return false; // Return false to prevent rendering
     }
     
-    return true; // Token exists, allow rendering
+    return true; // Token exists and is valid, allow rendering
   });
 
   useEffect(() => {
@@ -37,13 +65,17 @@ export default function TutorialsLayout({
     const token = localStorage.getItem('token');
     const currentPath = pathname || window.location.pathname || '/tutorials';
     
-    // If no token or invalid token, redirect IMMEDIATELY
-    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+    // Validate token
+    if (!isValidToken(token || '')) {
+      // Remove invalid token
+      if (token) {
+        localStorage.removeItem('token');
+      }
       window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
       return;
     }
     
-    // Token exists, set authenticated
+    // Token exists and is valid, set authenticated
     setIsAuthenticated(true);
   }, [pathname]);
 

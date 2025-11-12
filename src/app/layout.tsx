@@ -50,8 +50,36 @@ export default function RootLayout({
                   
                   if (isTutorialRoute) {
                     const token = localStorage.getItem('token');
-                    if (!token || token.trim() === '') {
+                    
+                    // Check if token exists
+                    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
                       window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      return;
+                    }
+                    
+                    // Validate JWT token format and expiry
+                    try {
+                      const parts = token.split('.');
+                      if (parts.length !== 3) {
+                        // Invalid JWT format
+                        localStorage.removeItem('token');
+                        window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        return;
+                      }
+                      
+                      // Check if token is expired
+                      const payload = JSON.parse(atob(parts[1]));
+                      if (payload.exp && payload.exp * 1000 < Date.now()) {
+                        // Token expired
+                        localStorage.removeItem('token');
+                        window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        return;
+                      }
+                    } catch (e) {
+                      // Invalid token format
+                      localStorage.removeItem('token');
+                      window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      return;
                     }
                   }
                 }

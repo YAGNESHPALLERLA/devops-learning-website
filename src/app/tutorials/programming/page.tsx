@@ -33,14 +33,94 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
   );
 }
 
+// Check auth BEFORE component renders - runs at module level
+let hasCheckedAuth = false;
+if (typeof window !== 'undefined' && !hasCheckedAuth) {
+  hasCheckedAuth = true;
+  const token = localStorage.getItem('token');
+  // Check if token exists and is valid (not empty, null, undefined, or expired)
+  if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+    // IMMEDIATE redirect before React renders
+    window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+  } else {
+    // Validate JWT token format and expiry
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        // Invalid JWT format
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      } else {
+        // Check if token is expired
+        const payload = JSON.parse(atob(parts[1]));
+        if (payload.exp && payload.exp * 1000 < Date.now()) {
+          // Token expired
+          localStorage.removeItem('token');
+          window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        }
+      }
+    } catch (e) {
+      // Invalid token format
+      localStorage.removeItem('token');
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+    }
+  }
+}
+
 export default function ProgrammingPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
+    // Immediate check in useState initializer
+    if (typeof window === 'undefined') return null;
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return false;
+    }
+    // Validate token
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return false;
+      }
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return false;
+      }
+    } catch (e) {
+      localStorage.removeItem('token');
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return false;
+    }
+    return true;
+  });
 
   useEffect(() => {
-    // Check authentication immediately on mount
+    // Double-check on mount
     const token = localStorage.getItem('token');
-    if (!token) {
-      // Force immediate redirect - use replace to prevent back button
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return;
+    }
+    // Validate token
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return;
+      }
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return;
+      }
+    } catch (e) {
+      localStorage.removeItem('token');
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return;
     }
