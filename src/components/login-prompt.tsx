@@ -11,22 +11,26 @@ export default function LoginPrompt() {
   const hasStartedTimerRef = useRef(false);
 
   useEffect(() => {
+    // Wait for pathname to be available
+    if (!pathname) return;
+
     // Clear any existing timer
     if (timerRef.current) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
+    hasStartedTimerRef.current = false;
 
     // Don't show on login/signup pages or Jobcy auth pages
     const isAuthPage = 
       pathname === "/login" ||
-      pathname?.startsWith("/jobcy/user/auth") ||
-      pathname?.startsWith("/jobcy/hr/auth") ||
-      pathname?.startsWith("/jobcy/admin/auth") ||
-      pathname?.startsWith("/jobcy/company/auth");
+      pathname === "/signup" ||
+      pathname.startsWith("/jobcy/user/auth") ||
+      pathname.startsWith("/jobcy/hr/auth") ||
+      pathname.startsWith("/jobcy/admin/auth") ||
+      pathname.startsWith("/jobcy/company/auth");
 
     if (isAuthPage) {
-      hasStartedTimerRef.current = false;
       setShowModal(false);
       return;
     }
@@ -39,28 +43,37 @@ export default function LoginPrompt() {
     };
 
     if (checkAuth()) {
-      hasStartedTimerRef.current = false;
       setShowModal(false);
       return;
     }
 
     // Check if we've already shown the modal in this session
-    const sessionShown = sessionStorage.getItem("loginModalShown");
-    if (sessionShown === "true") {
-      hasStartedTimerRef.current = false;
-      return;
-    }
-
-    // Only start timer once per page load
-    if (!hasStartedTimerRef.current) {
+    const sessionShown = typeof window !== "undefined" ? sessionStorage.getItem("loginModalShown") : null;
+    
+    // Only start timer if not already shown in this session
+    if (sessionShown !== "true") {
       hasStartedTimerRef.current = true;
       
       // Set timer for 10 seconds
       timerRef.current = setTimeout(() => {
         // Double-check user is still not logged in
         if (!checkAuth()) {
-          setShowModal(true);
-          sessionStorage.setItem("loginModalShown", "true");
+          // Check again if we're still on a non-auth page
+          const currentPath = window.location.pathname;
+          const stillAuthPage = 
+            currentPath === "/login" ||
+            currentPath === "/signup" ||
+            currentPath.startsWith("/jobcy/user/auth") ||
+            currentPath.startsWith("/jobcy/hr/auth") ||
+            currentPath.startsWith("/jobcy/admin/auth") ||
+            currentPath.startsWith("/jobcy/company/auth");
+          
+          if (!stillAuthPage) {
+            setShowModal(true);
+            if (typeof window !== "undefined") {
+              sessionStorage.setItem("loginModalShown", "true");
+            }
+          }
         }
       }, 10000); // 10 seconds
     }
