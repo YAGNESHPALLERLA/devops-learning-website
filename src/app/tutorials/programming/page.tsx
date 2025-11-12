@@ -50,14 +50,14 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
       if (parts.length !== 3) {
         // Invalid JWT format
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
       } else {
         // Check if token is expired
         const payload = JSON.parse(atob(parts[1]));
         if (payload.exp && payload.exp * 1000 < Date.now()) {
           // Token expired
           localStorage.removeItem('token');
-          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
         }
       }
     } catch {
@@ -75,7 +75,7 @@ export default function ProgrammingPage() {
     if (typeof window === 'undefined') return null;
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return false;
     }
     // Validate token
@@ -83,18 +83,18 @@ export default function ProgrammingPage() {
       const parts = token.split('.');
       if (parts.length !== 3) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return false;
       }
       const payload = JSON.parse(atob(parts[1]));
       if (payload.exp && payload.exp * 1000 < Date.now()) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return false;
       }
     } catch {
       localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return false;
     }
     return true;
@@ -104,7 +104,7 @@ export default function ProgrammingPage() {
     // Triple-check on mount
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return;
     }
     // Validate token
@@ -112,18 +112,18 @@ export default function ProgrammingPage() {
       const parts = token.split('.');
       if (parts.length !== 3) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return;
       }
       const payload = JSON.parse(atob(parts[1]));
       if (payload.exp && payload.exp * 1000 < Date.now()) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return;
       }
     } catch {
       localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return;
     }
     setIsAuthenticated(true);
@@ -133,7 +133,7 @@ export default function ProgrammingPage() {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return null; // Return null immediately - prevents any rendering
     }
     
@@ -142,19 +142,19 @@ export default function ProgrammingPage() {
       const parts = token.split('.');
       if (parts.length !== 3) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return null;
       }
       
       const payload = JSON.parse(atob(parts[1]));
       if (payload.exp && payload.exp * 1000 < Date.now()) {
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return null;
       }
     } catch {
       localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return null;
     }
   }
