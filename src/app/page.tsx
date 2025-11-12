@@ -9,14 +9,20 @@ import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
 import { useState, useEffect } from 'react';
 
 export default function HomePage() {
+  const router = useRouter();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Check if user is authenticated, if not redirect to landing
-    const token = localStorage.getItem("token");
-    if (!token) {
-      window.location.href = "/landing";
+    const checkAuth = () => {
+      if (typeof window === "undefined") return false;
+      const token = localStorage.getItem("token");
+      return !!token;
+    };
+
+    if (!checkAuth()) {
+      router.push("/landing");
       return;
     }
 
@@ -28,7 +34,7 @@ export default function HomePage() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [router]);
 
   const scrollToContent = () => {
     const contentSection = document.getElementById('main-content');

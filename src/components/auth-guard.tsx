@@ -43,9 +43,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
-      // Redirect to landing page if not already on public routes
-      if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
-        router.push("/landing");
+      // Redirect root "/" and all other non-public routes to landing page
+      if (pathname === "/" || (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup")) {
+        router.replace("/landing");
       }
     }
   }, [pathname, router]);
@@ -67,7 +67,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   // If not authenticated, show loading (redirect is happening)
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
-      <div className="text-white">Redirecting to login...</div>
+      <div className="text-white">Redirecting to registration...</div>
     </div>
   );
 }
