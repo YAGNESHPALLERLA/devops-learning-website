@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 // Public routes that don't require authentication
 const publicRoutes = [
+  "/landing",
   "/login",
   "/signup",
   "/jobcy/user/auth/login",
@@ -20,9 +21,14 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    // Wait for pathname to be available
+    if (!pathname) {
+      return;
+    }
+
     // Check if current route is public
     const isPublic = publicRoutes.some(route => 
-      pathname === route || pathname?.startsWith(route)
+      pathname === route || pathname.startsWith(route)
     );
 
     if (isPublic) {
@@ -37,9 +43,10 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
-      // Redirect to login with current path as redirect parameter
-      const loginUrl = `/login?redirect=${encodeURIComponent(pathname || "/")}`;
-      router.push(loginUrl);
+      // Redirect to landing page if not already on public routes
+      if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
+        router.push("/landing");
+      }
     }
   }, [pathname, router]);
 
