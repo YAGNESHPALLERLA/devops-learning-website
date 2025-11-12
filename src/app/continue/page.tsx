@@ -18,8 +18,28 @@ function ContinueForm() {
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
 
   useEffect(() => {
-    // Get stored email from localStorage
-    const email = localStorage.getItem("registeredEmail");
+    // Get stored email from localStorage - check multiple sources
+    let email: string | null = localStorage.getItem("registeredEmail");
+    
+    // Fallback: check stored user object for email
+    if (!email) {
+      const userStr = localStorage.getItem("user");
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          if (user && user.email && typeof user.email === 'string') {
+            email = user.email;
+            // Store it for future use (email is guaranteed to be string here)
+            if (email) {
+              localStorage.setItem("registeredEmail", email);
+            }
+          }
+        } catch (e) {
+          console.error("Error parsing user data:", e);
+        }
+      }
+    }
+    
     if (email) {
       setRegisteredEmail(email);
     } else {

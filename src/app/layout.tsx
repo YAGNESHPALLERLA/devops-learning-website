@@ -54,7 +54,24 @@ export default function RootLayout({
                     // Check if token exists
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
                       console.log('[AUTH] No token found, checking for registered email');
-                      const registeredEmail = localStorage.getItem('registeredEmail');
+                      let registeredEmail = localStorage.getItem('registeredEmail');
+                      
+                      // Fallback: check stored user object for email
+                      if (!registeredEmail) {
+                        const userStr = localStorage.getItem('user');
+                        if (userStr) {
+                          try {
+                            const user = JSON.parse(userStr);
+                            if (user && user.email) {
+                              registeredEmail = user.email;
+                              localStorage.setItem('registeredEmail', registeredEmail);
+                            }
+                          } catch (e) {
+                            // Ignore parse errors
+                          }
+                        }
+                      }
+                      
                       if (registeredEmail) {
                         console.log('[AUTH] Found registered email, redirecting to continue page');
                         window.location.href = '/continue?redirect=' + encodeURIComponent(path);
@@ -73,7 +90,23 @@ export default function RootLayout({
                         // Invalid JWT format
                         console.log('[AUTH] Invalid JWT format, checking for registered email');
                         localStorage.removeItem('token');
-                        const registeredEmail = localStorage.getItem('registeredEmail');
+                        let registeredEmail = localStorage.getItem('registeredEmail');
+                        if (!registeredEmail) {
+                          const userStr = localStorage.getItem('user');
+                          if (userStr) {
+                            try {
+                              const user = JSON.parse(userStr);
+                              if (user && user.email && typeof user.email === 'string') {
+                                registeredEmail = user.email;
+                                if (registeredEmail) {
+                                  localStorage.setItem('registeredEmail', registeredEmail);
+                                }
+                              }
+                            } catch (e) {
+                              // Ignore parse errors
+                            }
+                          }
+                        }
                         if (registeredEmail) {
                           window.location.href = '/continue?redirect=' + encodeURIComponent(path);
                         } else {
@@ -89,7 +122,23 @@ export default function RootLayout({
                         // Token expired
                         console.log('[AUTH] Token expired, checking for registered email');
                         localStorage.removeItem('token');
-                        const registeredEmail = localStorage.getItem('registeredEmail');
+                        let registeredEmail = localStorage.getItem('registeredEmail');
+                        if (!registeredEmail) {
+                          const userStr = localStorage.getItem('user');
+                          if (userStr) {
+                            try {
+                              const user = JSON.parse(userStr);
+                              if (user && user.email && typeof user.email === 'string') {
+                                registeredEmail = user.email;
+                                if (registeredEmail) {
+                                  localStorage.setItem('registeredEmail', registeredEmail);
+                                }
+                              }
+                            } catch (e) {
+                              // Ignore parse errors
+                            }
+                          }
+                        }
                         if (registeredEmail) {
                           window.location.href = '/continue?redirect=' + encodeURIComponent(path);
                         } else {
@@ -103,7 +152,21 @@ export default function RootLayout({
                       // Invalid token format
                       console.log('[AUTH] Token validation error, checking for registered email', e);
                       localStorage.removeItem('token');
-                      const registeredEmail = localStorage.getItem('registeredEmail');
+                      let registeredEmail = localStorage.getItem('registeredEmail');
+                      if (!registeredEmail) {
+                        const userStr = localStorage.getItem('user');
+                        if (userStr) {
+                          try {
+                            const user = JSON.parse(userStr);
+                            if (user && user.email) {
+                              registeredEmail = user.email;
+                              localStorage.setItem('registeredEmail', registeredEmail);
+                            }
+                          } catch (e) {
+                            // Ignore parse errors
+                          }
+                        }
+                      }
                       if (registeredEmail) {
                         window.location.href = '/continue?redirect=' + encodeURIComponent(path);
                       } else {

@@ -179,6 +179,8 @@ export default function SignupPage() {
       if (loginResponse.ok) {
         localStorage.setItem("token", loginData.token);
         localStorage.setItem("user", JSON.stringify(loginData.user));
+        // Store email for "continue with account" feature
+        localStorage.setItem("registeredEmail", formData.email);
         
         // Auto-redirect to dashboard after successful registration and login
         setTimeout(() => {
@@ -191,6 +193,8 @@ export default function SignupPage() {
         
         setIsSuccess(true);
       } else {
+        // Store email even if login fails
+        localStorage.setItem("registeredEmail", formData.email);
         window.location.href = "/jobcy/user/auth/login";
       }
     } catch {

@@ -48,7 +48,27 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       const token = localStorage.getItem("token");
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
         // Check if user has a registered email stored
-        const registeredEmail = localStorage.getItem("registeredEmail");
+        let registeredEmail = localStorage.getItem("registeredEmail");
+        
+        // Fallback: check stored user object for email
+        if (!registeredEmail) {
+          const userStr = localStorage.getItem("user");
+          if (userStr) {
+            try {
+              const user = JSON.parse(userStr);
+              if (user && user.email && typeof user.email === 'string') {
+                registeredEmail = user.email;
+                // Store it for future use (registeredEmail is guaranteed to be string here)
+                if (registeredEmail) {
+                  localStorage.setItem("registeredEmail", registeredEmail);
+                }
+              }
+            } catch (e) {
+              // Ignore parse errors
+            }
+          }
+        }
+        
         if (registeredEmail) {
           // User has registered before, show continue page
           setIsAuthenticated(false);
@@ -68,8 +88,24 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Invalid JWT format
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          // Check for registered email
-          const registeredEmail = localStorage.getItem("registeredEmail");
+          // Check for registered email with fallback
+          let registeredEmail = localStorage.getItem("registeredEmail");
+          if (!registeredEmail) {
+            const userStr = localStorage.getItem("user");
+            if (userStr) {
+              try {
+                const user = JSON.parse(userStr);
+                if (user && user.email && typeof user.email === 'string') {
+                  registeredEmail = user.email;
+                  if (registeredEmail) {
+                    localStorage.setItem("registeredEmail", registeredEmail);
+                  }
+                }
+              } catch (e) {
+                // Ignore parse errors
+              }
+            }
+          }
           if (registeredEmail) {
             window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
           } else {
@@ -84,8 +120,24 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Token expired
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          // Check for registered email
-          const registeredEmail = localStorage.getItem("registeredEmail");
+          // Check for registered email with fallback
+          let registeredEmail = localStorage.getItem("registeredEmail");
+          if (!registeredEmail) {
+            const userStr = localStorage.getItem("user");
+            if (userStr) {
+              try {
+                const user = JSON.parse(userStr);
+                if (user && user.email && typeof user.email === 'string') {
+                  registeredEmail = user.email;
+                  if (registeredEmail) {
+                    localStorage.setItem("registeredEmail", registeredEmail);
+                  }
+                }
+              } catch (e) {
+                // Ignore parse errors
+              }
+            }
+          }
           if (registeredEmail) {
             window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
           } else {
@@ -97,8 +149,24 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         // Invalid token format
         localStorage.removeItem('token');
         setIsAuthenticated(false);
-        // Check for registered email
-        const registeredEmail = localStorage.getItem("registeredEmail");
+        // Check for registered email with fallback
+        let registeredEmail = localStorage.getItem("registeredEmail");
+        if (!registeredEmail) {
+          const userStr = localStorage.getItem("user");
+          if (userStr) {
+            try {
+              const user = JSON.parse(userStr);
+              if (user && user.email && typeof user.email === 'string') {
+                registeredEmail = user.email;
+                if (registeredEmail) {
+                  localStorage.setItem("registeredEmail", registeredEmail);
+                }
+              }
+            } catch (e) {
+              // Ignore parse errors
+            }
+          }
+        }
         if (registeredEmail) {
           window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
         } else {

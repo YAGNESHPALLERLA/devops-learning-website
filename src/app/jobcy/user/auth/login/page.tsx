@@ -75,6 +75,8 @@ export default function UserLogin() {
       } else {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        // Store email for "continue with account" feature
+        localStorage.setItem("registeredEmail", formData.email);
 
         console.log("User role:", data.user.role); // Debug log
 
