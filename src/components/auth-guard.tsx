@@ -9,6 +9,7 @@ const publicRoutes = [
   "/login",
   "/signup",
   "/register",
+  "/continue",
   "/jobcy/user/auth/login",
   "/jobcy/user/auth/signup",
   "/jobcy/hr/auth/login",
@@ -46,9 +47,17 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       // Check for token IMMEDIATELY and validate it
       const token = localStorage.getItem("token");
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
-        // IMMEDIATELY redirect - don't wait, don't render anything
-        setIsAuthenticated(false);
-        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        // Check if user has a registered email stored
+        const registeredEmail = localStorage.getItem("registeredEmail");
+        if (registeredEmail) {
+          // User has registered before, show continue page
+          setIsAuthenticated(false);
+          window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
+        } else {
+          // No registered email, redirect to registration
+          setIsAuthenticated(false);
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        }
         return;
       }
       
@@ -59,7 +68,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Invalid JWT format
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          // Check for registered email
+          const registeredEmail = localStorage.getItem("registeredEmail");
+          if (registeredEmail) {
+            window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
+          } else {
+            window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          }
           return;
         }
         
@@ -69,14 +84,26 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Token expired
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          // Check for registered email
+          const registeredEmail = localStorage.getItem("registeredEmail");
+          if (registeredEmail) {
+            window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
+          } else {
+            window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          }
           return;
         }
       } catch {
         // Invalid token format
         localStorage.removeItem('token');
         setIsAuthenticated(false);
-        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        // Check for registered email
+        const registeredEmail = localStorage.getItem("registeredEmail");
+        if (registeredEmail) {
+          window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
+        } else {
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        }
         return;
       }
     }

@@ -53,8 +53,15 @@ export default function RootLayout({
                     
                     // Check if token exists
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-                      console.log('[AUTH] No token found, redirecting to registration');
-                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                      console.log('[AUTH] No token found, checking for registered email');
+                      const registeredEmail = localStorage.getItem('registeredEmail');
+                      if (registeredEmail) {
+                        console.log('[AUTH] Found registered email, redirecting to continue page');
+                        window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                      } else {
+                        console.log('[AUTH] No registered email, redirecting to registration');
+                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                      }
                       window.stop(); // Stop page loading
                       return;
                     }
@@ -64,9 +71,14 @@ export default function RootLayout({
                       const parts = token.split('.');
                       if (parts.length !== 3) {
                         // Invalid JWT format
-                        console.log('[AUTH] Invalid JWT format, redirecting to registration');
+                        console.log('[AUTH] Invalid JWT format, checking for registered email');
                         localStorage.removeItem('token');
-                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        const registeredEmail = localStorage.getItem('registeredEmail');
+                        if (registeredEmail) {
+                          window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                        } else {
+                          window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        }
                         window.stop(); // Stop page loading
                         return;
                       }
@@ -75,18 +87,28 @@ export default function RootLayout({
                       const payload = JSON.parse(atob(parts[1]));
                       if (payload.exp && payload.exp * 1000 < Date.now()) {
                         // Token expired
-                        console.log('[AUTH] Token expired, redirecting to registration');
+                        console.log('[AUTH] Token expired, checking for registered email');
                         localStorage.removeItem('token');
-                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        const registeredEmail = localStorage.getItem('registeredEmail');
+                        if (registeredEmail) {
+                          window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                        } else {
+                          window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        }
                         window.stop(); // Stop page loading
                         return;
                       }
                       console.log('[AUTH] Token valid, allowing access');
                     } catch (e) {
                       // Invalid token format
-                      console.log('[AUTH] Token validation error, redirecting to registration', e);
+                      console.log('[AUTH] Token validation error, checking for registered email', e);
                       localStorage.removeItem('token');
-                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                      const registeredEmail = localStorage.getItem('registeredEmail');
+                      if (registeredEmail) {
+                        window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                      } else {
+                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                      }
                       window.stop(); // Stop page loading
                       return;
                     }

@@ -146,6 +146,8 @@ function RegisterForm() {
         if (loginResponse.ok) {
           localStorage.setItem("token", loginData.token);
           localStorage.setItem("user", JSON.stringify(loginData.user));
+          // Store email for "continue with account" feature
+          localStorage.setItem("registeredEmail", formData.email.trim());
           
           // Redirect after 2 seconds to the intended tutorial page
           setTimeout(() => {
@@ -156,7 +158,8 @@ function RegisterForm() {
             }
           }, 2000);
         } else {
-          // Registration successful but login failed, redirect to login
+          // Registration successful but login failed, store email and redirect to login
+          localStorage.setItem("registeredEmail", formData.email.trim());
           setTimeout(() => {
             router.push(`/login?redirect=${encodeURIComponent(redirectTo)}`);
           }, 2000);

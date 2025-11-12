@@ -29,6 +29,20 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
+  // Pre-fill email from URL parameter or localStorage
+  useEffect(() => {
+    const emailParam = searchParams.get("email");
+    if (emailParam) {
+      setFormData(prev => ({ ...prev, email: decodeURIComponent(emailParam) }));
+    } else {
+      // Check localStorage for registered email
+      const registeredEmail = localStorage.getItem("registeredEmail");
+      if (registeredEmail) {
+        setFormData(prev => ({ ...prev, email: registeredEmail }));
+      }
+    }
+  }, [searchParams]);
+
   // Check if user is already logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -84,6 +98,8 @@ function LoginForm() {
         // Store token and user data
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        // Store email for "continue with account" feature
+        localStorage.setItem("registeredEmail", formData.email);
 
         // Redirect based on role or redirect parameter
         if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
