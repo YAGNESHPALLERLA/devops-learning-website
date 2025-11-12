@@ -44,7 +44,9 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
     // Clear stored email and redirect to registration
     localStorage.removeItem("registeredEmail");
     localStorage.removeItem("user");
-    router.push(`/register?redirect=${encodeURIComponent(redirectTo)}`);
+    localStorage.removeItem("token"); // Also clear token
+    // Redirect to registration page
+    window.location.href = `/register?redirect=${encodeURIComponent(redirectTo)}`;
   };
 
   const handleClose = () => {
