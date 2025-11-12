@@ -86,46 +86,66 @@ export default function JobcyNavigation() {
         
         {showDropdown && (
           <div className="absolute top-full left-0 mt-2 w-64 bg-[var(--surface)] border border-[var(--border)] rounded-lg shadow-2xl py-2 z-50">
-            <a 
-              href="/tutorials/medical-coding"
+            <div 
               className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/medical-coding')}
+              onMouseDown={(e) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e as any, '/tutorials/medical-coding');
+                }
+              }}
             >
               <div className="flex items-center space-x-2">
                 <span className="text-xl">🏥</span>
                 <span>Medical Coding</span>
               </div>
-            </a>
-            <a 
-              href="/tutorials/programming"
+            </div>
+            <div 
               className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/programming')}
+              onMouseDown={(e) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e as any, '/tutorials/programming');
+                }
+              }}
             >
               <div className="flex items-center space-x-2">
                 <span className="text-xl">💻</span>
                 <span>Programming</span>
               </div>
-            </a>
-            <a 
-              href="/tutorials/government-jobs"
+            </div>
+            <div 
               className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+              onMouseDown={(e) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e as any, '/tutorials/government-jobs');
+                }
+              }}
             >
               <div className="flex items-center space-x-2">
                 <span className="text-xl">🏛️</span>
                 <span>Government Jobs (SBI Jobs)</span>
               </div>
-            </a>
-            <a 
-              href="/tutorials/courses"
+            </div>
+            <div 
               className="block px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--primary)] transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/courses')}
+              onMouseDown={(e) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e as any, '/tutorials/courses');
+                }
+              }}
             >
               <div className="flex items-center space-x-2">
                 <span className="text-xl">🎓</span>
                 <span>Courses</span>
               </div>
-            </a>
+            </div>
           </div>
         )}
       </div>
