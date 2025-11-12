@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 
 interface TechnologyCardProps {
@@ -33,6 +34,24 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function ProgrammingPage() {
+  useEffect(() => {
+    // Check authentication immediately on page load
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (!token) {
+      // Redirect to signup with current page as redirect parameter
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/programming')}`;
+    }
+  }, []);
+
+  // Show loading while checking auth
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Redirecting to registration...</div>
+      </div>
+    );
+  }
   return (
     <main className="min-h-screen bg-[#1a1a1a] py-20">
       <div className="container mx-auto px-4">

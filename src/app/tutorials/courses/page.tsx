@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -34,6 +35,22 @@ function CourseCard({ title, description, icon, link, gradient }: CourseCardProp
 }
 
 export default function CoursesPage() {
+  useEffect(() => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (!token) {
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/courses')}`;
+    }
+  }, []);
+
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Redirecting to registration...</div>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#1a1a1a] py-20">
       <div className="container mx-auto px-4">

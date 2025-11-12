@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 
 // Define the props interface for TechnologyCard
@@ -37,6 +38,22 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function TutorialsPage() {
+  useEffect(() => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (!token) {
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials')}`;
+    }
+  }, []);
+
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Redirecting to registration...</div>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#1a1a1a]">
       {/* Hero Section */}
