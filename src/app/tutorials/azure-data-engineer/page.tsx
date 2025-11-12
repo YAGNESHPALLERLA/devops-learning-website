@@ -16,7 +16,7 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
   if (!images.length) return null;
 
   return (
-    <div className="grid gap-8 mt-8 sm:grid-cols-1 lg:grid-cols-2">
+    <div className="flex flex-col gap-8 mt-8">
       {images.map((image, index) => (
         <figure
           key={`${image.src}-${index}`}
@@ -28,7 +28,7 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
             width={image.width}
             height={image.height}
             loading="lazy"
-            sizes="(min-width: 1280px) 48vw, (min-width: 768px) 75vw, 92vw"
+            sizes="(min-width: 1280px) 100vw, (min-width: 768px) 100vw, 100vw"
             className="h-auto w-full object-contain bg-white"
           />
           {image.caption && (
