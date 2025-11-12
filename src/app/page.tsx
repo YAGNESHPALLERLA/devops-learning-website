@@ -1074,7 +1074,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center">
           <div className="mb-6">
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500 mb-2">
-              OneHubGlobal
+              OHG365 PVTLTD
             </h3>
             <p className="text-gray-400">Your gateway to mastering modern technology</p>
           </div>
@@ -1091,8 +1091,25 @@ export default function HomePage() {
             </Link>
           </div>
           
+          {/* Contact Information */}
+          <div className="mb-6 text-gray-400 text-sm">
+            <div className="mb-3">
+              <p className="font-semibold text-gray-300 mb-1">Address:</p>
+              <p>4th floor, 25/529, Rd Number 1, opp. GHMC Park, above HDFC BANK,<br />
+              Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072</p>
+            </div>
+            <div className="mt-4">
+              <p className="font-semibold text-gray-300 mb-1">Phone:</p>
+              <p>
+                <a href="tel:9059450707" className="text-rose-400 hover:text-rose-300">90594 50707</a>
+                {" | "}
+                <a href="tel:7382314128" className="text-rose-400 hover:text-rose-300">73823 14128</a>
+              </p>
+            </div>
+          </div>
+          
           <div className="text-gray-500 text-sm">
-            <p>© 2025 OneHubGlobal. Learn. Code. Master.</p>
+            <p>© 2025 OHG365 PVTLTD. Learn. Code. Master.</p>
             <p className="mt-2">Visit us at <a href="https://www.ohg365.com" className="text-rose-400 hover:text-rose-300">www.ohg365.com</a></p>
           </div>
         </div>
