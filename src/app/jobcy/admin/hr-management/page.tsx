@@ -104,7 +104,7 @@ export default function HRManagement() {
   useEffect(() => {
     const fetchHRs = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/admin/hrs", {
+        const res = await fetch("/api/jobcy/admin/hrs", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -125,7 +125,7 @@ export default function HRManagement() {
 
     const fetchCompanies = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/admin/companies", {
+        const res = await fetch("/api/jobcy/admin/companies", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -209,7 +209,7 @@ const handleInputChange = (
 
     try {
       if (currentView === "create") {
-        const res = await fetch("http://localhost:5000/api/admin/create-hr", {
+        const res = await fetch("/api/jobcy/admin/create-hr", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -234,7 +234,7 @@ const handleInputChange = (
   }
 
   const res = await fetch(
-    `http://localhost:5000/api/admin/hrs/${selectedHR._id}`,
+    `/api/jobcy/admin/hrs/${selectedHR._id}`,
     {
       method: "PUT",
       headers: {
@@ -296,7 +296,7 @@ const handleInputChange = (
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this HR user?")) {
       try {
-        const res = await fetch(`http://localhost:5000/api/admin/hrs/${id}`, {
+        const res = await fetch(`/api/jobcy/admin/hrs/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
