@@ -83,21 +83,11 @@ function ContinueForm() {
           {/* Continue Button */}
           <button
             onClick={handleContinue}
-            disabled={isLoading}
-            className="w-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 hover:from-rose-600 hover:to-purple-700 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2 mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-gradient-to-r from-rose-500 to-purple-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 hover:from-rose-600 hover:to-purple-700 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2 mb-4"
           >
-            {isLoading ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Loading...</span>
-              </>
-            ) : (
-              <>
-                <LogIn className="w-5 h-5" />
-                <span>Continue with this Account</span>
-                <ArrowRight className="w-5 h-5" />
-              </>
-            )}
+            <LogIn className="w-5 h-5" />
+            <span>Continue with this Account</span>
+            <ArrowRight className="w-5 h-5" />
           </button>
 
           {/* Use Different Account Button */}
