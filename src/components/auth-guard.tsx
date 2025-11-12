@@ -42,10 +42,38 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       currentPath === "/menu";
     
     if (isTutorialOrCourse) {
-      // Check for token IMMEDIATELY
+      // Check for token IMMEDIATELY and validate it
       const token = localStorage.getItem("token");
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
         // IMMEDIATELY redirect - don't wait, don't render anything
+        setIsAuthenticated(false);
+        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+      
+      // Validate JWT token format and expiry
+      try {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+          // Invalid JWT format
+          localStorage.removeItem('token');
+          setIsAuthenticated(false);
+          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+          return;
+        }
+        
+        // Check if token is expired
+        const payload = JSON.parse(atob(parts[1]));
+        if (payload.exp && payload.exp * 1000 < Date.now()) {
+          // Token expired
+          localStorage.removeItem('token');
+          setIsAuthenticated(false);
+          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+          return;
+        }
+      } catch {
+        // Invalid token format
+        localStorage.removeItem('token');
         setIsAuthenticated(false);
         window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
         return;
@@ -70,8 +98,31 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     // Check for token in localStorage
     const token = localStorage.getItem("token");
     
-    // Validate token exists and is not empty/null/undefined
+    // Validate token exists and is valid
+    let isValid = false;
     if (token && token.trim() !== "" && token !== "null" && token !== "undefined") {
+      // Validate JWT token format and expiry
+      try {
+        const parts = token.split('.');
+        if (parts.length === 3) {
+          const payload = JSON.parse(atob(parts[1]));
+          if (!payload.exp || payload.exp * 1000 >= Date.now()) {
+            isValid = true; // Token is valid
+          } else {
+            // Token expired
+            localStorage.removeItem('token');
+          }
+        } else {
+          // Invalid JWT format
+          localStorage.removeItem('token');
+        }
+      } catch {
+        // Invalid token format
+        localStorage.removeItem('token');
+      }
+    }
+    
+    if (isValid) {
       setIsAuthenticated(true);
     } else {
       if (isTutorialOrCourse) {
