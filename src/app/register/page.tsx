@@ -210,10 +210,10 @@ function RegisterForm() {
               </div>
             </Link>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              Master DevOps From <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-500">Zero to Hero</span>
+              Master All Courses From <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-purple-500">Zero to Hero</span>
             </h1>
             <p className="text-gray-300 text-lg mb-6">
-              Transform your career with comprehensive DevOps training. Learn Docker, Kubernetes, CI/CD pipelines, and cloud infrastructure with real-world projects.
+              Transform your career with comprehensive training in Programming, DevOps, Medical Coding, Government Jobs, and more. Learn from industry experts with hands-on projects and real-world applications.
             </p>
           </div>
 
@@ -253,16 +253,16 @@ function RegisterForm() {
           <div className="bg-[#1a1a1a] border border-gray-700 rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center space-x-2">
               <GraduationCap className="w-6 h-6 text-rose-400" />
-              <span>Master All Courses</span>
+              <span>Explore All Courses</span>
             </h3>
             <div className="grid grid-cols-2 gap-3">
               <div className="flex items-center space-x-2 text-gray-300">
                 <Code className="w-4 h-4 text-rose-400" />
-                <span className="text-sm">Programming</span>
+                <span className="text-sm">Programming (Java, Python, SQL)</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <Briefcase className="w-4 h-4 text-rose-400" />
-                <span className="text-sm">DevOps</span>
+                <span className="text-sm">DevOps & Cloud</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <BookOpen className="w-4 h-4 text-rose-400" />
@@ -270,9 +270,12 @@ function RegisterForm() {
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <Award className="w-4 h-4 text-rose-400" />
-                <span className="text-sm">Government Jobs</span>
+                <span className="text-sm">Government Jobs (SBI)</span>
               </div>
             </div>
+            <p className="text-gray-400 text-sm mt-4 text-center lg:text-left">
+              Plus Web Development, Data Science, Linux, and more!
+            </p>
           </div>
         </div>
 
