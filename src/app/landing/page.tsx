@@ -17,8 +17,6 @@ import {
   Award,
   Briefcase,
   Code,
-  Cloud,
-  Zap,
 } from "lucide-react";
 import Link from "next/link";
 

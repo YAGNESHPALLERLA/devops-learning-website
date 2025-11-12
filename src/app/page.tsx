@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
