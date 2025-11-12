@@ -22,7 +22,7 @@ export default function HomePage() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [router]);
+  }, []);
 
   const scrollToContent = () => {
     const contentSection = document.getElementById('main-content');
