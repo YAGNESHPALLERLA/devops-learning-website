@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Define the props interface for TechnologyCard
@@ -38,34 +38,35 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function TutorialsPage() {
-  // Check authentication immediately - before any rendering
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      // Force immediate redirect - don't render anything
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials')}`);
-      return null;
-    }
-  }
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Double-check on mount
+    // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
+      // Force immediate redirect
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials')}`);
+      return;
     }
+    setIsAuthenticated(true);
   }, []);
 
-  // If no token, show loading (shouldn't reach here but safety check)
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return (
-        <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-          <div className="text-white">Redirecting to registration...</div>
-        </div>
-      );
-    }
+  // Don't render anything until we've checked authentication
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Checking authentication...</div>
+      </div>
+    );
+  }
+
+  // If not authenticated (shouldn't reach here due to redirect, but safety check)
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Redirecting to registration...</div>
+      </div>
+    );
   }
 
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 interface TechnologyCardProps {
@@ -34,35 +34,37 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function ProgrammingPage() {
-  // Check authentication immediately - before any rendering
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      // Force immediate redirect - don't render anything
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
-      return null;
-    }
-  }
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Double-check on mount
+    // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
+      // Force immediate redirect
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return;
     }
+    setIsAuthenticated(true);
   }, []);
 
-  // If no token, show loading (shouldn't reach here but safety check)
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return (
-        <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-          <div className="text-white">Redirecting to registration...</div>
-        </div>
-      );
-    }
+  // Don't render anything until we've checked authentication
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Checking authentication...</div>
+      </div>
+    );
   }
+
+  // If not authenticated (shouldn't reach here due to redirect, but safety check)
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white">Redirecting to registration...</div>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#1a1a1a] py-20">
       <div className="container mx-auto px-4">
@@ -117,32 +119,10 @@ export default function ProgrammingPage() {
             description="Data analysis, machine learning, statistics, and visualization"
             icon="📊"
             link="/data-science"
-            gradient="from-pink-500 to-purple-500"
-          />
-          <TechnologyCard
-            title="Code Terminal"
-            description="Write, edit, and execute code online for Python, JavaScript, Java, SQL, and Bash"
-            icon="💻"
-            link="/code-terminal"
-            gradient="from-cyan-500 to-blue-500"
-          />
-          <TechnologyCard
-            title="Linux"
-            description="Linux system administration, commands, and shell scripting"
-            icon="🐧"
-            link="/linux"
-            gradient="from-gray-500 to-slate-600"
-          />
-          <TechnologyCard
-            title="Terminal"
-            description="Interactive terminal environment for practicing commands and shell scripting"
-            icon="⚡"
-            link="/terminal"
-            gradient="from-green-500 to-emerald-500"
+            gradient="from-blue-500 to-cyan-500"
           />
         </div>
       </div>
     </main>
   );
 }
-
