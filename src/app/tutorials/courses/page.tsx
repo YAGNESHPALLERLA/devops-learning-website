@@ -35,14 +35,23 @@ function CourseCard({ title, description, icon, link, gradient }: CourseCardProp
 }
 
 export default function CoursesPage() {
+  // Synchronous check before any rendering - runs immediately
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Blocking redirect - prevents any rendering
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/courses')}`;
+      return null;
+    }
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Check authentication immediately on mount
+    // Double-check on mount
     const token = localStorage.getItem('token');
     if (!token) {
-      // Force immediate redirect
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/courses')}`);
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/courses')}`;
       return;
     }
     setIsAuthenticated(true);

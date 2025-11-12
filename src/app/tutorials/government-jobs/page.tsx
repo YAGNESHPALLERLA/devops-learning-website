@@ -3,14 +3,23 @@
 import { useEffect, useState } from 'react';
 
 export default function GovernmentJobsPage() {
+  // Synchronous check before any rendering - runs immediately
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Blocking redirect - prevents any rendering
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/government-jobs')}`;
+      return null;
+    }
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Check authentication immediately on mount
+    // Double-check on mount
     const token = localStorage.getItem('token');
     if (!token) {
-      // Force immediate redirect
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/government-jobs')}`);
+      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/government-jobs')}`;
       return;
     }
     setIsAuthenticated(true);
