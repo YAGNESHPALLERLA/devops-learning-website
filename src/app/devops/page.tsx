@@ -8,6 +8,42 @@ import { getVideosForTopic } from '@/data/videoTutorials';
 
 export default function DevOpsPage() {
   const [activeSection, setActiveSection] = useState('introduction');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  // Authentication check - runs immediately on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      const currentPath = window.location.pathname;
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+    // Validate JWT token format and expiry
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        const currentPath = window.location.pathname;
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        const currentPath = window.location.pathname;
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+      setIsAuthenticated(true);
+    } catch {
+      localStorage.removeItem('token');
+      const currentPath = window.location.pathname;
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+  }, []);
 
   const pageHeadings = [
     // 1. DevOps Foundation

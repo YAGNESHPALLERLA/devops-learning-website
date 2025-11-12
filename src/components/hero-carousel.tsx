@@ -82,26 +82,6 @@ export default function HeroCarousel() {
     }
   };
 
-  // Handle button click - check auth before navigating
-  const handleButtonClick = (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Check authentication
-    const authed = isValidToken();
-    
-    if (!authed) {
-      // Redirect to registration with redirect parameter
-      const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
-      console.log('[HERO_CAROUSEL] Not authenticated, redirecting to:', redirectUrl);
-      window.location.href = redirectUrl;
-      return false;
-    } else {
-      // User is authenticated, navigate normally
-      console.log('[HERO_CAROUSEL] Authenticated, navigating to:', href);
-      window.location.href = href;
-    }
-  };
 
   const startAutoPlay = () => {
     if (intervalRef.current) {
@@ -188,11 +168,32 @@ export default function HeroCarousel() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 relative z-30 mt-6">
                 <button
-                  onClick={(e) => handleButtonClick(e, slide.buttonLink)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const authed = isValidToken();
+                    if (!authed) {
+                      const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
+                      console.log('[HERO_CAROUSEL] onClick - Not authenticated, redirecting to:', redirectUrl);
+                      window.location.replace(redirectUrl);
+                      return;
+                    }
+                    console.log('[HERO_CAROUSEL] onClick - Authenticated, navigating to:', slide.buttonLink);
+                    window.location.href = slide.buttonLink;
+                  }}
                   onMouseDown={(e: React.MouseEvent) => {
-                    if (!isValidToken()) {
+                    const authed = isValidToken();
+                    if (!authed) {
                       e.preventDefault();
-                      handleButtonClick(e, slide.buttonLink);
+                      e.stopPropagation();
+                      const nativeEvent = e.nativeEvent;
+                      if (nativeEvent && typeof nativeEvent.stopImmediatePropagation === 'function') {
+                        nativeEvent.stopImmediatePropagation();
+                      }
+                      const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
+                      console.log('[HERO_CAROUSEL] onMouseDown - Not authenticated, redirecting to:', redirectUrl);
+                      window.location.replace(redirectUrl);
                     }
                   }}
                   className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto cursor-pointer"
@@ -203,11 +204,32 @@ export default function HeroCarousel() {
                   </svg>
                 </button>
                 <button
-                  onClick={(e) => handleButtonClick(e, slide.buttonLink)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const authed = isValidToken();
+                    if (!authed) {
+                      const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
+                      console.log('[HERO_CAROUSEL] onClick - Not authenticated, redirecting to:', redirectUrl);
+                      window.location.replace(redirectUrl);
+                      return;
+                    }
+                    console.log('[HERO_CAROUSEL] onClick - Authenticated, navigating to:', slide.buttonLink);
+                    window.location.href = slide.buttonLink;
+                  }}
                   onMouseDown={(e: React.MouseEvent) => {
-                    if (!isValidToken()) {
+                    const authed = isValidToken();
+                    if (!authed) {
                       e.preventDefault();
-                      handleButtonClick(e, slide.buttonLink);
+                      e.stopPropagation();
+                      const nativeEvent = e.nativeEvent;
+                      if (nativeEvent && typeof nativeEvent.stopImmediatePropagation === 'function') {
+                        nativeEvent.stopImmediatePropagation();
+                      }
+                      const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
+                      console.log('[HERO_CAROUSEL] onMouseDown - Not authenticated, redirecting to:', redirectUrl);
+                      window.location.replace(redirectUrl);
                     }
                   }}
                   className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto cursor-pointer"

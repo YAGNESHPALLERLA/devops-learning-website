@@ -10,6 +10,42 @@ import PageNavigation from '@/components/page-navigation';
 
 export default function SQLPage() {
   const [activeSection, setActiveSection] = useState('introduction');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  // Authentication check - runs immediately on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      const currentPath = window.location.pathname;
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+    // Validate JWT token format and expiry
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        const currentPath = window.location.pathname;
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        const currentPath = window.location.pathname;
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+      setIsAuthenticated(true);
+    } catch {
+      localStorage.removeItem('token');
+      const currentPath = window.location.pathname;
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+  }, []);
 
   const pageHeadings = [
     { id: 'introduction', title: 'Introduction' },
@@ -29,6 +65,11 @@ export default function SQLPage() {
     { id: 'video-tutorials', title: 'Video Tutorials' },
     { id: 'summary', title: 'Summary' }
   ];
+
+  // Don't render until authenticated
+  if (isAuthenticated === null || isAuthenticated === false) {
+    return null;
+  }
 
   // Handle URL hash changes to set active section
   useEffect(() => {
