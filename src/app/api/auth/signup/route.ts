@@ -54,10 +54,12 @@ export async function POST(_request: NextRequest) {
     
     // Also create a corresponding entry in the 'users' collection for Jobcy compatibility
     // This allows the same credentials to work for both main website and Jobcy portal
+    // Use a unique mobile number to avoid duplicate key errors (mobile field has unique index)
+    const uniqueMobile = `web_${result.insertedId.toString()}_${Date.now()}`;
     const jobcyUser = {
       ...newUser,
       source: 'website', // Track origin
-      mobile: '',
+      mobile: uniqueMobile, // Use unique mobile to avoid duplicate key error
       company: {},
       companyEmail: '',
       salary: '',
@@ -70,8 +72,18 @@ export async function POST(_request: NextRequest) {
     };
     
     // Store in 'users' collection for Jobcy portal compatibility
-    await db.collection('users').insertOne(jobcyUser);
-    console.log('Jobcy-compatible user created successfully in users collection');
+    try {
+      await db.collection('users').insertOne(jobcyUser);
+      console.log('Jobcy-compatible user created successfully in users collection');
+    } catch (error: unknown) {
+      // If duplicate key error, user might already exist - log but don't fail
+      if (error && typeof error === 'object' && 'code' in error && error.code === 11000) {
+        console.log('User already exists in users collection (duplicate key) - continuing...');
+      } else {
+        // Re-throw if it's a different error
+        throw error;
+      }
+    }
     
     return NextResponse.json({
       message: 'User registered successfully',
