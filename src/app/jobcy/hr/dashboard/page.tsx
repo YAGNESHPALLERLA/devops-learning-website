@@ -34,6 +34,7 @@ import {
   XCircle,
   // AlertCircle,
   LucideIcon,
+  Home,
 } from "lucide-react";
 const formatDate = (date?: string) => date ? new Date(date).toLocaleDateString() : "N/A";
 
@@ -443,6 +444,15 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             </div>
 
             <div className="flex items-center space-x-3">
+              <Link
+                href="/"
+                className="flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200 text-slate-600 hover:text-[#0A66C2]"
+                title="Go to Home"
+              >
+                <Home className="w-4 h-4" />
+                <span className="text-sm font-medium">Home</span>
+              </Link>
+
               <button className="relative p-3 text-slate-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-105 group">
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">

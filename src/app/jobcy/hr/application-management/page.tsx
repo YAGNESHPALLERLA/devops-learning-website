@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   // Users,
   FileText,
@@ -24,6 +25,7 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
+  Home,
 } from "lucide-react";
 
 import type { LucideIcon } from "lucide-react";
@@ -864,6 +866,19 @@ export default function ApplicationsManagement() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50">
+      {/* Home Button */}
+      <div className="max-w-7xl mx-auto px-6 pb-6">
+        <div className="mb-4">
+          <Link
+            href="/"
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/80 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2] bg-white/50"
+            title="Go to Home"
+          >
+            <Home className="w-4 h-4" />
+            <span className="text-sm font-medium">Home</span>
+          </Link>
+        </div>
+      </div>
       {/* Header */}
       <header className="bg-gradient-to-r from-blue-100/90 via-indigo-100/90 to-cyan-100/90 backdrop-blur-xl shadow-lg border-b border-slate-200/60">
         <div className="px-6 py-4">

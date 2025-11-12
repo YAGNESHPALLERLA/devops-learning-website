@@ -14,8 +14,10 @@ import {
   Calendar,
   Users,
   FileCheck,
+  Home,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { useDashboardData } from "./hooks/useDashboardData";
 import Sidebar from "./components/Sidebar";
@@ -165,32 +167,42 @@ export default function JobSeekerDashboard() {
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95 border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            {/* Left: Logo & Menu */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                {showMobileMenu ? (
-                  <X className="w-5 h-5 text-gray-700" />
-                ) : (
-                  <Menu className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
-              
-              <div 
-                className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity group"
-                onClick={() => router.push("/jobcy/")}
-              >
-                <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                  <Briefcase className="w-5 h-5 text-white" />
+                {/* Left: Logo & Menu */}
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={() => setShowMobileMenu(!showMobileMenu)}
+                    className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    {showMobileMenu ? (
+                      <X className="w-5 h-5 text-gray-700" />
+                    ) : (
+                      <Menu className="w-5 h-5 text-gray-700" />
+                    )}
+                  </button>
+                  
+                  <div 
+                    className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity group"
+                    onClick={() => router.push("/jobcy/")}
+                  >
+                    <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                      <Briefcase className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="hidden sm:block">
+                      <h1 className="text-xl font-bold text-gray-900 group-hover:text-[#0A66C2] transition-colors">Jobcy</h1>
+                      <p className="text-xs text-gray-600">Find Your Dream Job</p>
+                    </div>
+                  </div>
+                  
+                  {/* Home Button */}
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
+                    title="Go to Home"
+                  >
+                    <Home className="w-4 h-4" />
+                    <span className="hidden md:inline text-sm font-medium">Home</span>
+                  </Link>
                 </div>
-                <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold text-gray-900 group-hover:text-[#0A66C2] transition-colors">Jobcy</h1>
-                  <p className="text-xs text-gray-600">Find Your Dream Job</p>
-                </div>
-              </div>
-            </div>
 
 
             {/* Right: Actions */}

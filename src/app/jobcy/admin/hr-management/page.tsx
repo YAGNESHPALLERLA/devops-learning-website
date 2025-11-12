@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect ,ChangeEvent} from "react";
+import Link from "next/link";
 import {
   Users,
   Plus,
@@ -17,6 +18,7 @@ import {
   EyeOff,
   CheckCircle,
   AlertCircle,
+  Home,
 } from "lucide-react";
 // HR user interface
 interface Company {
@@ -832,6 +834,17 @@ const handleInputChange = (
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Home Button */}
+        <div className="mb-4">
+          <Link
+            href="/"
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
+            title="Go to Home"
+          >
+            <Home className="w-4 h-4" />
+            <span className="text-sm font-medium">Home</span>
+          </Link>
+        </div>
         {currentView === "list" ? renderListView() : renderForm()}
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Users,
   Briefcase,
@@ -18,6 +19,7 @@ import {
   Building2,
   UserCheck,
   Filter,
+  Home,
 } from "lucide-react";
 interface StatCardProps {
   title: string;
@@ -399,6 +401,15 @@ export default function AdminDashboard() {
             </div>
 
             <div className="flex items-center space-x-4">
+              <Link
+                href="/"
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
+                title="Go to Home"
+              >
+                <Home className="w-4 h-4" />
+                <span className="text-sm font-medium">Home</span>
+              </Link>
+
               <div className="relative">
                 <Search
                   className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
