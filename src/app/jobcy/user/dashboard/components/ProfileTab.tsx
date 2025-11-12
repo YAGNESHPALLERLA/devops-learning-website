@@ -10,8 +10,6 @@ import {
   Phone,
   MapPin,
   Calendar,
-  Award,
-  TrendingUp,
   Folder,
   User,
   Globe,
@@ -111,57 +109,6 @@ export default function ProfileTab({
                   ₹{userProfile.currentCTC || "Not disclosed"}
                 </span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600 mb-1 font-medium">
-                Profile Views
-              </p>
-              <p className="text-2xl font-bold text-gray-900">
-                1,245
-              </p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-sm">
-              <TrendingUp className="w-6 h-6 text-white" />
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600 mb-1 font-medium">
-                Applications
-              </p>
-              <p className="text-2xl font-bold text-gray-900">
-                28
-              </p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-sm">
-              <Briefcase className="w-6 h-6 text-white" />
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600 mb-1 font-medium">
-                Profile Score
-              </p>
-              <p className="text-2xl font-bold text-gray-900">
-                {userProfile.profileCompletion || 0}%
-              </p>
-            </div>
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-sm">
-              <Award className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
