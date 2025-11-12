@@ -46,35 +46,45 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     if (isTutorialOrCourse) {
       // Check for token IMMEDIATELY and validate it
       const token = localStorage.getItem("token");
+      console.log('[AUTH_GUARD] Tutorial route detected:', currentPath);
+      console.log('[AUTH_GUARD] Token check:', token ? 'exists' : 'missing');
+      
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
         // Check if user has a registered email stored
         let registeredEmail = localStorage.getItem("registeredEmail");
+        console.log('[AUTH_GUARD] registeredEmail from localStorage:', registeredEmail);
         
         // Fallback: check stored user object for email
-        if (!registeredEmail) {
+        if (!registeredEmail || registeredEmail.trim() === '') {
           const userStr = localStorage.getItem("user");
+          console.log('[AUTH_GUARD] Checking user object, userStr exists:', !!userStr);
           if (userStr) {
             try {
               const user = JSON.parse(userStr);
+              console.log('[AUTH_GUARD] Parsed user object:', user);
               if (user && user.email && typeof user.email === 'string') {
                 registeredEmail = user.email;
+                console.log('[AUTH_GUARD] Found email in user object:', registeredEmail);
                 // Store it for future use (registeredEmail is guaranteed to be string here)
-                if (registeredEmail) {
+                if (registeredEmail && registeredEmail.trim() !== '') {
                   localStorage.setItem("registeredEmail", registeredEmail);
                 }
               }
             } catch (e) {
-              // Ignore parse errors
+              console.error('[AUTH_GUARD] Error parsing user:', e);
             }
           }
         }
         
-        if (registeredEmail) {
+        console.log('[AUTH_GUARD] Final registeredEmail check:', registeredEmail);
+        if (registeredEmail && registeredEmail.trim() !== '') {
           // User has registered before, show continue page
+          console.log('[AUTH_GUARD] ✅ Redirecting to /continue');
           setIsAuthenticated(false);
           window.location.replace(`/continue?redirect=${encodeURIComponent(currentPath)}`);
         } else {
           // No registered email, redirect to registration
+          console.log('[AUTH_GUARD] ❌ Redirecting to /register');
           setIsAuthenticated(false);
           window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
         }

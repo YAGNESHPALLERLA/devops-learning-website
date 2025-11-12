@@ -55,32 +55,41 @@ export default function RootLayout({
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
                       console.log('[AUTH] No token found, checking for registered email');
                       let registeredEmail = localStorage.getItem('registeredEmail');
+                      console.log('[AUTH] registeredEmail from localStorage:', registeredEmail);
                       
                       // Fallback: check stored user object for email
                       if (!registeredEmail) {
                         const userStr = localStorage.getItem('user');
+                        console.log('[AUTH] Checking user object, userStr exists:', !!userStr);
                         if (userStr) {
                           try {
                             const user = JSON.parse(userStr);
-                            if (user && user.email) {
+                            console.log('[AUTH] Parsed user object:', user);
+                            if (user && user.email && typeof user.email === 'string') {
                               registeredEmail = user.email;
-                              localStorage.setItem('registeredEmail', registeredEmail);
+                              console.log('[AUTH] Found email in user object:', registeredEmail);
+                              if (registeredEmail) {
+                                localStorage.setItem('registeredEmail', registeredEmail);
+                              }
                             }
                           } catch (e) {
-                            // Ignore parse errors
+                            console.error('[AUTH] Error parsing user:', e);
                           }
                         }
                       }
                       
-                      if (registeredEmail) {
-                        console.log('[AUTH] Found registered email, redirecting to continue page');
+                      console.log('[AUTH] Final registeredEmail check:', registeredEmail);
+                      if (registeredEmail && registeredEmail.trim() !== '') {
+                        console.log('[AUTH] ✅ Found registered email, redirecting to continue page');
                         window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                        window.stop(); // Stop page loading
+                        return;
                       } else {
-                        console.log('[AUTH] No registered email, redirecting to registration');
+                        console.log('[AUTH] ❌ No registered email, redirecting to registration');
                         window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        window.stop(); // Stop page loading
+                        return;
                       }
-                      window.stop(); // Stop page loading
-                      return;
                     }
                     
                     // Validate JWT token format and expiry
