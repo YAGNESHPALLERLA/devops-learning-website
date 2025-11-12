@@ -130,7 +130,8 @@ function SignupForm() {
           
           // Redirect after 2 seconds
           setTimeout(() => {
-            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
+            // Prioritize redirect parameter (especially for tutorials)
+            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup" && redirectTo !== "/landing") {
               router.push(redirectTo);
             } else if (loginData.user.role === "admin") {
               router.push("/jobcy/admin/dashboard");
@@ -190,7 +191,16 @@ function SignupForm() {
               </div>
             </Link>
             <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-            <p className="text-gray-400">Sign up to get started</p>
+            <p className="text-gray-400">
+              {redirectTo && redirectTo.startsWith("/tutorials") 
+                ? "Sign up to access tutorials and courses" 
+                : "Sign up to get started"}
+            </p>
+            {redirectTo && redirectTo.startsWith("/tutorials") && (
+              <p className="text-xs text-rose-400 mt-1">
+                After registration, you'll be redirected to your selected tutorial
+              </p>
+            )}
           </div>
 
           {/* Error Message */}

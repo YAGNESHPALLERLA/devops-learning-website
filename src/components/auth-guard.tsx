@@ -57,9 +57,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         pathname === "/menu";
       
       if (isTutorialOrCourse) {
-        // Immediately redirect to login for tutorials/courses
+        // Immediately redirect to signup/registration for tutorials/courses
         setIsAuthenticated(false);
-        window.location.href = `/login?redirect=${encodeURIComponent(pathname)}`;
+        window.location.href = `/signup?redirect=${encodeURIComponent(pathname)}`;
         return;
       } else if (pathname === "/") {
         // Redirect root to landing page
