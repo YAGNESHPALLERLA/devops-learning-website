@@ -35,6 +35,30 @@ export default function RootLayout({
         <link rel="icon" href="/ohg365.png" type="image/png" />
         <link rel="shortcut icon" href="/ohg365.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ohg365.png" />
+        {/* Blocking script that runs before React - checks auth for tutorial routes */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window !== 'undefined') {
+                  const path = window.location.pathname;
+                  const isTutorialRoute = path.startsWith('/tutorials') || 
+                    path === '/java' || path === '/python' || path === '/sql' || 
+                    path === '/linux' || path === '/devops' || path === '/web-dev' || 
+                    path === '/data-science' || path === '/code-terminal' || 
+                    path === '/terminal' || path === '/menu';
+                  
+                  if (isTutorialRoute) {
+                    const token = localStorage.getItem('token');
+                    if (!token || token.trim() === '') {
+                      window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                    }
+                  }
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

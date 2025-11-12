@@ -21,7 +21,38 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    // Wait for pathname to be available
+    // IMMEDIATE check - don't wait for pathname
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    // Check if trying to access tutorials or courses FIRST - before checking anything else
+    const currentPath = window.location.pathname;
+    const isTutorialOrCourse = 
+      currentPath.startsWith("/tutorials") ||
+      currentPath === "/java" ||
+      currentPath === "/python" ||
+      currentPath === "/sql" ||
+      currentPath === "/linux" ||
+      currentPath === "/devops" ||
+      currentPath === "/web-dev" ||
+      currentPath === "/data-science" ||
+      currentPath === "/code-terminal" ||
+      currentPath === "/terminal" ||
+      currentPath === "/menu";
+    
+    if (isTutorialOrCourse) {
+      // Check for token IMMEDIATELY
+      const token = localStorage.getItem("token");
+      if (!token || token.trim() === "" || token === "null" || token === "undefined") {
+        // IMMEDIATELY redirect - don't wait, don't render anything
+        setIsAuthenticated(false);
+        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+        return;
+      }
+    }
+
+    // Wait for pathname to be available for other routes
     if (!pathname) {
       return;
     }
@@ -37,27 +68,14 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
 
     // Check for token in localStorage
-    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    const token = localStorage.getItem("token");
     
-    if (token) {
+    // Validate token exists and is not empty/null/undefined
+    if (token && token.trim() !== "" && token !== "null" && token !== "undefined") {
       setIsAuthenticated(true);
     } else {
-      // Check if trying to access tutorials or courses - redirect to login
-      const isTutorialOrCourse = 
-        pathname.startsWith("/tutorials") ||
-        pathname === "/java" ||
-        pathname === "/python" ||
-        pathname === "/sql" ||
-        pathname === "/linux" ||
-        pathname === "/devops" ||
-        pathname === "/web-dev" ||
-        pathname === "/data-science" ||
-        pathname === "/code-terminal" ||
-        pathname === "/terminal" ||
-        pathname === "/menu";
-      
       if (isTutorialOrCourse) {
-        // IMMEDIATELY redirect to signup/registration for tutorials/courses - use replace to prevent back button
+        // Already handled above, but double-check
         setIsAuthenticated(false);
         window.location.replace(`/signup?redirect=${encodeURIComponent(pathname)}`);
         return;

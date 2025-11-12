@@ -3,20 +3,6 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-// Check auth immediately before component renders
-let authChecked = false;
-let redirecting = false;
-
-if (typeof window !== 'undefined' && !authChecked) {
-  authChecked = true;
-  const token = localStorage.getItem('token');
-  if (!token || token.trim() === '') {
-    const currentPath = window.location.pathname || '/tutorials';
-    redirecting = true;
-    window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
-  }
-}
-
 export default function TutorialsLayout({
   children,
 }: {
@@ -24,27 +10,45 @@ export default function TutorialsLayout({
 }) {
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
-    // Initial state check - runs synchronously
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('token');
-      return token && token.trim() !== '' ? true : null;
+    // IMMEDIATE synchronous check - runs before any rendering
+    if (typeof window === 'undefined') {
+      return null;
     }
-    return null;
+    
+    const token = localStorage.getItem('token');
+    const currentPath = window.location.pathname || '/tutorials';
+    
+    // If no token or invalid token, redirect IMMEDIATELY
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      // Use replace for immediate redirect - prevents back button
+      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      return false; // Return false to prevent rendering
+    }
+    
+    return true; // Token exists, allow rendering
   });
 
   useEffect(() => {
-    // Double-check on mount
+    // Double-check on mount - runs immediately after component mounts
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
     const token = localStorage.getItem('token');
-    if (!token || token.trim() === '') {
-      const currentPath = pathname || window.location.pathname || '/tutorials';
+    const currentPath = pathname || window.location.pathname || '/tutorials';
+    
+    // If no token or invalid token, redirect IMMEDIATELY
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
       window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
       return;
     }
+    
+    // Token exists, set authenticated
     setIsAuthenticated(true);
   }, [pathname]);
 
-  // If redirecting, show nothing
-  if (redirecting || isAuthenticated === null) {
+  // Don't render anything if not authenticated or still checking
+  if (isAuthenticated === null || isAuthenticated === false) {
     return (
       <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
         <div className="text-white text-xl">Redirecting to registration...</div>
@@ -52,15 +56,7 @@ export default function TutorialsLayout({
     );
   }
 
-  // If not authenticated (shouldn't reach here due to redirect, but safety check)
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white text-xl">Redirecting to registration page...</div>
-      </div>
-    );
-  }
-
+  // Only render children if authenticated
   return <>{children}</>;
 }
 
