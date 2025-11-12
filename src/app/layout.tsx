@@ -161,7 +161,35 @@ export default function RootLayout({
                           return;
                         }
                       }
-                      console.log('[AUTH] Token valid, allowing access');
+                      
+                      // Token is valid - BUT still check for registered email to show modal
+                      console.log('[AUTH] Token valid, checking for registered email to show modal');
+                      let registeredEmail = localStorage.getItem('registeredEmail');
+                      if (!registeredEmail) {
+                        const userStr = localStorage.getItem('user');
+                        if (userStr) {
+                          try {
+                            const user = JSON.parse(userStr);
+                            if (user && user.email && typeof user.email === 'string') {
+                              registeredEmail = user.email;
+                              if (registeredEmail) {
+                                localStorage.setItem('registeredEmail', registeredEmail);
+                              }
+                            }
+                          } catch (e) {
+                            // Ignore parse errors
+                          }
+                        }
+                      }
+                      
+                      if (registeredEmail && registeredEmail.trim() !== '') {
+                        console.log('[AUTH] ✅ Found registered email (valid token), allowing page to load for modal (will show on every visit)');
+                        // Don't redirect - let TutorialAuthGuard show the modal instead
+                        // The modal will appear on EVERY visit when registered email exists, even with valid token
+                        return;
+                      }
+                      
+                      console.log('[AUTH] Token valid, no registered email, allowing access');
                     } catch (e) {
                       // Invalid token format
                       console.log('[AUTH] Token validation error, checking for registered email', e);
