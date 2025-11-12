@@ -9,6 +9,8 @@ import PageNavigation from '@/components/page-navigation';
 export default function PythonPage() {
   const [activeSection, setActiveSection] = useState('introduction');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  
+  // Note: isAuthenticated is used in conditional return below
 
   // Authentication check - runs immediately on mount
   useEffect(() => {

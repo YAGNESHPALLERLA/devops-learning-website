@@ -66,11 +66,6 @@ export default function SQLPage() {
     { id: 'summary', title: 'Summary' }
   ];
 
-  // Don't render until authenticated
-  if (isAuthenticated === null || isAuthenticated === false) {
-    return null;
-  }
-
   // Handle URL hash changes to set active section
   useEffect(() => {
     const handleHashChange = () => {
@@ -91,6 +86,11 @@ export default function SQLPage() {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
+
+  // Don't render until authenticated
+  if (isAuthenticated === null || isAuthenticated === false) {
+    return null;
+  }
 
   // Get navigation for current section
   const getNavigation = () => {

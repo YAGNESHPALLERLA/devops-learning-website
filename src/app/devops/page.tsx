@@ -9,6 +9,8 @@ import { getVideosForTopic } from '@/data/videoTutorials';
 export default function DevOpsPage() {
   const [activeSection, setActiveSection] = useState('introduction');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  
+  // Note: isAuthenticated is used in conditional return below
 
   // Authentication check - runs immediately on mount
   useEffect(() => {

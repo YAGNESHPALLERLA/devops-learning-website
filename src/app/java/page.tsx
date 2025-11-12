@@ -47,11 +47,6 @@ export default function JavaPage() {
     }
   }, []);
 
-  // Don't render until authenticated
-  if (isAuthenticated === null || isAuthenticated === false) {
-    return null;
-  }
-
   const pageHeadings = [
     { id: 'introduction', title: 'Java Tutorial' },
     { id: 'basics', title: 'Java Basics' },
@@ -123,6 +118,11 @@ export default function JavaPage() {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
+
+  // Don't render until authenticated
+  if (isAuthenticated === null || isAuthenticated === false) {
+    return null;
+  }
 
   // Get navigation for current section
   const getNavigation = () => {
