@@ -35,20 +35,34 @@ function CourseCard({ title, description, icon, link, gradient }: CourseCardProp
 }
 
 export default function CoursesPage() {
-  useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  // Check authentication immediately - before any rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
     if (!token) {
-      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/courses')}`;
+      // Force immediate redirect - don't render anything
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/courses')}`);
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    // Double-check on mount
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/courses')}`);
     }
   }, []);
 
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-  if (!token) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
-      </div>
-    );
+  // If no token, show loading (shouldn't reach here but safety check)
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return (
+        <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+          <div className="text-white">Redirecting to registration...</div>
+        </div>
+      );
+    }
   }
 
   return (

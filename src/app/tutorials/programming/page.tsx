@@ -34,23 +34,34 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function ProgrammingPage() {
-  useEffect(() => {
-    // Check authentication immediately on page load
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  // Check authentication immediately - before any rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
     if (!token) {
-      // Redirect to signup with current page as redirect parameter
-      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/programming')}`;
+      // Force immediate redirect - don't render anything
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return null;
+    }
+  }
+
+  useEffect(() => {
+    // Double-check on mount
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
     }
   }, []);
 
-  // Show loading while checking auth
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-  if (!token) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
-      </div>
-    );
+  // If no token, show loading (shouldn't reach here but safety check)
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return (
+        <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+          <div className="text-white">Redirecting to registration...</div>
+        </div>
+      );
+    }
   }
   return (
     <main className="min-h-screen bg-[#1a1a1a] py-20">
