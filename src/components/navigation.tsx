@@ -34,21 +34,24 @@ export default function Navigation() {
     
     setShowDropdown(false);
     
+    console.log('[NAV] Tutorial clicked:', href);
+    
     // ALWAYS check authentication FIRST - before any navigation
     const authed = isValidToken();
+    console.log('[NAV] Authentication status:', authed);
     
     if (!authed) {
       // IMMEDIATELY redirect to registration - prevents ANY page load
       // Use window.location.href for immediate, blocking redirect (more aggressive than replace)
       const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
-      console.log('[NAV] Not authenticated, redirecting to:', redirectUrl);
+      console.log('[NAV] ❌ Not authenticated, redirecting to:', redirectUrl);
       // Use href for immediate redirect - blocks page load
       window.location.href = redirectUrl;
       // Return false to prevent any further execution
       return false;
     } else {
       // User is authenticated, navigate normally
-      console.log('[NAV] Authenticated, navigating to:', href);
+      console.log('[NAV] ✅ Authenticated, navigating to:', href);
       // Use href for consistent navigation
       window.location.href = href;
     }
@@ -84,10 +87,16 @@ export default function Navigation() {
           <div className="absolute top-full left-0 mt-2 w-64 bg-[#252525] border border-gray-600 rounded-lg shadow-2xl shadow-black/50 py-2 z-50">
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
-              onClick={(e) => handleTutorialClick(e, '/tutorials/medical-coding')}
+              onClick={(e) => {
+                console.log('[NAV] Medical Coding clicked');
+                handleTutorialClick(e, '/tutorials/medical-coding');
+              }}
               onMouseDown={(e: React.MouseEvent) => {
-                if (!isValidToken()) {
+                const authed = isValidToken();
+                console.log('[NAV] Medical Coding mousedown, authenticated:', authed);
+                if (!authed) {
                   e.preventDefault();
+                  e.stopPropagation();
                   handleTutorialClick(e, '/tutorials/medical-coding');
                 }
               }}
@@ -99,10 +108,16 @@ export default function Navigation() {
             </div>
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
-              onClick={(e) => handleTutorialClick(e, '/tutorials/programming')}
+              onClick={(e) => {
+                console.log('[NAV] Programming clicked');
+                handleTutorialClick(e, '/tutorials/programming');
+              }}
               onMouseDown={(e: React.MouseEvent) => {
-                if (!isValidToken()) {
+                const authed = isValidToken();
+                console.log('[NAV] Programming mousedown, authenticated:', authed);
+                if (!authed) {
                   e.preventDefault();
+                  e.stopPropagation();
                   handleTutorialClick(e, '/tutorials/programming');
                 }
               }}
@@ -114,10 +129,16 @@ export default function Navigation() {
             </div>
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
-              onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+              onClick={(e) => {
+                console.log('[NAV] Government Jobs clicked');
+                handleTutorialClick(e, '/tutorials/government-jobs');
+              }}
               onMouseDown={(e: React.MouseEvent) => {
-                if (!isValidToken()) {
+                const authed = isValidToken();
+                console.log('[NAV] Government Jobs mousedown, authenticated:', authed);
+                if (!authed) {
                   e.preventDefault();
+                  e.stopPropagation();
                   handleTutorialClick(e, '/tutorials/government-jobs');
                 }
               }}
@@ -129,10 +150,16 @@ export default function Navigation() {
             </div>
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
-              onClick={(e) => handleTutorialClick(e, '/tutorials/courses')}
+              onClick={(e) => {
+                console.log('[NAV] Courses clicked');
+                handleTutorialClick(e, '/tutorials/courses');
+              }}
               onMouseDown={(e: React.MouseEvent) => {
-                if (!isValidToken()) {
+                const authed = isValidToken();
+                console.log('[NAV] Courses mousedown, authenticated:', authed);
+                if (!authed) {
                   e.preventDefault();
+                  e.stopPropagation();
                   handleTutorialClick(e, '/tutorials/courses');
                 }
               }}
