@@ -54,11 +54,17 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
     if (href.includes('#') && setActiveSection) {
       e.preventDefault();
       const sectionId = href.split('#')[1];
-      const targetSection = parentId || sectionId;
+      // If itemId matches sectionId, it's a direct section (not a subsection)
+      // Otherwise, if there's a parentId, use it as the main section
+      const targetSection = (itemId === sectionId) ? sectionId : (parentId || sectionId);
       setActiveSection(targetSection);
       if (setActiveSubsection) {
-        setActiveSubsection(parentId ? sectionId : null);
+        // Only set as subsection if it's not a direct section and has a parent
+        setActiveSubsection((itemId === sectionId || !parentId) ? null : sectionId);
       }
+
+      // Update URL hash
+      window.history.replaceState(null, '', href);
 
       // Scroll to the target section
       setTimeout(() => {

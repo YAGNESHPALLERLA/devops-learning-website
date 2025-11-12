@@ -117,16 +117,43 @@ export default function AzureDataEngineerPage() {
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
 
+  // Custom setActiveSection that handles child items correctly
+  const handleSetActiveSection = (sectionId: string) => {
+    // Check if this is a direct section (not a subsection)
+    if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
+      setActiveSection(sectionId);
+      setActiveSubsection(null);
+      // Update URL hash
+      window.history.replaceState(null, '', `#${sectionId}`);
+    } else {
+      // It's a subsection, find its parent
+      const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
+      setActiveSection(parentSection);
+      setActiveSubsection(sectionId);
+      // Update URL hash
+      window.history.replaceState(null, '', `#${sectionId}`);
+    }
+  };
+
   // Handle URL hash changes
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      if (!hash) return;
+      if (!hash) {
+        setActiveSection('azure-basics');
+        setActiveSubsection(null);
+        return;
+      }
 
-      const parentSection = SUBSECTION_PARENT[hash] || hash;
-      if (PAGE_HEADINGS.some(heading => heading.id === parentSection)) {
+      // Check if hash is a direct section
+      if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
+        setActiveSection(hash);
+        setActiveSubsection(null);
+      } else {
+        // It's a subsection, find parent
+        const parentSection = SUBSECTION_PARENT[hash] || 'azure-basics';
         setActiveSection(parentSection);
-        setActiveSubsection(parentSection === hash ? null : hash);
+        setActiveSubsection(hash);
       }
     };
 
@@ -146,17 +173,49 @@ export default function AzureDataEngineerPage() {
         const element = document.getElementById(activeSection);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (activeSubsection) {
+          // Try scrolling to subsection if main section not found
+          const subElement = document.getElementById(activeSubsection);
+          if (subElement) {
+            subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
-      }, 100);
+      }, 150);
     }
-  }, [activeSection]);
+  }, [activeSection, activeSubsection]);
+
+  // Get current section index for navigation
+  const getCurrentSectionIndex = () => {
+    return PAGE_HEADINGS.findIndex(heading => heading.id === activeSection);
+  };
+
+  // Navigation functions
+  const goToNextSection = () => {
+    const currentIndex = getCurrentSectionIndex();
+    if (currentIndex < PAGE_HEADINGS.length - 1) {
+      const nextSection = PAGE_HEADINGS[currentIndex + 1];
+      handleSetActiveSection(nextSection.id);
+    }
+  };
+
+  const goToPreviousSection = () => {
+    const currentIndex = getCurrentSectionIndex();
+    if (currentIndex > 0) {
+      const prevSection = PAGE_HEADINGS[currentIndex - 1];
+      handleSetActiveSection(prevSection.id);
+    }
+  };
+
+  const currentIndex = getCurrentSectionIndex();
+  const hasNext = currentIndex < PAGE_HEADINGS.length - 1;
+  const hasPrevious = currentIndex > 0;
 
   return (
     <TechLayout 
       technology="azure-data-engineer" 
       onThisPage={pageHeadings}
       activeSection={activeSection}
-      setActiveSection={setActiveSection}
+      setActiveSection={handleSetActiveSection}
       activeSubsection={activeSubsection}
       setActiveSubsection={setActiveSubsection}
     >
@@ -1091,6 +1150,53 @@ export default function AzureDataEngineerPage() {
           </div>
         </section>
         )}
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-700">
+          <button
+            onClick={goToPreviousSection}
+            disabled={!hasPrevious}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              hasPrevious
+                ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500'
+                : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+            }`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Previous</span>
+            {hasPrevious && (
+              <span className="text-sm text-gray-400">
+                {PAGE_HEADINGS[currentIndex - 1]?.title}
+              </span>
+            )}
+          </button>
+
+          <div className="text-sm text-gray-400">
+            {currentIndex + 1} of {PAGE_HEADINGS.length}
+          </div>
+
+          <button
+            onClick={goToNextSection}
+            disabled={!hasNext}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              hasNext
+                ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500'
+                : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+            }`}
+          >
+            <span>Next</span>
+            {hasNext && (
+              <span className="text-sm text-gray-400">
+                {PAGE_HEADINGS[currentIndex + 1]?.title}
+              </span>
+            )}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </TechLayout>
   );
