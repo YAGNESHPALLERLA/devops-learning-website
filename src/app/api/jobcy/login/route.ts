@@ -18,11 +18,13 @@ export async function POST(_request: NextRequest) {
     // Find user in database - check both collections for compatibility
     // First check 'users' collection (Jobcy users)
     let user = await db.collection('users').findOne({ email: email.toLowerCase() });
+    let userSource = 'users'; // Track which collection the user came from
     
     // If not found in 'users' collection, check 'website-users' collection (separate collection for website users)
     // Both collections are in the same database, allowing shared credentials
     if (!user) {
       user = await db.collection('website-users').findOne({ email: email.toLowerCase() });
+      userSource = 'website-users';
     }
     
     if (!user) {
@@ -39,8 +41,14 @@ export async function POST(_request: NextRequest) {
 
     // Generate JWT token
     const jwt = await import('jsonwebtoken');
-    // Default role to 'user' if not set (for website-users collection)
-    const userRole = user.role || 'user';
+    // CRITICAL: For website users (source: 'website'), ALWAYS use role 'user' regardless of what's stored
+    // This ensures tutorial/website registrations are never treated as HR users
+    let userRole = user.role || 'user';
+    if (user.source === 'website' || userSource === 'website-users') {
+      // Force role to 'user' for website registrations - they should NEVER be HR
+      userRole = 'user';
+      console.log('Website user login - forcing role to "user" (was:', user.role, ')');
+    }
     const token = jwt.sign(
       { id: user._id, role: userRole },
       process.env.JWT_SECRET || 'fallback-secret',

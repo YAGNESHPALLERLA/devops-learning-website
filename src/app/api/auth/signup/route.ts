@@ -58,6 +58,7 @@ export async function POST(_request: NextRequest) {
     const uniqueMobile = `web_${result.insertedId.toString()}_${Date.now()}`;
     const jobcyUser = {
       ...newUser,
+      role: 'user', // EXPLICITLY set role to 'user' - ensure website users are NOT HR
       source: 'website', // Track origin
       mobile: uniqueMobile, // Use unique mobile to avoid duplicate key error
       company: {},

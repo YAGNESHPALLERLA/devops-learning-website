@@ -112,7 +112,7 @@ export default function AdminDashboard() {
         fetch(`${"/api/jobcy"}/admin/activity`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch(`${"/api/jobcy"}/users/list`, {
+        fetch(`${"/api/jobcy"}/user/list`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
         fetch(`${"/api/jobcy"}/jobs/browse`, {
@@ -133,7 +133,22 @@ export default function AdminDashboard() {
       }
       if (usersRes.ok) {
         const usersData = await usersRes.json();
-        setUsers(usersData);
+        // Handle both array response and object with users property
+        setUsers(Array.isArray(usersData) ? usersData : (usersData.users || []));
+      } else if (usersRes.status === 404) {
+        console.warn('Users endpoint not found, trying alternative endpoint');
+        // Try alternative endpoint as fallback
+        try {
+          const altUsersRes = await fetch(`${"/api/jobcy"}/users`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (altUsersRes.ok) {
+            const altUsersData = await altUsersRes.json();
+            setUsers(Array.isArray(altUsersData) ? altUsersData : (altUsersData.users || []));
+          }
+        } catch (altErr) {
+          console.error('Alternative users endpoint also failed:', altErr);
+        }
       }
       if (jobsRes.ok) {
         const jobsData = await jobsRes.json();
@@ -194,10 +209,25 @@ export default function AdminDashboard() {
         } else {
           console.error("Activity fetch failed:", activityRes.status, activityRes.statusText);
         }
-        if (usersRes.ok) {
-          const usersData = await usersRes.json();
-          setUsers(usersData);
-        } else {
+      if (usersRes.ok) {
+        const usersData = await usersRes.json();
+        // Handle both array response and object with users property
+        setUsers(Array.isArray(usersData) ? usersData : (usersData.users || []));
+      } else if (usersRes.status === 404) {
+        console.warn('Users endpoint not found, trying alternative endpoint');
+        // Try alternative endpoint as fallback
+        try {
+          const altUsersRes = await fetch(`${"/api/jobcy"}/users`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (altUsersRes.ok) {
+            const altUsersData = await altUsersRes.json();
+            setUsers(Array.isArray(altUsersData) ? altUsersData : (altUsersData.users || []));
+          }
+        } catch (altErr) {
+          console.error('Alternative users endpoint also failed:', altErr);
+        }
+      } else {
           console.error("Users fetch failed:", usersRes.status, usersRes.statusText);
         }
         if (jobsRes.ok) {
