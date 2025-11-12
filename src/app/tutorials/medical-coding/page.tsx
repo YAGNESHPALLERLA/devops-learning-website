@@ -10,7 +10,7 @@ export default function MedicalCodingPage() {
     const token = localStorage.getItem('token');
     if (!token) {
       // Force immediate redirect - use replace to prevent back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/medical-coding')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/medical-coding')}`);
       return;
     }
     setIsAuthenticated(true);

@@ -42,7 +42,7 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
   // Check if token exists and is valid (not empty, null, undefined, or expired)
   if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
     // IMMEDIATE redirect before React renders
-    window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+    window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
   } else {
     // Validate JWT token format and expiry
     try {

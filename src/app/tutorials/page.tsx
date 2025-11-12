@@ -45,7 +45,7 @@ export default function TutorialsPage() {
     const token = localStorage.getItem('token');
     if (!token) {
       // Force immediate redirect - use replace to prevent back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials')}`);
       return;
     }
     setIsAuthenticated(true);

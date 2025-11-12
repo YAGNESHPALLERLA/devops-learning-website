@@ -36,8 +36,9 @@ export default function Navigation() {
     // Check if user is authenticated and token valid
     const authed = isValidToken();
     if (!authed) {
-      // Redirect to signup with the tutorial URL as redirect parameter
-      window.location.replace(`/signup?redirect=${encodeURIComponent(href)}`);
+      // Redirect to registration page with the tutorial URL as redirect parameter
+      // This happens BEFORE any rendering - prevents tutorial page from loading
+      window.location.replace(`/register?redirect=${encodeURIComponent(href)}`);
     } else {
       // User is authenticated, navigate normally
       router.push(href);

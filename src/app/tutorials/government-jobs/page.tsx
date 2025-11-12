@@ -10,7 +10,7 @@ export default function GovernmentJobsPage() {
     const token = localStorage.getItem('token');
     if (!token) {
       // Force immediate redirect - use replace to prevent back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/government-jobs')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/government-jobs')}`);
       return;
     }
     setIsAuthenticated(true);

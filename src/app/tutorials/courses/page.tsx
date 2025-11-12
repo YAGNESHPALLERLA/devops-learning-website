@@ -42,7 +42,7 @@ export default function CoursesPage() {
     const token = localStorage.getItem('token');
     if (!token) {
       // Force immediate redirect - use replace to prevent back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/courses')}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/courses')}`);
       return;
     }
     setIsAuthenticated(true);

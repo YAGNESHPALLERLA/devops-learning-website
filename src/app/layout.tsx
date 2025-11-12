@@ -53,8 +53,8 @@ export default function RootLayout({
                     
                     // Check if token exists
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-                      console.log('[AUTH] No token found, redirecting to signup');
-                      window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      console.log('[AUTH] No token found, redirecting to registration');
+                      window.location.replace('/register?redirect=' + encodeURIComponent(path));
                       window.stop(); // Stop page loading
                       return;
                     }
@@ -64,9 +64,9 @@ export default function RootLayout({
                       const parts = token.split('.');
                       if (parts.length !== 3) {
                         // Invalid JWT format
-                        console.log('[AUTH] Invalid JWT format, redirecting to signup');
+                        console.log('[AUTH] Invalid JWT format, redirecting to registration');
                         localStorage.removeItem('token');
-                        window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        window.location.replace('/register?redirect=' + encodeURIComponent(path));
                         window.stop(); // Stop page loading
                         return;
                       }
@@ -75,18 +75,18 @@ export default function RootLayout({
                       const payload = JSON.parse(atob(parts[1]));
                       if (payload.exp && payload.exp * 1000 < Date.now()) {
                         // Token expired
-                        console.log('[AUTH] Token expired, redirecting to signup');
+                        console.log('[AUTH] Token expired, redirecting to registration');
                         localStorage.removeItem('token');
-                        window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        window.location.replace('/register?redirect=' + encodeURIComponent(path));
                         window.stop(); // Stop page loading
                         return;
                       }
                       console.log('[AUTH] Token valid, allowing access');
                     } catch (e) {
                       // Invalid token format
-                      console.log('[AUTH] Token validation error, redirecting to signup', e);
+                      console.log('[AUTH] Token validation error, redirecting to registration', e);
                       localStorage.removeItem('token');
-                      window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      window.location.replace('/register?redirect=' + encodeURIComponent(path));
                       window.stop(); // Stop page loading
                       return;
                     }

@@ -50,7 +50,7 @@ export default function TutorialsLayout({
         localStorage.removeItem('token');
       }
       // Use replace for immediate redirect - prevents back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
       return false; // Return false to prevent rendering
     }
     
@@ -72,7 +72,7 @@ export default function TutorialsLayout({
       if (token) {
         localStorage.removeItem('token');
       }
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
       return;
     }
     
@@ -92,7 +92,7 @@ export default function TutorialsLayout({
         localStorage.removeItem('token');
       }
       // Use replace for immediate redirect - prevents back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
       return null; // Return null immediately - prevents any rendering
     }
   }

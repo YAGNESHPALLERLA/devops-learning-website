@@ -8,6 +8,7 @@ const publicRoutes = [
   "/landing",
   "/login",
   "/signup",
+  "/register",
   "/jobcy/user/auth/login",
   "/jobcy/user/auth/signup",
   "/jobcy/hr/auth/login",
@@ -47,7 +48,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
         // IMMEDIATELY redirect - don't wait, don't render anything
         setIsAuthenticated(false);
-        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
         return;
       }
       
@@ -58,7 +59,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Invalid JWT format
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
           return;
         }
         
@@ -68,14 +69,14 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           // Token expired
           localStorage.removeItem('token');
           setIsAuthenticated(false);
-          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
           return;
         }
       } catch {
         // Invalid token format
         localStorage.removeItem('token');
         setIsAuthenticated(false);
-        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
         return;
       }
     }
@@ -128,7 +129,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       if (isTutorialOrCourse) {
         // Already handled above, but double-check
         setIsAuthenticated(false);
-        window.location.replace(`/signup?redirect=${encodeURIComponent(pathname)}`);
+        window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);
         return;
       } else if (pathname === "/") {
         // Redirect root to landing page
