@@ -43,8 +43,27 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
-      // Redirect root "/" and all other non-public routes to landing page
-      if (pathname === "/" || (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup")) {
+      // Check if trying to access tutorials or courses - redirect to login
+      const isTutorialOrCourse = 
+        pathname.startsWith("/tutorials") ||
+        pathname === "/java" ||
+        pathname === "/python" ||
+        pathname === "/sql" ||
+        pathname === "/linux" ||
+        pathname === "/devops" ||
+        pathname === "/web-dev" ||
+        pathname === "/data-science" ||
+        pathname === "/code-terminal" ||
+        pathname === "/terminal";
+      
+      if (isTutorialOrCourse) {
+        // Redirect to login for tutorials/courses
+        router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
+      } else if (pathname === "/") {
+        // Redirect root to landing page
+        router.replace("/landing");
+      } else if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
+        // Redirect other protected routes to landing
         router.replace("/landing");
       }
     }

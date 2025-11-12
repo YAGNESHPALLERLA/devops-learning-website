@@ -37,8 +37,10 @@ export async function POST(_request: NextRequest) {
 
     // Generate JWT token
     const jwt = await import('jsonwebtoken');
+    // Default role to 'user' if not set (for website-users collection)
+    const userRole = user.role || 'user';
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id, role: userRole },
       process.env.JWT_SECRET || 'fallback-secret',
       { expiresIn: '30d' }
     );
@@ -50,7 +52,7 @@ export async function POST(_request: NextRequest) {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        role: userRole,
         company: user.company || {},
         phone: user.phone,
         location: user.location,
