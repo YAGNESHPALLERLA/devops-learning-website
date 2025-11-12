@@ -38,22 +38,13 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function TutorialsPage() {
-  // Synchronous check before any rendering - runs immediately
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      // Blocking redirect - prevents any rendering
-      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials')}`;
-      return null;
-    }
-  }
-
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Double-check on mount
+    // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
+      // Force immediate redirect
       window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials')}`;
       return;
     }

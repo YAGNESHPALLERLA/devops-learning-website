@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function TutorialsLayout({
@@ -9,28 +9,37 @@ export default function TutorialsLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-
-  // Synchronous check before any rendering - CRITICAL: This runs before React renders
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token || token.trim() === '') {
-      // IMMEDIATE blocking redirect - prevents ANY rendering
-      const currentPath = pathname || '/tutorials';
-      // Use window.location.replace for immediate redirect (no back button)
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
-      // Return null to prevent any rendering
-      return null;
-    }
-  }
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Double-check on mount
+    // Check authentication immediately on mount
     const token = localStorage.getItem('token');
-    if (!token) {
+    if (!token || token.trim() === '') {
+      // Force immediate redirect
       const currentPath = pathname || '/tutorials';
       window.location.href = `/signup?redirect=${encodeURIComponent(currentPath)}`;
+      return;
     }
+    setIsAuthenticated(true);
   }, [pathname]);
+
+  // Don't render anything until we've checked authentication
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white text-xl">Checking authentication...</div>
+      </div>
+    );
+  }
+
+  // If not authenticated (shouldn't reach here due to redirect, but safety check)
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-white text-xl">Redirecting to registration page...</div>
+      </div>
+    );
+  }
 
   return <>{children}</>;
 }
