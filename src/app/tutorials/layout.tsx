@@ -22,7 +22,7 @@ function isValidToken(token: string): boolean {
     }
     
     return true; // Token is valid
-  } catch (e) {
+  } catch {
     return false; // Invalid token format
   }
 }
@@ -32,23 +32,7 @@ export default function TutorialsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // IMMEDIATE check - runs before any hooks or rendering
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    const currentPath = window.location.pathname || '/tutorials';
-    
-    // Validate token
-    if (!isValidToken(token || '')) {
-      // Remove invalid token
-      if (token) {
-        localStorage.removeItem('token');
-      }
-      // Use replace for immediate redirect - prevents back button
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
-      return null; // Return null immediately - prevents any rendering
-    }
-  }
-
+  // ALL HOOKS MUST BE CALLED FIRST - before any conditional returns
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
     // IMMEDIATE synchronous check - runs before any rendering
@@ -95,6 +79,23 @@ export default function TutorialsLayout({
     // Token exists and is valid, set authenticated
     setIsAuthenticated(true);
   }, [pathname]);
+
+  // IMMEDIATE check after hooks - runs before rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    const currentPath = window.location.pathname || '/tutorials';
+    
+    // Validate token
+    if (!isValidToken(token || '')) {
+      // Remove invalid token
+      if (token) {
+        localStorage.removeItem('token');
+      }
+      // Use replace for immediate redirect - prevents back button
+      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      return null; // Return null immediately - prevents any rendering
+    }
+  }
 
   // Don't render anything if not authenticated or still checking
   if (isAuthenticated === null || isAuthenticated === false) {

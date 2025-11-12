@@ -59,7 +59,7 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
           window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
         }
       }
-    } catch (e) {
+    } catch {
       // Invalid token format
       localStorage.removeItem('token');
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
@@ -68,36 +68,7 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
 }
 
 export default function ProgrammingPage() {
-  // IMMEDIATE check - runs before any hooks or rendering
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
-      return null; // Return null immediately - prevents any rendering
-    }
-    
-    // Validate token format and expiry
-    try {
-      const parts = token.split('.');
-      if (parts.length !== 3) {
-        localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
-        return null;
-      }
-      
-      const payload = JSON.parse(atob(parts[1]));
-      if (payload.exp && payload.exp * 1000 < Date.now()) {
-        localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
-        return null;
-      }
-    } catch (e) {
-      localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
-      return null;
-    }
-  }
-
+  // ALL HOOKS MUST BE CALLED FIRST - before any conditional returns
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
     // Double-check in useState initializer
     if (typeof window === 'undefined') return null;
@@ -120,7 +91,7 @@ export default function ProgrammingPage() {
         window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return false;
       }
-    } catch (e) {
+    } catch {
       localStorage.removeItem('token');
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return false;
@@ -149,13 +120,43 @@ export default function ProgrammingPage() {
         window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
         return;
       }
-    } catch (e) {
+    } catch {
       localStorage.removeItem('token');
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return;
     }
     setIsAuthenticated(true);
   }, []);
+
+  // IMMEDIATE check after hooks - runs before rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return null; // Return null immediately - prevents any rendering
+    }
+    
+    // Validate token format and expiry
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return null;
+      }
+      
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return null;
+      }
+    } catch {
+      localStorage.removeItem('token');
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return null;
+    }
+  }
 
   // Don't render anything if not authenticated
   if (isAuthenticated === null || isAuthenticated === false) {
