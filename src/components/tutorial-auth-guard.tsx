@@ -43,6 +43,50 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
     const currentPath = pathname || window.location.pathname;
     const token = localStorage.getItem('token');
     
+    // ALWAYS check for registered email first (regardless of token validity)
+    let email = localStorage.getItem('registeredEmail');
+    
+    // Fallback: check stored user object for email
+    if (!email || email.trim() === '') {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          if (user && user.email && typeof user.email === 'string') {
+            email = user.email;
+            if (email && email.trim() !== '') {
+              localStorage.setItem('registeredEmail', email);
+            }
+          }
+        } catch (e) {
+          // Ignore parse errors
+        }
+      }
+    }
+    
+    // If registered email exists, ALWAYS show modal (for confirmation)
+    if (email && email.trim() !== '') {
+      console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal for confirmation');
+      setRegisteredEmail(email);
+      setShowContinueModal(true);
+      
+      // Validate token to determine if user needs to login or can continue
+      if (!isValidToken(token || '')) {
+        // Invalid token - user needs to login
+        console.log('[TUTORIAL_AUTH] Token invalid, user will need to login');
+        if (token) {
+          localStorage.removeItem('token');
+        }
+        setIsAuthenticated(false);
+      } else {
+        // Valid token - user can continue with existing session
+        console.log('[TUTORIAL_AUTH] Token valid, but showing confirmation modal');
+        setIsAuthenticated(true);
+      }
+      return;
+    }
+    
+    // No registered email found
     // Validate token
     if (!isValidToken(token || '')) {
       // Remove invalid token
@@ -50,45 +94,15 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
         localStorage.removeItem('token');
       }
       
-      // Check for registered email
-      let email = localStorage.getItem('registeredEmail');
-      
-      // Fallback: check stored user object for email
-      if (!email || email.trim() === '') {
-        const userStr = localStorage.getItem('user');
-        if (userStr) {
-          try {
-            const user = JSON.parse(userStr);
-            if (user && user.email && typeof user.email === 'string') {
-              email = user.email;
-              if (email && email.trim() !== '') {
-                localStorage.setItem('registeredEmail', email);
-              }
-            }
-          } catch (e) {
-            // Ignore parse errors
-          }
-        }
-      }
-      
-      if (email && email.trim() !== '') {
-        // Show continue modal instead of redirecting
-        console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal');
-        setRegisteredEmail(email);
-        setShowContinueModal(true);
-        setIsAuthenticated(false);
-        return;
-      }
-      
-      // No registered email, redirect to registration
+      // No registered email and invalid token - redirect to registration
       const redirectUrl = `/register?redirect=${encodeURIComponent(currentPath)}`;
-      console.log('[TUTORIAL_AUTH] Not authenticated, redirecting to:', redirectUrl);
+      console.log('[TUTORIAL_AUTH] No registered email and invalid token, redirecting to:', redirectUrl);
       window.location.href = redirectUrl;
       setIsAuthenticated(false);
       return;
     }
     
-    // Token is valid
+    // Token is valid and no registered email (new user scenario)
     setIsAuthenticated(true);
   }, [pathname]);
 
@@ -101,17 +115,28 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
     );
   }
 
-  // Show continue modal if email found
+  // Show continue modal if email found (blocks access until user confirms)
   if (showContinueModal && registeredEmail) {
     return (
       <>
-        <div className="min-h-screen bg-[#1a1a1a]">
+        {/* Show blurred/blocked content behind modal */}
+        <div className="min-h-screen bg-[#1a1a1a] opacity-50 pointer-events-none">
           {children}
         </div>
         <ContinueModal
           registeredEmail={registeredEmail}
           redirectTo={pathname || window.location.pathname}
-          onClose={() => setShowContinueModal(false)}
+          onClose={() => {
+            setShowContinueModal(false);
+            // If token is valid, allow access after closing
+            const token = localStorage.getItem('token');
+            if (token && isValidToken(token)) {
+              setIsAuthenticated(true);
+            } else {
+              // No valid token, redirect to home
+              window.location.href = '/';
+            }
+          }}
         />
       </>
     );

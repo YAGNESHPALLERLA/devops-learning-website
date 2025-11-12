@@ -15,7 +15,28 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
   const [isVisible, setIsVisible] = useState(true);
 
   const handleContinue = () => {
-    // Redirect to login with email pre-filled
+    // Check if user has a valid token
+    const token = localStorage.getItem('token');
+    if (token && token.trim() !== '' && token !== 'null' && token !== 'undefined') {
+      try {
+        const parts = token.split('.');
+        if (parts.length === 3) {
+          const payload = JSON.parse(atob(parts[1]));
+          if (payload.exp && payload.exp * 1000 >= Date.now()) {
+            // Token is valid - just close modal and allow access
+            setIsVisible(false);
+            if (onClose) {
+              onClose();
+            }
+            return;
+          }
+        }
+      } catch (e) {
+        // Token invalid, proceed to login
+      }
+    }
+    
+    // No valid token - redirect to login with email pre-filled
     router.push(`/login?email=${encodeURIComponent(registeredEmail)}&redirect=${encodeURIComponent(redirectTo)}`);
   };
 
