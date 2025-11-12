@@ -80,8 +80,9 @@ export default function RootLayout({
                       
                       console.log('[AUTH] Final registeredEmail check:', registeredEmail);
                       if (registeredEmail && registeredEmail.trim() !== '') {
-                        console.log('[AUTH] ✅ Found registered email, allowing page to load for modal');
+                        console.log('[AUTH] ✅ Found registered email, allowing page to load for modal (will show on every visit)');
                         // Don't redirect - let TutorialAuthGuard show the modal instead
+                        // The modal will appear on EVERY visit when registered email exists
                         // Just allow the page to continue loading
                         return;
                       } else {

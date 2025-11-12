@@ -64,9 +64,9 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
       }
     }
     
-    // If registered email exists, ALWAYS show modal (for confirmation)
+    // If registered email exists, ALWAYS show modal on EVERY visit (for confirmation)
     if (email && email.trim() !== '') {
-      console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal for confirmation');
+      console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal for confirmation (every visit)');
       setRegisteredEmail(email);
       setShowContinueModal(true);
       
@@ -79,8 +79,8 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
         }
         setIsAuthenticated(false);
       } else {
-        // Valid token - user can continue with existing session
-        console.log('[TUTORIAL_AUTH] Token valid, but showing confirmation modal');
+        // Valid token - user can continue with existing session after confirming
+        console.log('[TUTORIAL_AUTH] Token valid, showing confirmation modal (will allow access after confirmation)');
         setIsAuthenticated(true);
       }
       return;

@@ -23,21 +23,25 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
         if (parts.length === 3) {
           const payload = JSON.parse(atob(parts[1]));
           if (payload.exp && payload.exp * 1000 >= Date.now()) {
-            // Token is valid - just close modal and allow access
+            // Token is valid - close modal and allow access (user confirmed)
+            console.log('[CONTINUE_MODAL] Token valid, closing modal and allowing access');
             setIsVisible(false);
             if (onClose) {
               onClose();
             }
+            // Don't reload - just allow access. Modal will show again on next visit to tutorial page
             return;
           }
         }
       } catch (e) {
         // Token invalid, proceed to login
+        console.log('[CONTINUE_MODAL] Token invalid, redirecting to login');
       }
     }
     
     // No valid token - redirect to login with email pre-filled
-    router.push(`/login?email=${encodeURIComponent(registeredEmail)}&redirect=${encodeURIComponent(redirectTo)}`);
+    console.log('[CONTINUE_MODAL] No valid token, redirecting to login');
+    window.location.href = `/login?email=${encodeURIComponent(registeredEmail)}&redirect=${encodeURIComponent(redirectTo)}`;
   };
 
   const handleUseDifferentAccount = () => {
