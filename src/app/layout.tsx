@@ -54,7 +54,7 @@ export default function RootLayout({
                     // Check if token exists
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
                       console.log('[AUTH] No token found, redirecting to registration');
-                      window.location.replace('/register?redirect=' + encodeURIComponent(path));
+                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
                       window.stop(); // Stop page loading
                       return;
                     }
@@ -66,7 +66,7 @@ export default function RootLayout({
                         // Invalid JWT format
                         console.log('[AUTH] Invalid JWT format, redirecting to registration');
                         localStorage.removeItem('token');
-                        window.location.replace('/register?redirect=' + encodeURIComponent(path));
+                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
                         window.stop(); // Stop page loading
                         return;
                       }
@@ -77,7 +77,7 @@ export default function RootLayout({
                         // Token expired
                         console.log('[AUTH] Token expired, redirecting to registration');
                         localStorage.removeItem('token');
-                        window.location.replace('/register?redirect=' + encodeURIComponent(path));
+                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
                         window.stop(); // Stop page loading
                         return;
                       }
@@ -86,7 +86,7 @@ export default function RootLayout({
                       // Invalid token format
                       console.log('[AUTH] Token validation error, redirecting to registration', e);
                       localStorage.removeItem('token');
-                      window.location.replace('/register?redirect=' + encodeURIComponent(path));
+                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
                       window.stop(); // Stop page loading
                       return;
                     }

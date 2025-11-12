@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function JobcyNavigation() {
   const [showDropdown, setShowDropdown] = useState(false);
-  const router = useRouter();
 
   const isValidToken = () => {
     if (typeof window === 'undefined') return false;
@@ -41,16 +39,18 @@ export default function JobcyNavigation() {
     
     if (!authed) {
       // IMMEDIATELY redirect to registration - prevents ANY page load
-      // Use window.location.replace for immediate, blocking redirect
+      // Use window.location.href for immediate, blocking redirect (more aggressive than replace)
       const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
       console.log('[NAV] Not authenticated, redirecting to:', redirectUrl);
-      window.location.replace(redirectUrl);
+      // Use href for immediate redirect - blocks page load
+      window.location.href = redirectUrl;
       // Return false to prevent any further execution
       return false;
     } else {
       // User is authenticated, navigate normally
       console.log('[NAV] Authenticated, navigating to:', href);
-      router.push(href);
+      // Use href for consistent navigation
+      window.location.href = href;
     }
   };
 
