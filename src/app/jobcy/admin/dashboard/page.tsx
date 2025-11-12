@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
   Users,
   Briefcase,
@@ -19,7 +18,8 @@ import {
   Building2,
   UserCheck,
   Filter,
-  Home,
+  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 interface StatCardProps {
   title: string;
@@ -385,6 +385,24 @@ export default function AdminDashboard() {
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
+              {/* Navigation Arrows */}
+              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                <button
+                  onClick={() => router.back()}
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                  title="Go back"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => router.forward()}
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                  title="Go forward"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md">
                   <Briefcase className="w-5 h-5 text-white" />
@@ -401,15 +419,6 @@ export default function AdminDashboard() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Link
-                href="/"
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
-                title="Go to Home"
-              >
-                <Home className="w-4 h-4" />
-                <span className="text-sm font-medium">Home</span>
-              </Link>
-
               <div className="relative">
                 <Search
                   className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"

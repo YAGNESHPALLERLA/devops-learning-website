@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
   Building2,
   Plus,
@@ -21,7 +20,7 @@ import {
   CheckCircle,
   AlertCircle,
   FileText,
-  Home,
+  ArrowRight,
 } from "lucide-react";
 
 interface Company {
@@ -414,30 +413,28 @@ export default function CompanyManagement() {
 
   return (
     <div className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}>
-      {/* Home Button */}
-      <div className="max-w-7xl mx-auto px-6 pb-6">
-        <div className="mb-4">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
-            title="Go to Home"
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-        </div>
-      </div>
       {/* Header */}
       <div className={`${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} shadow-sm border-b sticky top-0 z-10`}>
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <button
-                onClick={() => router.push("/jobcy/admin/dashboard")}
-                className={`p-2 ${isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} rounded-lg transition-colors`}
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
+              {/* Navigation Arrows */}
+              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                <button
+                  onClick={() => window.history.back()}
+                  className={`p-2 rounded-lg ${isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} transition-colors ${isDarkMode ? "text-gray-300" : "text-gray-600"} hover:text-gray-900`}
+                  title="Go back"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => window.history.forward()}
+                  className={`p-2 rounded-lg ${isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} transition-colors ${isDarkMode ? "text-gray-300" : "text-gray-600"} hover:text-gray-900`}
+                  title="Go forward"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
               <div>
                 <h1 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-900"}`}>
                   Company Management

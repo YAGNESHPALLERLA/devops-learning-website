@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Link from "next/link";
 import {
   Briefcase,
   Plus,
@@ -34,7 +33,7 @@ import {
   // BarChart3,
   RefreshCw,
   Archive,
-  Home,
+  ArrowRight,
 } from "lucide-react";
 
 const resolveApiBase = (): string => {
@@ -1002,6 +1001,23 @@ const fetchJobs = useCallback(async (): Promise<void> => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
+              {/* Navigation Arrows */}
+              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                <button
+                  onClick={() => window.history.back()}
+                  className="p-2 rounded-lg hover:bg-white/80 transition-colors text-slate-600 hover:text-slate-900"
+                  title="Go back"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => window.history.forward()}
+                  className="p-2 rounded-lg hover:bg-white/80 transition-colors text-slate-600 hover:text-slate-900"
+                  title="Go forward"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
               <div className="w-14 h-14 bg-gradient-to-br from-green-600 via-teal-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl">
                 <Briefcase className="w-7 h-7 text-white" />
               </div>
@@ -1426,22 +1442,5 @@ const fetchJobs = useCallback(async (): Promise<void> => {
     </div>
   );
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto p-6">
-        {/* Home Button */}
-        <div className="mb-4">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
-            title="Go to Home"
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-        </div>
-        {currentView === "list" ? renderListView() : renderForm()}
-      </div>
-    </div>
-  );
+  return <div>{currentView === "list" ? renderListView() : renderForm()}</div>;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect ,ChangeEvent} from "react";
-import Link from "next/link";
 import {
   Users,
   Plus,
@@ -18,7 +17,7 @@ import {
   EyeOff,
   CheckCircle,
   AlertCircle,
-  Home,
+  ArrowRight,
 } from "lucide-react";
 // HR user interface
 interface Company {
@@ -352,13 +351,32 @@ const handleInputChange = (
     <div>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">
-            HR User Management
-          </h2>
-          <p className="text-gray-600 mt-1">
-            Manage HR users and their company details
-          </p>
+        <div className="flex items-center space-x-4">
+          {/* Navigation Arrows */}
+          <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+            <button
+              onClick={() => window.history.back()}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+              title="Go back"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => window.history.forward()}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+              title="Go forward"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              HR User Management
+            </h2>
+            <p className="text-gray-600 mt-1">
+              Manage HR users and their company details
+            </p>
+          </div>
         </div>
         <button
           onClick={() => {
@@ -834,17 +852,6 @@ const handleInputChange = (
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Home Button */}
-        <div className="mb-4">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
-            title="Go to Home"
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-        </div>
         {currentView === "list" ? renderListView() : renderForm()}
       </div>
     </div>

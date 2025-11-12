@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import {
   // Users,
   FileText,
@@ -25,7 +24,7 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
-  Home,
+  ArrowRight,
 } from "lucide-react";
 
 import type { LucideIcon } from "lucide-react";
@@ -866,31 +865,28 @@ export default function ApplicationsManagement() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50">
-      {/* Home Button */}
-      <div className="max-w-7xl mx-auto px-6 pb-6">
-        <div className="mb-4">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/80 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2] bg-white/50"
-            title="Go to Home"
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-        </div>
-      </div>
       {/* Header */}
       <header className="bg-gradient-to-r from-blue-100/90 via-indigo-100/90 to-cyan-100/90 backdrop-blur-xl shadow-lg border-b border-slate-200/60">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <button
-                onClick={() => window.history.back()}
-                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label="Go back"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
+              {/* Navigation Arrows */}
+              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                <button
+                  onClick={() => window.history.back()}
+                  className="p-2 rounded-lg hover:bg-white/80 transition-colors text-gray-400 hover:text-gray-600"
+                  title="Go back"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => window.history.forward()}
+                  className="p-2 rounded-lg hover:bg-white/80 transition-colors text-gray-400 hover:text-gray-600"
+                  title="Go forward"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">
                   Applications Management

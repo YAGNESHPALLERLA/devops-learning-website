@@ -34,7 +34,8 @@ import {
   XCircle,
   // AlertCircle,
   LucideIcon,
-  Home,
+  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 const formatDate = (date?: string) => date ? new Date(date).toLocaleDateString() : "N/A";
 
@@ -418,6 +419,24 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         <div className="px-8 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-5">
+              {/* Navigation Arrows */}
+              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                <button
+                  onClick={() => window.history.back()}
+                  className="p-2 rounded-xl hover:bg-gray-100 transition-colors text-slate-600 hover:text-slate-900"
+                  title="Go back"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => window.history.forward()}
+                  className="p-2 rounded-xl hover:bg-gray-100 transition-colors text-slate-600 hover:text-slate-900"
+                  title="Go forward"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              
               <div className="relative">
                 <div className="w-14 h-14 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-xl flex items-center justify-center shadow-md">
                   <span className="text-white font-bold text-lg">
@@ -444,15 +463,6 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             </div>
 
             <div className="flex items-center space-x-3">
-              <Link
-                href="/"
-                className="flex items-center space-x-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200 text-slate-600 hover:text-[#0A66C2]"
-                title="Go to Home"
-              >
-                <Home className="w-4 h-4" />
-                <span className="text-sm font-medium">Home</span>
-              </Link>
-
               <button className="relative p-3 text-slate-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-105 group">
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">

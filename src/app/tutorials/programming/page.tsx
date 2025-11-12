@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Home } from 'lucide-react';
 
 interface TechnologyCardProps {
   title: string;
@@ -168,17 +167,6 @@ export default function ProgrammingPage() {
   return (
     <main className="min-h-screen bg-[#1a1a1a] py-20">
       <div className="container mx-auto px-4">
-        {/* Home Button */}
-        <div className="mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-[#252525] transition-colors border border-gray-600 text-gray-300 hover:text-rose-400"
-            title="Go to Home"
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-        </div>
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-rose-500/20 to-red-500/20 rounded-full border border-rose-500/30">
             <span className="text-rose-400 font-semibold">💻 Programming</span>

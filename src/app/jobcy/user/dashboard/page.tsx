@@ -14,10 +14,10 @@ import {
   Calendar,
   Users,
   FileCheck,
-  Home,
+  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 import { useDashboardData } from "./hooks/useDashboardData";
 import Sidebar from "./components/Sidebar";
@@ -180,6 +180,24 @@ export default function JobSeekerDashboard() {
                     )}
                   </button>
                   
+                  {/* Navigation Arrows */}
+                  <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                    <button
+                      onClick={() => router.back()}
+                      className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                      title="Go back"
+                    >
+                      <ArrowLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => router.forward()}
+                      className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                      title="Go forward"
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                  
                   <div 
                     className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity group"
                     onClick={() => router.push("/jobcy/")}
@@ -192,16 +210,6 @@ export default function JobSeekerDashboard() {
                       <p className="text-xs text-gray-600">Find Your Dream Job</p>
                     </div>
                   </div>
-                  
-                  {/* Home Button */}
-                  <Link
-                    href="/"
-                    className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200 text-gray-700 hover:text-[#0A66C2]"
-                    title="Go to Home"
-                  >
-                    <Home className="w-4 h-4" />
-                    <span className="hidden md:inline text-sm font-medium">Home</span>
-                  </Link>
                 </div>
 
 
