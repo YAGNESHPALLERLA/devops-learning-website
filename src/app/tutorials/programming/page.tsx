@@ -68,8 +68,38 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
 }
 
 export default function ProgrammingPage() {
+  // IMMEDIATE check - runs before any hooks or rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return null; // Return null immediately - prevents any rendering
+    }
+    
+    // Validate token format and expiry
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return null;
+      }
+      
+      const payload = JSON.parse(atob(parts[1]));
+      if (payload.exp && payload.exp * 1000 < Date.now()) {
+        localStorage.removeItem('token');
+        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        return null;
+      }
+    } catch (e) {
+      localStorage.removeItem('token');
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      return null;
+    }
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
-    // Immediate check in useState initializer
+    // Double-check in useState initializer
     if (typeof window === 'undefined') return null;
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
@@ -99,7 +129,7 @@ export default function ProgrammingPage() {
   });
 
   useEffect(() => {
-    // Double-check on mount
+    // Triple-check on mount
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
       window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
@@ -127,22 +157,9 @@ export default function ProgrammingPage() {
     setIsAuthenticated(true);
   }, []);
 
-  // Don't render anything until we've checked authentication
-  if (isAuthenticated === null) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Checking authentication...</div>
-      </div>
-    );
-  }
-
-  // If not authenticated (shouldn't reach here due to redirect, but safety check)
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
-      </div>
-    );
+  // Don't render anything if not authenticated
+  if (isAuthenticated === null || isAuthenticated === false) {
+    return null; // Return null - prevents any rendering
   }
 
   return (

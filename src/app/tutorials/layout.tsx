@@ -32,6 +32,23 @@ export default function TutorialsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // IMMEDIATE check - runs before any hooks or rendering
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    const currentPath = window.location.pathname || '/tutorials';
+    
+    // Validate token
+    if (!isValidToken(token || '')) {
+      // Remove invalid token
+      if (token) {
+        localStorage.removeItem('token');
+      }
+      // Use replace for immediate redirect - prevents back button
+      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      return null; // Return null immediately - prevents any rendering
+    }
+  }
+
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
     // IMMEDIATE synchronous check - runs before any rendering
@@ -81,11 +98,7 @@ export default function TutorialsLayout({
 
   // Don't render anything if not authenticated or still checking
   if (isAuthenticated === null || isAuthenticated === false) {
-    return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white text-xl">Redirecting to registration...</div>
-      </div>
-    );
+    return null; // Return null - prevents any rendering
   }
 
   // Only render children if authenticated
