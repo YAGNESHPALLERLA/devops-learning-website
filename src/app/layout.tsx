@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ConditionalNav } from "@/components/conditional-nav";
+import LoginPrompt from "@/components/login-prompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
       >
         <ConditionalNav />
         {children}
+        <LoginPrompt />
       </body>
     </html>
   );

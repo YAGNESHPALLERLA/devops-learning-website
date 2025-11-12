@@ -15,8 +15,13 @@ export async function POST(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Find user in database
-    const user = await db.collection('users').findOne({ email });
+    // Find user in database - check both collections for compatibility
+    let user = await db.collection('users').findOne({ email: email.toLowerCase() });
+    
+    // If not found in users collection, check website-users collection
+    if (!user) {
+      user = await db.collection('website-users').findOne({ email: email.toLowerCase() });
+    }
     
     if (!user) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
