@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ConditionalNav } from "@/components/conditional-nav";
-import LoginPrompt from "@/components/login-prompt";
+import AuthGuard from "@/components/auth-guard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,9 +39,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConditionalNav />
-        {children}
-        <LoginPrompt />
+        <AuthGuard>
+          <ConditionalNav />
+          {children}
+        </AuthGuard>
       </body>
     </html>
   );

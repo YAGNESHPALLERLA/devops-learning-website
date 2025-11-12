@@ -130,7 +130,7 @@ function SignupForm() {
           
           // Redirect after 2 seconds
           setTimeout(() => {
-            if (redirectTo && redirectTo !== "/" && !redirectTo.startsWith("/jobcy")) {
+            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
               router.push(redirectTo);
             } else if (loginData.user.role === "admin") {
               router.push("/jobcy/admin/dashboard");
@@ -139,7 +139,7 @@ function SignupForm() {
             } else if (loginData.user.role === "company") {
               router.push("/jobcy/company/dashboard");
             } else {
-              router.push("/jobcy/user/dashboard");
+              router.push("/");
             }
           }, 2000);
         } else {

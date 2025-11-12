@@ -81,11 +81,12 @@ function LoginForm() {
       if (!response.ok) {
         setLoginError(data.error || data.message || "Invalid credentials");
       } else {
+        // Store token and user data
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
 
         // Redirect based on role or redirect parameter
-        if (redirectTo && redirectTo !== "/" && !redirectTo.startsWith("/jobcy")) {
+        if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
           router.push(redirectTo);
         } else if (data.user.role === "admin") {
           router.push("/jobcy/admin/dashboard");
@@ -94,7 +95,7 @@ function LoginForm() {
         } else if (data.user.role === "company") {
           router.push("/jobcy/company/dashboard");
         } else {
-          router.push("/jobcy/user/dashboard");
+          router.push("/");
         }
       }
     } catch (error) {
