@@ -8,6 +8,49 @@ import HeroCarousel from '@/components/hero-carousel';
 import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
 import { useState, useEffect } from 'react';
 
+// Helper function to validate JWT token
+const isValidToken = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  const token = localStorage.getItem('token');
+  if (!token || token.trim() === '' || token === 'null' || token === 'undefined') return false;
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return false;
+    const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    const payload = JSON.parse(atob(base64));
+    if (payload && payload.exp && typeof payload.exp === 'number') {
+      const now = Math.floor(Date.now() / 1000);
+      if (now >= payload.exp) {
+        return false;
+      }
+    }
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// Handle tutorial link click - check auth before navigating
+const handleTutorialClick = (e: React.MouseEvent, href: string) => {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  // Check authentication
+  const authed = isValidToken();
+  
+  if (!authed) {
+    // Redirect to registration with redirect parameter
+    const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
+    console.log('[HOME_PAGE] Not authenticated, redirecting to:', redirectUrl);
+    window.location.href = redirectUrl;
+    return false;
+  } else {
+    // User is authenticated, navigate normally
+    console.log('[HOME_PAGE] Authenticated, navigating to:', href);
+    window.location.href = href;
+  }
+};
+
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -265,9 +308,15 @@ export default function HomePage() {
           <p className="text-gray-400 text-xl mb-8">Explore our comprehensive tutorials across multiple domains</p>
           
           <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-            <Link 
-              href="/tutorials/medical-coding"
-              className="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 rounded-xl p-8 transition-all duration-500 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
+            <button
+              onClick={(e) => handleTutorialClick(e, '/tutorials/medical-coding')}
+              onMouseDown={(e: React.MouseEvent) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e, '/tutorials/medical-coding');
+                }
+              }}
+              className="group relative bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 rounded-xl p-8 transition-all duration-500 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden cursor-pointer w-full"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -280,11 +329,17 @@ export default function HomePage() {
                 <h3 className="text-2xl font-bold text-white mb-2">Medical Coding</h3>
                 <p className="text-gray-400">Healthcare IT & Coding Systems</p>
               </div>
-            </Link>
+            </button>
             
-            <Link 
-              href="/tutorials/programming"
-              className="group relative bg-gradient-to-br from-rose-500/20 to-red-500/20 border-2 border-rose-500/50 rounded-xl p-8 transition-all duration-500 hover:border-rose-400 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
+            <button
+              onClick={(e) => handleTutorialClick(e, '/tutorials/programming')}
+              onMouseDown={(e: React.MouseEvent) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e, '/tutorials/programming');
+                }
+              }}
+              className="group relative bg-gradient-to-br from-rose-500/20 to-red-500/20 border-2 border-rose-500/50 rounded-xl p-8 transition-all duration-500 hover:border-rose-400 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden cursor-pointer w-full"
               style={{ animationDelay: '0.2s' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-red-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -298,11 +353,17 @@ export default function HomePage() {
                 <h3 className="text-2xl font-bold text-white mb-2">Programming</h3>
                 <p className="text-gray-400">Software Development & Technologies</p>
               </div>
-            </Link>
+            </button>
             
-            <Link 
-              href="/tutorials/government-jobs"
-              className="group relative bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/50 rounded-xl p-8 transition-all duration-500 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden"
+            <button
+              onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+              onMouseDown={(e: React.MouseEvent) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e, '/tutorials/government-jobs');
+                }
+              }}
+              className="group relative bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/50 rounded-xl p-8 transition-all duration-500 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-2 min-w-[280px] animate-fade-in-up hover-lift hover-glow overflow-hidden cursor-pointer w-full"
               style={{ animationDelay: '0.4s' }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -316,16 +377,22 @@ export default function HomePage() {
                 <h3 className="text-2xl font-bold text-white mb-2">Government Jobs</h3>
                 <p className="text-gray-400">SBI & Bank Exam Preparation</p>
               </div>
-            </Link>
+            </button>
         </div>
         
           <div className="mt-12">
-            <Link 
-              href="/tutorials"
-              className="inline-block px-10 py-4 bg-gradient-to-r from-rose-500 to-red-600 text-white font-bold text-lg rounded-lg shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 transform hover:-translate-y-1 transition-all duration-300"
+            <button
+              onClick={(e) => handleTutorialClick(e, '/tutorials')}
+              onMouseDown={(e: React.MouseEvent) => {
+                if (!isValidToken()) {
+                  e.preventDefault();
+                  handleTutorialClick(e, '/tutorials');
+                }
+              }}
+              className="inline-block px-10 py-4 bg-gradient-to-r from-rose-500 to-red-600 text-white font-bold text-lg rounded-lg shadow-lg shadow-rose-500/30 hover:shadow-xl hover:shadow-rose-500/50 transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
             >
               📚 View All Tutorials
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -761,15 +828,21 @@ export default function HomePage() {
                   <span>Beginner-friendly study materials</span>
                 </li>
               </ul>
-              <Link 
-                href="/tutorials/government-jobs"
-                className="inline-flex items-center justify-center w-full bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-amber-700 transition-colors duration-200"
+              <button
+                onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+                onMouseDown={(e: React.MouseEvent) => {
+                  if (!isValidToken()) {
+                    e.preventDefault();
+                    handleTutorialClick(e, '/tutorials/government-jobs');
+                  }
+                }}
+                className="inline-flex items-center justify-center w-full bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-amber-700 transition-colors duration-200 cursor-pointer"
               >
                 Start Bronze Level
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </Link>
+              </button>
             </div>
 
             {/* Silver Level Card */}
@@ -811,15 +884,21 @@ export default function HomePage() {
                   <span>Mock test series access</span>
                 </li>
               </ul>
-              <Link 
-                href="/tutorials/government-jobs"
-                className="inline-flex items-center justify-center w-full bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
+              <button
+                onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+                onMouseDown={(e: React.MouseEvent) => {
+                  if (!isValidToken()) {
+                    e.preventDefault();
+                    handleTutorialClick(e, '/tutorials/government-jobs');
+                  }
+                }}
+                className="inline-flex items-center justify-center w-full bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer"
               >
                 Start Silver Level
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </Link>
+              </button>
             </div>
 
             {/* Gold Level Card */}
@@ -861,15 +940,21 @@ export default function HomePage() {
                   <span>Mentorship from experts</span>
                 </li>
               </ul>
-              <Link 
-                href="/tutorials/government-jobs"
-                className="inline-flex items-center justify-center w-full bg-yellow-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors duration-200"
+              <button
+                onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
+                onMouseDown={(e: React.MouseEvent) => {
+                  if (!isValidToken()) {
+                    e.preventDefault();
+                    handleTutorialClick(e, '/tutorials/government-jobs');
+                  }
+                }}
+                className="inline-flex items-center justify-center w-full bg-yellow-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors duration-200 cursor-pointer"
               >
                 Start Gold Level
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

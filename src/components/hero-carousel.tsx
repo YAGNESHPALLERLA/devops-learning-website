@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 
 const slides = [
   {
@@ -60,6 +59,49 @@ export default function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Helper function to validate JWT token
+  const isValidToken = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    const token = localStorage.getItem('token');
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') return false;
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) return false;
+      const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      const payload = JSON.parse(atob(base64));
+      if (payload && payload.exp && typeof payload.exp === 'number') {
+        const now = Math.floor(Date.now() / 1000);
+        if (now >= payload.exp) {
+          return false;
+        }
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  // Handle button click - check auth before navigating
+  const handleButtonClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Check authentication
+    const authed = isValidToken();
+    
+    if (!authed) {
+      // Redirect to registration with redirect parameter
+      const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
+      console.log('[HERO_CAROUSEL] Not authenticated, redirecting to:', redirectUrl);
+      window.location.href = redirectUrl;
+      return false;
+    } else {
+      // User is authenticated, navigate normally
+      console.log('[HERO_CAROUSEL] Authenticated, navigating to:', href);
+      window.location.href = href;
+    }
+  };
 
   const startAutoPlay = () => {
     if (intervalRef.current) {
@@ -145,24 +187,36 @@ export default function HeroCarousel() {
                 {slide.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 relative z-30 mt-6">
-                <Link
-                  href={slide.buttonLink}
-                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto"
+                <button
+                  onClick={(e) => handleButtonClick(e, slide.buttonLink)}
+                  onMouseDown={(e: React.MouseEvent) => {
+                    if (!isValidToken()) {
+                      e.preventDefault();
+                      handleButtonClick(e, slide.buttonLink);
+                    }
+                  }}
+                  className="inline-flex items-center justify-center bg-white text-gray-900 font-bold px-8 py-4 rounded-xl shadow-2xl hover:bg-gray-50 hover:scale-105 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto cursor-pointer"
                 >
                   {slide.buttonText}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                   </svg>
-                </Link>
-                <Link
-                  href={`${slide.buttonLink}#overview`}
-                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto"
+                </button>
+                <button
+                  onClick={(e) => handleButtonClick(e, slide.buttonLink)}
+                  onMouseDown={(e: React.MouseEvent) => {
+                    if (!isValidToken()) {
+                      e.preventDefault();
+                      handleButtonClick(e, slide.buttonLink);
+                    }
+                  }}
+                  className="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 text-base min-w-[180px] relative z-40 pointer-events-auto cursor-pointer"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
                   </svg>
                   Learn More
-                </Link>
+                </button>
               </div>
             </div>
           </div>
