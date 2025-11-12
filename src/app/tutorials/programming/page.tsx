@@ -37,11 +37,12 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 let hasCheckedAuth = false;
 if (typeof window !== 'undefined' && !hasCheckedAuth) {
   hasCheckedAuth = true;
+  const currentPath = window.location.pathname || '/tutorials/programming';
   const token = localStorage.getItem('token');
   // Check if token exists and is valid (not empty, null, undefined, or expired)
   if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
     // IMMEDIATE redirect before React renders
-    window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+    window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
   } else {
     // Validate JWT token format and expiry
     try {
@@ -49,20 +50,20 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
       if (parts.length !== 3) {
         // Invalid JWT format
         localStorage.removeItem('token');
-        window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+        window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
       } else {
         // Check if token is expired
         const payload = JSON.parse(atob(parts[1]));
         if (payload.exp && payload.exp * 1000 < Date.now()) {
           // Token expired
           localStorage.removeItem('token');
-          window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+          window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
         }
       }
     } catch {
       // Invalid token format
       localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
+      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
     }
   }
 }

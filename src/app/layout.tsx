@@ -35,12 +35,12 @@ export default function RootLayout({
         <link rel="icon" href="/ohg365.png" type="image/png" />
         <link rel="shortcut icon" href="/ohg365.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ohg365.png" />
-        {/* Blocking script that runs before React - checks auth for tutorial routes */}
+        {/* Blocking script that runs before React - checks auth for tutorial routes - MUST BE FIRST */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                if (typeof window !== 'undefined') {
+                try {
                   const path = window.location.pathname;
                   const isTutorialRoute = path.startsWith('/tutorials') || 
                     path === '/java' || path === '/python' || path === '/sql' || 
@@ -53,7 +53,9 @@ export default function RootLayout({
                     
                     // Check if token exists
                     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+                      console.log('[AUTH] No token found, redirecting to signup');
                       window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      window.stop(); // Stop page loading
                       return;
                     }
                     
@@ -62,8 +64,10 @@ export default function RootLayout({
                       const parts = token.split('.');
                       if (parts.length !== 3) {
                         // Invalid JWT format
+                        console.log('[AUTH] Invalid JWT format, redirecting to signup');
                         localStorage.removeItem('token');
                         window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        window.stop(); // Stop page loading
                         return;
                       }
                       
@@ -71,17 +75,24 @@ export default function RootLayout({
                       const payload = JSON.parse(atob(parts[1]));
                       if (payload.exp && payload.exp * 1000 < Date.now()) {
                         // Token expired
+                        console.log('[AUTH] Token expired, redirecting to signup');
                         localStorage.removeItem('token');
                         window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                        window.stop(); // Stop page loading
                         return;
                       }
+                      console.log('[AUTH] Token valid, allowing access');
                     } catch (e) {
                       // Invalid token format
+                      console.log('[AUTH] Token validation error, redirecting to signup', e);
                       localStorage.removeItem('token');
                       window.location.replace('/signup?redirect=' + encodeURIComponent(path));
+                      window.stop(); // Stop page loading
                       return;
                     }
                   }
+                } catch (e) {
+                  console.error('[AUTH] Script error:', e);
                 }
               })();
             `,
