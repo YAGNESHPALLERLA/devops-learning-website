@@ -138,6 +138,19 @@ export default function AzureDataEngineerPage() {
     };
   }, []);
 
+  // Scroll to active section after it renders
+  useEffect(() => {
+    if (activeSection) {
+      // Small delay to ensure DOM is updated
+      setTimeout(() => {
+        const element = document.getElementById(activeSection);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [activeSection]);
+
   return (
     <TechLayout 
       technology="azure-data-engineer" 
@@ -165,10 +178,10 @@ export default function AzureDataEngineerPage() {
         </div>
 
         {/* Azure Basics Section */}
+        {activeSection === 'azure-basics' && (
         <section
           id="azure-basics"
           className="mb-20 scroll-mt-24"
-          style={{ display: activeSection === 'azure-basics' ? 'block' : 'none' }}
         >
           <h2 className="text-4xl font-bold text-white mb-8 border-l-4 border-red-500 pl-4">Azure Basics</h2>
           
@@ -229,12 +242,13 @@ export default function AzureDataEngineerPage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Resource Group */}
+        {activeSection === 'resource-group' && (
         <section
           id="resource-group"
-          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: activeSection === 'resource-group' ? 'block' : 'none' }}
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
           <h3 className="text-3xl font-bold text-white mb-6">2. Resource Group</h3>
           
@@ -289,12 +303,13 @@ export default function AzureDataEngineerPage() {
             <ImageGallery images={getImages('image7', 'image8', 'image9', 'image10', 'image6')} />
           </div>
         </section>
+        )}
 
         {/* Azure Blob Storage */}
+        {activeSection === 'azure-blob-storage' && (
         <section
           id="azure-blob-storage"
-          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: activeSection === 'azure-blob-storage' ? 'block' : 'none' }}
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
           <h3 className="text-3xl font-bold text-white mb-6">3. Azure Blob Storage</h3>
           
@@ -804,12 +819,13 @@ export default function AzureDataEngineerPage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Azure Data Lake Storage Gen2 */}
+        {activeSection === 'azure-data-lake' && (
         <section
           id="azure-data-lake"
-          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24"
-          style={{ display: activeSection === 'azure-data-lake' ? 'block' : 'none' }}
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
           <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
           
@@ -1074,6 +1090,7 @@ export default function AzureDataEngineerPage() {
             <ImageGallery images={getImages('image53')} />
           </div>
         </section>
+        )}
       </div>
     </TechLayout>
   );
