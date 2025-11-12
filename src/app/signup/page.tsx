@@ -131,7 +131,7 @@ function SignupForm() {
           // Redirect after 2 seconds
           setTimeout(() => {
             // Prioritize redirect parameter (especially for tutorials)
-            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup" && redirectTo !== "/landing") {
+            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
               router.push(redirectTo);
             } else if (loginData.user.role === "admin") {
               router.push("/jobcy/admin/dashboard");

@@ -143,7 +143,7 @@ function RegisterForm() {
           
           // Redirect after 2 seconds to the intended tutorial page
           setTimeout(() => {
-            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup" && redirectTo !== "/register" && redirectTo !== "/landing") {
+            if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup" && redirectTo !== "/register") {
               router.push(redirectTo);
             } else {
               router.push("/");

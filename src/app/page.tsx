@@ -2,7 +2,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import StatsCounter from '@/components/stats-counter';
 import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
@@ -10,23 +9,11 @@ import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
 import { useState, useEffect } from 'react';
 
 export default function HomePage() {
-  const router = useRouter();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Check if user is authenticated, if not redirect to landing
-    const checkAuth = () => {
-      if (typeof window === "undefined") return false;
-      const token = localStorage.getItem("token");
-      return !!token;
-    };
-
-    if (!checkAuth()) {
-      router.push("/landing");
-      return;
-    }
-
+    // Home page is now public - no authentication required
     setIsLoaded(true);
     
     const handleMouseMove = (e: MouseEvent) => {

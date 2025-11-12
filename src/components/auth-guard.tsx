@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 // Public routes that don't require authentication
 const publicRoutes = [
-  "/landing",
+  "/",
   "/login",
   "/signup",
   "/register",
@@ -132,14 +132,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);
         return;
       } else if (pathname === "/") {
-        // Redirect root to landing page
-        setIsAuthenticated(false);
-        window.location.replace("/landing");
+        // Root page is public - allow access
+        setIsAuthenticated(true);
         return;
-      } else if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
-        // Redirect other protected routes to landing
+      } else if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup" && pathname !== "/register") {
+        // Redirect other protected routes to home page
         setIsAuthenticated(false);
-        window.location.replace("/landing");
+        window.location.replace("/");
         return;
       }
       setIsAuthenticated(false);
