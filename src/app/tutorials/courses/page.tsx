@@ -41,8 +41,8 @@ export default function CoursesPage() {
     // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
-      // Force immediate redirect
-      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/courses')}`;
+      // Force immediate redirect - use replace to prevent back button
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/courses')}`);
       return;
     }
     setIsAuthenticated(true);

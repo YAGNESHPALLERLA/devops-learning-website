@@ -57,19 +57,19 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         pathname === "/menu";
       
       if (isTutorialOrCourse) {
-        // Immediately redirect to signup/registration for tutorials/courses
+        // IMMEDIATELY redirect to signup/registration for tutorials/courses - use replace to prevent back button
         setIsAuthenticated(false);
-        window.location.href = `/signup?redirect=${encodeURIComponent(pathname)}`;
+        window.location.replace(`/signup?redirect=${encodeURIComponent(pathname)}`);
         return;
       } else if (pathname === "/") {
         // Redirect root to landing page
         setIsAuthenticated(false);
-        window.location.href = "/landing";
+        window.location.replace("/landing");
         return;
       } else if (pathname !== "/landing" && pathname !== "/login" && pathname !== "/signup") {
         // Redirect other protected routes to landing
         setIsAuthenticated(false);
-        window.location.href = "/landing";
+        window.location.replace("/landing");
         return;
       }
       setIsAuthenticated(false);

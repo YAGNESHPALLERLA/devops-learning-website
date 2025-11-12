@@ -40,8 +40,8 @@ export default function ProgrammingPage() {
     // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
-      // Force immediate redirect
-      window.location.href = `/signup?redirect=${encodeURIComponent('/tutorials/programming')}`;
+      // Force immediate redirect - use replace to prevent back button
+      window.location.replace(`/signup?redirect=${encodeURIComponent('/tutorials/programming')}`);
       return;
     }
     setIsAuthenticated(true);
