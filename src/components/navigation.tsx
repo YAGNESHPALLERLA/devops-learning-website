@@ -30,17 +30,27 @@ export default function Navigation() {
   };
 
   const handleTutorialClick = (e: React.MouseEvent, href: string) => {
+    // CRITICAL: Prevent default and stop propagation immediately
     e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
     setShowDropdown(false);
     
-    // Check if user is authenticated and token valid
+    // ALWAYS check authentication FIRST - before any navigation
     const authed = isValidToken();
+    
     if (!authed) {
-      // Redirect to registration page with the tutorial URL as redirect parameter
-      // This happens BEFORE any rendering - prevents tutorial page from loading
-      window.location.replace(`/register?redirect=${encodeURIComponent(href)}`);
+      // IMMEDIATELY redirect to registration - prevents ANY page load
+      // Use window.location.replace for immediate, blocking redirect
+      const redirectUrl = `/register?redirect=${encodeURIComponent(href)}`;
+      console.log('[NAV] Not authenticated, redirecting to:', redirectUrl);
+      window.location.replace(redirectUrl);
+      // Return false to prevent any further execution
+      return false;
     } else {
       // User is authenticated, navigate normally
+      console.log('[NAV] Authenticated, navigating to:', href);
       router.push(href);
     }
   };

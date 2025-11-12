@@ -63,7 +63,7 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
     } catch {
       // Invalid token format
       localStorage.removeItem('token');
-      window.location.replace(`/signup?redirect=${encodeURIComponent(currentPath)}`);
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
     }
   }
 }
