@@ -121,7 +121,8 @@ function LoginForm() {
               </div>
             </Link>
             <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-            <p className="text-gray-400">Sign in to access your account</p>
+            <p className="text-gray-400">Sign in to access tutorials, courses, and Jobcy portal</p>
+            <p className="text-xs text-gray-500 mt-1">Same credentials work for both main website and Jobcy</p>
           </div>
 
           {/* Error Message */}
@@ -213,12 +214,12 @@ function LoginForm() {
           <div className="mt-6 text-center space-y-2">
             <p className="text-sm text-gray-400">
               Don't have an account?{" "}
-              <Link href="/jobcy/user/auth/signup" className="text-rose-400 hover:text-rose-300 font-medium">
+              <Link href="/signup" className="text-rose-400 hover:text-rose-300 font-medium">
                 Sign up
               </Link>
             </p>
-            <p className="text-sm text-gray-500">
-              This login works for both the main website and Jobcy portal
+            <p className="text-xs text-gray-500">
+              Same credentials work for both main website and Jobcy portal
             </p>
           </div>
         </div>

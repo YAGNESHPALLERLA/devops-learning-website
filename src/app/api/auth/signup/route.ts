@@ -12,12 +12,13 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
     }
 
-    // Connect to database
+    // Connect to database (same database as Jobcy: jobcy-data)
     const db = await connectDB();
     
     // Check if user already exists in either collection
-    const existingWebsiteUser = await db.collection('website-users').findOne({ email });
-    const existingJobcyUser = await db.collection('users').findOne({ email });
+    // We check both 'website-users' (separate collection) and 'users' (Jobcy collection)
+    const existingWebsiteUser = await db.collection('website-users').findOne({ email: email.toLowerCase() });
+    const existingJobcyUser = await db.collection('users').findOne({ email: email.toLowerCase() });
     
     if (existingWebsiteUser || existingJobcyUser) {
       return NextResponse.json({ error: 'User already exists with this email' }, { status: 400 });
@@ -27,7 +28,8 @@ export async function POST(_request: NextRequest) {
     const bcrypt = await import('bcryptjs');
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user in website-users collection
+    // Create new user in website-users collection (separate collection in same database)
+    // This is the primary storage location for website user credentials
     const newUser = {
       name: name.trim(),
       email: email.trim().toLowerCase(),
@@ -45,12 +47,13 @@ export async function POST(_request: NextRequest) {
       updatedAt: new Date()
     };
 
+    // Store in separate 'website-users' collection in the same database (jobcy-data)
     const result = await db.collection('website-users').insertOne(newUser);
     
-    console.log('Website user created successfully:', result.insertedId);
+    console.log('Website user created successfully in website-users collection:', result.insertedId);
     
-    // Also create a corresponding entry in the users collection for Jobcy compatibility
-    // This allows the same credentials to work for both
+    // Also create a corresponding entry in the 'users' collection for Jobcy compatibility
+    // This allows the same credentials to work for both main website and Jobcy portal
     const jobcyUser = {
       ...newUser,
       source: 'website', // Track origin
@@ -66,8 +69,9 @@ export async function POST(_request: NextRequest) {
       githubUsername: '',
     };
     
+    // Store in 'users' collection for Jobcy portal compatibility
     await db.collection('users').insertOne(jobcyUser);
-    console.log('Jobcy-compatible user created successfully');
+    console.log('Jobcy-compatible user created successfully in users collection');
     
     return NextResponse.json({
       message: 'User registered successfully',

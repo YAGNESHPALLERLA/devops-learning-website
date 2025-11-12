@@ -12,13 +12,15 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: 'Email and password are required' }, { status: 400 });
     }
 
-    // Connect to database
+    // Connect to database (same database as Jobcy: jobcy-data)
     const db = await connectDB();
     
     // Find user in database - check both collections for compatibility
+    // First check 'users' collection (Jobcy users)
     let user = await db.collection('users').findOne({ email: email.toLowerCase() });
     
-    // If not found in users collection, check website-users collection
+    // If not found in 'users' collection, check 'website-users' collection (separate collection for website users)
+    // Both collections are in the same database, allowing shared credentials
     if (!user) {
       user = await db.collection('website-users').findOne({ email: email.toLowerCase() });
     }
