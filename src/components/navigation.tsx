@@ -86,10 +86,10 @@ export default function Navigation() {
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/medical-coding')}
-              onMouseDown={(e) => {
+              onMouseDown={(e: React.MouseEvent) => {
                 if (!isValidToken()) {
                   e.preventDefault();
-                  handleTutorialClick(e as any, '/tutorials/medical-coding');
+                  handleTutorialClick(e, '/tutorials/medical-coding');
                 }
               }}
             >
@@ -101,10 +101,10 @@ export default function Navigation() {
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/programming')}
-              onMouseDown={(e) => {
+              onMouseDown={(e: React.MouseEvent) => {
                 if (!isValidToken()) {
                   e.preventDefault();
-                  handleTutorialClick(e as any, '/tutorials/programming');
+                  handleTutorialClick(e, '/tutorials/programming');
                 }
               }}
             >
@@ -116,10 +116,10 @@ export default function Navigation() {
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/government-jobs')}
-              onMouseDown={(e) => {
+              onMouseDown={(e: React.MouseEvent) => {
                 if (!isValidToken()) {
                   e.preventDefault();
-                  handleTutorialClick(e as any, '/tutorials/government-jobs');
+                  handleTutorialClick(e, '/tutorials/government-jobs');
                 }
               }}
             >
@@ -131,10 +131,10 @@ export default function Navigation() {
             <div 
               className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200 cursor-pointer"
               onClick={(e) => handleTutorialClick(e, '/tutorials/courses')}
-              onMouseDown={(e) => {
+              onMouseDown={(e: React.MouseEvent) => {
                 if (!isValidToken()) {
                   e.preventDefault();
-                  handleTutorialClick(e as any, '/tutorials/courses');
+                  handleTutorialClick(e, '/tutorials/courses');
                 }
               }}
             >
