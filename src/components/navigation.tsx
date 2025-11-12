@@ -33,7 +33,6 @@ export default function Navigation() {
     // CRITICAL: Prevent default and stop propagation immediately
     e.preventDefault();
     e.stopPropagation();
-    e.stopImmediatePropagation();
     
     setShowDropdown(false);
     
