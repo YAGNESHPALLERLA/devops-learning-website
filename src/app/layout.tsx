@@ -80,9 +80,9 @@ export default function RootLayout({
                       
                       console.log('[AUTH] Final registeredEmail check:', registeredEmail);
                       if (registeredEmail && registeredEmail.trim() !== '') {
-                        console.log('[AUTH] ✅ Found registered email, redirecting to continue page');
-                        window.location.href = '/continue?redirect=' + encodeURIComponent(path);
-                        window.stop(); // Stop page loading
+                        console.log('[AUTH] ✅ Found registered email, allowing page to load for modal');
+                        // Don't redirect - let TutorialAuthGuard show the modal instead
+                        // Just allow the page to continue loading
                         return;
                       } else {
                         console.log('[AUTH] ❌ No registered email, redirecting to registration');
@@ -116,13 +116,15 @@ export default function RootLayout({
                             }
                           }
                         }
-                        if (registeredEmail) {
-                          window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                        if (registeredEmail && registeredEmail.trim() !== '') {
+                          console.log('[AUTH] ✅ Found registered email (invalid token), allowing page to load for modal');
+                          // Don't redirect - let TutorialAuthGuard show the modal instead
+                          return;
                         } else {
                           window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                          window.stop(); // Stop page loading
+                          return;
                         }
-                        window.stop(); // Stop page loading
-                        return;
                       }
                       
                       // Check if token is expired
@@ -148,13 +150,15 @@ export default function RootLayout({
                             }
                           }
                         }
-                        if (registeredEmail) {
-                          window.location.href = '/continue?redirect=' + encodeURIComponent(path);
+                        if (registeredEmail && registeredEmail.trim() !== '') {
+                          console.log('[AUTH] ✅ Found registered email (invalid token), allowing page to load for modal');
+                          // Don't redirect - let TutorialAuthGuard show the modal instead
+                          return;
                         } else {
                           window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                          window.stop(); // Stop page loading
+                          return;
                         }
-                        window.stop(); // Stop page loading
-                        return;
                       }
                       console.log('[AUTH] Token valid, allowing access');
                     } catch (e) {
