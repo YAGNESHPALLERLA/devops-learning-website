@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Eye,
@@ -22,7 +22,7 @@ type Errors = {
   general?: string;
 };
 
-export default function GlobalSignup() {
+function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
@@ -348,6 +348,18 @@ export default function GlobalSignup() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function GlobalSignup() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    }>
+      <SignupForm />
+    </Suspense>
   );
 }
 

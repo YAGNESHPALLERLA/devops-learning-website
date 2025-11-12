@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import {
   Eye,
   EyeOff,
@@ -28,7 +27,6 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
-  const router = useRouter();
   const [mode, setMode] = useState<"login" | "signup">("login");
   
   // Login state
