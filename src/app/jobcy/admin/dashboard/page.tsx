@@ -182,7 +182,7 @@ export default function AdminDashboard() {
           fetch(`${"/api/jobcy"}/admin/activity`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch(`${"/api/jobcy"}/users/list`, {
+          fetch(`${"/api/jobcy"}/user/list`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
           fetch(`${"/api/jobcy"}/jobs/browse`, {
