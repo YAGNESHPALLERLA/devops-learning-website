@@ -177,17 +177,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           }
         }
         
-        // Final check - if still no email, redirect to registration
-        if (!registeredEmail || registeredEmail.trim() === '') {
-          // Token valid but no registered email - redirect to registration
-          console.log('[AUTH_GUARD] ❌ Token valid but no registered email found in localStorage or user object, redirecting to registration');
-          setIsAuthenticated(false);
-          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
-          return;
+        // Token is valid - allow access regardless of registeredEmail
+        // registeredEmail is only used for the "continue" modal, not for blocking access
+        if (registeredEmail && registeredEmail.trim() !== '') {
+          console.log('[AUTH_GUARD] ✅ Token valid and registered email exists:', registeredEmail, '- allowing access (modal will show)');
+        } else {
+          console.log('[AUTH_GUARD] ✅ Token valid but no registered email - allowing access anyway (token is sufficient)');
         }
-        
-        // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
-        console.log('[AUTH_GUARD] ✅ Token valid and registered email exists:', registeredEmail, '- allowing access');
         setIsAuthenticated(true);
       } catch {
         // Invalid token format
@@ -287,17 +283,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         }
       }
       
-      // Final check - if still no email, redirect to registration
-      if (!registeredEmail || registeredEmail.trim() === '') {
-        // Token valid but no registered email - redirect to registration
-        console.log('[AUTH_GUARD] ❌ Token valid but no registered email found (non-tutorial route), redirecting to registration');
-        setIsAuthenticated(false);
-        window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);
-        return;
+      // Token is valid - allow access regardless of registeredEmail
+      // registeredEmail is only used for the "continue" modal, not for blocking access
+      if (registeredEmail && registeredEmail.trim() !== '') {
+        console.log('[AUTH_GUARD] ✅ Token valid and registered email exists (non-tutorial route):', registeredEmail, '- allowing access (modal will show)');
+      } else {
+        console.log('[AUTH_GUARD] ✅ Token valid but no registered email (non-tutorial route) - allowing access anyway (token is sufficient)');
       }
-      
-      // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
-      console.log('[AUTH_GUARD] ✅ Token valid and registered email exists (non-tutorial route):', registeredEmail, '- allowing access');
       setIsAuthenticated(true);
     } else {
       if (isTutorialDropdownRoute) {

@@ -193,18 +193,16 @@ export default function RootLayout({
                         }
                       }
                       
-                      // Final check - if still no email, redirect to registration
-                      if (!registeredEmail || registeredEmail.trim() === '') {
-                        console.log('[AUTH] ❌ Token valid but no registered email found in localStorage or user object, redirecting to registration');
-                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
-                        window.stop(); // Stop page loading
-                        return;
+                      // Token is valid - allow access regardless of registeredEmail
+                      // registeredEmail is only used for the "continue" modal, not for blocking access
+                      if (registeredEmail && registeredEmail.trim() !== '') {
+                        console.log('[AUTH] ✅ Token valid and registered email found:', registeredEmail, '- allowing page to load (modal will show)');
+                      } else {
+                        console.log('[AUTH] ✅ Token valid but no registered email - allowing access anyway (token is sufficient)');
                       }
-                      
-                      // Token valid and registered email exists - allow page load (modal will show)
-                      console.log('[AUTH] ✅ Found registered email (valid token):', registeredEmail, '- allowing page to load for modal (will show on every visit)');
-                      // Don't redirect - let TutorialAuthGuard show the modal instead
-                      // The modal will appear on EVERY visit when registered email exists, even with valid token
+                      // Don't redirect - allow page to load
+                      // If registeredEmail exists, modal will show via TutorialAuthGuard
+                      // If not, user can still access with valid token
                       return;
                     } catch (e) {
                       // Invalid token format

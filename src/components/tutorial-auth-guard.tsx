@@ -121,11 +121,10 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
       return;
     }
     
-    // Token is valid but no registered email - redirect to registration
-    console.log('[TUTORIAL_AUTH] Token valid but no registered email, redirecting to registration');
-    const redirectUrl = `/register?redirect=${encodeURIComponent(currentPath)}`;
-    window.location.href = redirectUrl;
-    setIsAuthenticated(false);
+    // Token is valid - allow access even without registered email
+    // registeredEmail is only used for the "continue" modal, not for blocking access
+    console.log('[TUTORIAL_AUTH] ✅ Token valid but no registered email - allowing access anyway (token is sufficient)');
+    setIsAuthenticated(true);
     return;
   }, [pathname]);
 
