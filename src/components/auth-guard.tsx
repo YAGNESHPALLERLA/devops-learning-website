@@ -155,6 +155,37 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           }
           return;
         }
+        
+        // Token is valid - check for registered email
+        let registeredEmail = localStorage.getItem("registeredEmail");
+        if (!registeredEmail) {
+          const userStr = localStorage.getItem("user");
+          if (userStr) {
+            try {
+              const user = JSON.parse(userStr);
+              if (user && user.email && typeof user.email === 'string') {
+                registeredEmail = user.email;
+                if (registeredEmail) {
+                  localStorage.setItem("registeredEmail", registeredEmail);
+                }
+              }
+            } catch (e) {
+              // Ignore parse errors
+            }
+          }
+        }
+        
+        if (!registeredEmail || registeredEmail.trim() === '') {
+          // Token valid but no registered email - redirect to registration
+          console.log('[AUTH_GUARD] Token valid but no registered email, redirecting to registration');
+          setIsAuthenticated(false);
+          window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          return;
+        }
+        
+        // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
+        console.log('[AUTH_GUARD] Token valid and registered email exists, allowing access');
+        setIsAuthenticated(true);
       } catch {
         // Invalid token format
         localStorage.removeItem('token');
@@ -229,6 +260,35 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
     
     if (isValid) {
+      // Token is valid - check for registered email
+      let registeredEmail = localStorage.getItem("registeredEmail");
+      if (!registeredEmail) {
+        const userStr = localStorage.getItem("user");
+        if (userStr) {
+          try {
+            const user = JSON.parse(userStr);
+            if (user && user.email && typeof user.email === 'string') {
+              registeredEmail = user.email;
+              if (registeredEmail) {
+                localStorage.setItem("registeredEmail", registeredEmail);
+              }
+            }
+          } catch (e) {
+            // Ignore parse errors
+          }
+        }
+      }
+      
+      if (!registeredEmail || registeredEmail.trim() === '') {
+        // Token valid but no registered email - redirect to registration
+        console.log('[AUTH_GUARD] Token valid but no registered email (non-tutorial route), redirecting to registration');
+        setIsAuthenticated(false);
+        window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);
+        return;
+      }
+      
+      // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
+      console.log('[AUTH_GUARD] Token valid and registered email exists (non-tutorial route), allowing access');
       setIsAuthenticated(true);
     } else {
       if (isTutorialOrCourse) {

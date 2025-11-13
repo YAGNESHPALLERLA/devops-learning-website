@@ -190,7 +190,11 @@ export default function RootLayout({
                         return;
                       }
                       
-                      console.log('[AUTH] Token valid, no registered email, allowing access');
+                      // Token is valid but no registered email - redirect to registration
+                      console.log('[AUTH] ❌ Token valid but no registered email, redirecting to registration');
+                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                      window.stop(); // Stop page loading
+                      return;
                     } catch (e) {
                       // Invalid token format
                       console.log('[AUTH] Token validation error, checking for registered email', e);
