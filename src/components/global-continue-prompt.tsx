@@ -94,7 +94,7 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    // Check for registered email
+    // Check for registered email in localStorage
     let email = localStorage.getItem('registeredEmail');
     
     // Fallback: check stored user object for email
@@ -118,22 +118,51 @@ export default function GlobalContinuePrompt() {
       }
     }
     
-    // If registered email exists, show modal once per session
-    if (email && email.trim() !== '') {
-      console.log('[GLOBAL_CONTINUE] Found registered email, showing continue modal (once per session)');
-      setRegisteredEmail(email);
-      // Show modal after a short delay for better UX
-      const timer = setTimeout(() => {
-        setShowContinueModal(true);
-        // Mark as shown in this session
-        sessionStorage.setItem(sessionKey, 'true');
-      }, 1000); // 1 second delay
-      
+    // If no email found, don't show modal
+    if (!email || email.trim() === '') {
+      console.log('[GLOBAL_CONTINUE] No registered email found in localStorage');
       setHasChecked(true);
-      return () => clearTimeout(timer);
+      return;
     }
     
-    setHasChecked(true);
+    // Verify email exists in database before showing modal
+    console.log('[GLOBAL_CONTINUE] Checking if email exists in database:', email);
+    try {
+      const response = await fetch('/api/check-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok && data.exists === true) {
+        console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
+        setRegisteredEmail(email.trim());
+        // Show modal after a short delay for better UX
+        const timer = setTimeout(() => {
+          setShowContinueModal(true);
+          // Mark as shown in this session
+          sessionStorage.setItem(sessionKey, 'true');
+        }, 1000); // 1 second delay
+        
+        setHasChecked(true);
+        return () => clearTimeout(timer);
+      } else {
+        console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
+        // Email not in database - clear it from localStorage
+        localStorage.removeItem('registeredEmail');
+        setHasChecked(true);
+        return;
+      }
+    } catch (error) {
+      console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
+      // On error, don't show modal to be safe
+      setHasChecked(true);
+      return;
+    }
   }, [pathname]);
 
   // Don't render anything until we've checked
