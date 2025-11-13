@@ -57,6 +57,18 @@ export default function GlobalContinuePrompt() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isCheckingRef = useRef<boolean>(false); // Track if we're already checking
   const hasProcessedSessionRef = useRef<boolean>(false); // Track if we've already processed this session
+  const sessionKey = 'continueModalShown';
+
+  // Initialize: Check sessionStorage once on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
+    if (hasShownInSession) {
+      hasProcessedSessionRef.current = true;
+      setHasChecked(true);
+    }
+  }, []); // Run only once on mount
 
   useEffect(() => {
     // Only run on client side
@@ -64,8 +76,6 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    const sessionKey = 'continueModalShown';
-    
     // CRITICAL: Check sessionStorage FIRST - before ANY other checks
     // This ensures modal only shows once per session regardless of navigation
     const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
