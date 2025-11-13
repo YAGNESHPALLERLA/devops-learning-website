@@ -28,25 +28,22 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Check if trying to access tutorials or courses FIRST - before checking anything else
+    // Check if trying to access tutorials dropdown routes - only these require registration
     const currentPath = window.location.pathname;
-    const isTutorialOrCourse = 
-      currentPath.startsWith("/tutorials") ||
-      currentPath === "/java" ||
-      currentPath === "/python" ||
-      currentPath === "/sql" ||
-      currentPath === "/linux" ||
-      currentPath === "/devops" ||
-      currentPath === "/web-dev" ||
-      currentPath === "/data-science" ||
-      currentPath === "/code-terminal" ||
-      currentPath === "/terminal" ||
-      currentPath === "/menu";
+    const isTutorialDropdownRoute = 
+      currentPath === "/tutorials/medical-coding" ||
+      currentPath === "/tutorials/programming" ||
+      currentPath === "/tutorials/government-jobs" ||
+      currentPath === "/tutorials/courses" ||
+      currentPath.startsWith("/tutorials/medical-coding/") ||
+      currentPath.startsWith("/tutorials/programming/") ||
+      currentPath.startsWith("/tutorials/government-jobs/") ||
+      currentPath.startsWith("/tutorials/courses/");
     
-    if (isTutorialOrCourse) {
+    if (isTutorialDropdownRoute) {
       // Check for token IMMEDIATELY and validate it
       const token = localStorage.getItem("token");
-      console.log('[AUTH_GUARD] Tutorial route detected:', currentPath);
+      console.log('[AUTH_GUARD] Tutorial dropdown route detected:', currentPath);
       console.log('[AUTH_GUARD] Token check:', token ? 'exists' : 'missing');
       
       if (!token || token.trim() === "" || token === "null" || token === "undefined") {
@@ -303,7 +300,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       console.log('[AUTH_GUARD] ✅ Token valid and registered email exists (non-tutorial route):', registeredEmail, '- allowing access');
       setIsAuthenticated(true);
     } else {
-      if (isTutorialOrCourse) {
+      if (isTutorialDropdownRoute) {
         // Already handled above, but double-check
         setIsAuthenticated(false);
         window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);

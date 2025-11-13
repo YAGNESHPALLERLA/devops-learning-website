@@ -41,6 +41,25 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
     }
 
     const currentPath = pathname || window.location.pathname;
+    
+    // Only require registration for tutorials dropdown routes
+    const isTutorialDropdownRoute = 
+      currentPath === "/tutorials/medical-coding" ||
+      currentPath === "/tutorials/programming" ||
+      currentPath === "/tutorials/government-jobs" ||
+      currentPath === "/tutorials/courses" ||
+      currentPath.startsWith("/tutorials/medical-coding/") ||
+      currentPath.startsWith("/tutorials/programming/") ||
+      currentPath.startsWith("/tutorials/government-jobs/") ||
+      currentPath.startsWith("/tutorials/courses/");
+    
+    // If not a dropdown route, allow access without registration
+    if (!isTutorialDropdownRoute) {
+      console.log('[TUTORIAL_AUTH] Not a dropdown route, allowing access:', currentPath);
+      setIsAuthenticated(true);
+      return;
+    }
+    
     const token = localStorage.getItem('token');
     
     // ALWAYS check for registered email first (regardless of token validity)

@@ -43,11 +43,16 @@ export default function RootLayout({
               (function() {
                 try {
                   const path = window.location.pathname;
-                  const isTutorialRoute = path.startsWith('/tutorials') || 
-                    path === '/java' || path === '/python' || path === '/sql' || 
-                    path === '/linux' || path === '/devops' || path === '/web-dev' || 
-                    path === '/data-science' || path === '/code-terminal' || 
-                    path === '/terminal' || path === '/menu';
+                  // Only require registration for tutorials dropdown routes
+                  const isTutorialRoute = 
+                    path === '/tutorials/medical-coding' ||
+                    path === '/tutorials/programming' ||
+                    path === '/tutorials/government-jobs' ||
+                    path === '/tutorials/courses' ||
+                    path.startsWith('/tutorials/medical-coding/') ||
+                    path.startsWith('/tutorials/programming/') ||
+                    path.startsWith('/tutorials/government-jobs/') ||
+                    path.startsWith('/tutorials/courses/');
                   
                   if (isTutorialRoute) {
                     const token = localStorage.getItem('token');
