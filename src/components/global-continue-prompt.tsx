@@ -70,17 +70,20 @@ export default function GlobalContinuePrompt() {
     // Fallback: check stored user object for email
     if (!email || email.trim() === '') {
       const userStr = localStorage.getItem('user');
+      console.log('[GLOBAL_CONTINUE] Checking user object for email, userStr exists:', !!userStr);
       if (userStr) {
         try {
           const user = JSON.parse(userStr);
-          if (user && user.email && typeof user.email === 'string') {
-            email = user.email;
-            if (email && email.trim() !== '') {
+          console.log('[GLOBAL_CONTINUE] Parsed user object:', user);
+          if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
+            email = user.email.trim();
+            console.log('[GLOBAL_CONTINUE] Found email in user object:', email);
+            if (email) {
               localStorage.setItem('registeredEmail', email);
             }
           }
         } catch (e) {
-          // Ignore parse errors
+          console.error('[GLOBAL_CONTINUE] Error parsing user object:', e);
         }
       }
     }

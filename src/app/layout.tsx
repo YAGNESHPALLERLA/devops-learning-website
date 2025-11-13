@@ -163,37 +163,41 @@ export default function RootLayout({
                         }
                       }
                       
-                      // Token is valid - BUT still check for registered email to show modal
+                      // Token is valid - extract and store registered email from user object or token
                       console.log('[AUTH] Token valid, checking for registered email to show modal');
                       let registeredEmail = localStorage.getItem('registeredEmail');
-                      if (!registeredEmail) {
+                      
+                      // If no registeredEmail, try to extract from user object
+                      if (!registeredEmail || registeredEmail.trim() === '') {
                         const userStr = localStorage.getItem('user');
+                        console.log('[AUTH] Checking user object for email, userStr exists:', !!userStr);
                         if (userStr) {
                           try {
                             const user = JSON.parse(userStr);
-                            if (user && user.email && typeof user.email === 'string') {
-                              registeredEmail = user.email;
-                              if (registeredEmail) {
-                                localStorage.setItem('registeredEmail', registeredEmail);
-                              }
+                            console.log('[AUTH] Parsed user object:', user);
+                            if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
+                              registeredEmail = user.email.trim();
+                              console.log('[AUTH] Found email in user object:', registeredEmail);
+                              localStorage.setItem('registeredEmail', registeredEmail);
                             }
                           } catch (e) {
-                            // Ignore parse errors
+                            console.error('[AUTH] Error parsing user object:', e);
                           }
                         }
                       }
                       
-                      if (registeredEmail && registeredEmail.trim() !== '') {
-                        console.log('[AUTH] ✅ Found registered email (valid token), allowing page to load for modal (will show on every visit)');
-                        // Don't redirect - let TutorialAuthGuard show the modal instead
-                        // The modal will appear on EVERY visit when registered email exists, even with valid token
+                      // Final check - if still no email, redirect to registration
+                      if (!registeredEmail || registeredEmail.trim() === '') {
+                        console.log('[AUTH] ❌ Token valid but no registered email found in localStorage or user object, redirecting to registration');
+                        window.location.href = '/register?redirect=' + encodeURIComponent(path);
+                        window.stop(); // Stop page loading
                         return;
                       }
                       
-                      // Token is valid but no registered email - redirect to registration
-                      console.log('[AUTH] ❌ Token valid but no registered email, redirecting to registration');
-                      window.location.href = '/register?redirect=' + encodeURIComponent(path);
-                      window.stop(); // Stop page loading
+                      // Token valid and registered email exists - allow page load (modal will show)
+                      console.log('[AUTH] ✅ Found registered email (valid token):', registeredEmail, '- allowing page to load for modal (will show on every visit)');
+                      // Don't redirect - let TutorialAuthGuard show the modal instead
+                      // The modal will appear on EVERY visit when registered email exists, even with valid token
                       return;
                     } catch (e) {
                       // Invalid token format

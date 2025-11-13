@@ -156,35 +156,39 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           return;
         }
         
-        // Token is valid - check for registered email
+        // Token is valid - extract and store registered email from user object
         let registeredEmail = localStorage.getItem("registeredEmail");
-        if (!registeredEmail) {
+        
+        // If no registeredEmail, try to extract from user object
+        if (!registeredEmail || registeredEmail.trim() === '') {
           const userStr = localStorage.getItem("user");
+          console.log('[AUTH_GUARD] Checking user object for email, userStr exists:', !!userStr);
           if (userStr) {
             try {
               const user = JSON.parse(userStr);
-              if (user && user.email && typeof user.email === 'string') {
-                registeredEmail = user.email;
-                if (registeredEmail) {
-                  localStorage.setItem("registeredEmail", registeredEmail);
-                }
+              console.log('[AUTH_GUARD] Parsed user object:', user);
+              if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
+                registeredEmail = user.email.trim();
+                console.log('[AUTH_GUARD] Found email in user object:', registeredEmail);
+                localStorage.setItem("registeredEmail", registeredEmail);
               }
             } catch (e) {
-              // Ignore parse errors
+              console.error('[AUTH_GUARD] Error parsing user object:', e);
             }
           }
         }
         
+        // Final check - if still no email, redirect to registration
         if (!registeredEmail || registeredEmail.trim() === '') {
           // Token valid but no registered email - redirect to registration
-          console.log('[AUTH_GUARD] Token valid but no registered email, redirecting to registration');
+          console.log('[AUTH_GUARD] ❌ Token valid but no registered email found in localStorage or user object, redirecting to registration');
           setIsAuthenticated(false);
           window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
           return;
         }
         
         // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
-        console.log('[AUTH_GUARD] Token valid and registered email exists, allowing access');
+        console.log('[AUTH_GUARD] ✅ Token valid and registered email exists:', registeredEmail, '- allowing access');
         setIsAuthenticated(true);
       } catch {
         // Invalid token format
@@ -260,35 +264,39 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
     
     if (isValid) {
-      // Token is valid - check for registered email
+      // Token is valid - extract and store registered email from user object
       let registeredEmail = localStorage.getItem("registeredEmail");
-      if (!registeredEmail) {
+      
+      // If no registeredEmail, try to extract from user object
+      if (!registeredEmail || registeredEmail.trim() === '') {
         const userStr = localStorage.getItem("user");
+        console.log('[AUTH_GUARD] Checking user object for email (non-tutorial), userStr exists:', !!userStr);
         if (userStr) {
           try {
             const user = JSON.parse(userStr);
-            if (user && user.email && typeof user.email === 'string') {
-              registeredEmail = user.email;
-              if (registeredEmail) {
-                localStorage.setItem("registeredEmail", registeredEmail);
-              }
+            console.log('[AUTH_GUARD] Parsed user object (non-tutorial):', user);
+            if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
+              registeredEmail = user.email.trim();
+              console.log('[AUTH_GUARD] Found email in user object (non-tutorial):', registeredEmail);
+              localStorage.setItem("registeredEmail", registeredEmail);
             }
           } catch (e) {
-            // Ignore parse errors
+            console.error('[AUTH_GUARD] Error parsing user object (non-tutorial):', e);
           }
         }
       }
       
+      // Final check - if still no email, redirect to registration
       if (!registeredEmail || registeredEmail.trim() === '') {
         // Token valid but no registered email - redirect to registration
-        console.log('[AUTH_GUARD] Token valid but no registered email (non-tutorial route), redirecting to registration');
+        console.log('[AUTH_GUARD] ❌ Token valid but no registered email found (non-tutorial route), redirecting to registration');
         setIsAuthenticated(false);
         window.location.replace(`/register?redirect=${encodeURIComponent(pathname)}`);
         return;
       }
       
       // Token valid and registered email exists - allow access (modal will show via GlobalContinuePrompt)
-      console.log('[AUTH_GUARD] Token valid and registered email exists (non-tutorial route), allowing access');
+      console.log('[AUTH_GUARD] ✅ Token valid and registered email exists (non-tutorial route):', registeredEmail, '- allowing access');
       setIsAuthenticated(true);
     } else {
       if (isTutorialOrCourse) {
