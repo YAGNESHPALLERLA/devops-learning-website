@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import ContinueModal from '@/components/continue-modal';
 
@@ -54,6 +54,7 @@ export default function GlobalContinuePrompt() {
   const [showContinueModal, setShowContinueModal] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
   const [hasChecked, setHasChecked] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Only run on client side
@@ -127,42 +128,54 @@ export default function GlobalContinuePrompt() {
     
     // Verify email exists in database before showing modal
     console.log('[GLOBAL_CONTINUE] Checking if email exists in database:', email);
-    try {
-      const response = await fetch('/api/check-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok && data.exists === true) {
-        console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
-        setRegisteredEmail(email.trim());
-        // Show modal after a short delay for better UX
-        const timer = setTimeout(() => {
-          setShowContinueModal(true);
-          // Mark as shown in this session
-          sessionStorage.setItem(sessionKey, 'true');
-        }, 1000); // 1 second delay
+    
+    // Create async function to check email
+    const checkEmailInDatabase = async () => {
+      try {
+        const response = await fetch('/api/check-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email.trim() }),
+        });
         
+        const data = await response.json();
+        
+        if (response.ok && data.exists === true) {
+          console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
+          setRegisteredEmail(email.trim());
+          // Show modal after a short delay for better UX
+          timerRef.current = setTimeout(() => {
+            setShowContinueModal(true);
+            // Mark as shown in this session
+            sessionStorage.setItem(sessionKey, 'true');
+          }, 1000); // 1 second delay
+          
+          setHasChecked(true);
+        } else {
+          console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
+          // Email not in database - clear it from localStorage
+          localStorage.removeItem('registeredEmail');
+          setHasChecked(true);
+        }
+      } catch (error) {
+        console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
+        // On error, don't show modal to be safe
         setHasChecked(true);
-        return () => clearTimeout(timer);
-      } else {
-        console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
-        // Email not in database - clear it from localStorage
-        localStorage.removeItem('registeredEmail');
-        setHasChecked(true);
-        return;
       }
-    } catch (error) {
-      console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
-      // On error, don't show modal to be safe
-      setHasChecked(true);
-      return;
-    }
+    };
+    
+    // Call the async function
+    checkEmailInDatabase();
+    
+    // Cleanup function
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
   }, [pathname]);
 
   // Don't render anything until we've checked
