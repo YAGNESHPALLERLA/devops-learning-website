@@ -41,6 +41,14 @@ const excludedRoutes = [
   '/jobcy/company/auth/login',
 ];
 
+// Only show modal for tutorials dropdown routes
+const tutorialsDropdownRoutes = [
+  '/tutorials/medical-coding',
+  '/tutorials/programming',
+  '/tutorials/government-jobs',
+  '/tutorials/courses',
+];
+
 export default function GlobalContinuePrompt() {
   const pathname = usePathname();
   const [showContinueModal, setShowContinueModal] = useState(false);
@@ -53,13 +61,35 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    // Don't show on excluded routes
     const currentPath = pathname || window.location.pathname;
+    
+    // Don't show on excluded routes
     const isExcluded = excludedRoutes.some(route => 
       currentPath === route || currentPath.startsWith(route)
     );
 
     if (isExcluded) {
+      setHasChecked(true);
+      return;
+    }
+
+    // Only show for tutorials dropdown routes
+    const isTutorialDropdownRoute = 
+      tutorialsDropdownRoutes.some(route => 
+        currentPath === route || currentPath.startsWith(route + '/')
+      );
+
+    if (!isTutorialDropdownRoute) {
+      setHasChecked(true);
+      return;
+    }
+
+    // Check if modal has already been shown in this session
+    const sessionKey = 'continueModalShown';
+    const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
+    
+    if (hasShownInSession) {
+      console.log('[GLOBAL_CONTINUE] Modal already shown in this session, skipping');
       setHasChecked(true);
       return;
     }
@@ -88,14 +118,15 @@ export default function GlobalContinuePrompt() {
       }
     }
     
-    // If registered email exists, show modal on EVERY visit
-    // Add a small delay to avoid jarring immediate popup
+    // If registered email exists, show modal once per session
     if (email && email.trim() !== '') {
-      console.log('[GLOBAL_CONTINUE] Found registered email, showing continue modal (every visit)');
+      console.log('[GLOBAL_CONTINUE] Found registered email, showing continue modal (once per session)');
       setRegisteredEmail(email);
       // Show modal after a short delay for better UX
       const timer = setTimeout(() => {
         setShowContinueModal(true);
+        // Mark as shown in this session
+        sessionStorage.setItem(sessionKey, 'true');
       }, 1000); // 1 second delay
       
       setHasChecked(true);
@@ -118,6 +149,8 @@ export default function GlobalContinuePrompt() {
         redirectTo={pathname || window.location.pathname}
         onClose={() => {
           setShowContinueModal(false);
+          // Mark as shown in this session so it doesn't show again
+          sessionStorage.setItem('continueModalShown', 'true');
           // If token is valid, allow access after closing
           const token = localStorage.getItem('token');
           if (token && isValidToken(token)) {

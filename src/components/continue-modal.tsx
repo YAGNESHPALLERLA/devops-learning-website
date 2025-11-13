@@ -15,6 +15,11 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
   const [isVisible, setIsVisible] = useState(true);
 
   const handleContinue = () => {
+    // Mark as shown in this session so it doesn't show again
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('continueModalShown', 'true');
+    }
+    
     // Check if user has a valid token
     const token = localStorage.getItem('token');
     if (token && token.trim() !== '' && token !== 'null' && token !== 'undefined') {
@@ -29,7 +34,7 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
             if (onClose) {
               onClose();
             }
-            // Don't reload - just allow access. Modal will show again on next visit to tutorial page
+            // Don't reload - just allow access. Modal won't show again in this session
             return;
           }
         }
@@ -54,6 +59,10 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
   };
 
   const handleClose = () => {
+    // Mark as shown in this session so it doesn't show again
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('continueModalShown', 'true');
+    }
     setIsVisible(false);
     if (onClose) {
       onClose();
