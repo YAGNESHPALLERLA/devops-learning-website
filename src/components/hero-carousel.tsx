@@ -5,53 +5,93 @@ import { useState, useEffect, useRef } from 'react';
 const slides = [
   {
     id: 1,
-    title: 'Master DevOps',
-    subtitle: '< From Zero to Hero',
-    description: 'Transform your career with comprehensive DevOps training. Learn Docker, Kubernetes, CI/CD pipelines, and cloud infrastructure with real-world projects.',
+    title: 'Java Full Stack',
+    subtitle: '< Enterprise-Grade Development',
+    description: 'Master Java full stack development from frontend to backend. Learn Spring Boot, React, microservices, and build scalable enterprise applications.',
     buttonText: 'Start Learning',
-    buttonLink: '/devops',
-    icon: '🚀',
-    backgroundGradient: 'from-blue-500 to-indigo-600',
+    buttonLink: '/tutorials/java-fullstack',
+    icon: '☕',
+    backgroundGradient: 'from-orange-500 to-red-600',
   },
   {
     id: 2,
-    title: 'Python for Everyone',
-    subtitle: '< Code, Automate, Innovate',
-    description: 'Master Python from basics to advanced. Build web apps, analyze data, create AI models, and automate tasks with the world\'s most popular programming language.',
+    title: 'Python Full Stack',
+    subtitle: '< Build Modern Web Applications',
+    description: 'Master Python full stack development with Django, Flask, React, and modern frameworks. Build complete web applications from database to UI.',
     buttonText: 'Explore Python',
-    buttonLink: '/python',
+    buttonLink: '/tutorials/python-fullstack',
     icon: '🐍',
     backgroundGradient: 'from-green-500 to-emerald-600',
   },
   {
     id: 3,
-    title: 'Java Development',
-    subtitle: '< Build Enterprise Applications',
-    description: 'Become a Java expert and build scalable enterprise applications. Master Spring Framework, microservices, and modern Java development practices.',
-    buttonText: 'Learn Java',
-    buttonLink: '/java',
-    icon: '☕',
-    backgroundGradient: 'from-orange-500 to-red-600',
+    title: 'DevOps',
+    subtitle: '< AWS, Azure & GCP',
+    description: 'Master DevOps across all major cloud platforms. Learn AWS, Azure, and GCP with Docker, Kubernetes, CI/CD pipelines, and infrastructure automation.',
+    buttonText: 'Learn DevOps',
+    buttonLink: '/tutorials/devops',
+    icon: '🚀',
+    backgroundGradient: 'from-blue-500 to-indigo-600',
   },
   {
     id: 4,
-    title: 'Web Development',
-    subtitle: '< Create Stunning Websites',
-    description: 'Build modern, responsive web applications with React, Node.js, and cutting-edge technologies. From frontend to full-stack development.',
-    buttonText: 'Start Web Dev',
-    buttonLink: '/web-dev',
-    icon: '🌐',
+    title: 'Data Engineering',
+    subtitle: '< Azure, AWS & GCP',
+    description: 'Become a data engineering expert across cloud platforms. Master data pipelines, ETL processes, data warehousing, and big data technologies on Azure, AWS, and GCP.',
+    buttonText: 'Start Learning',
+    buttonLink: '/tutorials/data-engineering',
+    icon: '📊',
     backgroundGradient: 'from-purple-500 to-pink-600',
   },
   {
     id: 5,
-    title: 'Database Management',
-    subtitle: '< SQL & NoSQL Mastery',
-    description: 'Master database design, optimization, and management. Learn SQL, NoSQL databases, data modeling, and advanced querying techniques.',
-    buttonText: 'Explore Databases',
-    buttonLink: '/sql',
-    icon: '🗄️',
+    title: 'Data Science & AI',
+    subtitle: '< Analytics & Machine Learning',
+    description: 'Master data science and artificial intelligence. Learn machine learning, deep learning, data analysis, and build intelligent applications.',
+    buttonText: 'Explore Data Science',
+    buttonLink: '/tutorials/data-science-ai',
+    icon: '🤖',
     backgroundGradient: 'from-indigo-500 to-blue-600',
+  },
+  {
+    id: 6,
+    title: 'AI (Artificial Intelligence)',
+    subtitle: '< Future of Technology',
+    description: 'Dive deep into artificial intelligence. Learn neural networks, natural language processing, computer vision, and build cutting-edge AI solutions.',
+    buttonText: 'Learn AI',
+    buttonLink: '/tutorials/ai',
+    icon: '🧠',
+    backgroundGradient: 'from-cyan-500 to-teal-600',
+  },
+  {
+    id: 7,
+    title: 'SAP',
+    subtitle: '< Enterprise Solutions',
+    description: 'Master SAP systems and enterprise resource planning. Learn SAP modules, implementation, configuration, and become a certified SAP professional.',
+    buttonText: 'Explore SAP',
+    buttonLink: '/tutorials/sap',
+    icon: '💼',
+    backgroundGradient: 'from-yellow-500 to-orange-600',
+  },
+  {
+    id: 8,
+    title: 'Microsoft Fabric Analytics',
+    subtitle: '< Unified Analytics Platform',
+    description: 'Master Microsoft Fabric for modern analytics. Learn data integration, warehousing, real-time analytics, and build comprehensive data solutions.',
+    buttonText: 'Start Learning',
+    buttonLink: '/tutorials/microsoft-fabric',
+    icon: '📈',
+    backgroundGradient: 'from-blue-500 to-cyan-600',
+  },
+  {
+    id: 9,
+    title: 'Medical Coding',
+    subtitle: '< Healthcare Documentation',
+    description: 'Master medical coding and billing. Learn ICD-10, CPT codes, healthcare documentation, and become a certified medical coding professional.',
+    buttonText: 'Learn Medical Coding',
+    buttonLink: '/tutorials/medical-coding',
+    icon: '🏥',
+    backgroundGradient: 'from-red-500 to-pink-600',
   },
 ];
 
@@ -147,11 +187,18 @@ export default function HeroCarousel() {
             key={slide.id}
             className="flex-shrink-0 w-full h-full flex items-center justify-between p-6 md:p-12 text-white"
             style={{ 
-              background: `linear-gradient(135deg, ${slide.backgroundGradient.includes('blue') ? '#0c1220, #1e3a8a, #3b82f6, #60a5fa' :
+              background: `linear-gradient(135deg, ${slide.backgroundGradient.includes('blue') && slide.backgroundGradient.includes('indigo') ? '#0c1220, #1e3a8a, #3b82f6, #60a5fa' :
+                slide.backgroundGradient.includes('blue') && slide.backgroundGradient.includes('cyan') ? '#083344, #0e7490, #06b6d4, #22d3ee' :
                 slide.backgroundGradient.includes('green') ? '#052e16, #166534, #16a34a, #4ade80' :
                   slide.backgroundGradient.includes('red') ? '#450a0a, #991b1b, #dc2626, #f87171' :
                     slide.backgroundGradient.includes('orange') ? '#7c2d12, #ea580c, #f97316, #fb923c' :
-                      '#0f0f0f'})`
+                      slide.backgroundGradient.includes('purple') ? '#3b0764, #7c3aed, #a855f7, #c084fc' :
+                        slide.backgroundGradient.includes('indigo') ? '#1e1b4b, #4338ca, #6366f1, #818cf8' :
+                          slide.backgroundGradient.includes('cyan') ? '#083344, #0e7490, #06b6d4, #22d3ee' :
+                            slide.backgroundGradient.includes('teal') ? '#042f2e, #0f766e, #14b8a6, #5eead4' :
+                              slide.backgroundGradient.includes('yellow') ? '#713f12, #ca8a04, #eab308, #fde047' :
+                                slide.backgroundGradient.includes('pink') ? '#831843, #be185d, #ec4899, #f9a8d4' :
+                                  '#0f0f0f'})`
             }}
           >
             <div className="max-w-2xl text-left relative z-30">
