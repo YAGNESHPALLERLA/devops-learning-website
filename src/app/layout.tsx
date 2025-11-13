@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ConditionalNav } from "@/components/conditional-nav";
 import AuthGuard from "@/components/auth-guard";
+import GlobalContinuePrompt from "@/components/global-continue-prompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -230,6 +231,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthGuard>
+          <GlobalContinuePrompt />
           <ConditionalNav />
           {children}
         </AuthGuard>
