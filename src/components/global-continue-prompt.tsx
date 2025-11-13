@@ -56,6 +56,7 @@ export default function GlobalContinuePrompt() {
   const [hasChecked, setHasChecked] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isCheckingRef = useRef<boolean>(false); // Track if we're already checking
+  const hasProcessedSessionRef = useRef<boolean>(false); // Track if we've already processed this session
 
   useEffect(() => {
     // Only run on client side
@@ -63,37 +64,56 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    const currentPath = pathname || window.location.pathname;
     const sessionKey = 'continueModalShown';
     
-    // CRITICAL: Check sessionStorage FIRST - before any other checks
+    // CRITICAL: Check sessionStorage FIRST - before ANY other checks
     // This ensures modal only shows once per session regardless of navigation
     const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
     
     if (hasShownInSession) {
-      console.log('[GLOBAL_CONTINUE] Modal already shown in this session, skipping all checks');
-      setHasChecked(true);
+      // If already shown in session, skip everything immediately
+      // Don't even check pathname or anything else
+      if (!hasChecked) {
+        setHasChecked(true);
+      }
       return;
     }
     
-    // Don't show on excluded routes
-    const isExcluded = excludedRoutes.some(route => 
-      currentPath === route || currentPath.startsWith(route)
-    );
-
-    if (isExcluded) {
-      setHasChecked(true);
+    // If we've already processed this session (even if sessionStorage wasn't set yet), skip
+    if (hasProcessedSessionRef.current) {
       return;
     }
 
-    // Only show for tutorials dropdown routes
-    const isTutorialDropdownRoute = 
-      tutorialsDropdownRoutes.some(route => 
-        currentPath === route || currentPath.startsWith(route + '/')
+    // Use a function to check current path (called when needed)
+    const checkAndShowModal = () => {
+      const currentPath = pathname || window.location.pathname;
+      
+      // Don't show on excluded routes
+      const isExcluded = excludedRoutes.some(route => 
+        currentPath === route || currentPath.startsWith(route)
       );
 
-    if (!isTutorialDropdownRoute) {
-      setHasChecked(true);
+      if (isExcluded) {
+        setHasChecked(true);
+        return false;
+      }
+
+      // Only show for tutorials dropdown routes
+      const isTutorialDropdownRoute = 
+        tutorialsDropdownRoutes.some(route => 
+          currentPath === route || currentPath.startsWith(route + '/')
+        );
+
+      if (!isTutorialDropdownRoute) {
+        setHasChecked(true);
+        return false;
+      }
+      
+      return true; // Should show modal
+    };
+    
+    // Check if we should show modal for current route
+    if (!checkAndShowModal()) {
       return;
     }
     
@@ -159,7 +179,8 @@ export default function GlobalContinuePrompt() {
         const data = await response.json();
         
         if (response.ok && data.exists === true) {
-          // IMPORTANT: Mark as shown IMMEDIATELY to prevent showing on navigation
+          // IMPORTANT: Mark as processed and shown IMMEDIATELY to prevent showing on navigation
+          hasProcessedSessionRef.current = true;
           sessionStorage.setItem(sessionKey, 'true');
           
           console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
@@ -174,14 +195,16 @@ export default function GlobalContinuePrompt() {
           console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
           // Email not in database - clear it from localStorage
           localStorage.removeItem('registeredEmail');
-          // Mark as checked so we don't check again
+          // Mark as processed so we don't check again this session
+          hasProcessedSessionRef.current = true;
           sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
           setHasChecked(true);
         }
       } catch (error) {
         console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
         // On error, don't show modal to be safe
-        // Mark as checked so we don't check again
+        // Mark as processed so we don't check again this session
+        hasProcessedSessionRef.current = true;
         sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
         setHasChecked(true);
       } finally {
@@ -200,15 +223,24 @@ export default function GlobalContinuePrompt() {
         timerRef.current = null;
       }
     };
-  }, [pathname]);
+  }, [pathname]); // Include pathname to check on navigation, but sessionStorage check FIRST prevents re-processing
 
   // Don't render anything until we've checked
   if (!hasChecked) {
     return null;
   }
 
-  // Show continue modal if email found
-  if (showContinueModal && registeredEmail) {
+  // Check if modal should be shown - verify sessionStorage hasn't changed
+  const sessionKey = 'continueModalShown';
+  const hasShownInSession = typeof window !== 'undefined' && sessionStorage.getItem(sessionKey) === 'true';
+  
+  // If sessionStorage says it's been shown, but modal state says show, hide it
+  if (hasShownInSession && showContinueModal) {
+    setShowContinueModal(false);
+  }
+
+  // Show continue modal if email found and not already shown in session
+  if (showContinueModal && registeredEmail && !hasShownInSession) {
     return (
       <ContinueModal
         registeredEmail={registeredEmail}
@@ -216,7 +248,10 @@ export default function GlobalContinuePrompt() {
         onClose={() => {
           setShowContinueModal(false);
           // Mark as shown in this session so it doesn't show again
-          sessionStorage.setItem('continueModalShown', 'true');
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('continueModalShown', 'true');
+            hasProcessedSessionRef.current = true;
+          }
           // If token is valid, allow access after closing
           const token = localStorage.getItem('token');
           if (token && isValidToken(token)) {
