@@ -55,6 +55,7 @@ export default function GlobalContinuePrompt() {
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
   const [hasChecked, setHasChecked] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const isCheckingRef = useRef<boolean>(false); // Track if we're already checking
 
   useEffect(() => {
     // Only run on client side
@@ -63,6 +64,17 @@ export default function GlobalContinuePrompt() {
     }
 
     const currentPath = pathname || window.location.pathname;
+    const sessionKey = 'continueModalShown';
+    
+    // CRITICAL: Check sessionStorage FIRST - before any other checks
+    // This ensures modal only shows once per session regardless of navigation
+    const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
+    
+    if (hasShownInSession) {
+      console.log('[GLOBAL_CONTINUE] Modal already shown in this session, skipping all checks');
+      setHasChecked(true);
+      return;
+    }
     
     // Don't show on excluded routes
     const isExcluded = excludedRoutes.some(route => 
@@ -84,14 +96,15 @@ export default function GlobalContinuePrompt() {
       setHasChecked(true);
       return;
     }
-
-    // Check if modal has already been shown in this session
-    const sessionKey = 'continueModalShown';
-    const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
     
-    if (hasShownInSession) {
-      console.log('[GLOBAL_CONTINUE] Modal already shown in this session, skipping');
-      setHasChecked(true);
+    // Prevent multiple simultaneous checks
+    if (isCheckingRef.current) {
+      console.log('[GLOBAL_CONTINUE] Already checking, skipping duplicate check');
+      return;
+    }
+    
+    // If we've already checked and set hasChecked, don't check again
+    if (hasChecked) {
       return;
     }
 
@@ -129,6 +142,9 @@ export default function GlobalContinuePrompt() {
     // Verify email exists in database before showing modal
     console.log('[GLOBAL_CONTINUE] Checking if email exists in database:', email);
     
+    // Mark that we're checking to prevent duplicate checks
+    isCheckingRef.current = true;
+    
     // Create async function to check email
     const checkEmailInDatabase = async () => {
       try {
@@ -143,13 +159,14 @@ export default function GlobalContinuePrompt() {
         const data = await response.json();
         
         if (response.ok && data.exists === true) {
+          // IMPORTANT: Mark as shown IMMEDIATELY to prevent showing on navigation
+          sessionStorage.setItem(sessionKey, 'true');
+          
           console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
           setRegisteredEmail(email.trim());
           // Show modal after a short delay for better UX
           timerRef.current = setTimeout(() => {
             setShowContinueModal(true);
-            // Mark as shown in this session
-            sessionStorage.setItem(sessionKey, 'true');
           }, 1000); // 1 second delay
           
           setHasChecked(true);
@@ -157,12 +174,19 @@ export default function GlobalContinuePrompt() {
           console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
           // Email not in database - clear it from localStorage
           localStorage.removeItem('registeredEmail');
+          // Mark as checked so we don't check again
+          sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
           setHasChecked(true);
         }
       } catch (error) {
         console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
         // On error, don't show modal to be safe
+        // Mark as checked so we don't check again
+        sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
         setHasChecked(true);
+      } finally {
+        // Reset checking flag
+        isCheckingRef.current = false;
       }
     };
     
