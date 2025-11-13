@@ -59,16 +59,25 @@ export default function HomePage() {
     // Home page is now public - no authentication required
     setIsLoaded(true);
     
-    let animationFrameId: number;
+    let rafId: number | null = null;
+    let lastUpdateTime = 0;
+    const throttleMs = 16; // ~60fps
     
     const handleMouseMove = (e: MouseEvent) => {
-      // Use requestAnimationFrame for smoother performance
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+      const now = performance.now();
+      
+      // Throttle updates to ~60fps for smooth performance
+      if (now - lastUpdateTime < throttleMs) {
+        return;
       }
       
-      animationFrameId = requestAnimationFrame(() => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      
+      rafId = requestAnimationFrame(() => {
         setMousePosition({ x: e.clientX, y: e.clientY });
+        lastUpdateTime = now;
       });
     };
 
@@ -76,8 +85,8 @@ export default function HomePage() {
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
       }
     };
   }, []);
@@ -93,13 +102,11 @@ export default function HomePage() {
     <main className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] overflow-x-hidden relative">
       {/* Enhanced Global Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Dynamic mouse-following gradient orb - Enhanced */}
+        {/* Dynamic mouse-following gradient orb - Enhanced with smooth transform */}
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full blur-3xl transition-all duration-300 ease-out opacity-60"
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-60 will-change-transform"
           style={{
-            left: mousePosition.x - 300,
-            top: mousePosition.y - 300,
-            transform: 'translateZ(0)',
+            transform: `translate(${mousePosition.x - 300}px, ${mousePosition.y - 300}px) translateZ(0)`,
             background: `radial-gradient(circle, 
               rgba(236, 72, 153, 0.4) 0%, 
               rgba(168, 85, 247, 0.3) 25%, 
@@ -111,11 +118,9 @@ export default function HomePage() {
         
         {/* Secondary mouse-following gradient for depth */}
         <div 
-          className="absolute w-[400px] h-[400px] rounded-full blur-2xl transition-all duration-500 ease-out opacity-40"
+          className="absolute w-[400px] h-[400px] rounded-full blur-2xl opacity-40 will-change-transform"
           style={{
-            left: mousePosition.x - 200,
-            top: mousePosition.y - 200,
-            transform: 'translateZ(0)',
+            transform: `translate(${mousePosition.x - 200}px, ${mousePosition.y - 200}px) translateZ(0)`,
             background: `radial-gradient(circle, 
               rgba(251, 146, 60, 0.35) 0%, 
               rgba(236, 72, 153, 0.3) 30%, 
@@ -126,11 +131,9 @@ export default function HomePage() {
         
         {/* Tertiary mouse-following gradient for extra glow */}
         <div 
-          className="absolute w-[300px] h-[300px] rounded-full blur-xl transition-all duration-700 ease-out opacity-50"
+          className="absolute w-[300px] h-[300px] rounded-full blur-xl opacity-50 will-change-transform"
           style={{
-            left: mousePosition.x - 150,
-            top: mousePosition.y - 150,
-            transform: 'translateZ(0)',
+            transform: `translate(${mousePosition.x - 150}px, ${mousePosition.y - 150}px) translateZ(0)`,
             background: `radial-gradient(circle, 
               rgba(34, 211, 238, 0.4) 0%, 
               rgba(59, 130, 246, 0.3) 40%, 
