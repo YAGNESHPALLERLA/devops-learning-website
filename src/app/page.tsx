@@ -59,12 +59,27 @@ export default function HomePage() {
     // Home page is now public - no authentication required
     setIsLoaded(true);
     
+    let animationFrameId: number;
+    
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      // Use requestAnimationFrame for smoother performance
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      animationFrameId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
 
   const scrollToContent = () => {
@@ -78,13 +93,49 @@ export default function HomePage() {
     <main className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] overflow-x-hidden relative">
       {/* Enhanced Global Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Dynamic mouse-following orb */}
+        {/* Dynamic mouse-following gradient orb - Enhanced */}
         <div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-rose-500/10 to-purple-500/10 rounded-full blur-3xl transition-all duration-1000 ease-out"
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl transition-all duration-300 ease-out opacity-60"
           style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-            transform: 'translateZ(0)'
+            left: mousePosition.x - 300,
+            top: mousePosition.y - 300,
+            transform: 'translateZ(0)',
+            background: `radial-gradient(circle, 
+              rgba(236, 72, 153, 0.4) 0%, 
+              rgba(168, 85, 247, 0.3) 25%, 
+              rgba(59, 130, 246, 0.25) 50%, 
+              rgba(16, 185, 129, 0.2) 75%, 
+              transparent 100%)`
+          }}
+        ></div>
+        
+        {/* Secondary mouse-following gradient for depth */}
+        <div 
+          className="absolute w-[400px] h-[400px] rounded-full blur-2xl transition-all duration-500 ease-out opacity-40"
+          style={{
+            left: mousePosition.x - 200,
+            top: mousePosition.y - 200,
+            transform: 'translateZ(0)',
+            background: `radial-gradient(circle, 
+              rgba(251, 146, 60, 0.35) 0%, 
+              rgba(236, 72, 153, 0.3) 30%, 
+              rgba(139, 92, 246, 0.25) 60%, 
+              transparent 100%)`
+          }}
+        ></div>
+        
+        {/* Tertiary mouse-following gradient for extra glow */}
+        <div 
+          className="absolute w-[300px] h-[300px] rounded-full blur-xl transition-all duration-700 ease-out opacity-50"
+          style={{
+            left: mousePosition.x - 150,
+            top: mousePosition.y - 150,
+            transform: 'translateZ(0)',
+            background: `radial-gradient(circle, 
+              rgba(34, 211, 238, 0.4) 0%, 
+              rgba(59, 130, 246, 0.3) 40%, 
+              rgba(168, 85, 247, 0.25) 70%, 
+              transparent 100%)`
           }}
         ></div>
 
