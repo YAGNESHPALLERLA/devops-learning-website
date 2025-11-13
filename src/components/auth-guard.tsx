@@ -170,7 +170,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
               if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
                 registeredEmail = user.email.trim();
                 console.log('[AUTH_GUARD] Found email in user object:', registeredEmail);
-                localStorage.setItem("registeredEmail", registeredEmail);
+                if (registeredEmail) {
+                  localStorage.setItem("registeredEmail", registeredEmail);
+                }
               }
             } catch (e) {
               console.error('[AUTH_GUARD] Error parsing user object:', e);
@@ -278,7 +280,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
             if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
               registeredEmail = user.email.trim();
               console.log('[AUTH_GUARD] Found email in user object (non-tutorial):', registeredEmail);
-              localStorage.setItem("registeredEmail", registeredEmail);
+              if (registeredEmail) {
+                localStorage.setItem("registeredEmail", registeredEmail);
+              }
             }
           } catch (e) {
             console.error('[AUTH_GUARD] Error parsing user object (non-tutorial):', e);

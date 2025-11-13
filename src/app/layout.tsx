@@ -178,7 +178,9 @@ export default function RootLayout({
                             if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
                               registeredEmail = user.email.trim();
                               console.log('[AUTH] Found email in user object:', registeredEmail);
-                              localStorage.setItem('registeredEmail', registeredEmail);
+                              if (registeredEmail) {
+                                localStorage.setItem('registeredEmail', registeredEmail);
+                              }
                             }
                           } catch (e) {
                             console.error('[AUTH] Error parsing user object:', e);
