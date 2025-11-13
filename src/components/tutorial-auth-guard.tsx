@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import ContinueModal from '@/components/continue-modal';
 
 // Helper function to validate JWT token
 function isValidToken(token: string): boolean {
@@ -31,8 +30,6 @@ function isValidToken(token: string): boolean {
 export default function TutorialAuthGuard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [showContinueModal, setShowContinueModal] = useState(false);
-  const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
 
   useEffect(() => {
     // IMMEDIATE check - don't wait
@@ -83,26 +80,48 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
       }
     }
     
-    // If registered email exists, ALWAYS show modal on EVERY visit (for confirmation)
+    // If registered email exists, check sessionStorage to see if modal was already shown
+    // The modal is handled by GlobalContinuePrompt component, which respects sessionStorage
     if (email && email.trim() !== '') {
-      console.log('[TUTORIAL_AUTH] Found registered email, showing continue modal for confirmation (every visit)');
-      setRegisteredEmail(email);
-      setShowContinueModal(true);
+      // Check if modal was already shown in this session
+      const sessionKey = 'continueModalShown';
+      const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
       
-      // Validate token to determine if user needs to login or can continue
-      if (!isValidToken(token || '')) {
-        // Invalid token - user needs to login
-        console.log('[TUTORIAL_AUTH] Token invalid, user will need to login');
-        if (token) {
-          localStorage.removeItem('token');
+      if (hasShownInSession) {
+        // Modal already shown this session - allow access (GlobalContinuePrompt handles the modal)
+        console.log('[TUTORIAL_AUTH] Registered email found, but modal already shown this session - allowing access');
+        // Validate token to determine access
+        if (!isValidToken(token || '')) {
+          // Invalid token - but modal was shown, so allow access (user can still browse)
+          console.log('[TUTORIAL_AUTH] Token invalid but modal shown - allowing access');
+          if (token) {
+            localStorage.removeItem('token');
+          }
+          setIsAuthenticated(true); // Allow access even without valid token if modal was shown
+        } else {
+          // Valid token - allow access
+          console.log('[TUTORIAL_AUTH] Token valid and modal shown - allowing access');
+          setIsAuthenticated(true);
         }
-        setIsAuthenticated(false);
+        return;
       } else {
-        // Valid token - user can continue with existing session after confirming
-        console.log('[TUTORIAL_AUTH] Token valid, showing confirmation modal (will allow access after confirmation)');
-        setIsAuthenticated(true);
+        // Modal not shown yet - GlobalContinuePrompt will handle it
+        // Just validate token and allow access (modal will show via GlobalContinuePrompt)
+        console.log('[TUTORIAL_AUTH] Registered email found, modal will be shown by GlobalContinuePrompt');
+        if (!isValidToken(token || '')) {
+          // Invalid token - but allow access, GlobalContinuePrompt will show modal
+          console.log('[TUTORIAL_AUTH] Token invalid, but allowing access (GlobalContinuePrompt will show modal)');
+          if (token) {
+            localStorage.removeItem('token');
+          }
+          setIsAuthenticated(true); // Allow access, modal will handle the flow
+        } else {
+          // Valid token - allow access, modal will show
+          console.log('[TUTORIAL_AUTH] Token valid, allowing access (GlobalContinuePrompt will show modal)');
+          setIsAuthenticated(true);
+        }
+        return;
       }
-      return;
     }
     
     // No registered email found
@@ -137,32 +156,8 @@ export default function TutorialAuthGuard({ children }: { children: React.ReactN
     );
   }
 
-  // Show continue modal if email found (blocks access until user confirms)
-  if (showContinueModal && registeredEmail) {
-    return (
-      <>
-        {/* Show blurred/blocked content behind modal */}
-        <div className="min-h-screen bg-[#1a1a1a] opacity-50 pointer-events-none">
-          {children}
-        </div>
-        <ContinueModal
-          registeredEmail={registeredEmail}
-          redirectTo={pathname || window.location.pathname}
-          onClose={() => {
-            setShowContinueModal(false);
-            // If token is valid, allow access after closing
-            const token = localStorage.getItem('token');
-            if (token && isValidToken(token)) {
-              setIsAuthenticated(true);
-            } else {
-              // No valid token, redirect to home
-              window.location.href = '/';
-            }
-          }}
-        />
-      </>
-    );
-  }
+  // Modal is now handled by GlobalContinuePrompt component
+  // This component only handles authentication/access control
 
   // Show nothing if not authenticated (redirecting)
   if (isAuthenticated === false) {
