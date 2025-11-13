@@ -229,7 +229,7 @@ export default function GlobalContinuePrompt() {
   }
 
   // Check if modal should be shown - verify sessionStorage hasn't changed
-  const sessionKey = 'continueModalShown';
+  // sessionKey is already defined at component level (line 60)
   const hasShownInSession = typeof window !== 'undefined' && sessionStorage.getItem(sessionKey) === 'true';
   
   // If sessionStorage says it's been shown, but modal state says show, hide it
