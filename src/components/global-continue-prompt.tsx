@@ -76,54 +76,40 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    // CRITICAL: Check sessionStorage FIRST - before ANY other checks
+    // CRITICAL: Check sessionStorage and hasProcessedSessionRef FIRST - before ANY other checks
     // This ensures modal only shows once per session regardless of navigation
     const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
     
-    if (hasShownInSession) {
-      // If already shown in session, skip everything immediately
-      // Don't even check pathname or anything else
+    // If already shown in session OR already processed, skip everything immediately
+    // Don't even check pathname or anything else
+    if (hasShownInSession || hasProcessedSessionRef.current) {
       if (!hasChecked) {
         setHasChecked(true);
       }
-      return;
+      return; // Exit immediately - don't process anything
     }
     
-    // If we've already processed this session (even if sessionStorage wasn't set yet), skip
-    if (hasProcessedSessionRef.current) {
+    // Now check if we're on a tutorial route - if not, mark as checked and return
+    const currentPath = pathname || window.location.pathname;
+    
+    // Don't show on excluded routes
+    const isExcluded = excludedRoutes.some(route => 
+      currentPath === route || currentPath.startsWith(route)
+    );
+
+    if (isExcluded) {
+      setHasChecked(true);
       return;
     }
 
-    // Use a function to check current path (called when needed)
-    const checkAndShowModal = () => {
-      const currentPath = pathname || window.location.pathname;
-      
-      // Don't show on excluded routes
-      const isExcluded = excludedRoutes.some(route => 
-        currentPath === route || currentPath.startsWith(route)
+    // Only show for tutorials dropdown routes
+    const isTutorialDropdownRoute = 
+      tutorialsDropdownRoutes.some(route => 
+        currentPath === route || currentPath.startsWith(route + '/')
       );
 
-      if (isExcluded) {
-        setHasChecked(true);
-        return false;
-      }
-
-      // Only show for tutorials dropdown routes
-      const isTutorialDropdownRoute = 
-        tutorialsDropdownRoutes.some(route => 
-          currentPath === route || currentPath.startsWith(route + '/')
-        );
-
-      if (!isTutorialDropdownRoute) {
-        setHasChecked(true);
-        return false;
-      }
-      
-      return true; // Should show modal
-    };
-    
-    // Check if we should show modal for current route
-    if (!checkAndShowModal()) {
+    if (!isTutorialDropdownRoute) {
+      setHasChecked(true);
       return;
     }
     
@@ -137,6 +123,10 @@ export default function GlobalContinuePrompt() {
     if (hasChecked) {
       return;
     }
+    
+    // IMPORTANT: Mark as processed IMMEDIATELY before any async operations
+    // This prevents the effect from running again on pathname changes
+    hasProcessedSessionRef.current = true;
 
     // Check for registered email in localStorage
     let email = localStorage.getItem('registeredEmail');
@@ -189,8 +179,8 @@ export default function GlobalContinuePrompt() {
         const data = await response.json();
         
         if (response.ok && data.exists === true) {
-          // IMPORTANT: Mark as processed and shown IMMEDIATELY to prevent showing on navigation
-          hasProcessedSessionRef.current = true;
+          // IMPORTANT: Mark as shown in sessionStorage to prevent showing on navigation
+          // hasProcessedSessionRef is already set above
           sessionStorage.setItem(sessionKey, 'true');
           
           console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
@@ -205,16 +195,14 @@ export default function GlobalContinuePrompt() {
           console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
           // Email not in database - clear it from localStorage
           localStorage.removeItem('registeredEmail');
-          // Mark as processed so we don't check again this session
-          hasProcessedSessionRef.current = true;
+          // Mark as shown to prevent re-checking (hasProcessedSessionRef already set above)
           sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
           setHasChecked(true);
         }
       } catch (error) {
         console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
         // On error, don't show modal to be safe
-        // Mark as processed so we don't check again this session
-        hasProcessedSessionRef.current = true;
+        // Mark as shown to prevent re-checking (hasProcessedSessionRef already set above)
         sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
         setHasChecked(true);
       } finally {
