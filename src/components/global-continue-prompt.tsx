@@ -76,17 +76,26 @@ export default function GlobalContinuePrompt() {
       return;
     }
 
-    // CRITICAL: Check sessionStorage and hasProcessedSessionRef FIRST - before ANY other checks
-    // This ensures modal only shows once per session regardless of navigation
+    // CRITICAL: Check sessionStorage FIRST - before ANY other checks
+    // sessionStorage persists across component remounts, so this is the source of truth
     const hasShownInSession = sessionStorage.getItem(sessionKey) === 'true';
     
-    // If already shown in session OR already processed, skip everything immediately
-    // Don't even check pathname or anything else
-    if (hasShownInSession || hasProcessedSessionRef.current) {
+    // If already shown in session, skip everything immediately
+    // Don't even check pathname or anything else - sessionStorage is the source of truth
+    if (hasShownInSession) {
+      hasProcessedSessionRef.current = true;
       if (!hasChecked) {
         setHasChecked(true);
       }
       return; // Exit immediately - don't process anything
+    }
+    
+    // Also check ref as secondary check (for same render cycle)
+    if (hasProcessedSessionRef.current) {
+      if (!hasChecked) {
+        setHasChecked(true);
+      }
+      return;
     }
     
     // Now check if we're on a tutorial route - if not, mark as checked and return
@@ -119,13 +128,10 @@ export default function GlobalContinuePrompt() {
       return;
     }
     
-    // If we've already checked and set hasChecked, don't check again
-    if (hasChecked) {
-      return;
-    }
-    
-    // IMPORTANT: Mark as processed IMMEDIATELY before any async operations
-    // This prevents the effect from running again on pathname changes
+    // IMPORTANT: Set sessionStorage IMMEDIATELY before any async operations
+    // This marks the session as processed, preventing modal on subsequent navigations
+    // Even if the component remounts, sessionStorage will persist
+    sessionStorage.setItem(sessionKey, 'true');
     hasProcessedSessionRef.current = true;
 
     // Check for registered email in localStorage
@@ -179,10 +185,7 @@ export default function GlobalContinuePrompt() {
         const data = await response.json();
         
         if (response.ok && data.exists === true) {
-          // IMPORTANT: Mark as shown in sessionStorage to prevent showing on navigation
-          // hasProcessedSessionRef is already set above
-          sessionStorage.setItem(sessionKey, 'true');
-          
+          // sessionStorage is already set above, so modal won't show again on navigation
           console.log('[GLOBAL_CONTINUE] ✅ Email verified in database, showing continue modal (once per session)');
           setRegisteredEmail(email.trim());
           // Show modal after a short delay for better UX
@@ -195,15 +198,13 @@ export default function GlobalContinuePrompt() {
           console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
           // Email not in database - clear it from localStorage
           localStorage.removeItem('registeredEmail');
-          // Mark as shown to prevent re-checking (hasProcessedSessionRef already set above)
-          sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
+          // sessionStorage already set above, so we won't check again this session
           setHasChecked(true);
         }
       } catch (error) {
         console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
         // On error, don't show modal to be safe
-        // Mark as shown to prevent re-checking (hasProcessedSessionRef already set above)
-        sessionStorage.setItem(sessionKey, 'true'); // Mark as shown to prevent re-checking
+        // sessionStorage already set above, so we won't check again this session
         setHasChecked(true);
       } finally {
         // Reset checking flag
