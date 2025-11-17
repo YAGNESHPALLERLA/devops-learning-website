@@ -470,6 +470,7 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
         icon: '💾',
         children: [
           { id: 'sql-editor', title: 'SQL Editor', href: '/tutorials/azure-data-engineer#sql-editor' },
+          { id: 'queries', title: 'Queries', href: '/tutorials/azure-data-engineer#queries' },
           { id: 'dashboards', title: 'Dashboards', href: '/tutorials/azure-data-engineer#dashboards' },
           { id: 'genie', title: 'Genie', href: '/tutorials/azure-data-engineer#genie' },
           { id: 'alerts', title: 'Alerts', href: '/tutorials/azure-data-engineer#alerts' },

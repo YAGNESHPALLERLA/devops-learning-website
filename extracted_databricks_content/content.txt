@@ -1,0 +1,1160 @@
+Azure Databricks
+Introduction to Azure Databricks
+What is Azure Databricks?
+Azure Databricks is a cloud platform that helps people work with data and artificial intelligence in one place. It brings together tools for data engineering, data science, and machine learning, so teams can easily collect, clean, and 
+analyze
+ data.
+It uses a “
+lakehouse
+” design, a mix of a data lake and a data warehouse, which makes it easier to store large amounts of data and use it quickly for insights or AI projects. Databricks is built on open-source tools like Apache Spark and Delta Lake, and it can run on major cloud platforms such as Azure, AWS, and Google Cloud.
+Azure Databricks is a cloud-based platform that helps you work with data, analytics, and AI in one place. It combines tools for storing, processing, and 
+analyzing
+ data so that teams can easily build and share data projects.
+It connects directly with your cloud storage and takes care of setting up and managing the required infrastructure for you.
+Using Generative AI, Azure Databricks can understand your data and automatically improve performance to meet your needs. It also uses natural language processing (NLP), which means you can find data or get help just by typing questions in plain English. It can even help you write code, fix issues, and explore documentation easily.
+Key Features of Azure Databricks
+Unified Workspace:
+A single place where data engineers, data scientists, and analysts can work together on data and AI projects.
+Lakehouse Architecture:
+Combines the best parts of data lakes and data warehouses, making it easier to store and use data efficiently.
+Scalability:
+Automatically adjusts resources based on your workload, so you can handle small or large amounts of data easily.
+Built on Apache Spark:
+Uses Spark, a fast and powerful open-source engine, to process large data quickly.
+Delta Lake Integration:
+Ensures your data is reliable and consistent by handling updates and corrections efficiently.
+Collaborative Notebooks:
+Let's
+ teams write code, visualize data, and share work in real time using notebooks that support Python, SQL, R, and Scala.
+Seamless Cloud Integration:
+Works smoothly with Azure services like Data Lake Storage, Synapse, Machine Learning, and Power BI.
+AI and Machine Learning Support:
+Provides built-in tools to train, test, and deploy machine learning and AI models easily.
+Security and Compliance:
+Protects your data using Azure’s enterprise-grade security, including encryption, role-based access, and compliance certifications.
+Natural Language Assistance (Generative AI):
+Let's
+ users find data, write code, and fix errors just by asking questions in plain English.
+Databricks Architecture
+Azure Databricks follows a multi-layer architecture built on top of Apache Spark and Delta Lake, integrated deeply with Azure cloud services. It unifies data engineering, analytics, and AI within a single environment.
+Storage Layer (Data and Delta Lake):
+Connects directly to cloud storage such as Azure Data Lake Storage (ADLS Gen2) or Blob Storage.
+Delta Lake acts as the transactional storage layer, providing:
+ACID compliance
+Schema enforcement and evolution
+Data versioning (time travel)
+Scalable metadata handling
+Compute Layer (Clusters and Runtime):
+Uses Databricks Clusters — groups of VMs — for distributed data processing.
+Powered by Databricks Runtime (DBR), an optimized engine based on Apache Spark.
+Supports autoscaling, auto-termination, and GPU/CPU clusters for different workloads.
+Control Plane:
+Managed by Databricks (in Azure).
+Handles user authentication, workspace management, notebook storage, job scheduling, and cluster configuration.
+Stores metadata and notebook information securely.
+Data Plane:
+Runs inside your Azure subscription.
+Responsible for actual data processing and storage.
+All data remains in your cloud environment — ensuring compliance and security.
+Workspace / User Interface Layer:
+A collaborative web-based environment for developers, data engineers, and scientists.
+Supports multiple languages — Python, SQL, R, Scala, Java.
+Includes features like notebooks, repos, dashboards, and job orchestration.
+Machine Learning and AI Layer:
+Integrates 
+MLflow
+ for experiment tracking, model registry, and deployment.
+Supports integration with Azure Machine Learning for end-to-end 
+MLOps
+.
+Security and Governance Layer:
+Managed through Unity 
+Catalog
+ for centralized access control, data lineage, and auditing.
+Uses Azure Active Directory (AAD) for authentication and RBAC for authorization.
+Common Use Cases of Azure Databricks
+Data Engineering:
+Used to collect, clean, and prepare large amounts of data from different sources before analysis or reporting.
+Data Analytics:
+Helps 
+analyze
+ and visualize data to find useful patterns and trends for better decision-making.
+Machine Learning and AI:
+Allows users to train, test, and deploy machine learning and AI models directly within the platform.
+Real-Time Data Processing:
+Can handle streaming data — for example, 
+analyzing
+ live sensor data or real-time transactions.
+Data Warehousing and BI:
+Works with tools like Power BI to create reports and dashboards from stored data.
+ETL (Extract, Transform, Load) Pipelines:
+Automates the process of moving and transforming data from one system to another for analysis.
+Data Lakehouse Management:
+Combines data lake storage with data warehouse features, making it easier to manage both structured and unstructured data.
+Collaborative Data Projects:
+Let’s
+ teams of data engineers and data scientists work together in shared notebooks and environments.
+Predictive Analytics:
+Used to forecast trends or outcomes — for example, predicting customer 
+behaviour
+, sales, or equipment failure.
+Core Components of Azure Databricks
+Workspace:
+This is the main area where you and your team can create notebooks, manage data, and work together on data and AI projects.
+Notebooks:
+Interactive notebooks where you can write and run code in languages like Python, SQL, R, or Scala to explore and visualize data.
+Clusters:
+Groups of virtual machines that run your data processing tasks. They automatically scale up or down based on the workload.
+Jobs:
+Used to schedule and automate tasks like data processing, transformations, or machine learning model training.
+Data Lake and Delta Lake:
+Delta Lake stores and manages your data in a reliable way, adding features like version control, updates, and rollbacks on top of your data lake.
+Databricks Runtime:
+The engine that runs your Spark jobs — it’s optimized for faster performance and lower costs.
+Repos (Version Control):
+Lets
+ you connect GitHub or Azure DevOps for source control, so you can manage and track changes to your code easily.
+MLflow
+:
+A built-in tool for managing the complete machine learning lifecycle — from model training and tracking to deployment.
+Unity 
+Catalog
+:
+A centralized data governance and access management system that helps control who can access which data across the platform.
+Dashboarding and Visualization:
+Allows you to create charts, graphs, and dashboards to share insights and monitor your data pipelines.
+Advantages of Azure Databricks
+Unified Analytics and AI Platform:
+Combines data engineering, data science, and analytics into a single, collaborative workspace for end-to-end data workflows.
+High Performance and Scalability:
+Optimized Apache Spark runtime ensures faster execution, while autoscaling dynamically adjusts cluster size to handle any workload efficiently.
+Delta Lake Reliability:
+Provides ACID transactions, schema enforcement, and time travel features for consistent and reliable data pipelines.
+Deep Azure Ecosystem Integration:
+Natively connects with Azure Data Lake Storage, Synapse Analytics, Power BI, Azure ML, and Active Directory for seamless interoperability.
+Multi-Language and Multi-User Collaboration:
+Supports Python, SQL, R, Scala, and Java within shared notebooks for cross-functional team collaboration.
+Automated Cluster and Job Management:
+Simplifies operational overhead with autoscaling, auto-termination, and job scheduling capabilities.
+Advanced Security and Governance:
+Offers enterprise-grade security through RBAC, encryption at rest/in transit, and governance via Unity 
+Catalog
+.
+Integrated ML and 
+MLOps
+:
+Built-in 
+MLflow
+ enables experiment tracking, model versioning, and deployment supporting the full ML lifecycle.
+Cost Optimization:
+Pay-as-you-go model with efficient resource utilization and intelligent scaling reduces infrastructure costs.
+AI-Powered Assistance:
+Integrates generative AI and natural language capabilities for faster code generation, data discovery, and troubleshooting.
+Databricks
+How to Create Azure Databricks
+Go to the Azure portal and search for Databricks
+Click on create
+Create 
+databricks
+Subscription
+Choose the Azure subscription under which the Databricks workspace will be created.
+Example: Azure subscription 1
+Resource Group
+Select an existing Resource Group or create a new one.
+Resource groups act like folders to organize and manage related resources.
+Example: rg-ohg365-dev
+Workspace Name
+Enter a unique workspace name for your Databricks instance.
+Example: ohg365-db-dev
+Region
+Choose the Azure region where your workspace will be hosted.
+Example: Central US
+Pricing Tier
+Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.
+Managed Resource Group Name
+Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.
+Example: mg-ohg365-db-dev
+Final Step – Review + Create
+Click Review + create to validate your settings and proceed with workspace creation.
+While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a 
+Managed Resource Group
+. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.
+Databricks Workspace Overview
+Click on Databricks Workspace
+Click on the lunch workspace button
+Left Sidebar (Navigation Menu):
+The left-hand menu provides quick access to all major Databricks features and tools:
+Workspace:
+ Where you can create and organize notebooks, folders, and projects.
+Recents
+:
+ Shows recently opened notebooks or files.
+Catalog
+:
+ Central place to access and manage data using Unity 
+Catalog
+. It is delta lake.
+Jobs & Pipelines:
+ For automating workflows, scheduling data processing, or running ETL pipelines.
+Compute:
+ Manage clusters and compute resources used for data processing.
+Marketplace:
+ Discover and use prebuilt datasets, notebooks, and solutions.
+SQL Section:
+SQL Editor:
+ Write and run SQL queries.
+Queries / Dashboards:
+ Create and view reports and dashboards.
+Genie & Alerts:
+ Access AI-powered query tools and set up notifications.
+SQL Warehouses:
+ Manage dedicated SQL compute environments.
+Data Engineering Section:
+Job Runs / Data Ingestion:
+ Monitor job executions and load data into Databricks.
+AI/ML Section:
+🔹
+ 1. Playground (Mosaic AI Playground)
+The 
+Playground
+ is an interactive environment that allows you to 
+experiment with generative AI models
+ (like LLMs).
+You can test prompts, 
+analyze
+ responses, and refine model 
+behavior
+ — all in a 
+no-code or low-code interface
+.
+It’s designed to help you quickly prototype AI use cases such as:
+Chatbots
+Text summarization
+Sentiment analysis
+Document Q&A systems
+Uses 
+Mosaic AI
+ technology to connect your 
+own business data
+ with foundation models securely.
+🔹
+ 2. Experiments
+The 
+Experiments
+ feature helps you 
+track, compare, and manage machine learning runs
+.
+It integrates with 
+MLflow
+ Tracking
+, allowing you to:
+Record parameters, metrics, and model versions.
+Compare results of multiple training runs.
+Identify which model performed best.
+🔹
+ 3. Features (Feature Store)
+The 
+Feature Store
+ is a 
+central repository for machine learning features
+.
+It allows teams to 
+create, share, and reuse features
+ across multiple models and projects.
+Key benefits:
+Avoid duplication of feature engineering work.
+Maintain consistency between training and serving data.
+Improve model accuracy and governance.
+🔹
+ 4. Models (Model Registry)
+The 
+Model Registry
+ is where you 
+store, version, and manage ML models
+ created during experiments.
+You can:
+Track model versions and metadata.
+Approve or reject models for production.
+Manage model lifecycle stages: 
+Staging 
+→
+ Production 
+→
+ Archived
+.
+Fully integrated with 
+MLflow
+, ensuring seamless collaboration between teams.
+🔹
+ 5. Serving (Model Serving)
+Model Serving
+ lets you 
+deploy ML models as REST API endpoints
+ directly from Databricks.
+Supports real-time and batch predictions.
+Automatically scales based on usage and integrates with your data pipelines.
+Allows secure access to deployed models with minimal setup.
+Main Panel (Welcome Screen):
+Displays a welcome message and a quick setup option — “Set up your workspace.”
+Provides a search bar to quickly find data, notebooks, or past work.
+Contains quick links like 
+Recents
+, 
+Favorites
+, Popular, and Mosaic AI to navigate faster.
+The “+ New” button lets you start creating a new notebook, job, or dashboard immediately.
+Top Navigation Bar:
+Shows your workspace name (e.g., ohg365-db-dev).
+Allows switching between workspaces or accessing your account settings.
+Contains shortcuts to Microsoft Azure and Databricks home.
+Databricks Features
+Workspace
+The 
+Workspace
+ in Databricks is a collaborative environment where data engineers, data scientists, and analysts can create, share, and manage all Databricks-related resources such as notebooks, libraries, dashboards, and folders.
+🔹
+ Key Components in the Workspace
+Component
+Description
+Repos
+Used for 
+Git integration
+. It allows you to link your Databricks workspace to repositories in GitHub, Azure DevOps, or Bitbucket to manage version control for notebooks and projects.
+Shared
+A 
+shared folder
+ accessible to multiple team members in your workspace. It’s commonly used for collaboration on notebooks, models, and scripts.
+Users
+Contains individual user folders. Each user has a personal workspace where they can create and manage private notebooks and experiments.
+Home / Shared with me
+“Home” is your personal starting directory, while “Shared with me” lists notebooks or folders shared by other users.
+Favorites
+ / Trash
+- 
+Favorites
+: Quickly access important or frequently used notebooks.
+- 
+Trash
+: Contains deleted notebooks or folders which can be restored or permanently removed.
+Shared:
+ 
+Shared with me lists notebooks or folders shared by other users.
+Users: 
+Contains individual user folders. Each user has a personal workspace where they can create and manage private notebooks and experiments.
+Other Creation Options in the Dropdown
+Option
+Purpose
+Folder
+Create a new folder to organize notebooks or scripts.
+Git Folder
+Connect to a Git repository for version control.
+Notebook
+Create a new Databricks notebook for code, visualization, or data analysis (Python, SQL, R, or Scala).
+File
+Upload or create a script or configuration file.
+Query
+Write SQL queries directly against your datasets.
+Dashboard
+Build visual dashboards from your queries.
+Genie Space
+Access AI-powered analytics assistant.
+ETL Pipeline
+Design and automate data pipelines.
+Alert
+Set up notifications for query results or data changes.
+MLflow
+ Experiment
+Track machine learning experiments, metrics, and models.
+Notebook:
+Azure Databricks notebooks serve as a collaborative development environment for building data science, engineering, and machine learning workflows.
+They support multi-language scripting within a single document, real-time 
+coauthoring
+, version control, and integrated data visualization.
+These features help streamline code development, data exploration, and result presentation in a unified platform.
+Create First Notebook:
+Recent
+’
+s
+:
+ 
+Shows recently opened notebooks or files.
+Catalog
+ and Features (Unity 
+Catalog
+)
+The 
+Catalog
+ in Azure Databricks is a central place to organize, manage, and secure all your data assets such as databases, tables, views, and files — across your entire Databricks environment.
+It provides data governance, access control, and data discovery in one interface.
+Key Components in the Screenshot
+Section
+Description
+My 
+Organization
+Lists 
+catalogs
+ created within your workspace — for example, ohg365_db_dev, system, and others. These hold schemas (databases) and tables.
+Delta Shares Received
+Displays data shared with you from other Databricks workspaces using 
+Delta Sharing
+, a secure open protocol for data sharing.
+Legacy (
+hive_metastore
+)
+The old default data 
+catalog
+ (used before Unity 
+Catalog
+). It contains older Hive-based tables and schemas.
+Search Bar
+Lets
+ you quickly find data assets (
+catalogs
+, schemas, tables).
+Quick Access (Right Panel)
+Displays recently viewed or 
+favorite
+ datasets, making it easier to return to frequently used data.
+Top Menu Options:
+- 
+Delta Sharing
+Manage secure data sharing between organizations.
+- 
+Clean Rooms
+Enable collaboration on shared data without moving or copying it.
+- 
+External Data
+Connect to external sources like Azure Data Lake or Blob Storage.
+- 
+Governance
+Manage access permissions, auditing, and compliance.
+- 
+Add Data
+Option to import or register new datasets into the 
+catalog
+.
+Jobs & Pipelines
+The Jobs & Pipelines interface in Azure Databricks provides a unified orchestration layer for data engineering and machine learning workflows.
+It supports job scheduling, dependency management, pipeline orchestration, and execution monitoring.
+ Key Features
+Ingestion Pipelines:
+ Automate ingestion from external data sources (databases, APIs, or files).
+ETL Pipelines:
+ Design scalable, production-grade ETL processes using SQL, 
+PySpark
+, or Python.
+Jobs:
+ Orchestrate notebooks, workflows, pipelines, and queries; configure parameters, cluster settings, and triggers.
+Job Runs Dashboard:
+ Monitor run history, logs, and metrics for troubleshooting and optimization.
+Access Control:
+ Manage visibility (“Owned by me,” “Accessible by me”) to enforce workspace-level governance.
+Use Case
+Used by data engineers and ML teams to build end-to-end pipelines from data ingestion to transformation, feature generation, and model retraining
+ 
+all under one environment.
+The 
+Job Runs
+ dashboard in Databricks provides an operational view of scheduled or triggered workflows.
+It allows engineers and ML teams to 
+monitor, debug, and 
+analyze
+ job executions across environments.
+Key Functionalities
+Run Filtering:
+ Filter runs by job, user, time range, run status, or error code.
+Run Visualization:
+ Graph at the top visualizes the number of successful, failed, or skipped runs over time.
+Detailed Metadata:
+ For each run, Databricks records the execution context — start/end time, duration, compute used, and run parameters.
+Error Handling:
+ Provides error codes and logs to diagnose failure causes (e.g., cluster issues, data errors, script exceptions).
+Audit & Compliance:
+ Maintains a complete audit trail for all pipeline executions — critical for production governance.
+What You See:
+Start time
+ 
+→
+ When the job started.
+Job name
+ 
+→
+ Which job ran (for example, 
+“
+ETL Pipeline
+”
+).
+Run as
+ 
+→
+ Which user or role ran it.
+Duration
+ 
+→
+ How long it took.
+Status
+ 
+→
+ Shows if it 
+succeeded
+, 
+failed
+, or 
+skipped
+.
+Error code
+ 
+→
+ Displays the error message if something failed.
+Run parameters
+ 
+→
+ Lists any input values (like parameters) used in that run.
+Compute (Clusters)
+Compute Categories
+All-Purpose Compute (Interactive Clusters):
+Designed for notebook-driven, collaborative data exploration.
+Supports 
+multi-user access
+, 
+auto-scaling
+, and 
+auto-termination
+.
+Ideal for data science, ad-hoc analysis, and ML development.
+Job Compute (Automated Clusters):
+Spawned by the 
+Jobs API
+ or 
+Databricks Workflows
+ for pipeline orchestration.
+Clusters are automatically 
+created, executed, and terminated
+ per job run.
+Ideal for CI/CD, ETL, and production pipelines.
+SQL Warehouses (Serverless and Classic):
+Purpose-built compute for 
+data analysts and BI tools
+.
+Integrates with 
+Power BI
+, 
+Tableau
+, and 
+Databricks SQL Dashboards
+.
+Serverless option scales automatically and charges only for query duration.
+Vector Search & Lakehouse AI (new additions):
+Supports 
+AI/ML model deployment
+, 
+feature lookups
+, and 
+semantic search
+.
+Works with 
+Unity 
+Catalog
+ and 
+Model Serving endpoints
+ for production AI systems.
+Marketplace
+Databricks Marketplace
+ is a 
+data and AI exchange platform
+ that allows users to 
+discover, share, and monetize datasets, AI models, and notebooks
+ within the 
+Databricks Lakehouse
+ ecosystem — all powered by 
+Delta Sharing
+ (the open standard for secure data sharing).
+It’s designed to make it easy for organizations to:
+Access 
+third-party datasets
+ (financial, marketing, healthcare, etc.)
+Share their own data products securely
+Speed up analytics and AI innovation without complex data integrations
+Key Components
+Component
+Description
+Marketplace Listings
+Published datasets, ML models, or notebooks.
+Providers
+Organizations offering data or AI content (e.g., FactSet, Salesforce).
+Consumers
+Databricks users or organizations that subscribe to listings.
+Delta Sharing Protocol
+Enables secure, open-standard data exchange between different platforms.
+Unity 
+Catalog
+ Integration
+Ensures governance, lineage, and access control for shared assets.
+Databricks SQL
+SQL Editor
+The 
+SQL Editor
+ in Databricks allows users to 
+write, run, and visualize SQL queries
+ directly on data stored in 
+Unity 
+Catalog
+, 
+Delta tables
+, or 
+external databases
+ — all without needing to create a separate notebook.
+It’s designed for:
+Data Analysts
+BI Developers
+Data Engineers
+Business users who prefer 
+SQL-based analytics
+Think of the 
+SQL Editor
+ as a 
+notepad for data
+ inside Databricks —
+where you can write and run SQL commands (like SELECT, JOIN, GROUP BY, etc.) on your company’s data tables.
+It’s like working in:
+SQL Server Management Studio (SSMS)
+or MySQL Workbench —
+but directly connected to your 
+Databricks Lakehouse
+.
+Key Options 
+Option
+Description
+Run all (1000)
+Executes your SQL query. The “1000” indicates the max number of rows returned.
+Database Selector (default)
+Lets
+ you choose which 
+catalog
+, schema, or database to query from.
+Generate (AI)
+Databricks Assistant can auto-generate SQL queries using AI (Ctrl + I).
+Connect
+Allows you to choose which SQL warehouse (compute cluster) to run the query on.
+Schedule
+Lets
+ you set up automated query runs (for reports or alerts).
+Share
+Share your query or results with other Databricks users.
+Save
+Save your query as a draft, dashboard widget, or SQL alert.
+Add Parameter
+Add variables like dates or IDs dynamically to queries.
+Advanced SQL Editor Features
+Feature
+Description
+AI Assistant (Generate)
+Use AI (Ctrl + I) to create SQL automatically from a prompt (e.g., “show top 10 products by revenue”).
+Visual Output
+Query results can be visualized as tables, bar charts, line graphs, etc.
+Saved Queries
+Queries can be stored and reused from the “Queries” tab.
+Query Parameters
+Dynamic filters can be used for dashboards and alerts.
+Scheduling & Alerts
+Run queries hourly/daily and send alerts when thresholds are reached.
+Integration with SQL Warehouses
+Choose a compute cluster optimized for BI workloads.
+Export Options
+Export results as CSV or share within a dashboard.
+Professional Use Cases
+Role
+Example Use Case
+Data Analyst
+Ad-hoc query and visualization for business reports
+Data Engineer
+Validate Delta table transformations
+BI Developer
+Build dashboards directly from SQL Editor
+Data Scientist
+Fetch clean subsets of data for ML notebooks
+Manager / Stakeholder
+View high-level KPIs in SQL dashboards
+Queries
+The Queries interface lets you develop and manage SQL statements that interact directly with data in Databricks SQL Warehouses. You can track query execution history, collaborate with team members, tag queries for organization, and use scheduling for automated reporting.
+Available Options in the Queries Section
+Create Query
+ – Opens a new SQL editor window where you can start writing SQL statements.
+Open Editor
+ – Quickly navigate back to the SQL editor to modify existing queries.
+Filter Queries
+ – Search for queries by name or tag.
+Tabs:
+My Queries
+ – Shows only your saved queries.
+Favorites
+ – Displays queries you’ve marked as important.
+All Queries
+ – Lists all available queries within the workspace.
+Created By / Created At
+ – Helps you identify who created the query and when.
+Query History
+ – Access past runs, view execution times, and troubleshoot failed queries.
+Dashboards Integration
+ – Save query results and directly add them to dashboards for visualization.
+Dashboards
+Databricks Dashboards provide a powerful visualization layer built directly on top of Databricks SQL. They support real-time data refresh, query scheduling, and access control for collaboration.
+You can embed dashboards in other apps or share them securely within your workspace. It’s great for operational monitoring, BI reporting, and executive summaries.
+Options and Features in the Dashboard Section
+Create Dashboard
+ – Start building your own dashboard from scratch using your saved queries or visualizations.
+View Samples Gallery
+ – Explore prebuilt sample dashboards such as 
+NYC Taxi Trip Analysis
+ and 
+Retail Revenue & Supply Chain
+ to understand layout and visualization options.
+Filter Dashboards
+ – Quickly search for dashboards by name or owner.
+Tabs:
+All
+ – Displays every dashboard you have access to.
+Favorites
+ – Your bookmarked dashboards.
+Popular
+ – Dashboards frequently viewed by others.
+Last Modified / Owner Filters
+ – Sort and manage dashboards based on activity or ownership.
+Legacy Dashboards
+ – View or migrate older dashboards built using the classic interface.
+Visualization Types Supported:
+Bar, Line, Area, and Pie charts
+Scatter plots and maps
+Summary tables and KPI cards
+Integration:
+Link dashboards directly to 
+Queries
+ or 
+Notebooks
+Automate data refresh schedules
+Share via workspace or URL
+Legacy Dashboards in Databricks are maintained mainly for 
+backward compatibility
+. They support dashboards created with the 
+classic Databricks SQL editor
+.
+While functional, they lack newer visualization features, layout flexibility, and integration capabilities present in the 
+modern dashboards
+.
+It’s recommended to 
+migrate
+ older dashboards to the 
+new dashboarding experience
+ for improved performance, interactivity, and long-term support.
+Key Options and Features (Legacy Dashboards Section)
+Tabs and Filters:
+My Dashboards
+ – Dashboards you’ve created.
+Favorites
+ – Frequently used dashboards you’ve bookmarked.
+All Dashboards
+ – View dashboards shared across your workspace.
+Filter Dashboards
+ – Quickly locate dashboards by name, creator, or tag.
+Actions Available:
+View Samples Gallery
+ – Explore sample dashboards with built-in charts and data models.
+Create Dashboard
+ – Create a new dashboard (though it’s best to use the new dashboard UI).
+Legacy Dashboard Use Cases:
+Maintaining compatibility with older workflows
+Referencing historical SQL visualizations
+Supporting BI users during migration to new dashboards
+Migration Note:
+Databricks encourages using the 
+new “Dashboards” tab
+ for creating interactive and shareable reports.
+The new version offers 
+drag-and-drop editing
+, 
+better visuals
+, and 
+integrations with Databricks SQL queries and alerts
+.
+Genie
+Databricks Genie
+ is a 
+Generative AI-powered assistant
+ built into the Databricks SQL workspace.
+It allows users to 
+ask questions about data using natural language
+ (like English sentences) — and Genie automatically 
+generates SQL queries
+, runs them, and 
+visualizes the results
+.
+Genie uses 
+natural language understanding (NLU)
+ to parse questions and 
+generate optimized SQL queries
+ based on data 
+catalog
+ metadata.
+It can work across 
+Unity 
+Catalog
+, 
+SQL Warehouses
+, and 
+Delta Tables
+.
+Ideal for:
+Data analysts
+ exploring ad hoc questions
+Business users
+ performing self-service analytics
+Teams
+ collaborating in Genie “Spaces” to share question-answer results
+Key Options in the Genie Interface (from the screenshot)
+Filter spaces
+ – Search for an existing “Genie Space.”
+A 
+space
+ is like a shared workspace for Genie conversations.
+Tabs:
+All
+ – View all Genie spaces accessible to you.
+Favorites
+ – Quickly access frequently used spaces.
+Popular
+ – See trending Genie spaces used by your team.
+Last Modified
+ – Sort by recent updates.
+Owner
+ – Filter by creator or data owner.
+New
+ – Create a new Genie space to start a natural language query session.
+Add datasets or tables.
+Ask AI questions about those datasets.
+Save and share results or charts.
+Genie Spaces
+A 
+Genie Space
+ is a shared area where you can:
+Add datasets or views
+Ask natural language questions
+Save queries and visualizations
+Collaborate with team members
+ Advantages of Databricks Genie
+Feature
+Description
+🤖
+ AI-driven
+Converts natural language to accurate SQL
+⚡
+ Fast Insights
+Quick data exploration without manual queries
+📈
+ Visualization
+Auto-generates charts and dashboards
+🔒
+ Secure
+Works with Unity 
+Catalog
+ permissions
+👥
+ Collaborative
+Supports multi-user spaces and shared queries
+🧩
+ Integrated
+Works with SQL Warehouses and Delta tables
+Alerts
+Alerts in Azure Databricks
+ help you automatically 
+monitor data conditions or metrics
+ in your SQL queries and 
+get notified when something important changes
+.
+They make it easy to track trends, catch issues early, and stay updated without checking dashboards manually.
+Alerts can be connected to 
+SQL queries, dashboards, or KPIs
+ across 
+Unity 
+Catalog
+ datasets.
+You can:
+Automate anomaly detection for production data.
+Trigger alerts for 
+pipeline monitoring
+, 
+threshold breaches
+, or 
+data quality checks
+.
+Integrate alerts into 
+workflow tools
+ like Azure Monitor or Slack using 
+webhooks
+.
+ Advanced configurations let you:
+Adjust the 
+schedule frequency
+.
+Add 
+multiple recipients
+.
+Manage alerts programmatically via the 
+Databricks REST API
+.
+Key Elements in the Alerts UI
+Element
+Description
+🔍
+ 
+Filter alerts
+Search existing alerts by name or keyword.
+📁
+ 
+My alerts / All alerts
+Switch between alerts you created and those shared by your team.
+🧾
+ 
+List section
+Displays alert name, status, last updated time, creator, and creation date.
+➕
+ 
+Create alert
+Start setting up a new data alert (SQL query-based).
+⏪
+ 
+Previous / Next
+Navigate between pages if you have multiple alerts.
+Benefits of Using Databricks Alerts
+Feature
+Benefit
+⚡
+ Automated Monitoring
+Tracks metrics and thresholds continuously
+📩
+ Notifications
+Sends alerts via email or webhooks
+👥
+ Collaboration
+Share alerts across teams or workspaces
+🔒
+ Secure
+Follows Unity 
+Catalog
+ access controls
+🧩
+ Integrated
+Works with queries, dashboards, and pipelines
+Query History
+The 
+Query History
+ page in Databricks provides a 
+complete log of all SQL queries executed
+ in your workspace.
+It helps users monitor performance, debug issues, track usage, and ensure compliance — all in one place.
+The 
+Query History view
+ is essential for 
+monitoring performance
+, 
+auditing
+, and 
+optimizing workloads
+:
+You can track 
+resource utilization
+ across multiple SQL warehouses.
+It’s useful for 
+troubleshooting slow-running queries
+.
+The 
+Source
+ column identifies where the query originated:
+SQL Editor
+Dashboard
+Alert
+API or Notebook
+You can also 
+export query metrics via REST API
+ for deeper analytics.
+Integration with 
+Unity 
+Catalog
+ ensures secure tracking of all user-level activity across workspaces.
+Key Options and Columns
+Element
+Description
+👤
+ 
+User
+Shows who ran the query (e.g., your email ID). Helps identify the query owner.
+📅
+ 
+Date Range (Last 7 days)
+Filters query history by time period (e.g., last day, week, month, or custom range).
+⚙️
+ 
+Compute
+Filters queries based on the SQL Warehouse or cluster used.
+⏱️
+ 
+Duration
+Lets
+ you filter by how long queries took to run.
+🟢
+ 
+Status
+Shows whether a query succeeded, failed, or was 
+canceled
+.
+📜
+ 
+Statement / Statement ID
+Displays SQL text and a unique identifier for each run. Useful for debugging or tracking jobs.
+🔄
+ 
+Refresh / Reset filters
+Reloads or clears filters to show all results again.
+🧮
+ 
+Columns in the table
+Includes Query, 
+Started
+ at, Duration, Source, Compute, User — all helping in tracking query performance.
+Common Use Cases
+Use Case
+Description
+🧾
+ 
+Audit Log
+Track which users are querying what data for compliance or governance.
+🧠
+ 
+Performance Analysis
+Identify long-running queries and optimize them.
+⚡
+ 
+Troubleshooting
+Debug query failures using statement IDs.
+🧍
+‍
+♂️
+ 
+Collaboration
+See who ran what and when for shared datasets.
+🔔
+ 
+Alert Review
+Review the queries triggered by scheduled alerts or dashboards.
+SQL Data Warehouse
+A SQL Warehouse (formerly called SQL Endpoint) is the compute resource in Databricks used to run SQL queries, dashboards, and alerts.
+It is designed for data analysts, BI developers, and engineers who work with SQL-based data processing — similar to how a cluster runs notebooks, but optimized for SQL workloads.
+Key Components (from Screenshot)
+Section
+Description
+🔹
+ 
+Compute Tab
+Displays different compute options: All-purpose compute, Job compute, SQL warehouses, etc.
+🔹
+ 
+SQL Warehouses Tab
+Dedicated area to view, start, stop, and manage all SQL Warehouses.
+🔹
+ 
+Filter SQL warehouses
+Search and filter warehouses by name.
+🔹
+ 
+Only my SQL warehouses
+Show only the warehouses created by you.
+🔹
+ 
+Created by / Size / Status / Type
+Shows details about the warehouse (who made it, its size, whether it’s active, and its type).
+🔹
+ 
+Create SQL warehouse button
+Used to create a new warehouse. Disabled if permissions are limited.
+Warehouse Properties (Visible Example)
+Property
+Description
+🏷️
+ 
+Name
+Serverless Starter Warehouse
+ — this is a default pre-configured warehouse.
+👤
+ 
+Created by
+The user who created it (e.g., 
+manoj
+ 
+vemula
+).
+⚙️
+ 
+Size
+Defines compute power (Small, Medium, Large, etc.). Determines speed and cost.
+🔁
+ 
+Active / Max
+Shows how many users or queries are currently running on the warehouse.
+☁️
+ 
+Type
+Serverless
+ — means Databricks automatically manages compute resources.
+Types of SQL Warehouses
+Type
+Description
+Use Case
+🧠
+ 
+Serverless SQL Warehouse
+Fully managed by Databricks. Scales automatically and starts instantly.
+Great for quick analysis and dashboards.
+⚙️
+ 
+Classic (Pro) SQL Warehouse
+Requires manual scaling and management. You control cluster size and scaling.
+Used for enterprise workloads needing more control and predictable cost.
+When You Click “Create SQL Warehouse”
+You can define:
+Name
+ of warehouse
+Cluster size
+ (e.g., Small, Medium, 2X-Large)
+Auto-stop
+ timeout to save costs
+Max concurrency
+ (how many queries run at once)
+Permissions
+ (who can access or run queries)
+Channel
+ (stable, preview, etc.)
+🧮
+ Technical Features
+Feature
+Description
+🚀
+ 
+Elastic scaling
+Automatically adjusts resources to handle varying workloads.
+💰
+ 
+Pay-per-use
+Charged per DBU (Databricks Unit) based on compute time.
+📊
+ 
+Optimized for BI Tools
+Integrates with Power BI, Tableau, and Looker for live queries.
+🧠
+ 
+Serverless Architecture
+Starts instantly; no need to wait for cluster startup.
+🔒
+ 
+Unity 
+Catalog
+ Integration
+Enforces data access control and audit policies.
