@@ -95,7 +95,39 @@ const azureImages: Record<string, GalleryImage> = {
   image50: { src: '/tutorials/azure/images/image50.png', width: 1920, height: 567, alt: 'ADLS upload progress screen' },
   image51: { src: '/tutorials/azure/images/image51.png', width: 1669, height: 591, alt: 'ADLS uploaded file details' },
   image52: { src: '/tutorials/azure/images/image52.png', width: 1669, height: 591, alt: 'ADLS blob types comparison table' },
-  image53: { src: '/tutorials/azure/images/image53.png', width: 1669, height: 591, alt: 'ADLS access tier comparison chart' }
+  image53: { src: '/tutorials/azure/images/image53.png', width: 1669, height: 591, alt: 'ADLS access tier comparison chart' },
+  // Azure Databricks images
+  image54: { src: '/tutorials/azure/images/image54.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
+  image55: { src: '/tutorials/azure/images/image55.png', width: 1920, height: 1080, alt: 'Azure Databricks architecture' },
+  image56: { src: '/tutorials/azure/images/image56.png', width: 1920, height: 1080, alt: 'Databricks use cases' },
+  image57: { src: '/tutorials/azure/images/image57.png', width: 1920, height: 1080, alt: 'Core components' },
+  image58: { src: '/tutorials/azure/images/image58.png', width: 1920, height: 1080, alt: 'Databricks advantages' },
+  image59: { src: '/tutorials/azure/images/image59.png', width: 1920, height: 1080, alt: 'Databricks overview' },
+  image60: { src: '/tutorials/azure/images/image60.png', width: 1920, height: 1080, alt: 'Create Azure Databricks workspace' },
+  image61: { src: '/tutorials/azure/images/image61.png', width: 1920, height: 1080, alt: 'Databricks workspace' },
+  image62: { src: '/tutorials/azure/images/image62.png', width: 1920, height: 1080, alt: 'Databricks features' },
+  image63: { src: '/tutorials/azure/images/image63.png', width: 1920, height: 1080, alt: 'Databricks SQL overview' },
+  image64: { src: '/tutorials/azure/images/image64.png', width: 1920, height: 1080, alt: 'SQL Editor' },
+  image65: { src: '/tutorials/azure/images/image65.png', width: 1920, height: 1080, alt: 'Dashboards' },
+  image66: { src: '/tutorials/azure/images/image66.png', width: 1920, height: 1080, alt: 'Genie AI assistant' },
+  image67: { src: '/tutorials/azure/images/image67.png', width: 1920, height: 1080, alt: 'Alerts configuration' },
+  image68: { src: '/tutorials/azure/images/image68.png', width: 1920, height: 1080, alt: 'Query history' },
+  image69: { src: '/tutorials/azure/images/image69.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
+  image70: { src: '/tutorials/azure/images/image70.png', width: 1920, height: 1080, alt: 'Azure Databricks image 70' },
+  image71: { src: '/tutorials/azure/images/image71.png', width: 1920, height: 1080, alt: 'Azure Databricks image 71' },
+  image72: { src: '/tutorials/azure/images/image72.png', width: 1920, height: 1080, alt: 'Azure Databricks image 72' },
+  image73: { src: '/tutorials/azure/images/image73.png', width: 1920, height: 1080, alt: 'Azure Databricks image 73' },
+  image74: { src: '/tutorials/azure/images/image74.png', width: 1920, height: 1080, alt: 'Azure Databricks image 74' },
+  image75: { src: '/tutorials/azure/images/image75.png', width: 1920, height: 1080, alt: 'Azure Databricks image 75' },
+  image76: { src: '/tutorials/azure/images/image76.png', width: 1920, height: 1080, alt: 'Azure Databricks image 76' },
+  image77: { src: '/tutorials/azure/images/image77.png', width: 1920, height: 1080, alt: 'Azure Databricks image 77' },
+  image78: { src: '/tutorials/azure/images/image78.png', width: 1920, height: 1080, alt: 'Azure Databricks image 78' },
+  image79: { src: '/tutorials/azure/images/image79.png', width: 1920, height: 1080, alt: 'Azure Databricks image 79' },
+  image80: { src: '/tutorials/azure/images/image80.png', width: 1920, height: 1080, alt: 'Azure Databricks image 80' },
+  image81: { src: '/tutorials/azure/images/image81.png', width: 1920, height: 1080, alt: 'Azure Databricks image 81' },
+  image82: { src: '/tutorials/azure/images/image82.png', width: 1920, height: 1080, alt: 'Azure Databricks image 82' },
+  image83: { src: '/tutorials/azure/images/image83.png', width: 1920, height: 1080, alt: 'Azure Databricks image 83' },
+  image84: { src: '/tutorials/azure/images/image84.png', width: 1920, height: 1080, alt: 'Azure Databricks image 84' }
 };
 
 const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
@@ -105,7 +137,9 @@ const PAGE_HEADINGS = [
   { id: 'azure-basics', title: 'Azure Basics' },
   { id: 'resource-group', title: 'Resource Group' },
   { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
-  { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' }
+  { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' },
+  { id: 'azure-databricks', title: 'Azure Databricks' },
+  { id: 'databricks-sql', title: 'Databricks SQL' }
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
@@ -1147,6 +1181,767 @@ export default function AzureDataEngineerPage() {
             </div>
 
             <ImageGallery images={getImages('image53')} />
+          </div>
+        </section>
+        )}
+
+        {/* Azure Databricks Section */}
+        {activeSection === 'azure-databricks' && (
+        <section
+          id="azure-databricks"
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
+        >
+          <h3 className="text-3xl font-bold text-white mb-6">5. Azure Databricks</h3>
+          
+          <div className="space-y-12">
+            {/* Introduction to Azure Databricks */}
+            <div id="introduction-to-azure-databricks" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">1. Introduction to Azure Databricks</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Azure Databricks</strong> is a unified analytics platform built on Apache Spark that combines the power of data engineering, data science, machine learning, and analytics in one collaborative workspace. It's designed to help teams work together to build, deploy, share, and maintain enterprise-grade data and AI solutions at scale.
+                </p>
+                <p>
+                  Azure Databricks provides a fully managed, cloud-native platform that simplifies big data processing and enables organizations to extract valuable insights from their data quickly and efficiently.
+                </p>
+                <p>
+                  <strong className="text-blue-400">Key Purpose:</strong> Azure Databricks bridges the gap between data engineers, data scientists, and business analysts, allowing them to collaborate on a single platform while working with large-scale data processing and machine learning workloads.
+                </p>
+                <ImageGallery images={getImages('image54')} />
+              </div>
+            </div>
+
+            {/* Databricks Architecture */}
+            <div id="databricks-architecture" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">2. Databricks Architecture</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  Azure Databricks architecture consists of several key components that work together to provide a scalable and reliable big data processing platform:
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Architecture Layers:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong className="text-blue-400">Control Plane:</strong> Manages workspaces, clusters, jobs, and notebooks. Hosted by Microsoft in Azure.</li>
+                    <li><strong className="text-blue-400">Data Plane:</strong> Where your actual data processing happens. Runs in your Azure subscription.</li>
+                    <li><strong className="text-blue-400">Compute Layer:</strong> Apache Spark clusters that execute your workloads.</li>
+                    <li><strong className="text-blue-400">Storage Layer:</strong> Integrates with Azure Data Lake Storage (ADLS) for data persistence.</li>
+                    <li><strong className="text-blue-400">Network Layer:</strong> Secure connectivity between components using Azure VNet integration.</li>
+                  </ul>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">How It Works:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Users create workspaces in Azure Databricks (hosted in Microsoft's control plane)</li>
+                    <li>Workspaces connect to compute resources (Spark clusters) in your Azure subscription</li>
+                    <li>Data is stored in Azure Data Lake Storage or other Azure storage services</li>
+                    <li>Teams collaborate using notebooks, jobs, and dashboards</li>
+                    <li>All processing happens securely within your Azure environment</li>
+                  </ol>
+                </div>
+              </div>
+              <ImageGallery images={getImages('image55')} />
+            </div>
+
+            {/* Common Use Cases */}
+            <div id="common-use-cases" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">3. Common Use Cases of Azure Databricks</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>Azure Databricks is used across various industries and scenarios:</p>
+                
+                <div className="grid md:grid-cols-2 gap-4 mt-4">
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">📊 Data Engineering</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>ETL/ELT pipelines</li>
+                      <li>Data lake creation and management</li>
+                      <li>Real-time data streaming</li>
+                      <li>Data quality and validation</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">🤖 Machine Learning</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Model training and deployment</li>
+                      <li>Feature engineering</li>
+                      <li>MLflow experiment tracking</li>
+                      <li>Model serving and inference</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">📈 Analytics & BI</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Interactive dashboards</li>
+                      <li>Ad-hoc SQL queries</li>
+                      <li>Business intelligence reporting</li>
+                      <li>Data warehousing workloads</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">🔄 Real-time Processing</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Stream processing with Spark Streaming</li>
+                      <li>IoT data processing</li>
+                      <li>Event-driven architectures</li>
+                      <li>Real-time analytics</li>
+                    </ul>
+                  </div>
+                </div>
+                <ImageGallery images={getImages('image56')} />
+              </div>
+            </div>
+
+            {/* Core Components */}
+            <div id="core-components" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">4. Core Components of Azure Databricks</h4>
+              <div className="space-y-6 text-gray-300">
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">🔧 Workspace</h5>
+                  <p>Your collaborative environment where teams can create notebooks, share code, manage clusters, and organize projects. It provides a unified interface for all Databricks operations.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">⚙️ Clusters</h5>
+                  <p>Apache Spark clusters that provide the compute resources needed to process data. Clusters can be created on-demand, auto-terminate when idle, and scale automatically based on workload.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">📓 Notebooks</h5>
+                  <p>Interactive documents that combine code, visualizations, and narrative text. Support multiple languages (Python, SQL, Scala, R) and enable collaborative data exploration and analysis.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">💼 Jobs</h5>
+                  <p>Automated tasks that can run notebooks or JAR files on a schedule or trigger. Perfect for production data pipelines and scheduled analytics workloads.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">🗄️ Databricks SQL</h5>
+                  <p>A serverless SQL analytics engine that allows you to run SQL queries on your data lake without managing infrastructure. Includes SQL Editor, Dashboards, and Alerts.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">📊 Unity Catalog</h5>
+                  <p>A unified governance solution for data and AI assets across your organization. Provides centralized access control, data lineage, and metadata management.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">🧪 MLflow</h5>
+                  <p>An open-source platform for managing the machine learning lifecycle, including experiment tracking, model registry, and model deployment.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">💾 Delta Lake</h5>
+                  <p>An open-source storage layer that brings ACID transactions to data lakes, enabling reliable data management with time travel, schema evolution, and upserts.</p>
+                </div>
+                <ImageGallery images={getImages('image57')} />
+              </div>
+            </div>
+
+            {/* Advantages */}
+            <div id="advantages" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">5. Advantages of Azure Databricks</h4>
+              <div className="space-y-4 text-gray-300">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border border-gray-600">
+                    <thead>
+                      <tr className="bg-gray-700">
+                        <th className="border border-gray-600 px-4 py-2 text-left">Advantage</th>
+                        <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm">
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>🚀 Fully Managed</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Microsoft handles infrastructure, updates, and maintenance, allowing you to focus on analytics</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>⚡ High Performance</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Optimized Apache Spark engine with Databricks Runtime provides faster processing</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>🤝 Collaboration</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Unified workspace where data engineers, scientists, and analysts can work together</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>🔒 Security & Compliance</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Enterprise-grade security with Azure AD integration, encryption, and compliance certifications</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>💰 Cost Effective</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Auto-scaling clusters and pay-per-use pricing reduce costs</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>🔗 Azure Integration</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Native integration with Azure services like ADLS, Synapse, Power BI, and Azure ML</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>📈 Scalability</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Automatically scales from gigabytes to petabytes of data</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>🧠 AI & ML Ready</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Built-in MLflow, AutoML, and integrations with popular ML frameworks</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ImageGallery images={getImages('image58')} />
+              </div>
+            </div>
+
+            {/* Databricks Overview */}
+            <div id="databricks-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">6. Databricks</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Databricks</strong> is the original company behind the Databricks platform, which is now available on multiple cloud providers including Azure. Azure Databricks is the Microsoft Azure-specific implementation that provides seamless integration with Azure services and infrastructure.
+                </p>
+                <p>
+                  The platform combines the best of data lakes and data warehouses into a <strong>lakehouse architecture</strong>, enabling organizations to store, process, and analyze all types of data in a single unified platform.
+                </p>
+                <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                  <h5 className="text-xl font-semibold text-white mb-3">Key Characteristics:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Open Source Foundation:</strong> Built on Apache Spark and other open-source technologies</li>
+                    <li><strong>Cloud-Native:</strong> Designed from the ground up for cloud environments</li>
+                    <li><strong>Unified Platform:</strong> Supports data engineering, data science, machine learning, and analytics</li>
+                    <li><strong>Enterprise Ready:</strong> Production-grade features for large-scale deployments</li>
+                  </ul>
+                </div>
+                <ImageGallery images={getImages('image59')} />
+              </div>
+            </div>
+
+            {/* How to Create */}
+            <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">7. How to Create Azure Databricks</h4>
+              <div className="space-y-4 text-gray-300">
+                <p className="font-semibold">Follow these steps to create an Azure Databricks workspace:</p>
+                <ol className="list-decimal list-inside space-y-3 ml-2">
+                  <li>
+                    <strong>Sign in to Azure Portal</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Navigate to <code className="bg-gray-800 px-2 py-1 rounded">portal.azure.com</code></li>
+                      <li>Sign in with your Azure account credentials</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Search for Databricks</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>In the search bar at the top, type "Azure Databricks"</li>
+                      <li>Select "Azure Databricks" from the results</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Create a new workspace</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Click the "Create" or "+ Add" button</li>
+                      <li>Fill in the required information in the Basics tab</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Configure workspace settings</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li><strong>Subscription:</strong> Select your Azure subscription</li>
+                      <li><strong>Resource Group:</strong> Choose or create a resource group (e.g., rg-ohg365-dev)</li>
+                      <li><strong>Workspace Name:</strong> Enter a unique name (e.g., databricks-ohg365-dev)</li>
+                      <li><strong>Region:</strong> Select an Azure region closest to your users</li>
+                      <li><strong>Pricing Tier:</strong> Choose Standard or Premium tier</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Network settings (optional)</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Configure VNet injection for enhanced security (optional)</li>
+                      <li>Set up public/private endpoints based on your requirements</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Review and create</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Review all settings</li>
+                      <li>Click "Review + Create"</li>
+                      <li>Once validation passes, click "Create"</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Wait for deployment</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Deployment typically takes 5-10 minutes</li>
+                      <li>You'll receive a notification when deployment is complete</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Launch workspace</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>Click "Go to resource" or "Launch workspace"</li>
+                      <li>You'll be redirected to your Databricks workspace</li>
+                    </ul>
+                  </li>
+                </ol>
+                <div className="mt-6 p-4 bg-green-900/20 border border-green-500/30 rounded-lg">
+                  <p className="text-green-400 font-semibold">✅ Once created, you can:</p>
+                  <ul className="list-disc list-inside space-y-1 ml-4 mt-2 text-sm">
+                    <li>Create clusters for data processing</li>
+                    <li>Create notebooks for data exploration</li>
+                    <li>Set up jobs for automated workflows</li>
+                    <li>Connect to your data sources</li>
+                    <li>Build dashboards and queries</li>
+                  </ul>
+                </div>
+                <ImageGallery images={getImages('image60', 'image61')} />
+              </div>
+            </div>
+
+            {/* Workspace Overview */}
+            <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Workspace Overview</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  The Databricks workspace is your central hub for all data and AI operations. It provides a unified interface for creating, managing, and collaborating on data projects.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">📁 Main Workspace Areas:</h5>
+                  <div className="space-y-4">
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Workspace Browser</h6>
+                      <p className="text-sm">Navigate folders, notebooks, and files. Organize projects in a directory structure similar to a file system.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Notebooks</h6>
+                      <p className="text-sm">Create and manage interactive notebooks for data exploration, analysis, and visualization. Support Python, SQL, Scala, and R.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Clusters</h6>
+                      <p className="text-sm">Manage Spark clusters that provide compute resources. Create, configure, start, and stop clusters as needed.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Jobs</h6>
+                      <p className="text-sm">Schedule and run automated jobs for data pipelines, ETL processes, and batch analytics.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">SQL</h6>
+                      <p className="text-sm">Access Databricks SQL workspace for running SQL queries, creating dashboards, and setting up alerts.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Catalog</h6>
+                      <p className="text-sm">Browse data tables, databases, and schemas. Manage Unity Catalog for data governance.</p>
+                    </div>
+                    
+                    <div>
+                      <h6 className="text-lg font-semibold text-blue-400 mb-2">Repos</h6>
+                      <p className="text-sm">Connect to Git repositories for version control and collaboration on code.</p>
+                    </div>
+                  </div>
+                </div>
+                <ImageGallery images={getImages('image62')} />
+              </div>
+            </div>
+
+            {/* Databricks Features */}
+            <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">9. Databricks Features</h4>
+              <div className="space-y-6 text-gray-300">
+                <p>Azure Databricks offers a comprehensive set of features for data engineering, data science, and analytics:</p>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">📓 Notebook Features</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Multi-language support (Python, SQL, Scala, R)</li>
+                      <li>Real-time collaboration</li>
+                      <li>Version control with Git</li>
+                      <li>Interactive visualizations</li>
+                      <li>Cell-by-cell execution</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">⚙️ Cluster Management</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Auto-scaling clusters</li>
+                      <li>Auto-termination</li>
+                      <li>Spot instance support</li>
+                      <li>Cluster libraries management</li>
+                      <li>Pooled clusters</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">🔐 Security Features</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Azure AD integration</li>
+                      <li>Role-based access control (RBAC)</li>
+                      <li>Network isolation with VNet</li>
+                      <li>Data encryption at rest and in transit</li>
+                      <li>Audit logs</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">💼 Job Scheduling</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Cron-based scheduling</li>
+                      <li>Trigger-based jobs</li>
+                      <li>Job dependencies</li>
+                      <li>Retry policies</li>
+                      <li>Email notifications</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">📊 Data Lakehouse</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>Delta Lake integration</li>
+                      <li>Unity Catalog</li>
+                      <li>Time travel queries</li>
+                      <li>Schema evolution</li>
+                      <li>ACID transactions</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
+                    <h5 className="text-lg font-semibold text-white mb-2">🤖 ML & AI Features</h5>
+                    <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
+                      <li>MLflow integration</li>
+                      <li>AutoML capabilities</li>
+                      <li>Feature store</li>
+                      <li>Model registry</li>
+                      <li>Model serving</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Additional Capabilities:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Streaming:</strong> Real-time data processing with Spark Structured Streaming</li>
+                    <li><strong>Data Sharing:</strong> Securely share data with external partners using Delta Sharing</li>
+                    <li><strong>API Access:</strong> REST APIs for automation and integration</li>
+                    <li><strong>Marketplace:</strong> Access to partner solutions and integrations</li>
+                    <li><strong>Monitoring:</strong> Built-in metrics and logging for clusters and jobs</li>
+                  </ul>
+                </div>
+                <ImageGallery images={getImages('image70', 'image71', 'image72', 'image73', 'image74', 'image75')} />
+              </div>
+            </div>
+          </div>
+        </section>
+        )}
+
+        {/* Databricks SQL Section */}
+        {activeSection === 'databricks-sql' && (
+        <section
+          id="databricks-sql"
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
+        >
+          <h3 className="text-3xl font-bold text-white mb-6">6. Databricks SQL</h3>
+          
+          <div className="space-y-12">
+            <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
+              <h4 className="text-2xl font-semibold text-white mb-4">Introduction to Databricks SQL</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Databricks SQL</strong> is a serverless SQL analytics service that allows you to run SQL queries on your data lake without managing infrastructure. It provides a data warehouse-like experience on top of your data lake, enabling fast and efficient SQL-based analytics.
+                </p>
+                <p>
+                  Databricks SQL integrates seamlessly with your existing Databricks workspace and provides tools for data analysts and business users to work with data using familiar SQL syntax and BI tools.
+                </p>
+                <ImageGallery images={getImages('image63')} />
+              </div>
+            </div>
+
+            {/* SQL Editor */}
+            <div id="sql-editor" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">1. SQL Editor</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  The <strong className="text-blue-400">SQL Editor</strong> is an interactive query interface where you can write, run, and save SQL queries against your data lake tables.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Key Features:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Query Execution:</strong> Run SQL queries interactively and view results in real-time</li>
+                    <li><strong>Query History:</strong> Access previously executed queries for reference</li>
+                    <li><strong>Query Snippets:</strong> Save and reuse common SQL code snippets</li>
+                    <li><strong>Auto-completion:</strong> Intelligent SQL syntax suggestions and completion</li>
+                    <li><strong>Result Visualization:</strong> View query results in tables or charts</li>
+                    <li><strong>Export Results:</strong> Export query results to CSV, Excel, or other formats</li>
+                    <li><strong>Query Scheduling:</strong> Schedule queries to run automatically</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">How to Use SQL Editor:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Navigate to the SQL workspace in Databricks</li>
+                    <li>Click on "SQL Editor" in the sidebar</li>
+                    <li>Select a compute endpoint (SQL warehouse) or create a new one</li>
+                    <li>Write your SQL query in the editor</li>
+                    <li>Click "Run" or press Ctrl+Enter to execute</li>
+                    <li>View results below the query</li>
+                    <li>Save the query for future use</li>
+                  </ol>
+                </div>
+                <ImageGallery images={getImages('image64', 'image76', 'image77')} />
+              </div>
+            </div>
+
+            {/* Dashboards */}
+            <div id="dashboards" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">2. Dashboards</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Dashboards</strong> allow you to create interactive visualizations and reports from SQL queries. They provide a way to present data insights in an easy-to-understand format for business users and stakeholders.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Dashboard Features:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Visualizations:</strong> Create charts, graphs, tables, and other visual components</li>
+                    <li><strong>Multiple Queries:</strong> Combine multiple SQL queries into a single dashboard</li>
+                    <li><strong>Auto-refresh:</strong> Configure dashboards to refresh automatically at specified intervals</li>
+                    <li><strong>Filters:</strong> Add interactive filters for users to customize views</li>
+                    <li><strong>Layout Customization:</strong> Arrange widgets in a custom layout</li>
+                    <li><strong>Sharing:</strong> Share dashboards with team members or make them public</li>
+                    <li><strong>Embedding:</strong> Embed dashboards in external applications or websites</li>
+                    <li><strong>Alerting:</strong> Set up alerts based on dashboard metrics</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Creating a Dashboard:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Go to SQL workspace → Dashboards</li>
+                    <li>Click "Create Dashboard"</li>
+                    <li>Add queries by clicking "Add" → "Query"</li>
+                    <li>Select an existing query or create a new one</li>
+                    <li>Choose a visualization type (table, bar chart, line chart, etc.)</li>
+                    <li>Customize the visualization settings</li>
+                    <li>Arrange widgets on the dashboard canvas</li>
+                    <li>Configure refresh settings and filters</li>
+                    <li>Save and share your dashboard</li>
+                  </ol>
+                </div>
+                <ImageGallery images={getImages('image65', 'image78')} />
+              </div>
+            </div>
+
+            {/* Genie */}
+            <div id="genie" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">3. Genie</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Genie</strong> is Databricks' AI-powered assistant that helps you write SQL queries, understand your data, and get insights faster using natural language.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Genie Capabilities:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Natural Language Queries:</strong> Ask questions in plain English and Genie generates SQL queries</li>
+                    <li><strong>Query Generation:</strong> Automatically creates SQL queries based on your description</li>
+                    <li><strong>Query Explanation:</strong> Explains complex SQL queries in simple terms</li>
+                    <li><strong>Schema Understanding:</strong> Helps you understand table structures and relationships</li>
+                    <li><strong>Query Optimization:</strong> Suggests improvements to make queries more efficient</li>
+                    <li><strong>Data Exploration:</strong> Helps discover insights in your data through conversation</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Using Genie:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Open SQL Editor in Databricks SQL workspace</li>
+                    <li>Look for the Genie icon or assistant panel</li>
+                    <li>Type your question in natural language (e.g., "Show me sales by region")</li>
+                    <li>Genie will generate a SQL query for you</li>
+                    <li>Review and modify the query if needed</li>
+                    <li>Execute the query to see results</li>
+                    <li>Ask follow-up questions to refine your analysis</li>
+                  </ol>
+                </div>
+                <ImageGallery images={getImages('image66')} />
+              </div>
+            </div>
+
+            {/* Alerts */}
+            <div id="alerts" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">4. Alerts</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Alerts</strong> allow you to monitor your data and receive notifications when specific conditions are met. They help you stay informed about important changes in your data without constantly checking dashboards.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Alert Features:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Query-based Alerts:</strong> Create alerts based on SQL query results</li>
+                    <li><strong>Condition Monitoring:</strong> Set conditions that trigger alerts (e.g., value exceeds threshold)</li>
+                    <li><strong>Multiple Channels:</strong> Receive notifications via email, Slack, PagerDuty, or webhooks</li>
+                    <li><strong>Scheduled Evaluation:</strong> Alerts are evaluated on a schedule (hourly, daily, etc.)</li>
+                    <li><strong>Custom Messages:</strong> Customize alert messages with query results</li>
+                    <li><strong>Alert History:</strong> Track alert triggers and their history</li>
+                    <li><strong>Mute/Resume:</strong> Temporarily disable alerts when needed</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Creating an Alert:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Go to SQL workspace → Alerts</li>
+                    <li>Click "Create Alert"</li>
+                    <li>Provide a name and description for the alert</li>
+                    <li>Select or write a SQL query that returns a single value</li>
+                    <li>Set the evaluation schedule (how often to check)</li>
+                    <li>Define the trigger condition (greater than, less than, equals, etc.)</li>
+                    <li>Set the threshold value</li>
+                    <li>Configure notification channels (email, Slack, etc.)</li>
+                    <li>Customize the alert message template</li>
+                    <li>Save and activate the alert</li>
+                  </ol>
+                </div>
+
+                <div className="mt-4 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Common Alert Use Cases:</h5>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Monitoring data quality issues (null values, duplicates)</li>
+                    <li>Tracking key business metrics (sales, revenue, user counts)</li>
+                    <li>Performance monitoring (query execution time, error rates)</li>
+                    <li>Data freshness checks (last update timestamps)</li>
+                    <li>Anomaly detection (unusual patterns in data)</li>
+                  </ul>
+                </div>
+                <ImageGallery images={getImages('image67', 'image79')} />
+              </div>
+            </div>
+
+            {/* Query History */}
+            <div id="query-history" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">5. Query History</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">Query History</strong> provides a record of all SQL queries that have been executed in your Databricks SQL workspace. It helps you track query performance, debug issues, and reuse previously written queries.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Query History Features:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Complete Query Log:</strong> View all queries executed across your workspace</li>
+                    <li><strong>Query Details:</strong> See query text, execution time, status, and results</li>
+                    <li><strong>Performance Metrics:</strong> Track query duration, rows processed, and bytes scanned</li>
+                    <li><strong>Filtering & Search:</strong> Filter queries by user, date, status, or search by query text</li>
+                    <li><strong>Query Reuse:</strong> Open any query from history to run again or modify</li>
+                    <li><strong>Export History:</strong> Export query history for auditing or analysis</li>
+                    <li><strong>Cost Tracking:</strong> View compute costs associated with each query</li>
+                    <li><strong>Error Analysis:</strong> Review failed queries and their error messages</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Using Query History:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Navigate to SQL workspace → Query History</li>
+                    <li>View the list of all executed queries</li>
+                    <li>Use filters to find specific queries (by user, date range, status)</li>
+                    <li>Click on a query to view full details</li>
+                    <li>Copy query text to reuse or modify</li>
+                    <li>Review execution metrics to optimize performance</li>
+                    <li>Export history for reporting or auditing purposes</li>
+                  </ol>
+                </div>
+                <ImageGallery images={getImages('image68', 'image80')} />
+              </div>
+            </div>
+
+            {/* SQL Data Warehouse */}
+            <div id="sql-data-warehouse" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">6. SQL Data Warehouse</h4>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-blue-400">SQL Warehouse</strong> (also known as SQL Compute) is a serverless compute resource that powers SQL queries in Databricks SQL. It provides a managed, scalable infrastructure for running analytical queries on your data lake.
+                </p>
+                
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">SQL Warehouse Characteristics:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Serverless:</strong> No infrastructure management required - Databricks handles scaling automatically</li>
+                    <li><strong>Auto-scaling:</strong> Automatically scales up or down based on query workload</li>
+                    <li><strong>Auto-pause:</strong> Automatically pauses when idle to save costs</li>
+                    <li><strong>Multiple Clusters:</strong> Can run multiple concurrent clusters for different workloads</li>
+                    <li><strong>High Performance:</strong> Optimized for fast SQL query execution</li>
+                    <li><strong>Cost Efficient:</strong> Pay only for compute time used</li>
+                    <li><strong>Enterprise Security:</strong> Integrated with Unity Catalog for data governance</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Creating and Managing SQL Warehouses:</h5>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Go to SQL workspace → SQL Warehouses</li>
+                    <li>Click "Create SQL Warehouse"</li>
+                    <li>Configure settings:
+                      <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                        <li><strong>Name:</strong> Give your warehouse a descriptive name</li>
+                        <li><strong>Cluster Size:</strong> Choose between Serverless or Classic, and select cluster size</li>
+                        <li><strong>Auto Stop:</strong> Set idle timeout (how long to wait before auto-pausing)</li>
+                        <li><strong>Scaling:</strong> Configure min/max clusters for concurrent queries</li>
+                        <li><strong>Channel:</strong> Select Stable or Preview channel</li>
+                      </ul>
+                    </li>
+                    <li>Configure advanced settings (networking, security, etc.)</li>
+                    <li>Review and create the warehouse</li>
+                    <li>Once created, start the warehouse to begin running queries</li>
+                  </ol>
+                </div>
+
+                <div className="mt-4 overflow-x-auto">
+                  <table className="min-w-full border border-gray-600">
+                    <thead>
+                      <tr className="bg-gray-700">
+                        <th className="border border-gray-600 px-4 py-2 text-left">Warehouse Type</th>
+                        <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                        <th className="border border-gray-600 px-4 py-2 text-left">Best For</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm">
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>Serverless</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">Fully managed, automatically scales, no infrastructure to manage</td>
+                        <td className="border border-gray-600 px-4 py-2">Most users, production workloads</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-600 px-4 py-2"><strong>Classic</strong></td>
+                        <td className="border border-gray-600 px-4 py-2">More control over infrastructure, manual scaling</td>
+                        <td className="border border-gray-600 px-4 py-2">Advanced users, specific requirements</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="mt-4 p-4 bg-green-900/20 border border-green-500/30 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Benefits of SQL Warehouse:</h5>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>No need to provision or manage compute clusters manually</li>
+                    <li>Automatic scaling handles variable workloads efficiently</li>
+                    <li>Cost-effective with pay-per-use pricing and auto-pause</li>
+                    <li>Fast startup time for immediate query execution</li>
+                    <li>Isolated from other workloads for consistent performance</li>
+                  </ul>
+                </div>
+                <ImageGallery images={getImages('image69', 'image81', 'image82', 'image83', 'image84')} />
+              </div>
+            </div>
           </div>
         </section>
         )}
