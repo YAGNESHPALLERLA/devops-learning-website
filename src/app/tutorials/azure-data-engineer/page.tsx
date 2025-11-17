@@ -143,7 +143,22 @@ const PAGE_HEADINGS = [
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
-  'azure-hierarchy': 'azure-basics'
+  'azure-hierarchy': 'azure-basics',
+  'introduction-to-azure-databricks': 'azure-databricks',
+  'databricks-architecture': 'azure-databricks',
+  'common-use-cases': 'azure-databricks',
+  'core-components': 'azure-databricks',
+  'advantages': 'azure-databricks',
+  'databricks-overview': 'azure-databricks',
+  'how-to-create': 'azure-databricks',
+  'workspace-overview': 'azure-databricks',
+  'databricks-features': 'azure-databricks',
+  'sql-editor': 'databricks-sql',
+  'dashboards': 'databricks-sql',
+  'genie': 'databricks-sql',
+  'alerts': 'databricks-sql',
+  'query-history': 'databricks-sql',
+  'sql-data-warehouse': 'databricks-sql'
 };
 
 export default function AzureDataEngineerPage() {

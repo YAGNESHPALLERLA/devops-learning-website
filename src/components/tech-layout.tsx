@@ -443,8 +443,38 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
           { id: 'azure-hierarchy', title: 'Azure Hierarchy', href: '/tutorials/azure-data-engineer#azure-hierarchy' },
           { id: 'resource-group', title: 'Resource Group', href: '/tutorials/azure-data-engineer#resource-group' },
           { id: 'azure-blob-storage', title: 'Azure Blob Storage', href: '/tutorials/azure-data-engineer#azure-blob-storage' },
-          { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake' },
-          { id: 'azure-databricks', title: 'Azure Databricks', href: '/tutorials/azure-data-engineer#azure-databricks' }
+          { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2', href: '/tutorials/azure-data-engineer#azure-data-lake' }
+        ]
+      },
+      {
+        id: 'azure-databricks',
+        title: 'Azure Databricks',
+        href: '/tutorials/azure-data-engineer#azure-databricks',
+        icon: '🔷',
+        children: [
+          { id: 'introduction-to-azure-databricks', title: 'Introduction to Azure Databricks', href: '/tutorials/azure-data-engineer#introduction-to-azure-databricks' },
+          { id: 'databricks-architecture', title: 'Databricks Architecture', href: '/tutorials/azure-data-engineer#databricks-architecture' },
+          { id: 'common-use-cases', title: 'Common Use Cases', href: '/tutorials/azure-data-engineer#common-use-cases' },
+          { id: 'core-components', title: 'Core Components', href: '/tutorials/azure-data-engineer#core-components' },
+          { id: 'advantages', title: 'Advantages', href: '/tutorials/azure-data-engineer#advantages' },
+          { id: 'databricks-overview', title: 'Databricks Overview', href: '/tutorials/azure-data-engineer#databricks-overview' },
+          { id: 'how-to-create', title: 'How to Create Azure Databricks', href: '/tutorials/azure-data-engineer#how-to-create' },
+          { id: 'workspace-overview', title: 'Workspace Overview', href: '/tutorials/azure-data-engineer#workspace-overview' },
+          { id: 'databricks-features', title: 'Databricks Features', href: '/tutorials/azure-data-engineer#databricks-features' }
+        ]
+      },
+      {
+        id: 'databricks-sql',
+        title: 'Databricks SQL',
+        href: '/tutorials/azure-data-engineer#databricks-sql',
+        icon: '💾',
+        children: [
+          { id: 'sql-editor', title: 'SQL Editor', href: '/tutorials/azure-data-engineer#sql-editor' },
+          { id: 'dashboards', title: 'Dashboards', href: '/tutorials/azure-data-engineer#dashboards' },
+          { id: 'genie', title: 'Genie', href: '/tutorials/azure-data-engineer#genie' },
+          { id: 'alerts', title: 'Alerts', href: '/tutorials/azure-data-engineer#alerts' },
+          { id: 'query-history', title: 'Query History', href: '/tutorials/azure-data-engineer#query-history' },
+          { id: 'sql-data-warehouse', title: 'SQL Data Warehouse', href: '/tutorials/azure-data-engineer#sql-data-warehouse' }
         ]
       }
     ]
