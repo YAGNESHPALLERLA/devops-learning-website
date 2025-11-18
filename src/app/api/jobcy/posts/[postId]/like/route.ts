@@ -3,6 +3,11 @@ import { connectDB } from "@/lib/mongodb";
 import jwt from "jsonwebtoken";
 import { ObjectId } from "mongodb";
 
+interface JwtPayload {
+  id: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
 // CORS helper
 function applyCors(request: NextRequest, response: NextResponse) {
   const origin = request.headers.get("origin");
@@ -44,13 +49,10 @@ export async function POST(
     }
 
     const token = authHeader.substring(7);
-    let decoded: { id: string; [key: string]: any };
+    let decoded: JwtPayload;
     
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret") as {
-        id: string;
-        [key: string]: any;
-      };
+      decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret") as JwtPayload;
     } catch {
       return applyCors(
         request,

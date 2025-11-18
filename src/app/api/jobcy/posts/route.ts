@@ -1,7 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, toObjectId } from "@/lib/mongodb";
 import jwt from "jsonwebtoken";
-import { ObjectId } from "mongodb";
+
+interface PostDocument {
+  _id: { toString(): string; getTimestamp(): Date };
+  authorId?: string;
+  author?: { id?: string; _id?: string; name?: string; title?: string };
+  authorName?: string;
+  authorTitle?: string;
+  content: string;
+  image?: string | null;
+  likes?: number;
+  comments?: number;
+  shares?: number;
+  commentsList?: unknown[];
+  createdAt?: Date;
+}
+
+interface JwtPayload {
+  id: string;
+  name?: string;
+  email?: string;
+  [key: string]: string | number | boolean | undefined;
+}
 
 // CORS helper
 function applyCors(request: NextRequest, response: NextResponse) {
@@ -37,7 +58,7 @@ export async function GET(request: NextRequest) {
       .toArray();
 
     // Format posts for frontend
-    const formattedPosts = posts.map((post: any) => ({
+    const formattedPosts = posts.map((post: PostDocument) => ({
       id: post._id.toString(),
       author: {
         id: post.authorId || post.author?.id || post.author?._id,
@@ -77,15 +98,10 @@ export async function POST(request: NextRequest) {
     }
 
     const token = authHeader.substring(7);
-    let decoded: { id: string; name?: string; email?: string; [key: string]: any };
+    let decoded: JwtPayload;
     
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret") as {
-        id: string;
-        name?: string;
-        email?: string;
-        [key: string]: any;
-      };
+      decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret") as JwtPayload;
     } catch {
       return applyCors(
         request,
