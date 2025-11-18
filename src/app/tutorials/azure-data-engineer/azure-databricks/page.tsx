@@ -422,7 +422,7 @@ export default function AzureDatabricksPage() {
     }
   }, [activeSection, activeSubsection]);
 
-  // Get current section index for navigation
+  // — current section index for navigation
   const getCurrentSectionIndex = () => {
     return PAGE_HEADINGS.findIndex(heading => heading.id === activeSection);
   };
@@ -568,7 +568,7 @@ export default function AzureDatabricksPage() {
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Compute Layer (Clusters and Runtime):</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Uses Databricks Clusters G�� groups of VMs G�� for distributed data processing.</li>
+                    <li>Uses Databricks Clusters — groups of VMs — for distributed data processing.</li>
                     <li>Powered by Databricks Runtime (DBR), an optimized engine based on Apache Spark.</li>
                     <li>Supports autoscaling, auto-termination, and GPU/CPU clusters for different workloads.</li>
                   </ul>
@@ -588,7 +588,7 @@ export default function AzureDatabricksPage() {
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>Runs inside your Azure subscription.</li>
                     <li>Responsible for actual data processing and storage.</li>
-                    <li>All data remains in your cloud environment G�� ensuring compliance and security.</li>
+                    <li>All data remains in your cloud environment — ensuring compliance and security.</li>
                     </ul>
                   </div>
                   
@@ -596,7 +596,7 @@ export default function AzureDatabricksPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace / User Interface Layer:</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>A collaborative web-based environment for developers, data engineers, and scientists.</li>
-                    <li>Supports multiple languages G�� Python, SQL, R, Scala, Java.</li>
+                    <li>Supports multiple languages — Python, SQL, R, Scala, Java.</li>
                     <li>Includes features like notebooks, repos, dashboards, and job orchestration.</li>
                     </ul>
                   </div>
@@ -634,7 +634,7 @@ export default function AzureDatabricksPage() {
                     <strong className="text-blue-400">Machine Learning and AI:</strong> Allows users to train, test, and deploy machine learning and AI models directly within the platform.
                   </div>
                   <div>
-                    <strong className="text-blue-400">Real-Time Data Processing:</strong> Can handle streaming data G�� for example, analyzing live sensor data or real-time transactions.
+                    <strong className="text-blue-400">Real-Time Data Processing:</strong> Can handle streaming data — for example, analyzing live sensor data or real-time transactions.
                   </div>
                   <div>
                     <strong className="text-blue-400">Data Warehousing and BI:</strong> Works with tools like Power BI to create reports and dashboards from stored data.
@@ -649,7 +649,7 @@ export default function AzureDatabricksPage() {
                     <strong className="text-blue-400">Collaborative Data Projects:</strong> Let's teams of data engineers and data scientists work together in shared notebooks and environments.
                   </div>
                   <div>
-                    <strong className="text-blue-400">Predictive Analytics:</strong> Used to forecast trends or outcomes G�� for example, predicting customer behaviour, sales, or equipment failure.
+                    <strong className="text-blue-400">Predictive Analytics:</strong> Used to forecast trends or outcomes — for example, predicting customer behaviour, sales, or equipment failure.
                   </div>
                 </div>
               </div>
@@ -686,7 +686,7 @@ export default function AzureDatabricksPage() {
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Databricks Runtime</h5>
-                  <p>The engine that runs your Spark jobs G�� it's optimized for faster performance and lower costs.</p>
+                  <p>The engine that runs your Spark jobs — it's optimized for faster performance and lower costs.</p>
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -696,7 +696,7 @@ export default function AzureDatabricksPage() {
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">MLflow</h5>
-                  <p>A built-in tool for managing the complete machine learning lifecycle G�� from model training and tracking to deployment.</p>
+                  <p>A built-in tool for managing the complete machine learning lifecycle — from model training and tracking to deployment.</p>
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -735,7 +735,7 @@ export default function AzureDatabricksPage() {
                     <strong className="text-blue-400">Automated Cluster and Job Management:</strong> Simplifies operational overhead with autoscaling, auto-termination, and job scheduling capabilities.
                   </div>
                   <div>
-                    <strong className="text-blue-400">Advanced Security and Governance:</strong> Offers enterprise-grade security through RBAC, encryption at rest/in transit, and governance via Unity Catalog.
+                    <strong className="text-blue-400">Advanced Security and </strong> Offers enterprise-grade security through RBAC, encryption at rest/in transit, and governance via Unity Catalog.
                   </div>
                   <div>
                     <strong className="text-blue-400">Integrated ML and MLOps:</strong> Built-in MLflow enables experiment tracking, model versioning, and deployment supporting the full ML lifecycle.
@@ -800,7 +800,7 @@ export default function AzureDatabricksPage() {
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
-                  <p>Select the pricing tier G�� typically Premium (+ Role-based access controls) for better management and security features.</p>
+                  <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
                   <ImageGallery images={getImages('db_step8')} />
                 </div>
 
@@ -812,9 +812,9 @@ export default function AzureDatabricksPage() {
                 </div>
 
                 <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
-                  <h5 className="text-xl font-semibold text-white mb-3">Final Step G�� Review + Create</h5>
+                  <h5 className="text-xl font-semibold text-white mb-3">Final Step — Review + Create</h5>
                   <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
-                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
+                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource </strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
                   <ImageGallery images={getImages('db_step10')} />
                 </div>
               </div>
@@ -870,7 +870,7 @@ export default function AzureDatabricksPage() {
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
-                  <p>Select the pricing tier G�� typically Premium (+ Role-based access controls) for better management and security features.</p>
+                  <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
                   <ImageGallery images={getImages('db_step8')} />
                 </div>
 
@@ -882,9 +882,9 @@ export default function AzureDatabricksPage() {
                 </div>
 
                 <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
-                  <h5 className="text-xl font-semibold text-white mb-3">Final Step G�� Review + Create</h5>
+                  <h5 className="text-xl font-semibold text-white mb-3">Final Step — Review + Create</h5>
                   <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
-                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
+                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource </strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
                   <ImageGallery images={getImages('db_step10')} />
                 </div>
               </div>
@@ -942,7 +942,7 @@ export default function AzureDatabricksPage() {
                     <div>
                       <strong className="text-blue-400">AI/ML Section:</strong>
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>1. Playground (Mosaic AI Playground):</strong> Interactive environment for experimenting with generative AI models (like LLMs). You can test prompts, analyze responses, and refine model behavior G�� all in a no-code or low-code interface.</li>
+                        <li><strong>1. Playground (Mosaic AI Playground):</strong> Interactive environment for experimenting with generative AI models (like LLMs). You can test prompts, analyze responses, and refine model behavior — all in a no-code or low-code interface.</li>
                         <li><strong>2. Experiments:</strong> Track, compare, and manage machine learning runs. Integrates with MLflow Tracking.</li>
                         <li><strong>3. Features (Feature Store):</strong> Central repository for machine learning features. Allows teams to create, share, and reuse features across multiple models and projects.</li>
                         <li><strong>4. Models (Model Registry):</strong> Store, version, and manage ML models created during experiments.</li>
@@ -955,7 +955,7 @@ export default function AzureDatabricksPage() {
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Main Panel (Welcome Screen):</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Displays a welcome message and a quick setup option G�� "Set up your workspace."</li>
+                    <li>Displays a welcome message and a quick setup option — "Set up your workspace."</li>
                     <li>Provides a search bar to quickly find data, notebooks, or past work.</li>
                     <li>Contains quick links like Recents, Favorites, Popular, and Mosaic AI to navigate faster.</li>
                     <li>The "+ New" button lets you start creating a new notebook, job, or dashboard immediately.</li>
@@ -1065,7 +1065,7 @@ export default function AzureDatabricksPage() {
                 {/* Catalog and Features */}
                   <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Catalog and Features (Unity Catalog)</h5>
-                  <p className="mb-4">The Catalog in Azure Databricks is a central place to organize, manage, and secure all your data assets such as databases, tables, views, and files G�� across your entire Databricks environment. It provides data governance, access control, and data discovery in one interface.</p>
+                  <p className="mb-4">The Catalog in Azure Databricks is a central place to organize, manage, and secure all your data assets such as databases, tables, views, and files — across your entire Databricks environment. It provides data governance, access control, and data discovery in one interface.</p>
                   
                   <div className="mt-4">
                     <h6 className="text-lg font-semibold text-blue-400 mb-3">Key Components in the Screenshot</h6>
@@ -1080,7 +1080,7 @@ export default function AzureDatabricksPage() {
                         <tbody>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>My Organization</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">Lists catalogs created within your workspace G�� for example, ohg365_db_dev, system, and others. These hold schemas (databases) and tables.</td>
+                            <td className="border border-gray-600 px-4 py-2">Lists catalogs created within your workspace — for example, ohg365_db_dev, system, and others. These hold schemas (databases) and tables.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Delta Shares Received</strong></td>
@@ -1146,20 +1146,20 @@ export default function AzureDatabricksPage() {
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li><strong>Run Filtering:</strong> Filter runs by job, user, time range, run status, or error code.</li>
                       <li><strong>Run Visualization:</strong> Graph at the top visualizes the number of successful, failed, or skipped runs over time.</li>
-                      <li><strong>Detailed Metadata:</strong> For each run, Databricks records the execution context G�� start/end time, duration, compute used, and run parameters.</li>
+                      <li><strong>Detailed Metadata:</strong> For each run, Databricks records the execution context — start/end time, duration, compute used, and run parameters.</li>
                       <li><strong>Error Handling:</strong> Provides error codes and logs to diagnose failure causes (e.g., cluster issues, data errors, script exceptions).</li>
-                      <li><strong>Audit & Compliance:</strong> Maintains a complete audit trail for all pipeline executions G�� critical for production governance.</li>
+                      <li><strong>Audit & Compliance:</strong> Maintains a complete audit trail for all pipeline executions — critical for production governance.</li>
                     </ul>
 
                     <h6 className="text-lg font-semibold text-blue-400 mb-2 mt-4">What You See:</h6>
                     <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li><strong>Start time</strong> G�� When the job started.</li>
-                      <li><strong>Job name</strong> G�� Which job ran (for example, "ETL Pipeline").</li>
-                      <li><strong>Run as</strong> G�� Which user or role ran it.</li>
-                      <li><strong>Duration</strong> G�� How long it took.</li>
-                      <li><strong>Status</strong> G�� Shows if it succeeded, failed, or skipped.</li>
-                      <li><strong>Error code</strong> G�� Displays the error message if something failed.</li>
-                      <li><strong>Run parameters</strong> G�� Lists any input values (like parameters) used in that run.</li>
+                      <li><strong>Start time</strong> — When the job started.</li>
+                      <li><strong>Job name</strong> — Which job ran (for example, "ETL Pipeline").</li>
+                      <li><strong>Run as</strong> — Which user or role ran it.</li>
+                      <li><strong>Duration</strong> — How long it took.</li>
+                      <li><strong>Status</strong> — Shows if it succeeded, failed, or skipped.</li>
+                      <li><strong>Error code</strong> — Displays the error message if something failed.</li>
+                      <li><strong>Run parameters</strong> — Lists any input values (like parameters) used in that run.</li>
                     </ul>
                   </div>
                 {/* Jobs & Pipelines visuals from Azure Databricks -1 */}
@@ -1215,7 +1215,7 @@ export default function AzureDatabricksPage() {
                 {/* Marketplace */}
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Marketplace</h5>
-                  <p className="mb-4">Databricks Marketplace is a data and AI exchange platform that allows users to discover, share, and monetize datasets, AI models, and notebooks within the Databricks Lakehouse ecosystem G�� all powered by Delta Sharing (the open standard for secure data sharing).</p>
+                  <p className="mb-4">Databricks Marketplace is a data and AI exchange platform that allows users to discover, share, and monetize datasets, AI models, and notebooks within the Databricks Lakehouse ecosystem — all powered by Delta Sharing (the open standard for secure data sharing).</p>
                   
                   <p className="mb-3">It's designed to make it easy for organizations to:</p>
                   <ul className="list-disc list-inside space-y-1 ml-4 mb-4">
@@ -1266,7 +1266,7 @@ export default function AzureDatabricksPage() {
                 {/* Data Ingestion */}
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Data Ingestion</h5>
-                  <p className="mb-4">Data ingestion means bringing data into Databricks from different sources G�� databases, APIs, files, or cloud storage G�� so that you can analyze or transform it later.</p>
+                  <p className="mb-4">Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.</p>
                   <p className="mb-4">It's the first step in any data pipeline or analytics workflow.</p>
                   <p className="mb-4">The Data Ingestion tab acts as a centralized data onboarding interface. It supports:</p>
                   <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
@@ -1278,7 +1278,7 @@ export default function AzureDatabricksPage() {
                   <p className="mb-4">It ensures schema consistency, metadata registration, and secure data governance under Unity Catalog.</p>
                   
                   <div className="mt-4">
-                    <h6 className="text-lg font-semibold text-blue-400 mb-3">Header: GP�n+� Add data</h6>
+                    <h6 className="text-lg font-semibold text-blue-400 mb-3">Add data</h6>
                     <p className="mb-3"><strong>Purpose:</strong> Guides you to connect data sources, upload files, or create tables for analysis.</p>
                   </div>
 
@@ -1299,32 +1299,32 @@ export default function AzureDatabricksPage() {
                           </thead>
                           <tbody>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� Salesforce</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Salesforce</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Connect to CRM data (leads, opportunities, accounts).</td>
                               <td className="border border-gray-600 px-4 py-2">Analyze customer and sales performance.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� SAP Business Data Cloud</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>SAP Business Data Cloud</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Access enterprise resource data from SAP.</td>
                               <td className="border border-gray-600 px-4 py-2">Supply chain or financial reporting.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� Workday Reports</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Workday Reports</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Retrieve HR, payroll, and workforce data.</td>
                               <td className="border border-gray-600 px-4 py-2">Workforce analytics and reporting.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� ServiceNow</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>ServiceNow</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Connect IT service management data.</td>
                               <td className="border border-gray-600 px-4 py-2">Incident and change management insights.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� Google Analytics Raw Data</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Google Analytics Raw Data</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Import website and marketing analytics data.</td>
                               <td className="border border-gray-600 px-4 py-2">Digital marketing and campaign performance.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� SQL Server</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>SQL Server</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Connect on-prem or cloud-hosted SQL databases.</td>
                               <td className="border border-gray-600 px-4 py-2">Bring structured transactional data into Databricks.</td>
                             </tr>
@@ -1347,17 +1347,17 @@ export default function AzureDatabricksPage() {
                           </thead>
                           <tbody>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� Create or modify table</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Create or modify table</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Upload files like CSV, JSON, or Parquet to create or replace tables.</td>
                               <td className="border border-gray-600 px-4 py-2">Ideal for one-time imports or small datasets.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>=��� Upload files to a volume</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Upload files to a volume</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Upload non-tabular files (images, logs, etc.) managed under Unity Catalog Volumes.</td>
                               <td className="border border-gray-600 px-4 py-2">For non-structured data like logs, models, or raw files.</td>
                             </tr>
                             <tr>
-                              <td className="border border-gray-600 px-4 py-2"><strong>G��n+� Create table from Azure Data Lake Storage (ADLS)</strong></td>
+                              <td className="border border-gray-600 px-4 py-2"><strong>Create table from Azure Data Lake Storage (ADLS)</strong></td>
                               <td className="border border-gray-600 px-4 py-2">Load data directly from Azure Data Lake into a Delta table.</td>
                               <td className="border border-gray-600 px-4 py-2">For large-scale, enterprise-grade data pipelines.</td>
                             </tr>
@@ -1411,7 +1411,7 @@ export default function AzureDatabricksPage() {
               <h4 className="text-2xl font-semibold text-white mb-4">1. SQL Editor</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  The <strong className="text-blue-400">SQL Editor</strong> in Databricks allows users to write, run, and visualize SQL queries directly on data stored in Unity Catalog, Delta tables, or external databases G�� all without needing to create a separate notebook.
+                  The <strong className="text-blue-400">SQL Editor</strong> in Databricks allows users to write, run, and visualize SQL queries directly on data stored in Unity Catalog, Delta tables, or external databases — all without needing to create a separate notebook.
                 </p>
                 <p>
                   It's designed for:
@@ -1423,7 +1423,7 @@ export default function AzureDatabricksPage() {
                   <li>Business users who prefer SQL-based analytics</li>
                 </ul>
                 <p className="mt-3">
-                  Think of the SQL Editor as a notepad for data inside Databricks G�� where you can write and run SQL commands (like SELECT, JOIN, GROUP BY, etc.) on your company's data tables. It's like working in SQL Server Management Studio (SSMS) or MySQL Workbench G�� but directly connected to your Databricks Lakehouse.
+                  Think of the SQL Editor as a notepad for data inside Databricks — where you can write and run SQL commands (like SELECT, JOIN, GROUP BY, etc.) on your company's data tables. It's like working in SQL Server Management Studio (SSMS) or MySQL Workbench — but directly connected to your Databricks Lakehouse.
                 </p>
                 
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
@@ -1569,19 +1569,19 @@ export default function AzureDatabricksPage() {
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Available Options in the Queries Section</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Create Query</strong> G�� Opens a new SQL editor window where you can start writing SQL statements.</li>
-                    <li><strong>Open Editor</strong> G�� Quickly navigate back to the SQL editor to modify existing queries.</li>
-                    <li><strong>Filter Queries</strong> G�� Search for queries by name or tag.</li>
+                    <li><strong>Create Query</strong> — Opens a new SQL editor window where you can start writing SQL statements.</li>
+                    <li><strong>Open Editor</strong> — Quickly navigate back to the SQL editor to modify existing queries.</li>
+                    <li><strong>Filter Queries</strong> — Search for queries by name or tag.</li>
                     <li><strong>Tabs:</strong>
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>My Queries</strong> G�� Shows only your saved queries.</li>
-                        <li><strong>Favorites</strong> G�� Displays queries you've marked as important.</li>
-                        <li><strong>All Queries</strong> G�� Lists all available queries within the workspace.</li>
+                        <li><strong>My Queries</strong> — Shows only your saved queries.</li>
+                        <li><strong>Favorites</strong> — Displays queries you've marked as important.</li>
+                        <li><strong>All Queries</strong> — Lists all available queries within the workspace.</li>
                       </ul>
                     </li>
-                    <li><strong>Created By / Created At</strong> G�� Helps you identify who created the query and when.</li>
-                    <li><strong>Query History</strong> G�� Access past runs, view execution times, and troubleshoot failed queries.</li>
-                    <li><strong>Dashboards Integration</strong> G�� Save query results and directly add them to dashboards for visualization.</li>
+                    <li><strong>Created By / Created At</strong> — Helps you identify who created the query and when.</li>
+                    <li><strong>Query History</strong> — Access past runs, view execution times, and troubleshoot failed queries.</li>
+                    <li><strong>Dashboards Integration</strong> — Save query results and directly add them to dashboards for visualization.</li>
                   </ul>
                 </div>
                 {/* Queries - image from document */}
@@ -1603,18 +1603,18 @@ export default function AzureDatabricksPage() {
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Options and Features in the Dashboard Section</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Create Dashboard</strong> G�� Start building your own dashboard from scratch using your saved queries or visualizations.</li>
-                    <li><strong>View Samples Gallery</strong> G�� Explore prebuilt sample dashboards such as NYC Taxi Trip Analysis and Retail Revenue & Supply Chain to understand layout and visualization options.</li>
-                    <li><strong>Filter Dashboards</strong> G�� Quickly search for dashboards by name or owner.</li>
+                    <li><strong>Create Dashboard</strong> — Start building your own dashboard from scratch using your saved queries or visualizations.</li>
+                    <li><strong>View Samples </strong> — Explore prebuilt sample dashboards such as NYC Taxi Trip Analysis and Retail Revenue & Supply Chain to understand layout and visualization options.</li>
+                    <li><strong>Filter Dashboards</strong> — Quickly search for dashboards by name or owner.</li>
                     <li><strong>Tabs:</strong>
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>All</strong> G�� Displays every dashboard you have access to.</li>
-                        <li><strong>Favorites</strong> G�� Your bookmarked dashboards.</li>
-                        <li><strong>Popular</strong> G�� Dashboards frequently viewed by others.</li>
+                        <li><strong>All</strong> — Displays every dashboard you have access to.</li>
+                        <li><strong>Favorites</strong> — Your bookmarked dashboards.</li>
+                        <li><strong>Popular</strong> — Dashboards frequently viewed by others.</li>
                       </ul>
                     </li>
-                    <li><strong>Last Modified / Owner Filters</strong> G�� Sort and manage dashboards based on activity or ownership.</li>
-                    <li><strong>Legacy Dashboards</strong> G�� View or migrate older dashboards built using the classic interface.</li>
+                    <li><strong>Last Modified / Owner Filters</strong> — Sort and manage dashboards based on activity or ownership.</li>
+                    <li><strong>Legacy Dashboards</strong> — View or migrate older dashboards built using the classic interface.</li>
                   </ul>
                 </div>
 
@@ -1659,7 +1659,7 @@ export default function AzureDatabricksPage() {
               <h4 className="text-2xl font-semibold text-white mb-4">4. Genie</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  <strong className="text-blue-400">Databricks Genie</strong> is a Generative AI-powered assistant built into the Databricks SQL workspace. It allows users to ask questions about data using natural language (like English sentences) G�� and Genie automatically generates SQL queries, runs them, and visualizes the results.
+                  <strong className="text-blue-400">Databricks </strong> is a Generative AI-powered assistant built into the Databricks SQL workspace. It allows users to ask questions about data using natural language (like English sentences) — and Genie automatically generates SQL queries, runs them, and visualizes the results.
                 </p>
                 <p>
                   Genie uses natural language understanding (NLU) to parse questions and generate optimized SQL queries based on data catalog metadata. It can work across Unity Catalog, SQL Warehouses, and Delta Tables.
@@ -1676,17 +1676,17 @@ export default function AzureDatabricksPage() {
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Key Options in the Genie Interface</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Filter spaces</strong> G�� Search for an existing "Genie Space." A space is like a shared workspace for Genie conversations.</li>
+                    <li><strong>Filter spaces</strong> — Search for an existing "Genie Space." A space is like a shared workspace for Genie conversations.</li>
                     <li><strong>Tabs:</strong>
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>All</strong> G�� View all Genie spaces accessible to you.</li>
-                        <li><strong>Favorites</strong> G�� Quickly access frequently used spaces.</li>
-                        <li><strong>Popular</strong> G�� See trending Genie spaces used by your team.</li>
+                        <li><strong>All</strong> — View all Genie spaces accessible to you.</li>
+                        <li><strong>Favorites</strong> — Quickly access frequently used spaces.</li>
+                        <li><strong>Popular</strong> — See trending Genie spaces used by your team.</li>
                       </ul>
                     </li>
-                    <li><strong>Last Modified</strong> G�� Sort by recent updates.</li>
-                    <li><strong>Owner</strong> G�� Filter by creator or data owner.</li>
-                    <li><strong>New</strong> G�� Create a new Genie space to start a natural language query session. Add datasets or tables. Ask AI questions about those datasets. Save and share results or charts.</li>
+                    <li><strong>Last Modified</strong> — Sort by recent updates.</li>
+                    <li><strong>Owner</strong> — Filter by creator or data owner.</li>
+                    <li><strong>New</strong> — Create a new Genie space to start a natural language query session. Add datasets or tables. Ask AI questions about those datasets. Save and share results or charts.</li>
                   </ul>
                 </div>
 
@@ -1713,7 +1713,7 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� AI-driven</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>AI-driven</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Converts natural language to accurate SQL</td>
                         </tr>
                         <tr>
@@ -1721,19 +1721,19 @@ export default function AzureDatabricksPage() {
                           <td className="border border-gray-600 px-4 py-2">Quick data exploration without manual queries</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Visualization</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Visualization</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Auto-generates charts and dashboards</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Secure</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Secure</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Works with Unity Catalog permissions</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Collaborative</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Collaborative</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Supports multi-user spaces and shared queries</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Integrated</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Integrated</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Works with SQL Warehouses and Delta tables</td>
                         </tr>
                       </tbody>
@@ -1781,15 +1781,15 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Filter alerts</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Filter alerts</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Search existing alerts by name or keyword.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� My alerts / All alerts</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>My alerts / All alerts</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Switch between alerts you created and those shared by your team.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��+ List section</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>List section</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Displays alert name, status, last updated time, creator, and creation date.</td>
                         </tr>
                         <tr>
@@ -1821,19 +1821,19 @@ export default function AzureDatabricksPage() {
                           <td className="border border-gray-600 px-4 py-2">Tracks metrics and thresholds continuously</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Notifications</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Notifications</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Sends alerts via email or webhooks</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Collaboration</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Collaboration</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Share alerts across teams or workspaces</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Secure</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Secure</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Follows Unity Catalog access controls</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Integrated</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Integrated</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Works with queries, dashboards, and pipelines</td>
                         </tr>
                       </tbody>
@@ -1850,7 +1850,7 @@ export default function AzureDatabricksPage() {
               <h4 className="text-2xl font-semibold text-white mb-4">6. Query History</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  The Query History page in Databricks provides a complete log of all SQL queries executed in your workspace. It helps users monitor performance, debug issues, track usage, and ensure compliance G�� all in one place.
+                  The Query History page in Databricks provides a complete log of all SQL queries executed in your workspace. It helps users monitor performance, debug issues, track usage, and ensure compliance — all in one place.
                 </p>
                 <p>
                   The Query History view is essential for monitoring performance, auditing, and optimizing workloads:
@@ -1875,36 +1875,36 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� User</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>User</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Shows who ran the query (e.g., your email ID). Helps identify the query owner.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Date Range (Last 7 days)</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Date Range (Last 7 days)</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Filters query history by time period (e.g., last day, week, month, or custom range).</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>G��n+� Compute</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Compute</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Filters queries based on the SQL Warehouse or cluster used.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>GŦn+� Duration</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Duration</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Lets you filter by how long queries took to run.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Status</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Status</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Shows whether a query succeeded, failed, or was canceled.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Statement / Statement ID</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Statement / Statement ID</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Displays SQL text and a unique identifier for each run. Useful for debugging or tracking jobs.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Refresh / Reset filters</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Refresh / Reset filters</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Reloads or clears filters to show all results again.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Columns in the table</strong></td>
-                          <td className="border border-gray-600 px-4 py-2">Includes Query, Started at, Duration, Source, Compute, User G�� all helping in tracking query performance.</td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Columns in the table</strong></td>
+                          <td className="border border-gray-600 px-4 py-2">Includes Query, Started at, Duration, Source, Compute, User — all helping in tracking query performance.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -1923,11 +1923,11 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��+ Audit Log</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Audit Log</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Track which users are querying what data for compliance or governance.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Performance Analysis</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Performance Analysis</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Identify long-running queries and optimize them.</td>
                         </tr>
                         <tr>
@@ -1935,11 +1935,11 @@ export default function AzureDatabricksPage() {
                           <td className="border border-gray-600 px-4 py-2">Debug query failures using statement IDs.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=���G��G��n+� Collaboration</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Collaboration</strong></td>
                           <td className="border border-gray-600 px-4 py-2">See who ran what and when for shared datasets.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Alert Review</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Alert Review</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Review the queries triggered by scheduled alerts or dashboards.</td>
                         </tr>
                       </tbody>
@@ -1956,7 +1956,7 @@ export default function AzureDatabricksPage() {
               <h4 className="text-2xl font-semibold text-white mb-4">7. SQL Data Warehouse</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  A SQL Warehouse (formerly called SQL Endpoint) is the compute resource in Databricks used to run SQL queries, dashboards, and alerts. It is designed for data analysts, BI developers, and engineers who work with SQL-based data processing G�� similar to how a cluster runs notebooks, but optimized for SQL workloads.
+                  A SQL Warehouse (formerly called SQL Endpoint) is the compute resource in Databricks used to run SQL queries, dashboards, and alerts. It is designed for data analysts, BI developers, and engineers who work with SQL-based data processing — similar to how a cluster runs notebooks, but optimized for SQL workloads.
                 </p>
                 
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
@@ -1971,27 +1971,27 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Compute Tab</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Compute Tab</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Displays different compute options: All-purpose compute, Job compute, SQL warehouses, etc.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� SQL Warehouses Tab</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>SQL Warehouses Tab</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Dedicated area to view, start, stop, and manage all SQL Warehouses.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Filter SQL warehouses</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Filter SQL warehouses</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Search and filter warehouses by name.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Only my SQL warehouses</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Only my SQL warehouses</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Show only the warehouses created by you.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Created by / Size / Status / Type</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Created by / Size / Status / Type</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Shows details about the warehouse (who made it, its size, whether it's active, and its type).</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Create SQL warehouse button</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Create SQL warehouse button</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Used to create a new warehouse. Disabled if permissions are limited.</td>
                         </tr>
                       </tbody>
@@ -2011,24 +2011,24 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��+n+� Name</strong></td>
-                          <td className="border border-gray-600 px-4 py-2">Serverless Starter Warehouse G�� this is a default pre-configured warehouse.</td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Name</strong></td>
+                          <td className="border border-gray-600 px-4 py-2">Serverless Starter Warehouse — this is a default pre-configured warehouse.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Created by</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Created by</strong></td>
                           <td className="border border-gray-600 px-4 py-2">The user who created it (e.g., manoj vemula).</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>G��n+� Size</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Size</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Defines compute power (Small, Medium, Large, etc.). Determines speed and cost.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Active / Max</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Active / Max</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Shows how many users or queries are currently running on the warehouse.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>G��n+� Type</strong></td>
-                          <td className="border border-gray-600 px-4 py-2">Serverless G�� means Databricks automatically manages compute resources.</td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Type</strong></td>
+                          <td className="border border-gray-600 px-4 py-2">Serverless — means Databricks automatically manages compute resources.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -2048,12 +2048,12 @@ export default function AzureDatabricksPage() {
                     </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Serverless SQL Warehouse</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Serverless SQL Warehouse</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Fully managed by Databricks. Scales automatically and starts instantly.</td>
                           <td className="border border-gray-600 px-4 py-2">Great for quick analysis and dashboards.</td>
                       </tr>
                       <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>G��n+� Classic (Pro) SQL Warehouse</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Classic (Pro) SQL Warehouse</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Requires manual scaling and management. You control cluster size and scaling.</td>
                           <td className="border border-gray-600 px-4 py-2">Used for enterprise workloads needing more control and predictable cost.</td>
                       </tr>
@@ -2087,23 +2087,23 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Elastic scaling</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Elastic scaling</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Automatically adjusts resources to handle varying workloads.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=�Ʀ Pay-per-use</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Pay-per-use</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Charged per DBU (Databricks Unit) based on compute time.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Optimized for BI Tools</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Optimized for BI Tools</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Integrates with Power BI, Tableau, and Looker for live queries.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Serverless Architecture</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Serverless Architecture</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Starts instantly; no need to wait for cluster startup.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2"><strong>=��� Unity Catalog Integration</strong></td>
+                          <td className="border border-gray-600 px-4 py-2"><strong>Unity Catalog Integration</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Enforces data access control and audit policies.</td>
                         </tr>
                       </tbody>
@@ -2147,7 +2147,7 @@ export default function AzureDatabricksPage() {
 
                   <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Use Case</h5>
-                    <p>Used by data engineers and ML teams to build end-to-end pipelines G�� from data ingestion to transformation, feature generation, and model retraining G�� all under one environment.</p>
+                    <p>Used by data engineers and ML teams to build end-to-end pipelines — from data ingestion to transformation, feature generation, and model retraining — all under one environment.</p>
                   </div>
 
                   <p>
@@ -2159,9 +2159,9 @@ export default function AzureDatabricksPage() {
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li><strong>Run Filtering:</strong> Filter runs by job, user, time range, run status, or error code.</li>
                       <li><strong>Run Visualization:</strong> Graph at the top visualizes the number of successful, failed, or skipped runs over time.</li>
-                      <li><strong>Detailed Metadata:</strong> For each run, Databricks records the execution context G�� start/end time, duration, compute used, and run parameters.</li>
+                      <li><strong>Detailed Metadata:</strong> For each run, Databricks records the execution context — start/end time, duration, compute used, and run parameters.</li>
                       <li><strong>Error Handling:</strong> Provides error codes and logs to diagnose failure causes (e.g., cluster issues, data errors, script exceptions).</li>
-                      <li><strong>Audit & Compliance:</strong> Maintains a complete audit trail for all pipeline executions G�� critical for production governance.</li>
+                      <li><strong>Audit & Compliance:</strong> Maintains a complete audit trail for all pipeline executions — critical for production governance.</li>
                     </ul>
                   </div>
 
@@ -2218,7 +2218,7 @@ export default function AzureDatabricksPage() {
                 <h4 className="text-2xl font-semibold text-white mb-4">Data Ingestion</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
-                    Data ingestion means bringing data into Databricks from different sources G�� databases, APIs, files, or cloud storage G�� so that you can analyze or transform it later.
+                    Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.
                   </p>
                   <p>
                     It's the first step in any data pipeline or analytics workflow.
@@ -2237,7 +2237,7 @@ export default function AzureDatabricksPage() {
                   </p>
 
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
-                    <h5 className="text-xl font-semibold text-white mb-3">Header: GP�n+� Add data</h5>
+                    <h5 className="text-xl font-semibold text-white mb-3">Add data</h5>
                     <p><strong>Purpose:</strong> Guides you to connect data sources, upload files, or create tables for analysis.</p>
                   </div>
 
@@ -2257,32 +2257,32 @@ export default function AzureDatabricksPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Salesforce</td>
+                            <td className="border border-gray-600 px-4 py-2">Salesforce</td>
                             <td className="border border-gray-600 px-4 py-2">Connect to CRM data (leads, opportunities, accounts).</td>
                             <td className="border border-gray-600 px-4 py-2">Analyze customer and sales performance.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� SAP Business Data Cloud</td>
+                            <td className="border border-gray-600 px-4 py-2">SAP Business Data Cloud</td>
                             <td className="border border-gray-600 px-4 py-2">Access enterprise resource data from SAP.</td>
                             <td className="border border-gray-600 px-4 py-2">Supply chain or financial reporting.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Workday Reports</td>
+                            <td className="border border-gray-600 px-4 py-2">Workday Reports</td>
                             <td className="border border-gray-600 px-4 py-2">Retrieve HR, payroll, and workforce data.</td>
                             <td className="border border-gray-600 px-4 py-2">Workforce analytics and reporting.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� ServiceNow</td>
+                            <td className="border border-gray-600 px-4 py-2">ServiceNow</td>
                             <td className="border border-gray-600 px-4 py-2">Connect IT service management data.</td>
                             <td className="border border-gray-600 px-4 py-2">Incident and change management insights.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Google Analytics Raw Data</td>
+                            <td className="border border-gray-600 px-4 py-2">Google Analytics Raw Data</td>
                             <td className="border border-gray-600 px-4 py-2">Import website and marketing analytics data.</td>
                             <td className="border border-gray-600 px-4 py-2">Digital marketing and campaign performance.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� SQL Server</td>
+                            <td className="border border-gray-600 px-4 py-2">SQL Server</td>
                             <td className="border border-gray-600 px-4 py-2">Connect on-prem or cloud-hosted SQL databases.</td>
                             <td className="border border-gray-600 px-4 py-2">Bring structured transactional data into Databricks.</td>
                           </tr>
@@ -2303,17 +2303,17 @@ export default function AzureDatabricksPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Create or modify table</td>
+                            <td className="border border-gray-600 px-4 py-2">Create or modify table</td>
                             <td className="border border-gray-600 px-4 py-2">Upload files like CSV, JSON, or Parquet to create or replace tables.</td>
                             <td className="border border-gray-600 px-4 py-2">Ideal for one-time imports or small datasets.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Upload files to a volume</td>
+                            <td className="border border-gray-600 px-4 py-2">Upload files to a volume</td>
                             <td className="border border-gray-600 px-4 py-2">Upload non-tabular files (images, logs, etc.) managed under Unity Catalog Volumes.</td>
                             <td className="border border-gray-600 px-4 py-2">For non-structured data like logs, models, or raw files.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">G��n+� Create table from Azure Data Lake Storage (ADLS)</td>
+                            <td className="border border-gray-600 px-4 py-2">Create table from Azure Data Lake Storage (ADLS)</td>
                             <td className="border border-gray-600 px-4 py-2">Load data directly from Azure Data Lake into a Delta table.</td>
                             <td className="border border-gray-600 px-4 py-2">For large-scale, enterprise-grade data pipelines.</td>
                           </tr>
@@ -2350,7 +2350,7 @@ export default function AzureDatabricksPage() {
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Key Capabilities</h5>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li>Chat with or test AI models (like GPT, MPT, or Llama).</li>
+                      <li>Chat with or test AI models (like — MPT, or Llama).</li>
                       <li>Ask questions, summarize documents, or generate code.</li>
                       <li>Try out small AI tasks (like question answering or summarization) before building real applications.</li>
                       <li>A low-code interface for LLM prompt engineering and evaluation.</li>
@@ -2374,7 +2374,7 @@ export default function AzureDatabricksPage() {
                         <tbody>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Model Selector (Top Bar)</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">Shows the current model (e.g., GPT OSS 120B). You can switch between models here.</td>
+                            <td className="border border-gray-600 px-4 py-2">Shows the current model (e.g., — OSS 120B). You can switch between models here.</td>
                             <td className="border border-gray-600 px-4 py-2">Choose which AI model to test or fine-tune.</td>
                           </tr>
                           <tr>
@@ -2411,10 +2411,10 @@ export default function AzureDatabricksPage() {
                     <h5 className="text-xl font-semibold text-white mb-3">For AI Developers</h5>
                     <p className="mb-3">The Playground supports:</p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>Unity Catalog AI Tools</strong> G�� governed access to enterprise data.</li>
-                      <li><strong>Databricks Foundation Models</strong> G�� like MPT, Llama 2, GPT OSS, etc.</li>
-                      <li><strong>Custom Tool Integration</strong> G�� connect APIs or databases to your AI agent.</li>
-                      <li><strong>Prompt Evaluation</strong> G�� test, compare, and optimize prompts before production use.</li>
+                      <li><strong>Unity Catalog AI Tools</strong> — governed access to enterprise data.</li>
+                      <li><strong>Databricks Foundation Models</strong> — like MPT, Llama 2, — OSS, etc.</li>
+                      <li><strong>Custom Tool Integration</strong> — connect APIs or databases to your AI agent.</li>
+                      <li><strong>Prompt Evaluation</strong> — test, compare, and optimize prompts before production use.</li>
                     </ul>
                   </div>
 
@@ -2430,23 +2430,23 @@ export default function AzureDatabricksPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Agent Prototyping</td>
+                            <td className="border border-gray-600 px-4 py-2">Agent Prototyping</td>
                             <td className="border border-gray-600 px-4 py-2">Create and test agents that can use APIs, databases, or documents.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Function Calling</td>
+                            <td className="border border-gray-600 px-4 py-2">Function Calling</td>
                             <td className="border border-gray-600 px-4 py-2">Extend the model's capabilities by allowing it to call your defined Python or SQL functions.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��+ Prompt Testing</td>
+                            <td className="border border-gray-600 px-4 py-2">Prompt Testing</td>
                             <td className="border border-gray-600 px-4 py-2">Evaluate how prompts perform across models.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Evaluation Tools</td>
+                            <td className="border border-gray-600 px-4 py-2">Evaluation Tools</td>
                             <td className="border border-gray-600 px-4 py-2">Use built-in metrics to test model quality (accuracy, bias, hallucination rate).</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Unity Catalog Integration</td>
+                            <td className="border border-gray-600 px-4 py-2">Unity Catalog Integration</td>
                             <td className="border border-gray-600 px-4 py-2">Ensure data governance and secure access during AI experiments.</td>
                           </tr>
                         </tbody>
@@ -2457,11 +2457,11 @@ export default function AzureDatabricksPage() {
                   <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Benefits</h5>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>=��� Hands-on AI Development:</strong> Experiment freely without deployment setup.</li>
-                      <li><strong>=��� Prompt Optimization:</strong> Refine and evaluate prompts before production.</li>
-                      <li><strong>=��� Custom Tool Integration:</strong> Combine AI reasoning with data or APIs.</li>
-                      <li><strong>=��� Governance:</strong> Integrated with Unity Catalog for secure and auditable AI testing.</li>
-                      <li><strong>=��� Multiple Model Access:</strong> Test open-source and Databricks-hosted LLMs.</li>
+                      <li><strong>Hands-on AI Development:</strong> Experiment freely without deployment setup.</li>
+                      <li><strong>Prompt Optimization:</strong> Refine and evaluate prompts before production.</li>
+                      <li><strong>Custom Tool Integration:</strong> Combine AI reasoning with data or APIs.</li>
+                      <li><strong>Governance:</strong> Integrated with Unity Catalog for secure and auditable AI testing.</li>
+                      <li><strong>Multiple Model Access:</strong> Test open-source and Databricks-hosted LLMs.</li>
                     </ul>
                   </div>
                 </div>
@@ -2474,7 +2474,7 @@ export default function AzureDatabricksPage() {
                 <h4 className="text-2xl font-semibold text-white mb-4">Experiments</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
-                    In Databricks, Experiments represent the core of model development and tracking. An experiment records each run of your machine learning or AI workflow G�� including:
+                    In Databricks, Experiments represent the core of model development and tracking. An experiment records each run of your machine learning or AI workflow — including:
                   </p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Model parameters (like learning rate, epochs)</li>
@@ -2493,17 +2493,17 @@ export default function AzureDatabricksPage() {
                     <li>Unified tracking for ML, DL, and GenAI experiments.</li>
                     <li>Versioning for both data and models.</li>
                     <li>Prompt tracking for LLM fine-tuning and evaluation.</li>
-                    <li>Advanced observability G�� including lineage and traceability for GenAI agents.</li>
+                    <li>Advanced observability — including lineage and traceability for GenAI agents.</li>
                   </ul>
 
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Visible Sections:</h5>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>=��� GenAI apps & agents:</strong> For building and tracking Generative AI apps or AI agents.</li>
-                      <li><strong>=��� Regression:</strong> Create regression models automatically using AutoML.</li>
-                      <li><strong>=��� Forecasting (Preview):</strong> Build time-series forecasting models.</li>
-                      <li><strong>=��� Classification:</strong> Train classification models (binary or multi-class).</li>
-                      <li><strong>G��n+� Custom model training:</strong> For custom classical ML or deep learning experiments.</li>
+                      <li><strong>GenAI apps & agents:</strong> For building and tracking Generative AI apps or AI agents.</li>
+                      <li><strong>Regression:</strong> Create regression models automatically using AutoML.</li>
+                      <li><strong>Forecasting (Preview):</strong> Build time-series forecasting models.</li>
+                      <li><strong>Classification:</strong> Train classification models (binary or multi-class).</li>
+                      <li><strong>Custom model training:</strong> For custom classical ML or deep learning experiments.</li>
                     </ul>
                   </div>
 
@@ -2564,7 +2564,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Data & Model Lineage</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">Full traceability from raw data G�� features G�� model G�� predictions.</td>
+                            <td className="border border-gray-600 px-4 py-2">Full traceability from raw data — features — model — predictions.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>GenAI Agent Observability</strong></td>
@@ -2582,11 +2582,11 @@ export default function AzureDatabricksPage() {
                   <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Core Functionalities</h5>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>=��� AutoML Experiments:</strong> Automatically builds and tunes models for regression, classification, or forecasting tasks.</li>
-                      <li><strong>=��� Custom Model Training:</strong> Allows full control of model code G�� supports PyTorch, TensorFlow, Scikit-learn, etc.</li>
-                      <li><strong>=��� GenAI & LLM Tracking:</strong> Records prompt configurations, LLM outputs, and tool usage for AI agents.</li>
-                      <li><strong>=��� Experiment Comparison:</strong> Lets you visually compare multiple runs G�� metrics, parameters, and outputs.</li>
-                      <li><strong>=��� Integration with Feature Store & Models:</strong> Once the best model is found, link it to the Model Registry for deployment.</li>
+                      <li><strong>AutoML Experiments:</strong> Automatically builds and tunes models for regression, classification, or forecasting tasks.</li>
+                      <li><strong>Custom Model Training:</strong> Allows full control of model code — supports PyTorch, TensorFlow, Scikit-learn, etc.</li>
+                      <li><strong>GenAI & LLM Tracking:</strong> Records prompt configurations, LLM outputs, and tool usage for AI agents.</li>
+                      <li><strong>Experiment Comparison:</strong> Lets you visually compare multiple runs — metrics, parameters, and outputs.</li>
+                      <li><strong>Integration with Feature Store & Models:</strong> Once the best model is found, link it to the Model Registry for deployment.</li>
                     </ul>
                   </div>
 
@@ -2602,19 +2602,19 @@ export default function AzureDatabricksPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>=��� Reproducibility</strong></td>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Reproducibility</strong></td>
                             <td className="border border-gray-600 px-4 py-2">Every run records code, data, and environment versions for full reproducibility.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>=��� Model Optimization</strong></td>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Model Optimization</strong></td>
                             <td className="border border-gray-600 px-4 py-2">Compare hundreds of runs to find the best hyperparameters and features.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>=�� Collaboration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Collaboration</strong></td>
                             <td className="border border-gray-600 px-4 py-2">Share experiments with team members and track who made what changes.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>=��� Governance</strong></td>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Governance</strong></td>
                             <td className="border border-gray-600 px-4 py-2">All experiments are tracked under Unity Catalog with access controls.</td>
                           </tr>
                         </tbody>
@@ -2634,8 +2634,8 @@ export default function AzureDatabricksPage() {
                     In Machine Learning, features are the input variables (columns) used by a model to make predictions. For example:
                   </p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>In a credit scoring model G�� income, age, loan_amount are features.</li>
-                    <li>In a product recommender G�� user_history, click_rate, category_interest are features.</li>
+                    <li>In a credit scoring model — income, age, loan_amount are features.</li>
+                    <li>In a product recommender — user_history, click_rate, category_interest are features.</li>
                   </ul>
                   <p>
                     The Features tab in Databricks allows you to manage, share, and reuse these features across models and teams.
@@ -2778,7 +2778,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Feature lineage</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">View the complete data lineage from source G�� feature G�� model.</td>
+                            <td className="border border-gray-600 px-4 py-2">View the complete data lineage from source — feature — model.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -2788,11 +2788,11 @@ export default function AzureDatabricksPage() {
                   <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Key Benefits</h5>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>G�+n+� Feature Reusability:</strong> Build once, use everywhere G�� across teams and projects.</li>
-                      <li><strong>=��� Consistency:</strong> Same feature logic is applied in training and serving.</li>
-                      <li><strong>=��� Discoverability:</strong> Easily search and explore existing features.</li>
-                      <li><strong>=��+ Governance:</strong> Controlled via Unity Catalog with fine-grained access control.</li>
-                      <li><strong>=��� Lineage & Audit:</strong> Full visibility from raw data G�� feature G�� model G�� prediction.</li>
+                      <li><strong>Feature Reusability:</strong> Build once, use everywhere — across teams and projects.</li>
+                      <li><strong>Consistency:</strong> Same feature logic is applied in training and serving.</li>
+                      <li><strong>Discoverability:</strong> Easily search and explore existing features.</li>
+                      <li><strong>Governance:</strong> Controlled via Unity Catalog with fine-grained access control.</li>
+                      <li><strong>Lineage & Audit:</strong> Full visibility from raw data — feature — model — prediction.</li>
                     </ul>
                   </div>
                 </div>
@@ -2849,11 +2849,11 @@ export default function AzureDatabricksPage() {
                   </div>
 
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
-                    <h5 className="text-xl font-semibold text-white mb-3">Once Models Exist G�� More Options Appear</h5>
+                    <h5 className="text-xl font-semibold text-white mb-3">Once Models Exist — More Options Appear</h5>
                     <p className="mb-3">When you have registered models, you get these additional actions:</p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
-                      <li><strong>1. Model Versioning:</strong> Each model can have multiple versions (v1, v2, GǪ) for tracking updates or retraining cycles.</li>
-                      <li><strong>2. Model Staging:</strong> Models can have lifecycle stages: None G�� Just registered, Staging G�� For testing and validation, Production G�� For deployment, Archived G�� Old or deprecated versions</li>
+                      <li><strong>1. Model Versioning:</strong> Each model can have multiple versions (v1, v2, — for tracking updates or retraining cycles.</li>
+                      <li><strong>2. Model Staging:</strong> Models can have lifecycle stages: None — Just registered, Staging — For testing and validation, Production — For deployment, Archived — Old or deprecated versions</li>
                       <li><strong>3. Model Lineage & Metadata:</strong> Tracks which experiment/run created the model. Shows training dataset lineage (via Unity Catalog). Metadata like tags, parameters, and metrics appear automatically from MLflow.</li>
                       <li><strong>4. Permissions:</strong> You can manage who can read or use the model, transition model stages, delete or update versions</li>
                       <li><strong>5. Serving Integration:</strong> Once a model is registered and approved, you can deploy it to Databricks Model Serving, expose it via REST API endpoint for predictions, integrate with Feature Store for consistent feature usage</li>
@@ -2874,7 +2874,7 @@ export default function AzureDatabricksPage() {
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Deploy ML models (including LLMs) for real-time predictions</li>
                     <li>Expose them via REST APIs</li>
-                    <li>Serve open-source or external models (like GPT, Llama)</li>
+                    <li>Serve open-source or external models (like — Llama)</li>
                     <li>Automatically scale endpoints based on demand</li>
                     <li>Secure access with Unity Catalog and IAM policies</li>
                   </ul>
@@ -2893,12 +2893,12 @@ export default function AzureDatabricksPage() {
                         <tbody>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>GPT OSS 120B / 20B</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">Open-source GPT models (120B or 20B parameters) hosted by Databricks.</td>
+                            <td className="border border-gray-600 px-4 py-2">Open-source — models (120B or 20B parameters) hosted by Databricks.</td>
                             <td className="border border-gray-600 px-4 py-2">Large-scale language tasks, code generation, chat applications.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>OpenAI GPT-5</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">OpenAI's latest GPT model (if available via API integration).</td>
+                            <td className="border border-gray-600 px-4 py-2"><strong>OpenAI</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">OpenAI's latest — model (if available via API integration).</td>
                             <td className="border border-gray-600 px-4 py-2">Advanced conversational AI, text generation, summarization.</td>
                           </tr>
                           <tr>
@@ -2913,7 +2913,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>BGE/GTE Large</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">Embedding models for text vectorization (BGE or GTE architecture).</td>
+                            <td className="border border-gray-600 px-4 py-2">Embedding models for text vectorization (BGE or — architecture).</td>
                             <td className="border border-gray-600 px-4 py-2">Semantic search, RAG retrieval, similarity matching.</td>
                           </tr>
                         </tbody>
@@ -2942,7 +2942,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Served entities</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">The specific model or model version being served (e.g., GPT OSS 120B, Llama 4 Maverick).</td>
+                            <td className="border border-gray-600 px-4 py-2">The specific model or model version being served (e.g., — OSS 120B, Llama 4 Maverick).</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Tags</strong></td>
@@ -2950,7 +2950,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Task</strong></td>
-                            <td className="border border-gray-600 px-4 py-2">The model type or function G�� Chat (LLMs), Embeddings (vectorization), etc.</td>
+                            <td className="border border-gray-600 px-4 py-2">The model type or function — Chat (LLMs), Embeddings (vectorization), etc.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>Created by</strong></td>
@@ -2990,7 +2990,7 @@ export default function AzureDatabricksPage() {
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>3. Model Registration</strong></td>
                             <td className="border border-gray-600 px-4 py-2">Models (Registry)</td>
-                            <td className="border border-gray-600 px-4 py-2">Register, version, and stage models (Staging G�� Production).</td>
+                            <td className="border border-gray-600 px-4 py-2">Register, version, and stage models (Staging — Production).</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2"><strong>4. Model Deployment</strong></td>
@@ -3009,11 +3009,11 @@ export default function AzureDatabricksPage() {
 
                   <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                     <h5 className="text-xl font-semibold text-white mb-3">Actions Available per Model</h5>
-                    <p className="mb-2">Each model endpoint (like GPT, Llama, etc.) gives you options such as:</p>
+                    <p className="mb-2">Each model endpoint (like — Llama, etc.) gives you options such as:</p>
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li><strong>Use:</strong> Opens an interface to test the model directly within Databricks.</li>
                       <li><strong>Copy:</strong> Copies the REST API URL and authentication token.</li>
-                      <li><strong>Configure:</strong> Modify endpoint settings G�� scale, model version, environment variables.</li>
+                      <li><strong>Configure:</strong> Modify endpoint settings — scale, model version, environment variables.</li>
                       <li><strong>Create Serving Endpoint:</strong> Deploy your own trained model or clone an existing one.</li>
                     </ul>
                   </div>
@@ -3053,31 +3053,31 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��+ Notebook Title ("my notebook")</td>
+                          <td className="border border-gray-600 px-4 py-2">Notebook Title ("my notebook")</td>
                           <td className="border border-gray-600 px-4 py-2">Editable notebook name. You can rename it anytime.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Toolbar</td>
+                          <td className="border border-gray-600 px-4 py-2">Toolbar</td>
                           <td className="border border-gray-600 px-4 py-2">Provides actions like Run, Connect, Schedule, Share, File options, etc.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">G��n+� Run / Run all / Schedule</td>
+                          <td className="border border-gray-600 px-4 py-2">Run / Run all / Schedule</td>
                           <td className="border border-gray-600 px-4 py-2">Run current cell or all cells; schedule notebooks as automated jobs.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Language Selector (Python, SQL, etc.)</td>
+                          <td className="border border-gray-600 px-4 py-2">Language Selector (Python, SQL, etc.)</td>
                           <td className="border border-gray-600 px-4 py-2">Set default language for the notebook.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Connect</td>
+                          <td className="border border-gray-600 px-4 py-2">Connect</td>
                           <td className="border border-gray-600 px-4 py-2">Connects the notebook to a cluster (compute resource). Required before execution.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Share</td>
+                          <td className="border border-gray-600 px-4 py-2">Share</td>
                           <td className="border border-gray-600 px-4 py-2">Share the notebook with team members or grant access via permissions.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">G��n+� Settings / Comments / Command Palette</td>
+                          <td className="border border-gray-600 px-4 py-2">Settings / Comments / Command Palette</td>
                           <td className="border border-gray-600 px-4 py-2">Quick access to environment settings and collaborative comments.</td>
                         </tr>
                       </tbody>
@@ -3098,7 +3098,7 @@ export default function AzureDatabricksPage() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">G��n+� Run Cell</td>
+                          <td className="border border-gray-600 px-4 py-2">Run Cell</td>
                           <td className="border border-gray-600 px-4 py-2">Executes the code within the selected cell.</td>
                         </tr>
                         <tr>
@@ -3106,19 +3106,19 @@ export default function AzureDatabricksPage() {
                           <td className="border border-gray-600 px-4 py-2">Allows you to reorder or move cells.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Language Indicator (Python)</td>
+                          <td className="border border-gray-600 px-4 py-2">Language Indicator (Python)</td>
                           <td className="border border-gray-600 px-4 py-2">Shows the language mode of the current cell.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Add Cell Above/Below</td>
+                          <td className="border border-gray-600 px-4 py-2">Add Cell Above/Below</td>
                           <td className="border border-gray-600 px-4 py-2">Insert new code or markdown cells.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=��� Clear Output</td>
+                          <td className="border border-gray-600 px-4 py-2">Clear Output</td>
                           <td className="border border-gray-600 px-4 py-2">Removes output from the cell without deleting code.</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-600 px-4 py-2">=���n+� Delete Cell</td>
+                          <td className="border border-gray-600 px-4 py-2">Delete Cell</td>
                           <td className="border border-gray-600 px-4 py-2">Deletes the current cell.</td>
                         </tr>
                       </tbody>
@@ -3136,7 +3136,7 @@ export default function AzureDatabricksPage() {
                   </p>
                   
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
-                    <h5 className="text-xl font-semibold text-white mb-3">=��� Databricks Notebook G�� File Menu</h5>
+                    <h5 className="text-xl font-semibold text-white mb-3">=��� Databricks Notebook — File Menu</h5>
                     <div className="overflow-x-auto">
                       <table className="min-w-full border border-gray-600 text-sm">
                         <thead>
@@ -3147,63 +3147,63 @@ export default function AzureDatabricksPage() {
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� New notebook</td>
+                            <td className="border border-gray-600 px-4 py-2">New notebook</td>
                             <td className="border border-gray-600 px-4 py-2">Opens a brand-new notebook. You can choose the language (Python, SQL, Scala, or R) and cluster later.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� ImportGǪ</td>
-                            <td className="border border-gray-600 px-4 py-2">Allows you to import existing notebooks (from .dbc, .html, .ipynb, or Git repositories).</td>
+                            <td className="border border-gray-600 px-4 py-2">Import</td>
+                            <td className="border border-gray-600 px-4 py-2">Allows you to import existing notebooks (from .dbc, .html, .ipynb, or — repositories).</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� New notebook dashboard</td>
-                            <td className="border border-gray-600 px-4 py-2">Creates a dashboard view G�� ideal for visualizations and results presentation, often used in reporting.</td>
+                            <td className="border border-gray-600 px-4 py-2">New notebook dashboard</td>
+                            <td className="border border-gray-600 px-4 py-2">Creates a dashboard view — ideal for visualizations and results presentation, often used in reporting.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� ShareGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Share</td>
                             <td className="border border-gray-600 px-4 py-2">Opens the sharing dialog where you can grant permissions to other users or groups (View, Run, Edit, Manage).</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">GŦ ScheduleGǪ</td>
-                            <td className="border border-gray-600 px-4 py-2">Lets you schedule notebook runs at set intervals (daily, hourly, etc.) G�� useful for data pipelines or automation.</td>
+                            <td className="border border-gray-600 px-4 py-2">GŦ Schedule</td>
+                            <td className="border border-gray-600 px-4 py-2">Lets you schedule notebook runs at set intervals (daily, hourly, etc.) — useful for data pipelines or automation.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">G��n+� Change default cell languageGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Change default cell language</td>
                             <td className="border border-gray-600 px-4 py-2">Sets the default language (Python, SQL, Scala, or R) for new cells in this notebook.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Commit to GitGǪ</td>
-                            <td className="border border-gray-600 px-4 py-2">Integrates with Git (GitHub, GitLab, Azure Repos) G�� allows version control, branching, and pushing changes.</td>
+                            <td className="border border-gray-600 px-4 py-2">Commit to Git</td>
+                            <td className="border border-gray-600 px-4 py-2">Integrates with Git (GitHub, GitLab, Azure Repos) — allows version control, branching, and pushing changes.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� CloneGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Clone</td>
                             <td className="border border-gray-600 px-4 py-2">Makes an identical copy of the current notebook within the workspace.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">G��n+� RenameGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Rename</td>
                             <td className="border border-gray-600 px-4 py-2">Rename the notebook file name.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� ExportGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Export</td>
                             <td className="border border-gray-600 px-4 py-2">Export notebook in multiple formats: HTML (read-only view), SOURCE (plain text), DBC archive, IPYNB (Jupyter notebook format).</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� MoveGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Move</td>
                             <td className="border border-gray-600 px-4 py-2">Move notebook to a different folder or workspace location.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=���n+� Move to trash</td>
+                            <td className="border border-gray-600 px-4 py-2">Move to trash</td>
                             <td className="border border-gray-600 px-4 py-2">Deletes (moves) notebook to Trash; can be restored later if needed.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">G��n+� Upload files to volumeGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Upload files to volume</td>
                             <td className="border border-gray-600 px-4 py-2">Uploads files (datasets, scripts, etc.) directly into a mounted volume or workspace for use in your notebook.</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Create or modify tableGǪ</td>
+                            <td className="border border-gray-600 px-4 py-2">Create or modify table</td>
                             <td className="border border-gray-600 px-4 py-2">Opens Databricks Data UI to create or edit tables (either Delta or other supported file formats).</td>
                           </tr>
                           <tr>
-                            <td className="border border-gray-600 px-4 py-2">=��� Add data GǦ</td>
+                            <td className="border border-gray-600 px-4 py-2">Add data</td>
                             <td className="border border-gray-600 px-4 py-2">Opens data ingestion options to connect to data sources (Azure Blob, ADLS, Delta tables, CSVs, etc.).</td>
                           </tr>
                         </tbody>
@@ -3224,7 +3224,7 @@ export default function AzureDatabricksPage() {
                   </p>
 
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
-                    <h5 className="text-xl font-semibold text-white mb-3">Databricks Notebook G�� Edit Menu</h5>
+                    <h5 className="text-xl font-semibold text-white mb-3">Databricks Notebook — Edit Menu</h5>
                     <div className="overflow-x-auto">
                       <table className="min-w-full border border-gray-600 text-sm">
                         <thead>
@@ -3267,7 +3267,7 @@ export default function AzureDatabricksPage() {
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2">Move cell up / down</td>
-                            <td className="border border-gray-600 px-4 py-2">Ctrl + Alt + G�� / G��</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Alt + — / </td>
                             <td className="border border-gray-600 px-4 py-2">Shifts the selected cell to reorder notebook content.</td>
                           </tr>
                           <tr>
@@ -3481,7 +3481,7 @@ export default function AzureDatabricksPage() {
                       <li><strong>Keyboard shortcuts:</strong> Quickly learn and use shortcuts, speeding up the workflow. Shortcuts might include things like running cells or navigating between them.</li>
                       <li><strong>Provide feedback:</strong> Share thoughts or report issues encountered while using Databricks.</li>
                       <li><strong>Ask the Databricks community:</strong> Connect to the community for support, troubleshooting, or knowledge sharing.</li>
-                      <li><strong>Databricks support:</strong> Get direct, official support for Databricks environment or facing issues that community help may not address.</li>
+                      <li><strong>Databricks support:</strong> — direct, official support for Databricks environment or facing issues that community help may not address.</li>
                     </ul>
                   </div>
                 </div>
