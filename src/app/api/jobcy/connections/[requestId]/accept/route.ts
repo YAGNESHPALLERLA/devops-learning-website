@@ -66,11 +66,11 @@ async function handleAccept(_request: NextRequest, { params }: { params: Promise
         );
       }
     } catch {
-      // Fallback: try with string _id and string toUserId
+      // Fallback: try with ObjectId constructor and string toUserId
       try {
         result = await db.collection('connections').updateOne(
           { 
-            _id: requestId, 
+            _id: new ObjectId(requestId), 
             toUserId: decoded.id,
             status: 'pending'
           },
