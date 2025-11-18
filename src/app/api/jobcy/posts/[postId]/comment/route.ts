@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "@/lib/mongodb";
+import { connectDB, toObjectId } from "@/lib/mongodb";
 import jwt from "jsonwebtoken";
 import { ObjectId } from "mongodb";
 
@@ -73,8 +73,14 @@ export async function POST(
 
     const db = await connectDB();
     
-    // Get user details
-    const user = await db.collection("users").findOne({ _id: decoded.id });
+    // Get user details - try both ObjectId and string ID
+    let user = null;
+    try {
+      user = await db.collection("users").findOne({ _id: toObjectId(decoded.id) });
+    } catch {
+      // If ObjectId conversion fails, try with string
+      user = await db.collection("users").findOne({ _id: decoded.id });
+    }
     const authorName = user?.name || decoded.name || "Unknown User";
 
     // Create comment
