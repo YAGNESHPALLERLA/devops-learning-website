@@ -1523,6 +1523,9 @@ export default function AzureDataEngineerPage() {
                     <strong className="text-blue-400">Create databricks</strong>
                   </div>
                 </div>
+                
+                {/* Initial Steps Images - Showing Azure portal search and create steps */}
+                <ImageGallery images={getImages('image89')} />
 
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
