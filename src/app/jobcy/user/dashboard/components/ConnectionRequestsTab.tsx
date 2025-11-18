@@ -69,6 +69,8 @@ export default function ConnectionRequestsTab({ isDark = false }: ConnectionRequ
       if (response.ok) {
         // Remove the request from the list
         setRequests(requests.filter(req => req._id !== requestId));
+        // Dispatch event to refresh connected connections in ConnectTab
+        window.dispatchEvent(new CustomEvent('connectionAccepted'));
         alert("Connection request accepted!");
       } else {
         const errorData = await response.json();

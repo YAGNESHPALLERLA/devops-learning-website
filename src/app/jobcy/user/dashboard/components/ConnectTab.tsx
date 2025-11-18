@@ -102,6 +102,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   const [selectedConnection, setSelectedConnection] = useState<Connection | null>(null);
   const [showChatModal, setShowChatModal] = useState(false);
   const [showPostModal, setShowPostModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [postToShare, setPostToShare] = useState<Post | null>(null);
   const [connectionsState, setConnectionsState] = useState<Connection[]>(connections);
   const [pendingRequests, setPendingRequests] = useState<ConnectionRequest[]>([]);
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
@@ -209,6 +211,33 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     }
   }, [isConnected, fetchChats]);
 
+  // Listen for connection accepted event to refresh data
+  useEffect(() => {
+    const handleConnectionAccepted = () => {
+      fetchConnectionData();
+    };
+    window.addEventListener('connectionAccepted', handleConnectionAccepted);
+    return () => {
+      window.removeEventListener('connectionAccepted', handleConnectionAccepted);
+    };
+  }, []);
+
+  // Listen for openChat event from FloatingChatButton
+  useEffect(() => {
+    const handleOpenChat = async (event: Event) => {
+      const customEvent = event as CustomEvent;
+      const { user } = customEvent.detail;
+      const connection = actualConnections.find(c => c.id.toString() === user.id.toString());
+      if (connection) {
+        await handleMessage(connection);
+      }
+    };
+    window.addEventListener('openChat', handleOpenChat);
+    return () => {
+      window.removeEventListener('openChat', handleOpenChat);
+    };
+  }, [actualConnections, getOrCreateChat, setCurrentChat, joinChat, fetchMessages]);
+
   const getGradientColors = (name: string) => {
     const gradients = [
       "from-blue-500 to-indigo-600",
@@ -305,6 +334,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
         setPendingRequests(prev => prev.filter(req => req._id !== requestId));
         await fetchConnectionData();
         await fetchChats();
+        // Dispatch event to refresh connected connections
+        window.dispatchEvent(new CustomEvent('connectionAccepted'));
         alert("✅ Connection request accepted!");
       } else {
         alert("Failed to accept request");
@@ -360,6 +391,43 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       }
     } else {
       alert("You can only message accepted connections");
+    }
+  };
+
+  const handleSharePost = async (connectionId: string) => {
+    if (!postToShare) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Please login to share posts");
+        return;
+      }
+
+      // Get or create chat with the connection
+      const chat = await getOrCreateChat(connectionId);
+      if (!chat) {
+        alert("Failed to open chat");
+        return;
+      }
+
+      // Create share message with post content
+      const shareMessage = `📢 Shared Post:\n\n${postToShare.content}\n\n${postToShare.image ? `[Image attached]` : ''}`;
+      
+      // Send message via chat
+      await sendMessage(shareMessage);
+      
+      // If post has image, we could send it as a separate message or include in the message
+      if (postToShare.image) {
+        await sendMessage(postToShare.image);
+      }
+
+      alert("✅ Post shared successfully!");
+      setShowShareModal(false);
+      setPostToShare(null);
+    } catch (error) {
+      console.error("Error sharing post:", error);
+      alert("Failed to share post");
     }
   };
 
@@ -738,7 +806,13 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                     <MessageSquare className="w-5 h-5" />
                     <span className="text-sm font-medium">Comment</span>
                   </button>
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-400 hover:text-green-400 hover:bg-green-500/10 transition-all">
+                  <button 
+                    onClick={() => {
+                      setPostToShare(post);
+                      setShowShareModal(true);
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-400 hover:text-green-400 hover:bg-green-500/10 transition-all"
+                  >
                     <Share2 className="w-5 h-5" />
                     <span className="text-sm font-medium">Share</span>
                   </button>
@@ -1138,6 +1212,20 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           getGradientColors={getGradientColors}
         />
       )}
+
+      {/* Share Post Modal */}
+      {showShareModal && postToShare && (
+        <SharePostModal
+          post={postToShare}
+          connections={actualConnections}
+          onClose={() => {
+            setShowShareModal(false);
+            setPostToShare(null);
+          }}
+          onShare={handleSharePost}
+          getGradientColors={getGradientColors}
+        />
+      )}
     </div>
   );
 }
@@ -1324,6 +1412,115 @@ function ChatModal({
               <Send className="w-5 h-5" />
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Share Post Modal Component
+interface SharePostModalProps {
+  post: Post;
+  connections: ActualConnection[];
+  onClose: () => void;
+  onShare: (connectionId: string) => Promise<void>;
+  getGradientColors: (name: string) => string;
+}
+
+function SharePostModal({
+  post,
+  connections,
+  onClose,
+  onShare,
+  getGradientColors
+}: SharePostModalProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredConnections = connections.filter((conn) =>
+    conn.name?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
+      <div className="bg-[#1a1a1a] rounded-2xl border border-gray-700 w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className="p-5 bg-[#0a0a0a] border-b border-gray-700 flex items-center justify-between">
+          <div>
+            <h3 className="font-bold text-lg text-white">Share Post</h3>
+            <p className="text-sm text-gray-400 mt-1">Select a connection to share with</p>
+          </div>
+          <button 
+            onClick={onClose} 
+            className="p-2 rounded-lg transition-all duration-200 hover:bg-gray-800 text-gray-400 hover:text-white"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Post Preview */}
+        <div className="p-5 border-b border-gray-700 bg-[#0a0a0a]">
+          <div className="flex items-start gap-3 mb-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-sm">
+                {post.author?.name?.charAt(0).toUpperCase() || "U"}
+              </span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-white text-sm">{post.author?.name || "User"}</p>
+              <p className="text-xs text-gray-400">{new Date(post.createdAt).toLocaleDateString()}</p>
+            </div>
+          </div>
+          <p className="text-sm text-gray-300 mb-3 line-clamp-3">{post.content}</p>
+          {post.image && (
+            <div className="rounded-lg overflow-hidden border border-gray-700">
+              <img src={post.image} alt="Post" className="w-full h-auto max-h-32 object-cover" />
+            </div>
+          )}
+        </div>
+
+        {/* Search */}
+        <div className="p-4 border-b border-gray-700">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search connections..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 bg-[#0a0a0a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+            />
+          </div>
+        </div>
+
+        {/* Connections List */}
+        <div className="flex-1 overflow-y-auto p-4">
+          {filteredConnections.length === 0 ? (
+            <div className="text-center py-12 text-gray-400">
+              <Users className="w-12 h-12 mx-auto mb-2 opacity-50" />
+              <p>{searchQuery ? "No connections found" : "No connections yet"}</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {filteredConnections.map((conn) => (
+                <button
+                  key={conn.id}
+                  onClick={() => onShare(conn.id.toString())}
+                  className="w-full p-3 rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-3 text-left"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-br ${getGradientColors(conn.name)} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-white font-bold text-sm">
+                      {conn.name.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-white text-sm truncate">{conn.name}</p>
+                    <p className="text-xs text-gray-400 truncate">{conn.title || "Professional"}</p>
+                  </div>
+                  <Share2 className="w-5 h-5 text-gray-400" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

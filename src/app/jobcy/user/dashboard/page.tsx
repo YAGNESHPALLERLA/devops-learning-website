@@ -27,6 +27,7 @@ import AppliedJobsTab from "./components/AppliedJobsTab";
 import ConnectTab from "./components/ConnectTab";
 import ConnectionRequestsTab from "./components/ConnectionRequestsTab";
 import InterviewsTab from "./components/InterviewsTab";
+import FloatingChatButton from "./components/FloatingChatButton";
 import ProfileEditModal from "./components/ProfileEditModal";
 import NotificationsTab from "./components/NotificationsTab";
 import { ProfessionalApplicationTracker } from "./components/ProfessionalApplicationTracker";
@@ -462,6 +463,9 @@ export default function JobSeekerDashboard() {
           }}
         />
       )}
+
+      {/* Floating Chat Button */}
+      <FloatingChatButton isDark={isDark} />
 
       {/* Overlays */}
       {showMobileMenu && (
