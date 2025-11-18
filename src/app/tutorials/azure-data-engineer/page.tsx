@@ -138,7 +138,7 @@ const azureImages: Record<string, GalleryImage> = {
   image91: { src: '/tutorials/azure/images/image91.png', width: 1920, height: 1080, alt: 'Workspace overview' },
   image92: { src: '/tutorials/azure/images/image92.png', width: 1920, height: 1080, alt: 'Workspace features' },
   image93: { src: '/tutorials/azure/images/image93.png', width: 1920, height: 1080, alt: 'Notebook creation' },
-  image94: { src: '/tutorials/azure/images/image94.png', width: 1920, height: 1080, alt: 'Catalog and features' },
+  image94: { src: '/tutorials/azure/images/image66.png', width: 1920, height: 1080, alt: 'Catalog and features' },
   image95: { src: '/tutorials/azure/images/image95.png', width: 1920, height: 1080, alt: 'Jobs and pipelines' },
   image96: { src: '/tutorials/azure/images/image96.png', width: 1920, height: 1080, alt: 'Job runs dashboard' },
   image97: { src: '/tutorials/azure/images/image97.png', width: 1920, height: 1080, alt: 'Compute clusters' },
@@ -181,6 +181,7 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'common-use-cases': 'azure-databricks',
   'core-components': 'azure-databricks',
   'advantages': 'azure-databricks',
+  'databricks-overview': 'azure-databricks',
   'how-to-create': 'azure-databricks',
   'workspace-overview': 'azure-databricks',
   'databricks-features': 'azure-databricks',
@@ -1507,9 +1508,70 @@ export default function AzureDataEngineerPage() {
               </div>
             </div>
 
+            {/* Databricks Overview */}
+            <div id="databricks-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h4 className="text-2xl font-semibold text-white mb-4">6. Databricks Overview</h4>
+              <div className="space-y-4 text-gray-300">
+                <div className="space-y-4">
+                  <div>
+                    <strong className="text-blue-400">Go to the Azure portal and search for Databricks</strong>
+                  </div>
+                  <div>
+                    <strong className="text-blue-400">Click on create</strong>
+                  </div>
+                  <div>
+                    <strong className="text-blue-400">Create databricks</strong>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                  <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
+                  <p>Choose the Azure subscription under which the Databricks workspace will be created.</p>
+                  <p className="mt-2"><strong>Example:</strong> Azure subscription 1</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Resource Group</h5>
+                  <p>Select an existing Resource Group or create a new one.</p>
+                  <p className="mt-2">Resource groups act like folders to organize and manage related resources.</p>
+                  <p className="mt-2"><strong>Example:</strong> rg-ohg365-dev</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Workspace Name</h5>
+                  <p>Enter a unique workspace name for your Databricks instance.</p>
+                  <p className="mt-2"><strong>Example:</strong> ohg365-db-dev</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Region</h5>
+                  <p>Choose the Azure region where your workspace will be hosted.</p>
+                  <p className="mt-2"><strong>Example:</strong> Central US</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
+                  <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Managed Resource Group Name</h5>
+                  <p>Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.</p>
+                  <p className="mt-2"><strong>Example:</strong> mg-ohg365-db-dev</p>
+                </div>
+
+                <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                  <h5 className="text-xl font-semibold text-white mb-3">Final Step – Review + Create</h5>
+                  <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
+                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
+                </div>
+                <ImageGallery images={getImages('image90')} />
+              </div>
+            </div>
+
             {/* How to Create */}
             <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">6. How to Create Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">7. How to Create Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-4">
                   <div>
@@ -1570,7 +1632,7 @@ export default function AzureDataEngineerPage() {
 
             {/* Workspace Overview */}
             <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">7. Databricks Workspace Overview</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Workspace Overview</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3 mb-4">
                   <p><strong className="text-blue-400">Click on Databricks Workspace</strong></p>
@@ -1651,7 +1713,7 @@ export default function AzureDataEngineerPage() {
 
             {/* Databricks Features */}
             <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Features</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">9. Databricks Features</h4>
               <div className="space-y-8 text-gray-300">
                 {/* Workspace */}
                 <div className="p-4 bg-gray-800 rounded-lg">
