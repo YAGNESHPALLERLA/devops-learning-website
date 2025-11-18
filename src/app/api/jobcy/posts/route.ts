@@ -47,23 +47,52 @@ export async function OPTIONS(request: NextRequest) {
   return applyCors(request, new NextResponse(null, { status: 200 }));
 }
 
-// GET all posts
+// GET all posts - visible to everyone (authentication optional for liked status)
 export async function GET(request: NextRequest) {
   try {
     const db = await connectDB();
+    
+    // Try to get user ID from token (optional)
+    let currentUserId: string | null = null;
+    const authHeader = request.headers.get("authorization");
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      try {
+        const token = authHeader.substring(7);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret") as JwtPayload;
+        currentUserId = decoded.id;
+      } catch {
+        // Invalid token, continue without authentication
+        currentUserId = null;
+      }
+    }
+    
     const posts = await db.collection("posts")
       .find({})
       .sort({ createdAt: -1 })
       .limit(50)
       .toArray();
 
+    // Get user's liked posts if authenticated
+    let likedPostIds: Set<string> = new Set();
+    if (currentUserId) {
+      try {
+        const likes = await db.collection("postLikes").find({ 
+          userId: currentUserId 
+        }).toArray();
+        likedPostIds = new Set(likes.map(like => like.postId?.toString()));
+      } catch {
+        // If there's an error getting likes, continue without them
+      }
+    }
+
     // Format posts for frontend
     const formattedPosts = posts.map((post) => {
       const postDoc = post as unknown as PostDocument;
+      const postId = postDoc._id.toString();
       return {
-        id: postDoc._id.toString(),
+        id: postId,
         author: {
-          id: postDoc.authorId || postDoc.author?.id || postDoc.author?._id,
+          id: postDoc.authorId || postDoc.author?.id || postDoc.author?._id || "unknown",
           name: postDoc.authorName || postDoc.author?.name || "Unknown",
           title: postDoc.authorTitle || postDoc.author?.title,
         },
@@ -72,7 +101,7 @@ export async function GET(request: NextRequest) {
         likes: postDoc.likes || 0,
         comments: postDoc.comments || 0,
         shares: postDoc.shares || 0,
-        liked: false, // Will be determined by checking user's liked posts
+        liked: likedPostIds.has(postId), // Check if current user liked this post
         createdAt: postDoc.createdAt 
           ? (postDoc.createdAt instanceof Date ? postDoc.createdAt.toISOString() : postDoc.createdAt)
           : postDoc._id.getTimestamp().toISOString(),

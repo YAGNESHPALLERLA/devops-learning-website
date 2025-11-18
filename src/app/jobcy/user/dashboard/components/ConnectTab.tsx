@@ -169,44 +169,35 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     }
   };
 
-  // Fetch posts
+  // Fetch posts - visible to everyone (token optional for liked status)
   const fetchPosts = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
     try {
+      const token = localStorage.getItem("token");
+      const headers: HeadersInit = {
+        "Content-Type": "application/json",
+      };
+      
+      // Add token if available (for liked status)
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${"/api/jobcy"}/posts`, {
-        headers: { Authorization: `Bearer ${token}` }
+        method: "GET",
+        headers,
       });
+      
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
+      } else {
+        console.error("Failed to fetch posts:", response.status);
+        setPosts([]);
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
-      // Mock posts for demo
-      setPosts([
-        {
-          id: "1",
-          author: { id: "1", name: "John Doe", title: "Software Engineer" },
-          content: "Excited to share that I've completed my AWS certification! Looking forward to applying these skills in my next project. #AWS #CloudComputing",
-          likes: 24,
-          comments: 5,
-          shares: 3,
-          liked: false,
-          createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-        },
-        {
-          id: "2",
-          author: { id: "2", name: "Jane Smith", title: "Data Scientist" },
-          content: "Just finished an amazing project on machine learning! The results exceeded our expectations. Grateful for the team's hard work.",
-          likes: 18,
-          comments: 8,
-          shares: 2,
-          liked: true,
-          createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
-        },
-      ]);
+      // Set empty array instead of mock posts
+      setPosts([]);
     }
   };
 
@@ -274,21 +265,26 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          receiverId: connection.id,
+          toUserId: connection.id,
           message: `Hi ${connection.name}, I would like to connect with you!`
         }),
       });
 
       const data = await response.json();
       if (response.ok) {
-        alert(`Connection request sent to ${connection.name}!`);
+        alert(`✅ Connection request sent to ${connection.name}!`);
         await fetchConnectionData();
       } else {
-        alert(data.message || "Failed to send connection request");
+        const errorMessage = data.error || data.message || "Failed to send connection request";
+        if (errorMessage.includes("already exists")) {
+          alert(`ℹ️ You have already sent a connection request to ${connection.name} or are already connected.`);
+        } else {
+          alert(`❌ ${errorMessage}`);
+        }
       }
     } catch (error) {
       console.error("Error sending connection request:", error);
-      alert("Failed to send connection request. Please try again.");
+      alert("❌ Failed to send connection request. Please check your connection and try again.");
     }
   };
 

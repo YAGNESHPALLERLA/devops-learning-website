@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
+import { connectDB, toObjectId } from '@/lib/mongodb';
 
 export async function POST(_request: NextRequest) {
   try {
@@ -31,9 +31,27 @@ export async function POST(_request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Check if connection already exists
+    // Convert IDs to ObjectId for consistent querying
+    let fromUserId: unknown;
+    let toUserIdObj: unknown;
+    
+    try {
+      fromUserId = toObjectId(decoded.id);
+    } catch {
+      fromUserId = decoded.id; // Fallback to string if conversion fails
+    }
+    
+    try {
+      toUserIdObj = toObjectId(toUserId);
+    } catch {
+      toUserIdObj = toUserId; // Fallback to string if conversion fails
+    }
+    
+    // Check if connection already exists (try both ObjectId and string formats)
     const existingConnection = await db.collection('connections').findOne({
       $or: [
+        { fromUserId: fromUserId, toUserId: toUserIdObj },
+        { fromUserId: toUserIdObj, toUserId: fromUserId },
         { fromUserId: decoded.id, toUserId: toUserId },
         { fromUserId: toUserId, toUserId: decoded.id }
       ]
@@ -43,7 +61,7 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: 'Connection already exists' }, { status: 400 });
     }
     
-    // Create new connection request
+    // Create new connection request (store as strings for consistency)
     const newConnection = {
       fromUserId: decoded.id,
       toUserId: toUserId,
@@ -65,6 +83,9 @@ export async function POST(_request: NextRequest) {
     }, { status: 201 });
   } catch (error) {
     console.error('Send connection error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 });
   }
 }
