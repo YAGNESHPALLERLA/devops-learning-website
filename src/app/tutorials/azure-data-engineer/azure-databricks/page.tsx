@@ -1162,8 +1162,8 @@ export default function AzureDatabricksPage() {
                       <li><strong>Run parameters</strong> G�� Lists any input values (like parameters) used in that run.</li>
                     </ul>
                   </div>
-                  {/* Jobs & Pipelines - images from Azure Databricks -1.docx */}
-                  <ImageGallery images={getImages('db_jobs_1', 'db1_image1', 'db1_image2')} />
+                {/* Jobs & Pipelines visuals from Azure Databricks -1 */}
+                <ImageGallery images={getImages('db1_image1', 'db1_image2')} />
                 </div>
 
                 {/* Compute (Clusters) */}
