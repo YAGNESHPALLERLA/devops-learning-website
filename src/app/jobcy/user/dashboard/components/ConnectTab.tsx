@@ -667,7 +667,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
             {/* Posts Feed */}
             {posts.map((post) => (
-              <div key={post.id} className="bg-[#1a1a1a] rounded-2xl border border-gray-700 p-6 w-full max-w-full overflow-hidden">
+              <div key={post.id} className="bg-[#1a1a1a] rounded-2xl border border-gray-700 p-4 sm:p-6 w-full max-w-full overflow-hidden">
                 {/* Post Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-3">
@@ -689,15 +689,18 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
 
                 {/* Post Content */}
                 <div className="mb-4">
-                  <p className="text-white leading-relaxed whitespace-pre-wrap break-words">{post.content}</p>
+                  <p className="text-white leading-relaxed whitespace-pre-wrap break-words mb-4">{post.content}</p>
                   {post.image && (
-                    <div className="mt-4 rounded-xl overflow-hidden border border-gray-700 bg-[#0a0a0a] flex items-center justify-center">
-                      <img 
-                        src={post.image} 
-                        alt="Post" 
-                        className="max-w-full h-auto max-h-[600px] object-contain rounded-xl" 
-                        style={{ width: '100%', height: 'auto' }}
-                      />
+                    <div className="mt-4 w-full rounded-xl overflow-hidden border border-gray-700 bg-[#0a0a0a] p-2 sm:p-3">
+                      <div className="w-full flex items-center justify-center min-h-[150px] sm:min-h-[200px]">
+                        <img 
+                          src={post.image} 
+                          alt="Post" 
+                          className="max-w-full h-auto max-h-[60vh] sm:max-h-[70vh] w-auto object-contain rounded-lg" 
+                          loading="lazy"
+                          style={{ display: 'block', maxWidth: '100%' }}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1064,16 +1067,18 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
                     className="w-full min-h-[150px] px-4 py-3 rounded-xl bg-[#0a0a0a] border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 resize-none"
                   />
                   {newPostImage && (
-                    <div className="mt-4 relative rounded-xl overflow-hidden border border-gray-700 bg-[#0a0a0a] flex items-center justify-center">
-                      <img 
-                        src={newPostImage} 
-                        alt="Post" 
-                        className="max-w-full h-auto max-h-[400px] object-contain rounded-xl" 
-                        style={{ width: '100%', height: 'auto' }}
-                      />
+                    <div className="mt-4 relative rounded-xl overflow-hidden border border-gray-700 bg-[#0a0a0a] p-3">
+                      <div className="w-full flex items-center justify-center min-h-[150px]">
+                        <img 
+                          src={newPostImage} 
+                          alt="Post" 
+                          className="max-w-full h-auto max-h-[50vh] w-auto object-contain rounded-lg" 
+                          style={{ display: 'block' }}
+                        />
+                      </div>
                       <button
                         onClick={() => setNewPostImage(null)}
-                        className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white hover:bg-black/90 transition-colors"
+                        className="absolute top-3 right-3 p-2 bg-black/70 rounded-full text-white hover:bg-black/90 transition-colors z-10"
                       >
                         <X className="w-4 h-4" />
                       </button>
