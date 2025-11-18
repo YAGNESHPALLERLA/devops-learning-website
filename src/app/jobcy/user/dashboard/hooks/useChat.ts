@@ -39,42 +39,73 @@ export function useChat() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000", {
-      auth: {
-        token: token
-      }
-    });
-
-    newSocket.on("connect", () => {
-      console.log("Connected to chat server");
-      setIsConnected(true);
-    });
-
-    newSocket.on("disconnect", () => {
-      console.log("Disconnected from chat server");
+    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000";
+    
+    // Only connect if we're in development or if socket URL is explicitly set
+    // In production, gracefully handle missing socket server
+    if (socketUrl === "http://localhost:5000" && typeof window !== "undefined" && window.location.hostname !== "localhost") {
+      console.log("Socket.io server not available in production, using REST API only");
       setIsConnected(false);
-    });
+      return;
+    }
 
-    newSocket.on("new-message", (message: Message) => {
-      setMessages(prev => [...prev, message]);
-    });
+    let newSocket: Socket | null = null;
+    
+    try {
+      newSocket = io(socketUrl, {
+        auth: {
+          token: token
+        },
+        transports: ["polling", "websocket"],
+        reconnection: true,
+        reconnectionAttempts: 3,
+        reconnectionDelay: 1000,
+        timeout: 5000,
+      });
 
-    newSocket.on("user-typing", (data) => {
-      console.log(`${data.userName} is typing...`);
-    });
+      newSocket.on("connect", () => {
+        console.log("Connected to chat server");
+        setIsConnected(true);
+        setError(null);
+      });
 
-    newSocket.on("user-stop-typing", (data) => {
-      console.log(`${data.userName} stopped typing`);
-    });
+      newSocket.on("disconnect", () => {
+        console.log("Disconnected from chat server");
+        setIsConnected(false);
+      });
 
-    newSocket.on("message-error", (error) => {
-      setError(error.error);
-    });
+      newSocket.on("connect_error", (error) => {
+        console.warn("Socket.io connection error (using REST API fallback):", error.message);
+        setIsConnected(false);
+        // Don't set error state - gracefully degrade to REST API
+      });
 
-    setSocket(newSocket);
+      newSocket.on("new-message", (message: Message) => {
+        setMessages(prev => [...prev, message]);
+      });
+
+      newSocket.on("user-typing", (data) => {
+        console.log(`${data.userName} is typing...`);
+      });
+
+      newSocket.on("user-stop-typing", (data) => {
+        console.log(`${data.userName} stopped typing`);
+      });
+
+      newSocket.on("message-error", (error) => {
+        setError(error.error);
+      });
+
+      setSocket(newSocket);
+    } catch (error) {
+      console.warn("Failed to initialize Socket.io (using REST API fallback):", error);
+      setIsConnected(false);
+    }
 
     return () => {
-      newSocket.close();
+      if (newSocket) {
+        newSocket.close();
+      }
     };
   }, []);
 
@@ -177,15 +208,40 @@ export function useChat() {
 
   // Send a message
   const sendMessage = async (content: string) => {
-    if (!socket || !currentChat) return;
+    if (!currentChat) return;
 
     try {
-      // Send via Socket.IO for real-time delivery
-      // The server will save to DB and broadcast to all participants
-      socket.emit("send-message", {
-        chatId: currentChat.id,
-        content: content
-      });
+      // Try Socket.IO first if available
+      if (socket && isConnected) {
+        socket.emit("send-message", {
+          chatId: currentChat.id,
+          content: content
+        });
+      } else {
+        // Fallback to REST API
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setError("Not authenticated");
+          return;
+        }
+
+        const response = await fetch(`${"/api/jobcy"}/chat/messages/${currentChat.id}`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Add message to local state
+          setMessages(prev => [...prev, data.message]);
+        } else {
+          setError("Failed to send message");
+        }
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       setError("Failed to send message");

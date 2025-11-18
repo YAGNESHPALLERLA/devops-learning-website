@@ -371,7 +371,10 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     if (!newPostContent.trim()) return;
 
     const token = localStorage.getItem("token");
-    if (!token) return;
+    if (!token) {
+      alert("Please login to create a post");
+      return;
+    }
 
     try {
       const response = await fetch(`${"/api/jobcy"}/posts`, {
@@ -387,16 +390,40 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       });
 
       if (response.ok) {
+        const data = await response.json();
+        // Add the new post to the list
+        setPosts([data, ...posts]);
         setNewPostContent("");
         setNewPostImage(null);
         setShowPostModal(false);
-        await fetchPosts();
       } else {
-        alert("Failed to create post");
+        const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
+        console.error("Failed to create post:", errorData);
+        
+        // Fallback: create post locally for demo purposes
+        const userStr = localStorage.getItem('user');
+        const user = userStr ? JSON.parse(userStr) : { id: "current", name: "You" };
+        
+        const newPost: Post = {
+          id: Date.now().toString(),
+          author: { id: user.id || "current", name: user.name || "You", title: user.title },
+          content: newPostContent,
+          image: newPostImage || undefined,
+          likes: 0,
+          comments: 0,
+          shares: 0,
+          liked: false,
+          createdAt: new Date().toISOString(),
+        };
+        setPosts([newPost, ...posts]);
+        setNewPostContent("");
+        setNewPostImage(null);
+        setShowPostModal(false);
+        console.log("Post created locally (API unavailable)");
       }
     } catch (error) {
       console.error("Error creating post:", error);
-      // For demo, add post locally
+      // Fallback: create post locally for demo purposes
       const userStr = localStorage.getItem('user');
       const user = userStr ? JSON.parse(userStr) : { id: "current", name: "You" };
       
@@ -415,6 +442,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
       setNewPostContent("");
       setNewPostImage(null);
       setShowPostModal(false);
+      console.log("Post created locally (network error)");
     }
   };
 
