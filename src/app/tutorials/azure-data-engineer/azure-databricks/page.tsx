@@ -3258,7 +3258,7 @@ export default function AzureDatabricksPage() {
                           <tr>
                             <td className="border border-gray-600 px-4 py-2">Skip / Unskip cell(s)</td>
                             <td className="border border-gray-600 px-4 py-2">Ctrl + /</td>
-                            <td className="border border-gray-600 px-4 py-2">Temporarily excludes a cell from GǣRun AllGǥ execution.</td>
+                            <td className="border border-gray-600 px-4 py-2">Temporarily excludes a cell from GÇ£Run AllGÇ¥ execution.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-600 px-4 py-2">Insert cell above / below</td>
