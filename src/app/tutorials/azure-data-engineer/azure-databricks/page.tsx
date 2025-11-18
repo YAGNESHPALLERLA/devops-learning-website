@@ -255,7 +255,6 @@ const PAGE_HEADINGS = [
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
-  'azure-hierarchy': 'azure-basics',
   'introduction-to-azure-databricks': 'azure-databricks',
   'databricks-architecture': 'azure-databricks',
   'common-use-cases': 'azure-databricks',
@@ -289,6 +288,66 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'help-level-features': 'azure-databricks-1',
   'language-level-features': 'azure-databricks-1',
   'others-features': 'azure-databricks-1'
+};
+
+// Helper function to create module-specific navigation items
+const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
+  const basePath = '/tutorials/azure-data-engineer/azure-databricks';
+  const subsectionTitles: Record<string, string> = {
+    'introduction-to-azure-databricks': 'Introduction to Azure Databricks',
+    'databricks-architecture': 'Databricks Architecture',
+    'common-use-cases': 'Common Use Cases',
+    'core-components': 'Core Components',
+    'advantages': 'Advantages',
+    'databricks-overview': 'Databricks Overview',
+    'how-to-create': 'How to Create Azure Databricks',
+    'workspace-overview': 'Workspace Overview',
+    'databricks-features': 'Databricks Features',
+    'sql-editor': 'SQL Editor',
+    'queries': 'Queries',
+    'dashboards': 'Dashboards',
+    'genie': 'Genie',
+    'alerts': 'Alerts',
+    'query-history': 'Query History',
+    'sql-data-warehouse': 'SQL Data Warehouse',
+    'data-engineering': 'Overview',
+    'jobs-runs': "Jobs run's",
+    'data-ingestion': 'Data Ingestion',
+    'ai-ml': 'AI/ML',
+    'playground': 'Playground',
+    'experiments': 'Experiments',
+    'features': 'Features',
+    'models': 'Models',
+    'serving': 'Serving',
+    'notebook-level-features': 'Notebook-level features',
+    'file-level-features': 'File-level Features',
+    'edit-level-features': 'Edit level features',
+    'view-level-features': 'View level features',
+    'run-level-features': 'Run-level features',
+    'help-level-features': 'Help-level features',
+    'language-level-features': 'Language-level features',
+    'others-features': 'Others features'
+  };
+
+  const moduleSections = PAGE_HEADINGS.map(heading => {
+    const subsections = Object.entries(SUBSECTION_PARENT)
+      .filter(([_, parent]) => parent === heading.id)
+      .map(([subsectionId, _]) => ({
+        id: subsectionId,
+        title: subsectionTitles[subsectionId] || subsectionId,
+        href: `${basePath}#${subsectionId}`
+      }));
+
+    return {
+      id: heading.id,
+      title: heading.title,
+      href: `${basePath}#${heading.id}`,
+      icon: heading.id === 'azure-databricks' ? '🔷' : heading.id === 'databricks-sql' ? '💾' : '⚙️',
+      children: subsections.length > 0 ? subsections : undefined
+    };
+  });
+
+  return moduleSections;
 };
 
 export default function AzureDatabricksPage() {
@@ -397,6 +456,7 @@ export default function AzureDatabricksPage() {
       setActiveSection={handleSetActiveSection}
       activeSubsection={activeSubsection}
       setActiveSubsection={setActiveSubsection}
+      customNavigationItems={createModuleNavigationItems()}
     >
       <div className="min-h-screen">
         {/* Header */}

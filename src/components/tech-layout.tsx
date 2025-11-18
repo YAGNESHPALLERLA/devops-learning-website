@@ -12,6 +12,8 @@ interface TechLayoutProps {
   setActiveSection?: (section: string) => void;
   activeSubsection?: string | null;
   setActiveSubsection?: (section: string | null) => void;
+  hideSidebar?: boolean;
+  customNavigationItems?: SidebarItem[];
 }
 
 interface SidebarItem {
@@ -509,14 +511,15 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
   return [...baseItems, ...(techItems[tech as keyof typeof techItems] || [])];
 };
 
-export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection }: TechLayoutProps) {
+export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection, hideSidebar = false, customNavigationItems }: TechLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [internalActiveSection, setInternalActiveSection] = useState('');
 
   const activeSection = externalActiveSection !== undefined ? externalActiveSection : internalActiveSection;
   const setActiveSection = externalSetActiveSection || setInternalActiveSection;
 
-  const navigationItems = getTechNavigationItems(technology);
+  // Use custom navigation items if provided, otherwise use default
+  const navigationItems = customNavigationItems || getTechNavigationItems(technology);
 
   // Handle scroll to update active section
   useEffect(() => {
@@ -553,37 +556,42 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       )}
 
       {/* Sidebar - Fixed below header on desktop */}
-      <aside className={`
-        fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
-        transform transition-transform duration-300 ease-in-out
-        top-0 h-screen
-        lg:top-[80px] lg:h-[calc(100vh-80px)]
-        lg:translate-x-0
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-       `}>
-        <Sidebar
-          items={navigationItems}
-          onThisPage={onThisPage || []}
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-          activeSubsection={activeSubsection}
-          setActiveSubsection={setActiveSubsection}
-        />
-      </aside>
+      {!hideSidebar && (
+        <aside className={`
+          fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+          transform transition-transform duration-300 ease-in-out
+          top-0 h-screen
+          lg:top-[80px] lg:h-[calc(100vh-80px)]
+          lg:translate-x-0
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+         `}>
+          <Sidebar
+            items={navigationItems}
+            onThisPage={onThisPage || []}
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+            activeSubsection={activeSubsection}
+            setActiveSubsection={setActiveSubsection}
+          />
+        </aside>
+      )}
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen w-full lg:ml-80">
+      <div className={`flex-1 flex flex-col min-h-screen w-full ${!hideSidebar ? 'lg:ml-80' : ''}`}>
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="p-3 rounded-xl text-white hover:bg-gray-800/50 transition-all duration-300"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {!hideSidebar && (
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="p-3 rounded-xl text-white hover:bg-gray-800/50 transition-all duration-300"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            )}
+            {hideSidebar && <div className="w-10" />}
             <h1 className="text-xl font-bold text-white">
               {technology === 'java' ? 'Java Programming' :
                technology === 'python' ? 'Python Programming' :

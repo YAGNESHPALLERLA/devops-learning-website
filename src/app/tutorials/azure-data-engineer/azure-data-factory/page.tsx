@@ -6,6 +6,19 @@ const PAGE_HEADINGS = [
   { id: 'coming-soon', title: 'Coming Soon' }
 ];
 
+// Helper function to create module-specific navigation items
+const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string }> => {
+  const basePath = '/tutorials/azure-data-engineer/azure-data-factory';
+  return [
+    {
+      id: 'coming-soon',
+      title: 'Coming Soon',
+      href: `${basePath}#coming-soon`,
+      icon: '🏭'
+    }
+  ];
+};
+
 export default function AzureDataFactoryPage() {
   return (
     <TechLayout 
@@ -15,6 +28,7 @@ export default function AzureDataFactoryPage() {
       setActiveSection={() => {}}
       activeSubsection={null}
       setActiveSubsection={() => {}}
+      customNavigationItems={createModuleNavigationItems()}
     >
       <div className="min-h-screen">
         {/* Header */}

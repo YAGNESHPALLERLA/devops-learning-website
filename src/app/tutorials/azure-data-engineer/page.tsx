@@ -39,6 +39,7 @@ export default function AzureDataEngineerLandingPage() {
       setActiveSection={() => {}}
       activeSubsection={null}
       setActiveSubsection={() => {}}
+      hideSidebar={true}
     >
       <div className="min-h-screen">
         {/* Header */}

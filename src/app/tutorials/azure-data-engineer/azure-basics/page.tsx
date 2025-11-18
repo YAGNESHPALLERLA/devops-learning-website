@@ -256,40 +256,37 @@ const PAGE_HEADINGS = [
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
-  'azure-hierarchy': 'azure-basics',
-  'introduction-to-azure-databricks': 'azure-databricks',
-  'databricks-architecture': 'azure-databricks',
-  'common-use-cases': 'azure-databricks',
-  'core-components': 'azure-databricks',
-  'advantages': 'azure-databricks',
-  'databricks-overview': 'azure-databricks',
-  'how-to-create': 'azure-databricks',
-  'workspace-overview': 'azure-databricks',
-  'databricks-features': 'azure-databricks',
-  'sql-editor': 'databricks-sql',
-  'queries': 'databricks-sql',
-  'dashboards': 'databricks-sql',
-  'genie': 'databricks-sql',
-  'alerts': 'databricks-sql',
-  'query-history': 'databricks-sql',
-  'sql-data-warehouse': 'databricks-sql',
-  'data-engineering': 'azure-databricks-1',
-  'jobs-runs': 'azure-databricks-1',
-  'data-ingestion': 'azure-databricks-1',
-  'ai-ml': 'azure-databricks-1',
-  'playground': 'azure-databricks-1',
-  'experiments': 'azure-databricks-1',
-  'features': 'azure-databricks-1',
-  'models': 'azure-databricks-1',
-  'serving': 'azure-databricks-1',
-  'notebook-level-features': 'azure-databricks-1',
-  'file-level-features': 'azure-databricks-1',
-  'edit-level-features': 'azure-databricks-1',
-  'view-level-features': 'azure-databricks-1',
-  'run-level-features': 'azure-databricks-1',
-  'help-level-features': 'azure-databricks-1',
-  'language-level-features': 'azure-databricks-1',
-  'others-features': 'azure-databricks-1'
+  'azure-hierarchy': 'azure-basics'
+};
+
+// Helper function to create module-specific navigation items
+const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
+  const basePath = '/tutorials/azure-data-engineer/azure-basics';
+  const moduleSections = PAGE_HEADINGS.map(heading => {
+    const subsections = Object.entries(SUBSECTION_PARENT)
+      .filter(([_, parent]) => parent === heading.id)
+      .map(([subsectionId, _]) => {
+        // Find the subsection title from the content (we'll need to map these)
+        const subsectionTitles: Record<string, string> = {
+          'azure-hierarchy': 'Azure Hierarchy'
+        };
+        return {
+          id: subsectionId,
+          title: subsectionTitles[subsectionId] || subsectionId,
+          href: `${basePath}#${subsectionId}`
+        };
+      });
+
+    return {
+      id: heading.id,
+      title: heading.title,
+      href: `${basePath}#${heading.id}`,
+      icon: heading.id === 'azure-basics' ? '📘' : undefined,
+      children: subsections.length > 0 ? subsections : undefined
+    };
+  });
+
+  return moduleSections;
 };
 
 export default function AzureDataEngineerPage() {
@@ -398,6 +395,7 @@ export default function AzureDataEngineerPage() {
       setActiveSection={handleSetActiveSection}
       activeSubsection={activeSubsection}
       setActiveSubsection={setActiveSubsection}
+      customNavigationItems={createModuleNavigationItems()}
     >
       <div className="min-h-screen">
         {/* Header */}
