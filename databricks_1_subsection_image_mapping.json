@@ -1,0 +1,144 @@
+{
+  "Data Engineering / Key Features": [
+    {
+      "image_name": "db1_image1.png",
+      "image_file": "db1_image1.png",
+      "section": "Data Engineering",
+      "subsection": "Key Features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Data Engineering / Data Ingestion": [
+    {
+      "image_name": "db1_image2.png",
+      "image_file": "db1_image2.png",
+      "section": "Data Engineering",
+      "subsection": "Data Ingestion",
+      "context": "Image only paragraph"
+    }
+  ],
+  "AI/ML / Playground": [
+    {
+      "image_name": "db1_image3.png",
+      "image_file": "db1_image3.png",
+      "section": "AI/ML",
+      "subsection": "Playground",
+      "context": "Image only paragraph"
+    }
+  ],
+  "AI/ML / Model artifacts (like trained models)": [
+    {
+      "image_name": "db1_image4.png",
+      "image_file": "db1_image4.png",
+      "section": "AI/ML",
+      "subsection": "Model artifacts (like trained models)",
+      "context": "Image only paragraph"
+    }
+  ],
+  "AI/ML / In a product recommender → user_history, click_rate, category_interest are features.": [
+    {
+      "image_name": "db1_image5.png",
+      "image_file": "db1_image5.png",
+      "section": "AI/ML",
+      "subsection": "In a product recommender → user_history, click_rate, category_interest are features.",
+      "context": "Image only paragraph"
+    }
+  ],
+  "AI/ML / Models": [
+    {
+      "image_name": "db1_image6.png",
+      "image_file": "db1_image6.png",
+      "section": "AI/ML",
+      "subsection": "Models",
+      "context": "Image only paragraph"
+    }
+  ],
+  "AI/ML / Serve open-source or external models (like GPT, Llama)": [
+    {
+      "image_name": "db1_image7.png",
+      "image_file": "db1_image7.png",
+      "section": "AI/ML",
+      "subsection": "Serve open-source or external models (like GPT, Llama)",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Notebook-level features": [
+    {
+      "image_name": "db1_image8.png",
+      "image_file": "db1_image8.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Notebook-level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / File-level Features": [
+    {
+      "image_name": "db1_image9.png",
+      "image_file": "db1_image9.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "File-level Features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Edit level features": [
+    {
+      "image_name": "db1_image10.png",
+      "image_file": "db1_image10.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Edit level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / View level features": [
+    {
+      "image_name": "db1_image11.png",
+      "image_file": "db1_image11.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "View level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Run-level features": [
+    {
+      "image_name": "db1_image12.png",
+      "image_file": "db1_image12.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Run-level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Help-level features": [
+    {
+      "image_name": "db1_image13.png",
+      "image_file": "db1_image13.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Help-level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Language-level features": [
+    {
+      "image_name": "db1_image14.png",
+      "image_file": "db1_image14.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Language-level features",
+      "context": "Image only paragraph"
+    }
+  ],
+  "Part of Full AI/ML Lifecycle / Others features": [
+    {
+      "image_name": "db1_image15.png",
+      "image_file": "db1_image15.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Others features",
+      "context": "Image only paragraph"
+    },
+    {
+      "image_name": "db1_image16.png",
+      "image_file": "db1_image16.png",
+      "section": "Part of Full AI/ML Lifecycle",
+      "subsection": "Others features",
+      "context": "Image only paragraph"
+    }
+  ]
+}

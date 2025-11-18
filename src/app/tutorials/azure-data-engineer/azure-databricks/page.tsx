@@ -195,27 +195,23 @@ const azureImages: Record<string, GalleryImage> = {
   db_sql_warehouse_1: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
   
   // Images from Azure Databricks -1.docx document
-  // CORRECTED MAPPING: Based on databricks_1_image_mapping.json and user feedback
-  // The actual image files may contain different content than expected, so we're remapping the file references
-  // Data Ingestion should show "Add data" interface with connectors (Salesforce, SAP, Workday, ServiceNow, Google Analytics) and Files section
-  db1_image1: { src: '/tutorials/azure/images/db1_image1.png', width: 1920, height: 1080, alt: 'Jobs & Pipelines interface' },
-  db1_image2: { src: '/tutorials/azure/images/db1_image2.png', width: 1920, height: 1080, alt: 'Job Runs Dashboard' },
-  // Data Ingestion: Based on user feedback, db1_image3-5 were showing Playground content, so using db1_image6-7 instead
-  // The correct Data Ingestion image shows "Add data" interface with connectors (Salesforce, SAP, Workday, ServiceNow, Google Analytics) and Files section
-  db1_image3: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'Data Ingestion interface - Add data with connectors' },
-  db1_image4: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'Data Ingestion - Connectors and Files section' },
-  db1_image5: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'Data Ingestion - Additional view' },
-  // Playground: Using original db1_image3-5 which were incorrectly showing in Data Ingestion
-  db1_image6: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
-  db1_image7: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'AI/ML Playground components' },
-  // Experiments: Keeping original db1_image8.png as it should contain Experiments content
-  db1_image8: { src: '/tutorials/azure/images/db1_image8.png', width: 1920, height: 1080, alt: 'AI/ML Experiments interface' },
-  db1_image9: { src: '/tutorials/azure/images/db1_image9.png', width: 1920, height: 1080, alt: 'AI/ML Feature Store' },
-  db1_image10: { src: '/tutorials/azure/images/db1_image10.png', width: 1920, height: 1080, alt: 'AI/ML Model Registry' },
-  db1_image11: { src: '/tutorials/azure/images/db1_image11.png', width: 1920, height: 1080, alt: 'AI/ML Model details' },
-  db1_image12: { src: '/tutorials/azure/images/db1_image12.png', width: 1920, height: 1080, alt: 'AI/ML Model Serving' },
-  db1_image13: { src: '/tutorials/azure/images/db1_image13.png', width: 1920, height: 1080, alt: 'AI/ML Serving details' },
-  db1_image14: { src: '/tutorials/azure/images/db1_image14.png', width: 1920, height: 1080, alt: 'Additional content 1' },
+  // CORRECTED MAPPING: Based on document extraction - images mapped to exact subsections
+  // Extracted from: public/downloads/Azure Databricks -1.docx
+  // Mapping: Each image corresponds to its subsection in the document
+  db1_image1: { src: '/tutorials/azure/images/db1_image1.png', width: 1920, height: 1080, alt: 'Jobs & Pipelines - Key Features' },
+  db1_image2: { src: '/tutorials/azure/images/db1_image2.png', width: 1920, height: 1080, alt: 'Data Ingestion - Add data interface' },
+  db1_image3: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
+  db1_image4: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'AI/ML Experiments interface' },
+  db1_image5: { src: '/tutorials/azure/images/db1_image5.png', width: 1920, height: 1080, alt: 'AI/ML Features - Feature Store' },
+  db1_image6: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'AI/ML Models - Model Registry' },
+  db1_image7: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'AI/ML Serving - Model Serving' },
+  db1_image8: { src: '/tutorials/azure/images/db1_image8.png', width: 1920, height: 1080, alt: 'Notebook-level features' },
+  db1_image9: { src: '/tutorials/azure/images/db1_image9.png', width: 1920, height: 1080, alt: 'File-level Features' },
+  db1_image10: { src: '/tutorials/azure/images/db1_image10.png', width: 1920, height: 1080, alt: 'Edit level features' },
+  db1_image11: { src: '/tutorials/azure/images/db1_image11.png', width: 1920, height: 1080, alt: 'View level features' },
+  db1_image12: { src: '/tutorials/azure/images/db1_image12.png', width: 1920, height: 1080, alt: 'Run-level features' },
+  db1_image13: { src: '/tutorials/azure/images/db1_image13.png', width: 1920, height: 1080, alt: 'Help-level features' },
+  db1_image14: { src: '/tutorials/azure/images/db1_image14.png', width: 1920, height: 1080, alt: 'Language-level features' },
   db1_image15: { src: '/tutorials/azure/images/db1_image15.png', width: 1920, height: 1080, alt: 'Additional content 2' },
   db1_image16: { src: '/tutorials/azure/images/db1_image16.png', width: 1920, height: 1080, alt: 'Additional content 3' },
   
@@ -1170,7 +1166,7 @@ export default function AzureDatabricksPage() {
                     </ul>
                   </div>
                 {/* Jobs & Pipelines visuals from Azure Databricks -1 */}
-                <ImageGallery images={getImages('db1_image1', 'db1_image2')} />
+                <ImageGallery images={getImages('db1_image1')} />
                 </div>
 
                 {/* Compute (Clusters) */}
@@ -1383,7 +1379,7 @@ export default function AzureDatabricksPage() {
                   </div>
 
                   {/* Data Ingestion - images from Azure Databricks -1.docx */}
-                  <ImageGallery images={getImages('db1_image3', 'db1_image4')} />
+                  <ImageGallery images={getImages('db1_image2')} />
                 </div>
               </div>
             </div>
@@ -2217,7 +2213,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Jobs & Pipelines images */}
-                <ImageGallery images={getImages('db1_image1', 'db1_image2')} />
+                <ImageGallery images={getImages('db1_image1')} />
               </div>
 
               {/* Data Ingestion - 2nd subheading */}
@@ -2335,7 +2331,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Data Ingestion images */}
-                <ImageGallery images={getImages('db1_image3', 'db1_image4')} />
+                <ImageGallery images={getImages('db1_image2')} />
               </div>
             </div>
 
@@ -2473,7 +2469,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Playground images */}
-                <ImageGallery images={getImages('db1_image6', 'db1_image7')} />
+                <ImageGallery images={getImages('db1_image3')} />
               </div>
 
               {/* Experiments - 2nd subheading */}
@@ -2630,7 +2626,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Experiments images */}
-                <ImageGallery images={getImages('db1_image8')} />
+                <ImageGallery images={getImages('db1_image4')} />
               </div>
 
               {/* Features - 3rd subheading */}
@@ -2804,7 +2800,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Features images */}
-                <ImageGallery images={getImages('db1_image9')} />
+                <ImageGallery images={getImages('db1_image5')} />
               </div>
 
               {/* Models - 4th subheading */}
@@ -2868,7 +2864,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Models images */}
-                <ImageGallery images={getImages('db1_image10', 'db1_image11')} />
+                <ImageGallery images={getImages('db1_image6')} />
               </div>
 
               {/* Serving - 5th subheading */}
@@ -3026,7 +3022,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Serving images */}
-                <ImageGallery images={getImages('db1_image12', 'db1_image13')} />
+                <ImageGallery images={getImages('db1_image7')} />
               </div>
             </div>
 
@@ -3132,6 +3128,8 @@ export default function AzureDatabricksPage() {
                     </table>
                   </div>
                 </div>
+                {/* Notebook-level features images */}
+                <ImageGallery images={getImages('db1_image8')} />
               </div>
 
               {/* File-level Features - 1st subheading */}
@@ -3219,7 +3217,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* File-level Features images */}
-                <ImageGallery images={getImages('db1_image14')} />
+                <ImageGallery images={getImages('db1_image9')} />
               </div>
 
               {/* Edit level features - 2nd subheading */}
@@ -3293,7 +3291,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Edit level features images */}
-                <ImageGallery images={getImages('db1_image15')} />
+                <ImageGallery images={getImages('db1_image10')} />
               </div>
 
               {/* View level features - 3rd subheading */}
@@ -3356,6 +3354,8 @@ export default function AzureDatabricksPage() {
                     </div>
                   </div>
                 </div>
+                {/* View level features images */}
+                <ImageGallery images={getImages('db1_image11')} />
               </div>
 
               {/* Run-level features - 4th subheading */}
@@ -3433,6 +3433,8 @@ export default function AzureDatabricksPage() {
                     <p className="mt-2 text-gray-400">=��� Useful before re-running code to avoid confusion from old outputs.</p>
                   </div>
                 </div>
+                {/* Run-level features images */}
+                <ImageGallery images={getImages('db1_image12')} />
               </div>
 
               {/* Help-level features - 5th subheading */}
@@ -3492,6 +3494,8 @@ export default function AzureDatabricksPage() {
                     </ul>
                   </div>
                 </div>
+                {/* Help-level features images */}
+                <ImageGallery images={getImages('db1_image13')} />
               </div>
 
               {/* Language-level features - 6th subheading */}
@@ -3553,6 +3557,8 @@ export default function AzureDatabricksPage() {
                     </ul>
                   </div>
                 </div>
+                {/* Language-level features images */}
+                <ImageGallery images={getImages('db1_image14')} />
               </div>
 
               {/* Others features - 7th subheading */}
