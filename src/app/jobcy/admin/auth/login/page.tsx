@@ -97,30 +97,30 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+      <div className="w-full max-w-md animate-fadeInUp">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-600 dark:bg-orange-500 rounded-lg mb-4 shadow-sm">
-            <Building2 className="w-7 h-7 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl mb-4 shadow-lg shadow-orange-500/30">
+            <Building2 className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
-            Welcome Back
+          <h1 className="text-3xl font-bold text-white mb-2">
+            Welcome Back, Admin
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-gray-400">
             Sign in to continue to your dashboard
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-8">
+        <div className="bg-[#1a1a1a] rounded-xl shadow-xl border border-gray-700 p-8 transition-all hover:border-gray-600">
           <div className="space-y-5">
             {loginError && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start space-x-3">
-                <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 mt-0.5 flex-shrink-0" />
+              <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 flex items-start space-x-3 animate-fadeIn">
+                <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-red-800 dark:text-red-300 text-sm font-medium">
+                  <p className="text-white text-sm font-medium">
                     Sign In Failed
                   </p>
-                  <p className="text-red-600 dark:text-red-400 text-sm">
+                  <p className="text-red-400 text-sm">
                     {loginError}
                   </p>
                 </div>
@@ -130,7 +130,7 @@ export default function AdminLogin() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-sm font-semibold text-white mb-2"
               >
                 Email Address
               </label>
@@ -141,18 +141,18 @@ export default function AdminLogin() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-[#0a0a0a] text-white placeholder:text-gray-500 focus:bg-[#0f0f0f] focus:outline-none transition-all ${
                     errors.email
-                      ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
-                      : "border-slate-300 dark:border-slate-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/50"
+                      ? "border-red-500 focus:border-red-400 focus:ring-2 focus:ring-red-500/20"
+                      : "border-gray-700 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
                   }`}
                   placeholder="admin@example.com"
                   disabled={isLoading}
                 />
-                <Mail className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Mail className="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
               </div>
               {errors.email && (
-                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-red-400 flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.email}</span>
                 </p>
@@ -162,7 +162,7 @@ export default function AdminLogin() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                className="block text-sm font-semibold text-white mb-2"
               >
                 Password
               </label>
@@ -173,19 +173,19 @@ export default function AdminLogin() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-[#0a0a0a] text-white placeholder:text-gray-500 focus:bg-[#0f0f0f] focus:outline-none transition-all ${
                     errors.password
-                      ? "border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/50"
-                      : "border-slate-300 dark:border-slate-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/50"
+                      ? "border-red-500 focus:border-red-400 focus:ring-2 focus:ring-red-500/20"
+                      : "border-gray-700 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
                   }`}
                   placeholder="Enter your password"
                   disabled={isLoading}
                 />
-                <Lock className="w-5 h-5 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Lock className="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? (
@@ -196,7 +196,7 @@ export default function AdminLogin() {
                 </button>
               </div>
               {errors.password && (
-                <p className="mt-1.5 text-sm text-red-600 dark:text-red-400 flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-red-400 flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.password}</span>
                 </p>
@@ -206,7 +206,7 @@ export default function AdminLogin() {
             <div className="flex items-center justify-end">
               <a
                 href="#"
-                className="text-sm text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-medium transition-colors"
+                className="text-sm text-orange-400 hover:text-orange-300 font-medium transition-colors"
               >
                 Forgot password?
               </a>
@@ -215,7 +215,7 @@ export default function AdminLogin() {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-400 dark:bg-orange-500 dark:hover:bg-orange-600 dark:disabled:bg-orange-800 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-200 dark:focus:ring-orange-900/50 disabled:cursor-not-allowed shadow-sm"
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-gray-700 disabled:to-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-orange-500/50 disabled:cursor-not-allowed shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">

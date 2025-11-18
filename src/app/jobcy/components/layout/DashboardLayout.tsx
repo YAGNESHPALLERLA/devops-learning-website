@@ -30,7 +30,7 @@ export function DashboardLayout({
   onThemeToggle,
 }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0a0a] transition-colors duration-300">
       {/* Fixed Top Navigation */}
       <Navbar
         user={user}
@@ -50,8 +50,10 @@ export function DashboardLayout({
 
         {/* Main Content Area */}
         <main className="flex-1 min-h-screen">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            {children}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="animate-fadeInUp">
+              {children}
+            </div>
           </div>
         </main>
       </div>

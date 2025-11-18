@@ -19,16 +19,16 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, icon, trend, gradient, className }: StatsCardProps) {
   return (
-    <Card variant="elevated" hover className={className}>
+    <Card variant="elevated" hover className={cn("animate-fadeInUp", className)}>
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <p className="text-sm font-medium text-gray-600 mb-1">{title}</p>
-            <p className="text-3xl font-bold text-gray-900 mb-2">{value}</p>
+            <p className="text-sm font-medium text-gray-400 mb-1">{title}</p>
+            <p className="text-3xl font-bold text-white mb-2">{value}</p>
             {trend && (
               <div className={cn(
                 "flex items-center text-sm font-semibold",
-                trend.positive ? "text-green-600" : "text-red-600"
+                trend.positive ? "text-green-400" : "text-red-400"
               )}>
                 <span className="mr-1">{trend.positive ? "↑" : "↓"}</span>
                 <span>{trend.value}%</span>
@@ -38,7 +38,7 @@ export function StatsCard({ title, value, icon, trend, gradient, className }: St
           </div>
           {icon && (
             <div className={cn(
-              "w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0A66C2] to-[#004182] shadow-md"
+              "w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30"
             )}
             style={gradient ? { background: gradient } : undefined}
             >

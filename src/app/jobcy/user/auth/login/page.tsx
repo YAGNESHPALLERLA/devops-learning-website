@@ -98,30 +98,30 @@ export default function UserLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+      <div className="w-full max-w-md animate-fadeInUp">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--primary)] rounded-lg mb-4 shadow-sm">
-            <LogIn className="w-7 h-7 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl mb-4 shadow-lg shadow-blue-500/30">
+            <LogIn className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Welcome Back
           </h1>
-          <p className="text-[var(--foreground-muted)]">
+          <p className="text-gray-400">
             Sign in to continue to your dashboard
           </p>
         </div>
 
-        <div className="bg-[var(--surface)] rounded-xl shadow-lg border border-[var(--border)] p-8">
+        <div className="bg-[#1a1a1a] rounded-xl shadow-xl border border-gray-700 p-8 transition-all hover:border-gray-600">
           <div className="space-y-5">
             {loginError && (
-              <div className="bg-[var(--surface-secondary)] border border-[var(--danger)] rounded-lg p-4 flex items-start space-x-3">
-                <AlertCircle className="w-5 h-5 text-[var(--danger-light)] mt-0.5 flex-shrink-0" />
+              <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 flex items-start space-x-3 animate-fadeIn">
+                <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-[var(--foreground)] text-sm font-medium">
+                  <p className="text-white text-sm font-medium">
                     Sign In Failed
                   </p>
-                  <p className="text-[var(--danger-light)] text-sm">
+                  <p className="text-red-400 text-sm">
                     {loginError}
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function UserLogin() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-[var(--foreground)] mb-2"
+                className="block text-sm font-semibold text-white mb-2"
               >
                 Email Address
               </label>
@@ -142,18 +142,18 @@ export default function UserLogin() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-[var(--surface-secondary)] text-[var(--foreground)] placeholder:text-[var(--foreground-dim)] focus:bg-[var(--surface-tertiary)] focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-4 py-2.5 border rounded-lg bg-[#0a0a0a] text-white placeholder:text-gray-500 focus:bg-[#0f0f0f] focus:outline-none transition-all ${
                     errors.email
-                      ? "border-[var(--danger)] focus:border-[var(--danger-light)] focus:ring-2 focus:ring-[var(--danger)]/20"
-                      : "border-[var(--border)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20"
+                      ? "border-red-500 focus:border-red-400 focus:ring-2 focus:ring-red-500/20"
+                      : "border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   }`}
                   placeholder="john.doe@example.com"
                   disabled={isLoading}
                 />
-                <Mail className="w-5 h-5 text-[var(--foreground-dim)] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Mail className="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
               </div>
               {errors.email && (
-                <p className="mt-1.5 text-sm text-[var(--danger-light)] flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-red-400 flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.email}</span>
                 </p>
@@ -163,7 +163,7 @@ export default function UserLogin() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-[var(--foreground)] mb-2"
+                className="block text-sm font-semibold text-white mb-2"
               >
                 Password
               </label>
@@ -174,19 +174,19 @@ export default function UserLogin() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-[var(--surface-secondary)] text-[var(--foreground)] placeholder:text-[var(--foreground-dim)] focus:bg-[var(--surface-tertiary)] focus:outline-none transition-colors ${
+                  className={`w-full pl-11 pr-12 py-2.5 border rounded-lg bg-[#0a0a0a] text-white placeholder:text-gray-500 focus:bg-[#0f0f0f] focus:outline-none transition-all ${
                     errors.password
-                      ? "border-[var(--danger)] focus:border-[var(--danger-light)] focus:ring-2 focus:ring-[var(--danger)]/20"
-                      : "border-[var(--border)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20"
+                      ? "border-red-500 focus:border-red-400 focus:ring-2 focus:ring-red-500/20"
+                      : "border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   }`}
                   placeholder="Enter your password"
                   disabled={isLoading}
                 />
-                <Lock className="w-5 h-5 text-[var(--foreground-dim)] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Lock className="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--foreground-dim)] hover:text-[var(--foreground)] transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? (
@@ -197,7 +197,7 @@ export default function UserLogin() {
                 </button>
               </div>
               {errors.password && (
-                <p className="mt-1.5 text-sm text-[var(--danger-light)] flex items-center space-x-1">
+                <p className="mt-1.5 text-sm text-red-400 flex items-center space-x-1">
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.password}</span>
                 </p>
@@ -207,7 +207,7 @@ export default function UserLogin() {
             <div className="flex items-center justify-end">
               <a
                 href="#"
-                className="text-sm text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition-colors"
+                className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
               >
                 Forgot password?
               </a>
@@ -216,7 +216,7 @@ export default function UserLogin() {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] disabled:bg-[var(--foreground-dim)] text-white font-semibold py-2.5 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 disabled:cursor-not-allowed shadow-sm"
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-gray-700 disabled:to-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -229,48 +229,48 @@ export default function UserLogin() {
             </button>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-[var(--border)]">
+          <div className="mt-6 pt-6 border-t border-gray-700">
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-start space-x-2">
-                <Briefcase className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
+              <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                <Briefcase className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-[var(--foreground)]">
+                  <p className="text-xs font-semibold text-white">
                     10,000+ Jobs
                   </p>
-                  <p className="text-xs text-[var(--foreground-muted)]">
+                  <p className="text-xs text-gray-400">
                     Active openings
                   </p>
                 </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <Building2 className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
+              <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                <Building2 className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-[var(--foreground)]">
+                  <p className="text-xs font-semibold text-white">
                     500+ Companies
                   </p>
-                  <p className="text-xs text-[var(--foreground-muted)]">
+                  <p className="text-xs text-gray-400">
                     Hiring now
                   </p>
                 </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <Users className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
+              <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                <Users className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-[var(--foreground)]">
+                  <p className="text-xs font-semibold text-white">
                     50,000+ Users
                   </p>
-                  <p className="text-xs text-[var(--foreground-muted)]">
+                  <p className="text-xs text-gray-400">
                     Trust our platform
                   </p>
                 </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <TrendingUp className="w-4 h-4 text-[var(--primary)] mt-0.5 flex-shrink-0" />
+              <div className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                <TrendingUp className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-[var(--foreground)]">
+                  <p className="text-xs font-semibold text-white">
                     95% Success
                   </p>
-                  <p className="text-xs text-[var(--foreground-muted)]">
+                  <p className="text-xs text-gray-400">
                     Placement rate
                   </p>
                 </div>
@@ -279,11 +279,11 @@ export default function UserLogin() {
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-[var(--foreground-muted)]">
+            <p className="text-sm text-gray-400">
               New to our platform?{" "}
               <a
                 href="/jobcy/user/auth/signup"
-                className="text-[var(--primary)] hover:text-[var(--primary-dark)] font-semibold transition-colors"
+                className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
               >
                 Create Account
               </a>
@@ -292,7 +292,7 @@ export default function UserLogin() {
         </div>
 
         <div className="text-center mt-6">
-          <p className="text-xs text-[var(--foreground-dim)]">
+          <p className="text-xs text-gray-500">
             © 2024 Job Portal. Connecting talent with opportunity.
           </p>
         </div>

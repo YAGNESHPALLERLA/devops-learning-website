@@ -13,13 +13,13 @@ export function Card({ variant = 'default', hover = false, className, children, 
   const baseStyles = "rounded-2xl transition-all duration-300";
   
   const variants = {
-    default: "bg-white shadow-sm border border-gray-200",
-    elevated: "bg-white shadow-md border border-gray-200 hover:shadow-lg transition-shadow",
-    outlined: "bg-white border-2 border-gray-300",
-    gradient: "bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 shadow-md",
+    default: "bg-[#1a1a1a] shadow-lg border border-gray-700",
+    elevated: "bg-[#1a1a1a] shadow-xl border border-gray-700 hover:shadow-2xl hover:border-gray-600 transition-all",
+    outlined: "bg-[#1a1a1a] border-2 border-gray-600",
+    gradient: "bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/30 shadow-lg",
   };
 
-  const hoverStyles = hover ? "hover:shadow-2xl hover:-translate-y-1 cursor-pointer" : "";
+  const hoverStyles = hover ? "hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 cursor-pointer hover:border-gray-600" : "";
 
   return (
     <div
@@ -33,7 +33,7 @@ export function Card({ variant = 'default', hover = false, className, children, 
 
 export function CardHeader({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("px-6 py-4 border-b border-gray-200", className)} {...props}>
+    <div className={cn("px-6 py-4 border-b border-gray-700", className)} {...props}>
       {children}
     </div>
   );
@@ -41,7 +41,7 @@ export function CardHeader({ className, children, ...props }: HTMLAttributes<HTM
 
 export function CardTitle({ className, children, ...props }: HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h3 className={cn("text-xl font-bold text-gray-900", className)} {...props}>
+    <h3 className={cn("text-xl font-bold text-white", className)} {...props}>
       {children}
     </h3>
   );
@@ -57,7 +57,7 @@ export function CardContent({ className, children, ...props }: HTMLAttributes<HT
 
 export function CardFooter({ className, children, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("px-6 py-4 border-t border-gray-200 bg-gray-50", className)} {...props}>
+    <div className={cn("px-6 py-4 border-t border-gray-700 bg-[#0a0a0a]", className)} {...props}>
       {children}
     </div>
   );

@@ -195,19 +195,19 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
     subtitle,
     trend,
   }) => (
-    <div className="group relative bg-white rounded-xl p-6 shadow-md border border-gray-200 hover:shadow-lg hover:border-[#0A66C2]/30 transition-all duration-500 overflow-hidden">
+    <div className="group relative bg-[#1a1a1a] rounded-xl p-6 shadow-lg border border-gray-700 hover:shadow-xl hover:border-purple-500/50 transition-all duration-500 overflow-hidden">
       {/* Animated gradient background */}
       <div
-        className="absolute inset-0 bg-[#0A66C2] opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+        className="absolute inset-0 bg-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
       ></div>
 
       {/* Decorative circles */}
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#0A66C2]/10 rounded-full blur-2xl"></div>
+      <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
 
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-6">
           <div
-            className="p-4 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg shadow-md group-hover:scale-110 transition-transform duration-300"
+            className="p-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300"
           >
             <Icon className="w-6 h-6 text-white" />
           </div>
@@ -216,8 +216,8 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
             <div
               className={`flex items-center space-x-1 px-3 py-1.5 rounded-full ${
                 trend === "up"
-                  ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                  : "bg-red-50 text-red-600 border border-red-200"
+                  ? "bg-emerald-900/30 text-emerald-400 border border-emerald-500/50"
+                  : "bg-red-900/30 text-red-400 border border-red-500/50"
               }`}
             >
               {trend === "up" ? (
@@ -231,19 +231,19 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">
+          <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">
             {title}
           </p>
-          <p className="text-4xl font-bold text-slate-900 group-hover:scale-105 transition-transform duration-300">
+          <p className="text-4xl font-bold text-white group-hover:scale-105 transition-transform duration-300">
             {value}
           </p>
-          {subtitle && <p className="text-sm text-slate-600">{subtitle}</p>}
+          {subtitle && <p className="text-sm text-gray-400">{subtitle}</p>}
         </div>
 
         {/* Progress bar */}
-        <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div className="mt-4 h-2 bg-gray-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#0A66C2] to-[#004182] rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${Math.min(100, (Number(value) / 50) * 100)}%` }}
           ></div>
         </div>
@@ -253,16 +253,16 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
   
 
   const JobCard = ({ job }: { job: Job }) => (
-    <div className="group relative bg-white rounded-xl border border-gray-200 hover:border-[#0A66C2] hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <div className="group relative bg-[#1a1a1a] rounded-xl border border-gray-700 hover:border-purple-500/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
       {/* Gradient accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0A66C2] to-[#004182] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-1">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors line-clamp-1">
                   {safeRender(job.title)}
                 </h3>
                 <div className="flex items-center gap-2 flex-wrap">
@@ -272,7 +272,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                         ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/30"
                         : job.status === "Paused"
                         ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/30"
-                        : "bg-gradient-to-r from-slate-500 to-slate-600 text-white shadow-lg shadow-slate-500/30"
+                        : "bg-gradient-to-r from-gray-500 to-gray-600 text-white shadow-lg shadow-gray-500/30"
                     }`}
                   >
                     <div
@@ -280,7 +280,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                     ></div>
                     {safeRender(job.status || "Active")}
                   </span>
-                  <span className="flex items-center text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full">
+                  <span className="flex items-center text-xs text-gray-400 bg-[#0a0a0a] border border-gray-700 px-3 py-1.5 rounded-full">
                     <Calendar className="w-3 h-3 mr-1.5" />
                     {formatDate(job.postedDate || job.createdAt)}
                     </span>
@@ -289,7 +289,7 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
               <div className="flex items-center space-x-1 ml-4">
                 <button
-                  className="p-2.5 text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-110"
+                  className="p-2.5 text-purple-400 hover:bg-purple-900/30 rounded-xl transition-all hover:scale-110 border border-gray-700 hover:border-purple-500/50"
                   title="View Applications"
                   onClick={() => {
                     window.location.href = `/jobcy/hr/application-management?job=${encodeURIComponent(safeRender(job._id || job.id || ""))}`;
@@ -298,13 +298,13 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                   <Eye className="w-4 h-4" />
                 </button>
                 <button
-                  className="p-2.5 text-slate-600 hover:bg-slate-100 rounded-xl transition-all hover:scale-110"
+                  className="p-2.5 text-gray-400 hover:bg-gray-800 rounded-xl transition-all hover:scale-110 border border-gray-700 hover:border-gray-600"
                   title="Edit Job"
                   onClick={() => alert(`Edit ${safeRender(job.title)}`)}
                 >
                   <Edit className="w-4 h-4" />
                 </button>
-                <button className="p-2.5 text-slate-600 hover:bg-slate-100 rounded-xl transition-all hover:scale-110">
+                <button className="p-2.5 text-gray-400 hover:bg-gray-800 rounded-xl transition-all hover:scale-110 border border-gray-700 hover:border-gray-600">
                   <MoreVertical className="w-4 h-4" />
                 </button>
               </div>
@@ -312,20 +312,20 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
             {/* Job Details Grid */}
             <div className="grid grid-cols-2 gap-3 mb-5">
-              <div className="flex items-center space-x-2 text-sm text-slate-700 bg-white p-3 rounded-xl border border-slate-100">
-                <Building2 className="w-4 h-4 text-primary-500" />
+              <div className="flex items-center space-x-2 text-sm text-gray-300 bg-[#0a0a0a] p-3 rounded-xl border border-gray-700">
+                <Building2 className="w-4 h-4 text-purple-400" />
                 <span className="font-medium">{safeRender(job.company)}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-slate-700 bg-white p-3 rounded-xl border border-slate-100">
-                <MapPin className="w-4 h-4 text-rose-500" />
+              <div className="flex items-center space-x-2 text-sm text-gray-300 bg-[#0a0a0a] p-3 rounded-xl border border-gray-700">
+                <MapPin className="w-4 h-4 text-rose-400" />
                 <span className="font-medium">{safeRender(job.location)}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-slate-700 bg-white p-3 rounded-xl border border-slate-100">
-                <Clock className="w-4 h-4 text-amber-500" />
+              <div className="flex items-center space-x-2 text-sm text-gray-300 bg-[#0a0a0a] p-3 rounded-xl border border-gray-700">
+                <Clock className="w-4 h-4 text-amber-400" />
                 <span className="font-medium">{safeRender(job.type)}</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-slate-700 bg-white p-3 rounded-xl border border-slate-100">
-                <DollarSign className="w-4 h-4 text-emerald-500" />
+              <div className="flex items-center space-x-2 text-sm text-gray-300 bg-[#0a0a0a] p-3 rounded-xl border border-gray-700">
+                <DollarSign className="w-4 h-4 text-emerald-400" />
                 <span className="font-semibold">
                   {formatSalary(job.salary)}
                 </span>
@@ -334,19 +334,19 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
             {/* Stats */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-lg border border-blue-100">
-                <FileText className="w-4 h-4 text-[#0A66C2]" />
-                <span className="text-sm font-bold text-[#0A66C2]">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                <FileText className="w-4 h-4 text-purple-400" />
+                <span className="text-sm font-bold text-purple-400">
                   {job.applicants || 0}
                 </span>
-                <span className="text-xs text-[#0A66C2]">applications</span>
+                <span className="text-xs text-purple-300">applications</span>
               </div>
-              <div className="flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-lg border border-blue-100">
-                <Eye className="w-4 h-4 text-[#0A66C2]" />
-                <span className="text-sm font-bold text-[#0A66C2]">
+              <div className="flex items-center space-x-2 px-4 py-2 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                <Eye className="w-4 h-4 text-purple-400" />
+                <span className="text-sm font-bold text-purple-400">
                   {job.views || 0}
                 </span>
-                <span className="text-xs text-[#0A66C2]">views</span>
+                <span className="text-xs text-purple-300">views</span>
               </div>
             </div>
           </div>
@@ -375,16 +375,16 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
           <div className="relative w-20 h-20 mx-auto mb-6">
             <div className="absolute inset-0 rounded-full border-4 border-primary-200"></div>
             <div className="absolute inset-0 rounded-full border-4 border-t-primary-600 animate-spin"></div>
           </div>
-          <p className="text-slate-700 font-semibold text-lg">
+          <p className="text-white font-semibold text-lg">
             Loading your dashboard...
           </p>
-          <p className="text-slate-500 text-sm mt-2">Please wait a moment</p>
+          <p className="text-gray-400 text-sm mt-2">Please wait a moment</p>
         </div>
       </div>
     );
@@ -392,18 +392,18 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center max-w-md">
           <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
             <XCircle className="w-10 h-10 text-white" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-2">
+          <h3 className="text-2xl font-bold text-white mb-2">
             Oops! Something went wrong
           </h3>
-          <p className="text-red-600 font-medium mb-6">{error}</p>
+          <p className="text-red-400 font-medium mb-6">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-xl font-semibold hover:shadow-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
           >
             Try Again
           </button>
@@ -413,24 +413,24 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Enhanced Header */}
-      <header className="bg-white backdrop-blur-xl shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-[#1a1a1a] backdrop-blur-xl shadow-lg border-b border-gray-700 sticky top-0 z-50">
         <div className="px-8 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-5">
               {/* Navigation Arrows */}
-              <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+              <div className="flex items-center space-x-1 border-r border-gray-700 pr-4">
                 <button
                   onClick={() => window.history.back()}
-                  className="p-2 rounded-xl hover:bg-gray-100 transition-colors text-slate-600 hover:text-slate-900"
+                  className="p-2 rounded-xl hover:bg-gray-800 transition-colors text-gray-400 hover:text-white"
                   title="Go back"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => window.history.forward()}
-                  className="p-2 rounded-xl hover:bg-gray-100 transition-colors text-slate-600 hover:text-slate-900"
+                  className="p-2 rounded-xl hover:bg-gray-800 transition-colors text-gray-400 hover:text-white"
                   title="Go forward"
                 >
                   <ArrowRight className="w-4 h-4" />
@@ -438,50 +438,50 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
               </div>
               
               <div className="relative">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-xl flex items-center justify-center shadow-md">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30">
                   <span className="text-white font-bold text-lg">
                     {hrData.avatar}
                   </span>
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full border-3 border-white shadow-lg animate-pulse"></div>
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full border-3 border-[#1a1a1a] shadow-lg animate-pulse"></div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold text-white">
                   {hrData.name
                     ? `Welcome back, ${hrData.name.split(" ")[0]}! 👋`
                     : "Welcome"}
                 </h1>
-                <p className="text-sm text-slate-600 flex items-center space-x-2 mt-1">
-                  <Building2 className="w-4 h-4 text-primary-500" />
+                <p className="text-sm text-gray-400 flex items-center space-x-2 mt-1">
+                  <Building2 className="w-4 h-4 text-purple-400" />
                   <span className="font-medium">
                     {safeRender(hrData.company)}
                   </span>
-                  <span className="w-1 h-1 rounded-full bg-slate-400"></span>
-                  <span className="text-emerald-600 font-medium">Active</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-500"></span>
+                  <span className="text-emerald-400 font-medium">Active</span>
                 </p>
               </div>
             </div>
 
             <div className="flex items-center space-x-3">
-              <button className="relative p-3 text-slate-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-105 group">
+              <button className="relative p-3 text-gray-300 hover:text-purple-400 hover:bg-gray-800 rounded-xl transition-all hover:scale-105 group border border-gray-700 hover:border-gray-600">
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">
                   3
                 </span>
               </button>
 
-              <button className="p-3 text-slate-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-all hover:scale-105">
+              <button className="p-3 text-gray-300 hover:text-purple-400 hover:bg-gray-800 rounded-xl transition-all hover:scale-105 border border-gray-700 hover:border-gray-600">
                 <Settings className="w-5 h-5" />
               </button>
 
-              <div className="h-8 w-px bg-slate-200"></div>
+              <div className="h-8 w-px bg-gray-700"></div>
 
               <button
                 title="Logout"
-                className="flex items-center space-x-2 px-4 py-2.5 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all hover:scale-105 group"
+                className="flex items-center space-x-2 px-4 py-2.5 text-gray-300 hover:text-red-400 hover:bg-red-900/20 rounded-xl transition-all hover:scale-105 group border border-gray-700 hover:border-red-500/50"
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.href = "/hr/auth/login";
+                  window.location.href = "/jobcy/hr/auth/login";
                 }}
               >
                 <LogOut className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -498,22 +498,22 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         <div className="flex items-center justify-between mb-10">
           <div>
             <div className="flex items-center space-x-3 mb-3">
-              <h2 className="text-4xl font-bold text-gray-900">
+              <h2 className="text-4xl font-bold text-white">
                 Dashboard Overview
               </h2>
-              <Sparkles className="w-8 h-8 text-amber-500 animate-pulse" />
+              <Sparkles className="w-8 h-8 text-purple-400 animate-pulse" />
             </div>
-            <p className="text-slate-600 text-lg">
+            <p className="text-gray-400 text-lg">
               Monitor your recruitment activities and track performance metrics
             </p>
           </div>
           <div className="flex items-center space-x-3">
-            <button className="flex items-center space-x-2 px-5 py-3 bg-white border-2 border-gray-300 hover:border-[#0A66C2] text-gray-700 rounded-lg font-semibold shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <button className="flex items-center space-x-2 px-5 py-3 bg-[#1a1a1a] border-2 border-gray-700 hover:border-purple-500 text-gray-300 hover:text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
               <Download className="w-5 h-5" />
               <span>Export</span>
             </button>
             <Link href="/jobcy/hr/jobs-management">
-              <button className="flex items-center space-x-2 bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-lg font-bold shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
+              <button className="flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-bold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:-translate-y-0.5 group transform hover:scale-[1.02] active:scale-[0.98]">
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                 <span>Manage Jobs</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -563,14 +563,14 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
         </div>
 
         {/* Jobs Section */}
-        <div className="bg-white rounded-3xl border border-slate-200/50 shadow-xl overflow-hidden">
-          <div className="p-8 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-blue-50">
+        <div className="bg-[#1a1a1a] rounded-3xl border border-gray-700 shadow-xl overflow-hidden">
+          <div className="p-8 border-b border-gray-700 bg-gradient-to-r from-[#0a0a0a] to-purple-900/20">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Your Job Postings
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-gray-400">
                   Manage and track all your active job listings
                 </p>
               </div>
@@ -613,18 +613,18 @@ type RenderableField = string | number | null | undefined | NameOrTitle;
                 ))
               ) : (
                 <div className="text-center py-20">
-                  <div className="w-24 h-24 bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
-                    <Search className="w-12 h-12 text-slate-400" />
+                  <div className="w-24 h-24 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+                    <Search className="w-12 h-12 text-gray-500" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-3">
                     No jobs found
                   </h3>
-                  <p className="text-slate-600 mb-8 max-w-md mx-auto">
+                  <p className="text-gray-400 mb-8 max-w-md mx-auto">
                     Try adjusting your search criteria or create a new job
                     posting to get started
                   </p>
                   <Link href="/jobcy/hr/jobs-management">
-                    <button className="px-6 py-3 bg-[#0A66C2] hover:bg-[#004182] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
+                    <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all hover:-translate-y-0.5 transform hover:scale-[1.02] active:scale-[0.98]">
                       Create New Job
                     </button>
                   </Link>

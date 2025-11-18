@@ -144,16 +144,16 @@ export default function JobSeekerDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
           <div className="relative">
-            <div className="w-20 h-20 border-4 border-[#0A66C2]/20 rounded-full"></div>
-            <div className="w-20 h-20 border-4 border-[#0A66C2] border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+            <div className="w-20 h-20 border-4 border-blue-500/20 rounded-full"></div>
+            <div className="w-20 h-20 border-4 border-blue-500 border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
           </div>
-          <p className="mt-6 text-lg font-medium text-gray-900">
+          <p className="mt-6 text-lg font-medium text-white">
             Loading your dashboard...
           </p>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-gray-400">
             Please wait while we fetch your data
           </p>
         </div>
@@ -162,36 +162,36 @@ export default function JobSeekerDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Modern Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95 border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-700 bg-[#1a1a1a]/95 backdrop-blur-md supports-[backdrop-filter]:bg-[#1a1a1a]/90 shadow-lg shadow-black/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
                 {/* Left: Logo & Menu */}
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={() => setShowMobileMenu(!showMobileMenu)}
-                    className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="lg:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-300 hover:text-white"
                   >
                     {showMobileMenu ? (
-                      <X className="w-5 h-5 text-gray-700" />
+                      <X className="w-5 h-5" />
                     ) : (
-                      <Menu className="w-5 h-5 text-gray-700" />
+                      <Menu className="w-5 h-5" />
                     )}
                   </button>
                   
                   {/* Navigation Arrows */}
-                  <div className="flex items-center space-x-1 border-r border-gray-200 pr-4">
+                  <div className="flex items-center space-x-1 border-r border-gray-700 pr-4">
                     <button
                       onClick={() => router.back()}
-                      className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                      className="p-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-400 hover:text-white"
                       title="Go back"
                     >
                       <ArrowLeft className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => router.forward()}
-                      className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 hover:text-gray-900"
+                      className="p-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-400 hover:text-white"
                       title="Go forward"
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -202,12 +202,12 @@ export default function JobSeekerDashboard() {
                     className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity group"
                     onClick={() => router.push("/jobcy/")}
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all group-hover:scale-105">
                       <Briefcase className="w-5 h-5 text-white" />
                     </div>
                     <div className="hidden sm:block">
-                      <h1 className="text-xl font-bold text-gray-900 group-hover:text-[#0A66C2] transition-colors">Jobcy</h1>
-                      <p className="text-xs text-gray-600">Find Your Dream Job</p>
+                      <h1 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Jobcy</h1>
+                      <p className="text-xs text-gray-400">Find Your Dream Job</p>
                     </div>
                   </div>
                 </div>
@@ -218,16 +218,16 @@ export default function JobSeekerDashboard() {
               {/* Notifications */}
               <button
                 onClick={() => setActiveTab("notifications")}
-                className="relative p-2.5 rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors border border-gray-200"
+                className="relative p-2.5 rounded-lg bg-[#0a0a0a] text-gray-300 hover:bg-gray-800 hover:text-white transition-all border border-gray-700 hover:border-gray-600"
                 title="Notifications"
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-[#1a1a1a]"></span>
               </button>
 
               {/* Settings */}
               <button
-                className="p-2.5 rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors border border-gray-200"
+                className="p-2.5 rounded-lg bg-[#0a0a0a] text-gray-300 hover:bg-gray-800 hover:text-white transition-all border border-gray-700 hover:border-gray-600"
                 title="Settings"
               >
                 <Settings className="w-5 h-5" />
@@ -237,41 +237,41 @@ export default function JobSeekerDashboard() {
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800 transition-colors border border-gray-700 hover:border-gray-600"
                 >
-                  <div className="w-9 h-9 bg-gradient-to-br from-[#0A66C2] to-[#004182] rounded-lg flex items-center justify-center text-white text-sm font-semibold shadow-sm">
+                  <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-semibold shadow-lg shadow-blue-500/30">
                     {getInitial(userProfile.name)}
                   </div>
                   <div className="hidden md:block text-left">
-                    <p className="text-sm font-semibold text-gray-900">
+                    <p className="text-sm font-semibold text-white">
                       {userProfile.name}
                     </p>
                   </div>
-                  <ChevronDown className="w-4 h-4 hidden md:block text-gray-600" />
+                  <ChevronDown className="w-4 h-4 hidden md:block text-gray-400" />
                 </button>
 
                 {showUserMenu && (
-                  <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl py-1 z-50">
-                    <div className="px-4 py-3 border-b border-gray-200">
-                      <p className="font-semibold text-gray-900">{userProfile.name}</p>
-                      <p className="text-xs text-gray-600">{userProfile.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 bg-[#1a1a1a] border border-gray-700 rounded-lg shadow-xl py-1 z-50 animate-scaleIn">
+                    <div className="px-4 py-3 border-b border-gray-700">
+                      <p className="font-semibold text-white">{userProfile.name}</p>
+                      <p className="text-xs text-gray-400">{userProfile.email}</p>
                     </div>
                     <button
                       onClick={() => {
                         setShowProfileModal(true);
                         setShowUserMenu(false);
                       }}
-                      className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
                     >
                       View Profile
                     </button>
-                    <button className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                    <button className="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors">
                       Account Settings
                     </button>
-                    <div className="border-t border-gray-200 my-1"></div>
+                    <div className="border-t border-gray-700 my-1"></div>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-2"
+                      className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-900/20 hover:text-red-300 transition-colors flex items-center space-x-2"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>Logout</span>
@@ -340,17 +340,17 @@ export default function JobSeekerDashboard() {
               {/* Quick Actions */}
               <Card variant="elevated">
                 <div className="p-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+                  <h2 className="text-xl font-bold text-white mb-4">Quick Actions</h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <button
                       onClick={() => setActiveTab("jobs")}
-                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
+                      className="p-4 rounded-lg bg-[#0a0a0a] border border-gray-700 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all text-left group transform hover:scale-[1.02]"
                     >
-                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/30">
                         <Briefcase className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Find Jobs</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="font-semibold text-white mb-1">Find Jobs</h3>
+                      <p className="text-sm text-gray-400">
                         Browse available positions
                       </p>
                     </button>
@@ -359,27 +359,27 @@ export default function JobSeekerDashboard() {
                         setProfileModalSection("personal");
                         setShowProfileModal(true);
                       }}
-                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
+                      className="p-4 rounded-lg bg-[#0a0a0a] border border-gray-700 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all text-left group transform hover:scale-[1.02]"
                     >
-                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/30">
                         <FileCheck className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-1">
+                      <h3 className="font-semibold text-white mb-1">
                         Complete Profile
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-400">
                         {userProfile.profileCompletion || 0}% complete
                       </p>
                     </button>
                     <button
                       onClick={() => setActiveTab("connect")}
-                      className="p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-[#0A66C2]/30 hover:shadow-md transition-all text-left group"
+                      className="p-4 rounded-lg bg-[#0a0a0a] border border-gray-700 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all text-left group transform hover:scale-[1.02]"
                     >
-                      <div className="w-8 h-8 bg-[#0A66C2] rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/30">
                         <Users className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Network</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="font-semibold text-white mb-1">Network</h3>
+                      <p className="text-sm text-gray-400">
                         Connect with professionals
                       </p>
                     </button>
