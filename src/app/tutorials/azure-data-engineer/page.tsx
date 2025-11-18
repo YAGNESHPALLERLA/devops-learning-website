@@ -1299,7 +1299,6 @@ export default function AzureDataEngineerPage() {
                     </div>
                   </div>
                 </div>
-                <ImageGallery images={getImages('image85')} />
               </div>
             </div>
 
@@ -1375,7 +1374,6 @@ export default function AzureDataEngineerPage() {
                   </ul>
                 </div>
               </div>
-              <ImageGallery images={getImages('image86')} />
             </div>
 
             {/* Common Use Cases */}
@@ -1411,7 +1409,6 @@ export default function AzureDataEngineerPage() {
                     <strong className="text-blue-400">Predictive Analytics:</strong> Used to forecast trends or outcomes — for example, predicting customer behaviour, sales, or equipment failure.
                   </div>
                 </div>
-                <ImageGallery images={getImages('image87')} />
               </div>
             </div>
 
@@ -1468,7 +1465,6 @@ export default function AzureDataEngineerPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Dashboarding and Visualization</h5>
                   <p>Allows you to create charts, graphs, and dashboards to share insights and monitor your data pipelines.</p>
                 </div>
-                <ImageGallery images={getImages('image88')} />
               </div>
             </div>
 
@@ -1508,7 +1504,6 @@ export default function AzureDataEngineerPage() {
                     <strong className="text-blue-400">AI-Powered Assistance:</strong> Integrates generative AI and natural language capabilities for faster code generation, data discovery, and troubleshooting.
                   </div>
                 </div>
-                <ImageGallery images={getImages('image89')} />
               </div>
             </div>
 
@@ -1839,7 +1834,7 @@ export default function AzureDataEngineerPage() {
                       <li><strong>Run parameters</strong> → Lists any input values (like parameters) used in that run.</li>
                     </ul>
                   </div>
-                  <ImageGallery images={getImages('image95', 'image96')} />
+                  <ImageGallery images={getImages('image95')} />
                 </div>
 
                 {/* Compute (Clusters) */}
@@ -2111,7 +2106,7 @@ export default function AzureDataEngineerPage() {
                     </table>
                   </div>
                 </div>
-                <ImageGallery images={getImages('image99', 'image100')} />
+                <ImageGallery images={getImages('image99')} />
               </div>
             </div>
 
@@ -2205,7 +2200,7 @@ export default function AzureDataEngineerPage() {
                     <li><strong>Legacy Dashboard Use Cases:</strong> Maintaining compatibility with older workflows, Referencing historical SQL visualizations, Supporting BI users during migration to new dashboards</li>
                   </ul>
                 </div>
-                <ImageGallery images={getImages('image102', 'image103')} />
+                <ImageGallery images={getImages('image102')} />
               </div>
             </div>
 
@@ -2295,7 +2290,6 @@ export default function AzureDataEngineerPage() {
                     </table>
                   </div>
                 </div>
-                <ImageGallery images={getImages('image104', 'image105')} />
               </div>
             </div>
 
