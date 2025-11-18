@@ -129,16 +129,28 @@ const azureImages: Record<string, GalleryImage> = {
   image83: { src: '/tutorials/azure/images/image83.png', width: 1920, height: 1080, alt: 'Azure Databricks image 83' },
   image84: { src: '/tutorials/azure/images/image84.png', width: 1920, height: 1080, alt: 'Azure Databricks image 84' },
   // Images from 2.Azure Databricks.docx document (image85-image115)
+  // Individual step images for "How to Create" - extracted from document
+  db_step1: { src: '/tutorials/azure/images/db_step1.png', width: 1920, height: 1080, alt: 'Azure portal search for Databricks' },
+  db_step2: { src: '/tutorials/azure/images/db_step2.png', width: 1920, height: 1080, alt: 'Click on create' },
+  db_step3: { src: '/tutorials/azure/images/db_step3.png', width: 1920, height: 1080, alt: 'Create databricks' },
+  db_step4: { src: '/tutorials/azure/images/db_step4.png', width: 1920, height: 1080, alt: 'Subscription selection' },
+  db_step5: { src: '/tutorials/azure/images/db_step5.png', width: 1920, height: 1080, alt: 'Resource Group configuration' },
+  db_step6: { src: '/tutorials/azure/images/db_step6.png', width: 1920, height: 1080, alt: 'Workspace Name setup' },
+  db_step7: { src: '/tutorials/azure/images/db_step7.png', width: 1920, height: 1080, alt: 'Region selection' },
+  db_step8: { src: '/tutorials/azure/images/db_step8.png', width: 1920, height: 1080, alt: 'Pricing Tier' },
+  db_step9: { src: '/tutorials/azure/images/db_step9.png', width: 1920, height: 1080, alt: 'Managed Resource Group Name' },
+  db_step10: { src: '/tutorials/azure/images/db_step10.png', width: 1920, height: 1080, alt: 'Final Step - Review + Create' },
+  
   image85: { src: '/tutorials/azure/images/image85.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
   image86: { src: '/tutorials/azure/images/image86.png', width: 1920, height: 1080, alt: 'Databricks architecture' },
   image87: { src: '/tutorials/azure/images/image87.png', width: 1920, height: 1080, alt: 'Common use cases' },
   image88: { src: '/tutorials/azure/images/image88.png', width: 1920, height: 1080, alt: 'Core components' },
-  image89: { src: '/tutorials/azure/images/image89.png', width: 1920, height: 1080, alt: 'Advantages' },
-  image90: { src: '/tutorials/azure/images/image90.png', width: 1920, height: 1080, alt: 'How to create Azure Databricks' },
+  image89: { src: '/tutorials/azure/images/image89.png', width: 1920, height: 1080, alt: 'How to create - initial steps' },
+  image90: { src: '/tutorials/azure/images/image90.png', width: 1920, height: 1080, alt: 'How to create - workspace configuration' },
   image91: { src: '/tutorials/azure/images/image91.png', width: 1920, height: 1080, alt: 'Workspace overview' },
   image92: { src: '/tutorials/azure/images/image92.png', width: 1920, height: 1080, alt: 'Workspace features' },
   image93: { src: '/tutorials/azure/images/image93.png', width: 1920, height: 1080, alt: 'Notebook creation' },
-  image94: { src: '/tutorials/azure/images/image66.png', width: 1920, height: 1080, alt: 'Catalog and features' },
+  image94: { src: '/tutorials/azure/images/image94.png', width: 1920, height: 1080, alt: 'Catalog and features' },
   image95: { src: '/tutorials/azure/images/image95.png', width: 1920, height: 1080, alt: 'Jobs and pipelines' },
   image96: { src: '/tutorials/azure/images/image96.png', width: 1920, height: 1080, alt: 'Job runs dashboard' },
   image97: { src: '/tutorials/azure/images/image97.png', width: 1920, height: 1080, alt: 'Compute clusters' },
@@ -1339,42 +1351,42 @@ export default function AzureDataEngineerPage() {
                     <li>Handles user authentication, workspace management, notebook storage, job scheduling, and cluster configuration.</li>
                     <li>Stores metadata and notebook information securely.</li>
                   </ul>
-                </div>
+            </div>
 
-                <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Data Plane:</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>Runs inside your Azure subscription.</li>
                     <li>Responsible for actual data processing and storage.</li>
                     <li>All data remains in your cloud environment — ensuring compliance and security.</li>
-                  </ul>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace / User Interface Layer:</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>A collaborative web-based environment for developers, data engineers, and scientists.</li>
                     <li>Supports multiple languages — Python, SQL, R, Scala, Java.</li>
                     <li>Includes features like notebooks, repos, dashboards, and job orchestration.</li>
-                  </ul>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Machine Learning and AI Layer:</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>Integrates MLflow for experiment tracking, model registry, and deployment.</li>
                     <li>Supports integration with Azure Machine Learning for end-to-end MLOps.</li>
-                  </ul>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Security and Governance Layer:</h5>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>Managed through Unity Catalog for centralized access control, data lineage, and auditing.</li>
                     <li>Uses Azure Active Directory (AAD) for authentication and RBAC for authorization.</li>
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
-              </div>
             </div>
 
             {/* Common Use Cases */}
@@ -1476,7 +1488,7 @@ export default function AzureDataEngineerPage() {
                 <div className="space-y-3">
                   <div>
                     <strong className="text-blue-400">Unified Analytics and AI Platform:</strong> Combines data engineering, data science, and analytics into a single, collaborative workspace for end-to-end data workflows.
-                  </div>
+                </div>
                   <div>
                     <strong className="text-blue-400">High Performance and Scalability:</strong> Optimized Apache Spark runtime ensures faster execution, while autoscaling dynamically adjusts cluster size to handle any workload efficiently.
                   </div>
@@ -1515,22 +1527,23 @@ export default function AzureDataEngineerPage() {
                 <div className="space-y-4">
                   <div>
                     <strong className="text-blue-400">Go to the Azure portal and search for Databricks</strong>
+                    <ImageGallery images={getImages('db_step1')} />
                   </div>
                   <div>
                     <strong className="text-blue-400">Click on create</strong>
+                    <ImageGallery images={getImages('db_step2')} />
                   </div>
                   <div>
                     <strong className="text-blue-400">Create databricks</strong>
+                    <ImageGallery images={getImages('db_step3')} />
                   </div>
                 </div>
-                
-                {/* Initial Steps Images - Showing Azure portal search and create steps */}
-                <ImageGallery images={getImages('image89')} />
 
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
                   <p>Choose the Azure subscription under which the Databricks workspace will be created.</p>
                   <p className="mt-2"><strong>Example:</strong> Azure subscription 1</p>
+                  <ImageGallery images={getImages('db_step4')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1538,37 +1551,42 @@ export default function AzureDataEngineerPage() {
                   <p>Select an existing Resource Group or create a new one.</p>
                   <p className="mt-2">Resource groups act like folders to organize and manage related resources.</p>
                   <p className="mt-2"><strong>Example:</strong> rg-ohg365-dev</p>
+                  <ImageGallery images={getImages('db_step5')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace Name</h5>
                   <p>Enter a unique workspace name for your Databricks instance.</p>
                   <p className="mt-2"><strong>Example:</strong> ohg365-db-dev</p>
+                  <ImageGallery images={getImages('db_step6')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Region</h5>
                   <p>Choose the Azure region where your workspace will be hosted.</p>
                   <p className="mt-2"><strong>Example:</strong> Central US</p>
+                  <ImageGallery images={getImages('db_step7')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
                   <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
+                  <ImageGallery images={getImages('db_step8')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Managed Resource Group Name</h5>
                   <p>Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.</p>
                   <p className="mt-2"><strong>Example:</strong> mg-ohg365-db-dev</p>
+                  <ImageGallery images={getImages('db_step9')} />
                 </div>
 
                 <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Final Step – Review + Create</h5>
                   <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
                   <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
+                  <ImageGallery images={getImages('db_step10')} />
                 </div>
-                <ImageGallery images={getImages('image90')} />
               </div>
             </div>
 
@@ -1579,12 +1597,15 @@ export default function AzureDataEngineerPage() {
                 <div className="space-y-4">
                   <div>
                     <strong className="text-blue-400">Go to the Azure portal and search for Databricks</strong>
+                    <ImageGallery images={getImages('db_step1')} />
                   </div>
                   <div>
                     <strong className="text-blue-400">Click on create</strong>
+                    <ImageGallery images={getImages('db_step2')} />
                   </div>
                   <div>
                     <strong className="text-blue-400">Create databricks</strong>
+                    <ImageGallery images={getImages('db_step3')} />
                   </div>
                 </div>
 
@@ -1592,6 +1613,7 @@ export default function AzureDataEngineerPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
                   <p>Choose the Azure subscription under which the Databricks workspace will be created.</p>
                   <p className="mt-2"><strong>Example:</strong> Azure subscription 1</p>
+                  <ImageGallery images={getImages('db_step4')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1599,37 +1621,42 @@ export default function AzureDataEngineerPage() {
                   <p>Select an existing Resource Group or create a new one.</p>
                   <p className="mt-2">Resource groups act like folders to organize and manage related resources.</p>
                   <p className="mt-2"><strong>Example:</strong> rg-ohg365-dev</p>
+                  <ImageGallery images={getImages('db_step5')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace Name</h5>
                   <p>Enter a unique workspace name for your Databricks instance.</p>
                   <p className="mt-2"><strong>Example:</strong> ohg365-db-dev</p>
+                  <ImageGallery images={getImages('db_step6')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Region</h5>
                   <p>Choose the Azure region where your workspace will be hosted.</p>
                   <p className="mt-2"><strong>Example:</strong> Central US</p>
+                  <ImageGallery images={getImages('db_step7')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
                   <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
+                  <ImageGallery images={getImages('db_step8')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Managed Resource Group Name</h5>
                   <p>Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.</p>
                   <p className="mt-2"><strong>Example:</strong> mg-ohg365-db-dev</p>
+                  <ImageGallery images={getImages('db_step9')} />
                 </div>
 
                 <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Final Step – Review + Create</h5>
                   <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
                   <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
+                  <ImageGallery images={getImages('db_step10')} />
                 </div>
-                <ImageGallery images={getImages('image90')} />
               </div>
             </div>
 
@@ -1641,7 +1668,10 @@ export default function AzureDataEngineerPage() {
                   <p><strong className="text-blue-400">Click on Databricks Workspace</strong></p>
                   <p><strong className="text-blue-400">Click on the launch workspace button</strong></p>
                 </div>
-
+                
+                {/* Workspace Overview Images - image6.png, image9.png, image10.png from document */}
+                <ImageGallery images={getImages('image91')} />
+                
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Left Sidebar (Navigation Menu):</h5>
                   <p className="mb-3">The left-hand menu provides quick access to all major Databricks features and tools:</p>
@@ -1678,7 +1708,7 @@ export default function AzureDataEngineerPage() {
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
                         <li><strong>Job Runs / Data Ingestion:</strong> Monitor job executions and load data into Databricks.</li>
                       </ul>
-                    </div>
+                  </div>
                     <div>
                       <strong className="text-blue-400">AI/ML Section:</strong>
                       <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
@@ -1688,7 +1718,7 @@ export default function AzureDataEngineerPage() {
                         <li><strong>4. Models (Model Registry):</strong> Store, version, and manage ML models created during experiments.</li>
                         <li><strong>5. Serving (Model Serving):</strong> Deploy ML models as REST API endpoints directly from Databricks.</li>
                       </ul>
-                    </div>
+                </div>
                   </div>
                 </div>
 
@@ -1788,7 +1818,7 @@ export default function AzureDataEngineerPage() {
                 </div>
 
                 {/* Notebook */}
-                <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Notebook</h5>
                   <p className="mb-3">Azure Databricks notebooks serve as a collaborative development environment for building data science, engineering, and machine learning workflows.</p>
                   <p className="mb-3">They support multi-language scripting within a single document, real-time coauthoring, version control, and integrated data visualization.</p>
@@ -1798,10 +1828,10 @@ export default function AzureDataEngineerPage() {
                     <p><strong>Recents:</strong> Shows recently opened notebooks or files.</p>
                   </div>
                   <ImageGallery images={getImages('image93')} />
-                </div>
-
+                  </div>
+                  
                 {/* Catalog and Features */}
-                <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Catalog and Features (Unity Catalog)</h5>
                   <p className="mb-4">The Catalog in Azure Databricks is a central place to organize, manage, and secure all your data assets such as databases, tables, views, and files — across your entire Databricks environment. It provides data governance, access control, and data discovery in one interface.</p>
                   
@@ -1852,10 +1882,10 @@ export default function AzureDataEngineerPage() {
                     </ul>
                   </div>
                   <ImageGallery images={getImages('image94')} />
-                </div>
-
+                  </div>
+                  
                 {/* Jobs & Pipelines */}
-                <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Jobs & Pipelines</h5>
                   <p className="mb-4">The Jobs & Pipelines interface in Azure Databricks provides a unified orchestration layer for data engineering and machine learning workflows. It supports job scheduling, dependency management, pipeline orchestration, and execution monitoring.</p>
                   
@@ -1869,7 +1899,7 @@ export default function AzureDataEngineerPage() {
                       <li><strong>Access Control:</strong> Manage visibility ("Owned by me," "Accessible by me") to enforce workspace-level governance.</li>
                     </ul>
                   </div>
-
+                  
                   <div className="mt-4">
                     <h6 className="text-lg font-semibold text-blue-400 mb-3">Use Case</h6>
                     <p>Used by data engineers and ML teams to build end-to-end pipelines from data ingestion to transformation, feature generation, and model retraining all under one environment.</p>
@@ -1900,10 +1930,10 @@ export default function AzureDataEngineerPage() {
                     </ul>
                   </div>
                   <ImageGallery images={getImages('image95')} />
-                </div>
-
+                  </div>
+                  
                 {/* Compute (Clusters) */}
-                <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Compute (Clusters)</h5>
                   
                   <div className="mt-4">
@@ -1915,17 +1945,17 @@ export default function AzureDataEngineerPage() {
                         <li>Designed for notebook-driven, collaborative data exploration.</li>
                         <li>Supports multi-user access, auto-scaling, and auto-termination.</li>
                         <li>Ideal for data science, ad-hoc analysis, and ML development.</li>
-                      </ul>
-                    </div>
-
+                    </ul>
+                  </div>
+                  
                     <div className="mb-4">
                       <strong className="text-white">Job Compute (Automated Clusters):</strong>
                       <ul className="list-disc list-inside space-y-1 ml-4 mt-1">
                         <li>Spawned by the Jobs API or Databricks Workflows for pipeline orchestration.</li>
                         <li>Clusters are automatically created, executed, and terminated per job run.</li>
                         <li>Ideal for CI/CD, ETL, and production pipelines.</li>
-                      </ul>
-                    </div>
+                    </ul>
+                  </div>
 
                     <div className="mb-4">
                       <strong className="text-white">SQL Warehouses (Serverless and Classic):</strong>
@@ -1934,16 +1964,16 @@ export default function AzureDataEngineerPage() {
                         <li>Integrates with Power BI, Tableau, and Databricks SQL Dashboards.</li>
                         <li>Serverless option scales automatically and charges only for query duration.</li>
                       </ul>
-                    </div>
+                </div>
 
                     <div>
                       <strong className="text-white">Vector Search & Lakehouse AI (new additions):</strong>
                       <ul className="list-disc list-inside space-y-1 ml-4 mt-1">
                         <li>Supports AI/ML model deployment, feature lookups, and semantic search.</li>
                         <li>Works with Unity Catalog and Model Serving endpoints for production AI systems.</li>
-                      </ul>
-                    </div>
-                  </div>
+                  </ul>
+                </div>
+              </div>
                   <ImageGallery images={getImages('image97')} />
                 </div>
 
@@ -2453,7 +2483,7 @@ export default function AzureDataEngineerPage() {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                </div>
                 </div>
                 <ImageGallery images={getImages('image106')} />
               </div>
@@ -2475,7 +2505,7 @@ export default function AzureDataEngineerPage() {
                   <li>The Source column identifies where the query originated: SQL Editor, Dashboard, Alert, API or Notebook.</li>
                   <li>You can also export query metrics via REST API for deeper analytics.</li>
                   <li>Integration with Unity Catalog ensures secure tracking of all user-level activity across workspaces.</li>
-                </ul>
+                  </ul>
                 
                 <div className="p-4 bg-gray-800 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Key Options and Columns</h5>
@@ -2558,7 +2588,7 @@ export default function AzureDataEngineerPage() {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                </div>
                 </div>
                 <ImageGallery images={getImages('image107')} />
               </div>
@@ -2652,26 +2682,26 @@ export default function AzureDataEngineerPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Types of SQL Warehouses</h5>
                   <div className="overflow-x-auto">
                     <table className="min-w-full border border-gray-600 text-sm">
-                      <thead>
-                        <tr className="bg-gray-700">
+                    <thead>
+                      <tr className="bg-gray-700">
                           <th className="border border-gray-600 px-4 py-2 text-left">Type</th>
-                          <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                        <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
                           <th className="border border-gray-600 px-4 py-2 text-left">Use Case</th>
-                        </tr>
-                      </thead>
+                      </tr>
+                    </thead>
                       <tbody>
                         <tr>
                           <td className="border border-gray-600 px-4 py-2"><strong>🧠 Serverless SQL Warehouse</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Fully managed by Databricks. Scales automatically and starts instantly.</td>
                           <td className="border border-gray-600 px-4 py-2">Great for quick analysis and dashboards.</td>
-                        </tr>
-                        <tr>
+                      </tr>
+                      <tr>
                           <td className="border border-gray-600 px-4 py-2"><strong>⚙️ Classic (Pro) SQL Warehouse</strong></td>
                           <td className="border border-gray-600 px-4 py-2">Requires manual scaling and management. You control cluster size and scaling.</td>
                           <td className="border border-gray-600 px-4 py-2">Used for enterprise workloads needing more control and predictable cost.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                      </tr>
+                    </tbody>
+                  </table>
                   </div>
                 </div>
 
