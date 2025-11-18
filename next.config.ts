@@ -28,9 +28,8 @@ const nextConfig: NextConfig = {
     JOBCY_API_URL: process.env.NODE_ENV === 'development' 
       ? 'http://localhost:3001/api/jobcy-backend' 
       : 'https://www.ohg365.com/api/jobcy-backend',
-    NEXT_PUBLIC_SOCKET_URL: process.env.NODE_ENV === 'development' 
-      ? 'http://localhost:3001' 
-      : 'https://www.ohg365.com',
+    // Socket.io is disabled - using REST API only
+    // NEXT_PUBLIC_SOCKET_URL: undefined, // No Socket.io server available
   },
   // Rewrites for integrated Jobcy backend
   async rewrites() {

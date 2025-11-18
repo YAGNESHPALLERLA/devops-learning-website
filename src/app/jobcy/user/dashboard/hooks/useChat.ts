@@ -39,12 +39,21 @@ export function useChat() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:5000";
+    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL;
     
-    // Only connect if we're in development or if socket URL is explicitly set
-    // In production, gracefully handle missing socket server
-    if (socketUrl === "http://localhost:5000" && typeof window !== "undefined" && window.location.hostname !== "localhost") {
-      console.log("Socket.io server not available in production, using REST API only");
+    // Disable Socket.io if:
+    // 1. No socket URL is configured
+    // 2. Socket URL is undefined or empty
+    // 3. We're trying to connect to the same domain (Next.js doesn't have Socket.io server)
+    const isProduction = typeof window !== "undefined" && window.location.hostname !== "localhost";
+    const currentHost = typeof window !== "undefined" ? window.location.origin : "";
+    const shouldDisableSocket = !socketUrl || 
+      (typeof socketUrl === "string" && socketUrl.trim() === "") ||
+      (socketUrl && socketUrl.includes("localhost") && isProduction) ||
+      (socketUrl === currentHost); // Don't try to connect to Next.js server
+    
+    if (shouldDisableSocket) {
+      // Silently use REST API only - no console logs to avoid noise
       setIsConnected(false);
       return;
     }
@@ -57,10 +66,10 @@ export function useChat() {
           token: token
         },
         transports: ["polling", "websocket"],
-        reconnection: true,
-        reconnectionAttempts: 3,
-        reconnectionDelay: 1000,
-        timeout: 5000,
+        reconnection: false, // Disable auto-reconnection to avoid spam
+        reconnectionAttempts: 0,
+        timeout: 3000, // Shorter timeout
+        autoConnect: true,
       });
 
       newSocket.on("connect", () => {
@@ -70,14 +79,17 @@ export function useChat() {
       });
 
       newSocket.on("disconnect", () => {
-        console.log("Disconnected from chat server");
         setIsConnected(false);
       });
 
-      newSocket.on("connect_error", (error) => {
-        console.warn("Socket.io connection error (using REST API fallback):", error.message);
+      newSocket.on("connect_error", () => {
+        // Silently fail - don't log errors to avoid console spam
         setIsConnected(false);
-        // Don't set error state - gracefully degrade to REST API
+        // Close socket to prevent further connection attempts
+        if (newSocket) {
+          newSocket.close();
+          newSocket = null;
+        }
       });
 
       newSocket.on("new-message", (message: Message) => {
@@ -97,8 +109,8 @@ export function useChat() {
       });
 
       setSocket(newSocket);
-    } catch (error) {
-      console.warn("Failed to initialize Socket.io (using REST API fallback):", error);
+    } catch {
+      // Silently fail - use REST API fallback
       setIsConnected(false);
     }
 
