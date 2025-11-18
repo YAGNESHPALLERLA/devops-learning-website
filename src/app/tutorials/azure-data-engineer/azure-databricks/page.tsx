@@ -254,7 +254,8 @@ const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
 const PAGE_HEADINGS = [
   { id: 'azure-databricks', title: 'Azure Databricks' },
   { id: 'databricks-sql', title: 'Databricks SQL' },
-  { id: 'azure-databricks-1', title: 'Data Engineering' }
+  { id: 'azure-databricks-1', title: 'Data Engineering' },
+  { id: 'data-lakehouse', title: 'Data Lakehouse' }
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
@@ -290,7 +291,17 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'run-level-features': 'azure-databricks-1',
   'help-level-features': 'azure-databricks-1',
   'language-level-features': 'azure-databricks-1',
-  'others-features': 'azure-databricks-1'
+  'others-features': 'azure-databricks-1',
+  'data-lakehouse-intro': 'data-lakehouse',
+  'what-is-data-lakehouse': 'data-lakehouse',
+  'why-need-lakehouse': 'data-lakehouse',
+  'core-features-lakehouse': 'data-lakehouse',
+  'benefits-lakehouse': 'data-lakehouse',
+  'lakehouse-on-databricks': 'data-lakehouse',
+  'example-use-cases': 'data-lakehouse',
+  'lakehouse-vs-lake-vs-warehouse': 'data-lakehouse',
+  'capabilities-databricks-lakehouse': 'data-lakehouse',
+  'lakehouse-architecture': 'data-lakehouse'
 };
 
 // Helper function to create module-specific navigation items
@@ -329,7 +340,17 @@ const createModuleNavigationItems = (): Array<{ id: string; title: string; href:
     'run-level-features': 'Run-level features',
     'help-level-features': 'Help-level features',
     'language-level-features': 'Language-level features',
-    'others-features': 'Others features'
+    'others-features': 'Others features',
+    'data-lakehouse-intro': 'Data Lakehouse',
+    'what-is-data-lakehouse': 'What is a Data Lakehouse?',
+    'why-need-lakehouse': 'Why the Need for a Lakehouse?',
+    'core-features-lakehouse': 'Core Features of a Data Lakehouse',
+    'benefits-lakehouse': 'Benefits of a Data Lakehouse',
+    'lakehouse-on-databricks': 'Data Lakehouse on Azure Databricks',
+    'example-use-cases': 'Example Use Cases',
+    'lakehouse-vs-lake-vs-warehouse': 'Lakehouse vs Data Lake vs Data Warehouse',
+    'capabilities-databricks-lakehouse': 'Capabilities of a Databricks Lakehouse',
+    'lakehouse-architecture': 'Data Lakehouse Architecture'
   };
 
   const moduleSections = PAGE_HEADINGS.map(heading => {
@@ -345,7 +366,7 @@ const createModuleNavigationItems = (): Array<{ id: string; title: string; href:
       id: heading.id,
       title: heading.title,
       href: `${basePath}#${heading.id}`,
-      icon: heading.id === 'azure-databricks' ? '🔷' : heading.id === 'databricks-sql' ? '💾' : '⚙️',
+      icon: heading.id === 'azure-databricks' ? '🔷' : heading.id === 'databricks-sql' ? '💾' : heading.id === 'data-lakehouse' ? '🏗️' : '⚙️',
       children: subsections.length > 0 ? subsections : undefined
     };
   });
@@ -3609,6 +3630,347 @@ export default function AzureDatabricksPage() {
                 </div>
                 {/* Others features images */}
                 <ImageGallery images={getImages('db1_image15', 'db1_image16')} />
+              </div>
+            </div>
+          </div>
+        </section>
+        )}
+
+        {/* Data Lakehouse Section */}
+        {activeSection === 'data-lakehouse' && (
+        <section id="data-lakehouse" className="space-y-8 scroll-mt-24">
+          <div className="space-y-8">
+            {/* Data Lakehouse - Main Heading */}
+            <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h3 className="text-3xl font-bold text-white mb-6">Data Lakehouse</h3>
+              
+              {/* Data Lakehouse Introduction */}
+              <div id="data-lakehouse-intro" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Data Lakehouse</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A data lakehouse is a modern architecture that combines the strengths of both data lakes and data warehouses into one unified system.</p>
+                  <p>It allows you to work with structured and unstructured data together, supporting both business intelligence and machine learning without needing separate systems.</p>
+                  <h5 className="text-xl font-semibold text-white mt-4 mb-2">Key ideas:</h5>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Built on open and standard file formats (like Parquet or Delta Lake) for flexibility and compatibility.</li>
+                    <li>Uses advanced indexing, caching, and metadata management for faster queries and consistent performance.</li>
+                    <li>Supports ACID transactions (ensuring data reliability and accuracy).</li>
+                    <li>Enables low-latency queries for BI, while still providing the scale and flexibility required for data science.</li>
+                  </ul>
+                  <p>On Azure Databricks, the lakehouse architecture makes it possible to analyze all your data from a single platform using Databricks SQL and Delta Lake.</p>
+                  <p><strong>Best for:</strong> 🧩 Unified analytics — combining BI, AI, and ML on one consistent, governed data foundation.</p>
+                  
+                  {/* Comparison Table */}
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Data Lake vs Data Warehouse vs Data Lakehouse</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Aspect</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Data Lake</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Data Warehouse</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Data Lakehouse</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Data types</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">All (raw, structured, unstructured)</td>
+                            <td className="border border-gray-600 px-4 py-2">Structured only</td>
+                            <td className="border border-gray-600 px-4 py-2">All (with structure management)</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Performance</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Low to moderate</td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Cost</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Low</td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                            <td className="border border-gray-600 px-4 py-2">Moderate</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Reliability</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Low</td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                            <td className="border border-gray-600 px-4 py-2">High (with ACID)</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>ML/AI support</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Strong</td>
+                            <td className="border border-gray-600 px-4 py-2">Limited</td>
+                            <td className="border border-gray-600 px-4 py-2">Strong</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Governance</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Limited</td>
+                            <td className="border border-gray-600 px-4 py-2">Strong</td>
+                            <td className="border border-gray-600 px-4 py-2">Strong (with Unity Catalog)</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Scalability</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                            <td className="border border-gray-600 px-4 py-2">Limited</td>
+                            <td className="border border-gray-600 px-4 py-2">High</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* What is a Data Lakehouse? */}
+              <div id="what-is-data-lakehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">What is a Data Lakehouse?</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A data lakehouse is a modern way to store and manage data. It brings together the best parts of data lakes and data warehouses into one system.</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>From data lakes:</strong> It takes flexibility, large-scale storage, and low cost.</li>
+                    <li><strong>From data warehouses:</strong> It adds strong data management, reliability, and support for ACID transactions (which make sure data stays accurate and consistent).</li>
+                  </ul>
+                  <p>In simple terms, a data lakehouse lets you store all kinds of data — structured or unstructured — in one place, and then use that same data for business intelligence (BI) reports, analytics, or machine learning (ML) without moving it around.</p>
+                  <p>On Azure Databricks, you can build and manage a lakehouse to easily collect, clean, process, and analyze your data all within one platform.</p>
+                </div>
+              </div>
+
+              {/* Why the Need for a Lakehouse? */}
+              <div id="why-need-lakehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Why the Need for a Lakehouse?</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>Traditionally, organizations used:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Data Lakes</strong> → for storing raw, unprocessed data cheaply.</li>
+                    <li><strong>Data Warehouses</strong> → for structured, cleaned data used in analytics and BI.</li>
+                  </ul>
+                  <p>You had to copy and transform data from one system to the other, which caused:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Data duplication</li>
+                    <li>High maintenance cost</li>
+                    <li>Delays in getting insights</li>
+                    <li>Data inconsistency</li>
+                  </ul>
+                  <p>The lakehouse solves this by combining both into one unified system.</p>
+                </div>
+              </div>
+
+              {/* Core Features of a Data Lakehouse */}
+              <div id="core-features-lakehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Core Features of a Data Lakehouse</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>Here are the main features that make a lakehouse powerful:</p>
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <ul className="space-y-3">
+                      <li><strong>Unified Storage:</strong> All data (raw, semi-structured, structured) is stored in one place.</li>
+                      <li><strong>ACID Transactions:</strong> Ensures data accuracy and reliability even during concurrent operations.</li>
+                      <li><strong>Schema Enforcement:</strong> Automatically validates and maintains data consistency.</li>
+                      <li><strong>Time Travel / Versioning:</strong> You can access previous versions of data for audit or rollback.</li>
+                      <li><strong>Data Governance & Security:</strong> Centralized access control, auditing, and data lineage.</li>
+                      <li><strong>Open Format (like Delta Lake):</strong> Built on open-source formats like Parquet and Delta for compatibility.</li>
+                      <li><strong>Performance Optimization:</strong> Uses caching, indexing, and query optimization for faster analytics.</li>
+                      <li><strong>Support for BI & ML:</strong> Enables analysts and data scientists to work directly on the same data.</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Lakehouse Architecture Overview</h5>
+                    <p>A typical data lakehouse architecture has three main layers:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-4 mt-2">
+                      <li><strong>Storage Layer (Data Lake):</strong> Stores all raw data at scale (in formats like Parquet or Delta). Example: Azure Data Lake Storage (ADLS).</li>
+                      <li><strong>Management & Governance Layer:</strong> Adds schema, metadata management, and ACID transaction control. Example: Delta Lake or Unity Catalog in Azure Databricks.</li>
+                      <li><strong>Consumption Layer (Analytics & ML):</strong> Data is consumed for reporting, dashboards, machine learning, and AI. Example: Power BI, MLflow, Databricks notebooks, or Azure Synapse.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Benefits of a Data Lakehouse */}
+              <div id="benefits-lakehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Benefits of a Data Lakehouse</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A lakehouse provides several advantages over traditional data systems:</p>
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <ul className="space-y-2">
+                      <li>✅ <strong>Single Source of Truth</strong> – All teams work on the same consistent data.</li>
+                      <li>✅ <strong>Cost Efficiency</strong> – Uses low-cost object storage instead of expensive warehouse storage.</li>
+                      <li>✅ <strong>Flexibility</strong> – Supports all data types and use cases (BI + AI + ML).</li>
+                      <li>✅ <strong>Scalability</strong> – Handles huge volumes of data seamlessly.</li>
+                      <li>✅ <strong>Data Reliability</strong> – ACID transactions prevent corruption or data loss.</li>
+                      <li>✅ <strong>Faster Insights</strong> – Unified architecture means less movement and faster analysis.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Data Lakehouse on Azure Databricks */}
+              <div id="lakehouse-on-databricks" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Data Lakehouse on Azure Databricks</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>Azure Databricks is one of the best platforms to build and manage a lakehouse. It combines:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Apache Spark for distributed data processing,</li>
+                    <li>Delta Lake for ACID-compliant storage, and</li>
+                    <li>Unity Catalog for centralized governance and security.</li>
+                  </ul>
+                  <h5 className="text-xl font-semibold text-white mt-4 mb-2">Key components:</h5>
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <ul className="space-y-2">
+                      <li><strong>Data Ingestion:</strong> Load data from multiple sources (Azure Blob, SQL, APIs).</li>
+                      <li><strong>Data Processing:</strong> Clean, transform, and enrich data using PySpark or SQL.</li>
+                      <li><strong>Data Storage:</strong> Store data in Delta Lake format for reliability and performance.</li>
+                      <li><strong>Data Governance:</strong> Manage permissions, lineage, and audit using Unity Catalog.</li>
+                      <li><strong>Data Consumption:</strong> Use Power BI, MLflow, or Databricks notebooks for analytics and AI.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Example Use Cases */}
+              <div id="example-use-cases" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Example Use Cases</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A data lakehouse can be used for:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Business dashboards and analytics</li>
+                    <li>Real-time data streaming and reporting</li>
+                    <li>Predictive analytics and machine learning</li>
+                    <li>Customer behavior analysis</li>
+                    <li>IoT and sensor data processing</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Lakehouse vs Data Lake vs Data Warehouse */}
+              <div id="lakehouse-vs-lake-vs-warehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Lakehouse vs Data Lake vs Data Warehouse</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>Over the years, data management systems have evolved from data warehouses, to data lakes, and now to data lakehouses — each solving different challenges and enabling new ways to use data for analytics, business intelligence (BI), and machine learning (ML).</p>
+                  <p>Let's understand how these three systems differ and how they complement each other.</p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Data Warehouse</h5>
+                    <p>A data warehouse is a structured storage system built mainly for business intelligence (BI) and reporting. It organizes data into predefined tables and schemas so that it's clean, consistent, and easy to query using tools like SQL.</p>
+                    <h6 className="text-lg font-semibold text-white mt-3 mb-2">Key ideas:</h6>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Designed for stable and historical data that doesn't change often.</li>
+                      <li>Ideal for running BI dashboards and reports that summarize key business metrics.</li>
+                      <li>Queries are optimized for accuracy and reliability but can take time when dealing with large datasets.</li>
+                      <li>Often uses proprietary formats managed by vendors, which can limit flexibility for machine learning or advanced analytics.</li>
+                    </ul>
+                    <p className="mt-2"><strong>Best for:</strong> 📊 Structured data, business reporting, and decision-making dashboards.</p>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Data Lake</h5>
+                    <p>A data lake is a large, low-cost repository that stores all kinds of data — structured, semi-structured, or unstructured in its raw form.</p>
+                    <h6 className="text-lg font-semibold text-white mt-3 mb-2">Key ideas:</h6>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Can hold massive amounts of data from various sources: applications, sensors, mobile apps, social media, and more.</li>
+                      <li>Uses a schema-on-read approach — meaning data structure is applied only when it's used.</li>
+                      <li>Highly scalable and affordable, perfect for big data processing, data exploration, and machine learning.</li>
+                      <li>However, since data isn't cleaned or validated upfront, it may not be ideal for business reporting that needs trusted, structured data.</li>
+                    </ul>
+                    <p className="mt-2"><strong>Best for:</strong> 🤖 Data science, machine learning, and storing large volumes of raw data.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capabilities of a Databricks Lakehouse */}
+              <div id="capabilities-databricks-lakehouse" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Capabilities of a Databricks Lakehouse</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A Databricks Lakehouse brings together the best features of data lakes and data warehouses into a single, powerful platform. It removes the need to maintain separate systems for analytics, machine learning (ML), and business intelligence (BI), helping organizations manage all their data workloads in one unified environment.</p>
+                  <p>Here are the major capabilities that make the Databricks Lakehouse stand out:</p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <ul className="space-y-3">
+                      <li><strong>Real-Time Data Processing:</strong> Process and analyze streaming data in real time whether it's coming from IoT devices, logs, or event streams. This allows instant insights and faster decision-making instead of waiting for batch jobs to complete.</li>
+                      <li><strong>Unified Data Integration:</strong> Bring all your organization's data — structured, semi-structured, and unstructured — into a single, centralized platform. This creates a single source of truth, improves collaboration between teams, and reduces data silos.</li>
+                      <li><strong>Schema Evolution:</strong> Easily modify and update data schemas as your business changes, without breaking existing pipelines. Databricks automatically adapts to evolving data structures, ensuring flexibility and smooth operations over time.</li>
+                      <li><strong>Fast and Reliable Data Transformations:</strong> With Apache Spark and Delta Lake, you can perform large-scale data transformations quickly and reliably. This makes data preparation, cleaning, and enrichment faster and more efficient for analytics and ML workflows.</li>
+                      <li><strong>Advanced Data Analysis and Reporting:</strong> Run complex analytical queries with performance comparable to a traditional data warehouse. Databricks' query engine is optimized for data warehousing workloads, enabling fast dashboards and deep analysis.</li>
+                      <li><strong>Machine Learning and AI:</strong> Apply machine learning and artificial intelligence directly on your data within the same platform. You can train, test, and deploy ML models using Databricks' built-in integrations with MLflow, Delta Lake, and other AI frameworks.</li>
+                      <li><strong>Data Versioning and Lineage:</strong> Databricks supports data version control, allowing you to access or roll back to previous versions of a dataset. You can also track data lineage, ensuring full transparency about where data comes from and how it has changed over time.</li>
+                      <li><strong>Data Governance and Security:</strong> Manage permissions, access control, and auditing from one place using Unity Catalog. This ensures compliance, security, and proper governance across all teams and workloads.</li>
+                      <li><strong>Data Sharing and Collaboration:</strong> Share curated datasets, dashboards, and insights securely across departments or with external partners. The lakehouse supports controlled, real-time data sharing — no need for data duplication or exports.</li>
+                      <li><strong>Operational Analytics and Monitoring:</strong> Continuously monitor data quality, model accuracy, and performance drift using built-in data quality tools. This helps maintain reliability and trust in your analytics and machine learning outputs.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Data Lakehouse Architecture */}
+              <div id="lakehouse-architecture" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Data Lakehouse Architecture</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>A Data Lakehouse is a modern data architecture that blends the best parts of data lakes and data warehouses. It provides the flexibility, scalability, and low cost of data lakes, while also offering the performance, data management, and reliability of data warehouses — all within a single unified platform.</p>
+                  <p>This architecture eliminates the need to maintain separate systems for storage, analytics, and machine learning.</p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key Layers of the Data Lakehouse Architecture</h5>
+                    <p>A lakehouse architecture is typically built in five core layers, each serving a distinct function but working together seamlessly.</p>
+                    
+                    <div className="mt-4 space-y-4">
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">1. Data Ingestion Layer</h6>
+                        <p><strong>Purpose:</strong> Collect and bring data from multiple sources into the lakehouse.</p>
+                        <p><strong>Description:</strong> This layer handles the movement of data from different systems such as databases (e.g., SQL Server, Oracle, MySQL), applications (CRM, ERP, SaaS tools), IoT devices and sensors, logs, events, and streaming sources (Kafka, Azure Event Hub). Data can arrive in batch or real-time mode.</p>
+                        <p><strong>Tools:</strong> Databricks Auto Loader, Azure Data Factory, Kafka, Apache NiFi, AWS Glue, etc.</p>
+                      </div>
+                      
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">2. Storage Layer</h6>
+                        <p><strong>Purpose:</strong> Store all types of data efficiently in open, scalable cloud storage.</p>
+                        <p><strong>Description:</strong> This layer serves as the foundation of the Lakehouse. It stores raw data (unprocessed), processed data, and aggregated and curated data. It supports structured, semi-structured, and unstructured formats (e.g., Parquet, JSON, Avro, images, videos, etc.). The data is stored in open formats for interoperability and long-term accessibility.</p>
+                        <p><strong>Tools / Technologies:</strong> Delta Lake, Apache Parquet, ORC, Cloud Object Storage (ADLS, S3, GCS).</p>
+                      </div>
+                      
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">3. Metadata and Transaction Layer</h6>
+                        <p><strong>Purpose:</strong> Manage reliability, schema, and version control.</p>
+                        <p><strong>Description:</strong> This layer introduces ACID transaction support and metadata management over the data lake, turning it into a "Lakehouse." It tracks every operation — insert, update, delete — ensuring consistency and data integrity.</p>
+                        <p><strong>Capabilities include:</strong> Schema enforcement and evolution, Time travel (data versioning), Data indexing for fast queries, Optimized performance through caching and Z-ordering.</p>
+                        <p><strong>Tools:</strong> Delta Lake, Apache Iceberg, Apache Hudi.</p>
+                      </div>
+                      
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">4. Processing and Compute Layer</h6>
+                        <p><strong>Purpose:</strong> Transform, clean, and prepare data for analytics and machine learning.</p>
+                        <p><strong>Description:</strong> In this layer, raw data is processed and refined for various workloads: Data cleaning and transformations, Aggregations and feature engineering, Real-time stream processing, Batch and interactive query processing. The separation of compute and storage allows scaling compute independently for efficiency.</p>
+                        <p><strong>Tools:</strong> Apache Spark, Databricks Runtime, SQL engines, PySpark, MLflow.</p>
+                      </div>
+                      
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">5. Serving and Consumption Layer</h6>
+                        <p><strong>Purpose:</strong> Deliver ready-to-use data for analytics, BI, and machine learning.</p>
+                        <p><strong>Description:</strong> This layer provides optimized access to curated data for: Dashboards and visualizations (Power BI, Tableau, Looker), Ad-hoc SQL queries, Data science and AI models, API-driven applications. Users can interact with the same underlying data, ensuring a single source of truth across teams.</p>
+                        <p><strong>Tools:</strong> Databricks SQL, Power BI, Tableau, Jupyter, MLflow, APIs.</p>
+                      </div>
+                      
+                      <div>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">6. Governance and Security Layer (Spanning All Layers)</h6>
+                        <p><strong>Purpose:</strong> Enforce control, compliance, and data protection.</p>
+                        <p><strong>Description:</strong> This is a horizontal layer across all stages of the architecture. It manages: Access control (role-based and attribute-based), Data lineage and cataloging, Audit logs and compliance tracking, Data masking and encryption.</p>
+                        <p><strong>Tools:</strong> Unity Catalog (Databricks), Purview, Ranger, AWS Lake Formation.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Core Advantages of the Lakehouse Architecture</h5>
+                    <ul className="space-y-2">
+                      <li>✅ Unified platform: Combines data lake + warehouse capabilities.</li>
+                      <li>✅ Open and flexible: Uses open file formats (no vendor lock-in).</li>
+                      <li>✅ Reliable and consistent: ACID transactions ensure data correctness.</li>
+                      <li>✅ Cost-efficient: Storage and compute separation reduces costs.</li>
+                      <li>✅ Machine learning-ready: Supports AI and ML workloads natively.</li>
+                      <li>✅ Real-time analytics: Handles both streaming and batch data.</li>
+                      <li>✅ Governance built-in: Centralized catalog and access control.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
