@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
+import { connectDB, toObjectId } from '@/lib/mongodb';
 
-export async function POST(_request: NextRequest, { params }: { params: Promise<{ requestId: string }> }) {
+async function handleReject(_request: NextRequest, { params }: { params: Promise<{ requestId: string }> }) {
   try {
     const resolvedParams = await params;
     const { requestId } = resolvedParams;
@@ -26,22 +26,66 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
 
     // Connect to database
     const db = await connectDB();
-    const { toObjectId } = await import('@/lib/mongodb');
+    const { ObjectId } = await import('mongodb');
     
-    // Update connection status to rejected
-    const result = await db.collection('connections').updateOne(
-      { 
-        _id: toObjectId(requestId), 
-        toUserId: decoded.id,
-        status: 'pending'
-      },
-      { 
-        $set: { 
-          status: 'rejected',
-          updatedAt: new Date()
-        } 
+    // Try to find and update connection with ObjectId conversion
+    let result;
+    try {
+      // Try with ObjectId conversion for both _id and toUserId
+      const requestObjectId = toObjectId(requestId);
+      const toUserIdObj = toObjectId(decoded.id);
+      
+      result = await db.collection('connections').updateOne(
+        { 
+          _id: requestObjectId, 
+          toUserId: toUserIdObj,
+          status: 'pending'
+        },
+        { 
+          $set: { 
+            status: 'rejected',
+            updatedAt: new Date()
+          } 
+        }
+      );
+      
+      // If no match, try with string toUserId
+      if (result.matchedCount === 0) {
+        result = await db.collection('connections').updateOne(
+          { 
+            _id: requestObjectId, 
+            toUserId: decoded.id,
+            status: 'pending'
+          },
+          { 
+            $set: { 
+              status: 'rejected',
+              updatedAt: new Date()
+            } 
+          }
+        );
       }
-    );
+    } catch {
+      // Fallback: try with string _id and string toUserId
+      try {
+        result = await db.collection('connections').updateOne(
+          { 
+            _id: requestId, 
+            toUserId: decoded.id,
+            status: 'pending'
+          },
+          { 
+            $set: { 
+              status: 'rejected',
+              updatedAt: new Date()
+            } 
+          }
+        );
+      } catch (error) {
+        console.error('Error updating connection:', error);
+        return NextResponse.json({ error: 'Failed to update connection' }, { status: 500 });
+      }
+    }
     
     if (result.matchedCount === 0) {
       return NextResponse.json({ error: 'Connection request not found' }, { status: 404 });
@@ -54,6 +98,17 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
     });
   } catch (error) {
     console.error('Reject connection error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : String(error)
+    }, { status: 500 });
   }
+}
+
+export async function PUT(_request: NextRequest, params: { params: Promise<{ requestId: string }> }) {
+  return handleReject(_request, params);
+}
+
+export async function POST(_request: NextRequest, params: { params: Promise<{ requestId: string }> }) {
+  return handleReject(_request, params);
 }
