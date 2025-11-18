@@ -122,13 +122,13 @@ export async function POST(request: NextRequest) {
     // Connect to database
     const db = await connectDB();
     
-    // Get user details - try both ObjectId and string ID
+    // Get user details
     let user = null;
     try {
       user = await db.collection("users").findOne({ _id: toObjectId(decoded.id) });
     } catch {
-      // If ObjectId conversion fails, try with string
-      user = await db.collection("users").findOne({ _id: decoded.id });
+      // If ObjectId conversion fails, user will remain null
+      // We'll use decoded.name as fallback
     }
     const authorName = user?.name || decoded.name || "Unknown User";
     const authorTitle = user?.professionalRole || user?.title || "Professional";
