@@ -195,13 +195,20 @@ const azureImages: Record<string, GalleryImage> = {
   db_sql_warehouse_1: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
   
   // Images from Azure Databricks -1.docx document
+  // CORRECTED MAPPING: Based on databricks_1_image_mapping.json and user feedback
+  // The actual image files may contain different content than expected, so we're remapping the file references
+  // Data Ingestion should show "Add data" interface with connectors (Salesforce, SAP, Workday, ServiceNow, Google Analytics) and Files section
   db1_image1: { src: '/tutorials/azure/images/db1_image1.png', width: 1920, height: 1080, alt: 'Jobs & Pipelines interface' },
   db1_image2: { src: '/tutorials/azure/images/db1_image2.png', width: 1920, height: 1080, alt: 'Job Runs Dashboard' },
-  db1_image3: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'Data Ingestion interface' },
-  db1_image4: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'Data Ingestion Connectors' },
-  db1_image5: { src: '/tutorials/azure/images/db1_image5.png', width: 1920, height: 1080, alt: 'Data Ingestion Files section' },
-  db1_image6: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
-  db1_image7: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'AI/ML Playground components' },
+  // Data Ingestion: Based on user feedback, db1_image3-5 were showing Playground content, so using db1_image6-7 instead
+  // The correct Data Ingestion image shows "Add data" interface with connectors (Salesforce, SAP, Workday, ServiceNow, Google Analytics) and Files section
+  db1_image3: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'Data Ingestion interface - Add data with connectors' },
+  db1_image4: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'Data Ingestion - Connectors and Files section' },
+  db1_image5: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'Data Ingestion - Additional view' },
+  // Playground: Using original db1_image3-5 which were incorrectly showing in Data Ingestion
+  db1_image6: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
+  db1_image7: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'AI/ML Playground components' },
+  // Experiments: Keeping original db1_image8.png as it should contain Experiments content
   db1_image8: { src: '/tutorials/azure/images/db1_image8.png', width: 1920, height: 1080, alt: 'AI/ML Experiments interface' },
   db1_image9: { src: '/tutorials/azure/images/db1_image9.png', width: 1920, height: 1080, alt: 'AI/ML Feature Store' },
   db1_image10: { src: '/tutorials/azure/images/db1_image10.png', width: 1920, height: 1080, alt: 'AI/ML Model Registry' },
@@ -1376,7 +1383,7 @@ export default function AzureDatabricksPage() {
                   </div>
 
                   {/* Data Ingestion - images from Azure Databricks -1.docx */}
-                  <ImageGallery images={getImages('db1_image3', 'db1_image4', 'db1_image5')} />
+                  <ImageGallery images={getImages('db1_image3', 'db1_image4')} />
                 </div>
               </div>
             </div>
@@ -2328,7 +2335,7 @@ export default function AzureDatabricksPage() {
                   </div>
                 </div>
                 {/* Data Ingestion images */}
-                <ImageGallery images={getImages('db1_image3', 'db1_image4', 'db1_image5')} />
+                <ImageGallery images={getImages('db1_image3', 'db1_image4')} />
               </div>
             </div>
 
