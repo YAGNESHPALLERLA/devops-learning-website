@@ -194,6 +194,24 @@ const azureImages: Record<string, GalleryImage> = {
   // Individual images for SQL Warehouse
   db_sql_warehouse_1: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
   
+  // Images from Azure Databricks -1.docx document
+  db1_image1: { src: '/tutorials/azure/images/db1_image1.png', width: 1920, height: 1080, alt: 'Jobs & Pipelines interface' },
+  db1_image2: { src: '/tutorials/azure/images/db1_image2.png', width: 1920, height: 1080, alt: 'Job Runs Dashboard' },
+  db1_image3: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'Data Ingestion interface' },
+  db1_image4: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'Data Ingestion Connectors' },
+  db1_image5: { src: '/tutorials/azure/images/db1_image5.png', width: 1920, height: 1080, alt: 'Data Ingestion Files section' },
+  db1_image6: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
+  db1_image7: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'AI/ML Playground components' },
+  db1_image8: { src: '/tutorials/azure/images/db1_image8.png', width: 1920, height: 1080, alt: 'AI/ML Experiments interface' },
+  db1_image9: { src: '/tutorials/azure/images/db1_image9.png', width: 1920, height: 1080, alt: 'AI/ML Feature Store' },
+  db1_image10: { src: '/tutorials/azure/images/db1_image10.png', width: 1920, height: 1080, alt: 'AI/ML Model Registry' },
+  db1_image11: { src: '/tutorials/azure/images/db1_image11.png', width: 1920, height: 1080, alt: 'AI/ML Model details' },
+  db1_image12: { src: '/tutorials/azure/images/db1_image12.png', width: 1920, height: 1080, alt: 'AI/ML Model Serving' },
+  db1_image13: { src: '/tutorials/azure/images/db1_image13.png', width: 1920, height: 1080, alt: 'AI/ML Serving details' },
+  db1_image14: { src: '/tutorials/azure/images/db1_image14.png', width: 1920, height: 1080, alt: 'Additional content 1' },
+  db1_image15: { src: '/tutorials/azure/images/db1_image15.png', width: 1920, height: 1080, alt: 'Additional content 2' },
+  db1_image16: { src: '/tutorials/azure/images/db1_image16.png', width: 1920, height: 1080, alt: 'Additional content 3' },
+  
   image85: { src: '/tutorials/azure/images/image85.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
   image86: { src: '/tutorials/azure/images/image86.png', width: 1920, height: 1080, alt: 'Databricks architecture' },
   image87: { src: '/tutorials/azure/images/image87.png', width: 1920, height: 1080, alt: 'Common use cases' },
@@ -236,7 +254,8 @@ const PAGE_HEADINGS = [
   { id: 'azure-blob-storage', title: 'Azure Blob Storage' },
   { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' },
   { id: 'azure-databricks', title: 'Azure Databricks' },
-  { id: 'databricks-sql', title: 'Databricks SQL' }
+  { id: 'databricks-sql', title: 'Databricks SQL' },
+  { id: 'azure-databricks-1', title: 'Azure Databricks -1' }
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
@@ -256,7 +275,24 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'genie': 'databricks-sql',
   'alerts': 'databricks-sql',
   'query-history': 'databricks-sql',
-  'sql-data-warehouse': 'databricks-sql'
+  'sql-data-warehouse': 'databricks-sql',
+  'data-engineering': 'azure-databricks-1',
+  'jobs-runs': 'azure-databricks-1',
+  'data-ingestion': 'azure-databricks-1',
+  'ai-ml': 'azure-databricks-1',
+  'playground': 'azure-databricks-1',
+  'experiments': 'azure-databricks-1',
+  'features': 'azure-databricks-1',
+  'models': 'azure-databricks-1',
+  'serving': 'azure-databricks-1',
+  'notebook-level-features': 'azure-databricks-1',
+  'file-level-features': 'azure-databricks-1',
+  'edit-level-features': 'azure-databricks-1',
+  'view-level-features': 'azure-databricks-1',
+  'run-level-features': 'azure-databricks-1',
+  'help-level-features': 'azure-databricks-1',
+  'language-level-features': 'azure-databricks-1',
+  'others-features': 'azure-databricks-1'
 };
 
 export default function AzureDataEngineerPage() {
@@ -1985,8 +2021,8 @@ export default function AzureDataEngineerPage() {
                       <li><strong>Run parameters</strong> → Lists any input values (like parameters) used in that run.</li>
                     </ul>
                   </div>
-                  {/* Jobs & Pipelines - image from document */}
-                  <ImageGallery images={getImages('db_jobs_1')} />
+                  {/* Jobs & Pipelines - images from Azure Databricks -1.docx */}
+                  <ImageGallery images={getImages('db_jobs_1', 'db1_image1', 'db1_image2')} />
                 </div>
 
                 {/* Compute (Clusters) */}
@@ -2084,6 +2120,122 @@ export default function AzureDataEngineerPage() {
                   </div>
                   {/* Marketplace - image from document */}
                   <ImageGallery images={getImages('db_marketplace_1')} />
+                </div>
+
+                {/* Data Ingestion */}
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Data Ingestion</h5>
+                  <p className="mb-4">Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.</p>
+                  <p className="mb-4">It's the first step in any data pipeline or analytics workflow.</p>
+                  <p className="mb-4">The Data Ingestion tab acts as a centralized data onboarding interface. It supports:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4 mb-4">
+                    <li>Direct connectors for enterprise systems</li>
+                    <li>File-based uploads into Unity Catalog-managed storage</li>
+                    <li>Automation tools like Fivetran and Partner Connect</li>
+                    <li>Delta Lake and ADLS integrations for scalable storage</li>
+                  </ul>
+                  <p className="mb-4">It ensures schema consistency, metadata registration, and secure data governance under Unity Catalog.</p>
+                  
+                  <div className="mt-4">
+                    <h6 className="text-lg font-semibold text-blue-400 mb-3">Header: ➡️ Add data</h6>
+                    <p className="mb-3"><strong>Purpose:</strong> Guides you to connect data sources, upload files, or create tables for analysis.</p>
+                  </div>
+
+                  <div className="mt-4">
+                    <h6 className="text-lg font-semibold text-blue-400 mb-3">Main Sections and Options</h6>
+                    
+                    <div className="mb-4">
+                      <h6 className="text-md font-semibold text-white mb-2">Databricks Connectors</h6>
+                      <p className="mb-3">These are pre-built connectors to quickly connect to popular data platforms:</p>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-600 text-sm">
+                          <thead>
+                            <tr className="bg-gray-700">
+                              <th className="border border-gray-600 px-4 py-2 text-left">Connector</th>
+                              <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                              <th className="border border-gray-600 px-4 py-2 text-left">Typical Use Case</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 Salesforce</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Connect to CRM data (leads, opportunities, accounts).</td>
+                              <td className="border border-gray-600 px-4 py-2">Analyze customer and sales performance.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 SAP Business Data Cloud</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Access enterprise resource data from SAP.</td>
+                              <td className="border border-gray-600 px-4 py-2">Supply chain or financial reporting.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 Workday Reports</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Retrieve HR, payroll, and workforce data.</td>
+                              <td className="border border-gray-600 px-4 py-2">Workforce analytics and reporting.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 ServiceNow</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Connect IT service management data.</td>
+                              <td className="border border-gray-600 px-4 py-2">Incident and change management insights.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 Google Analytics Raw Data</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Import website and marketing analytics data.</td>
+                              <td className="border border-gray-600 px-4 py-2">Digital marketing and campaign performance.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>🔹 SQL Server</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Connect on-prem or cloud-hosted SQL databases.</td>
+                              <td className="border border-gray-600 px-4 py-2">Bring structured transactional data into Databricks.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <h6 className="text-md font-semibold text-white mb-2">Files Section</h6>
+                      <p className="mb-3">For manual uploads or storage-based ingestion.</p>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-600 text-sm">
+                          <thead>
+                            <tr className="bg-gray-700">
+                              <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                              <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                              <th className="border border-gray-600 px-4 py-2 text-left">When to Use</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>📤 Create or modify table</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Upload files like CSV, JSON, or Parquet to create or replace tables.</td>
+                              <td className="border border-gray-600 px-4 py-2">Ideal for one-time imports or small datasets.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>📁 Upload files to a volume</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Upload non-tabular files (images, logs, etc.) managed under Unity Catalog Volumes.</td>
+                              <td className="border border-gray-600 px-4 py-2">For non-structured data like logs, models, or raw files.</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-gray-600 px-4 py-2"><strong>☁️ Create table from Azure Data Lake Storage (ADLS)</strong></td>
+                              <td className="border border-gray-600 px-4 py-2">Load data directly from Azure Data Lake into a Delta table.</td>
+                              <td className="border border-gray-600 px-4 py-2">For large-scale, enterprise-grade data pipelines.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <h6 className="text-md font-semibold text-white mb-2">Fivetran Connectors (via Partner Connect)</h6>
+                      <p className="mb-2">At the bottom, you'll find:</p>
+                      <p className="mb-2">"See all available ingest partners in Partner Connect."</p>
+                      <p className="mb-2">Partner Connect lets you integrate tools like:</p>
+                      <p>Fivetran, Informatica, Qlik, etc. to automate ingestion from hundreds of data sources into Databricks.</p>
+                    </div>
+                  </div>
+
+                  {/* Data Ingestion - images from Azure Databricks -1.docx */}
+                  <ImageGallery images={getImages('db1_image3', 'db1_image4', 'db1_image5')} />
                 </div>
               </div>
             </div>
@@ -2819,6 +2971,1490 @@ export default function AzureDataEngineerPage() {
                 </div>
                 {/* SQL Warehouse - image from document */}
                 <ImageGallery images={getImages('db_sql_warehouse_1')} />
+              </div>
+            </div>
+          </div>
+        </section>
+        )}
+
+        {/* Azure Databricks -1 Section */}
+        {activeSection === 'azure-databricks-1' && (
+        <section className="space-y-8">
+          <div className="space-y-8">
+            {/* Data Engineering - Main Heading */}
+            <div id="data-engineering" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h3 className="text-3xl font-bold text-white mb-6">Data Engineering</h3>
+              
+              {/* Jobs run's - 1st subheading */}
+              <div id="jobs-runs" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Jobs run's</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The Jobs & Pipelines interface in Azure Databricks provides a unified orchestration layer for data engineering and machine learning workflows. It supports job scheduling, dependency management, pipeline orchestration, and execution monitoring.
+                  </p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key Features</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Ingestion Pipelines:</strong> Automate ingestion from external data sources (databases, APIs, or files).</li>
+                      <li><strong>ETL Pipelines:</strong> Design scalable, production-grade ETL processes using SQL, PySpark, or Python.</li>
+                      <li><strong>Jobs:</strong> Orchestrate notebooks, workflows, pipelines, and queries; configure parameters, cluster settings, and triggers.</li>
+                      <li><strong>Job Runs Dashboard:</strong> Monitor run history, logs, and metrics for troubleshooting and optimization.</li>
+                      <li><strong>Access Control:</strong> Manage visibility ("Owned by me," "Accessible by me") to enforce workspace-level governance.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Use Case</h5>
+                    <p>Used by data engineers and ML teams to build end-to-end pipelines — from data ingestion to transformation, feature generation, and model retraining — all under one environment.</p>
+                  </div>
+
+                  <p>
+                    The Job Runs dashboard in Databricks provides an operational view of scheduled or triggered workflows. It allows engineers and ML teams to monitor, debug, and analyze job executions across environments.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key Functionalities</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Run Filtering:</strong> Filter runs by job, user, time range, run status, or error code.</li>
+                      <li><strong>Run Visualization:</strong> Graph at the top visualizes the number of successful, failed, or skipped runs over time.</li>
+                      <li><strong>Detailed Metadata:</strong> For each run, Databricks records the execution context — start/end time, duration, compute used, and run parameters.</li>
+                      <li><strong>Error Handling:</strong> Provides error codes and logs to diagnose failure causes (e.g., cluster issues, data errors, script exceptions).</li>
+                      <li><strong>Audit & Compliance:</strong> Maintains a complete audit trail for all pipeline executions — critical for production governance.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">What You See:</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Field</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Start time</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">When the job started.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Job name</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Which job ran (for example, "ETL Pipeline").</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Run as</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Which user or role ran it.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Duration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">How long it took.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Status</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Shows if it succeeded, failed, or skipped.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Error code</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Displays the error message if something failed.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Run parameters</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Lists any input values (like parameters) used in that run.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* Jobs & Pipelines images */}
+                <ImageGallery images={getImages('db1_image1', 'db1_image2')} />
+              </div>
+
+              {/* Data Ingestion - 2nd subheading */}
+              <div id="data-ingestion" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Data Ingestion</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.
+                  </p>
+                  <p>
+                    It's the first step in any data pipeline or analytics workflow.
+                  </p>
+                  <p>
+                    The Data Ingestion tab acts as a centralized data onboarding interface. It supports:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Direct connectors for enterprise systems</li>
+                    <li>File-based uploads into Unity Catalog-managed storage</li>
+                    <li>Automation tools like Fivetran and Partner Connect</li>
+                    <li>Delta Lake and ADLS integrations for scalable storage</li>
+                  </ul>
+                  <p>
+                    It ensures schema consistency, metadata registration, and secure data governance under Unity Catalog.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Header: ➡️ Add data</h5>
+                    <p><strong>Purpose:</strong> Guides you to connect data sources, upload files, or create tables for analysis.</p>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Main Sections and Options</h5>
+                    
+                    <h6 className="text-lg font-semibold text-blue-400 mb-2 mt-3">Databricks Connectors</h6>
+                    <p className="mb-3">These are pre-built connectors to quickly connect to popular data platforms:</p>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Connector</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Typical Use Case</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 Salesforce</td>
+                            <td className="border border-gray-600 px-4 py-2">Connect to CRM data (leads, opportunities, accounts).</td>
+                            <td className="border border-gray-600 px-4 py-2">Analyze customer and sales performance.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 SAP Business Data Cloud</td>
+                            <td className="border border-gray-600 px-4 py-2">Access enterprise resource data from SAP.</td>
+                            <td className="border border-gray-600 px-4 py-2">Supply chain or financial reporting.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 Workday Reports</td>
+                            <td className="border border-gray-600 px-4 py-2">Retrieve HR, payroll, and workforce data.</td>
+                            <td className="border border-gray-600 px-4 py-2">Workforce analytics and reporting.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 ServiceNow</td>
+                            <td className="border border-gray-600 px-4 py-2">Connect IT service management data.</td>
+                            <td className="border border-gray-600 px-4 py-2">Incident and change management insights.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 Google Analytics Raw Data</td>
+                            <td className="border border-gray-600 px-4 py-2">Import website and marketing analytics data.</td>
+                            <td className="border border-gray-600 px-4 py-2">Digital marketing and campaign performance.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔹 SQL Server</td>
+                            <td className="border border-gray-600 px-4 py-2">Connect on-prem or cloud-hosted SQL databases.</td>
+                            <td className="border border-gray-600 px-4 py-2">Bring structured transactional data into Databricks.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h6 className="text-lg font-semibold text-blue-400 mb-2 mt-4">Files Section</h6>
+                    <p className="mb-3">For manual uploads or storage-based ingestion.</p>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">When to Use</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📤 Create or modify table</td>
+                            <td className="border border-gray-600 px-4 py-2">Upload files like CSV, JSON, or Parquet to create or replace tables.</td>
+                            <td className="border border-gray-600 px-4 py-2">Ideal for one-time imports or small datasets.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📁 Upload files to a volume</td>
+                            <td className="border border-gray-600 px-4 py-2">Upload non-tabular files (images, logs, etc.) managed under Unity Catalog Volumes.</td>
+                            <td className="border border-gray-600 px-4 py-2">For non-structured data like logs, models, or raw files.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">☁️ Create table from Azure Data Lake Storage (ADLS)</td>
+                            <td className="border border-gray-600 px-4 py-2">Load data directly from Azure Data Lake into a Delta table.</td>
+                            <td className="border border-gray-600 px-4 py-2">For large-scale, enterprise-grade data pipelines.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h6 className="text-lg font-semibold text-blue-400 mb-2 mt-4">Fivetran Connectors (via Partner Connect)</h6>
+                    <p className="mb-2">At the bottom, you'll find:</p>
+                    <p className="mb-2">"See all available ingest partners in Partner Connect."</p>
+                    <p>Partner Connect lets you integrate tools like Fivetran, Informatica, Qlik, etc. to automate ingestion from hundreds of data sources into Databricks.</p>
+                  </div>
+                </div>
+                {/* Data Ingestion images */}
+                <ImageGallery images={getImages('db1_image3', 'db1_image4', 'db1_image5')} />
+              </div>
+            </div>
+
+            {/* AI/ML - Main Heading */}
+            <div id="ai-ml" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h3 className="text-3xl font-bold text-white mb-6">AI/ML</h3>
+              
+              {/* Playground - 1st subheading */}
+              <div id="playground" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Playground</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The Playground in Databricks is an interactive environment where you can experiment with AI models, build and test prompts, and prototype intelligent agents before deploying them into production.
+                  </p>
+                  <p>
+                    It's like a sandbox for Generative AI within your Databricks workspace.
+                  </p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key Capabilities</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li>Chat with or test AI models (like GPT, MPT, or Llama).</li>
+                      <li>Ask questions, summarize documents, or generate code.</li>
+                      <li>Try out small AI tasks (like question answering or summarization) before building real applications.</li>
+                      <li>A low-code interface for LLM prompt engineering and evaluation.</li>
+                      <li>Integration with Unity Catalog tools for secure, governed model use.</li>
+                      <li>The ability to prototype AI agents with custom tools, such as function calling, retrieval-augmented generation (RAG), and data-aware AI.</li>
+                      <li>Seamless connection to Databricks' MLflow, Feature Store, and Model Serving for deployment.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Main Components on the Page</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Section</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Model Selector (Top Bar)</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Shows the current model (e.g., GPT OSS 120B). You can switch between models here.</td>
+                            <td className="border border-gray-600 px-4 py-2">Choose which AI model to test or fine-tune.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Tools Menu</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Access to tools or APIs integrated with the model (like function calling, RAG, or evaluation tools).</td>
+                            <td className="border border-gray-600 px-4 py-2">Extend the model's capabilities using custom or pre-built tools.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Prototype an Agent</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Lets you add your own tool and connect it to a model to create AI agents.</td>
+                            <td className="border border-gray-600 px-4 py-2">Build task-oriented AI agents (e.g., summarizer, SQL generator, chatbot).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Start with an Example</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Offers quick test templates: Function Calling, Summarization, Document Q&A.</td>
+                            <td className="border border-gray-600 px-4 py-2">Try example scenarios to understand model behavior.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Evaluation Section</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Helps evaluate model responses.</td>
+                            <td className="border border-gray-600 px-4 py-2">Assess accuracy, relevance, and quality of model outputs.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Prompt Input Area</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Text box at the bottom ("Start typing...").</td>
+                            <td className="border border-gray-600 px-4 py-2">Enter prompts, run queries, and see model responses interactively.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">For AI Developers</h5>
+                    <p className="mb-3">The Playground supports:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Unity Catalog AI Tools</strong> — governed access to enterprise data.</li>
+                      <li><strong>Databricks Foundation Models</strong> — like MPT, Llama 2, GPT OSS, etc.</li>
+                      <li><strong>Custom Tool Integration</strong> — connect APIs or databases to your AI agent.</li>
+                      <li><strong>Prompt Evaluation</strong> — test, compare, and optimize prompts before production use.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Advanced Features</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Feature</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🧩 Agent Prototyping</td>
+                            <td className="border border-gray-600 px-4 py-2">Create and test agents that can use APIs, databases, or documents.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔗 Function Calling</td>
+                            <td className="border border-gray-600 px-4 py-2">Extend the model's capabilities by allowing it to call your defined Python or SQL functions.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🧾 Prompt Testing</td>
+                            <td className="border border-gray-600 px-4 py-2">Evaluate how prompts perform across models.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📊 Evaluation Tools</td>
+                            <td className="border border-gray-600 px-4 py-2">Use built-in metrics to test model quality (accuracy, bias, hallucination rate).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔐 Unity Catalog Integration</td>
+                            <td className="border border-gray-600 px-4 py-2">Ensure data governance and secure access during AI experiments.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Benefits</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>🧠 Hands-on AI Development:</strong> Experiment freely without deployment setup.</li>
+                      <li><strong>🔍 Prompt Optimization:</strong> Refine and evaluate prompts before production.</li>
+                      <li><strong>🧩 Custom Tool Integration:</strong> Combine AI reasoning with data or APIs.</li>
+                      <li><strong>🔒 Governance:</strong> Integrated with Unity Catalog for secure and auditable AI testing.</li>
+                      <li><strong>🌐 Multiple Model Access:</strong> Test open-source and Databricks-hosted LLMs.</li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Playground images */}
+                <ImageGallery images={getImages('db1_image6', 'db1_image7')} />
+              </div>
+
+              {/* Experiments - 2nd subheading */}
+              <div id="experiments" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Experiments</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    In Databricks, Experiments represent the core of model development and tracking. An experiment records each run of your machine learning or AI workflow — including:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Model parameters (like learning rate, epochs)</li>
+                    <li>Metrics (like accuracy, loss)</li>
+                    <li>Code version</li>
+                    <li>Data version</li>
+                    <li>Model artifacts (like trained models)</li>
+                  </ul>
+                  <p>
+                    Experiments help track, compare, and reproduce model performance over time using MLflow.
+                  </p>
+                  <p>
+                    The Experiments module integrates tightly with MLflow 3, providing:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Unified tracking for ML, DL, and GenAI experiments.</li>
+                    <li>Versioning for both data and models.</li>
+                    <li>Prompt tracking for LLM fine-tuning and evaluation.</li>
+                    <li>Advanced observability — including lineage and traceability for GenAI agents.</li>
+                  </ul>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Visible Sections:</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>🧠 GenAI apps & agents:</strong> For building and tracking Generative AI apps or AI agents.</li>
+                      <li><strong>📉 Regression:</strong> Create regression models automatically using AutoML.</li>
+                      <li><strong>🔮 Forecasting (Preview):</strong> Build time-series forecasting models.</li>
+                      <li><strong>🧩 Classification:</strong> Train classification models (binary or multi-class).</li>
+                      <li><strong>⚙️ Custom model training:</strong> For custom classical ML or deep learning experiments.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Experiment Management Options</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Create experiment</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Start a new experiment (AutoML or custom).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Import experiment</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Import experiments from MLflow or external sources.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Filter & Search</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Find experiments by name, tags, or metadata.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Compare Runs</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Side-by-side comparison of multiple experiment runs.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Register Model</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Promote the best model to the Model Registry.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Advanced Capabilities (MLflow 3 + Databricks)</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Capability</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Unified Tracking</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Track ML, DL, and GenAI experiments in one place.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Prompt Tracking</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Version and compare prompts for LLM fine-tuning.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Data & Model Lineage</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Full traceability from raw data → features → model → predictions.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>GenAI Agent Observability</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Track tool usage, function calls, and reasoning traces for AI agents.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>AutoML Integration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Automatically run hyperparameter tuning and feature engineering.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Core Functionalities</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>🧠 AutoML Experiments:</strong> Automatically builds and tunes models for regression, classification, or forecasting tasks.</li>
+                      <li><strong>🧩 Custom Model Training:</strong> Allows full control of model code — supports PyTorch, TensorFlow, Scikit-learn, etc.</li>
+                      <li><strong>🤖 GenAI & LLM Tracking:</strong> Records prompt configurations, LLM outputs, and tool usage for AI agents.</li>
+                      <li><strong>📊 Experiment Comparison:</strong> Lets you visually compare multiple runs — metrics, parameters, and outputs.</li>
+                      <li><strong>🔗 Integration with Feature Store & Models:</strong> Once the best model is found, link it to the Model Registry for deployment.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Benefits</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Benefit</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>🔬 Reproducibility</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Every run records code, data, and environment versions for full reproducibility.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>📈 Model Optimization</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Compare hundreds of runs to find the best hyperparameters and features.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>🤝 Collaboration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Share experiments with team members and track who made what changes.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>🔒 Governance</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">All experiments are tracked under Unity Catalog with access controls.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* Experiments images */}
+                <ImageGallery images={getImages('db1_image8')} />
+              </div>
+
+              {/* Features - 3rd subheading */}
+              <div id="features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    In Machine Learning, features are the input variables (columns) used by a model to make predictions. For example:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>In a credit scoring model → income, age, loan_amount are features.</li>
+                    <li>In a product recommender → user_history, click_rate, category_interest are features.</li>
+                  </ul>
+                  <p>
+                    The Features tab in Databricks allows you to manage, share, and reuse these features across models and teams.
+                  </p>
+                  <p>
+                    The Feature Store in Databricks (integrated with Unity Catalog) provides:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Centralized feature management</li>
+                    <li>Governed access using Unity Catalog</li>
+                    <li>Feature lineage tracking</li>
+                    <li>Online/offline store integration for model training and real-time inference</li>
+                  </ul>
+                  <p>
+                    It enables feature discovery, reuse, versioning, and monitoring at enterprise scale.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Table Columns (Once Features Exist)</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Column</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Name</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The feature table name.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Catalog</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Unity Catalog where the feature table is stored.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Schema</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Schema within the catalog.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Primary Keys</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The keys used to join features (e.g., user_id, product_id).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Last Modified</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">When the feature table was last updated.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Permissions & Governance</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Aspect</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Unity Catalog Integration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">All features are managed under Unity Catalog with fine-grained permissions.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Access Control</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Control who can read, write, or manage feature tables.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Data Lineage</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Track which datasets were used to create features.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Feature Versioning</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Maintain multiple versions of features for backward compatibility.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Feature Store Components</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Component</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Offline Store</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Delta tables for batch training and historical feature lookups.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Online Store</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Low-latency database (e.g., DynamoDB, Redis) for real-time inference.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Feature Computation</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Automated pipelines to compute and update features.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Feature Serving API</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">REST API to fetch features for model inference.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Advanced Options (For Professionals)</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Create feature table</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Manually create a new feature table from existing Delta tables or data sources.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Search features</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Search across all feature tables by name, tags, or metadata.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Feature monitoring</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Set up alerts for feature drift, data quality issues, or missing values.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Feature lineage</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">View the complete data lineage from source → feature → model.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key Benefits</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>♻️ Feature Reusability:</strong> Build once, use everywhere — across teams and projects.</li>
+                      <li><strong>📊 Consistency:</strong> Same feature logic is applied in training and serving.</li>
+                      <li><strong>🔍 Discoverability:</strong> Easily search and explore existing features.</li>
+                      <li><strong>🧾 Governance:</strong> Controlled via Unity Catalog with fine-grained access control.</li>
+                      <li><strong>🧠 Lineage & Audit:</strong> Full visibility from raw data → feature → model → prediction.</li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Features images */}
+                <ImageGallery images={getImages('db1_image9')} />
+              </div>
+
+              {/* Models - 4th subheading */}
+              <div id="models" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Models</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    This section is part of Databricks Machine Learning. It helps you register, version, manage, and serve ML models built using MLflow or other frameworks.
+                  </p>
+                  <p>
+                    The Models tab integrates with <strong>Unity Catalog</strong> (or the legacy Workspace Model Registry) to provide centralized model management, versioning, and governance across your organization.
+                  </p>
+                  <p>
+                    Currently, no models are registered yet. But once you create or import models, the table will display:
+                  </p>
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Column</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Name</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The model's registered name.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Catalog</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The Unity Catalog that stores the model (e.g., main, sandbox, etc.).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Schema</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The schema inside the catalog that holds the model.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Last Modified</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Timestamp of the latest model version update.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Owner</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The Databricks user or service principal who owns the model.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Once Models Exist — More Options Appear</h5>
+                    <p className="mb-3">When you have registered models, you get these additional actions:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>1. Model Versioning:</strong> Each model can have multiple versions (v1, v2, …) for tracking updates or retraining cycles.</li>
+                      <li><strong>2. Model Staging:</strong> Models can have lifecycle stages: None – Just registered, Staging – For testing and validation, Production – For deployment, Archived – Old or deprecated versions</li>
+                      <li><strong>3. Model Lineage & Metadata:</strong> Tracks which experiment/run created the model. Shows training dataset lineage (via Unity Catalog). Metadata like tags, parameters, and metrics appear automatically from MLflow.</li>
+                      <li><strong>4. Permissions:</strong> You can manage who can read or use the model, transition model stages, delete or update versions</li>
+                      <li><strong>5. Serving Integration:</strong> Once a model is registered and approved, you can deploy it to Databricks Model Serving, expose it via REST API endpoint for predictions, integrate with Feature Store for consistent feature usage</li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Models images */}
+                <ImageGallery images={getImages('db1_image10', 'db1_image11')} />
+              </div>
+
+              {/* Serving - 5th subheading */}
+              <div id="serving" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Serving</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Model Serving in Databricks allows you to:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li>Deploy ML models (including LLMs) for real-time predictions</li>
+                    <li>Expose them via REST APIs</li>
+                    <li>Serve open-source or external models (like GPT, Llama)</li>
+                    <li>Automatically scale endpoints based on demand</li>
+                    <li>Secure access with Unity Catalog and IAM policies</li>
+                  </ul>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Top Models You See Here</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Model</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Use Case</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>GPT OSS 120B / 20B</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Open-source GPT models (120B or 20B parameters) hosted by Databricks.</td>
+                            <td className="border border-gray-600 px-4 py-2">Large-scale language tasks, code generation, chat applications.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>OpenAI GPT-5</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">OpenAI's latest GPT model (if available via API integration).</td>
+                            <td className="border border-gray-600 px-4 py-2">Advanced conversational AI, text generation, summarization.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Llama 4 Maverick</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Meta's Llama 4 model variant, optimized for enterprise use.</td>
+                            <td className="border border-gray-600 px-4 py-2">Enterprise AI applications, RAG systems, document Q&A.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Gemma 3 12B</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Google's Gemma model (12B parameters) for efficient inference.</td>
+                            <td className="border border-gray-600 px-4 py-2">Cost-effective language tasks, smaller-scale deployments.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>BGE/GTE Large</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Embedding models for text vectorization (BGE or GTE architecture).</td>
+                            <td className="border border-gray-600 px-4 py-2">Semantic search, RAG retrieval, similarity matching.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Details from the Screenshot</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Column</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Name</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The name of the deployed serving endpoint.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>State</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The current deployment status (e.g., Ready, Deploying, Failed).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Served entities</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The specific model or model version being served (e.g., GPT OSS 120B, Llama 4 Maverick).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Tags</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Metadata tags (e.g., Chat, Embeddings).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Task</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">The model type or function — Chat (LLMs), Embeddings (vectorization), etc.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Created by</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">User or system who deployed the endpoint.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Last modified</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Timestamp of the latest deployment change.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Part of Full AI/ML Lifecycle</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Stage</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Databricks Component</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>1. Experimentation</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Experiments (MLflow)</td>
+                            <td className="border border-gray-600 px-4 py-2">Track model training runs, compare metrics, tune hyperparameters.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>2. Feature Engineering</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Feature Store</td>
+                            <td className="border border-gray-600 px-4 py-2">Create, version, and reuse features across models.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>3. Model Registration</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Models (Registry)</td>
+                            <td className="border border-gray-600 px-4 py-2">Register, version, and stage models (Staging → Production).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>4. Model Deployment</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Serving (This Section)</td>
+                            <td className="border border-gray-600 px-4 py-2">Deploy models as REST APIs for real-time inference.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>5. Monitoring</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Model Serving Metrics</td>
+                            <td className="border border-gray-600 px-4 py-2">Monitor latency, throughput, errors, and model drift.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Actions Available per Model</h5>
+                    <p className="mb-2">Each model endpoint (like GPT, Llama, etc.) gives you options such as:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Use:</strong> Opens an interface to test the model directly within Databricks.</li>
+                      <li><strong>Copy:</strong> Copies the REST API URL and authentication token.</li>
+                      <li><strong>Configure:</strong> Modify endpoint settings — scale, model version, environment variables.</li>
+                      <li><strong>Create Serving Endpoint:</strong> Deploy your own trained model or clone an existing one.</li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Serving images */}
+                <ImageGallery images={getImages('db1_image12', 'db1_image13')} />
+              </div>
+            </div>
+
+            {/* Notebook-level features - Main Heading */}
+            <div id="notebook-level-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+              <h3 className="text-3xl font-bold text-white mb-6">Notebook-level features</h3>
+              
+              <div className="space-y-4 text-gray-300 mb-8">
+                <p>
+                  A Databricks notebook is an interactive environment for:
+                </p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>Writing and running code (Python, SQL, Scala, R)</li>
+                  <li>Visualizing data</li>
+                  <li>Managing ML workflows</li>
+                  <li>Collaborating and sharing results</li>
+                </ul>
+                <p>
+                  It supports multi-language notebooks meaning you can run Python, SQL, Scala, R, or Markdown in the same file using magic commands (like %python, %sql, %scala, %md).
+                </p>
+
+                <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                  <h5 className="text-xl font-semibold text-white mb-3">Key Notebook UI Features</h5>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full border border-gray-600 text-sm">
+                      <thead>
+                        <tr className="bg-gray-700">
+                          <th className="border border-gray-600 px-4 py-2 text-left">Feature</th>
+                          <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🧾 Notebook Title ("my notebook")</td>
+                          <td className="border border-gray-600 px-4 py-2">Editable notebook name. You can rename it anytime.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">📜 Toolbar</td>
+                          <td className="border border-gray-600 px-4 py-2">Provides actions like Run, Connect, Schedule, Share, File options, etc.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">▶️ Run / Run all / Schedule</td>
+                          <td className="border border-gray-600 px-4 py-2">Run current cell or all cells; schedule notebooks as automated jobs.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🧠 Language Selector (Python, SQL, etc.)</td>
+                          <td className="border border-gray-600 px-4 py-2">Set default language for the notebook.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🌐 Connect</td>
+                          <td className="border border-gray-600 px-4 py-2">Connects the notebook to a cluster (compute resource). Required before execution.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🔗 Share</td>
+                          <td className="border border-gray-600 px-4 py-2">Share the notebook with team members or grant access via permissions.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">⚙️ Settings / Comments / Command Palette</td>
+                          <td className="border border-gray-600 px-4 py-2">Quick access to environment settings and collaborative comments.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                  <h5 className="text-xl font-semibold text-white mb-3">Code Cell Features</h5>
+                  <p className="mb-3">Each code cell has:</p>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full border border-gray-600 text-sm">
+                      <thead>
+                        <tr className="bg-gray-700">
+                          <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                          <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">▶️ Run Cell</td>
+                          <td className="border border-gray-600 px-4 py-2">Executes the code within the selected cell.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">⠿ Drag Handle</td>
+                          <td className="border border-gray-600 px-4 py-2">Allows you to reorder or move cells.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🔍 Language Indicator (Python)</td>
+                          <td className="border border-gray-600 px-4 py-2">Shows the language mode of the current cell.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🧩 Add Cell Above/Below</td>
+                          <td className="border border-gray-600 px-4 py-2">Insert new code or markdown cells.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🧹 Clear Output</td>
+                          <td className="border border-gray-600 px-4 py-2">Removes output from the cell without deleting code.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-600 px-4 py-2">🗑️ Delete Cell</td>
+                          <td className="border border-gray-600 px-4 py-2">Deletes the current cell.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* File-level Features - 1st subheading */}
+              <div id="file-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">File-level Features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    File menu contains all options related to creating, managing, importing, exporting, and sharing notebooks in Databricks.
+                  </p>
+                  
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">📂 Databricks Notebook – File Menu</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Menu Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description & Usage</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🆕 New notebook</td>
+                            <td className="border border-gray-600 px-4 py-2">Opens a brand-new notebook. You can choose the language (Python, SQL, Scala, or R) and cluster later.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📥 Import…</td>
+                            <td className="border border-gray-600 px-4 py-2">Allows you to import existing notebooks (from .dbc, .html, .ipynb, or Git repositories).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🧭 New notebook dashboard</td>
+                            <td className="border border-gray-600 px-4 py-2">Creates a dashboard view — ideal for visualizations and results presentation, often used in reporting.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🔗 Share…</td>
+                            <td className="border border-gray-600 px-4 py-2">Opens the sharing dialog where you can grant permissions to other users or groups (View, Run, Edit, Manage).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">⏰ Schedule…</td>
+                            <td className="border border-gray-600 px-4 py-2">Lets you schedule notebook runs at set intervals (daily, hourly, etc.) — useful for data pipelines or automation.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">⚙️ Change default cell language…</td>
+                            <td className="border border-gray-600 px-4 py-2">Sets the default language (Python, SQL, Scala, or R) for new cells in this notebook.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🧠 Commit to Git…</td>
+                            <td className="border border-gray-600 px-4 py-2">Integrates with Git (GitHub, GitLab, Azure Repos) — allows version control, branching, and pushing changes.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🌀 Clone…</td>
+                            <td className="border border-gray-600 px-4 py-2">Makes an identical copy of the current notebook within the workspace.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">✏️ Rename…</td>
+                            <td className="border border-gray-600 px-4 py-2">Rename the notebook file name.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📤 Export…</td>
+                            <td className="border border-gray-600 px-4 py-2">Export notebook in multiple formats: HTML (read-only view), SOURCE (plain text), DBC archive, IPYNB (Jupyter notebook format).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📦 Move…</td>
+                            <td className="border border-gray-600 px-4 py-2">Move notebook to a different folder or workspace location.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🗑️ Move to trash</td>
+                            <td className="border border-gray-600 px-4 py-2">Deletes (moves) notebook to Trash; can be restored later if needed.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">⬆️ Upload files to volume…</td>
+                            <td className="border border-gray-600 px-4 py-2">Uploads files (datasets, scripts, etc.) directly into a mounted volume or workspace for use in your notebook.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">🧮 Create or modify table…</td>
+                            <td className="border border-gray-600 px-4 py-2">Opens Databricks Data UI to create or edit tables (either Delta or other supported file formats).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">📊 Add data ›</td>
+                            <td className="border border-gray-600 px-4 py-2">Opens data ingestion options to connect to data sources (Azure Blob, ADLS, Delta tables, CSVs, etc.).</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* File-level Features images */}
+                <ImageGallery images={getImages('db1_image14')} />
+              </div>
+
+              {/* Edit level features - 2nd subheading */}
+              <div id="edit-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Edit level features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The Edit menu in Databricks notebooks helps you manage cells, format code, and control execution flow. It is essential for reorganizing notebooks, applying consistent formatting, and speeding up common editing actions.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Databricks Notebook – Edit Menu</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Menu Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Shortcut (Windows / Linux)</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Undo</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Z</td>
+                            <td className="border border-gray-600 px-4 py-2">Reverts the most recent edit or cell deletion.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Redo</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Shift + Z</td>
+                            <td className="border border-gray-600 px-4 py-2">Re-applies an action that was undone.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Cut / Copy / Paste cell(s)</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + X / Ctrl + C / Ctrl + V</td>
+                            <td className="border border-gray-600 px-4 py-2">Moves or duplicates cells to reorganize notebooks quickly.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Delete cell(s)</td>
+                            <td className="border border-gray-600 px-4 py-2">D, D</td>
+                            <td className="border border-gray-600 px-4 py-2">Removes the selected cell(s). Press the shortcut twice rapidly.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Skip / Unskip cell(s)</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + /</td>
+                            <td className="border border-gray-600 px-4 py-2">Temporarily excludes a cell from “Run All” execution.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Insert cell above / below</td>
+                            <td className="border border-gray-600 px-4 py-2">A / B</td>
+                            <td className="border border-gray-600 px-4 py-2">Adds a new blank cell above or below the current cell.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Move cell up / down</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Alt + ↑ / ↓</td>
+                            <td className="border border-gray-600 px-4 py-2">Shifts the selected cell to reorder notebook content.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Format cell(s)</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Shift + F</td>
+                            <td className="border border-gray-600 px-4 py-2">Auto-formats code for consistent indentation and spacing.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2">Find / Replace</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + F / Ctrl + H</td>
+                            <td className="border border-gray-600 px-4 py-2">Searches for text or replaces it globally within the notebook.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* Edit level features images */}
+                <ImageGallery images={getImages('db1_image15')} />
+              </div>
+
+              {/* View level features - 3rd subheading */}
+              <div id="view-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">View level features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The View menu lets you customize how notebooks look and behave. It controls interface layouts, side panels, cell appearance, themes, and access to cluster/developer tooling so you can focus on exactly what matters.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Key View Options</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Category</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">What it controls</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">When to use</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Views</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Toggle Command/Edit mode, Presentation view, Code-only or Results-only display, and Line numbers.</td>
+                            <td className="border border-gray-600 px-4 py-2">Ideal for demos, teaching sessions, or focusing on code/results independently.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Notebook Layout</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Default, Compact, or Wide layouts plus show/hide cell toolbars and execution time.</td>
+                            <td className="border border-gray-600 px-4 py-2">Optimize the workspace for dense code, wide tables, or additional metadata.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Cell Layout</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Collapse/expand inputs or outputs and enable output scrolling.</td>
+                            <td className="border border-gray-600 px-4 py-2">Keep long outputs tidy or focus reviewers on conclusions.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Workspace & Editor Themes</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Switch between Light, Dark, System, Monokai, Solarized, etc.</td>
+                            <td className="border border-gray-600 px-4 py-2">Reduce eye strain or match personal/editor preferences.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Side Panel</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Show/Hide workspace browser, pin/unpin, resize.</td>
+                            <td className="border border-gray-600 px-4 py-2">Quickly access data, repos, clusters, or comments while editing.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Cluster Tools</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Open cluster logs, details, driver/worker metrics.</td>
+                            <td className="border border-gray-600 px-4 py-2">Debug slow jobs or inspect compute usage without leaving the notebook.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Developer Settings</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Enable developer mode, debug console, query snippets.</td>
+                            <td className="border border-gray-600 px-4 py-2">Experiment with advanced UI tooling or reuse SQL/Python snippets.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Run-level features - 4th subheading */}
+              <div id="run-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Run-level features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    The Run menu in Databricks allows you to execute, debug, clear outputs, and control compute sessions in your notebook. It's primarily used for running code cells and managing the execution environment.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Run Menu Options</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Menu Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Key Use Case</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Run and Debug</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Execute selected/all cells</td>
+                            <td className="border border-gray-600 px-4 py-2">Run or debug code interactively</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Clear</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Remove outputs or execution states</td>
+                            <td className="border border-gray-600 px-4 py-2">Clean notebook before rerun</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Go to Last Run Cell</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Jump to last executed cell</td>
+                            <td className="border border-gray-600 px-4 py-2">Resume work or debug flow</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Interrupt Execution (I, I)</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Stop current execution</td>
+                            <td className="border border-gray-600 px-4 py-2">Abort long or stuck runs</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Detach from Compute Resource</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Disconnect cluster</td>
+                            <td className="border border-gray-600 px-4 py-2">Switch or stop compute</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>New Session in Compute Resource</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Restart environment</td>
+                            <td className="border border-gray-600 px-4 py-2">Start fresh session for clean execution</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Run and Debug Options</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Run Cell / Run All Cells:</strong> Executes the selected or all notebook cells sequentially.</li>
+                      <li><strong>Run Cell and Move to Next:</strong> Runs the current cell, then automatically jumps to the next one.</li>
+                      <li><strong>Run Above / Run Below:</strong> Executes all cells either above or below the currently selected cell.</li>
+                      <li><strong>Debug Cell (if enabled):</strong> Allows step-by-step execution for debugging purposes.</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Clear Options</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Clear Output of Current Cell:</strong> Removes the result/output displayed for the current cell.</li>
+                      <li><strong>Clear Output of All Cells:</strong> Clears all results throughout the notebook (code remains intact).</li>
+                      <li><strong>Clear State:</strong> Resets notebook variables or execution state (optional in some setups).</li>
+                    </ul>
+                    <p className="mt-2 text-gray-400">💡 Useful before re-running code to avoid confusion from old outputs.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Help-level features - 5th subheading */}
+              <div id="help-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Help-level features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Help Menu Options</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Shortcut</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Search actions</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Opens a search bar to quickly find and execute commands or actions within the notebook.</td>
+                            <td className="border border-gray-600 px-4 py-2">Ctrl + Shift + P</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Keyboard shortcuts</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Displays a list of all available keyboard shortcuts for the notebook.</td>
+                            <td className="border border-gray-600 px-4 py-2">H (when "Help" is active)</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Provide feedback</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Opens a prompt where users can provide feedback about their experience with Databricks.</td>
+                            <td className="border border-gray-600 px-4 py-2">—</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Ask the Databricks community</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Opens a link to the Databricks community forum or help center where users can ask questions or browse discussions.</td>
+                            <td className="border border-gray-600 px-4 py-2">—</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Databricks support</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Provides a link to official Databricks support resources, including contact information or technical assistance options.</td>
+                            <td className="border border-gray-600 px-4 py-2">—</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Use Cases</h5>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li><strong>Search actions:</strong> Rapidly search through available actions or commands without navigating through menus.</li>
+                      <li><strong>Keyboard shortcuts:</strong> Quickly learn and use shortcuts, speeding up the workflow. Shortcuts might include things like running cells or navigating between them.</li>
+                      <li><strong>Provide feedback:</strong> Share thoughts or report issues encountered while using Databricks.</li>
+                      <li><strong>Ask the Databricks community:</strong> Connect to the community for support, troubleshooting, or knowledge sharing.</li>
+                      <li><strong>Databricks support:</strong> Get direct, official support for Databricks environment or facing issues that community help may not address.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Language-level features - 6th subheading */}
+              <div id="language-level-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Language-level features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Sets the default programming language for the current notebook. All new cells you create will use the selected language automatically, though you can still override it in individual cells.
+                  </p>
+
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Available Language Options</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Language</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Use Case</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Python</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Default and most commonly used option. Supports libraries like PySpark, pandas, NumPy, matplotlib, etc.</td>
+                            <td className="border border-gray-600 px-4 py-2">Data processing, machine learning, and automation tasks.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>SQL</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Allows you to write SQL queries directly within the notebook. Often used for querying data from Delta tables or databases.</td>
+                            <td className="border border-gray-600 px-4 py-2">Querying data from Delta tables or databases. Integrates well with Databricks' data management and visualization tools.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Scala</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Used for working directly with Apache Spark's core language. Offers performance advantages and full access to Spark APIs.</td>
+                            <td className="border border-gray-600 px-4 py-2">Large-scale data transformations. Often preferred by data engineers.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>R</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">For data analysis and statistical modeling. Ideal for data scientists working in R environments. Supports packages like ggplot2 and dplyr.</td>
+                            <td className="border border-gray-600 px-4 py-2">Data analysis and statistical modeling.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">💡 Usage Tip</h5>
+                    <p>
+                      You can mix languages in a single notebook by prefixing a cell with magic commands:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
+                      <li><code className="bg-gray-700 px-2 py-1 rounded">%python</code> - Run Python code</li>
+                      <li><code className="bg-gray-700 px-2 py-1 rounded">%sql</code> - Run SQL queries</li>
+                      <li><code className="bg-gray-700 px-2 py-1 rounded">%scala</code> - Run Scala code</li>
+                      <li><code className="bg-gray-700 px-2 py-1 rounded">%r</code> - Run R code</li>
+                      <li><code className="bg-gray-700 px-2 py-1 rounded">%md</code> - Markdown documentation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Others features - 7th subheading */}
+              <div id="others-features" className="mb-8">
+                <h4 className="text-2xl font-semibold text-white mb-4">Others features</h4>
+                <div className="space-y-4 text-gray-300">
+                  <div className="p-4 bg-gray-800 rounded-lg mt-4">
+                    <h5 className="text-xl font-semibold text-white mb-3">Additional Notebook Features</h5>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                          <tr className="bg-gray-700">
+                            <th className="border border-gray-600 px-4 py-2 text-left">Feature</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Purpose</th>
+                            <th className="border border-gray-600 px-4 py-2 text-left">Use</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Grid/Outline View Icon</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Opens the notebook's table of contents or cell outline view.</td>
+                            <td className="border border-gray-600 px-4 py-2">Lets you navigate quickly between notebook cells or sections, especially helpful in long notebooks.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Run all</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Executes all code cells in the notebook sequentially from top to bottom.</td>
+                            <td className="border border-gray-600 px-4 py-2">Used when you want to rerun the entire notebook (e.g., after making changes to inputs or variables).</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Connect</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Manages your cluster connection.</td>
+                            <td className="border border-gray-600 px-4 py-2">Shows which cluster the notebook is currently attached to. Lets you connect, disconnect, or switch clusters. The blue dot next to it means it's currently connected.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Schedule</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Used to automate notebook runs.</td>
+                            <td className="border border-gray-600 px-4 py-2">You can set up recurring runs (daily, weekly, etc.). Often used for production tasks like data refreshes or batch jobs.</td>
+                          </tr>
+                          <tr>
+                            <td className="border border-gray-600 px-4 py-2"><strong>Share</strong></td>
+                            <td className="border border-gray-600 px-4 py-2">Manages collaboration and access permissions.</td>
+                            <td className="border border-gray-600 px-4 py-2">Lets you share the notebook with teammates. You can give view, edit, or run permissions.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* Others features images */}
+                <ImageGallery images={getImages('db1_image15', 'db1_image16')} />
               </div>
             </div>
           </div>
