@@ -477,6 +477,31 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
           { id: 'query-history', title: 'Query History', href: '/tutorials/azure-data-engineer#query-history' },
           { id: 'sql-data-warehouse', title: 'SQL Data Warehouse', href: '/tutorials/azure-data-engineer#sql-data-warehouse' }
         ]
+      },
+      {
+        id: 'azure-databricks-1',
+        title: 'Data Engineering',
+        href: '/tutorials/azure-data-engineer#azure-databricks-1',
+        icon: '🛠️',
+        children: [
+          { id: 'data-engineering', title: 'Overview', href: '/tutorials/azure-data-engineer#data-engineering' },
+          { id: 'jobs-runs', title: "Jobs run's", href: '/tutorials/azure-data-engineer#jobs-runs' },
+          { id: 'data-ingestion', title: 'Data Ingestion', href: '/tutorials/azure-data-engineer#data-ingestion' },
+          { id: 'ai-ml', title: 'AI/ML', href: '/tutorials/azure-data-engineer#ai-ml' },
+          { id: 'playground', title: 'Playground', href: '/tutorials/azure-data-engineer#playground' },
+          { id: 'experiments', title: 'Experiments', href: '/tutorials/azure-data-engineer#experiments' },
+          { id: 'features', title: 'Features', href: '/tutorials/azure-data-engineer#features' },
+          { id: 'models', title: 'Models', href: '/tutorials/azure-data-engineer#models' },
+          { id: 'serving', title: 'Serving', href: '/tutorials/azure-data-engineer#serving' },
+          { id: 'notebook-level-features', title: 'Notebook-level features', href: '/tutorials/azure-data-engineer#notebook-level-features' },
+          { id: 'file-level-features', title: 'File-level Features', href: '/tutorials/azure-data-engineer#file-level-features' },
+          { id: 'edit-level-features', title: 'Edit level features', href: '/tutorials/azure-data-engineer#edit-level-features' },
+          { id: 'view-level-features', title: 'View level features', href: '/tutorials/azure-data-engineer#view-level-features' },
+          { id: 'run-level-features', title: 'Run-level features', href: '/tutorials/azure-data-engineer#run-level-features' },
+          { id: 'help-level-features', title: 'Help-level features', href: '/tutorials/azure-data-engineer#help-level-features' },
+          { id: 'language-level-features', title: 'Language-level features', href: '/tutorials/azure-data-engineer#language-level-features' },
+          { id: 'others-features', title: 'Others features', href: '/tutorials/azure-data-engineer#others-features' }
+        ]
       }
     ]
   };

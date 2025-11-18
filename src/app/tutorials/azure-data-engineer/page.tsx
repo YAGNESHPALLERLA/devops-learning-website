@@ -255,7 +255,7 @@ const PAGE_HEADINGS = [
   { id: 'azure-data-lake', title: 'Azure Data Lake Storage Gen2' },
   { id: 'azure-databricks', title: 'Azure Databricks' },
   { id: 'databricks-sql', title: 'Databricks SQL' },
-  { id: 'azure-databricks-1', title: 'Azure Databricks -1' }
+  { id: 'azure-databricks-1', title: 'Data Engineering' }
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
@@ -2977,9 +2977,9 @@ export default function AzureDataEngineerPage() {
         </section>
         )}
 
-        {/* Azure Databricks -1 Section */}
+        {/* Data Engineering Section */}
         {activeSection === 'azure-databricks-1' && (
-        <section className="space-y-8">
+        <section id="azure-databricks-1" className="space-y-8 scroll-mt-24">
           <div className="space-y-8">
             {/* Data Engineering - Main Heading */}
             <div id="data-engineering" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
