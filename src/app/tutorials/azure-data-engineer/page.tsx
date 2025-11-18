@@ -141,6 +141,59 @@ const azureImages: Record<string, GalleryImage> = {
   db_step9: { src: '/tutorials/azure/images/db_step9.png', width: 1920, height: 1080, alt: 'Managed Resource Group Name' },
   db_step10: { src: '/tutorials/azure/images/db_step10.png', width: 1920, height: 1080, alt: 'Final Step - Review + Create' },
   
+  // Individual images for Workspace Overview (from document)
+  db_workspace_overview_1: { src: '/tutorials/azure/images/db_workspace_overview_1.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Click on workspace' },
+  db_workspace_overview_2: { src: '/tutorials/azure/images/db_workspace_overview_2.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Launch workspace button' },
+  db_workspace_overview_3: { src: '/tutorials/azure/images/db_indiv_1.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Overview' },
+  
+  // Individual images for Workspace Features (7 images)
+  db_workspace_1: { src: '/tutorials/azure/images/db_indiv_2.png', width: 1920, height: 1080, alt: 'Workspace - Top bar' },
+  db_workspace_2: { src: '/tutorials/azure/images/db_indiv_3.png', width: 1920, height: 1080, alt: 'Workspace - Home and Shared' },
+  db_workspace_3: { src: '/tutorials/azure/images/db_indiv_4.png', width: 1920, height: 1080, alt: 'Workspace - Favorites and Trash' },
+  db_workspace_4: { src: '/tutorials/azure/images/db_indiv_5.png', width: 1920, height: 1080, alt: 'Workspace - Users folder' },
+  db_workspace_5: { src: '/tutorials/azure/images/db_indiv_6.png', width: 1920, height: 1080, alt: 'Workspace - User folders' },
+  db_workspace_6: { src: '/tutorials/azure/images/db_indiv_7.png', width: 1920, height: 1080, alt: 'Workspace - Shared folder' },
+  db_workspace_7: { src: '/tutorials/azure/images/db_indiv_8.png', width: 1920, height: 1080, alt: 'Workspace - Additional features' },
+  
+  // Individual images for Notebook (4 images)
+  db_notebook_1: { src: '/tutorials/azure/images/db_indiv_3.png', width: 1920, height: 1080, alt: 'Notebook - Create options' },
+  db_notebook_2: { src: '/tutorials/azure/images/db_indiv_4.png', width: 1920, height: 1080, alt: 'Notebook - Interface' },
+  db_notebook_3: { src: '/tutorials/azure/images/db_indiv_9.png', width: 1920, height: 1080, alt: 'Notebook - Creation' },
+  db_notebook_4: { src: '/tutorials/azure/images/db_indiv_10.png', width: 1920, height: 1080, alt: 'Notebook - Recents' },
+  
+  // Individual images for Catalog (2 images)
+  db_catalog_1: { src: '/tutorials/azure/images/db_indiv_11.png', width: 1920, height: 1080, alt: 'Catalog - Unity Catalog interface' },
+  db_catalog_2: { src: '/tutorials/azure/images/db_indiv_12.png', width: 1920, height: 1080, alt: 'Catalog - Add Data and Governance' },
+  
+  // Individual images for Jobs & Pipelines
+  db_jobs_1: { src: '/tutorials/azure/images/db_indiv_13.png', width: 1920, height: 1080, alt: 'Jobs and Pipelines' },
+  
+  // Individual images for Compute
+  db_compute_1: { src: '/tutorials/azure/images/db_indiv_14.png', width: 1920, height: 1080, alt: 'Compute Clusters' },
+  
+  // Individual images for Marketplace
+  db_marketplace_1: { src: '/tutorials/azure/images/db_indiv_15.png', width: 1920, height: 1080, alt: 'Marketplace' },
+  
+  // Individual images for SQL Editor (2 images)
+  db_sql_editor_1: { src: '/tutorials/azure/images/db_indiv_16.png', width: 1920, height: 1080, alt: 'SQL Editor' },
+  db_sql_editor_2: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Editor - SQL Warehouse' },
+  
+  // Individual images for Queries
+  db_queries_1: { src: '/tutorials/azure/images/db_indiv_17.png', width: 1920, height: 1080, alt: 'Queries' },
+  
+  // Individual images for Dashboards (2 images)
+  db_dashboards_1: { src: '/tutorials/azure/images/db_indiv_18.png', width: 1920, height: 1080, alt: 'Dashboards' },
+  db_dashboards_2: { src: '/tutorials/azure/images/db_indiv_19.png', width: 1920, height: 1080, alt: 'Dashboards - Features' },
+  
+  // Individual images for Alerts
+  db_alerts_1: { src: '/tutorials/azure/images/db_indiv_20.png', width: 1920, height: 1080, alt: 'Alerts' },
+  
+  // Individual images for Query History
+  db_query_history_1: { src: '/tutorials/azure/images/db_indiv_21.png', width: 1920, height: 1080, alt: 'Query History' },
+  
+  // Individual images for SQL Warehouse
+  db_sql_warehouse_1: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
+  
   image85: { src: '/tutorials/azure/images/image85.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
   image86: { src: '/tutorials/azure/images/image86.png', width: 1920, height: 1080, alt: 'Databricks architecture' },
   image87: { src: '/tutorials/azure/images/image87.png', width: 1920, height: 1080, alt: 'Common use cases' },
@@ -1670,7 +1723,7 @@ export default function AzureDataEngineerPage() {
                 </div>
                 
                 {/* Workspace Overview Images - image6.png, image9.png, image10.png from document */}
-                <ImageGallery images={getImages('image91')} />
+                <ImageGallery images={getImages('db_workspace_overview_1', 'db_workspace_overview_2', 'db_workspace_overview_3')} />
                 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Left Sidebar (Navigation Menu):</h5>
@@ -1814,7 +1867,8 @@ export default function AzureDataEngineerPage() {
                       </table>
                     </div>
                   </div>
-                  <ImageGallery images={getImages('image92')} />
+                  {/* Workspace Features - All 7 images from document */}
+                  <ImageGallery images={getImages('db_workspace_1', 'db_workspace_2', 'db_workspace_3', 'db_workspace_4', 'db_workspace_5', 'db_workspace_6', 'db_workspace_7')} />
                 </div>
 
                 {/* Notebook */}
@@ -1827,7 +1881,8 @@ export default function AzureDataEngineerPage() {
                     <h6 className="text-lg font-semibold text-blue-400 mb-2">Create First Notebook:</h6>
                     <p><strong>Recents:</strong> Shows recently opened notebooks or files.</p>
                   </div>
-                  <ImageGallery images={getImages('image93')} />
+                  {/* Notebook - All 4 images from document */}
+                  <ImageGallery images={getImages('db_notebook_1', 'db_notebook_2', 'db_notebook_3', 'db_notebook_4')} />
                   </div>
                   
                 {/* Catalog and Features */}
@@ -1881,7 +1936,8 @@ export default function AzureDataEngineerPage() {
                       <li><strong>Add Data:</strong> Option to import or register new datasets into the catalog.</li>
                     </ul>
                   </div>
-                  <ImageGallery images={getImages('image94')} />
+                  {/* Catalog - All 2 images from document */}
+                  <ImageGallery images={getImages('db_catalog_1', 'db_catalog_2')} />
                   </div>
                   
                 {/* Jobs & Pipelines */}
@@ -1929,11 +1985,12 @@ export default function AzureDataEngineerPage() {
                       <li><strong>Run parameters</strong> → Lists any input values (like parameters) used in that run.</li>
                     </ul>
                   </div>
-                  <ImageGallery images={getImages('image95')} />
-                  </div>
-                  
+                  {/* Jobs & Pipelines - image from document */}
+                  <ImageGallery images={getImages('db_jobs_1')} />
+                </div>
+
                 {/* Compute (Clusters) */}
-                  <div className="p-4 bg-gray-800 rounded-lg">
+                <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Compute (Clusters)</h5>
                   
                   <div className="mt-4">
@@ -1974,7 +2031,8 @@ export default function AzureDataEngineerPage() {
                   </ul>
                 </div>
               </div>
-                  <ImageGallery images={getImages('image97')} />
+                  {/* Compute - image from document */}
+                  <ImageGallery images={getImages('db_compute_1')} />
                 </div>
 
                 {/* Marketplace */}
@@ -2024,7 +2082,8 @@ export default function AzureDataEngineerPage() {
                       </table>
                     </div>
                   </div>
-                  <ImageGallery images={getImages('image98')} />
+                  {/* Marketplace - image from document */}
+                  <ImageGallery images={getImages('db_marketplace_1')} />
                 </div>
               </div>
             </div>
@@ -2201,7 +2260,8 @@ export default function AzureDataEngineerPage() {
                     </table>
                   </div>
                 </div>
-                <ImageGallery images={getImages('image99')} />
+                {/* SQL Editor - All 2 images from document */}
+                <ImageGallery images={getImages('db_sql_editor_1', 'db_sql_editor_2')} />
               </div>
             </div>
 
@@ -2231,7 +2291,8 @@ export default function AzureDataEngineerPage() {
                     <li><strong>Dashboards Integration</strong> – Save query results and directly add them to dashboards for visualization.</li>
                   </ul>
                 </div>
-                <ImageGallery images={getImages('image101')} />
+                {/* Queries - image from document */}
+                <ImageGallery images={getImages('db_queries_1')} />
               </div>
             </div>
 
@@ -2295,7 +2356,8 @@ export default function AzureDataEngineerPage() {
                     <li><strong>Legacy Dashboard Use Cases:</strong> Maintaining compatibility with older workflows, Referencing historical SQL visualizations, Supporting BI users during migration to new dashboards</li>
                   </ul>
                 </div>
-                <ImageGallery images={getImages('image102')} />
+                {/* Dashboards - All 2 images from document */}
+                <ImageGallery images={getImages('db_dashboards_1', 'db_dashboards_2')} />
               </div>
             </div>
 
@@ -2485,7 +2547,8 @@ export default function AzureDataEngineerPage() {
                     </table>
                 </div>
                 </div>
-                <ImageGallery images={getImages('image106')} />
+                {/* Alerts - image from document */}
+                <ImageGallery images={getImages('db_alerts_1')} />
               </div>
             </div>
 
@@ -2590,7 +2653,8 @@ export default function AzureDataEngineerPage() {
                     </table>
                 </div>
                 </div>
-                <ImageGallery images={getImages('image107')} />
+                {/* Query History - image from document */}
+                <ImageGallery images={getImages('db_query_history_1')} />
               </div>
             </div>
 
@@ -2753,7 +2817,8 @@ export default function AzureDataEngineerPage() {
                     </table>
                   </div>
                 </div>
-                <ImageGallery images={getImages('image108', 'image109', 'image110', 'image111', 'image112')} />
+                {/* SQL Warehouse - image from document */}
+                <ImageGallery images={getImages('db_sql_warehouse_1')} />
               </div>
             </div>
           </div>
