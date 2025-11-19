@@ -75,7 +75,6 @@ export async function GET(_request: NextRequest) {
       connections.map(async (conn) => {
         // Check if current user is the sender or receiver (handle both string and ObjectId)
         const fromUserIdStr = conn.fromUserId?.toString();
-        const toUserIdStr = conn.toUserId?.toString();
         const currentUserIdStr = userIdString;
         
         const isFromUser = fromUserIdStr === currentUserIdStr;
@@ -94,13 +93,8 @@ export async function GET(_request: NextRequest) {
           return null;
         }
         
-        // Try to find user by ObjectId first, then by string if needed
-        let otherUser = await db.collection('users').findOne({ _id: otherUserObjId });
-        
-        // If not found with ObjectId, try with string format
-        if (!otherUser && typeof otherUserId === 'string') {
-          otherUser = await db.collection('users').findOne({ _id: otherUserId });
-        }
+        // Find user by ObjectId
+        const otherUser = await db.collection('users').findOne({ _id: otherUserObjId });
         
         console.log('Looking up user:', { otherUserId: otherUserObjId.toString(), foundUser: !!otherUser, userName: otherUser?.name });
         
