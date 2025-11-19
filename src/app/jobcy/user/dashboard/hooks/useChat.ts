@@ -236,8 +236,8 @@ export function useChat() {
         
         // Only update if messages actually changed to avoid unnecessary re-renders
         setMessages(prev => {
-          const prevIds = new Set(prev.map(m => m.id));
-          const newIds = new Set(formattedMessages.map(m => m.id));
+          const prevIds = new Set(prev.map((m: Message) => m.id));
+          const newIds = new Set(formattedMessages.map((m: Message) => m.id));
           const idsMatch = prevIds.size === newIds.size && 
                           [...prevIds].every(id => newIds.has(id));
           
