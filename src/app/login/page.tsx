@@ -11,6 +11,12 @@ import {
   LogIn,
 } from "lucide-react";
 import Link from "next/link";
+import {
+  AUTH_STATUS_DETAILS,
+  AUTH_STATUS_HEADING,
+  AUTH_STATUS_MESSAGE,
+  AUTH_SYSTEM_AVAILABLE,
+} from "@/config/authStatus";
 
 type Errors = {
   email?: string;
@@ -18,7 +24,45 @@ type Errors = {
   general?: string;
 };
 
-function LoginForm() {
+function AuthPausedNotice() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center p-4">
+      <div className="w-full max-w-xl space-y-6 text-center">
+        <Link href="/" className="inline-block">
+          <div className="flex items-center justify-center space-x-3">
+            <div className="w-14 h-14 bg-gradient-to-br from-rose-500 to-purple-600 rounded-2xl flex items-center justify-center">
+              <span className="text-white font-bold text-2xl">OHG</span>
+            </div>
+            <div className="text-left">
+              <p className="text-2xl font-bold text-white leading-tight">
+                OneHubGlobal
+              </p>
+              <p className="text-sm text-gray-400">OHG365</p>
+            </div>
+          </div>
+        </Link>
+
+        <div className="bg-[#1a1a1a] border border-gray-700 rounded-2xl shadow-2xl p-8 space-y-5">
+          <h1 className="text-3xl font-bold text-white">
+            {AUTH_STATUS_HEADING}
+          </h1>
+          <p className="text-gray-300">{AUTH_STATUS_MESSAGE}</p>
+          <p className="text-sm text-gray-400">{AUTH_STATUS_DETAILS}</p>
+          <div className="pt-4">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-rose-500 to-red-600 text-white font-semibold shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 transition-all duration-300"
+            >
+              Continue exploring tutorials
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ActiveLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
@@ -254,5 +298,12 @@ export default function GlobalLogin() {
       <LoginForm />
     </Suspense>
   );
+}
+
+function LoginForm() {
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return <AuthPausedNotice />;
+  }
+  return <ActiveLoginForm />;
 }
 
