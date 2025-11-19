@@ -26,13 +26,45 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
 
     // Connect to database
     const db = await connectDB();
+    const { ObjectId } = await import('mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
-    // Get chat messages
-    const messages = await db.collection('messages').find({ chatId }).sort({ createdAt: 1 }).toArray();
+    // Convert chatId to ObjectId for querying (handle both string and ObjectId formats)
+    let chatIdObj: typeof ObjectId.prototype;
+    try {
+      chatIdObj = toObjectId(chatId);
+    } catch {
+      // If conversion fails, try querying with string
+      chatIdObj = chatId as unknown as typeof ObjectId.prototype;
+    }
+    
+    // Query messages with both ObjectId and string formats
+    const messages = await db.collection('messages').find({ 
+      $or: [
+        { chatId: chatIdObj },
+        { chatId: chatId }
+      ]
+    }).sort({ createdAt: 1 }).toArray();
     
     console.log('Found messages:', messages.length);
     
-    return NextResponse.json({ messages });
+    // Format messages with string IDs for frontend
+    const formattedMessages = messages.map(msg => ({
+      id: msg._id?.toString() || msg.id?.toString(),
+      _id: msg._id?.toString() || msg.id?.toString(),
+      chatId: msg.chatId?.toString() || msg.chatId,
+      content: msg.content,
+      sender: {
+        id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
+        _id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
+        name: msg.sender?.name || 'Unknown',
+        email: msg.sender?.email || ''
+      },
+      isRead: msg.isRead || false,
+      createdAt: msg.createdAt
+    }));
+    
+    return NextResponse.json({ messages: formattedMessages });
   } catch (error) {
     console.error('Chat messages error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
@@ -67,17 +99,27 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
 
     // Connect to database
     const db = await connectDB();
+    const { ObjectId } = await import('mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
     // Get user details
-    const { toObjectId } = await import('@/lib/mongodb');
     const user = await db.collection('users').findOne({ _id: toObjectId(decoded.id) });
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
     
-    // Create message
+    // Convert chatId to ObjectId for consistent storage
+    let chatIdObj: typeof ObjectId.prototype;
+    try {
+      chatIdObj = toObjectId(chatId);
+    } catch {
+      // If conversion fails, use string format
+      chatIdObj = chatId as unknown as typeof ObjectId.prototype;
+    }
+    
+    // Create message - store chatId as ObjectId for consistency
     const message = {
-      chatId,
+      chatId: chatIdObj,
       content,
       sender: {
         id: user._id,
@@ -93,11 +135,22 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
     
     console.log('Message saved:', result.insertedId);
     
+    // Format response message with string IDs for frontend
     return NextResponse.json({ 
       success: true, 
       message: {
-        id: result.insertedId,
-        ...message
+        id: result.insertedId.toString(),
+        _id: result.insertedId.toString(),
+        chatId: chatIdObj.toString(),
+        content: message.content,
+        sender: {
+          id: message.sender.id?.toString() || message.sender.id,
+          _id: message.sender.id?.toString() || message.sender.id,
+          name: message.sender.name,
+          email: message.sender.email
+        },
+        isRead: message.isRead,
+        createdAt: message.createdAt
       }
     });
   } catch (error) {

@@ -248,8 +248,25 @@ export function useChat() {
 
         if (response.ok) {
           const data = await response.json();
+          // Format message to match expected structure
+          const formattedMessage = {
+            id: data.message.id?.toString() || data.message._id?.toString(),
+            content: data.message.content,
+            sender: {
+              id: data.message.sender.id?.toString() || data.message.sender._id?.toString(),
+              _id: data.message.sender.id?.toString() || data.message.sender._id?.toString(),
+              name: data.message.sender.name,
+              email: data.message.sender.email
+            },
+            isRead: data.message.isRead || false,
+            createdAt: data.message.createdAt || new Date().toISOString()
+          };
           // Add message to local state
-          setMessages(prev => [...prev, data.message]);
+          setMessages(prev => [...prev, formattedMessage]);
+          // Refresh messages to ensure consistency
+          if (currentChat) {
+            await fetchMessages(currentChat.id);
+          }
         } else {
           setError("Failed to send message");
         }
