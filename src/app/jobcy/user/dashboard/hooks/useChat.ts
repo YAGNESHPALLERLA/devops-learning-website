@@ -255,7 +255,7 @@ export function useChat() {
           
           // Mark as read in parallel
           Promise.all(
-            unreadMessages.map(msg => 
+            unreadMessages.map((msg: Message) => 
               fetch(`${"/api/jobcy"}/chat/messages/${msg.id}/read`, {
                 method: 'PUT',
                 headers: {
@@ -339,7 +339,7 @@ export function useChat() {
             createdAt: data.message.createdAt || new Date().toISOString()
           };
           // Replace temp message with real one
-          setMessages(prev => prev.map(msg => 
+          setMessages(prev => prev.map((msg: Message) => 
             msg.id === tempMessage.id ? formattedMessage : msg
           ));
           // Refresh messages to ensure consistency
@@ -348,7 +348,7 @@ export function useChat() {
           }
         } else {
           // Remove temp message on error
-          setMessages(prev => prev.filter(msg => msg.id !== tempMessage.id));
+          setMessages(prev => prev.filter((msg: Message) => msg.id !== tempMessage.id));
           setError("Failed to send message");
         }
       }
@@ -378,9 +378,9 @@ export function useChat() {
 
       if (response.ok) {
         if (deleteForEveryone) {
-          setMessages(prev => prev.filter(msg => msg.id !== messageId));
+          setMessages(prev => prev.filter((msg: Message) => msg.id !== messageId));
         } else {
-          setMessages(prev => prev.map(msg => 
+          setMessages(prev => prev.map((msg: Message) => 
             msg.id === messageId ? { ...msg, deletedForSender: true } : msg
           ));
         }
