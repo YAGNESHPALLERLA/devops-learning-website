@@ -50,13 +50,15 @@ export default function UserLogin() {
 };
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!validateForm()) return;
     setIsLoading(true);
     setLoginError("");
 
     try {
       console.log("Login URL:", `/api/jobcy/login`);
+      console.log("Login data:", { email: formData.email });
 
       const response = await fetch(`/api/jobcy/login`, {
         method: "POST",
@@ -67,32 +69,51 @@ export default function UserLogin() {
         }),
       });
 
-      const data = await response.json();
-      console.log("Login response:", data); // Debug log
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+
+      let data;
+      try {
+        data = await response.json();
+        console.log("Login response:", data);
+      } catch (jsonError) {
+        console.error("Failed to parse JSON response:", jsonError);
+        setLoginError("Server returned an invalid response. Please try again.");
+        setIsLoading(false);
+        return;
+      }
 
       if (!response.ok) {
-        setLoginError(data.message || "Invalid credentials");
+        setLoginError(data.error || data.message || "Invalid credentials. Please check your email and password.");
+        setIsLoading(false);
+        return;
+      }
+
+      if (!data.token || !data.user) {
+        setLoginError("Invalid response from server. Please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      // Store authentication data
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("registeredEmail", formData.email);
+
+      console.log("User role:", data.user.role);
+      console.log("Login successful, redirecting...");
+
+      // Redirect based on role
+      if (data.user.role === "admin") {
+        window.location.href = "/jobcy/admin/dashboard";
+      } else if (data.user.role === "hr") {
+        window.location.href = "/jobcy/hr/dashboard";
       } else {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // Store email for "continue with account" feature
-        localStorage.setItem("registeredEmail", formData.email);
-
-        console.log("User role:", data.user.role); // Debug log
-
-        // Redirect based on role
-        if (data.user.role === "admin") {
-          window.location.href = "/jobcy/admin/dashboard";
-        } else if (data.user.role === "hr") {
-          window.location.href = "/jobcy/hr/dashboard";
-        } else {
-          window.location.href = "/jobcy/user/dashboard";
-        }
+        window.location.href = "/jobcy/user/dashboard";
       }
     } catch (error) {
       console.error("Login error:", error);
-      setLoginError("Unable to connect to server. Try again later.");
-    } finally {
+      setLoginError("Unable to connect to server. Please check your internet connection and try again.");
       setIsLoading(false);
     }
   };
@@ -113,7 +134,7 @@ export default function UserLogin() {
         </div>
 
         <div className="bg-[#1a1a1a] rounded-xl shadow-xl border border-gray-700 p-8 transition-all hover:border-gray-600">
-          <div className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {loginError && (
               <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 flex items-start space-x-3 animate-fadeIn">
                 <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
@@ -214,7 +235,7 @@ export default function UserLogin() {
             </div>
 
             <button
-              onClick={handleSubmit}
+              type="submit"
               disabled={isLoading}
               className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-gray-700 disabled:to-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:scale-[1.02] active:scale-[0.98]"
             >
@@ -227,7 +248,7 @@ export default function UserLogin() {
                 "Sign In"
               )}
             </button>
-          </div>
+          </form>
 
           <div className="mt-6 pt-6 border-t border-gray-700">
             <div className="grid grid-cols-2 gap-3">
