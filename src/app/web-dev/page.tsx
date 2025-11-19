@@ -4,13 +4,20 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import TechLayout from '@/components/tech-layout';
 import PageNavigation from '@/components/page-navigation';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function WebDevPage() {
   const [activeSection, setActiveSection] = useState('introduction');
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
+    AUTH_SYSTEM_AVAILABLE ? null : true
+  );
 
   // Authentication check - runs immediately on mount
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     if (typeof window === 'undefined') return;
     
     const token = localStorage.getItem('token');

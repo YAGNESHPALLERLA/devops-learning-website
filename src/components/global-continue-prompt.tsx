@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import ContinueModal from '@/components/continue-modal';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 // Helper function to validate JWT token
 function isValidToken(token: string): boolean {
@@ -50,6 +51,9 @@ const tutorialsDropdownRoutes = [
 ];
 
 export default function GlobalContinuePrompt() {
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return null;
+  }
   const pathname = usePathname();
   const [showContinueModal, setShowContinueModal] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);

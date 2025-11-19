@@ -9,6 +9,7 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 function ContinueForm() {
   const router = useRouter();
@@ -18,6 +19,10 @@ function ContinueForm() {
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      router.replace(redirectTo);
+      return;
+    }
     // Get stored email from localStorage - check multiple sources
     let email: string | null = localStorage.getItem("registeredEmail");
     
@@ -130,6 +135,9 @@ function ContinueForm() {
 }
 
 export default function ContinuePage() {
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return null;
+  }
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">

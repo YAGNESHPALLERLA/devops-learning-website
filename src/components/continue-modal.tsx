@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogIn, User, ArrowRight, X } from "lucide-react";
+import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 interface ContinueModalProps {
   registeredEmail: string;
@@ -11,6 +12,7 @@ interface ContinueModalProps {
 }
 
 export default function ContinueModal({ registeredEmail, redirectTo, onClose }: ContinueModalProps) {
+  if (!AUTH_SYSTEM_AVAILABLE) return null;
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
 

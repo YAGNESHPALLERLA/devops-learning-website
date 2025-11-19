@@ -7,6 +7,7 @@ import LogoLoop from '@/components/logo-loop';
 import HeroCarousel from '@/components/hero-carousel';
 import AlumniScrollingGallery from '@/components/AlumniScrollingGallery';
 import { useState, useEffect } from 'react';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 // Helper function to validate JWT token
 const isValidToken = (): boolean => {
@@ -34,6 +35,11 @@ const isValidToken = (): boolean => {
 const handleTutorialClick = (e: React.MouseEvent, href: string) => {
   e.preventDefault();
   e.stopPropagation();
+
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    window.location.href = href;
+    return;
+  }
   
   // Check authentication
   const authed = isValidToken();

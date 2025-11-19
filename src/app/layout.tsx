@@ -38,15 +38,12 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/ohg365.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ohg365.png" />
         {/* Blocking script that runs before React - checks auth for tutorial routes - MUST BE FIRST */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const AUTH_SYSTEM_AVAILABLE = ${AUTH_SYSTEM_AVAILABLE ? "true" : "false"};
+        {AUTH_SYSTEM_AVAILABLE && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
               (function() {
                 try {
-                  if (!AUTH_SYSTEM_AVAILABLE) {
-                    return;
-                  }
                   const path = window.location.pathname;
                   // Only require registration for tutorials dropdown routes
                   const isTutorialRoute = 
@@ -242,8 +239,9 @@ export default function RootLayout({
                 }
               })();
             `,
-          }}
-        />
+            }}
+          />
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

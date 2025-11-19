@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 // Public routes that don't require authentication
 const publicRoutes = [
@@ -28,8 +29,15 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Check if trying to access tutorials dropdown routes - only these require registration
     const currentPath = window.location.pathname;
+    const isJobcyRoute = currentPath.startsWith("/jobcy");
+
+    if (!AUTH_SYSTEM_AVAILABLE && !isJobcyRoute) {
+      setIsAuthenticated(true);
+      return;
+    }
+
+    // Check if trying to access tutorials dropdown routes - only these require registration
     const isTutorialDropdownRoute = 
       currentPath === "/tutorials/medical-coding" ||
       currentPath === "/tutorials/programming" ||
@@ -41,6 +49,10 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       currentPath.startsWith("/tutorials/courses/");
     
     if (isTutorialDropdownRoute) {
+      if (!AUTH_SYSTEM_AVAILABLE) {
+        setIsAuthenticated(true);
+        return;
+      }
       // Check for token IMMEDIATELY and validate it
       const token = localStorage.getItem("token");
       console.log('[AUTH_GUARD] Tutorial dropdown route detected:', currentPath);
@@ -225,6 +237,11 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     const isPublic = publicRoutes.some(route => 
       pathname === route || pathname.startsWith(route)
     );
+
+    if (!AUTH_SYSTEM_AVAILABLE && !pathname.startsWith("/jobcy")) {
+      setIsAuthenticated(true);
+      return;
+    }
 
     if (isPublic) {
       setIsAuthenticated(true);

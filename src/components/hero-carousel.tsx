@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 const slides = [
   {
@@ -269,6 +270,10 @@ export default function HeroCarousel() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    if (!AUTH_SYSTEM_AVAILABLE) {
+                      window.location.href = slide.buttonLink;
+                      return;
+                    }
                     const authed = isValidToken();
                     if (!authed) {
                       const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
@@ -305,6 +310,10 @@ export default function HeroCarousel() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    if (!AUTH_SYSTEM_AVAILABLE) {
+                      window.location.href = slide.buttonLink;
+                      return;
+                    }
                     const authed = isValidToken();
                     if (!authed) {
                       const redirectUrl = `/register?redirect=${encodeURIComponent(slide.buttonLink)}`;
