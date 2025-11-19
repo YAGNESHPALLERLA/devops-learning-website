@@ -51,9 +51,6 @@ const tutorialsDropdownRoutes = [
 ];
 
 export default function GlobalContinuePrompt() {
-  if (!AUTH_SYSTEM_AVAILABLE) {
-    return null;
-  }
   const pathname = usePathname();
   const [showContinueModal, setShowContinueModal] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
@@ -62,6 +59,10 @@ export default function GlobalContinuePrompt() {
   const isCheckingRef = useRef<boolean>(false); // Track if we're already checking
   const hasProcessedSessionRef = useRef<boolean>(false); // Track if we've already processed this session
   const sessionKey = 'continueModalShown';
+
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return null;
+  }
 
   // Initialize: Check sessionStorage once on mount
   useEffect(() => {

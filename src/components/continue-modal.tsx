@@ -12,9 +12,12 @@ interface ContinueModalProps {
 }
 
 export default function ContinueModal({ registeredEmail, redirectTo, onClose }: ContinueModalProps) {
-  if (!AUTH_SYSTEM_AVAILABLE) return null;
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
+
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return null;
+  }
 
   const handleContinue = () => {
     // Mark as shown in this session so it doesn't show again
