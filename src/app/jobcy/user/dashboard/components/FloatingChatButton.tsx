@@ -25,6 +25,7 @@ export default function FloatingChatButton({ isDark = false }: FloatingChatButto
     setCurrentChat,
     joinChat,
     fetchMessages,
+    unreadCount,
   } = useChat();
 
   useEffect(() => {
@@ -103,13 +104,19 @@ export default function FloatingChatButton({ isDark = false }: FloatingChatButto
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all hover:scale-110 text-white"
+          className="relative w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all hover:scale-110 text-white"
           title="Chat with connections"
         >
           {isOpen ? (
             <X className="w-6 h-6" />
           ) : (
             <MessageCircle className="w-6 h-6" />
+          )}
+          {/* Notification Badge */}
+          {unreadCount > 0 && !isOpen && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 border-2 border-[#1a1a1a] shadow-lg animate-pulse">
+              {unreadCount > 99 ? '99+' : unreadCount}
+            </span>
           )}
         </button>
 

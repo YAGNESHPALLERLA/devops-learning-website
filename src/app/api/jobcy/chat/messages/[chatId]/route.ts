@@ -49,20 +49,25 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     console.log('Found messages:', messages.length);
     
     // Format messages with string IDs for frontend
-    const formattedMessages = messages.map(msg => ({
-      id: msg._id?.toString() || msg.id?.toString(),
-      _id: msg._id?.toString() || msg.id?.toString(),
-      chatId: msg.chatId?.toString() || msg.chatId,
-      content: msg.content,
-      sender: {
-        id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
-        _id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
-        name: msg.sender?.name || 'Unknown',
-        email: msg.sender?.email || ''
-      },
-      isRead: msg.isRead || false,
-      createdAt: msg.createdAt
-    }));
+    const formattedMessages = messages
+      .filter(msg => !msg.deletedForEveryone) // Filter out messages deleted for everyone
+      .map(msg => ({
+        id: msg._id?.toString() || msg.id?.toString(),
+        _id: msg._id?.toString() || msg.id?.toString(),
+        chatId: msg.chatId?.toString() || msg.chatId,
+        content: msg.content,
+        sender: {
+          id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
+          _id: msg.sender?.id?.toString() || msg.sender?._id?.toString() || msg.sender?.id,
+          name: msg.sender?.name || 'Unknown',
+          email: msg.sender?.email || ''
+        },
+        isRead: msg.isRead || false,
+        readAt: msg.readAt,
+        deletedForSender: msg.deletedForSender || false,
+        deletedForEveryone: msg.deletedForEveryone || false,
+        createdAt: msg.createdAt
+      }));
     
     return NextResponse.json({ messages: formattedMessages });
   } catch (error) {

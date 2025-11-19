@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { 
   Search, Users, MessageCircle, Send, X, Sparkles, UserCheck, Clock, 
   CheckCircle, XCircle, Bell, Heart, Share2, MessageSquare, Image as ImageIcon,
-  Video, FileText, MoreVertical, ThumbsUp, ThumbsDown, Edit2, Trash2
+  Video, FileText, MoreVertical, ThumbsUp, ThumbsDown, Edit2, Trash2, Smile
 } from "lucide-react";
 import ConnectionCard from "./ConnectionCard";
 import { useChat } from "../hooks/useChat";
@@ -126,11 +126,19 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
     getOrCreateChat,
     fetchMessages,
     sendMessage,
+    deleteMessage,
     joinChat,
     sendTyping,
     stopTyping,
     setCurrentChat
   } = useChat();
+
+  // Expose fetchMessages to ChatPanel for manual refresh
+  const refreshMessages = React.useCallback(() => {
+    if (currentChat) {
+      fetchMessages(currentChat.id, true);
+    }
+  }, [currentChat, fetchMessages]);
 
   // Sync with prop changes
   React.useEffect(() => {
@@ -382,7 +390,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           setSelectedConnection(connection as Connection);
           setCurrentChat(chat);
           joinChat(chat.id);
-          await fetchMessages(chat.id);
+          await fetchMessages(chat.id, true); // Mark as read when opening
           setShowChatModal(true);
         }
       } catch (error) {
@@ -411,16 +419,43 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
         return;
       }
 
-      // Create share message with post content
-      const shareMessage = `📢 Shared Post:\n\n${postToShare.content}\n\n${postToShare.image ? `[Image attached]` : ''}`;
+      // Open chat panel if not already open
+      if (!showChatModal) {
+        const connection = actualConnections.find(c => c.id.toString() === connectionId);
+        if (connection) {
+          setSelectedConnection(connection as Connection);
+          setCurrentChat(chat);
+          joinChat(chat.id);
+          await fetchMessages(chat.id);
+          setShowChatModal(true);
+        }
+      }
+
+      // Create structured post share data
+      const postShareData = {
+        type: 'shared_post',
+        post: {
+          id: postToShare.id,
+          content: postToShare.content,
+          image: postToShare.image,
+          author: {
+            id: postToShare.author.id,
+            name: postToShare.author.name,
+            title: postToShare.author.title,
+            avatar: postToShare.author.avatar
+          },
+          likes: postToShare.likes,
+          comments: postToShare.comments,
+          shares: postToShare.shares,
+          createdAt: postToShare.createdAt
+        }
+      };
+
+      // Send as JSON string that can be parsed
+      const shareMessage = JSON.stringify(postShareData);
       
       // Send message via chat
       await sendMessage(shareMessage);
-      
-      // If post has image, we could send it as a separate message or include in the message
-      if (postToShare.image) {
-        await sendMessage(postToShare.image);
-      }
 
       alert("✅ Post shared successfully!");
       setShowShareModal(false);
@@ -592,7 +627,7 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       {/* Header with Tabs */}
       <div className="mb-6 p-6 rounded-2xl bg-[#1a1a1a] border border-gray-700">
         <div className="flex items-center justify-between mb-4">
@@ -1195,9 +1230,9 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
         </div>
       )}
 
-      {/* Chat Modal */}
+      {/* Chat Panel - Right Side */}
       {showChatModal && selectedConnection && (
-        <ChatModal
+        <ChatPanel
           connection={selectedConnection}
           onClose={() => {
             setShowChatModal(false);
@@ -1206,6 +1241,8 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
           currentChat={currentChat}
           messages={messages}
           sendMessage={sendMessage}
+          deleteMessage={deleteMessage}
+          fetchMessages={refreshMessages}
           sendTyping={sendTyping}
           stopTyping={stopTyping}
           isLoading={isLoading}
@@ -1230,33 +1267,41 @@ export default function ConnectTab({ connections, isDark = false }: ConnectTabPr
   );
 }
 
-// Chat Modal Component
-interface ChatModalProps {
+// Chat Panel Component - Right Side
+interface ChatPanelProps {
   connection: Connection;
   onClose: () => void;
   currentChat: { id: string } | null;
   messages: ChatMessage[];
   sendMessage: (content: string) => Promise<void>;
+  deleteMessage: (messageId: string, deleteForEveryone: boolean) => Promise<void>;
+  fetchMessages: () => void;
   sendTyping: (chatId: string) => void;
   stopTyping: (chatId: string) => void;
   isLoading: boolean;
   getGradientColors: (name: string) => string;
 }
 
-function ChatModal({ 
+function ChatPanel({ 
   connection, 
   onClose, 
   currentChat, 
   messages, 
   sendMessage, 
+  deleteMessage,
+  fetchMessages,
   sendTyping, 
   stopTyping, 
   isLoading,
   getGradientColors
-}: ChatModalProps) {
+}: ChatPanelProps) {
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [hoveredMessageId, setHoveredMessageId] = useState<string | null>(null);
+  const [showDeleteMenu, setShowDeleteMenu] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
   
   const getCurrentUserId = () => {
     try {
@@ -1270,10 +1315,66 @@ function ChatModal({
     }
     return null;
   };
+
+  // Helper function to parse message content
+  const parseMessage = (content: string) => {
+    try {
+      const parsed = JSON.parse(content);
+      if (parsed.type === 'shared_post') {
+        return parsed;
+      }
+    } catch {
+      // Not JSON, return as regular message
+    }
+    return null;
+  };
   
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Poll for new messages when chat panel is open
+  useEffect(() => {
+    if (!currentChat) return;
+    
+    // Fetch immediately when chat opens
+    fetchMessages();
+    
+    // Set up polling interval for real-time updates
+    const interval = setInterval(() => {
+      fetchMessages();
+    }, 2000); // Poll every 2 seconds
+    
+    return () => clearInterval(interval);
+  }, [currentChat?.id, fetchMessages]);
+
+  // Close emoji picker when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target as Node)) {
+        setShowEmojiPicker(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Common emojis
+  const commonEmojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '💩', '👻', '💀', '☠️', '👽', '👾', '🤖', '🎃', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'];
+
+  const insertEmoji = (emoji: string) => {
+    setNewMessage(prev => prev + emoji);
+    setShowEmojiPicker(false);
+  };
+
+  const getStatusIcon = (status?: string, isRead?: boolean) => {
+    if (isRead) return '✓✓'; // Double check for seen
+    if (status === 'seen') return '✓✓';
+    if (status === 'delivered') return '✓✓';
+    if (status === 'sent') return '✓';
+    if (status === 'sending') return '⏳';
+    return '✓';
+  };
 
   const handleSend = async () => {
     if (newMessage.trim() && currentChat) {
@@ -1297,8 +1398,12 @@ function ChatModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-[#1a1a1a] rounded-2xl border border-gray-700 w-full max-w-2xl mx-4 h-[80vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 pointer-events-none">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose}></div>
+      
+      {/* Chat Panel - Right Side */}
+      <div className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#1a1a1a] border-l border-gray-700 flex flex-col shadow-2xl pointer-events-auto">
         {/* Chat Header */}
         <div className="p-5 bg-[#0a0a0a] border-b border-gray-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -1348,25 +1453,128 @@ function ChatModal({
               {messages.map((msg, index) => {
                 const currentUserId = getCurrentUserId();
                 const isOwnMessage = msg.sender.id === currentUserId || msg.sender._id === currentUserId;
+                const sharedPost = parseMessage(msg.content);
+                const isDeleted = (msg as any).deletedForSender || (msg as any).deletedForEveryone;
+                
                 return (
                   <div 
                     key={msg.id} 
-                    className={`mb-4 flex ${isOwnMessage ? 'justify-end' : 'justify-start'}`}
+                    className={`mb-4 flex ${isOwnMessage ? 'justify-end' : 'justify-start'} group relative`}
+                    onMouseEnter={() => isOwnMessage && setHoveredMessageId(msg.id)}
+                    onMouseLeave={() => setHoveredMessageId(null)}
                   >
                     <div className={`max-w-[75%] ${isOwnMessage ? 'items-end' : 'items-start'} flex flex-col`}>
-                      <div className={`px-4 py-3 rounded-2xl shadow-md ${
-                        isOwnMessage 
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-br-md' 
-                          : 'bg-[#1a1a1a] text-white rounded-bl-md border border-gray-700'
-                      }`}>
-                        <p className="text-sm leading-relaxed break-words">{msg.content}</p>
-                      </div>
+                      {isDeleted ? (
+                        <div className={`px-4 py-2 rounded-2xl ${
+                          isOwnMessage 
+                            ? 'bg-gray-700/50 text-gray-400' 
+                            : 'bg-gray-700/50 text-gray-400'
+                        }`}>
+                          <p className="text-xs italic">This message was deleted</p>
+                        </div>
+                      ) : sharedPost ? (
+                        // Render shared post card
+                        <div className={`px-4 py-3 rounded-2xl shadow-md relative ${
+                          isOwnMessage 
+                            ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-br-md' 
+                            : 'bg-[#1a1a1a] text-white rounded-bl-md border border-gray-700'
+                        }`}>
+                          {isOwnMessage && hoveredMessageId === msg.id && (
+                            <button
+                              onClick={() => setShowDeleteMenu(showDeleteMenu === msg.id ? null : msg.id)}
+                              className="absolute -left-8 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-all"
+                            >
+                              <MoreVertical className="w-4 h-4" />
+                            </button>
+                          )}
+                          <div className="mb-2">
+                            <p className="text-xs opacity-80 mb-2">📢 Shared Post</p>
+                            <div className="bg-[#0a0a0a]/30 rounded-lg p-3 border border-white/10">
+                              <div className="flex items-center gap-2 mb-2">
+                                <div className={`w-8 h-8 bg-gradient-to-br ${getGradientColors(sharedPost.post.author.name)} rounded-lg flex items-center justify-center`}>
+                                  <span className="text-white font-bold text-xs">
+                                    {sharedPost.post.author.name.charAt(0).toUpperCase()}
+                                  </span>
+                                </div>
+                                <div>
+                                  <p className="text-sm font-semibold">{sharedPost.post.author.name}</p>
+                                  {sharedPost.post.author.title && (
+                                    <p className="text-xs opacity-70">{sharedPost.post.author.title}</p>
+                                  )}
+                                </div>
+                              </div>
+                              <p className="text-sm mb-2 leading-relaxed">{sharedPost.post.content}</p>
+                              {sharedPost.post.image && (
+                                <div className="mt-2 rounded-lg overflow-hidden">
+                                  <img 
+                                    src={sharedPost.post.image} 
+                                    alt="Shared post" 
+                                    className="w-full max-h-48 object-cover"
+                                  />
+                                </div>
+                              )}
+                              <div className="flex items-center gap-4 mt-3 text-xs opacity-70">
+                                <span>👍 {sharedPost.post.likes}</span>
+                                <span>💬 {sharedPost.post.comments}</span>
+                                <span>🔗 {sharedPost.post.shares}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        // Regular message
+                        <div className={`px-4 py-3 rounded-2xl shadow-md relative ${
+                          isOwnMessage 
+                            ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-br-md' 
+                            : 'bg-[#1a1a1a] text-white rounded-bl-md border border-gray-700'
+                        }`}>
+                          {isOwnMessage && hoveredMessageId === msg.id && (
+                            <button
+                              onClick={() => setShowDeleteMenu(showDeleteMenu === msg.id ? null : msg.id)}
+                              className="absolute -left-8 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-all"
+                            >
+                              <MoreVertical className="w-4 h-4" />
+                            </button>
+                          )}
+                          {showDeleteMenu === msg.id && isOwnMessage && (
+                            <div className="absolute -left-32 top-0 bg-[#1a1a1a] border border-gray-700 rounded-lg shadow-xl z-10 min-w-[150px]">
+                              <button
+                                onClick={() => {
+                                  deleteMessage(msg.id, false);
+                                  setShowDeleteMenu(null);
+                                }}
+                                className="w-full px-4 py-2 text-left text-sm text-white hover:bg-gray-800 rounded-t-lg"
+                              >
+                                Delete for me
+                              </button>
+                              <button
+                                onClick={() => {
+                                  deleteMessage(msg.id, true);
+                                  setShowDeleteMenu(null);
+                                }}
+                                className="w-full px-4 py-2 text-left text-sm text-red-400 hover:bg-gray-800 rounded-b-lg"
+                              >
+                                Delete for everyone
+                              </button>
+                            </div>
+                          )}
+                          <p className="text-sm leading-relaxed break-words">{msg.content}</p>
+                        </div>
+                      )}
                       <div className="flex items-center gap-1.5 mt-1.5 px-1">
                         <p className="text-xs text-gray-500">
                           {new Date(msg.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                         </p>
-                        {isOwnMessage && (
-                          <span className="text-xs text-blue-400">✓</span>
+                        {isOwnMessage && !isDeleted && (
+                          <span className={`text-xs ${
+                            (msg as any).status === 'seen' || (msg as any).isRead 
+                              ? 'text-blue-400' 
+                              : (msg as any).status === 'sending'
+                              ? 'text-gray-400'
+                              : 'text-gray-500'
+                          }`}>
+                            {getStatusIcon((msg as any).status, (msg as any).isRead)}
+                          </span>
                         )}
                       </div>
                     </div>
@@ -1379,8 +1587,34 @@ function ChatModal({
         </div>
 
         {/* Input Area */}
-        <div className="p-4 border-t border-gray-700 bg-[#1a1a1a]">
+        <div className="p-4 border-t border-gray-700 bg-[#1a1a1a] relative">
+          {/* Emoji Picker */}
+          {showEmojiPicker && (
+            <div 
+              ref={emojiPickerRef}
+              className="absolute bottom-full left-4 mb-2 bg-[#1a1a1a] border border-gray-700 rounded-xl shadow-2xl p-4 w-80 h-64 overflow-y-auto z-50"
+            >
+              <div className="grid grid-cols-8 gap-2">
+                {commonEmojis.map((emoji, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => insertEmoji(emoji)}
+                    className="text-2xl hover:bg-gray-700 rounded-lg p-1 transition-colors"
+                  >
+                    {emoji}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          
           <div className="flex items-end gap-3">
+            <button
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+              className="p-3 rounded-xl transition-all duration-200 hover:bg-gray-800 text-gray-400 hover:text-white"
+            >
+              <Smile className="w-5 h-5" />
+            </button>
             <div className="flex-1">
               <input
                 type="text"
