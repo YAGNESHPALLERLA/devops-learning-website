@@ -36,20 +36,30 @@ export async function GET(_request: NextRequest) {
     }
     
     const { ObjectId } = await import('mongodb');
+    const { toObjectId } = await import('@/lib/mongodb');
     
-    // Convert userId to ObjectId
-    let userId: typeof ObjectId.prototype;
+    // Try to convert userId to ObjectId, but also keep string version
+    let userIdObj: typeof ObjectId.prototype | null = null;
     try {
-      userId = new ObjectId(decoded.id);
+      userIdObj = toObjectId(decoded.id);
     } catch {
-      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
+      // If conversion fails, we'll use string format
     }
     
-    // Get user connections
+    const userIdString = decoded.id;
+    
+    // Get user connections - query for both ObjectId and string formats
+    // Connections may be stored as strings (from send route) or ObjectIds
     const connections = await db.collection('connections').find({ 
       $or: [
-        { fromUserId: userId, status: 'accepted' },
-        { toUserId: userId, status: 'accepted' }
+        // ObjectId format
+        ...(userIdObj ? [
+          { fromUserId: userIdObj, status: 'accepted' },
+          { toUserId: userIdObj, status: 'accepted' }
+        ] : []),
+        // String format
+        { fromUserId: userIdString, status: 'accepted' },
+        { toUserId: userIdString, status: 'accepted' }
       ]
     }).toArray();
     
@@ -63,18 +73,34 @@ export async function GET(_request: NextRequest) {
     // Populate user details for each connection
     const populatedConnections = await Promise.all(
       connections.map(async (conn) => {
-        const isFromUser = conn.fromUserId?.toString() === userId.toString();
+        // Check if current user is the sender or receiver (handle both string and ObjectId)
+        const fromUserIdStr = conn.fromUserId?.toString();
+        const toUserIdStr = conn.toUserId?.toString();
+        const currentUserIdStr = userIdString;
+        
+        const isFromUser = fromUserIdStr === currentUserIdStr;
         const otherUserId = isFromUser ? conn.toUserId : conn.fromUserId;
         
+        // Try to convert otherUserId to ObjectId for user lookup
         let otherUserObjId: typeof ObjectId.prototype;
         try {
-          otherUserObjId = otherUserId instanceof ObjectId ? otherUserId : new ObjectId(otherUserId);
+          if (otherUserId instanceof ObjectId) {
+            otherUserObjId = otherUserId;
+          } else {
+            otherUserObjId = toObjectId(otherUserId);
+          }
         } catch {
           console.error('Invalid otherUserId:', otherUserId);
           return null;
         }
         
-        const otherUser = await db.collection('users').findOne({ _id: otherUserObjId });
+        // Try to find user by ObjectId first, then by string if needed
+        let otherUser = await db.collection('users').findOne({ _id: otherUserObjId });
+        
+        // If not found with ObjectId, try with string format
+        if (!otherUser && typeof otherUserId === 'string') {
+          otherUser = await db.collection('users').findOne({ _id: otherUserId });
+        }
         
         console.log('Looking up user:', { otherUserId: otherUserObjId.toString(), foundUser: !!otherUser, userName: otherUser?.name });
         
