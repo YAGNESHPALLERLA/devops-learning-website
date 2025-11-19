@@ -51,6 +51,14 @@ const tutorialsDropdownRoutes = [
 ];
 
 export default function GlobalContinuePrompt() {
+  if (!AUTH_SYSTEM_AVAILABLE) {
+    return null;
+  }
+
+  return <GlobalContinuePromptInner />;
+}
+
+function GlobalContinuePromptInner() {
   const pathname = usePathname();
   const [showContinueModal, setShowContinueModal] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState<string | null>(null);
@@ -59,10 +67,6 @@ export default function GlobalContinuePrompt() {
   const isCheckingRef = useRef<boolean>(false); // Track if we're already checking
   const hasProcessedSessionRef = useRef<boolean>(false); // Track if we've already processed this session
   const sessionKey = 'continueModalShown';
-
-  if (!AUTH_SYSTEM_AVAILABLE) {
-    return null;
-  }
 
   // Initialize: Check sessionStorage once on mount
   useEffect(() => {
@@ -89,17 +93,13 @@ export default function GlobalContinuePrompt() {
     // Don't even check pathname or anything else - sessionStorage is the source of truth
     if (hasShownInSession) {
       hasProcessedSessionRef.current = true;
-      if (!hasChecked) {
-        setHasChecked(true);
-      }
+      setHasChecked(true);
       return; // Exit immediately - don't process anything
     }
     
     // Also check ref as secondary check (for same render cycle)
     if (hasProcessedSessionRef.current) {
-      if (!hasChecked) {
-        setHasChecked(true);
-      }
+      setHasChecked(true);
       return;
     }
     
