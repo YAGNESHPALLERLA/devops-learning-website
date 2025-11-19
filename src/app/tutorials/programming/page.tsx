@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 interface TechnologyCardProps {
   title: string;
@@ -37,33 +38,35 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 let hasCheckedAuth = false;
 if (typeof window !== 'undefined' && !hasCheckedAuth) {
   hasCheckedAuth = true;
-  const currentPath = window.location.pathname || '/tutorials/programming';
-  const token = localStorage.getItem('token');
-  // Check if token exists and is valid (not empty, null, undefined, or expired)
-  if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
-    // IMMEDIATE redirect before React renders
-    window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
-  } else {
-    // Validate JWT token format and expiry
-    try {
-      const parts = token.split('.');
-      if (parts.length !== 3) {
-        // Invalid JWT format
-        localStorage.removeItem('token');
-        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
-      } else {
-        // Check if token is expired
-        const payload = JSON.parse(atob(parts[1]));
-        if (payload.exp && payload.exp * 1000 < Date.now()) {
-          // Token expired
+  if (AUTH_SYSTEM_AVAILABLE) {
+    const currentPath = window.location.pathname || '/tutorials/programming';
+    const token = localStorage.getItem('token');
+    // Check if token exists and is valid (not empty, null, undefined, or expired)
+    if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
+      // IMMEDIATE redirect before React renders
+      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+    } else {
+      // Validate JWT token format and expiry
+      try {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+          // Invalid JWT format
           localStorage.removeItem('token');
           window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+        } else {
+          // Check if token is expired
+          const payload = JSON.parse(atob(parts[1]));
+          if (payload.exp && payload.exp * 1000 < Date.now()) {
+            // Token expired
+            localStorage.removeItem('token');
+            window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
+          }
         }
+      } catch {
+        // Invalid token format
+        localStorage.removeItem('token');
+        window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
       }
-    } catch {
-      // Invalid token format
-      localStorage.removeItem('token');
-      window.location.replace(`/register?redirect=${encodeURIComponent(currentPath)}`);
     }
   }
 }
@@ -71,6 +74,7 @@ if (typeof window !== 'undefined' && !hasCheckedAuth) {
 export default function ProgrammingPage() {
   // ALL HOOKS MUST BE CALLED FIRST - before any conditional returns
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) return true;
     // Double-check in useState initializer
     if (typeof window === 'undefined') return null;
     const token = localStorage.getItem('token');
@@ -101,6 +105,10 @@ export default function ProgrammingPage() {
   });
 
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     // Triple-check on mount
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
@@ -130,7 +138,7 @@ export default function ProgrammingPage() {
   }, []);
 
   // IMMEDIATE check after hooks - runs before rendering
-  if (typeof window !== 'undefined') {
+  if (AUTH_SYSTEM_AVAILABLE && typeof window !== 'undefined') {
     const token = localStorage.getItem('token');
     if (!token || token.trim() === '' || token === 'null' || token === 'undefined') {
       window.location.replace(`/register?redirect=${encodeURIComponent('/tutorials/programming')}`);

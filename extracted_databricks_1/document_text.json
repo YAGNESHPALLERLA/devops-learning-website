@@ -1,0 +1,6170 @@
+[
+  {
+    "text": "Data Engineering",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Jobs run’s",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Jobs & Pipelines interface in Azure Databricks provides a unified orchestration layer for data engineering and machine learning workflows.It supports job scheduling, dependency management, pipeline orchestration, and execution monitoring.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Key Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ingestion Pipelines: Automate ingestion from external data sources (databases, APIs, or files).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "ETL Pipelines: Design scalable, production-grade ETL processes using SQL, PySpark, or Python.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Jobs: Orchestrate notebooks, workflows, pipelines, and queries; configure parameters, cluster settings, and triggers.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Job Runs Dashboard: Monitor run history, logs, and metrics for troubleshooting and optimization.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Access Control: Manage visibility (“Owned by me,” “Accessible by me”) to enforce workspace-level governance.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use Case",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used by data engineers and ML teams to build end-to-end pipelines — from data ingestion to transformation, feature generation, and model retraining — all under one environment.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Job Runs dashboard in Databricks provides an operational view of scheduled or triggered workflows.It allows engineers and ML teams to monitor, debug, and analyze job executions across environments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Key Functionalities",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run Filtering: Filter runs by job, user, time range, run status, or error code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run Visualization: Graph at the top visualizes the number of successful, failed, or skipped runs over time.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Detailed Metadata: For each run, Databricks records the execution context — start/end time, duration, compute used, and run parameters.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Error Handling: Provides error codes and logs to diagnose failure causes (e.g., cluster issues, data errors, script exceptions).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Audit & Compliance: Maintains a complete audit trail for all pipeline executions — critical for production governance.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "What You See:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Start time → When the job started.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Job name → Which job ran (for example, “ETL Pipeline”).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run as → Which user or role ran it.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Duration → How long it took.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Status → Shows if it succeeded, failed, or skipped.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Error code → Displays the error message if something failed.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run parameters → Lists any input values (like parameters) used in that run.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Data Ingestion",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It’s the first step in any data pipeline or analytics workflow.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Data Ingestion tab acts as a centralized data onboarding interface.It supports:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Direct connectors for enterprise systems",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "File-based uploads into Unity Catalog-managed storage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automation tools like Fivetran and Partner Connect",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delta Lake and ADLS integrations for scalable storage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It ensures schema consistency, metadata registration, and secure data governance under Unity Catalog.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Header:➡️ Add data",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose:Guides you to connect data sources, upload files, or create tables for analysis.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Main Sections and Options",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks Connectors",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "These are pre-built connectors to quickly connect to popular data platforms:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connector",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Typical Use Case",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 Salesforce",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connect to CRM data (leads, opportunities, accounts).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Analyze customer and sales performance.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 SAP Business Data Cloud",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Access enterprise resource data from SAP.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supply chain or financial reporting.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 Workday Reports",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Retrieve HR, payroll, and workforce data.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Workforce analytics and reporting.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 ServiceNow",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connect IT service management data.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Incident and change management insights.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 Google Analytics Raw Data",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Import website and marketing analytics data.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Digital marketing and campaign performance.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 SQL Server",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connect on-prem or cloud-hosted SQL databases.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Bring structured transactional data into Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Files Section",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For manual uploads or storage-based ingestion.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "When to Use",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📤 Create or modify table",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Upload files like CSV, JSON, or Parquet to create or replace tables.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ideal for one-time imports or small datasets.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📁 Upload files to a volume",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Upload non-tabular files (images, logs, etc.) managed under Unity Catalog Volumes.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For non-structured data like logs, models, or raw files.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "☁️ Create table from Azure Data Lake Storage (ADLS)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Load data directly from Azure Data Lake into a Delta table.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For large-scale, enterprise-grade data pipelines.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Fivetran Connectors (via Partner Connect)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "At the bottom, you’ll find:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "“See all available ingest partners in Partner Connect.”",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Partner Connect lets you integrate tools like:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Fivetran, Informatica, Qlik, etc.to automate ingestion from hundreds of data sources into Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "AI/ML",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Playground",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Playground in Databricks is an interactive environment where you can experiment with AI models, build and test prompts, and prototype intelligent agents before deploying them into production.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It’s like a sandbox for Generative AI within your Databricks workspace.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Chat with or test AI models (like GPT, MPT, or Llama).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ask questions, summarize documents, or generate code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Try out small AI tasks (like question answering or summarization) before building real applications.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "A low-code interface for LLM prompt engineering and evaluation.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integration with Unity Catalog tools for secure, governed model use.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The ability to prototype AI agents with custom tools, such as function calling, retrieval-augmented generation (RAG), and data-aware AI.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Seamless connection to Databricks’ MLflow, Feature Store, and Model Serving for deployment.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Main Components on the Page",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Section",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model Selector (Top Bar)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows the current model (e.g., GPT OSS 120B). You can switch between models here.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Choose which AI model to test or fine-tune.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Tools Menu",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Access to tools or APIs integrated with the model (like function calling, RAG, or evaluation tools).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Extend the model’s capabilities using custom or pre-built tools.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Prototype an Agent",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you add your own tool and connect it to a model to create AI agents.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Build task-oriented AI agents (e.g., summarizer, SQL generator, chatbot).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Start with an Example",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Offers quick test templates: Function Calling, Summarization, Document Q&A.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Try example scenarios to understand model behavior.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Evaluation Section",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Helps evaluate model responses.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Assess accuracy, relevance, and quality of model outputs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Prompt Input Area",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Text box at the bottom (\"Start typing...\").",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enter prompts, run queries, and see model responses interactively.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For AI Developers",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Playground supports:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Unity Catalog AI Tools — governed access to enterprise data.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks Foundation Models — like MPT, Llama 2, GPT OSS, etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Custom Tool Integration — connect APIs or databases to your AI agent.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Prompt Evaluation — test, compare, and optimize prompts before production use.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Advanced Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Agent Prototyping",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Create and test agents that can use APIs, databases, or documents.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔗 Function Calling",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Extend the model’s capabilities by allowing it to call your defined Python or SQL functions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧾 Prompt Testing",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Evaluate how prompts perform across models.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📊 Evaluation Tools",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use built-in metrics to test model quality (accuracy, bias, hallucination rate).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔐 Unity Catalog Integration",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ensure data governance and secure access during AI experiments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Benefits",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Benefit",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Hands-on AI Development",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiment freely without deployment setup.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔍 Prompt Optimization",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Refine and evaluate prompts before production.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Custom Tool Integration",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Combine AI reasoning with data or APIs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔒 Governance",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrated with Unity Catalog for secure and auditable AI testing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🌐 Multiple Model Access",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Test open-source and Databricks-hosted LLMs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiments",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "In Databricks, Experiments represent the core of model development and tracking.An experiment records each run of your machine learning or AI workflow — including:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model parameters (like learning rate, epochs)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Metrics (like accuracy, loss)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Code version",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Data version",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model artifacts (like trained models)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiments help track, compare, and reproduce model performance over time using MLflow.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Experiments module integrates tightly with MLflow 3, providing:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Unified tracking for ML, DL, and GenAI experiments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Versioning for both data and models.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Prompt tracking for LLM fine-tuning and evaluation.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Advanced observability — including lineage and traceability for GenAI agents.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Visible Sections:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Section",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 GenAI apps & agents",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For building and tracking Generative AI apps or AI agents.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📉 Regression",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Create regression models automatically using AutoML.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔮 Forecasting (Preview)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Build time-series forecasting models.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Classification",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Train classification models (binary or multi-class).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Custom model training",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For custom classical ML or deep learning experiments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiment Management Options",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔍 Filter experiments",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Search for experiments by name, tag, or creator.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "👤 Only my experiments",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows experiments created by the current user.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔁 Reset filters",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clears search and shows all experiments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧾 Experiment List Table",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays Name, Created by, Last modified, Location, and Description.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Core Functionalities",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Function",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 AutoML Experiments",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automatically builds and tunes models for regression, classification, or forecasting tasks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Custom Model Training",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows full control of model code — supports PyTorch, TensorFlow, Scikit-learn, etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🤖 GenAI & LLM Tracking",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Records prompt configurations, LLM outputs, and tool usage for AI agents.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📊 Experiment Comparison",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you visually compare multiple runs — metrics, parameters, and outputs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔗 Integration with Feature Store & Models",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Once the best model is found, link it to the Model Registry for deployment.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Advanced Capabilities (MLflow 3 + Databricks)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Capability",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📘 Prompt Versioning",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For LLM-based experiments — tracks prompt templates and versions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧭 LLM Judges",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Evaluate AI outputs automatically (quality, relevance, hallucinations).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Unified ML + GenAI Tracking",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Track classical ML, DL, and GenAI in one interface.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧾 Agent Tracing",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Trace multi-step reasoning of AI agents end-to-end.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Enhanced Model Logging",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Log not just metrics, but embeddings, prompts, and responses.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Benefits",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Benefit",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📊 Full visibility",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Every model training run is recorded with detailed logs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔁 Reproducibility",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Easily re-run any experiment exactly as before.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔍 Comparative analysis",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Identify best-performing models visually.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Integration with Models & Serving",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Move successful experiments straight to production.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔐 Governance & Version Control",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrated with Unity Catalog for compliance and traceability.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "In Machine Learning, features are the input variables (columns) used by a model to make predictions.For example:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "In a credit scoring model → income, age, loan_amount are features.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "In a product recommender → user_history, click_rate, category_interest are features.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Features tab in Databricks allows you to manage, share, and reuse these features across models and teams.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Feature Store in Databricks (integrated with Unity Catalog) provides:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Centralized feature management",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Governed access using Unity Catalog",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature lineage tracking",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Online/offline store integration for model training and real-time inference",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It enables feature discovery, reuse, versioning, and monitoring at enterprise scale.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Table Columns (once features exist):",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Column",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Table name",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Name of the feature table.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Owner",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Who created or owns the feature table.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Online stores",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Indicates if the feature is deployed for real-time access.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Last written",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Timestamp of the latest update to the feature table.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Tags",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Custom tags for searching/grouping features.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Comment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description or notes about the feature table.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Permissions & Governance",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can assign permissions at different levels:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Level",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Example",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Catalog",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "main",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Manage data organization",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Schema",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "retail",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Group related feature tables",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Table",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "customer_features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Control access to specific features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "This governance ensures compliance, security, and collaboration.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature Store Components",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Component",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature Table",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delta table registered as a feature set.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature Lookup",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Mapping between input data and feature tables during training or inference.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Training Set",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Merged dataset (features + labels) used for model training.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Online Store",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Low-latency feature storage for serving models in production.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature Lineage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Tracks which data sources and transformations produced each feature.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Key Benefits",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Benefit",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Explanation",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "♻️ Feature Reusability",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Build once, use everywhere — across teams and projects.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📊 Consistency",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Same feature logic is applied in training and serving.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔍 Discoverability",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Easily search and explore existing features.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧾 Governance",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controlled via Unity Catalog with fine-grained access control.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Lineage & Audit",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Full visibility from raw data → feature → model → prediction.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Advanced Options (for Professionals)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Capability",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Batch & Streaming Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supports both static and streaming feature tables.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🌐 Real-time Inference",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrates with Redis, Cosmos DB, or custom online stores.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧬 Feature Monitoring",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Detects drift in feature distributions over time.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Feature Versioning",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Track and manage changes in feature definitions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧰 Integration with MLflow",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Features used in experiments are automatically logged for reproducibility.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Models",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "`This section is part of Databricks Machine Learning.  it helps you register, version, manage, and serve ML models built using MLflow or other frameworks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Currently, no models are registered yet. But once you create or import models, the table will display:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Column",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Name",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The model’s registered name.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Catalog",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Unity Catalog that stores the model (e.g., main, sandbox, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Schema",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The schema inside the catalog that holds the model.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Last Modified",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Timestamp of the latest model version update.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Owner",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Databricks user or service principal who owns the model.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Unity Catalog / Workspace Model Registry",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Unity Catalog → For governance and access control across workspaces.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Workspace Model Registry → Local registry (older style, per workspace).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Owned by Me / Owner Filter → Filter to show only models you own or specific users’ models.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Search Bar → Search registered models by name.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Once Models Exist — More Options Appear",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "When you have registered models, you get these additional actions:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "1. Model Versioning",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Each model can have multiple versions (v1, v2, …) for tracking updates or retraining cycles.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "2. Model Staging",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Models can have lifecycle stages:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "None – Just registered",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Staging – For testing and validation",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Production – For deployment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Archived – Old or deprecated versions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "3. Model Lineage & Metadata",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Tracks which experiment/run created the model.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows training dataset lineage (via Unity Catalog).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Metadata like tags, parameters, and metrics appear automatically from MLflow.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "4. Permissions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can manage who can:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Read or use the model",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Transition model stages",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delete or update versions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "5. Serving Integration",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Once a model is registered and approved, you can:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deploy it to Databricks Model Serving",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Expose it via REST API endpoint for predictions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrate with Feature Store for consistent feature usage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Serving",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model Serving in Databricks allows you to:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deploy ML models (including LLMs) for real-time predictions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Expose them via REST APIs",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Serve open-source or external models (like GPT, Llama)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automatically scale endpoints based on demand",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Secure access with Unity Catalog and IAM policies",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Details from the Screenshot",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Column",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Name",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The name of the deployed serving endpoint.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "State",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The current deployment status (e.g., Ready, Deploying, Failed).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Served entities",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The specific model or model version being served (e.g., GPT OSS 120B, Llama 4 Maverick).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Tags",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Metadata tags (e.g., Chat, Embeddings).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Task",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The model type or function — Chat (LLMs), Embeddings (vectorization), etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Created by",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "User or system who deployed the endpoint.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Last modified",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Timestamp of the latest deployment change.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Top Models You See Here",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "These are Databricks-hosted and external foundation models for chat and embeddings tasks:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Type",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "GPT OSS 120B / 20B",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks-hosted",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Large open-source GPT-style models for conversational AI.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "OpenAI GPT-5",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "External",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connects to OpenAI endpoint for inference (external integration).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Llama 4 Maverick / Meta Llama Series",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks-hosted",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Meta Llama models for chat/instruction tasks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Gemma 3 12B",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks-hosted",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Google’s lightweight open LLMs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "BGE / GTE Large (En)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Embedding models",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used for text embedding, retrieval, and similarity tasks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Actions Available per Model",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Each model endpoint (like GPT, Llama, etc.) gives you options such as:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Action",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens an interface to test the model directly within Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Copy",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Copies the REST API URL and authentication token.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Configure",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Modify endpoint settings — scale, model version, environment variables.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Create Serving Endpoint",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deploy your own trained model or clone an existing one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Part of Full AI/ML Lifecycle",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Stage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks Feature",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Data Preparation",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delta Live Tables / Notebooks / Unity Catalog",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature Engineering",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Features (Feature Store)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiment Tracking",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Experiments (MLflow)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model Management",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Models (Model Registry)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Model Deployment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Serving (Real-time endpoints)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Testing & Interaction",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Playground (Chat/LLM interaction UI)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Notebook-level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "A Databricks notebook is an interactive environment for:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Writing and running code (Python, SQL, Scala, R)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Visualizing data",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Managing ML workflows",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Collaborating and sharing results",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It supports multi-language notebooks meaning you can run Python, SQL, Scala, R, or Markdown in the same file using magic commands (like %python, %sql, %scala, %md).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Key Notebook UI Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧾 Notebook Title (\"my notebook\")",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Editable notebook name. You can rename it anytime.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📜 Toolbar",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Provides actions like Run, Connect, Schedule, Share, File options, etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "▶️ Run / Run all / Schedule",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run current cell or all cells; schedule notebooks as automated jobs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Language Selector (Python, SQL, etc.)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Set default language for the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🌐 Connect",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connects the notebook to a cluster (compute resource). Required before execution.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔗 Share",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Share the notebook with team members or grant access via permissions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Settings / Comments / Command Palette",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Quick access to environment settings and collaborative comments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Code Cell Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Each code cell (like the one in your screenshot) has:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "▶️ Run Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Executes the code within the selected cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⠿ Drag Handle",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to reorder or move cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔍 Language Indicator (Python)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows the language mode of the current cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧩 Add Cell Above/Below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Insert new code or markdown cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧹 Clear Output",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Removes output from the cell without deleting code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🗑️ Delete Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deletes the current cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "File-level Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "File menu contains all options related to creating, managing, importing, exporting, and sharing notebooks in Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📂 Databricks Notebook – File Menu",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description & Usage",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🆕 New notebook",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens a brand-new notebook. You can choose the language (Python, SQL, Scala, or R) and cluster later.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📥 Import…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to import existing notebooks (from .dbc, .html, .ipynb, or Git repositories).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧭 New notebook dashboard",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Creates a dashboard view — ideal for visualizations and results presentation, often used in reporting.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔗 Share…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens the sharing dialog where you can grant permissions to other users or groups (View, Run, Edit, Manage).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⏰ Schedule…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you schedule notebook runs at set intervals (daily, hourly, etc.) — useful for data pipelines or automation.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Change default cell language…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Sets the default language (Python, SQL, Scala, or R) for new cells in this notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Commit to Git…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrates with Git (GitHub, GitLab, Azure Repos) — allows version control, branching, and pushing changes.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🌀 Clone…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Makes an identical copy of the current notebook within the workspace.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "✏️ Rename…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Rename the notebook file name.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📤 Export…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Export notebook in multiple formats:– HTML (read-only view)– SOURCE (plain text)– DBC archive– IPYNB (Jupyter notebook format).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📦 Move…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Move notebook to a different folder or workspace location.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🗑️ Move to trash",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deletes (moves) notebook to Trash; can be restored later if needed.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧱 Notebook format ›",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Sub-menu to choose export format or convert to different type (e.g., source code, HTML, IPYNB).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⬆️ Upload files to volume…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Uploads files (datasets, scripts, etc.) directly into a mounted volume or workspace for use in your notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧮 Create or modify table…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens Databricks Data UI to create or edit tables (either Delta or other supported file formats).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📊 Add data ›",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens data ingestion options to connect to data sources (Azure Blob, ADLS, Delta tables, CSVs, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 1. New Notebook",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Creates a new Databricks notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can choose the language (Python, SQL, Scala, R).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Optionally select a cluster to attach before running code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 2. Import",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used to import existing notebooks or code files.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supported formats:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".dbc (Databricks archive)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".py, .ipynb, .r, .scala",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can import from:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Local machine",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "URL",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Git repository",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 3. New Notebook Dashboard",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Creates a Dashboard view for notebook outputs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Dashboards allow you to pin visualizations and results from one or more notebooks to share with others (useful for reporting).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 4. Share",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens the sharing dialog to control notebook access.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Add collaborators (with View / Edit / Run permissions)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Share via workspace, link, or group",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Control access to comments and output visibility",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 5. Schedule",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to automate notebook runs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Set time-based schedules (daily, weekly, etc.)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Configure cluster and parameters for each run",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Send email notifications or webhook alerts upon completion/failure",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 6. Change Default Cell Language",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you choose the default programming language for all new cells in the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supported languages:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Python",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "SQL",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Scala",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "R",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "(You can still mix languages using cell magic commands like %python, %sql, etc.)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 7. Commit to Git",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connects the notebook to a Git repository (GitHub, Azure DevOps, GitLab, Bitbucket, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Commit changes",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "View revision history",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Revert or pull updates",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 8. Clone",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Creates a copy of the notebook in the same or another workspace folder.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Useful for creating backup or template versions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 9. Rename",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Renames the current notebook file.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 10. Export",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Exports the current notebook in one of several formats:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".dbc (Databricks archive)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".html (for static sharing)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".ipynb (Jupyter-compatible)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": ".source (plain code export)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 11. Move",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Moves the notebook to a different workspace folder or directory.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 12. Move to Trash",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Sends the notebook to the Trash folder in Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can later restore or permanently delete it.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 13. Notebook Format",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Selects how notebook content is saved and versioned.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Two options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Source file format: saves as plain text (easier for Git versioning).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "DBC archive format: compressed binary (used for backups).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 14. Upload Files to Volume",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Uploads local files (like CSVs, JSONs, etc.) directly to:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "DBFS (Databricks File System) or",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Mounted Azure Storage / AWS S3 / GCP bucket.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 15. Create or Modify Table",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens the Data Import Wizard.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can load data files (CSV, Parquet, JSON, etc.) into a table in:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delta Lake",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Hive Metastore",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Unity Catalog",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 16. Add Data",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut to Databricks Add Data interface, which lets you:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Browse uploaded files",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connect to external data sources (SQL DBs, cloud storage)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automatically create tables from uploaded data",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Edit level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Edit menu provides tools for:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Managing and rearranging cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Editing and formatting code",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controlling execution flow (skip/unskip)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Performing notebook-wide formatting and search",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Setting parameters for automated or reusable notebooks",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks Notebook – Edit Menu",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut (Windows/Linux)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Undo",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + Z",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Reverses the most recent cell edit or deletion.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cut cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + X",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Removes the selected cell(s) and copies them to the clipboard.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Copy cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + C",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Copies selected cell(s) to the clipboard.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Paste cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + V",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Pastes the copied or cut cell(s) below the current one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Delete cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "D, D",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Deletes the currently active cell(s). Press D twice quickly.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Skip/Unskip cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + /",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Marks a cell to be skipped during “Run All” execution, or unskips it. Useful for temporarily disabling code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cell Insertion and Arrangement",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Insert cell above",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "A",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adds a new blank cell above the current one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Insert cell below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "B",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adds a new blank cell below the current one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Move cell up",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + Alt + ↑",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Moves the selected cell upward in the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Move cell down",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + Alt + ↓",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Moves the selected cell downward in the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Select all cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + A",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Selects every cell in the notebook for bulk operations.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Formatting and Structure",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Format cell(s)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + Shift + F",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Auto-formats code in the current cell (indentation, spacing).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Format notebook",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "—",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automatically formats all cells for consistent code style.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Notebook Python indentation…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "—",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens indentation settings for Python cells (tabs vs spaces, size).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Additional Utilities",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Add parameter…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "—",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to define notebook parameters (for parameterized runs using widgets).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Find…",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + F",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens a search bar to find specific words, code, or text within the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 1. Undo / Redo",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Undo (Ctrl + Z): Reverts your last action (e.g., deleting a cell, changing code).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Redo (Ctrl + Shift + Z): Re-applies an undone action.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Useful for quickly fixing mistakes during editing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 2. Cut / Copy / Paste Cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cut Cell: Removes the selected cell and stores it in clipboard.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Copy Cell: Copies the selected cell’s content to clipboard.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Paste Cell Below / Above: Inserts the copied/cut cell at a specific position.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📋 Helps in reorganizing notebook structure efficiently.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 3. Move Cell Up / Down",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Moves the selected cell vertically within the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Maintains execution order when rearranging your logic.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 4. Delete Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Permanently deletes the selected cell from the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut: Ctrl + D or Click Trash icon on cell toolbar.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 5. Add Cell Above / Below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Quickly inserts a new empty cell above or below the selected one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The new cell defaults to the notebook’s primary language (e.g., Python).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "A → Add Above",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "B → Add Below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 6. Merge with Cell Above / Below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Combines the current cell with an adjacent one (above or below).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Helps when you split code accidentally or want cleaner cell grouping.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 7. Split Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Splits the current cell at the cursor position into two new cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Keeps the same language type for both new cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut: Ctrl + Shift + –",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 8. Find and Replace",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens a search bar to find text or code patterns in the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can also replace text directly.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supports:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Match Case",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Regex search",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Replace All",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut: Ctrl + F / Ctrl + H",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 9. Clear Output",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Removes all generated outputs (plots, tables, logs) from the notebook cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear Output for Current Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear Output for All Cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧹 Good practice before sharing or committing notebooks to Git.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 10. Clear State",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Resets the Python/Scala/R session (similar to restarting the kernel).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clears all variables, imports, and cached data.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔄 Use when memory is full or to rerun from a clean state.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 11. Run Selected Cell / All Cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Executes:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Current Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "All Cells Above / Below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "All Cells in Notebook",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shift + Enter → Run and move to next cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + Enter → Run cell only",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Alt + Enter → Run and insert new cell below",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 12. Convert Cell Type",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Converts between:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Code Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Markdown Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Useful for adding formatted text, documentation, or section titles.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + M M (convert to markdown)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ctrl + M Y (convert to code)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 13. Comment / Uncomment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggles comment lines in a code cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Automatically detects language syntax (Python #, SQL --, etc.).Shortcut: Ctrl + /",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 14. Format Cell Code",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Auto-formats code indentation and spacing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Improves readability (especially in long notebooks).Shortcut: Ctrl + Shift + F",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 15. Toggle Line Numbers",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows or hides line numbers in code cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Helpful for debugging or referencing code during collaboration.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 16. Toggle Output Visibility",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Hides or shows the output section of a cell (results, plots, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Useful for compact viewing when outputs are large.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 17. Toggle Comments Panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows the collaboration comment sidebar.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you add inline comments, tag teammates, or resolve feedback.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "View level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "View menu allows you to:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Customize notebook interface and theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Control code and output visibility",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Manage cluster tools and developer options",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Access reusable SQL query snippets",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks Notebook – View Menu Overview",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The View menu allows you to customize the notebook interface, control UI layout, and access developer or cluster tools.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Views",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "This submenu lets you switch between various Databricks notebook views.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Command Mode / Edit Mode",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Switch between cell editing (Enter) and command mode (Esc).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Presentation Mode",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays notebook in a clean, full-screen layout — useful for demos or teaching.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Code-only / Results-only view",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggle between hiding code cells or outputs for a focused view.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show Line Numbers",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enables/disables line numbers in code cells for easier debugging.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Notebook Layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adjusts the overall layout of your Databricks notebook window.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Default layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Standard view with toolbar, output, and code cells visible.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Compact layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Reduces padding and spacing for denser code display.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Wide layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Expands notebook width — useful for long code lines or wide tables.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cell Layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controls how individual notebook cells appear.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show cell toolbar",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enables a toolbar on each cell for easy access to actions (move, delete, edit).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show output by default",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays the output section for all cells after execution.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Collapse code/output",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Collapses code or output areas — useful for large notebooks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show execution time",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays how long each cell took to execute.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Workspace Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controls the Databricks workspace UI color theme.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Light Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Bright background; default mode.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Dark Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Dark background; reduces eye strain during long sessions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "System Default",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adapts to your OS theme setting automatically.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Editor Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Changes the theme used inside the code editor (cell area).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Monokai / Solarized / Light / Dark",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Various syntax-highlighting color schemes for the code editor.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Side Panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controls the visibility and behavior of the left sidebar (Workspace, Recents, Catalog, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show / Hide side panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggles the entire left sidebar.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Pin / Unpin panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Keeps the sidebar visible or allows it to auto-hide.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Resize panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adjusts the sidebar width.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Appearance",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Manages minor UI preferences.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show toolbars",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggles the notebook’s top toolbar (Run, Connect, Share buttons).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show command palette shortcut tips",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enables small shortcut hints under the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cluster Tools",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Provides quick access to Databricks cluster monitoring and management.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "View Cluster Logs",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens logs for the currently attached compute cluster.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Cluster Details",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens the attached cluster’s configuration (runtime, libraries, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Driver & Worker info",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays performance metrics for driver and worker nodes.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Developer Settings",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used for advanced users or developers to customize notebook behavior.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enable Developer Mode",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Turns on advanced tools such as HTML inspector, custom scripts, etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show debug console",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Displays developer console for debugging front-end issues.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Query Snippets",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens Databricks’ reusable SQL code snippets library.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Description",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Query Snippets window",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens a new panel with predefined or custom SQL templates for queries.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 1. Views",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Provides options to change the overall view of your notebook interface.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Common options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Command mode view: shows toolbar and menus.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Presentation view: hides toolbars and shows only notebook content for presentations.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Full-screen view: expands the notebook to use full display space.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧠 Best for teaching sessions, demos, or focusing on code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 2. Notebook Layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Controls how your notebook’s interface is displayed.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options include:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show/Hide Cell Toolbar – toggle visibility of the toolbar above each cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show Line Numbers – display line numbers inside code cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Collapse/Expand Output – hide or show outputs (plots, tables, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enable Output Scrolling – adds scrollbars for long outputs instead of overflowing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "💡 Helps declutter large notebooks or improve visual clarity.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 3. Cell Layout",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Adjusts the way individual cells are displayed and interacted with.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options include:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggle Input Visibility – hide or show the input (code) area of a cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggle Output Visibility – hide or show only the results/output area.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Wrap Text in Cells – wraps long lines instead of horizontal scrolling.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "📋 Ideal when reviewing code or hiding logic for visual focus.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 4. Workspace Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Change the overall Databricks interface color scheme.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Light Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Dark Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🌗 Switch depending on comfort or lighting conditions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 5. Editor Theme",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Changes the syntax highlighting style inside the code editor only.(Independent of workspace theme.)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options often include:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Default",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Monokai",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Solarized Light/Dark",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "High Contrast",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🎨 Useful for developers who prefer specific color styles.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 6. Side Panel",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Manage visibility of left-hand and right-hand navigation panels.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show/Hide Sidebar – toggle workspace navigation bar.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show File Browser / Data / Clusters / Jobs panels.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show Comments / Insights Panel on right side.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧱 Helpful for focusing or expanding workspace tools.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 7. Appearance",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Fine-tunes display settings related to text size and spacing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Zoom In / Zoom Out – increase or decrease text size.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Reset Zoom – return to default.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Toggle Compact Mode – reduce spacing between cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "👓 Improves readability or space management.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 8. Cluster Tools",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows quick visibility of cluster-related panels.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show Cluster Info Panel – view current attached cluster details.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Show Logs / Metrics – open cluster monitoring or Spark UI links.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Useful for debugging job or runtime issues directly from notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 9. Developer Settings",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens advanced options for developers such as:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enable Experimental Features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enable Command Palette Shortcuts",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Enable AI Assistant Beta (if available)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧪 For developers testing new Databricks capabilities.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔹 10. Query Snippets",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Opens pre-saved reusable SQL or Python code snippets.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can view, insert, or manage snippets for faster notebook development.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚡ Saves time by reusing common queries or functions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run-level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The Run menu in Databricks allows you to execute, debug, clear outputs, and control compute sessions in your notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "It’s primarily used for running code cells and managing the execution environment.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run and Debug",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "This section provides options to execute cells in different ways.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run Cell / Run All Cells → Executes the selected or all notebook cells sequentially.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run Cell and Move to Next → Runs the current cell, then automatically jumps to the next one.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run Above / Run Below → Executes all cells either above or below the currently selected cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Debug Cell (if enabled) → Allows step-by-step execution for debugging purposes.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "💡 Use when testing logic or running the whole notebook for analysis or data processing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "This section helps you remove outputs or states from the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear Output of Current Cell → Removes the result/output displayed for the current cell.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear Output of All Cells → Clears all results throughout the notebook (code remains intact).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear State → Resets notebook variables or execution state (optional in some setups).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🧹 Useful before re-running code to avoid confusion from old outputs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Go to Last Run Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Jumps directly to the last executed cell in the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Helps quickly find where you last left off in a long notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔁 Very handy for debugging or when resuming work after a pause.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Interrupt Execution (Shortcut: I, I)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Immediately stops a running cell or notebook execution.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Similar to “Stop” or “Cancel” in other IDEs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use this if a cell is taking too long or stuck in an infinite loop.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⏹️ Prevents resource wastage or cluster overload.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Detach from Compute Resource",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Disconnects the notebook from the currently attached Databricks cluster or compute resource.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "After detaching, no code execution can occur until reconnected.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "⚙️ Used when switching clusters, stopping resources, or cleaning up sessions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "New Session in Compute Resource",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Starts a fresh session within the currently attached cluster.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clears the existing Python/Scala/R environment (variables, imports, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Essentially “restarts the kernel” for a clean state.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "🔄 Useful when environment corruption or dependency conflicts occur.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Menu Option",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Key Use Case",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run and Debug",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Execute selected/all cells",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run or debug code interactively",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clear",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Remove outputs or execution states",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Clean notebook before rerun",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Go to Last Run Cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Jump to last executed cell",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Resume work or debug flow",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Interrupt Execution (I, I)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Stop current execution",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Abort long or stuck runs",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Detach from Compute Resource",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Disconnect cluster",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Switch or stop compute",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "New Session in Compute Resource",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Restart environment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Start fresh session for clean execution",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Help-level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Search actions",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Opens a search bar to quickly find and execute commands or actions within the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut: Ctrl + Shift + P",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: This allows users to rapidly search through available actions or commands without navigating through menus.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Keyboard shortcuts",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Displays a list of all available keyboard shortcuts for the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shortcut: H (when \"Help\" is active)",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: This is a helpful guide for users to quickly learn and use shortcuts, speeding up the workflow. Shortcuts might include things like running cells or navigating between them.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Provide feedback",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Opens a prompt where users can provide feedback about their experience with Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: This allows users to share their thoughts or report issues they have encountered while using Databricks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ask the Databricks community",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Opens a link to the Databricks community forum or help center where users can ask questions or browse discussions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: This connects users to the community for support, troubleshooting, or knowledge sharing.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Databricks support",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Provides a link to official Databricks support resources, including contact information or technical assistance options.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: This feature is for users who need direct, official support for their Databricks environment or facing issues that community help may not address.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Language-level features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose:Sets the default programming language for the current notebook.All new cells you create will use the selected language automatically, though you can still override it in individual cells.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Available options:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Python",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Default and most commonly used option.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supports libraries like PySpark, pandas, NumPy, matplotlib, etc.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used for data processing, machine learning, and automation tasks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "SQL",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Allows you to write SQL queries directly within the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Often used for querying data from Delta tables or databases.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Integrates well with Databricks’ data management and visualization tools.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Scala",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Used for working directly with Apache Spark’s core language.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Offers performance advantages and full access to Spark APIs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Often preferred by data engineers for large-scale data transformations.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "R",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "For data analysis and statistical modeling.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Ideal for data scientists working in R environments.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Supports packages like ggplot2 and dplyr.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "💡 Usage Tip:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can mix languages in a single notebook by prefixing a cell with:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "%python",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "%sql",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "%scala",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "%r",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Others features",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Grid/Outline View Icon",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Opens the notebook’s table of contents or cell outline view.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: Lets you navigate quickly between notebook cells or sections especially helpful in long notebooks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Run all",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Executes all code cells in the notebook sequentially from top to bottom.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use: Used when you want to rerun the entire notebook (e.g., after making changes to inputs or variables).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Connect",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Manages your cluster connection.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Shows which cluster the notebook is currently attached to.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you connect, disconnect, or switch clusters.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "The blue dot next to it means it’s currently connected.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Schedule",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Used to automate notebook runs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can set up recurring runs (daily, weekly, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Often used for production tasks like data refreshes or batch jobs.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Share",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Purpose: Manages collaboration and access permissions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Use:",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Lets you share the notebook with teammates.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "You can give view, edit, or run permissions.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "1. Comments",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: Comments allow users to add notes, feedback, or annotations to cells in the notebook. It's an important feature for collaboration.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: You can click on the comment icon, add comments, and reply to other users' comments. This helps teams work together on the notebook without modifying the actual code.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "2. MLflow",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: MLflow is an open-source platform used for managing the machine learning lifecycle. In Databricks, MLflow allows you to track experiments, organize models, and manage versioning and deployment.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: You can use it to log model parameters, metrics, artifacts, and even manage model registry, which can be useful for tracking different versions of models and their performance.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "3. Version History",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: This allows you to view previous versions of the notebook, track changes, and revert to earlier versions if needed.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: You can see the notebook’s change history, who made the changes, and when. You can roll back to a specific version if necessary, which is great for tracking progress and restoring work in case of mistakes.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "4. Variables",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: In Databricks, variables show the current session's defined variables, including their values. This helps you track what’s available in the current environment (e.g., the output of cells, the current state of dataframes, etc.).",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: It helps to inspect and manage variables directly from the sidebar. You can view the current state of variables, which is useful when working with large datasets or complex computations.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "5. Environment",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: The environment shows the runtime or environment context in which the notebook is executing. This can include the libraries installed, the Python/Scala/SQL environment, and the cluster configuration.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: It allows you to see which cluster or environment the notebook is using, including the versions of libraries that are installed. If you need a different environment (e.g., upgrading libraries or switching clusters), you can manage this from here.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "6. Assistant",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Feature: The assistant likely refers to an AI or virtual assistant integrated into Databricks to help with code suggestions, troubleshooting, and providing guidance within the notebook.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  },
+  {
+    "text": "Functionality: You can ask the assistant questions related to the notebook, such as asking for code completion, debugging help, or natural language translation of data queries. It's a helpful tool for improving productivity, especially when working with complex data science tasks.",
+    "is_heading": false,
+    "section": "No Heading",
+    "has_image": false
+  }
+]

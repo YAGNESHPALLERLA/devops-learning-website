@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 // Helper function to validate JWT token
 function isValidToken(token: string): boolean {
@@ -29,9 +30,15 @@ function isValidToken(token: string): boolean {
 
 export default function TutorialAuthGuard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
+    AUTH_SYSTEM_AVAILABLE ? null : true
+  );
 
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     // IMMEDIATE check - don't wait
     if (typeof window === 'undefined') {
       return;

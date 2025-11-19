@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import React from 'react';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 interface CourseCardProps {
   title: string;
@@ -35,9 +36,15 @@ function CourseCard({ title, description, icon, link, gradient }: CourseCardProp
 }
 
 export default function CoursesPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
+    AUTH_SYSTEM_AVAILABLE ? null : true
+  );
 
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {

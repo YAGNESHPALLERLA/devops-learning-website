@@ -5,15 +5,22 @@ import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import PageNavigation from '@/components/page-navigation';
 import { getVideosForTopic } from '@/data/videoTutorials';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function DevOpsPage() {
   const [activeSection, setActiveSection] = useState('introduction');
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
+    AUTH_SYSTEM_AVAILABLE ? null : true
+  );
   
   // Note: isAuthenticated is used in conditional return below
 
   // Authentication check - runs immediately on mount
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     if (typeof window === 'undefined') return;
     
     const token = localStorage.getItem('token');

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ConditionalNav } from "@/components/conditional-nav";
 import AuthGuard from "@/components/auth-guard";
 import GlobalContinuePrompt from "@/components/global-continue-prompt";
+import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +41,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              const AUTH_SYSTEM_AVAILABLE = ${AUTH_SYSTEM_AVAILABLE ? "true" : "false"};
               (function() {
                 try {
+                  if (!AUTH_SYSTEM_AVAILABLE) {
+                    return;
+                  }
                   const path = window.location.pathname;
                   // Only require registration for tutorials dropdown routes
                   const isTutorialRoute = 

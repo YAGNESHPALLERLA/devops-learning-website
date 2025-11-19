@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 // Define the props interface for TechnologyCard
 interface TechnologyCardProps {
@@ -38,9 +39,15 @@ function TechnologyCard({ title, description, icon, link, gradient }: Technology
 }
 
 export default function TutorialsPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
+    AUTH_SYSTEM_AVAILABLE ? null : true
+  );
 
   useEffect(() => {
+    if (!AUTH_SYSTEM_AVAILABLE) {
+      setIsAuthenticated(true);
+      return;
+    }
     // Check authentication immediately on mount
     const token = localStorage.getItem('token');
     if (!token) {
