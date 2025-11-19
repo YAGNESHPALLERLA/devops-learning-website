@@ -58,6 +58,9 @@ interface ChatMessage {
     email: string;
   };
   isRead: boolean;
+  status?: 'sending' | 'sent' | 'delivered' | 'seen';
+  deletedForSender?: boolean;
+  deletedForEveryone?: boolean;
   createdAt: string;
 }
 
@@ -1454,7 +1457,7 @@ function ChatPanel({
                 const currentUserId = getCurrentUserId();
                 const isOwnMessage = msg.sender.id === currentUserId || msg.sender._id === currentUserId;
                 const sharedPost = parseMessage(msg.content);
-                const isDeleted = (msg as any).deletedForSender || (msg as any).deletedForEveryone;
+                const isDeleted = msg.deletedForSender || msg.deletedForEveryone;
                 
                 return (
                   <div 
@@ -1567,13 +1570,13 @@ function ChatPanel({
                         </p>
                         {isOwnMessage && !isDeleted && (
                           <span className={`text-xs ${
-                            (msg as any).status === 'seen' || (msg as any).isRead 
+                            msg.status === 'seen' || msg.isRead 
                               ? 'text-blue-400' 
-                              : (msg as any).status === 'sending'
+                              : msg.status === 'sending'
                               ? 'text-gray-400'
                               : 'text-gray-500'
                           }`}>
-                            {getStatusIcon((msg as any).status, (msg as any).isRead)}
+                            {getStatusIcon(msg.status, msg.isRead)}
                           </span>
                         )}
                       </div>
