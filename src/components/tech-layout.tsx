@@ -521,16 +521,30 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
   // Use custom navigation items if provided, otherwise use default
   const navigationItems = customNavigationItems || getTechNavigationItems(technology);
 
-  // Handle scroll to update active section
+  // Handle scroll to update active section (for sidebar highlighting only)
   useEffect(() => {
     if (!onThisPage) return; // Skip scroll handling if no onThisPage prop
     
-    let isScrolling = false;
     let scrollTimeout: NodeJS.Timeout;
+    let lastScrollY = window.scrollY;
+    let isScrollingProgrammatically = false;
     
     const handleScroll = () => {
-      // Debounce scroll handling to prevent interference with programmatic scrolling
-      if (isScrolling) return;
+      const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+      lastScrollY = currentScrollY;
+      
+      // If scroll delta is large, it's likely programmatic scrolling - skip
+      if (scrollDelta > 50) {
+        isScrollingProgrammatically = true;
+        setTimeout(() => {
+          isScrollingProgrammatically = false;
+        }, 1000);
+        return;
+      }
+      
+      // Skip if programmatic scroll is happening
+      if (isScrollingProgrammatically) return;
       
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
@@ -540,15 +554,18 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         for (let i = sections.length - 1; i >= 0; i--) {
           const section = sections[i];
           if (section && section.offsetTop <= scrollPosition) {
-            setActiveSection(section.id);
-            if (setActiveSubsection) {
-              setActiveSubsection(null);
+            // Only update if section actually changed to prevent unnecessary re-renders
+            const currentSection = externalActiveSection !== undefined ? externalActiveSection : '';
+            if (section.id !== currentSection) {
+              setActiveSection(section.id);
+              if (setActiveSubsection) {
+                setActiveSubsection(null);
+              }
             }
             break;
           }
         }
-        isScrolling = false;
-      }, 100);
+      }, 150);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -556,7 +573,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, [onThisPage, setActiveSection, setActiveSubsection]);
+  }, [onThisPage, setActiveSection, setActiveSubsection, externalActiveSection]);
 
   return (
     <div className="flex min-h-screen bg-[#1a1a1a] relative">

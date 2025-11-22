@@ -1,7 +1,7 @@
 'use client';
 
 import TechLayout from '@/components/tech-layout';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 type GalleryImage = {
@@ -152,9 +152,15 @@ export default function AzureDataEngineerPage() {
   const [activeSection, setActiveSection] = useState('azure-hierarchy');
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
+  const isUserScrollingRef = useRef(false);
+  const shouldScrollRef = useRef(false);
 
   // Custom setActiveSection that handles child items correctly
   const handleSetActiveSection = (sectionId: string) => {
+    // Mark that this is a user-initiated navigation (should scroll)
+    shouldScrollRef.current = true;
+    isUserScrollingRef.current = false;
+    
     // Check if this is a direct section (not a subsection)
     if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
@@ -201,9 +207,13 @@ export default function AzureDataEngineerPage() {
     };
   }, []);
 
-  // Scroll to active section after it renders
+  // Scroll to active section after it renders - ONLY if user clicked sidebar
   useEffect(() => {
-    if (activeSection) {
+    if (activeSection && shouldScrollRef.current) {
+      // Reset the flag
+      shouldScrollRef.current = false;
+      isUserScrollingRef.current = true;
+      
       // Small delay to ensure DOM is updated
       const scrollTimeout = setTimeout(() => {
         const element = document.getElementById(activeSection);
@@ -217,6 +227,11 @@ export default function AzureDataEngineerPage() {
             subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
+        
+        // Reset user scrolling flag after scroll completes
+        setTimeout(() => {
+          isUserScrollingRef.current = false;
+        }, 500);
       }, 200);
       
       return () => clearTimeout(scrollTimeout);
