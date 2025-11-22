@@ -41,18 +41,11 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Get the header height dynamically (sticky header is approximately 80px)
-      const headerHeight = 80;
-      const spacing = 20;
-      const offset = headerHeight + spacing;
-      
-      // Use offsetTop for more reliable positioning
-      const elementTop = element.offsetTop;
-      const offsetPosition = elementTop - offset;
-      
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
+      // Use scrollIntoView which respects scroll-margin-top CSS property
+      // Elements should have scroll-mt-[100px] to account for header (80px) + spacing (20px)
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
@@ -74,10 +67,10 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
       // Update URL hash
       window.history.replaceState(null, '', href);
 
-      // Scroll to the target section
+      // Scroll to the target section - increased timeout for DOM to update
       setTimeout(() => {
         scrollToSection(sectionId);
-      }, 100);
+      }, 200);
     }
   };
 

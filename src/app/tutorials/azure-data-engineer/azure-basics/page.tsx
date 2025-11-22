@@ -156,18 +156,11 @@ export default function AzureDataEngineerPage() {
   const scrollToElement = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
-      // Get the header height dynamically (sticky header is approximately 80px)
-      const headerHeight = 80;
-      const spacing = 20;
-      const offset = headerHeight + spacing;
-      
-      // Use offsetTop for more reliable positioning
-      const elementTop = element.offsetTop;
-      const offsetPosition = elementTop - offset;
-      
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
+      // Use scrollIntoView which respects scroll-margin-top CSS property
+      // The elements have scroll-mt-[100px] which accounts for header (80px) + spacing (20px)
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
@@ -177,27 +170,27 @@ export default function AzureDataEngineerPage() {
       setActiveSection('azure-hierarchy');
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#azure-hierarchy`);
-      // Scroll to section
+      // Scroll to section - increased timeout for DOM to update
       setTimeout(() => {
         scrollToElement('azure-hierarchy');
-      }, 100);
+      }, 200);
     } else if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
-      // Scroll to section
+      // Scroll to section - increased timeout for DOM to update
       setTimeout(() => {
         scrollToElement(sectionId);
-      }, 100);
+      }, 200);
     } else {
       const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
       setActiveSection(sectionId);
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
-      // Scroll to section
+      // Scroll to section - increased timeout for DOM to update
       setTimeout(() => {
         scrollToElement(sectionId);
-      }, 100);
+      }, 200);
     }
   };
 
@@ -205,18 +198,11 @@ export default function AzureDataEngineerPage() {
     const scrollToElement = (elementId: string) => {
       const element = document.getElementById(elementId);
       if (element) {
-        // Get the header height dynamically (sticky header is approximately 80px)
-        const headerHeight = 80;
-        const spacing = 20;
-        const offset = headerHeight + spacing;
-        
-        // Use offsetTop for more reliable positioning
-        const elementTop = element.offsetTop;
-        const offsetPosition = elementTop - offset;
-        
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth'
+        // Use scrollIntoView which respects scroll-margin-top CSS property
+        // The elements have scroll-mt-[100px] which accounts for header (80px) + spacing (20px)
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     };
@@ -228,7 +214,7 @@ export default function AzureDataEngineerPage() {
         setActiveSubsection(null);
         setTimeout(() => {
           scrollToElement('azure-hierarchy');
-        }, 100);
+        }, 200);
         return;
       }
 
@@ -237,13 +223,13 @@ export default function AzureDataEngineerPage() {
         setActiveSubsection(null);
         setTimeout(() => {
           scrollToElement(hash);
-        }, 100);
+        }, 200);
       } else {
         setActiveSection(hash);
         setActiveSubsection(null);
         setTimeout(() => {
           scrollToElement(hash);
-        }, 100);
+        }, 200);
       }
     };
 
@@ -258,30 +244,24 @@ export default function AzureDataEngineerPage() {
     const scrollToElement = (elementId: string) => {
       const element = document.getElementById(elementId);
       if (element) {
-        // Get the header height dynamically (sticky header is approximately 80px)
-        const headerHeight = 80;
-        const spacing = 20;
-        const offset = headerHeight + spacing;
-        
-        // Use offsetTop for more reliable positioning
-        const elementTop = element.offsetTop;
-        const offsetPosition = elementTop - offset;
-        
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth'
+        // Use scrollIntoView which respects scroll-margin-top CSS property
+        // The elements have scroll-mt-[100px] which accounts for header (80px) + spacing (20px)
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     };
 
     if (activeSection) {
+      // Increase timeout to ensure DOM is fully rendered
       setTimeout(() => {
         if (activeSubsection) {
           scrollToElement(activeSubsection);
         } else {
           scrollToElement(activeSection);
         }
-      }, 150);
+      }, 200);
     }
   }, [activeSection, activeSubsection]);
 
@@ -342,7 +322,7 @@ export default function AzureDataEngineerPage() {
           <h3 className="text-3xl font-bold text-white mb-6">Azure Basics</h3>
           
           <div className="space-y-12 relative z-10">
-            <div id="azure-hierarchy" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
+            <div id="azure-hierarchy" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-[100px] relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Hierarchy</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -376,7 +356,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image1', 'image2', 'image3', 'image4')} />
               </div>
             </div>
-            <div id="resource-group" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
+            <div id="resource-group" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-[100px] relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Resource Group</h4>
               <div className="space-y-6 text-gray-300">
                 <p className="mb-3"><strong className="text-blue-400">What it is:</strong> Underneath management groups, you have subscriptions. A subscription is like a container for Azure resources, where you’ll define limits on resources and billing.</p>
@@ -490,7 +470,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image5', 'image6', 'image7', 'image8', 'image9', 'image10', 'image11', 'image12')} />
               </div>
             </div>
-            <div id="azure-blob-storage" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
+            <div id="azure-blob-storage" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-[100px] relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Blob Storage</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1079,7 +1059,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image13', 'image14', 'image15', 'image16', 'image17', 'image18', 'image19', 'image20', 'image21', 'image22', 'image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image30', 'image31', 'image32', 'image33', 'image34', 'image35', 'image36', 'image37', 'image38', 'image39', 'image40', 'image41', 'image42', 'image43', 'image44', 'image45', 'image46', 'image47', 'image48', 'image49', 'image50')} />
               </div>
             </div>
-            <div id="types-of-blobs" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
+            <div id="types-of-blobs" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-[100px] relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Types of Blobs</h4>
               <div className="space-y-6 text-gray-300">
                 <p className="mb-3">Azure Blob Storage is Microsoft’s cloud-based service designed to store large amounts of data of various types — including structured, semi-structured, and unstructured data.</p>
@@ -1098,7 +1078,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image51', 'image52', 'image53')} />
               </div>
             </div>
-            <div id="azure-data-lake" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
+            <div id="azure-data-lake" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-[100px] relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Data Lake Storage Gen2</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
