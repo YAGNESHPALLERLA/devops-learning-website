@@ -98,6 +98,33 @@ export default function CoursesPage() {
             link="/tutorials/azure-data-engineer"
             gradient="from-blue-500 to-cyan-500"
           />
+          <CourseCard
+            title="Artificial Intelligence"
+            description="Learn about Large Language Models, machine learning, and advanced AI technologies"
+            icon={
+              <svg className="w-16 h-16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#aiGradient1)"/>
+                <path d="M2 17L12 22L22 17" stroke="url(#aiGradient2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="url(#aiGradient3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <defs>
+                  <linearGradient id="aiGradient1" x1="2" y1="7" x2="22" y2="7" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#A855F7"/>
+                    <stop offset="100%" stopColor="#EC4899"/>
+                  </linearGradient>
+                  <linearGradient id="aiGradient2" x1="2" y1="17" x2="22" y2="17" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#A855F7"/>
+                    <stop offset="100%" stopColor="#EC4899"/>
+                  </linearGradient>
+                  <linearGradient id="aiGradient3" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#A855F7"/>
+                    <stop offset="100%" stopColor="#EC4899"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            }
+            link="/tutorials/artificial-intelligence"
+            gradient="from-purple-500 to-pink-500"
+          />
         </div>
       </div>
     </main>
