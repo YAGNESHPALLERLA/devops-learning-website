@@ -158,15 +158,39 @@ export default function AzureDataEngineerPage() {
       setActiveSection('azure-hierarchy');
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#azure-hierarchy`);
+      // Scroll to section
+      setTimeout(() => {
+        const element = document.getElementById('azure-hierarchy');
+        if (element) {
+          const offsetTop = element.offsetTop - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }, 100);
     } else if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
+      // Scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }, 100);
     } else {
       const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
       setActiveSection(sectionId);
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
+      // Scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -176,15 +200,36 @@ export default function AzureDataEngineerPage() {
       if (!hash || hash === 'azure-basics') {
         setActiveSection('azure-hierarchy');
         setActiveSubsection(null);
+        setTimeout(() => {
+          const element = document.getElementById('azure-hierarchy');
+          if (element) {
+            const offsetTop = element.offsetTop - 100;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          }
+        }, 100);
         return;
       }
 
       if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
         setActiveSection(hash);
         setActiveSubsection(null);
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const offsetTop = element.offsetTop - 100;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          }
+        }, 100);
       } else {
         setActiveSection(hash);
         setActiveSubsection(null);
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const offsetTop = element.offsetTop - 100;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          }
+        }, 100);
       }
     };
 
@@ -200,11 +245,13 @@ export default function AzureDataEngineerPage() {
       setTimeout(() => {
         const element = document.getElementById(activeSection);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const offsetTop = element.offsetTop - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         } else if (activeSubsection) {
           const subElement = document.getElementById(activeSubsection);
           if (subElement) {
-            subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const offsetTop = subElement.offsetTop - 100;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
           }
         }
       }, 150);
