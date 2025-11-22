@@ -264,7 +264,6 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'common-use-cases': 'azure-databricks',
   'core-components': 'azure-databricks',
   'advantages': 'azure-databricks',
-  'databricks-overview': 'azure-databricks',
   'how-to-create': 'azure-databricks',
   'workspace-overview': 'azure-databricks',
   'databricks-features': 'azure-databricks',
@@ -313,7 +312,6 @@ const createModuleNavigationItems = (): Array<{ id: string; title: string; href:
     'common-use-cases': 'Common Use Cases',
     'core-components': 'Core Components',
     'advantages': 'Advantages',
-    'databricks-overview': 'Databricks Overview',
     'how-to-create': 'How to Create Azure Databricks',
     'workspace-overview': 'Workspace Overview',
     'databricks-features': 'Databricks Features',
@@ -774,79 +772,9 @@ export default function AzureDatabricksPage() {
               </div>
             </div>
 
-            {/* Databricks Overview */}
-            <div id="databricks-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">6. Databricks Overview</h4>
-              <div className="space-y-4 text-gray-300">
-                <div className="space-y-4">
-                  <div>
-                    <strong className="text-blue-400">Go to the Azure portal and search for Databricks</strong>
-                    <ImageGallery images={getImages('db_step1')} />
-                  </div>
-                  <div>
-                    <strong className="text-blue-400">Click on create</strong>
-                    <ImageGallery images={getImages('db_step2')} />
-                  </div>
-                  <div>
-                    <strong className="text-blue-400">Create databricks</strong>
-                    <ImageGallery images={getImages('db_step3')} />
-                  </div>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg mt-4">
-                  <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
-                  <p>Choose the Azure subscription under which the Databricks workspace will be created.</p>
-                  <p className="mt-2"><strong>Example:</strong> Azure subscription 1</p>
-                  <ImageGallery images={getImages('db_step4')} />
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Resource Group</h5>
-                  <p>Select an existing Resource Group or create a new one.</p>
-                  <p className="mt-2">Resource groups act like folders to organize and manage related resources.</p>
-                  <p className="mt-2"><strong>Example:</strong> rg-ohg365-dev</p>
-                  <ImageGallery images={getImages('db_step5')} />
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Workspace Name</h5>
-                  <p>Enter a unique workspace name for your Databricks instance.</p>
-                  <p className="mt-2"><strong>Example:</strong> ohg365-db-dev</p>
-                  <ImageGallery images={getImages('db_step6')} />
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Region</h5>
-                  <p>Choose the Azure region where your workspace will be hosted.</p>
-                  <p className="mt-2"><strong>Example:</strong> Central US</p>
-                  <ImageGallery images={getImages('db_step7')} />
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
-                  <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
-                  <ImageGallery images={getImages('db_step8')} />
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Managed Resource Group Name</h5>
-                  <p>Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.</p>
-                  <p className="mt-2"><strong>Example:</strong> mg-ohg365-db-dev</p>
-                  <ImageGallery images={getImages('db_step9')} />
-                </div>
-
-                <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
-                  <h5 className="text-xl font-semibold text-white mb-3">Final Step — Review + Create</h5>
-                  <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
-                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource </strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
-                  <ImageGallery images={getImages('db_step10')} />
-                </div>
-              </div>
-            </div>
-
             {/* How to Create */}
             <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">7. How to Create Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">6. How to Create Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-4">
                   <div>
@@ -867,7 +795,6 @@ export default function AzureDatabricksPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Subscription</h5>
                   <p>Choose the Azure subscription under which the Databricks workspace will be created.</p>
                   <p className="mt-2"><strong>Example:</strong> Azure subscription 1</p>
-                  <ImageGallery images={getImages('db_step4')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -875,48 +802,43 @@ export default function AzureDatabricksPage() {
                   <p>Select an existing Resource Group or create a new one.</p>
                   <p className="mt-2">Resource groups act like folders to organize and manage related resources.</p>
                   <p className="mt-2"><strong>Example:</strong> rg-ohg365-dev</p>
-                  <ImageGallery images={getImages('db_step5')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace Name</h5>
                   <p>Enter a unique workspace name for your Databricks instance.</p>
                   <p className="mt-2"><strong>Example:</strong> ohg365-db-dev</p>
-                  <ImageGallery images={getImages('db_step6')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Region</h5>
                   <p>Choose the Azure region where your workspace will be hosted.</p>
                   <p className="mt-2"><strong>Example:</strong> Central US</p>
-                  <ImageGallery images={getImages('db_step7')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Pricing Tier</h5>
                   <p>Select the pricing tier — typically Premium (+ Role-based access controls) for better management and security features.</p>
-                  <ImageGallery images={getImages('db_step8')} />
                 </div>
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Managed Resource Group Name</h5>
                   <p>Azure automatically creates a Managed Resource Group to hold internal resources required by Databricks.</p>
                   <p className="mt-2"><strong>Example:</strong> mg-ohg365-db-dev</p>
-                  <ImageGallery images={getImages('db_step9')} />
                 </div>
 
                 <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg mt-4">
                   <h5 className="text-xl font-semibold text-white mb-3">Final Step — Review + Create</h5>
                   <p>Click Review + create to validate your settings and proceed with workspace creation.</p>
-                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource </strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshot below.</p>
-                  <ImageGallery images={getImages('db_step10')} />
+                  <p className="mt-3">While creating an Azure Databricks workspace, Azure automatically creates a separate resource group called a <strong>Managed Resource Group</strong>. This group contains and manages all the supporting resources required for the Databricks workspace, as shown in the screenshots below.</p>
+                  <ImageGallery images={getImages('db_step4', 'db_step5', 'db_step6', 'db_step7', 'db_step10')} />
                 </div>
               </div>
             </div>
 
             {/* Workspace Overview */}
             <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Workspace Overview</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">7. Databricks Workspace Overview</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3 mb-4">
                   <p><strong className="text-blue-400">Click on Databricks Workspace</strong></p>
@@ -994,13 +916,12 @@ export default function AzureDatabricksPage() {
                     <li>Contains shortcuts to Microsoft Azure and Databricks home.</li>
                   </ul>
                 </div>
-                <ImageGallery images={getImages('image91')} />
               </div>
             </div>
 
             {/* Databricks Features */}
             <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">9. Databricks Features</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Features</h4>
               <div className="space-y-8 text-gray-300">
                 {/* Workspace */}
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1137,8 +1058,8 @@ export default function AzureDatabricksPage() {
                       <li><strong>Add Data:</strong> Option to import or register new datasets into the catalog.</li>
                     </ul>
                   </div>
-                  {/* Catalog - All 2 images from document */}
-                  <ImageGallery images={getImages('db_catalog_1', 'db_catalog_2')} />
+                  {/* Catalog - 1 image from document */}
+                  <ImageGallery images={getImages('db_catalog_1')} />
                   </div>
                   
                 {/* Jobs & Pipelines */}
@@ -1187,7 +1108,7 @@ export default function AzureDatabricksPage() {
                     </ul>
                   </div>
                 {/* Jobs & Pipelines visuals from Azure Databricks -1 */}
-                <ImageGallery images={getImages('db1_image1')} />
+                <ImageGallery images={getImages('db_catalog_2', 'db1_image1')} />
                 </div>
 
                 {/* Compute (Clusters) */}
@@ -1577,8 +1498,8 @@ export default function AzureDatabricksPage() {
                     </table>
                   </div>
                 </div>
-                {/* SQL Editor - All 2 images from document */}
-                <ImageGallery images={getImages('db_sql_editor_1', 'db_sql_editor_2')} />
+                {/* SQL Editor - 1 image from document */}
+                <ImageGallery images={getImages('db_sql_editor_1')} />
               </div>
             </div>
 
