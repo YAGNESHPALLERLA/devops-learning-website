@@ -67,10 +67,8 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
       // Update URL hash
       window.history.replaceState(null, '', href);
 
-      // Scroll to the target section - increased timeout for DOM to update
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 200);
+      // Don't scroll here - let the page's useEffect handle scrolling
+      // This prevents double-scrolling and ensures consistent behavior
     }
   };
 
