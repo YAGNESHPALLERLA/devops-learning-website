@@ -525,24 +525,37 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
   useEffect(() => {
     if (!onThisPage) return; // Skip scroll handling if no onThisPage prop
     
+    let isScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
+    
     const handleScroll = () => {
-      const sections = onThisPage.map(item => document.getElementById(item.id)).filter(Boolean);
-      const scrollPosition = window.scrollY + 100;
+      // Debounce scroll handling to prevent interference with programmatic scrolling
+      if (isScrolling) return;
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const sections = onThisPage.map(item => document.getElementById(item.id)).filter(Boolean);
+        const scrollPosition = window.scrollY + 100;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(section.id);
-          if (setActiveSubsection) {
-            setActiveSubsection(null);
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(section.id);
+            if (setActiveSubsection) {
+              setActiveSubsection(null);
+            }
+            break;
           }
-          break;
         }
-      }
+        isScrolling = false;
+      }, 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, [onThisPage, setActiveSection, setActiveSubsection]);
 
   return (
@@ -576,8 +589,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </aside>
       )}
 
-      {/* Main Content */}
-      <div className={`flex-1 flex flex-col min-h-screen ${!hideSidebar ? 'lg:ml-80' : ''}`}>
+      {/* Main Content - removed min-h-screen to allow natural scrolling */}
+      <div className={`flex-1 flex flex-col ${!hideSidebar ? 'lg:ml-80' : ''}`}>
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
@@ -606,8 +619,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
           </div>
         </header>
 
-        {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20">
+        {/* Content area - removed overflow-y-auto to allow natural window scrolling */}
+        <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
