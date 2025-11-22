@@ -122,42 +122,30 @@ const PAGE_HEADINGS = [
 ];
 
 const SUBSECTION_PARENT: Record<string, string> = {
-  'azure-hierarchy': 'azure-hierarchy',
-  'resource-group': 'resource-group',
-  'azure-blob-storage': 'azure-blob-storage',
-  'types-of-blobs': 'azure-blob-storage',
-  'azure-data-lake': 'azure-data-lake'
+  'azure-hierarchy': 'azure-basics',
+  'resource-group': 'azure-basics',
+  'azure-blob-storage': 'azure-basics',
+  'types-of-blobs': 'azure-basics',
+  'azure-data-lake': 'azure-basics'
 };
 
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-basics';
-  const subsectionTitles: Record<string, string> = {
-    'azure-hierarchy': 'Azure Hierarchy',
-    'resource-group': 'Resource Group',
-    'azure-blob-storage': 'Azure Blob Storage',
-    'types-of-blobs': 'Types of Blobs',
-    'azure-data-lake': 'Azure Data Lake Storage Gen2'
-  };
-
-  const moduleSections = PAGE_HEADINGS.map(heading => {
-    const subsections = Object.entries(SUBSECTION_PARENT)
-      .filter(([_, parent]) => parent === heading.id)
-      .map(([subsectionId, _]) => ({
-        id: subsectionId,
-        title: subsectionTitles[subsectionId] || subsectionId,
-        href: `${basePath}#${subsectionId}`
-      }));
-
-    return {
-      id: heading.id,
-      title: heading.title,
-      href: `${basePath}#${heading.id}`,
-      icon: heading.id === 'azure-hierarchy' ? '📘' : undefined,
-      children: subsections.length > 0 ? subsections : undefined
-    };
-  });
-
-  return moduleSections;
+  
+  // Single "Azure Basics" dropdown with all sections as children
+  return [
+    {
+      id: 'azure-basics',
+      title: 'Azure Basics',
+      href: `${basePath}#azure-basics`,
+      icon: '📘',
+      children: PAGE_HEADINGS.map(heading => ({
+        id: heading.id,
+        title: heading.title,
+        href: `${basePath}#${heading.id}`
+      }))
+    }
+  ];
 };
 
 export default function AzureDataEngineerPage() {
@@ -166,14 +154,18 @@ export default function AzureDataEngineerPage() {
   const pageHeadings = PAGE_HEADINGS;
 
   const handleSetActiveSection = (sectionId: string) => {
-    if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
+    if (sectionId === 'azure-basics') {
+      setActiveSection('azure-hierarchy');
+      setActiveSubsection(null);
+      window.history.replaceState(null, '', `#azure-hierarchy`);
+    } else if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
       setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
     } else {
-      const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-hierarchy';
-      setActiveSection(parentSection);
-      setActiveSubsection(sectionId);
+      const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
+      setActiveSection(sectionId);
+      setActiveSubsection(null);
       window.history.replaceState(null, '', `#${sectionId}`);
     }
   };
@@ -181,7 +173,7 @@ export default function AzureDataEngineerPage() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      if (!hash) {
+      if (!hash || hash === 'azure-basics') {
         setActiveSection('azure-hierarchy');
         setActiveSubsection(null);
         return;
@@ -191,9 +183,8 @@ export default function AzureDataEngineerPage() {
         setActiveSection(hash);
         setActiveSubsection(null);
       } else {
-        const parentSection = SUBSECTION_PARENT[hash] || 'azure-hierarchy';
-        setActiveSection(parentSection);
-        setActiveSubsection(hash);
+        setActiveSection(hash);
+        setActiveSubsection(null);
       }
     };
 
@@ -254,8 +245,8 @@ export default function AzureDataEngineerPage() {
       setActiveSubsection={setActiveSubsection}
       customNavigationItems={createModuleNavigationItems()}
     >
-      <div className="min-h-screen">
-        <div className="text-center mb-16">
+      <div className="min-h-screen relative">
+        <div className="text-center mb-16 relative z-10">
           <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-500/30">
             <span className="text-blue-400 font-semibold flex items-center justify-center space-x-2">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -276,8 +267,8 @@ export default function AzureDataEngineerPage() {
         >
           <h3 className="text-3xl font-bold text-white mb-6">Azure Basics</h3>
           
-          <div className="space-y-12">
-            <div id="azure-hierarchy" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+          <div className="space-y-12 relative z-10">
+            <div id="azure-hierarchy" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Hierarchy</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -311,7 +302,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image1', 'image2', 'image3', 'image4')} />
               </div>
             </div>
-            <div id="resource-group" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="resource-group" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Resource Group</h4>
               <div className="space-y-6 text-gray-300">
                 <p className="mb-3"><strong className="text-blue-400">What it is:</strong> Underneath management groups, you have subscriptions. A subscription is like a container for Azure resources, where you’ll define limits on resources and billing.</p>
@@ -425,7 +416,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image5', 'image6', 'image7', 'image8', 'image9', 'image10', 'image11', 'image12')} />
               </div>
             </div>
-            <div id="azure-blob-storage" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="azure-blob-storage" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Blob Storage</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1014,7 +1005,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image13', 'image14', 'image15', 'image16', 'image17', 'image18', 'image19', 'image20', 'image21', 'image22', 'image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image30', 'image31', 'image32', 'image33', 'image34', 'image35', 'image36', 'image37', 'image38', 'image39', 'image40', 'image41', 'image42', 'image43', 'image44', 'image45', 'image46', 'image47', 'image48', 'image49', 'image50')} />
               </div>
             </div>
-            <div id="types-of-blobs" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="types-of-blobs" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Types of Blobs</h4>
               <div className="space-y-6 text-gray-300">
                 <p className="mb-3">Azure Blob Storage is Microsoft’s cloud-based service designed to store large amounts of data of various types — including structured, semi-structured, and unstructured data.</p>
@@ -1033,7 +1024,7 @@ export default function AzureDataEngineerPage() {
                 <ImageGallery images={getImages('image51', 'image52', 'image53')} />
               </div>
             </div>
-            <div id="azure-data-lake" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="azure-data-lake" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">Azure Data Lake Storage Gen2</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1483,7 +1474,7 @@ export default function AzureDataEngineerPage() {
           </div>
         </section>
 
-        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-700">
+        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-700 relative z-10">
           <button
             onClick={goToPreviousSection}
             disabled={!hasPrevious}
