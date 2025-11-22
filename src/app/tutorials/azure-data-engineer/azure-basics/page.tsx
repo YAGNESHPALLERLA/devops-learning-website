@@ -96,153 +96,6 @@ const azureImages: Record<string, GalleryImage> = {
   image51: { src: '/tutorials/azure/images/image51.png', width: 1669, height: 591, alt: 'ADLS uploaded file details' },
   image52: { src: '/tutorials/azure/images/image52.png', width: 1669, height: 591, alt: 'ADLS blob types comparison table' },
   image53: { src: '/tutorials/azure/images/image53.png', width: 1669, height: 591, alt: 'ADLS access tier comparison chart' },
-  // Azure Databricks images
-  image54: { src: '/tutorials/azure/images/image54.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
-  image55: { src: '/tutorials/azure/images/image55.png', width: 1920, height: 1080, alt: 'Azure Databricks architecture' },
-  image56: { src: '/tutorials/azure/images/image56.png', width: 1920, height: 1080, alt: 'Databricks use cases' },
-  image57: { src: '/tutorials/azure/images/image57.png', width: 1920, height: 1080, alt: 'Core components' },
-  image58: { src: '/tutorials/azure/images/image58.png', width: 1920, height: 1080, alt: 'Databricks advantages' },
-  image59: { src: '/tutorials/azure/images/image59.png', width: 1920, height: 1080, alt: 'Databricks overview' },
-  image60: { src: '/tutorials/azure/images/image60.png', width: 1920, height: 1080, alt: 'Create Azure Databricks workspace' },
-  image61: { src: '/tutorials/azure/images/image61.png', width: 1920, height: 1080, alt: 'Databricks workspace' },
-  image62: { src: '/tutorials/azure/images/image62.png', width: 1920, height: 1080, alt: 'Databricks features' },
-  image63: { src: '/tutorials/azure/images/image63.png', width: 1920, height: 1080, alt: 'Databricks SQL overview' },
-  image64: { src: '/tutorials/azure/images/image64.png', width: 1920, height: 1080, alt: 'SQL Editor' },
-  image65: { src: '/tutorials/azure/images/image65.png', width: 1920, height: 1080, alt: 'Dashboards' },
-  image66: { src: '/tutorials/azure/images/image66.png', width: 1920, height: 1080, alt: 'Genie AI assistant' },
-  image67: { src: '/tutorials/azure/images/image67.png', width: 1920, height: 1080, alt: 'Alerts configuration' },
-  image68: { src: '/tutorials/azure/images/image68.png', width: 1920, height: 1080, alt: 'Query history' },
-  image69: { src: '/tutorials/azure/images/image69.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
-  image70: { src: '/tutorials/azure/images/image70.png', width: 1920, height: 1080, alt: 'Azure Databricks image 70' },
-  image71: { src: '/tutorials/azure/images/image71.png', width: 1920, height: 1080, alt: 'Azure Databricks image 71' },
-  image72: { src: '/tutorials/azure/images/image72.png', width: 1920, height: 1080, alt: 'Azure Databricks image 72' },
-  image73: { src: '/tutorials/azure/images/image73.png', width: 1920, height: 1080, alt: 'Azure Databricks image 73' },
-  image74: { src: '/tutorials/azure/images/image74.png', width: 1920, height: 1080, alt: 'Azure Databricks image 74' },
-  image75: { src: '/tutorials/azure/images/image75.png', width: 1920, height: 1080, alt: 'Azure Databricks image 75' },
-  image76: { src: '/tutorials/azure/images/image76.png', width: 1920, height: 1080, alt: 'Azure Databricks image 76' },
-  image77: { src: '/tutorials/azure/images/image77.png', width: 1920, height: 1080, alt: 'Azure Databricks image 77' },
-  image78: { src: '/tutorials/azure/images/image78.png', width: 1920, height: 1080, alt: 'Azure Databricks image 78' },
-  image79: { src: '/tutorials/azure/images/image79.png', width: 1920, height: 1080, alt: 'Azure Databricks image 79' },
-  image80: { src: '/tutorials/azure/images/image80.png', width: 1920, height: 1080, alt: 'Azure Databricks image 80' },
-  image81: { src: '/tutorials/azure/images/image81.png', width: 1920, height: 1080, alt: 'Azure Databricks image 81' },
-  image82: { src: '/tutorials/azure/images/image82.png', width: 1920, height: 1080, alt: 'Azure Databricks image 82' },
-  image83: { src: '/tutorials/azure/images/image83.png', width: 1920, height: 1080, alt: 'Azure Databricks image 83' },
-  image84: { src: '/tutorials/azure/images/image84.png', width: 1920, height: 1080, alt: 'Azure Databricks image 84' },
-  // Images from 2.Azure Databricks.docx document (image85-image115)
-  // Individual step images for "How to Create" - extracted from document
-  db_step1: { src: '/tutorials/azure/images/db_step1.png', width: 1920, height: 1080, alt: 'Azure portal search for Databricks' },
-  db_step2: { src: '/tutorials/azure/images/db_step2.png', width: 1920, height: 1080, alt: 'Click on create' },
-  db_step3: { src: '/tutorials/azure/images/db_step3.png', width: 1920, height: 1080, alt: 'Create databricks' },
-  db_step4: { src: '/tutorials/azure/images/db_step4.png', width: 1920, height: 1080, alt: 'Subscription selection' },
-  db_step5: { src: '/tutorials/azure/images/db_step5.png', width: 1920, height: 1080, alt: 'Resource Group configuration' },
-  db_step6: { src: '/tutorials/azure/images/db_step6.png', width: 1920, height: 1080, alt: 'Workspace Name setup' },
-  db_step7: { src: '/tutorials/azure/images/db_step7.png', width: 1920, height: 1080, alt: 'Region selection' },
-  db_step8: { src: '/tutorials/azure/images/db_step8.png', width: 1920, height: 1080, alt: 'Pricing Tier' },
-  db_step9: { src: '/tutorials/azure/images/db_step9.png', width: 1920, height: 1080, alt: 'Managed Resource Group Name' },
-  db_step10: { src: '/tutorials/azure/images/db_step10.png', width: 1920, height: 1080, alt: 'Final Step - Review + Create' },
-  
-  // Individual images for Workspace Overview (from document)
-  db_workspace_overview_1: { src: '/tutorials/azure/images/db_workspace_overview_1.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Click on workspace' },
-  db_workspace_overview_2: { src: '/tutorials/azure/images/db_workspace_overview_2.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Launch workspace button' },
-  db_workspace_overview_3: { src: '/tutorials/azure/images/db_indiv_1.png', width: 1920, height: 1080, alt: 'Databricks Workspace - Overview' },
-  
-  // Individual images for Workspace Features (7 images)
-  db_workspace_1: { src: '/tutorials/azure/images/db_indiv_2.png', width: 1920, height: 1080, alt: 'Workspace - Top bar' },
-  db_workspace_2: { src: '/tutorials/azure/images/db_indiv_3.png', width: 1920, height: 1080, alt: 'Workspace - Home and Shared' },
-  db_workspace_3: { src: '/tutorials/azure/images/db_indiv_4.png', width: 1920, height: 1080, alt: 'Workspace - Favorites and Trash' },
-  db_workspace_4: { src: '/tutorials/azure/images/db_indiv_5.png', width: 1920, height: 1080, alt: 'Workspace - Users folder' },
-  db_workspace_5: { src: '/tutorials/azure/images/db_indiv_6.png', width: 1920, height: 1080, alt: 'Workspace - User folders' },
-  db_workspace_6: { src: '/tutorials/azure/images/db_indiv_7.png', width: 1920, height: 1080, alt: 'Workspace - Shared folder' },
-  db_workspace_7: { src: '/tutorials/azure/images/db_indiv_8.png', width: 1920, height: 1080, alt: 'Workspace - Additional features' },
-  
-  // Individual images for Notebook (4 images)
-  db_notebook_1: { src: '/tutorials/azure/images/db_indiv_3.png', width: 1920, height: 1080, alt: 'Notebook - Create options' },
-  db_notebook_2: { src: '/tutorials/azure/images/db_indiv_4.png', width: 1920, height: 1080, alt: 'Notebook - Interface' },
-  db_notebook_3: { src: '/tutorials/azure/images/db_indiv_9.png', width: 1920, height: 1080, alt: 'Notebook - Creation' },
-  db_notebook_4: { src: '/tutorials/azure/images/db_indiv_10.png', width: 1920, height: 1080, alt: 'Notebook - Recents' },
-  
-  // Individual images for Catalog (2 images)
-  db_catalog_1: { src: '/tutorials/azure/images/db_indiv_11.png', width: 1920, height: 1080, alt: 'Catalog - Unity Catalog interface' },
-  db_catalog_2: { src: '/tutorials/azure/images/db_indiv_12.png', width: 1920, height: 1080, alt: 'Catalog - Add Data and Governance' },
-  
-  // Individual images for Jobs & Pipelines
-  db_jobs_1: { src: '/tutorials/azure/images/db_indiv_13.png', width: 1920, height: 1080, alt: 'Jobs and Pipelines' },
-  
-  // Individual images for Compute
-  db_compute_1: { src: '/tutorials/azure/images/db_indiv_14.png', width: 1920, height: 1080, alt: 'Compute Clusters' },
-  
-  // Individual images for Marketplace
-  db_marketplace_1: { src: '/tutorials/azure/images/db_indiv_15.png', width: 1920, height: 1080, alt: 'Marketplace' },
-  
-  // Individual images for SQL Editor (2 images)
-  db_sql_editor_1: { src: '/tutorials/azure/images/db_indiv_16.png', width: 1920, height: 1080, alt: 'SQL Editor' },
-  db_sql_editor_2: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Editor - SQL Warehouse' },
-  
-  // Individual images for Queries
-  db_queries_1: { src: '/tutorials/azure/images/db_indiv_17.png', width: 1920, height: 1080, alt: 'Queries' },
-  
-  // Individual images for Dashboards (2 images)
-  db_dashboards_1: { src: '/tutorials/azure/images/db_indiv_18.png', width: 1920, height: 1080, alt: 'Dashboards' },
-  db_dashboards_2: { src: '/tutorials/azure/images/db_indiv_19.png', width: 1920, height: 1080, alt: 'Dashboards - Features' },
-  
-  // Individual images for Alerts
-  db_alerts_1: { src: '/tutorials/azure/images/db_indiv_20.png', width: 1920, height: 1080, alt: 'Alerts' },
-  
-  // Individual images for Query History
-  db_query_history_1: { src: '/tutorials/azure/images/db_indiv_21.png', width: 1920, height: 1080, alt: 'Query History' },
-  
-  // Individual images for SQL Warehouse
-  db_sql_warehouse_1: { src: '/tutorials/azure/images/db_indiv_22.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
-  
-  // Images from Azure Databricks -1.docx document
-  db1_image1: { src: '/tutorials/azure/images/db1_image1.png', width: 1920, height: 1080, alt: 'Jobs & Pipelines interface' },
-  db1_image2: { src: '/tutorials/azure/images/db1_image2.png', width: 1920, height: 1080, alt: 'Job Runs Dashboard' },
-  db1_image3: { src: '/tutorials/azure/images/db1_image3.png', width: 1920, height: 1080, alt: 'Data Ingestion interface' },
-  db1_image4: { src: '/tutorials/azure/images/db1_image4.png', width: 1920, height: 1080, alt: 'Data Ingestion Connectors' },
-  db1_image5: { src: '/tutorials/azure/images/db1_image5.png', width: 1920, height: 1080, alt: 'Data Ingestion Files section' },
-  db1_image6: { src: '/tutorials/azure/images/db1_image6.png', width: 1920, height: 1080, alt: 'AI/ML Playground interface' },
-  db1_image7: { src: '/tutorials/azure/images/db1_image7.png', width: 1920, height: 1080, alt: 'AI/ML Playground components' },
-  db1_image8: { src: '/tutorials/azure/images/db1_image8.png', width: 1920, height: 1080, alt: 'AI/ML Experiments interface' },
-  db1_image9: { src: '/tutorials/azure/images/db1_image9.png', width: 1920, height: 1080, alt: 'AI/ML Feature Store' },
-  db1_image10: { src: '/tutorials/azure/images/db1_image10.png', width: 1920, height: 1080, alt: 'AI/ML Model Registry' },
-  db1_image11: { src: '/tutorials/azure/images/db1_image11.png', width: 1920, height: 1080, alt: 'AI/ML Model details' },
-  db1_image12: { src: '/tutorials/azure/images/db1_image12.png', width: 1920, height: 1080, alt: 'AI/ML Model Serving' },
-  db1_image13: { src: '/tutorials/azure/images/db1_image13.png', width: 1920, height: 1080, alt: 'AI/ML Serving details' },
-  db1_image14: { src: '/tutorials/azure/images/db1_image14.png', width: 1920, height: 1080, alt: 'Additional content 1' },
-  db1_image15: { src: '/tutorials/azure/images/db1_image15.png', width: 1920, height: 1080, alt: 'Additional content 2' },
-  db1_image16: { src: '/tutorials/azure/images/db1_image16.png', width: 1920, height: 1080, alt: 'Additional content 3' },
-  
-  image85: { src: '/tutorials/azure/images/image85.png', width: 1920, height: 1080, alt: 'Azure Databricks introduction' },
-  image86: { src: '/tutorials/azure/images/image86.png', width: 1920, height: 1080, alt: 'Databricks architecture' },
-  image87: { src: '/tutorials/azure/images/image87.png', width: 1920, height: 1080, alt: 'Common use cases' },
-  image88: { src: '/tutorials/azure/images/image88.png', width: 1920, height: 1080, alt: 'Core components' },
-  image89: { src: '/tutorials/azure/images/image89.png', width: 1920, height: 1080, alt: 'How to create - initial steps' },
-  image90: { src: '/tutorials/azure/images/image90.png', width: 1920, height: 1080, alt: 'How to create - workspace configuration' },
-  image91: { src: '/tutorials/azure/images/image91.png', width: 1920, height: 1080, alt: 'Workspace overview' },
-  image92: { src: '/tutorials/azure/images/image92.png', width: 1920, height: 1080, alt: 'Workspace features' },
-  image93: { src: '/tutorials/azure/images/image93.png', width: 1920, height: 1080, alt: 'Notebook creation' },
-  image94: { src: '/tutorials/azure/images/image94.png', width: 1920, height: 1080, alt: 'Catalog and features' },
-  image95: { src: '/tutorials/azure/images/image95.png', width: 1920, height: 1080, alt: 'Jobs and pipelines' },
-  image96: { src: '/tutorials/azure/images/image96.png', width: 1920, height: 1080, alt: 'Job runs dashboard' },
-  image97: { src: '/tutorials/azure/images/image97.png', width: 1920, height: 1080, alt: 'Compute clusters' },
-  image98: { src: '/tutorials/azure/images/image98.png', width: 1920, height: 1080, alt: 'Marketplace' },
-  image99: { src: '/tutorials/azure/images/image99.png', width: 1920, height: 1080, alt: 'SQL Editor' },
-  image100: { src: '/tutorials/azure/images/image100.png', width: 1920, height: 1080, alt: 'SQL Editor features' },
-  image101: { src: '/tutorials/azure/images/image101.png', width: 1920, height: 1080, alt: 'Queries' },
-  image102: { src: '/tutorials/azure/images/image102.png', width: 1920, height: 1080, alt: 'Dashboards' },
-  image103: { src: '/tutorials/azure/images/image103.png', width: 1920, height: 1080, alt: 'Legacy dashboards' },
-  image104: { src: '/tutorials/azure/images/image104.png', width: 1920, height: 1080, alt: 'Genie AI assistant' },
-  image105: { src: '/tutorials/azure/images/image105.png', width: 1920, height: 1080, alt: 'Genie spaces' },
-  image106: { src: '/tutorials/azure/images/image106.png', width: 1920, height: 1080, alt: 'Alerts' },
-  image107: { src: '/tutorials/azure/images/image107.png', width: 1920, height: 1080, alt: 'Query history' },
-  image108: { src: '/tutorials/azure/images/image108.png', width: 1920, height: 1080, alt: 'SQL Data Warehouse' },
-  image109: { src: '/tutorials/azure/images/image109.png', width: 1920, height: 1080, alt: 'SQL Warehouse properties' },
-  image110: { src: '/tutorials/azure/images/image110.png', width: 1920, height: 1080, alt: 'SQL Warehouse types' },
-  image111: { src: '/tutorials/azure/images/image111.png', width: 1920, height: 1080, alt: 'Create SQL Warehouse' },
-  image112: { src: '/tutorials/azure/images/image112.png', width: 1920, height: 1080, alt: 'SQL Warehouse features' },
-  image113: { src: '/tutorials/azure/images/image113.png', width: 1920, height: 1080, alt: 'Azure Databricks image 113' },
-  image114: { src: '/tutorials/azure/images/image114.png', width: 1920, height: 1080, alt: 'Azure Databricks image 114' },
-  image115: { src: '/tutorials/azure/images/image115.png', width: 1920, height: 1080, alt: 'Azure Databricks image 115' }
 };
 
 const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
@@ -593,7 +446,6 @@ export default function AzureDataEngineerPage() {
                   <p className="text-blue-300">=��� You selected: Azure subscription 1</p>
                 </div>
 
-                <ImageGallery images={getImages('image14')} />
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-lg font-semibold text-white mb-2">2n+�G�� Resource Group</h5>
@@ -603,7 +455,6 @@ export default function AzureDataEngineerPage() {
                   <p className="mt-2 text-blue-400">=��� Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.</p>
                 </div>
 
-                <ImageGallery images={getImages('image15')} />
 
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-lg font-semibold text-white mb-2">3n+�G�� Storage Account Name</h5>
@@ -816,7 +667,7 @@ export default function AzureDataEngineerPage() {
                   <li>Change the <strong>access tier</strong></li>
                 </ul>
 
-                <ImageGallery images={getImages('image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image49', 'image50', 'image51', 'image52', 'image53', 'image54', 'image55', 'image56', 'image57')} />
+                <ImageGallery images={getImages('image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image49', 'image50', 'image51', 'image52', 'image53')} />
               </div>
 
               <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
@@ -834,7 +685,7 @@ export default function AzureDataEngineerPage() {
 
           <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
             <h4 className="text-2xl font-semibold text-white mb-4">Types of Blob Types</h4>
-            <ImageGallery images={getImages('image30', 'image31', 'image32', 'image33', 'image58', 'image59', 'image60', 'image61')} />
+            <ImageGallery images={getImages('image30', 'image31', 'image32', 'image33')} />
             <div className="overflow-x-auto mb-6">
               <table className="min-w-full border border-gray-600">
                 <thead>
@@ -865,7 +716,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Blob type details are the same as above */}
-            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37', 'image62', 'image63', 'image64', 'image65')} />
+            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37')} />
           </div>
 
           <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
@@ -910,7 +761,7 @@ export default function AzureDataEngineerPage() {
               </table>
             </div>
 
-            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37', 'image62', 'image63', 'image64', 'image65')} />
+            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37')} />
           </div>
         </section>
         )}
