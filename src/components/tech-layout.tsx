@@ -577,7 +577,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       )}
 
       {/* Main Content */}
-      <div className={`flex-1 flex flex-col min-h-screen w-full ${!hideSidebar ? 'lg:ml-80' : ''}`}>
+      <div className={`flex-1 flex flex-col min-h-screen ${!hideSidebar ? 'lg:ml-80' : ''}`}>
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
@@ -607,7 +607,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10 pt-0 lg:pt-0">
+        <main className="flex-1 overflow-y-auto bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
