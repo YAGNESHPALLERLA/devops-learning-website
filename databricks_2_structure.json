@@ -1,0 +1,5002 @@
+[
+  {
+    "index": 1,
+    "text": "Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 2,
+    "text": "What is a Data Lakehouse?",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 3,
+    "text": "A data lakehouse is a modern way to store and manage data. It brings together the best parts of data lakes and data warehouses into one system.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 4,
+    "text": "From data lakes, it takes flexibility, large-scale storage, and low cost.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 5,
+    "text": "From data warehouses, it adds strong data management, reliability, and support for ACID transactions (which make sure data stays accurate and consistent).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 6,
+    "text": "In simple terms, a data lakehouse lets you store all kinds of data structured or unstructured—in one place, and then use that same data for business intelligence (BI) reports, analytics, or machine learning (ML) without moving it around.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 7,
+    "text": "On Azure Databricks, you can build and manage a lakehouse to easily collect, clean, process, and analyze your data all within one platform.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "What is a Data Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 8,
+    "text": "Why the Need for a Lakehouse?",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 9,
+    "text": "Traditionally, organizations used:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 10,
+    "text": "Data Lakes → for storing raw, unprocessed data cheaply.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 11,
+    "text": "Data Warehouses → for structured, cleaned data used in analytics and BI.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 12,
+    "text": "You had to copy and transform data from one system to the other, which caused:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 13,
+    "text": "Data duplication",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 14,
+    "text": "High maintenance cost",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 15,
+    "text": "Delays in getting insights",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 16,
+    "text": "Data inconsistency",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 17,
+    "text": "The lakehouse solves this by combining both into one unified system.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 18,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Why the Need for a Lakehouse?",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 19,
+    "text": "Core Features of a Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Core Features of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 20,
+    "text": "Here are the main features that make a lakehouse powerful:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Features of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 21,
+    "text": "Feature",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Feature",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 22,
+    "text": "Description",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 23,
+    "text": "Unified Storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 24,
+    "text": "All data (raw, semi-structured, structured) is stored in one place.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 25,
+    "text": "ACID Transactions",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 26,
+    "text": "Ensures data accuracy and reliability even during concurrent operations.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 27,
+    "text": "Schema Enforcement",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 28,
+    "text": "Automatically validates and maintains data consistency.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 29,
+    "text": "Time Travel / Versioning",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 30,
+    "text": "You can access previous versions of data for audit or rollback.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 31,
+    "text": "Data Governance & Security",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 32,
+    "text": "Centralized access control, auditing, and data lineage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 33,
+    "text": "Open Format (like Delta Lake)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 34,
+    "text": "Built on open-source formats like Parquet and Delta for compatibility.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 35,
+    "text": "Performance Optimization",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 36,
+    "text": "Uses caching, indexing, and query optimization for faster analytics.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 37,
+    "text": "Support for BI & ML",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 38,
+    "text": "Enables analysts and data scientists to work directly on the same data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 39,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 40,
+    "text": "Lakehouse Architecture Overview",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 41,
+    "text": "A typical data lakehouse architecture has three main layers:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 42,
+    "text": "Storage Layer (Data Lake)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 43,
+    "text": "Stores all raw data at scale (in formats like Parquet or Delta).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 44,
+    "text": "Example: Azure Data Lake Storage (ADLS).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 45,
+    "text": "Management & Governance Layer",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 46,
+    "text": "Adds schema, metadata management, and ACID transaction control.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 47,
+    "text": "Example: Delta Lake or Unity Catalog in Azure Databricks.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 48,
+    "text": "Consumption Layer (Analytics & ML)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 49,
+    "text": "Data is consumed for reporting, dashboards, machine learning, and AI.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 50,
+    "text": "Example: Power BI, MLflow, Databricks notebooks, or Azure Synapse.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 51,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 52,
+    "text": "Benefits of a Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Benefits of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 53,
+    "text": "A lakehouse provides several advantages over traditional data systems:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Benefits of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 54,
+    "text": "✅ Single Source of Truth – All teams work on the same consistent data.✅ Cost Efficiency – Uses low-cost object storage instead of expensive warehouse storage.✅ Flexibility – Supports all data types and use cases (BI + AI + ML).✅ Scalability – Handles huge volumes of data seamlessly.✅ Data Reliability – ACID transactions prevent corruption or data loss.✅ Faster Insights – Unified architecture means less movement and faster analysis.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Benefits of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 55,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Benefits of a Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 56,
+    "text": "Data Lakehouse on Azure Databricks",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 57,
+    "text": "Azure Databricks is one of the best platforms to build and manage a lakehouse. It combines:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 58,
+    "text": "Apache Spark for distributed data processing,",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 59,
+    "text": "Delta Lake for ACID-compliant storage, and",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 60,
+    "text": "Unity Catalog for centralized governance and security.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 61,
+    "text": "Key components:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 62,
+    "text": "Data Ingestion: Load data from multiple sources (Azure Blob, SQL, APIs).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 63,
+    "text": "Data Processing: Clean, transform, and enrich data using PySpark or SQL.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 64,
+    "text": "Data Storage: Store data in Delta Lake format for reliability and performance.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 65,
+    "text": "Data Governance: Manage permissions, lineage, and audit using Unity Catalog.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 66,
+    "text": "Data Consumption: Use Power BI, MLflow, or Databricks notebooks for analytics and AI.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 67,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse on Azure Databricks",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 68,
+    "text": "Example Use Cases",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 69,
+    "text": "A data lakehouse can be used for:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 70,
+    "text": "Business dashboards and analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 71,
+    "text": "Real-time data streaming and reporting",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 72,
+    "text": "Predictive analytics and machine learning",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 73,
+    "text": "Customer behavior analysis",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 74,
+    "text": "IoT and sensor data processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Example Use Cases",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 75,
+    "text": "Lakehouse vs Data Lake vs Data Warehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Lakehouse vs Data Lake vs Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 76,
+    "text": "Over the years, data management systems have evolved from data warehouses, to data lakes, and now to data lakehouses — each solving different challenges and enabling new ways to use data for analytics, business intelligence (BI), and machine learning (ML).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Lakehouse vs Data Lake vs Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 77,
+    "text": "Let’s understand how these three systems differ and how they complement each other.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Lakehouse vs Data Lake vs Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 78,
+    "text": "Data Warehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 79,
+    "text": "A data warehouse is a structured storage system built mainly for business intelligence (BI) and reporting.It organizes data into predefined tables and schemas so that it’s clean, consistent, and easy to query using tools like SQL.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 80,
+    "text": "Key ideas:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 81,
+    "text": "Designed for stable and historical data that doesn’t change often.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 82,
+    "text": "Ideal for running BI dashboards and reports that summarize key business metrics.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 83,
+    "text": "Queries are optimized for accuracy and reliability but can take time when dealing with large datasets.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 84,
+    "text": "Often uses proprietary formats managed by vendors, which can limit flexibility for machine learning or advanced analytics.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 85,
+    "text": "On Azure Databricks, data warehousing is enhanced through Databricks SQL, combining warehouse performance with the scalability of the lakehouse.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 86,
+    "text": "Best for:📊 Structured data, business reporting, and decision-making dashboards.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 87,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key ideas:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 88,
+    "text": "Data Lake",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 89,
+    "text": "A data lake is a large, low-cost repository that stores all kinds of data — structured, semi-structured, or unstructured in its raw form.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 90,
+    "text": "Key ideas:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 91,
+    "text": "Can hold massive amounts of data from various sources: applications, sensors, mobile apps, social media, and more.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 92,
+    "text": "Uses a schema-on-read approach — meaning data structure is applied only when it’s used.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 93,
+    "text": "Highly scalable and affordable, perfect for big data processing, data exploration, and machine learning.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 94,
+    "text": "However, since data isn’t cleaned or validated upfront, it may not be ideal for business reporting that needs trusted, structured data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 95,
+    "text": "Best for:🤖 Data science, machine learning, and storing large volumes of raw data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 96,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 97,
+    "text": "Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 98,
+    "text": "A data lakehouse is a modern architecture that combines the strengths of both data lakes and data warehouses into one unified system.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 99,
+    "text": "It allows you to work with structured and unstructured data together, supporting both business intelligence and machine learning without needing separate systems.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 100,
+    "text": "Key ideas:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 101,
+    "text": "Built on open and standard file formats (like Parquet or Delta Lake) for flexibility and compatibility.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 102,
+    "text": "Uses advanced indexing, caching, and metadata management for faster queries and consistent performance.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 103,
+    "text": "Supports ACID transactions (ensuring data reliability and accuracy).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 104,
+    "text": "Enables low-latency queries for BI, while still providing the scale and flexibility required for data science.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 105,
+    "text": "On Azure Databricks, the lakehouse architecture makes it possible to analyze all your data from a single platform using Databricks SQL and Delta Lake.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 106,
+    "text": "Best for:🧩 Unified analytics — combining BI, AI, and ML on one consistent, governed data foundation.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 107,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 108,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 109,
+    "text": "Feature",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Feature",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 110,
+    "text": "Data Lake",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 111,
+    "text": "Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 112,
+    "text": "Data Warehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 113,
+    "text": "Types of Data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 114,
+    "text": "Can store any kind of data — structured, semi-structured, or unstructured (raw) data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 115,
+    "text": "Handles all types of data — structured, semi-structured, and unstructured — in one place.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 116,
+    "text": "Mainly stores structured and processed data only.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 117,
+    "text": "Cost",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 118,
+    "text": "💰 Very cost-effective for large storage needs.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 119,
+    "text": "💰 Cost-efficient and scalable for all workloads.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 120,
+    "text": "💸💸 Expensive to scale and maintain due to licensing and vendor costs.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 121,
+    "text": "Data Format",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 122,
+    "text": "Uses open and flexible file formats (like Parquet, JSON, CSV).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 123,
+    "text": "Uses open and modern formats (like Delta or Parquet) for compatibility.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 124,
+    "text": "Usually based on closed or proprietary formats tied to the vendor.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 125,
+    "text": "Scalability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 126,
+    "text": "Easily scales to store massive amounts of data at a low cost.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 127,
+    "text": "Scales efficiently while maintaining performance and governance.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 128,
+    "text": "Scaling is possible but becomes costly as data volume grows.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 129,
+    "text": "Main Users",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 130,
+    "text": "Mostly used by data engineers and data scientists who can handle raw data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 131,
+    "text": "Designed for everyone — data analysts, data scientists, and machine learning teams.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 132,
+    "text": "Primarily used by business analysts for structured reporting.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 133,
+    "text": "Data Quality & Reliability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 134,
+    "text": "Can become messy or inconsistent without strong management (sometimes called a “data swamp”).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 135,
+    "text": "Delivers reliable, high-quality, well-managed data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 136,
+    "text": "Provides high-quality and consistent data with strict schema control.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 137,
+    "text": "Ease of Use",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 138,
+    "text": "Harder to use directly — raw data requires preparation and organization.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 139,
+    "text": "Easy to use — combines the simplicity of a warehouse with the flexibility of a lake.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 140,
+    "text": "Easy to query and report on, but limited to structured data only.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 141,
+    "text": "Performance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 142,
+    "text": "Slower for analytics since data is raw and unoptimized.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 143,
+    "text": "High performance — optimized for both analytics and AI workloads.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 144,
+    "text": "High performance for traditional analytics and BI.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 145,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 146,
+    "text": "Capabilities of a Databricks Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Capabilities of a Databricks Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 147,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Capabilities of a Databricks Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 148,
+    "text": "A Databricks Lakehouse brings together the best features of data lakes and data warehouses into a single, powerful platform.It removes the need to maintain separate systems for analytics, machine learning (ML), and business intelligence (BI), helping organizations manage all their data workloads in one unified environment.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Capabilities of a Databricks Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 149,
+    "text": "Here are the major capabilities that make the Databricks Lakehouse stand out:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Capabilities of a Databricks Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 150,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Capabilities of a Databricks Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 151,
+    "text": "Real-Time Data Processing",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Real-Time Data Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 152,
+    "text": "Process and analyze streaming data in real time whether it’s coming from IoT devices, logs, or event streams.This allows instant insights and faster decision-making instead of waiting for batch jobs to complete.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time Data Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 153,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time Data Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 154,
+    "text": "Unified Data Integration",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Unified Data Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 155,
+    "text": "Bring all your organization’s data — structured, semi-structured, and unstructured — into a single, centralized platform.This creates a single source of truth, improves collaboration between teams, and reduces data silos.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 156,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 157,
+    "text": "Schema Evolution",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Schema Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 158,
+    "text": "Easily modify and update data schemas as your business changes, without breaking existing pipelines.Databricks automatically adapts to evolving data structures, ensuring flexibility and smooth operations over time.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 159,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 160,
+    "text": "Fast and Reliable Data Transformations",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Fast and Reliable Data Transformations",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 161,
+    "text": "With Apache Spark and Delta Lake, you can perform large-scale data transformations quickly and reliably.This makes data preparation, cleaning, and enrichment faster and more efficient for analytics and ML workflows.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Fast and Reliable Data Transformations",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 162,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Fast and Reliable Data Transformations",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 163,
+    "text": "Advanced Data Analysis and Reporting",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Advanced Data Analysis and Reporting",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 164,
+    "text": "Run complex analytical queries with performance comparable to a traditional data warehouse.Databricks’ query engine is optimized for data warehousing workloads, enabling fast dashboards and deep analysis.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Data Analysis and Reporting",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 165,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Data Analysis and Reporting",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 166,
+    "text": "Machine Learning and AI",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 167,
+    "text": "Apply machine learning and artificial intelligence directly on your data within the same platform.You can train, test, and deploy ML models using Databricks’ built-in integrations with MLflow, Delta Lake, and other AI frameworks.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 168,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 169,
+    "text": "Data Versioning and Lineage",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Versioning and Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 170,
+    "text": "Databricks supports data version control, allowing you to access or roll back to previous versions of a dataset.You can also track data lineage, ensuring full transparency about where data comes from and how it has changed over time.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Versioning and Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 171,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Versioning and Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 172,
+    "text": "Data Governance and Security",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 173,
+    "text": "Manage permissions, access control, and auditing from one place using Unity Catalog.This ensures compliance, security, and proper governance across all teams and workloads.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 174,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 175,
+    "text": "Data Sharing and Collaboration",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Sharing and Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 176,
+    "text": "Share curated datasets, dashboards, and insights securely across departments or with external partners.The lakehouse supports controlled, real-time data sharing — no need for data duplication or exports.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Sharing and Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 177,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Sharing and Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 178,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Sharing and Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 179,
+    "text": "Operational Analytics and Monitoring",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Operational Analytics and Monitoring",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 180,
+    "text": "Continuously monitor data quality, model accuracy, and performance drift using built-in data quality tools.This helps maintain reliability and trust in your analytics and machine learning outputs.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Operational Analytics and Monitoring",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 181,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Operational Analytics and Monitoring",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 182,
+    "text": "scope of the Lakehouse platform",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "scope of the Lakehouse platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 183,
+    "text": "The Lakehouse Platform represents the next generation of data architecture one that unifies data engineering, data analytics, business intelligence (BI), and artificial intelligence (AI) within a single, scalable system.It eliminates the traditional separation between data lakes (for storage) and data warehouses (for analytics), providing a complete, end-to-end solution for modern data-driven organizations.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "scope of the Lakehouse platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 184,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "scope of the Lakehouse platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 185,
+    "text": "End-to-End Data Management",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 186,
+    "text": "The lakehouse covers the entire data lifecycle — from ingestion and storage to transformation, analysis, and advanced AI.This means all types of workloads can run on a single platform:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 187,
+    "text": "Batch and streaming data processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 188,
+    "text": "Data preparation and cleaning",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 189,
+    "text": "Business intelligence dashboards",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 190,
+    "text": "Machine learning and predictive analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 191,
+    "text": "Data governance and compliance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 192,
+    "text": "It’s not just a storage system — it’s a comprehensive data ecosystem.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "End-to-End Data Management",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 193,
+    "text": "Unified Architecture",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 194,
+    "text": "A key part of the lakehouse’s scope is unification.It brings together multiple data roles and technologies — data engineers, analysts, data scientists, and business teams — under one shared platform.This allows everyone to:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 195,
+    "text": "Work from the same source of truth",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 196,
+    "text": "Avoid data duplication between systems",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 197,
+    "text": "Improve collaboration across departments",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 198,
+    "text": "The lakehouse bridges the gap between data lakes’ flexibility and warehouses’ reliability.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 199,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 200,
+    "text": "Scalability and Performance",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 201,
+    "text": "The lakehouse is designed to handle data of any size or type, from gigabytes to petabytes.It scales automatically as data grows, while maintaining high performance for both:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 202,
+    "text": "Analytical queries (fast, optimized SQL)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 203,
+    "text": "AI/ML workloads (large-scale distributed computing)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 204,
+    "text": "This makes it suitable for everything from small data projects to large enterprise analytics systems.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 205,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Scalability and Performance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 206,
+    "text": "Governance, Security, and Compliance",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 207,
+    "text": "The lakehouse includes built-in capabilities for data governance — a critical part of its scope.It provides:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 208,
+    "text": "Access control and permissions through systems like Unity Catalog",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 209,
+    "text": "Data lineage and audit trails for transparency",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 210,
+    "text": "Data quality management and version control",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 211,
+    "text": "Compliance with organizational and industry regulations",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 212,
+    "text": "This ensures that data remains secure, reliable, and properly managed at all stages.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 213,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance, Security, and Compliance",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 214,
+    "text": "Advanced Analytics and AI Integration",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Advanced Analytics and AI Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 215,
+    "text": "Unlike traditional systems, the lakehouse is built to natively support AI and machine learning.It allows data scientists to:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Analytics and AI Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 216,
+    "text": "Work directly on raw and curated data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Analytics and AI Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 217,
+    "text": "Build and deploy ML models with tools like MLflow",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Analytics and AI Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 218,
+    "text": "Integrate with AI frameworks (TensorFlow, PyTorch, etc.)This seamless integration shortens the time from data collection to actionable insight.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Advanced Analytics and AI Integration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 219,
+    "text": "Real-Time and Batch Processing",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Real-Time and Batch Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 220,
+    "text": "The lakehouse supports both real-time streaming and batch workloads, giving organizations flexibility in how they process data.You can:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time and Batch Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 221,
+    "text": "Stream live events for immediate analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time and Batch Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 222,
+    "text": "Schedule periodic data updates for reports and dashboardsThis dual capability broadens its scope across different use cases — from IoT monitoring to enterprise BI.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time and Batch Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 223,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Real-Time and Batch Processing",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 224,
+    "text": "Multi-Use Collaboration",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 225,
+    "text": "The platform supports collaboration between:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 226,
+    "text": "Data Engineers – building pipelines and managing ETL workflows",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 227,
+    "text": "Data Scientists – training and deploying models",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 228,
+    "text": "Analysts – running queries and creating dashboards",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 229,
+    "text": "Business Teams – making decisions based on real-time insights",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 230,
+    "text": "All these roles can work together efficiently within the same environment.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 231,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Multi-Use Collaboration",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 232,
+    "text": "Industry and Business Applications",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 233,
+    "text": "The lakehouse architecture is versatile across industries:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 234,
+    "text": "Finance: Fraud detection, real-time risk monitoring",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 235,
+    "text": "Retail: Personalized recommendations, demand forecasting",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 236,
+    "text": "Healthcare: Patient data analytics, predictive diagnostics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 237,
+    "text": "Manufacturing: Supply chain optimization, IoT analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 238,
+    "text": "Telecom: Customer churn prediction, network performance analysis",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 239,
+    "text": "This wide applicability is part of what makes the scope of the lakehouse so broad and transformative.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 240,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Industry and Business Applications",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 241,
+    "text": "Principles for the Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Principles for the Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 242,
+    "text": "A Lakehouse is built on a set of guiding principles that blend the flexibility of data lakes with the reliability and performance of data warehouses.These principles ensure that data can be stored, managed, and analyzed efficiently in a single, unified platform — without the need for separate systems.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Principles for the Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 243,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Principles for the Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 244,
+    "text": "Unified Data Platform",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 245,
+    "text": "At the heart of the Lakehouse is unification combining all data types and workloads in one environment.It supports structured, semi-structured, and unstructured data, allowing teams to use the same platform for:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 246,
+    "text": "Data engineering",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 247,
+    "text": "Data analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 248,
+    "text": "Machine learning and AI",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 249,
+    "text": "Business intelligence (BI)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 250,
+    "text": "This eliminates data silos and ensures a single source of truth for all users.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 251,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Data Platform",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 252,
+    "text": "Open Data Storage and Standard Formats",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 253,
+    "text": "The Lakehouse relies on open file formats like Parquet, Delta, or ORC stored in cloud object storage (such as ADLS, S3, or GCS).This openness ensures:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 254,
+    "text": "Portability across platforms",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 255,
+    "text": "Easy integration with other tools and engines",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 256,
+    "text": "Avoidance of vendor lock-in",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 257,
+    "text": "Transparency and long-term accessibility",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 258,
+    "text": "In other words, your data remains yours — always accessible and usable.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 259,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Open Data Storage and Standard Formats",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 260,
+    "text": "Separation of Storage and Compute",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 261,
+    "text": "A key architectural principle is decoupling storage from compute.This means that:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 262,
+    "text": "Data is stored independently of the processing engines",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 263,
+    "text": "Multiple compute layers (Spark, SQL, ML, BI tools) can access the same data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 264,
+    "text": "Scaling storage or compute can happen independently",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 265,
+    "text": "This provides flexibility, cost efficiency, and elastic scalability for different workloads.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 266,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Separation of Storage and Compute",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 267,
+    "text": "Reliable Data Management with ACID Transactions",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 268,
+    "text": "The Lakehouse ensures data reliability by supporting ACID (Atomicity, Consistency, Isolation, Durability) transactions — similar to databases.This guarantees:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 269,
+    "text": "No partial writes or corrupt data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 270,
+    "text": "Consistent results across concurrent operations",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 271,
+    "text": "Reliable updates even during complex transformations",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 272,
+    "text": "Technologies like Delta Lake make this possible by maintaining transaction logs for every operation.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 273,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Reliable Data Management with ACID Transactions",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 274,
+    "text": "Unified Governance and Security",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 275,
+    "text": "A Lakehouse includes centralized governance, which defines how data is accessed, managed, and audited.With systems like Unity Catalog (in Databricks), you can:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 276,
+    "text": "Set access controls and permissions",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 277,
+    "text": "Track data lineage and versioning",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 278,
+    "text": "Ensure compliance with organizational policies",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 279,
+    "text": "Manage metadata centrally",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 280,
+    "text": "This creates a secure and well-governed environment for data collaboration.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 281,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Unified Governance and Security",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 282,
+    "text": "Support for Machine Learning and AI",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 283,
+    "text": "Unlike traditional warehouses, the Lakehouse is AI-ready by design.It supports:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 284,
+    "text": "Direct access to raw and curated data for model training",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 285,
+    "text": "Integration with ML frameworks (MLflow, TensorFlow, PyTorch)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 286,
+    "text": "Scalable compute for distributed model training",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 287,
+    "text": "Reproducibility and experiment tracking",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 288,
+    "text": "This principle bridges data analytics and data science within a single ecosystem.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Support for Machine Learning and AI",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 289,
+    "text": "High Performance for All Workloads",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 290,
+    "text": "The Lakehouse uses advanced techniques like:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 291,
+    "text": "Caching and indexing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 292,
+    "text": "Query optimization",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 293,
+    "text": "Data skipping and column pruning",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 294,
+    "text": "These deliver warehouse-level performance while maintaining lake-level flexibility, ensuring both batch and real-time workloads run efficiently.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 295,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "High Performance for All Workloads",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 296,
+    "text": "Versioning and Data Lineage",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 297,
+    "text": "Every change made to a dataset in a Lakehouse is tracked and versioned.This allows you to:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 298,
+    "text": "Roll back to previous versions",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 299,
+    "text": "Reproduce past experiments or reports",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 300,
+    "text": "Audit how data has evolved over time",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 301,
+    "text": "Understand data dependencies and transformations",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 302,
+    "text": "Version control enhances trust, traceability, and data quality.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 303,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Versioning and Data Lineage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 304,
+    "text": "Schema Enforcement and Evolution",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 305,
+    "text": "The Lakehouse can automatically enforce and adapt schemas as data changes.It ensures:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 306,
+    "text": "Data consistency during ingestion",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 307,
+    "text": "Schema evolution as business requirements grow",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 308,
+    "text": "Prevention of data corruption from mismatched types",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 309,
+    "text": "This principle helps maintain data integrity while still allowing flexibility.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Schema Enforcement and Evolution",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 310,
+    "text": "Collaboration Across Teams",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 311,
+    "text": "The Lakehouse fosters cross-functional collaboration between:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 312,
+    "text": "Data engineers",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 313,
+    "text": "Analysts",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 314,
+    "text": "Data scientists",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 315,
+    "text": "Business stakeholders",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 316,
+    "text": "Since everyone works on the same underlying data, it reduces duplication and improves productivity.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 317,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Collaboration Across Teams",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 318,
+    "text": "Data Lakehouse architecture",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 319,
+    "text": "A Data Lakehouse is a modern data architecture that blends the best parts of data lakes and data warehouses.It provides the flexibility, scalability, and low cost of data lakes, while also offering the performance, data management, and reliability of data warehouses — all within a single unified platform.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 320,
+    "text": "This architecture eliminates the need to maintain separate systems for storage, analytics, and machine learning.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 321,
+    "text": "Key Layers of the Data Lakehouse Architecture",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Key Layers of the Data Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 322,
+    "text": "A lakehouse architecture is typically built in five core layers, each serving a distinct function but working together seamlessly.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Key Layers of the Data Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 323,
+    "text": "Data Ingestion Layer",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 324,
+    "text": "Purpose: Collect and bring data from multiple sources into the lakehouse.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 325,
+    "text": "Description:This layer handles the movement of data from different systems such as:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 326,
+    "text": "Databases (e.g., SQL Server, Oracle, MySQL)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 327,
+    "text": "Applications (CRM, ERP, SaaS tools)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 328,
+    "text": "IoT devices and sensors",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 329,
+    "text": "Logs, events, and streaming sources (Kafka, Azure Event Hub)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 330,
+    "text": "Data can arrive in batch or real-time mode.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 331,
+    "text": "Tools:Databricks Auto Loader, Azure Data Factory, Kafka, Apache NiFi, AWS Glue, etc.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 332,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Ingestion Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 333,
+    "text": "Storage Layer",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 334,
+    "text": "Purpose: Store all types of data efficiently in open, scalable cloud storage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 335,
+    "text": "Description:This layer serves as the foundation of the Lakehouse.It stores:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 336,
+    "text": "Raw data (unprocessed)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 337,
+    "text": "Processed data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 338,
+    "text": "Aggregated and curated data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 339,
+    "text": "It supports structured, semi-structured, and unstructured formats (e.g., Parquet, JSON, Avro, images, videos, etc.).The data is stored in open formats for interoperability and long-term accessibility.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 340,
+    "text": "Tools / Technologies:Delta Lake, Apache Parquet, ORC, Cloud Object Storage (ADLS, S3, GCS).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 341,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Storage Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 342,
+    "text": "Metadata and Transaction Layer",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 343,
+    "text": "Purpose: Manage reliability, schema, and version control.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 344,
+    "text": "Description:This layer introduces ACID transaction support and metadata management over the data lake, turning it into a “Lakehouse.”It tracks every operation — insert, update, delete — ensuring consistency and data integrity.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 345,
+    "text": "Capabilities include:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 346,
+    "text": "Schema enforcement and evolution",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 347,
+    "text": "Time travel (data versioning)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 348,
+    "text": "Data indexing for fast queries",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 349,
+    "text": "Optimized performance through caching and Z-ordering",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 350,
+    "text": "Tools:Delta Lake, Apache Iceberg, Apache Hudi.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 351,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Metadata and Transaction Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 352,
+    "text": "Processing and Compute Layer",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 353,
+    "text": "Purpose: Transform, clean, and prepare data for analytics and machine learning.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 354,
+    "text": "Description:In this layer, raw data is processed and refined for various workloads:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 355,
+    "text": "Data cleaning and transformations",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 356,
+    "text": "Aggregations and feature engineering",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 357,
+    "text": "Real-time stream processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 358,
+    "text": "Batch and interactive query processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 359,
+    "text": "The separation of compute and storage allows scaling compute independently for efficiency.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 360,
+    "text": "Tools:Apache Spark, Databricks Runtime, SQL engines, PySpark, MLflow.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 361,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Processing and Compute Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 362,
+    "text": "Serving and Consumption Layer",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 363,
+    "text": "Purpose: Deliver ready-to-use data for analytics, BI, and machine learning.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 364,
+    "text": "Description:This layer provides optimized access to curated data for:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 365,
+    "text": "Dashboards and visualizations (Power BI, Tableau, Looker)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 366,
+    "text": "Ad-hoc SQL queries",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 367,
+    "text": "Data science and AI models",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 368,
+    "text": "API-driven applications",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 369,
+    "text": "Users can interact with the same underlying data, ensuring a single source of truth across teams.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 370,
+    "text": "Tools:Databricks SQL, Power BI, Tableau, Jupyter, MLflow, APIs.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 371,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Serving and Consumption Layer",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 372,
+    "text": "Governance and Security Layer (Spanning All Layers)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 373,
+    "text": "Purpose: Enforce control, compliance, and data protection.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 374,
+    "text": "Description:This is a horizontal layer across all stages of the architecture. It manages:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 375,
+    "text": "Access control (role-based and attribute-based)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 376,
+    "text": "Data lineage and cataloging",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 377,
+    "text": "Audit logs and compliance tracking",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 378,
+    "text": "Data masking and encryption",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 379,
+    "text": "Tools:Unity Catalog (Databricks), Purview, Ranger, AWS Lake Formation.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 380,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Governance and Security Layer (Spanning All Layers)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 381,
+    "text": "How the Lakehouse Architecture Works Together",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "How the Lakehouse Architecture Works Together",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 382,
+    "text": "Stage",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Stage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 383,
+    "text": "Function",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Function",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 384,
+    "text": "Output",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 385,
+    "text": "Data Ingestion",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 386,
+    "text": "Collect data from multiple sources",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 387,
+    "text": "Raw data zone",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 388,
+    "text": "Storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 389,
+    "text": "Store data in open formats",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 390,
+    "text": "Scalable data lake",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 391,
+    "text": "Metadata & Transaction",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 392,
+    "text": "Add schema, ACID, and governance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 393,
+    "text": "Reliable data layer",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 394,
+    "text": "Processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 395,
+    "text": "Transform and prepare data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 396,
+    "text": "Clean, curated data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 397,
+    "text": "Serving",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 398,
+    "text": "Expose data for BI, ML, AI",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 399,
+    "text": "Reports, models, insights",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 400,
+    "text": "Governance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 401,
+    "text": "Secure, audit, and manage metadata",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 402,
+    "text": "Compliance and trust",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 403,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Output",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 404,
+    "text": "Core Advantages of the Lakehouse Architecture",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 405,
+    "text": "✅ Unified platform: Combines data lake + warehouse capabilities.✅ Open and flexible: Uses open file formats (no vendor lock-in).✅ Reliable and consistent: ACID transactions ensure data correctness.✅ Cost-efficient: Storage and compute separation reduces costs.✅ Machine learning-ready: Supports AI and ML workloads natively.✅ Real-time analytics: Handles both streaming and batch data.✅ Governance built-in: Centralized catalog and access control.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 406,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 407,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 408,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 409,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 410,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 411,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 412,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 413,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 414,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 415,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 416,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 417,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 418,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 419,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 420,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 421,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 422,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 423,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 424,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 425,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 426,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 427,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 428,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 429,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 430,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 431,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 432,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Core Advantages of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 433,
+    "text": "Simplified View of the Lakehouse Architecture",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 434,
+    "text": "┌──────────────────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 435,
+    "text": "│     Data Consumers            │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 436,
+    "text": "│ (BI Tools, AI/ML, Reports)   │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 437,
+    "text": "└─────────────┬────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 438,
+    "text": "│",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 439,
+    "text": "┌─────────────┴────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 440,
+    "text": "│     Serving / Query Layer     │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 441,
+    "text": "│  (Databricks SQL, APIs)       │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 442,
+    "text": "└─────────────┬────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 443,
+    "text": "│",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 444,
+    "text": "┌─────────────┴────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 445,
+    "text": "│   Processing & Compute Layer  │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 446,
+    "text": "│ (Spark, Delta, ML Pipelines)  │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 447,
+    "text": "└─────────────┬────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 448,
+    "text": "│",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 449,
+    "text": "┌─────────────┴────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 450,
+    "text": "│ Metadata & Transaction Layer  │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 451,
+    "text": "│ (Delta Lake, ACID, Catalog)   │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 452,
+    "text": "└─────────────┬────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 453,
+    "text": "│",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 454,
+    "text": "┌─────────────┴────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 455,
+    "text": "│        Storage Layer          │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 456,
+    "text": "│ (Parquet, JSON, Delta Files)  │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 457,
+    "text": "└─────────────┬────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 458,
+    "text": "│",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 459,
+    "text": "┌─────────────┴────────────────┐",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 460,
+    "text": "│      Data Ingestion Layer     │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 461,
+    "text": "│ (ADF, Kafka, Auto Loader)     │",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 462,
+    "text": "└──────────────────────────────┘",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 463,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 464,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Simplified View of the Lakehouse Architecture",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 465,
+    "text": "Aspect",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Aspect",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 466,
+    "text": "Traditional Data Lake",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Traditional Data Lake",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 467,
+    "text": "Data Warehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Warehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 468,
+    "text": "Data Lakehouse",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 469,
+    "text": "Data types",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 470,
+    "text": "All (raw, structured, unstructured)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 471,
+    "text": "Structured only",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 472,
+    "text": "All (with structure management)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 473,
+    "text": "Performance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 474,
+    "text": "Low to moderate",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 475,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 476,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 477,
+    "text": "Cost",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 478,
+    "text": "Low",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 479,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 480,
+    "text": "Moderate",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 481,
+    "text": "Reliability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 482,
+    "text": "Low",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 483,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 484,
+    "text": "High (with ACID)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 485,
+    "text": "ML/AI support",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 486,
+    "text": "Strong",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 487,
+    "text": "Limited",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 488,
+    "text": "Strong",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 489,
+    "text": "Governance",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 490,
+    "text": "Limited",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 491,
+    "text": "Strong",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 492,
+    "text": "Strong (with Unity Catalog)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 493,
+    "text": "Scalability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 494,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 495,
+    "text": "Limited",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 496,
+    "text": "High",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 497,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 498,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 499,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 500,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": "Data Lakehouse",
+    "has_image": false,
+    "image_refs": []
+  }
+]

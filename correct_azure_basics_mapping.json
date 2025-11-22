@@ -1,0 +1,365 @@
+{
+  "4. Resources (The Actual Items) / Management Groups: High-level containers for organizing multiple subscriptions.": [
+    {
+      "image_name": "image1",
+      "paragraph_index": 25,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image2",
+      "paragraph_index": 28,
+      "text_before": "Image only"
+    }
+  ],
+  "4. Resources (The Actual Items) / Subscriptions: They hold resources and manage access to resources.": [
+    {
+      "image_name": "image3",
+      "paragraph_index": 30,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image4",
+      "paragraph_index": 33,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image5",
+      "paragraph_index": 38,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image6",
+      "paragraph_index": 40,
+      "text_before": "Image only"
+    }
+  ],
+  "2.2 Create a Resource Group / In the search menu, search for Resource groups.": [
+    {
+      "image_name": "image7",
+      "paragraph_index": 55,
+      "text_before": "Image only"
+    }
+  ],
+  "2.2 Create a Resource Group / Click on the resource group and click on the create button": [
+    {
+      "image_name": "image8",
+      "paragraph_index": 57,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image9",
+      "paragraph_index": 59,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image10",
+      "paragraph_index": 62,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image11",
+      "paragraph_index": 64,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image12",
+      "paragraph_index": 65,
+      "text_before": "Image only"
+    }
+  ],
+  "3.1 Create an Azure Blob Storage: / In the search bar, type “Storage Accounts” or “blob”": [
+    {
+      "image_name": "image13",
+      "paragraph_index": 97,
+      "text_before": "Image only"
+    }
+  ],
+  "3.1 Create an Azure Blob Storage: / Click on storage accounts and click on create button": [
+    {
+      "image_name": "image14",
+      "paragraph_index": 100,
+      "text_before": "Image only"
+    }
+  ],
+  "3.1 Create an Azure Blob Storage: / Click “Review + Create”": [
+    {
+      "image_name": "image15",
+      "paragraph_index": 103,
+      "text_before": "Image only"
+    }
+  ],
+  "3.1 Create an Azure Blob Storage: / Click on create": [
+    {
+      "image_name": "image16",
+      "paragraph_index": 155,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image17",
+      "paragraph_index": 157,
+      "text_before": "Image only"
+    }
+  ],
+  "3.1 Create an Azure Blob Storage: / Check for the Storage Account": [
+    {
+      "image_name": "image18",
+      "paragraph_index": 165,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Azure Storage provides four main types of services under one Storage Account.": [
+    {
+      "image_name": "image19",
+      "paragraph_index": 171,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image45",
+      "paragraph_index": 442,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Go to your Storage Account": [
+    {
+      "image_name": "image20",
+      "paragraph_index": 252,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image46",
+      "paragraph_index": 521,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Click Create": [
+    {
+      "image_name": "image21",
+      "paragraph_index": 262,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image22",
+      "paragraph_index": 264,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image47",
+      "paragraph_index": 531,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image48",
+      "paragraph_index": 533,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Change the access tier": [
+    {
+      "image_name": "image23",
+      "paragraph_index": 279,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image24",
+      "paragraph_index": 281,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image25",
+      "paragraph_index": 282,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image26",
+      "paragraph_index": 283,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image27",
+      "paragraph_index": 285,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image28",
+      "paragraph_index": 287,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image29",
+      "paragraph_index": 288,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image49",
+      "paragraph_index": 548,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image50",
+      "paragraph_index": 550,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image51",
+      "paragraph_index": 552,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image52",
+      "paragraph_index": 555,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image53",
+      "paragraph_index": 556,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image54",
+      "paragraph_index": 558,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image55",
+      "paragraph_index": 560,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image56",
+      "paragraph_index": 562,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image57",
+      "paragraph_index": 563,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Types of Blob Types:": [
+    {
+      "image_name": "image30",
+      "paragraph_index": 290,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image31",
+      "paragraph_index": 291,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image32",
+      "paragraph_index": 293,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image33",
+      "paragraph_index": 295,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image58",
+      "paragraph_index": 565,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image59",
+      "paragraph_index": 566,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image60",
+      "paragraph_index": 568,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image61",
+      "paragraph_index": 570,
+      "text_before": "Image only"
+    }
+  ],
+  "3.2 Types of Azure Storage Services: / Archive": [
+    {
+      "image_name": "image34",
+      "paragraph_index": 388,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image35",
+      "paragraph_index": 389,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image36",
+      "paragraph_index": 391,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image37",
+      "paragraph_index": 393,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image62",
+      "paragraph_index": 663,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image63",
+      "paragraph_index": 665,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image64",
+      "paragraph_index": 667,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image65",
+      "paragraph_index": 669,
+      "text_before": "Image only"
+    }
+  ],
+  "4.1 Create an Azure Data Lake Storage / In the search bar, type “Storage Accounts” or “ADLS Gen2”": [
+    {
+      "image_name": "image38",
+      "paragraph_index": 418,
+      "text_before": "Image only"
+    }
+  ],
+  "4.1 Create an Azure Data Lake Storage / Click on storage accounts and click on create button": [
+    {
+      "image_name": "image39",
+      "paragraph_index": 420,
+      "text_before": "Image only"
+    }
+  ],
+  "4.1 Create an Azure Data Lake Storage / Fill required details": [
+    {
+      "image_name": "image40",
+      "paragraph_index": 423,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image41",
+      "paragraph_index": 425,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image42",
+      "paragraph_index": 426,
+      "text_before": "Image only"
+    },
+    {
+      "image_name": "image43",
+      "paragraph_index": 428,
+      "text_before": "Image only"
+    }
+  ],
+  "4.1 Create an Azure Data Lake Storage / Check for the Storage Account": [
+    {
+      "image_name": "image44",
+      "paragraph_index": 437,
+      "text_before": "Image only"
+    }
+  ]
+}

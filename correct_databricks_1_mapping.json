@@ -1,0 +1,114 @@
+{
+  "Unknown / Use Case": [
+    {
+      "image_name": "db1_image1",
+      "paragraph_index": 12,
+      "text_before": "Image only"
+    }
+  ],
+  "Unknown / Data Ingestion": [
+    {
+      "image_name": "db1_image2",
+      "paragraph_index": 31,
+      "text_before": "Image only"
+    }
+  ],
+  "Unknown / Playground": [
+    {
+      "image_name": "db1_image3",
+      "paragraph_index": 91,
+      "text_before": "Image only"
+    }
+  ],
+  "Unknown / Experiments": [
+    {
+      "image_name": "db1_image4",
+      "paragraph_index": 167,
+      "text_before": "Image only"
+    }
+  ],
+  "Unknown / Features": [
+    {
+      "image_name": "db1_image5",
+      "paragraph_index": 248,
+      "text_before": "Image only"
+    }
+  ],
+  "Unknown / Models": [
+    {
+      "image_name": "db1_image6",
+      "paragraph_index": 340,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Serving": [
+    {
+      "image_name": "db1_image7",
+      "paragraph_index": 393,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Notebook-level features": [
+    {
+      "image_name": "db1_image8",
+      "paragraph_index": 471,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / File-level Features": [
+    {
+      "image_name": "db1_image9",
+      "paragraph_index": 510,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Edit level features": [
+    {
+      "image_name": "db1_image10",
+      "paragraph_index": 652,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / View level features": [
+    {
+      "image_name": "db1_image11",
+      "paragraph_index": 823,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Run-level features": [
+    {
+      "image_name": "db1_image12",
+      "paragraph_index": 1009,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Help-level features": [
+    {
+      "image_name": "db1_image13",
+      "paragraph_index": 1072,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Language-level features": [
+    {
+      "image_name": "db1_image14",
+      "paragraph_index": 1092,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Others features": [
+    {
+      "image_name": "db1_image15",
+      "paragraph_index": 1120,
+      "text_before": "Image only"
+    }
+  ],
+  "5. Serving Integration / Share": [
+    {
+      "image_name": "db1_image16",
+      "paragraph_index": 1147,
+      "text_before": "Image only"
+    }
+  ]
+}

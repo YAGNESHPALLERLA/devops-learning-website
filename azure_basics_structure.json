@@ -1,0 +1,7042 @@
+[
+  {
+    "index": 1,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 2,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 3,
+    "text": "Azure Data Engineer",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 4,
+    "text": "Azure Basics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": null,
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 5,
+    "text": "1. Azure hierarchy",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "1. Azure hierarchy",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 6,
+    "text": "1. Management Groups (The Top-Level)",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "1. Management Groups (The Top-Level)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 7,
+    "text": "What it is: This is the highest level of Azure’s structure. It's like a parent folder that helps organize your entire Azure environment.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "1. Management Groups (The Top-Level)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 8,
+    "text": "Purpose: It helps you manage and organize multiple subscriptions across your organization. You can group subscriptions based on departments, teams, or projects.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "1. Management Groups (The Top-Level)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 9,
+    "text": "Example: Imagine a company with multiple divisions, like Finance, IT, and Marketing. You could have separate management groups for each of these divisions.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "1. Management Groups (The Top-Level)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 10,
+    "text": "2. Subscriptions (Middle Layer)",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "2. Subscriptions (Middle Layer)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 11,
+    "text": "What it is: Underneath management groups, you have subscriptions. A subscription is like a container for Azure resources, where you’ll define limits on resources and billing.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2. Subscriptions (Middle Layer)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 12,
+    "text": "Purpose: It helps with organizing resources, managing access, and billing. You can have multiple subscriptions for different projects or teams. Each subscription has its own resource limits and billing.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2. Subscriptions (Middle Layer)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 13,
+    "text": "Example: If your company has different projects, like a website and an app, you could create separate subscriptions for them. One for the website, one for the app.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2. Subscriptions (Middle Layer)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 14,
+    "text": "3. Resource Groups (Sub-Containers)",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "3. Resource Groups (Sub-Containers)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 15,
+    "text": "What it is: Inside each subscription, you can have resource groups. These are containers that hold related resources.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Resource Groups (Sub-Containers)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 16,
+    "text": "Purpose: They help organize resources based on their lifecycle and permissions. All the resources in a group are usually related to the same project or service.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Resource Groups (Sub-Containers)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 17,
+    "text": "Example: If you're building a web app, you might have a resource group called \"rg-ohg365-dev\" where you store everything related to the app, such as databases, storage accounts, and virtual machines.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Resource Groups (Sub-Containers)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 18,
+    "text": "4. Resources (The Actual Items)",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 19,
+    "text": "What it is: These are the individual services or products that you create in Azure, like virtual machines (VMs), storage accounts, databases, or networks.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 20,
+    "text": "Purpose: This is where the actual work happens! Resources are the building blocks of your cloud environment.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 21,
+    "text": "Example: In your \"rg-ohg365-dev\" resource group, you could have resources like a VM to run your website, a database to store your data, and a storage account for storing files.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 22,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 23,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 24,
+    "text": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 25,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "has_image": true,
+    "image_refs": [
+      "rId5"
+    ]
+  },
+  {
+    "index": 26,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 27,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 28,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Management Groups: High-level containers for organizing multiple subscriptions.",
+    "has_image": true,
+    "image_refs": [
+      "rId6"
+    ]
+  },
+  {
+    "index": 29,
+    "text": "Subscriptions: They hold resources and manage access to resources.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 30,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": true,
+    "image_refs": [
+      "rId7"
+    ]
+  },
+  {
+    "index": 31,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 32,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 33,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": true,
+    "image_refs": [
+      "rId8"
+    ]
+  },
+  {
+    "index": 34,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 35,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 36,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 37,
+    "text": "Resource Groups: Containers inside subscriptions to organize and manage resources by project or lifecycle.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 38,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": true,
+    "image_refs": [
+      "rId9"
+    ]
+  },
+  {
+    "index": 39,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 40,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": true,
+    "image_refs": [
+      "rId10"
+    ]
+  },
+  {
+    "index": 41,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Subscriptions: They hold resources and manage access to resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 42,
+    "text": "Resources: The actual services you use in Azure.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Resources: The actual services you use in Azure.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 43,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Resources (The Actual Items)",
+    "subsection": "Resources: The actual services you use in Azure.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 44,
+    "text": "2. Resource Group",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "2. Resource Group",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 45,
+    "text": "2.1 What is a Resource Group?",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 46,
+    "text": "A Resource Group in Azure is like a folder that holds all the resources (services) related to a project or app.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 47,
+    "text": "For example:If you build a website, you might have:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 48,
+    "text": "A Virtual Machine (VM) for the web server",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": "A Virtual Machine (VM) for the web server",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 49,
+    "text": "A Storage Account for images",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": "A Storage Account for images",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 50,
+    "text": "A Database for user data",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": "A Database for user data",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 51,
+    "text": "You can put all of these inside one Resource Group — making it easier to manage, monitor, and delete them together.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.1 What is a Resource Group?",
+    "subsection": "A Database for user data",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 52,
+    "text": "2.2 Create a Resource Group",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "2.2 Create a Resource Group",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 53,
+    "text": "Sign in to the Azure Portal",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Sign in to the Azure Portal",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 54,
+    "text": "In the search menu, search for Resource groups.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "In the search menu, search for Resource groups.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 55,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "In the search menu, search for Resource groups.",
+    "has_image": true,
+    "image_refs": [
+      "rId9"
+    ]
+  },
+  {
+    "index": 56,
+    "text": "Click on the resource group and click on the create button",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 57,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": true,
+    "image_refs": [
+      "rId11"
+    ]
+  },
+  {
+    "index": 58,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 59,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": true,
+    "image_refs": [
+      "rId12"
+    ]
+  },
+  {
+    "index": 60,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 61,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 62,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": true,
+    "image_refs": [
+      "rId13"
+    ]
+  },
+  {
+    "index": 63,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 64,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": true,
+    "image_refs": [
+      "rId14"
+    ]
+  },
+  {
+    "index": 65,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": true,
+    "image_refs": [
+      "rId10"
+    ]
+  },
+  {
+    "index": 66,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 67,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Click on the resource group and click on the create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 68,
+    "text": "Overview of resource group:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Overview of resource group:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 69,
+    "text": "Name: rg-ohg365-dev → This is your Resource Group’s name.Usually, names include clues about the project or environment:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Overview of resource group:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 70,
+    "text": "rg = Resource Group",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "rg = Resource Group",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 71,
+    "text": "ohg365 = Project or team name",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "ohg365 = Project or team name",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 72,
+    "text": "dev = Environment (like dev, test, or prod)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "dev = Environment (like dev, test, or prod)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 73,
+    "text": "Buttons:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "Buttons:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 74,
+    "text": "➕ Create: Add new Azure resources (like VMs, storage, databases).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "➕ Create: Add new Azure resources (like VMs, storage, databases).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 75,
+    "text": "⚙️ Manage view: Customize how your resources list looks.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "⚙️ Manage view: Customize how your resources list looks.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 76,
+    "text": "🗑️ Delete resource group: Deletes the entire group and all its resources (be careful!).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "🗑️ Delete resource group: Deletes the entire group and all its resources (be careful!).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 77,
+    "text": "🔁 Refresh: Updates the view if new resources were added.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "🔁 Refresh: Updates the view if new resources were added.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 78,
+    "text": "📤 Export to CSV: Export your resource details (helpful for reports).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "📤 Export to CSV: Export your resource details (helpful for reports).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 79,
+    "text": "📊 Open query: Create or run custom filters using Azure Resource Graph.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "📊 Open query: Create or run custom filters using Azure Resource Graph.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 80,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "📊 Open query: Create or run custom filters using Azure Resource Graph.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 81,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "2.2 Create a Resource Group",
+    "subsection": "📊 Open query: Create or run custom filters using Azure Resource Graph.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 82,
+    "text": "3. Azure Blob Storage",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 83,
+    "text": "Azure Blob Storage is Microsoft’s cloud-based service designed to store large amounts of data of various types — including structured, semi-structured, and unstructured data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 84,
+    "text": "It is ideal for storing files such as CSV, text, Excel, JSON, Parquet, Avro, XML, images, videos, backups, and logs.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 85,
+    "text": "The term “Blob” stands for Binary Large Object, meaning it can store any type of binary data. Blob Storage provides a flat namespace, meaning all files (blobs) are stored in containers within a storage account, rather than in a traditional hierarchical folder system.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 86,
+    "text": "Azure Blob Storage is highly scalable, secure, and cost-efficient, making it suitable for:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 87,
+    "text": "Storing and serving large files (media, documents, etc.)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 88,
+    "text": "Data lakes and analytics workloads",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 89,
+    "text": "Backup and disaster recovery",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 90,
+    "text": "Archiving and compliance storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 91,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 92,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 93,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3. Azure Blob Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 94,
+    "text": "3.1 Create an Azure Blob Storage:",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 95,
+    "text": "Go to Azure Portal",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Go to Azure Portal",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 96,
+    "text": "In the search bar, type “Storage Accounts” or “blob”",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "In the search bar, type “Storage Accounts” or “blob”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 97,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "In the search bar, type “Storage Accounts” or “blob”",
+    "has_image": true,
+    "image_refs": [
+      "rId15"
+    ]
+  },
+  {
+    "index": 98,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "In the search bar, type “Storage Accounts” or “blob”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 99,
+    "text": "Click on storage accounts and click on create button",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 100,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": true,
+    "image_refs": [
+      "rId16"
+    ]
+  },
+  {
+    "index": 101,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 102,
+    "text": "Click “Review + Create”",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click “Review + Create”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 103,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click “Review + Create”",
+    "has_image": true,
+    "image_refs": [
+      "rId17"
+    ]
+  },
+  {
+    "index": 104,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click “Review + Create”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 105,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click “Review + Create”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 106,
+    "text": "1️⃣ Subscription",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "1️⃣ Subscription",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 107,
+    "text": "This is where you choose which Azure Subscription will own this storage account.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "This is where you choose which Azure Subscription will own this storage account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 108,
+    "text": "A subscription is linked to your billing and access control.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "A subscription is linked to your billing and access control.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 109,
+    "text": "Example: You might have separate subscriptions for development, testing, or production environments.🟦 You selected: Azure subscription 1",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "A subscription is linked to your billing and access control.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 110,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "A subscription is linked to your billing and access control.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 111,
+    "text": "2️⃣ Resource Group",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "2️⃣ Resource Group",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 112,
+    "text": "Choose or create a Resource Group to organize related Azure resources.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Choose or create a Resource Group to organize related Azure resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 113,
+    "text": "Resource Groups act like folders — all your related resources (VMs, storage, databases) are stored here for easy management.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Choose or create a Resource Group to organize related Azure resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 114,
+    "text": "In your case, you selected rg-ohg365-dev, which is perfect for development resources.🟦 Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Choose or create a Resource Group to organize related Azure resources.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 115,
+    "text": "3️⃣ Storage Account Name",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "3️⃣ Storage Account Name",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 116,
+    "text": "This is the unique name for your storage account (like a domain name).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "This is the unique name for your storage account (like a domain name).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 117,
+    "text": "It must be globally unique, lowercase, and 3–24 characters long.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "It must be globally unique, lowercase, and 3–24 characters long.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 118,
+    "text": "This name will form part of the URL to access your data.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "This name will form part of the URL to access your data.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 119,
+    "text": "🧩 Example:If your name is blobohg365dev",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🧩 Example:If your name is blobohg365dev",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 120,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🧩 Example:If your name is blobohg365dev",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 121,
+    "text": "4️⃣ Preferred Storage Type",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "4️⃣ Preferred Storage Type",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 122,
+    "text": "Select what kind of storage service you want to enable.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Select what kind of storage service you want to enable.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 123,
+    "text": "The default (and most common) option is:Azure Blob Storage or Azure Data Lake Storage Gen2",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "The default (and most common) option is:Azure Blob Storage or Azure Data Lake Storage Gen2",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 124,
+    "text": "🧠 This means your account will support:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🧠 This means your account will support:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 125,
+    "text": "Blob storage (for files, media, etc.)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Blob storage (for files, media, etc.)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 126,
+    "text": "Data Lake capabilities (for analytics and big data processing)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Data Lake capabilities (for analytics and big data processing)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 127,
+    "text": "🟦 Tip: Keep this as default unless you have a specific need for file shares or queue services.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 Tip: Keep this as default unless you have a specific need for file shares or queue services.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 128,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 Tip: Keep this as default unless you have a specific need for file shares or queue services.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 129,
+    "text": "5️⃣ Performance & Redundancy Settings",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "5️⃣ Performance & Redundancy Settings",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 130,
+    "text": "⚙️ Performance:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "⚙️ Performance:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 131,
+    "text": "Standard: Uses HDD-based storage — cheaper, good for general use.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Standard: Uses HDD-based storage — cheaper, good for general use.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 132,
+    "text": "Premium: Uses SSD-based storage — faster, ideal for workloads needing low latency (like databases or VMs).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Standard: Uses HDD-based storage — cheaper, good for general use.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 133,
+    "text": "🟦 You selected: Standard (recommended)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 You selected: Standard (recommended)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 134,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 You selected: Standard (recommended)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 135,
+    "text": "🧭 Redundancy:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🧭 Redundancy:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 136,
+    "text": "Defines how Azure will replicate your data to keep it safe.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Defines how Azure will replicate your data to keep it safe.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 137,
+    "text": "Option",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Option",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 138,
+    "text": "Meaning",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Meaning",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 139,
+    "text": "Copies of Data",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Copies of Data",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 140,
+    "text": "LRS (Locally-redundant storage)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "LRS (Locally-redundant storage)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 141,
+    "text": "Keeps 3 copies in one data center",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Keeps 3 copies in one data center",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 142,
+    "text": "3",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "3",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 143,
+    "text": "ZRS (Zone-redundant storage)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "ZRS (Zone-redundant storage)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 144,
+    "text": "Copies across 3 availability zones in the same region",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Copies across 3 availability zones in the same region",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 145,
+    "text": "3",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "3",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 146,
+    "text": "GRS (Geo-redundant storage)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "GRS (Geo-redundant storage)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 147,
+    "text": "Copies data to another region (for disaster recovery)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Copies data to another region (for disaster recovery)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 148,
+    "text": "6",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "6",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 149,
+    "text": "RA-GRS (Read-access Geo-redundant)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "RA-GRS (Read-access Geo-redundant)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 150,
+    "text": "Same as GRS but allows read access to secondary region",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Same as GRS but allows read access to secondary region",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 151,
+    "text": "6",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "6",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 152,
+    "text": "🟦 You selected: LRS (best for development/testing)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 You selected: LRS (best for development/testing)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 153,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "🟦 You selected: LRS (best for development/testing)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 154,
+    "text": "Click on create",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 155,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on create",
+    "has_image": true,
+    "image_refs": [
+      "rId18"
+    ]
+  },
+  {
+    "index": 156,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 157,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Click on create",
+    "has_image": true,
+    "image_refs": [
+      "rId19"
+    ]
+  },
+  {
+    "index": 158,
+    "text": "Navigate to Your Resource Group",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Navigate to Your Resource Group",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 159,
+    "text": "In the left-hand menu, click on Resource groups",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "In the left-hand menu, click on Resource groups",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 160,
+    "text": "Find and click your resource group — in your case:👉 rg-ohg365-dev",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "In the left-hand menu, click on Resource groups",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 161,
+    "text": "Check for the Storage Account",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 162,
+    "text": "Inside the Overview tab of your resource group, you’ll see a list of all resources.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 163,
+    "text": "Look for an item that looks like this:Type: Storage accountName: blobohg365dev (or whatever name you used)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 164,
+    "text": "If it appears there, 🎉 congratulations — your Blob Storage account has been successfully created",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 165,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": true,
+    "image_refs": [
+      "rId20"
+    ]
+  },
+  {
+    "index": 166,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 167,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.1 Create an Azure Blob Storage:",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 168,
+    "text": "3.2 Types of Azure Storage Services:",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 169,
+    "text": "Azure Storage provides four main types of services under one Storage Account.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 170,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 171,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": true,
+    "image_refs": [
+      "rId21"
+    ]
+  },
+  {
+    "index": 172,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 173,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 174,
+    "text": "1️⃣ Blob Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "1️⃣ Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 175,
+    "text": "🧱 Used to store unstructured or semi-structured data like files, images, videos, logs, and backups.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "1️⃣ Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 176,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 177,
+    "text": "Stores data as Blobs (Binary Large Objects) inside containers.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores data as Blobs (Binary Large Objects) inside containers.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 178,
+    "text": "Best for storing flat files and large objects that don’t fit in a database.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best for storing flat files and large objects that don’t fit in a database.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 179,
+    "text": "Data can be text, binary, documents, media, or backups.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best for storing flat files and large objects that don’t fit in a database.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 180,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 181,
+    "text": "Storing images or videos for websites",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 182,
+    "text": "Backups and archives",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 183,
+    "text": "Data lake for analytics",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 184,
+    "text": "Hosting static websites",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 185,
+    "text": "📦 Example File Types:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example File Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 186,
+    "text": ".txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example File Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 187,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example File Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 188,
+    "text": "2️⃣ File Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "2️⃣ File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 189,
+    "text": "📁 Used for shared file storage that behaves like a traditional file server.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "2️⃣ File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 190,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 191,
+    "text": "Provides Azure Files, a fully managed file share in the cloud.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides Azure Files, a fully managed file share in the cloud.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 192,
+    "text": "Uses the SMB (Server Message Block) or NFS (Network File System) protocols — the same used by on-premises file servers.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides Azure Files, a fully managed file share in the cloud.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 193,
+    "text": "Can be mounted to Windows, Linux, or macOS systems.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Can be mounted to Windows, Linux, or macOS systems.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 194,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 195,
+    "text": "Shared network drives for teams",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 196,
+    "text": "“Lift and shift” of on-premises file servers",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 197,
+    "text": "Application configurations shared across multiple VMs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 198,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 199,
+    "text": "You have multiple virtual machines needing access to the same configuration files — you can store those files in Azure Files and mount them just like a shared folder.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 200,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 201,
+    "text": "3️⃣ Queue Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "3️⃣ Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 202,
+    "text": "📬 Used for reliable messaging between application components.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "3️⃣ Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 203,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 204,
+    "text": "Provides asynchronous communication between services using message queues.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides asynchronous communication between services using message queues.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 205,
+    "text": "Stores messages in a queue, which can be processed later by background services or workers.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores messages in a queue, which can be processed later by background services or workers.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 206,
+    "text": "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 207,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 208,
+    "text": "Sending background jobs (like image processing or email sending)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 209,
+    "text": "Decoupling app components for scalability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 210,
+    "text": "Event-driven architecture",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 211,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 212,
+    "text": "A web app uploads an image → sends a message to a queue → a background process picks it up and resizes the image.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 213,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 214,
+    "text": "4️⃣ Table Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "4️⃣ Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 215,
+    "text": "🧮 Used to store large amounts of structured, non-relational data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "4️⃣ Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 216,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 217,
+    "text": "Provides NoSQL key-value storage.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides NoSQL key-value storage.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 218,
+    "text": "Stores data in tables with entities (rows) and properties (columns).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores data in tables with entities (rows) and properties (columns).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 219,
+    "text": "Flexible schema — you can add or remove columns anytime.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores data in tables with entities (rows) and properties (columns).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 220,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 221,
+    "text": "Storing user profiles, IoT data, or metadata",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 222,
+    "text": "Fast lookups by key",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 223,
+    "text": "Lightweight applications needing scalable, cheap storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 224,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 225,
+    "text": "You have millions of IoT sensors sending temperature data — you can store this efficiently in Azure Table Storage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 226,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 227,
+    "text": "🧠 Summary Table",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🧠 Summary Table",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 228,
+    "text": "Storage Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Storage Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 229,
+    "text": "Type of Data",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Type of Data",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 230,
+    "text": "Description",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 231,
+    "text": "Example Use Case",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use Case",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 232,
+    "text": "Blob Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 233,
+    "text": "Unstructured / Semi-structured",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 234,
+    "text": "Stores large objects (files, media, backups)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 235,
+    "text": "Images, videos, logs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 236,
+    "text": "File Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 237,
+    "text": "File-based",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 238,
+    "text": "Shared file storage via SMB/NFS",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 239,
+    "text": "Shared drives, app configs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 240,
+    "text": "Queue Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 241,
+    "text": "Messaging",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 242,
+    "text": "Message-based communication between components",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 243,
+    "text": "Background tasks, event processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 244,
+    "text": "Table Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 245,
+    "text": "Structured (NoSQL)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 246,
+    "text": "Key-value, schema-less table storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 247,
+    "text": "User profiles, IoT data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 248,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 249,
+    "text": "Explore Blob Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Explore Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 250,
+    "text": "Once your storage account is created:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Explore Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 251,
+    "text": "Go to your Storage Account",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 252,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": true,
+    "image_refs": [
+      "rId22"
+    ]
+  },
+  {
+    "index": 253,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 254,
+    "text": "Under Data storage, click Containers → This is where your blobs live.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Under Data storage, click Containers → This is where your blobs live.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 255,
+    "text": "Click ➕ Container to create one:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click ➕ Container to create one:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 256,
+    "text": "Name: images, videos, or backups (any name)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click ➕ Container to create one:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 257,
+    "text": "Public access level:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 258,
+    "text": "Private (default) – Only you can access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 259,
+    "text": "Blob (anonymous read) – Anyone with the link can read blobs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 260,
+    "text": "Container (public) – Everyone can see contents",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 261,
+    "text": "Click Create",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 262,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": true,
+    "image_refs": [
+      "rId23"
+    ]
+  },
+  {
+    "index": 263,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 264,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": true,
+    "image_refs": [
+      "rId24"
+    ]
+  },
+  {
+    "index": 265,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 266,
+    "text": "Upload & Manage Blobs",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Upload & Manage Blobs",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 267,
+    "text": "Click your new container (e.g., images)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Upload & Manage Blobs",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 268,
+    "text": "Click Upload",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 269,
+    "text": "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 270,
+    "text": "Once uploaded, you can:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 271,
+    "text": "View Properties (size, type, last modified)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "View Properties (size, type, last modified)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 272,
+    "text": "Get the URL to access the file",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Get the URL to access the file",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 273,
+    "text": "Change the access tier",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 274,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 275,
+    "text": "Storage Account",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 276,
+    "text": "└── Blob Service",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 277,
+    "text": "└── Container (like a folder)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 278,
+    "text": "└── Blob (the actual file)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 279,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId25"
+    ]
+  },
+  {
+    "index": 280,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 281,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId26"
+    ]
+  },
+  {
+    "index": 282,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId27"
+    ]
+  },
+  {
+    "index": 283,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId28"
+    ]
+  },
+  {
+    "index": 284,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 285,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId29"
+    ]
+  },
+  {
+    "index": 286,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 287,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId30"
+    ]
+  },
+  {
+    "index": 288,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId31"
+    ]
+  },
+  {
+    "index": 289,
+    "text": "Types of Blob Types:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 290,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId27"
+    ]
+  },
+  {
+    "index": 291,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId32"
+    ]
+  },
+  {
+    "index": 292,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 293,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId33"
+    ]
+  },
+  {
+    "index": 294,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 295,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId34"
+    ]
+  },
+  {
+    "index": 296,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 297,
+    "text": "Blob Type",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Type",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 298,
+    "text": "Best For",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best For",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 299,
+    "text": "Example Use",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 300,
+    "text": "🧱 Block Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 301,
+    "text": "Storing text or binary data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 302,
+    "text": "Images, videos, documents, CSVs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 303,
+    "text": "📜 Append Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 304,
+    "text": "Data that is constantly added to (append-only)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 305,
+    "text": "Logs, telemetry, audit data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 306,
+    "text": "📄 Page Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 307,
+    "text": "Random read/write access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 308,
+    "text": "Virtual machine disks (VHD files)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 309,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 310,
+    "text": "🧱 1. Block Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🧱 1. Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 311,
+    "text": "Most common blob type used in Azure.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Most common blob type used in Azure.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 312,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 313,
+    "text": "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 314,
+    "text": "Data is split into blocks, and each block is identified by a block ID.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is split into blocks, and each block is identified by a block ID.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 315,
+    "text": "You can upload or update blocks individually and commit them together.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is split into blocks, and each block is identified by a block ID.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 316,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 317,
+    "text": "Storing images, videos, PDFs, and backups.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 318,
+    "text": "Data files for analytics (CSV, JSON, Parquet).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 319,
+    "text": "Large files uploaded in chunks.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 320,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 321,
+    "text": "You upload a 500 MB video file — Azure divides it into smaller blocks and uploads each part separately for speed and reliability.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 322,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 323,
+    "text": "📜 2. Append Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📜 2. Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 324,
+    "text": "Special type of blob for data that grows over time.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Special type of blob for data that grows over time.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 325,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 326,
+    "text": "Optimized for append operations — you can only add new data to the end, not modify or delete existing data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 327,
+    "text": "Each time you add new information, it’s appended to the blob.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 328,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 329,
+    "text": "Storing log files.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 330,
+    "text": "Application telemetry or diagnostics data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 331,
+    "text": "Streaming data that’s constantly being added.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 332,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 333,
+    "text": "You’re logging website visits. Each time a new visitor arrives, their data (timestamp, IP, etc.) is appended to the existing log file.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 334,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 335,
+    "text": "📄 3. Page Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📄 3. Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 336,
+    "text": "Designed for random read/write operations.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Designed for random read/write operations.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 337,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 338,
+    "text": "Data is stored in fixed-size 512-byte pages.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is stored in fixed-size 512-byte pages.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 339,
+    "text": "Allows fast read and write access to specific parts of the blob.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Allows fast read and write access to specific parts of the blob.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 340,
+    "text": "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 341,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 342,
+    "text": "Storing Azure VM disks (OS and data disks).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 343,
+    "text": "Large databases that require random access.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 344,
+    "text": "Any workload that reads/writes frequently to specific sections of a file.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 345,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 346,
+    "text": "When you start an Azure Virtual Machine, its disk (a .vhd file) is stored as a Page Blob, allowing the VM to quickly read or write data anywhere on the disk.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 347,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 348,
+    "text": "Blob Type",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Type",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 349,
+    "text": "Structure",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Structure",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 350,
+    "text": "Read/Write Behavior",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Read/Write Behavior",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 351,
+    "text": "Common Use",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Common Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 352,
+    "text": "Block Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 353,
+    "text": "Data stored as blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 354,
+    "text": "Upload/replace blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 355,
+    "text": "Files, media, documents",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 356,
+    "text": "Append Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 357,
+    "text": "Sequentially added blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 358,
+    "text": "Append-only",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 359,
+    "text": "Logs, telemetry, streaming data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 360,
+    "text": "Page Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 361,
+    "text": "Fixed 512-byte pages",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 362,
+    "text": "Random read/write",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 363,
+    "text": "VM disks, large databases",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 364,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 365,
+    "text": "Types of Access Tiers:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 366,
+    "text": "Azure lets you store data in different tiers based on how often you need it.This helps save money 💰 by matching storage cost to usage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 367,
+    "text": "Tier",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 368,
+    "text": "Cost",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cost",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 369,
+    "text": "Availability",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Availability",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 370,
+    "text": "Best For",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best For",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 371,
+    "text": "Hot",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 372,
+    "text": "💰 Highest cost",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 373,
+    "text": "🔥 Always available",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 374,
+    "text": "Frequently accessed data (e.g., active apps, websites)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 375,
+    "text": "Cool",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 376,
+    "text": "💸 Cheaper",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 377,
+    "text": "🕓 Slight delay in access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 378,
+    "text": "Infrequently accessed data (e.g., monthly reports)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 379,
+    "text": "Cold",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 380,
+    "text": "💧 Cheaper than Cool",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 381,
+    "text": "⏱️ Slower access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 382,
+    "text": "Rarely accessed data but still retrievable",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 383,
+    "text": "Archive",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 384,
+    "text": "🧊 Cheapest",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 385,
+    "text": "💤 Retrieval takes hours",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 386,
+    "text": "Long-term backups, compliance storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 387,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 388,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId27"
+    ]
+  },
+  {
+    "index": 389,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId32"
+    ]
+  },
+  {
+    "index": 390,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 391,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId35"
+    ]
+  },
+  {
+    "index": 392,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 393,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId36"
+    ]
+  },
+  {
+    "index": 394,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 395,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 396,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 397,
+    "text": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 398,
+    "text": "Azure Data Lake Storage Gen2 is a highly scalable and secure cloud storage service optimized for big data analytics and data lakes. It builds on Azure Blob Storage capabilities but adds file system semantics, hierarchical namespaces, and enhanced performance for analytics workloads.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 399,
+    "text": "ADLS Gen2 is designed to store massive volumes of structured, semi-structured, and unstructured data, making it ideal for big data and machine learning scenarios.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 400,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 401,
+    "text": "Key Features and Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 402,
+    "text": "Hierarchical Namespace: Unlike traditional Blob Storage, ADLS Gen2 supports folders and directories, enabling efficient organization and faster file operations at scale.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 403,
+    "text": "Optimized for Analytics: Supports Hadoop Distributed File System (HDFS) and integrates seamlessly with analytics frameworks like Azure Databricks, HDInsight, and Azure Synapse Analytics.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 404,
+    "text": "Supports Multiple Data Types: You can store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, and more.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 405,
+    "text": "Security and Compliance: Provides enterprise-grade security with Azure Active Directory integration, role-based access control (RBAC), and encryption at rest and in transit.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 406,
+    "text": "Cost-effective and Scalable: Automatically scales to handle petabytes of data and millions of files with optimized storage tiers and pricing options.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 407,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Key Features and Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 408,
+    "text": "Common Uses of ADLS Gen2:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Common Uses of ADLS Gen2:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 409,
+    "text": "Building data lakes for big data analytics and machine learning.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Building data lakes for big data analytics and machine learning.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 410,
+    "text": "Storing large datasets for ETL (Extract, Transform, Load) processes.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Storing large datasets for ETL (Extract, Transform, Load) processes.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 411,
+    "text": "Integrating with analytics tools to perform complex queries and transformations.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Storing large datasets for ETL (Extract, Transform, Load) processes.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 412,
+    "text": "Secure and compliant storage for sensitive data and audit logs.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Secure and compliant storage for sensitive data and audit logs.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 413,
+    "text": "Archiving and long-term data retention with tiered storage options.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Secure and compliant storage for sensitive data and audit logs.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 414,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4. Azure Data Lake Storage Gen2 (ADLS Gen2)",
+    "subsection": "Secure and compliant storage for sensitive data and audit logs.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 415,
+    "text": "4.1 Create an Azure Data Lake Storage",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 416,
+    "text": "Go to Azure Portal",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Go to Azure Portal",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 417,
+    "text": "In the search bar, type “Storage Accounts” or “ADLS Gen2”",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "In the search bar, type “Storage Accounts” or “ADLS Gen2”",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 418,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "In the search bar, type “Storage Accounts” or “ADLS Gen2”",
+    "has_image": true,
+    "image_refs": [
+      "rId37"
+    ]
+  },
+  {
+    "index": 419,
+    "text": "Click on storage accounts and click on create button",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 420,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": true,
+    "image_refs": [
+      "rId16"
+    ]
+  },
+  {
+    "index": 421,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Click on storage accounts and click on create button",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 422,
+    "text": "Fill required details",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 423,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": true,
+    "image_refs": [
+      "rId38"
+    ]
+  },
+  {
+    "index": 424,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 425,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": true,
+    "image_refs": [
+      "rId39"
+    ]
+  },
+  {
+    "index": 426,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": true,
+    "image_refs": [
+      "rId40"
+    ]
+  },
+  {
+    "index": 427,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 428,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": true,
+    "image_refs": [
+      "rId41"
+    ]
+  },
+  {
+    "index": 429,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Fill required details",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 430,
+    "text": "Navigate to Your Resource Group",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Navigate to Your Resource Group",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 431,
+    "text": "In the left-hand menu, click on Resource groups",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "In the left-hand menu, click on Resource groups",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 432,
+    "text": "Find and click your resource group — in your case:👉 rg-ohg365-dev",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "In the left-hand menu, click on Resource groups",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 433,
+    "text": "Check for the Storage Account",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 434,
+    "text": "Inside the Overview tab of your resource group, you’ll see a list of all resources.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 435,
+    "text": "Look for an item that looks like this:Type: Storage accountName: adlsohg365dev (or whatever name you used)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 436,
+    "text": "If it appears there, 🎉 congratulations — your ADLS Gen2 Storage account has been successfully created",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 437,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": true,
+    "image_refs": [
+      "rId43"
+    ]
+  },
+  {
+    "index": 438,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "4.1 Create an Azure Data Lake Storage",
+    "subsection": "Check for the Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 439,
+    "text": "3.2 Types of Azure Storage Services:",
+    "is_heading": true,
+    "heading_level": 1,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": null,
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 440,
+    "text": "Azure Storage provides four main types of services under one Storage Account.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 441,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 442,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": true,
+    "image_refs": [
+      "rId44"
+    ]
+  },
+  {
+    "index": 443,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 444,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Azure Storage provides four main types of services under one Storage Account.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 445,
+    "text": "1️⃣ Data Lake Storage",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "1️⃣ Data Lake Storage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 446,
+    "text": "🧱 Purpose: Designed to store large volumes of unstructured or semi-structured data such as files, images, videos, logs, and backups.🔹 Key Features:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "1️⃣ Data Lake Storage",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 447,
+    "text": "Data is stored as Blobs (Binary Large Objects) within containers.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is stored as Blobs (Binary Large Objects) within containers.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 448,
+    "text": "Ideal for storing large, raw data that doesn’t fit into traditional databases.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Ideal for storing large, raw data that doesn’t fit into traditional databases.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 449,
+    "text": "Supports various formats: text, binary, documents, media, and backups.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Supports various formats: text, binary, documents, media, and backups.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 450,
+    "text": "💾 Common Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Common Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 451,
+    "text": "Hosting media content like images and videos for websites.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hosting media content like images and videos for websites.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 452,
+    "text": "Long-term storage for backups and archival data.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Long-term storage for backups and archival data.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 453,
+    "text": "Centralized data lake for analytics and big data processing.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Centralized data lake for analytics and big data processing.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 454,
+    "text": "Hosting static websites.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hosting static websites.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 455,
+    "text": "📦 Supported File Types:.txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Supported File Types:.txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 456,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Supported File Types:.txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 457,
+    "text": "2️⃣ File Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "2️⃣ File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 458,
+    "text": "📁 Used for shared file storage that behaves like a traditional file server.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "2️⃣ File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 459,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 460,
+    "text": "Provides Azure Files, a fully managed file share in the cloud.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides Azure Files, a fully managed file share in the cloud.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 461,
+    "text": "Uses the SMB (Server Message Block) or NFS (Network File System) protocols — the same used by on-premises file servers.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides Azure Files, a fully managed file share in the cloud.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 462,
+    "text": "Can be mounted to Windows, Linux, or macOS systems.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Can be mounted to Windows, Linux, or macOS systems.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 463,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 464,
+    "text": "Shared network drives for teams",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 465,
+    "text": "“Lift and shift” of on-premises file servers",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 466,
+    "text": "Application configurations shared across multiple VMs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 467,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 468,
+    "text": "You have multiple virtual machines needing access to the same configuration files — you can store those files in Azure Files and mount them just like a shared folder.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 469,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 470,
+    "text": "3️⃣ Queue Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "3️⃣ Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 471,
+    "text": "📬 Used for reliable messaging between application components.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "3️⃣ Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 472,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 473,
+    "text": "Provides asynchronous communication between services using message queues.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides asynchronous communication between services using message queues.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 474,
+    "text": "Stores messages in a queue, which can be processed later by background services or workers.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores messages in a queue, which can be processed later by background services or workers.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 475,
+    "text": "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 476,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 477,
+    "text": "Sending background jobs (like image processing or email sending)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 478,
+    "text": "Decoupling app components for scalability",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 479,
+    "text": "Event-driven architecture",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 480,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 481,
+    "text": "A web app uploads an image → sends a message to a queue → a background process picks it up and resizes the image.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 482,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 483,
+    "text": "4️⃣ Table Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "4️⃣ Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 484,
+    "text": "🧮 Used to store large amounts of structured, non-relational data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "4️⃣ Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 485,
+    "text": "🔹 Description:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🔹 Description:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 486,
+    "text": "Provides NoSQL key-value storage.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Provides NoSQL key-value storage.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 487,
+    "text": "Stores data in tables with entities (rows) and properties (columns).",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores data in tables with entities (rows) and properties (columns).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 488,
+    "text": "Flexible schema — you can add or remove columns anytime.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores data in tables with entities (rows) and properties (columns).",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 489,
+    "text": "💾 Example Uses:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 490,
+    "text": "Storing user profiles, IoT data, or metadata",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 491,
+    "text": "Fast lookups by key",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 492,
+    "text": "Lightweight applications needing scalable, cheap storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💾 Example Uses:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 493,
+    "text": "📦 Example Scenario:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 494,
+    "text": "You have millions of IoT sensors sending temperature data — you can store this efficiently in Azure Table Storage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 495,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📦 Example Scenario:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 496,
+    "text": "🧠 Summary Table",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🧠 Summary Table",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 497,
+    "text": "Datalake Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Datalake Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 498,
+    "text": "Type of Data",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Type of Data",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 499,
+    "text": "Description",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Description",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 500,
+    "text": "Example Use Case",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use Case",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 501,
+    "text": "Blob Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 502,
+    "text": "Unstructured / Semi-structured",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 503,
+    "text": "Stores large objects (files, media, backups)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 504,
+    "text": "Images, videos, logs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 505,
+    "text": "File Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 506,
+    "text": "File-based",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 507,
+    "text": "Shared file storage via SMB/NFS",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 508,
+    "text": "Shared drives, app configs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "File Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 509,
+    "text": "Queue Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 510,
+    "text": "Messaging",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 511,
+    "text": "Message-based communication between components",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 512,
+    "text": "Background tasks, event processing",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Queue Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 513,
+    "text": "Table Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 514,
+    "text": "Structured (NoSQL)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 515,
+    "text": "Key-value, schema-less table storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 516,
+    "text": "User profiles, IoT data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 517,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Table Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 518,
+    "text": "Explore Datalake Service",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Explore Datalake Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 519,
+    "text": "Once your storage account is created:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Explore Datalake Service",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 520,
+    "text": "Go to your Storage Account",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 521,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": true,
+    "image_refs": [
+      "rId45"
+    ]
+  },
+  {
+    "index": 522,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Go to your Storage Account",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 523,
+    "text": "Under Data storage, click Containers → This is where your blobs live.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Under Data storage, click Containers → This is where your blobs live.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 524,
+    "text": "Click ➕ Container to create one:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click ➕ Container to create one:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 525,
+    "text": "Name: images, videos, or backups (any name)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click ➕ Container to create one:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 526,
+    "text": "Public access level:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 527,
+    "text": "Private (default) – Only you can access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 528,
+    "text": "Blob (anonymous read) – Anyone with the link can read blobs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 529,
+    "text": "Container (public) – Everyone can see contents",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Public access level:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 530,
+    "text": "Click Create",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 531,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": true,
+    "image_refs": [
+      "rId46"
+    ]
+  },
+  {
+    "index": 532,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 533,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": true,
+    "image_refs": [
+      "rId47"
+    ]
+  },
+  {
+    "index": 534,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Create",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 535,
+    "text": "Upload & Manage Blobs",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Upload & Manage Blobs",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 536,
+    "text": "Click your new container (e.g., images)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Upload & Manage Blobs",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 537,
+    "text": "Click Upload",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 538,
+    "text": "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 539,
+    "text": "Once uploaded, you can:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Click Upload",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 540,
+    "text": "View Properties (size, type, last modified)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "View Properties (size, type, last modified)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 541,
+    "text": "Get the URL to access the file",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Get the URL to access the file",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 542,
+    "text": "Change the access tier",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 543,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 544,
+    "text": "Storage Account",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 545,
+    "text": "└── DataLake Service",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 546,
+    "text": "└── Container (like a folder)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 547,
+    "text": "└── Blob (the actual file)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 548,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId48"
+    ]
+  },
+  {
+    "index": 549,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 550,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId49"
+    ]
+  },
+  {
+    "index": 551,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 552,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId50"
+    ]
+  },
+  {
+    "index": 553,
+    "text": "Subfolder:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 554,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 555,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId51"
+    ]
+  },
+  {
+    "index": 556,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId52"
+    ]
+  },
+  {
+    "index": 557,
+    "text": "Upload file:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 558,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId53"
+    ]
+  },
+  {
+    "index": 559,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 560,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId54"
+    ]
+  },
+  {
+    "index": 561,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 562,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId55"
+    ]
+  },
+  {
+    "index": 563,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Change the access tier",
+    "has_image": true,
+    "image_refs": [
+      "rId56"
+    ]
+  },
+  {
+    "index": 564,
+    "text": "Types of Blob Types:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 565,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId53"
+    ]
+  },
+  {
+    "index": 566,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId32"
+    ]
+  },
+  {
+    "index": 567,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 568,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId33"
+    ]
+  },
+  {
+    "index": 569,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 570,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": true,
+    "image_refs": [
+      "rId57"
+    ]
+  },
+  {
+    "index": 571,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Types of Blob Types:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 572,
+    "text": "Blob Type",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Type",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 573,
+    "text": "Best For",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best For",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 574,
+    "text": "Example Use",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 575,
+    "text": "🧱 Block Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 576,
+    "text": "Storing text or binary data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 577,
+    "text": "Images, videos, documents, CSVs",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 578,
+    "text": "📜 Append Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 579,
+    "text": "Data that is constantly added to (append-only)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 580,
+    "text": "Logs, telemetry, audit data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 581,
+    "text": "📄 Page Blob",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 582,
+    "text": "Random read/write access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 583,
+    "text": "Virtual machine disks (VHD files)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 584,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Example Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 585,
+    "text": "🧱 1. Block Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "🧱 1. Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 586,
+    "text": "Most common blob type used in Azure.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Most common blob type used in Azure.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 587,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 588,
+    "text": "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 589,
+    "text": "Data is split into blocks, and each block is identified by a block ID.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is split into blocks, and each block is identified by a block ID.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 590,
+    "text": "You can upload or update blocks individually and commit them together.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is split into blocks, and each block is identified by a block ID.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 591,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 592,
+    "text": "Storing images, videos, PDFs, and backups.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 593,
+    "text": "Data files for analytics (CSV, JSON, Parquet).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 594,
+    "text": "Large files uploaded in chunks.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 595,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 596,
+    "text": "You upload a 500 MB video file — Azure divides it into smaller blocks and uploads each part separately for speed and reliability.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 597,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 598,
+    "text": "📜 2. Append Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📜 2. Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 599,
+    "text": "Special type of blob for data that grows over time.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Special type of blob for data that grows over time.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 600,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 601,
+    "text": "Optimized for append operations — you can only add new data to the end, not modify or delete existing data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 602,
+    "text": "Each time you add new information, it’s appended to the blob.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 603,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 604,
+    "text": "Storing log files.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 605,
+    "text": "Application telemetry or diagnostics data.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 606,
+    "text": "Streaming data that’s constantly being added.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 607,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 608,
+    "text": "You’re logging website visits. Each time a new visitor arrives, their data (timestamp, IP, etc.) is appended to the existing log file.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 609,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 610,
+    "text": "📄 3. Page Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📄 3. Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 611,
+    "text": "Designed for random read/write operations.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Designed for random read/write operations.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 612,
+    "text": "💡 What it is:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "💡 What it is:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 613,
+    "text": "Data is stored in fixed-size 512-byte pages.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Data is stored in fixed-size 512-byte pages.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 614,
+    "text": "Allows fast read and write access to specific parts of the blob.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Allows fast read and write access to specific parts of the blob.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 615,
+    "text": "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines.",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines.",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 616,
+    "text": "✅ Use Cases:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 617,
+    "text": "Storing Azure VM disks (OS and data disks).",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 618,
+    "text": "Large databases that require random access.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 619,
+    "text": "Any workload that reads/writes frequently to specific sections of a file.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "✅ Use Cases:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 620,
+    "text": "📘 Example:",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 621,
+    "text": "When you start an Azure Virtual Machine, its disk (a .vhd file) is stored as a Page Blob, allowing the VM to quickly read or write data anywhere on the disk.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 622,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "📘 Example:",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 623,
+    "text": "Blob Type",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Blob Type",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 624,
+    "text": "Structure",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Structure",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 625,
+    "text": "Read/Write Behavior",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Read/Write Behavior",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 626,
+    "text": "Common Use",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Common Use",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 627,
+    "text": "Block Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 628,
+    "text": "Data stored as blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 629,
+    "text": "Upload/replace blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 630,
+    "text": "Files, media, documents",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Block Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 631,
+    "text": "Append Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 632,
+    "text": "Sequentially added blocks",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 633,
+    "text": "Append-only",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 634,
+    "text": "Logs, telemetry, streaming data",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Append Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 635,
+    "text": "Page Blob",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 636,
+    "text": "Fixed 512-byte pages",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 637,
+    "text": "Random read/write",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 638,
+    "text": "VM disks, large databases",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 639,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 640,
+    "text": "Types of Access Tiers:",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 641,
+    "text": "Azure lets you store data in different tiers based on how often you need it.This helps save money 💰 by matching storage cost to usage.",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Page Blob",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 642,
+    "text": "Tier",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Tier",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 643,
+    "text": "Cost",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cost",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 644,
+    "text": "Availability",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Availability",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 645,
+    "text": "Best For",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Best For",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 646,
+    "text": "Hot",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 647,
+    "text": "💰 Highest cost",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 648,
+    "text": "🔥 Always available",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 649,
+    "text": "Frequently accessed data (e.g., active apps, websites)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Hot",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 650,
+    "text": "Cool",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 651,
+    "text": "💸 Cheaper",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 652,
+    "text": "🕓 Slight delay in access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 653,
+    "text": "Infrequently accessed data (e.g., monthly reports)",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cool",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 654,
+    "text": "Cold",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 655,
+    "text": "💧 Cheaper than Cool",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 656,
+    "text": "⏱️ Slower access",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 657,
+    "text": "Rarely accessed data but still retrievable",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Cold",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 658,
+    "text": "Archive",
+    "is_heading": true,
+    "heading_level": 2,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 659,
+    "text": "🧊 Cheapest",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 660,
+    "text": "💤 Retrieval takes hours",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 661,
+    "text": "Long-term backups, compliance storage",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 662,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 663,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId53"
+    ]
+  },
+  {
+    "index": 664,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 665,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId32"
+    ]
+  },
+  {
+    "index": 666,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 667,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId35"
+    ]
+  },
+  {
+    "index": 668,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 669,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": true,
+    "image_refs": [
+      "rId58"
+    ]
+  },
+  {
+    "index": 670,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 671,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 672,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 673,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 674,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 675,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 676,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 677,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 678,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 679,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 680,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 681,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 682,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 683,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 684,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 685,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 686,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 687,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 688,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 689,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 690,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  },
+  {
+    "index": 691,
+    "text": "",
+    "is_heading": false,
+    "heading_level": null,
+    "section": "3.2 Types of Azure Storage Services:",
+    "subsection": "Archive",
+    "has_image": false,
+    "image_refs": []
+  }
+]

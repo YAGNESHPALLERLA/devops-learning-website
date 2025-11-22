@@ -7,7 +7,7 @@ import Sidebar from './sidebar';
 interface TechLayoutProps {
   children: React.ReactNode;
   onThisPage?: { id: string; title: string }[];
-  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux' | 'azure-data-engineer';
+  technology: 'java' | 'python' | 'sql' | 'web-dev' | 'data-science' | 'code-terminal' | 'devops' | 'linux' | 'azure-data-engineer' | 'artificial-intelligence';
   activeSection?: string;
   setActiveSection?: (section: string) => void;
   activeSubsection?: string | null;
@@ -503,6 +503,20 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
           { id: 'help-level-features', title: 'Help-level features', href: '/tutorials/azure-data-engineer#help-level-features' },
           { id: 'language-level-features', title: 'Language-level features', href: '/tutorials/azure-data-engineer#language-level-features' },
           { id: 'others-features', title: 'Others features', href: '/tutorials/azure-data-engineer#others-features' }
+        ]
+      }
+    ],
+    'artificial-intelligence': [
+      {
+        id: 'llms',
+        title: 'Large Language Models (LLMs)',
+        href: '/tutorials/artificial-intelligence#llms',
+        icon: '🤖',
+        children: [
+          { id: 'llm-introduction', title: 'Introduction to LLMs', href: '/tutorials/artificial-intelligence#llm-introduction' },
+          { id: 'llm-architecture', title: 'LLM Architecture', href: '/tutorials/artificial-intelligence#llm-architecture' },
+          { id: 'llm-training', title: 'Training LLMs', href: '/tutorials/artificial-intelligence#llm-training' },
+          { id: 'llm-applications', title: 'LLM Applications', href: '/tutorials/artificial-intelligence#llm-applications' }
         ]
       }
     ]
