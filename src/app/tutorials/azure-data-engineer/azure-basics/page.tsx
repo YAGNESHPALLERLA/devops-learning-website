@@ -435,6 +435,7 @@ export default function AzureDataEngineerPage() {
                     <p><strong className="text-blue-400">Purpose:</strong> It helps you <strong>manage and organize multiple subscriptions</strong> across your organization. You can group subscriptions based on departments, teams, or projects.</p>
                     <p><strong className="text-blue-400">Example:</strong> Imagine a company with multiple divisions, like Finance, IT, and Marketing. You could have separate management groups for each of these divisions.</p>
                   </div>
+                  <ImageGallery images={getImages('image1', 'image2')} />
                 </div>
 
                 <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
@@ -444,6 +445,7 @@ export default function AzureDataEngineerPage() {
                     <p><strong className="text-blue-400">Purpose:</strong> It helps with organizing resources, managing access, and billing. You can have multiple subscriptions for different projects or teams. Each subscription has its own <strong>resource limits</strong> and <strong>billing</strong>.</p>
                     <p><strong className="text-blue-400">Example:</strong> If your company has different projects, like a website and an app, you could create separate subscriptions for them. One for the website, one for the app.</p>
                   </div>
+                  <ImageGallery images={getImages('image3', 'image4', 'image5', 'image6')} />
                 </div>
 
                 <div id="resource-group-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
@@ -475,7 +477,7 @@ export default function AzureDataEngineerPage() {
                 </ul>
               </div>
 
-              <ImageGallery images={getImages('image1', 'image2', 'image3', 'image4', 'image5', 'image6')} />
+              
             </div>
           </div>
         </section>
@@ -511,7 +513,7 @@ export default function AzureDataEngineerPage() {
                   <li>Click on the resource group and click on the create button</li>
                 </ol>
 
-                <ImageGallery images={getImages('image5')} />
+                <ImageGallery images={getImages('image7')} />
                 
                 <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Overview of resource group:</h5>
@@ -537,7 +539,7 @@ export default function AzureDataEngineerPage() {
               </div>
             </div>
 
-            <ImageGallery images={getImages('image7', 'image8', 'image9', 'image10', 'image6')} />
+            <ImageGallery images={getImages('image8', 'image9', 'image10', 'image11', 'image12')} />
           </div>
         </section>
         )}
@@ -580,7 +582,7 @@ export default function AzureDataEngineerPage() {
                 <li>Click "Review + Create"</li>
               </ol>
 
-              <ImageGallery images={getImages('image11', 'image12', 'image13')} />
+              <ImageGallery images={getImages('image13')} />
 
               <div className="mt-6 space-y-6">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -684,444 +686,18 @@ export default function AzureDataEngineerPage() {
                 <p className="font-semibold mt-4">Check for the Storage Account</p>
                 <p className="mb-2">Inside the <strong>Overview</strong> tab of your resource group, you'll see a list of all resources.</p>
                 <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> blobohg365dev (or whatever name you used)</p>
-                <p className="text-green-400">If it appears there, =��� congratulations G�� your Blob Storage account has been successfully created</p>
+                <p className="text-green-400">If it appears there, = congratulations — your ADLS Gen2 Storage account has been successfully created</p>
               </div>
 
-              <ImageGallery images={getImages('image16')} />
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mb-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">3.2 Types of Azure Storage Services</h4>
-            <p className="text-gray-300 mb-4">Azure Storage provides <strong>four main types of services</strong> under one <strong>Storage Account</strong>.</p>
-            
-            <div className="space-y-6">
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">1n+�G�� Blob Service</h5>
-                <p className="text-gray-300 mb-2">=��� Used to store unstructured or semi-structured data like files, images, videos, logs, and backups.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� Description:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Stores data as <strong>Blobs (Binary Large Objects)</strong> inside <strong>containers</strong>.</li>
-                    <li>Best for storing <strong>flat files</strong> and <strong>large objects</strong> that don't fit in a database.</li>
-                    <li>Data can be text, binary, documents, media, or backups.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��+ Example Uses:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Storing images or videos for websites</li>
-                    <li>Backups and archives</li>
-                    <li>Data lake for analytics</li>
-                    <li>Hosting static websites</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example Scenario: You have millions of IoT sensors sending temperature data G�� you can store this efficiently in <strong>Azure Table Storage</strong>.</p>
-              </div>
-
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">2n+�G�� File Service</h5>
-                <p className="text-gray-300 mb-2">=��� Used for shared file storage that behaves like a traditional file server.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� Description:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Provides <strong>Azure Files</strong>, a fully managed <strong>file share</strong> in the cloud.</li>
-                    <li>Uses the <strong>SMB (Server Message Block)</strong> or <strong>NFS (Network File System)</strong> protocols G�� the same used by on-premises file servers.</li>
-                    <li>Can be <strong>mounted</strong> to Windows, Linux, or macOS systems.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��+ Example Uses:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Shared network drives for teams</li>
-                    <li>"Lift and shift" of on-premises file servers</li>
-                    <li>Application configurations shared across multiple VMs</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example Scenario: You have multiple virtual machines needing access to the same configuration files G�� you can store those files in <strong>Azure Files</strong> and mount them just like a shared folder.</p>
-              </div>
-
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">3n+�G�� Queue Service</h5>
-                <p className="text-gray-300 mb-2">=��� Used for reliable messaging between application components.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� Description:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Provides <strong>asynchronous communication</strong> between services using message queues.</li>
-                    <li>Stores messages in a <strong>queue</strong>, which can be processed later by background services or workers.</li>
-                    <li>Ensures messages are <strong>delivered at least once</strong> and processed in <strong>FIFO (First-In, First-Out)</strong> order.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��+ Example Uses:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Sending background jobs (like image processing or email sending)</li>
-                    <li>Decoupling app components for scalability</li>
-                    <li>Event-driven architecture</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example Scenario: A web app uploads an image G�� sends a message to a <strong>queue</strong> G�� a background process picks it up and resizes the image.</p>
-              </div>
-
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">4n+�G�� Table Service</h5>
-                <p className="text-gray-300 mb-2">=��� Used to store large amounts of structured, non-relational data.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� Description:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Provides <strong>NoSQL key-value storage</strong>.</li>
-                    <li>Stores data in <strong>tables</strong> with <strong>entities (rows)</strong> and <strong>properties (columns)</strong>.</li>
-                    <li>Flexible schema G�� you can add or remove columns anytime.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��+ Example Uses:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Storing user profiles, IoT data, or metadata</li>
-                    <li>Fast lookups by key</li>
-                    <li>Lightweight applications needing scalable, cheap storage</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example Scenario: You have millions of IoT sensors sending temperature data G�� you can store this efficiently in <strong>Azure Table Storage</strong>.</p>
-              </div>
-            </div>
-
-            <ImageGallery images={getImages('image17')} />
-
-            <div className="mt-6 overflow-x-auto">
-              <h5 className="text-xl font-semibold text-white mb-4">=��� Summary Table</h5>
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Storage Service</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Type of Data</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Example Use Case</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Blob Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Unstructured / Semi-structured</td>
-                    <td className="border border-gray-600 px-4 py-2">Stores large objects (files, media, backups)</td>
-                    <td className="border border-gray-600 px-4 py-2">Images, videos, logs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>File Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">File-based</td>
-                    <td className="border border-gray-600 px-4 py-2">Shared file storage via SMB/NFS</td>
-                    <td className="border border-gray-600 px-4 py-2">Shared drives, app configs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Queue Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Messaging</td>
-                    <td className="border border-gray-600 px-4 py-2">Message-based communication between components</td>
-                    <td className="border border-gray-600 px-4 py-2">Background tasks, event processing</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Table Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Structured (NoSQL)</td>
-                    <td className="border border-gray-600 px-4 py-2">Key-value, schema-less table storage</td>
-                    <td className="border border-gray-600 px-4 py-2">User profiles, IoT data</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mb-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">Explore Blob Service</h4>
-            <div className="space-y-4 text-gray-300">
-              <p className="font-semibold">Once your storage account is created:</p>
-              <ol className="list-decimal list-inside space-y-3 ml-2">
-                <li>Go to your <strong>Storage Account</strong></li>
-                <li>Under <strong>Data storage</strong>, click <strong>Containers</strong> G�� This is where your blobs live.</li>
-                <li>Click <strong>GP� Container</strong> to create one:
-                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                    <li><strong>Name:</strong> images, videos, or backups (any name)</li>
-                    <li><strong>Public access level:</strong>
-                      <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>Private (default)</strong> G�� Only you can access</li>
-                        <li><strong>Blob (anonymous read)</strong> G�� Anyone with the link can read blobs</li>
-                        <li><strong>Container (public)</strong> G�� Everyone can see contents</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>Click <strong>Create</strong></li>
-              </ol>
-
-              <ImageGallery images={getImages('image18', 'image19', 'image20')} />
-
-              <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">Upload & Manage Blobs</h5>
-                <ol className="list-decimal list-inside space-y-2 ml-2">
-                  <li>Click your new container (e.g., images)</li>
-                  <li>Click <strong>Upload</strong></li>
-                  <li>Choose a file from your computer (like a .jpg, .txt, or .mp4)</li>
-                </ol>
-                <p className="mt-4">Once uploaded, you can:</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>View <strong>Properties</strong> (size, type, last modified)</li>
-                  <li>Get the <strong>URL</strong> to access the file</li>
-                  <li>Change the <strong>access tier</strong></li>
-                </ul>
-
-                <ImageGallery images={getImages('image21', 'image22', 'image23', 'image24', 'image25', 'image26', 'image27')} />
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-                <pre className="text-gray-300 font-mono text-sm">
-{`Storage Account
-   G��G��G�� Blob Service
-        G��G��G�� Container (like a folder)
-             G��G��G�� Blob (the actual file)`}
-                </pre>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mb-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">Types of Blob Types</h4>
-            <div className="overflow-x-auto mb-6">
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Blob Type</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Best For</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Example Use</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Block Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Storing text or binary data</td>
-                    <td className="border border-gray-600 px-4 py-2">Images, videos, documents, CSVs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Append Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Data that is constantly added to (append-only)</td>
-                    <td className="border border-gray-600 px-4 py-2">Logs, telemetry, audit data</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Page Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Random read/write access</td>
-                    <td className="border border-gray-600 px-4 py-2">Virtual machine disks (VHD files)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="space-y-6">
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">=��� 1. Block Blob</h5>
-                <p className="text-gray-300 mb-2">Most common blob type used in Azure.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� What it is:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Stores <strong>text</strong> and <strong>binary</strong> data (files like .txt, .jpg, .mp4, .csv, etc.)</li>
-                    <li>Data is split into <strong>blocks</strong>, and each block is identified by a block ID.</li>
-                    <li>You can upload or update blocks individually and commit them together.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">G�� Use Cases:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Storing images, videos, PDFs, and backups.</li>
-                    <li>Data files for analytics (CSV, JSON, Parquet).</li>
-                    <li>Large files uploaded in chunks.</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example: You upload a 500 MB video file G�� Azure divides it into smaller <strong>blocks</strong> and uploads each part separately for speed and reliability.</p>
-              </div>
-
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">=��� 2. Append Blob</h5>
-                <p className="text-gray-300 mb-2">Special type of blob for data that grows over time.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� What it is:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Optimized for <strong>append operations</strong> G�� you can only add new data to the end, not modify or delete existing data.</li>
-                    <li>Each time you add new information, it's appended to the blob.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">G�� Use Cases:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Storing log files.</li>
-                    <li>Application telemetry or diagnostics data.</li>
-                    <li>Streaming data that's constantly being added.</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example: You're logging website visits. Each time a new visitor arrives, their data (timestamp, IP, etc.) is appended to the existing log file.</p>
-              </div>
-
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">=��� 3. Page Blob</h5>
-                <p className="text-gray-300 mb-2">Designed for random read/write operations.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� What it is:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Data is stored in <strong>fixed-size 512-byte pages</strong>.</li>
-                    <li>Allows <strong>fast read and write access</strong> to specific parts of the blob.</li>
-                    <li>Commonly used for storing <strong>Virtual Hard Disk (VHD)</strong> files that power Azure Virtual Machines.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">G�� Use Cases:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Storing Azure VM disks (OS and data disks).</li>
-                    <li>Large databases that require random access.</li>
-                    <li>Any workload that reads/writes frequently to specific sections of a file.</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Example: When you start an Azure Virtual Machine, its disk (a .vhd file) is stored as a <strong>Page Blob</strong>, allowing the VM to quickly read or write data anywhere on the disk.</p>
-              </div>
-            </div>
-
-            <div className="mt-6 overflow-x-auto">
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Blob Type</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Structure</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Read/Write Behavior</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Common Use</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Block Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Data stored as blocks</td>
-                    <td className="border border-gray-600 px-4 py-2">Upload/replace blocks</td>
-                    <td className="border border-gray-600 px-4 py-2">Files, media, documents</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Append Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Sequentially added blocks</td>
-                    <td className="border border-gray-600 px-4 py-2">Append-only</td>
-                    <td className="border border-gray-600 px-4 py-2">Logs, telemetry, streaming data</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Page Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Fixed 512-byte pages</td>
-                    <td className="border border-gray-600 px-4 py-2">Random read/write</td>
-                    <td className="border border-gray-600 px-4 py-2">VM disks, large databases</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-            <h4 className="text-2xl font-semibold text-white mb-4">Types of Access Tiers</h4>
-            <p className="text-gray-300 mb-4">Azure lets you store data in <strong>different tiers</strong> based on how often you need it. This helps <strong>save money</strong> =�Ʀ by matching storage cost to usage.</p>
-            <div className="overflow-x-auto">
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Tier</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Cost</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Availability</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Best For</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Hot</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=�Ʀ Highest cost</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Always available</td>
-                    <td className="border border-gray-600 px-4 py-2">Frequently accessed data (e.g., active apps, websites)</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Cool</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=��+ Cheaper</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Slight delay in access</td>
-                    <td className="border border-gray-600 px-4 py-2">Infrequently accessed data (e.g., monthly reports)</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Cold</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=�ƺ Cheaper than Cool</td>
-                    <td className="border border-gray-600 px-4 py-2">GŦn+� Slower access</td>
-                    <td className="border border-gray-600 px-4 py-2">Rarely accessed data but still retrievable</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Archive</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Cheapest</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Retrieval takes hours</td>
-                    <td className="border border-gray-600 px-4 py-2">Long-term backups, compliance storage</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-        )}
-
-        {/* Azure Data Lake Storage Gen2 */}
-        {activeSection === 'azure-data-lake' && (
-        <section
-          id="azure-data-lake"
-          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
-        >
-          <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
-          
-          <p className="text-gray-300 mb-6 text-lg">
-            Azure Data Lake Storage Gen2 is a highly scalable and secure <strong>cloud storage service optimized for big data analytics</strong> and data lakes. It builds on Azure Blob Storage capabilities but adds <strong>file system semantics, hierarchical namespaces, and enhanced performance</strong> for analytics workloads.
-          </p>
-          <p className="text-gray-300 mb-6">
-            ADLS Gen2 is designed to store massive volumes of <strong>structured, semi-structured, and unstructured data</strong>, making it ideal for big data and machine learning scenarios.
-          </p>
-
-          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6 mb-6">
-            <h5 className="text-xl font-semibold text-white mb-3">Key Features and Use Cases:</h5>
-            <ul className="space-y-2 text-gray-300">
-              <li><strong className="text-blue-400">Hierarchical Namespace:</strong> Unlike traditional Blob Storage, ADLS Gen2 supports folders and directories, enabling efficient organization and faster file operations at scale.</li>
-              <li><strong className="text-blue-400">Optimized for Analytics:</strong> Supports Hadoop Distributed File System (HDFS) and integrates seamlessly with analytics frameworks like Azure Databricks, HDInsight, and Azure Synapse Analytics.</li>
-              <li><strong className="text-blue-400">Supports Multiple Data Types:</strong> You can store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, and more.</li>
-              <li><strong className="text-blue-400">Security and Compliance:</strong> Provides enterprise-grade security with Azure Active Directory integration, role-based access control (RBAC), and encryption at rest and in transit.</li>
-              <li><strong className="text-blue-400">Cost-effective and Scalable:</strong> Automatically scales to handle petabytes of data and millions of files with optimized storage tiers and pricing options.</li>
-            </ul>
-          </div>
-
-          <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-6 mb-6">
-            <h5 className="text-xl font-semibold text-white mb-3">Common Uses of ADLS Gen2:</h5>
-            <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
-              <li>Building <strong>data lakes</strong> for big data analytics and machine learning.</li>
-              <li>Storing large datasets for <strong>ETL (Extract, Transform, Load)</strong> processes.</li>
-              <li>Integrating with analytics tools to perform complex queries and transformations.</li>
-              <li>Secure and compliant <strong>storage for sensitive data</strong> and audit logs.</li>
-              <li>Archiving and long-term data retention with tiered storage options.</li>
-            </ul>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-            <h4 className="text-2xl font-semibold text-white mb-4">4.1 Create an Azure Data Lake Storage</h4>
-            <div className="space-y-4 text-gray-300">
-              <ol className="list-decimal list-inside space-y-3 ml-2">
-                <li>Go to Azure Portal</li>
-                <li>In the search bar, type "Storage Accounts" or "ADLS Gen2"</li>
-                <li>Click on storage accounts and click on create button</li>
-                <li>Fill required details</li>
-              </ol>
-              <div className="mt-6 space-y-3">
-                <p className="font-semibold">Navigate to Your Resource Group</p>
-                <ol className="list-decimal list-inside space-y-2 ml-2">
-                  <li>In the left-hand menu, click on <strong>Resource groups</strong></li>
-                  <li>Find and click your resource group G�� in your case: =��� <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code></li>
-                </ol>
-                <p className="font-semibold mt-4">Check for the Storage Account</p>
-                <p className="mb-2">Inside the <strong>Overview</strong> tab of your resource group, you'll see a list of all resources.</p>
-                <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> adlsohg365dev (or whatever name you used)</p>
-                <p className="text-green-400">If it appears there, =��� congratulations G�� your ADLS Gen2 Storage account has been successfully created</p>
-              </div>
-              <ImageGallery images={getImages('image33', 'image34', 'image35', 'image36', 'image37', 'image38')} />
+              <ImageGallery images={getImages('image16', 'image17')} />
             </div>
           </div>
 
           <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
             <h4 className="text-2xl font-semibold text-white mb-4">3.2 Types of Azure Storage Services</h4>
             <p className="text-gray-300 mb-4">Azure Storage provides <strong>four main types of services</strong> under one <strong>Storage Account</strong>.</p>
+            
+            <ImageGallery images={getImages('image19', 'image45')} />
             
             <div className="space-y-6">
               <div className="p-4 bg-gray-800 rounded-lg">
@@ -1199,6 +775,11 @@ export default function AzureDataEngineerPage() {
               <p className="font-semibold">Once your storage account is created:</p>
               <ol className="list-decimal list-inside space-y-3 ml-2">
                 <li>Go to your <strong>Storage Account</strong></li>
+              </ol>
+
+              <ImageGallery images={getImages('image20', 'image46')} />
+
+              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
                 <li>Under <strong>Data storage</strong>, click <strong>Containers</strong> G�� This is where your blobs live.</li>
                 <li>Click <strong>GP� Container</strong> to create one:
                   <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
@@ -1215,7 +796,9 @@ export default function AzureDataEngineerPage() {
                 <li>Click <strong>Create</strong></li>
               </ol>
 
-              <ImageGallery images={getImages('image40', 'image41', 'image42', 'image43', 'image44', 'image45')} />
+              <ImageGallery images={getImages('image18')} />
+
+              <ImageGallery images={getImages('image21', 'image22', 'image47', 'image48')} />
 
               <div className="mt-6 p-4 bg-gray-800 rounded-lg">
                 <h5 className="text-xl font-semibold text-white mb-3">Subfolder:</h5>
@@ -1232,6 +815,8 @@ export default function AzureDataEngineerPage() {
                   <li>Get the <strong>URL</strong> to access the file</li>
                   <li>Change the <strong>access tier</strong></li>
                 </ul>
+
+                <ImageGallery images={getImages('image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image49', 'image50', 'image51', 'image52', 'image53', 'image54', 'image55', 'image56', 'image57')} />
               </div>
 
               <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
@@ -1249,6 +834,7 @@ export default function AzureDataEngineerPage() {
 
           <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
             <h4 className="text-2xl font-semibold text-white mb-4">Types of Blob Types</h4>
+            <ImageGallery images={getImages('image30', 'image31', 'image32', 'image33', 'image58', 'image59', 'image60', 'image61')} />
             <div className="overflow-x-auto mb-6">
               <table className="min-w-full border border-gray-600">
                 <thead>
@@ -1279,7 +865,7 @@ export default function AzureDataEngineerPage() {
             </div>
 
             {/* Blob type details are the same as above */}
-            <ImageGallery images={getImages('image52')} />
+            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37', 'image62', 'image63', 'image64', 'image65')} />
           </div>
 
           <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
@@ -1324,7 +910,62 @@ export default function AzureDataEngineerPage() {
               </table>
             </div>
 
-            <ImageGallery images={getImages('image53')} />
+            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37', 'image62', 'image63', 'image64', 'image65')} />
+          </div>
+        </section>
+        )}
+
+        {/* Azure Data Lake Storage Gen2 */}
+        {activeSection === 'azure-data-lake' && (
+        <section
+          id="azure-data-lake"
+          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
+        >
+          <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
+          
+          <p className="text-gray-300 mb-6 text-lg">
+            Azure Data Lake Storage Gen2 is a highly scalable and secure <strong>cloud storage service optimized for big data analytics</strong> and data lakes. It builds on Azure Blob Storage capabilities but adds <strong>file system semantics, hierarchical namespaces, and enhanced performance</strong> for analytics workloads.
+          </p>
+          <p className="text-gray-300 mb-6">
+            ADLS Gen2 is designed to store massive volumes of <strong>structured, semi-structured, and unstructured data</strong>, making it ideal for big data and machine learning scenarios.
+          </p>
+
+          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
+            <h4 className="text-2xl font-semibold text-white mb-4">4.1 Create an Azure Data Lake Storage</h4>
+            <div className="space-y-4 text-gray-300">
+              <ol className="list-decimal list-inside space-y-3 ml-2">
+                <li>Go to Azure Portal</li>
+                <li>In the search bar, type "Storage Accounts" or "ADLS Gen2"</li>
+              </ol>
+
+              <ImageGallery images={getImages('image38')} />
+
+              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
+                <li>Click on storage accounts and click on create button</li>
+              </ol>
+
+              <ImageGallery images={getImages('image39')} />
+
+              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
+                <li>Fill required details</li>
+              </ol>
+
+              <ImageGallery images={getImages('image40', 'image41', 'image42', 'image43')} />
+
+              <div className="mt-6 space-y-3">
+                <p className="font-semibold">Navigate to Your Resource Group</p>
+                <ol className="list-decimal list-inside space-y-2 ml-2">
+                  <li>In the left-hand menu, click on <strong>Resource groups</strong></li>
+                  <li>Find and click your resource group — in your case: = <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code></li>
+                </ol>
+                <p className="font-semibold mt-4">Check for the Storage Account</p>
+                <p className="mb-2">Inside the <strong>Overview</strong> tab of your resource group, you'll see a list of all resources.</p>
+                <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> adlsohg365dev (or whatever name you used)</p>
+                <p className="text-green-400">If it appears there, = congratulations — your ADLS Gen2 Storage account has been successfully created</p>
+              </div>
+
+              <ImageGallery images={getImages('image44')} />
+            </div>
           </div>
         </section>
         )}
