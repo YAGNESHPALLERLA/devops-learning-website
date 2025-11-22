@@ -358,16 +358,84 @@ export default function GenerativeAIPage() {
           <h3 className="text-3xl font-bold text-white mb-6">Generative AI</h3>
           
           <div className="space-y-12 relative z-10">
-            {/* Content sections will be added here */}
             <div id="introduction-to-generative-ai" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10">
               <h4 className="text-2xl font-semibold text-white mb-4">1. Introduction to Generative AI</h4>
               <div className="space-y-6 text-gray-300">
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">What is Generative AI?</h5>
+                </div>
                 <p className="mb-3">
-                  Content will be populated from the JSON file...
+                  Generative AI is a type of artificial intelligence that can create new data or content such as text, images, audio, video, or code. Generative Artificial Intelligence is a field of AI that focuses on creating new and original data instead of just analyzing or recognizing existing information. It uses deep learning algorithms and neural networks to learn patterns, structures, and relationships from massive datasets and then generates completely new outputs that resemble the original data. For example, it can write essays, generate artwork, compose music, design graphics, or even write code. Unlike traditional AI systems that rely on fixed rules, generative AI models learn creatively from examples and can produce realistic, high-quality content on their own. Models like GPT, DALL·E, and Stable Diffusion have made generative AI one of the most revolutionary advancements in modern technology, capable of mimicking human imagination and creativity.
+                </p>
+                <p className="mb-3">
+                  Examples include ChatGPT for text, DALL·E for images, and MusicGen for audio.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Evolution of Generative AI</h5>
+                </div>
+                <p className="mb-3">
+                  The evolution of generative AI has been a journey from simple data analysis to creative intelligence. In the early days, AI systems were rule-based, focusing mainly on classification and prediction tasks. As computing power and data availability increased, machine learning models became capable of identifying deeper patterns in data. The invention of Autoencoders allowed AI to learn compressed representations of data, and Generative Adversarial Networks (GANs), introduced in 2014, brought a breakthrough in generating realistic images. Later, Variational Autoencoders (VAEs) refined this process by introducing probabilistic latent spaces. In recent years, Diffusion Models and Transformer-based architectures like GPT have taken generative AI to new heights, enabling text, image, and multimodal generation with near-human quality. The biggest leap was the Transformer architecture (2017) by Google, leading to powerful large language models like GPT, Gemini, and Claude. Today, generative AI forms the backbone of advanced systems like ChatGPT, Midjourney, and Gemini, marking a new era where AI can not only analyze but also create.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Difference Between Predictive AI and Generative AI</h5>
+                </div>
+                <p className="mb-3">
+                  Predictive AI and Generative AI differ mainly in their goals and functions. Predictive AI analyzes past data to make forecasts, classifications, or decisions about future outcomes for example, predicting sales, detecting fraud, or recognizing speech. Its role is to understand patterns and make accurate predictions. In contrast, Generative AI learns the underlying data distribution and uses that understanding to produce new and original outputs that didn't exist before, such as creating a new design, writing an article, or generating an image. Predictive AI is about accuracy and recognition, while generative AI is about creativity and innovation. Essentially, predictive models answer "What will happen?", whereas generative models answer "What can we create?". This difference highlights how generative AI moves beyond logic to imagination, making machines capable of producing human-like creative work.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Core Idea: Creation vs Classification</h5>
+                </div>
+                <p className="mb-3">
+                  The fundamental difference between traditional AI and generative AI lies in their purpose and outcome. Traditional or predictive AI performs classification, meaning it identifies and labels input data. For example, a predictive model might recognize that a given picture is of a cat. Generative AI performs creation, meaning it produces something new, such as generating an entirely new image of a cat that never existed before. In creation, the model learns data distribution, while in classification, it learns decision boundaries. Generative AI thus goes beyond recognition to simulation mimicking how humans create new ideas from what they've seen before. This ability makes it valuable for tasks like content creation, storytelling, image synthesis, and design generation.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Applications of Generative AI (Text, Images, Audio, Video, Code)</h5>
+                </div>
+                <p className="mb-3">
+                  Generative AI is highly versatile and has applications across multiple data types:
+                </p>
+                <ul className="list-disc list-inside space-y-2 mb-4 ml-4">
+                  <li><strong className="text-purple-400">Text Generation:</strong> Tools like ChatGPT and Gemini write essays, code, summaries, and articles.</li>
+                  <li><strong className="text-purple-400">Image Generation:</strong> DALL·E, Midjourney, and Stable Diffusion create realistic or artistic images from text prompts.</li>
+                  <li><strong className="text-purple-400">Audio Generation:</strong> Models like Jukebox or MusicGen compose songs or recreate voices.</li>
+                  <li><strong className="text-purple-400">Video Generation:</strong> Tools like RunwayML and Sora generate videos directly from text or story board input.</li>
+                  <li><strong className="text-purple-400">Code Generation:</strong> Codex, GitHub Copilot, and CodeLlama translate natural language to code. These applications are transforming industries such as education, entertainment, gaming, fashion, architecture, and marketing.</li>
+                </ul>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Importance of Generative Models in the AI Era</h5>
+                </div>
+                <p className="mb-3">
+                  Generative models play a crucial role in today's AI-driven world by pushing the boundaries of what machines can create. They can produce realistic content, design products, and even simulate data for research and training. They enable automation in creative tasks that previously required human imagination, such as design, storytelling, and content production. Beyond creativity, they help in producing synthetic data for machine learning, which improves model training and preserves privacy. Generative AI also enhances personalization like generating tailored marketing campaigns, personalized education content, or customized digital art. In industries like healthcare, it's used to simulate medical images and drug molecules for research. These models not only save time and cost but also open new possibilities in innovation, making them a cornerstone of the modern AI era. Their impact is comparable to the invention of the internet transformative, wide-reaching, and constantly evolving.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Real-World Use Cases (ChatGPT, DALL·E, Midjourney, Gemini, Claude)</h5>
+                </div>
+                <p className="mb-3">
+                  Generative AI is already powering some of the world's most advanced tools and applications.
+                </p>
+                <p className="mb-3">
+                  ChatGPT by OpenAI generates conversational text, helping users write, code, and learn.
+                </p>
+                <p className="mb-3">
+                  DALL·E, also from OpenAI, creates high-quality images from simple text prompts, enabling creative design with minimal effort.
+                </p>
+                <p className="mb-3">
+                  Midjourney specializes in artistic and stylistic visuals, popular among designers and digital artists.
+                </p>
+                <p className="mb-3">
+                  Gemini by Google DeepMind combines text, image, and video understanding in a multimodal framework.
+                </p>
+                <p className="mb-3">
+                  Claude by Anthropic focuses on safe, ethical, and context-aware text generation. These real-world tools demonstrate how generative AI can enhance creativity, improve productivity, and provide intelligent assistance in day-to-day tasks.
+                </p>
+                <div className="p-4 bg-gray-800 rounded-lg">
+                  <h5 className="text-xl font-semibold text-white mb-3">Generative AI Ecosystem Overview (Models, Frameworks, Tools)</h5>
+                </div>
+                <p className="mb-3">
+                  The generative AI ecosystem is made up of interconnected components that enable building, training, and deploying intelligent models. Models like GPT (for text), Diffusion and GANs (for images), and Whisper (for audio) form the foundation. These models are built using frameworks such as TensorFlow and PyTorch, which support large-scale training and optimization. Libraries like Hugging Face Transformers and Diffusers provide pre-trained models that developers can adapt for their own use. Tools like LangChain and LlamaIndex help connect language models with data sources for advanced applications, while Gradio and Streamlit allow developers to create user interfaces for AI apps. Deployment platforms like OpenAI API, Stability AI, and ComfyUI make these technologies accessible to everyone. Together, they form a dynamic ecosystem that powers the global growth and accessibility of generative AI.
                 </p>
               </div>
             </div>
-          </div>
         </section>
       </div>
     </TechLayout>
