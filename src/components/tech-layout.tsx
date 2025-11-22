@@ -521,25 +521,27 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
   // Use custom navigation items if provided, otherwise use default
   const navigationItems = customNavigationItems || getTechNavigationItems(technology);
 
-  // Handle scroll to update active section (for sidebar highlighting only)
+  // Handle scroll to update active section (for sidebar highlighting only - NO scrolling)
   useEffect(() => {
     if (!onThisPage) return; // Skip scroll handling if no onThisPage prop
     
     let scrollTimeout: NodeJS.Timeout;
     let lastScrollY = window.scrollY;
     let isScrollingProgrammatically = false;
+    let programmaticScrollTimeout: NodeJS.Timeout;
     
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollDelta = Math.abs(currentScrollY - lastScrollY);
       lastScrollY = currentScrollY;
       
-      // If scroll delta is large, it's likely programmatic scrolling - skip
-      if (scrollDelta > 50) {
+      // If scroll delta is large (>100px), it's likely programmatic scrolling - skip
+      if (scrollDelta > 100) {
         isScrollingProgrammatically = true;
-        setTimeout(() => {
+        clearTimeout(programmaticScrollTimeout);
+        programmaticScrollTimeout = setTimeout(() => {
           isScrollingProgrammatically = false;
-        }, 1000);
+        }, 1500);
         return;
       }
       
@@ -557,6 +559,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
             // Only update if section actually changed to prevent unnecessary re-renders
             const currentSection = externalActiveSection !== undefined ? externalActiveSection : '';
             if (section.id !== currentSection) {
+              // ONLY update state for highlighting - DO NOT trigger any scrolling
               setActiveSection(section.id);
               if (setActiveSubsection) {
                 setActiveSubsection(null);
@@ -565,13 +568,14 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
             break;
           }
         }
-      }, 150);
+      }, 200);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
+      clearTimeout(programmaticScrollTimeout);
     };
   }, [onThisPage, setActiveSection, setActiveSubsection, externalActiveSection]);
 
@@ -585,7 +589,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         />
       )}
 
-      {/* Sidebar - Fixed below header on desktop with independent scroll */}
+      {/* Sidebar - Fixed position, stays visible while content scrolls */}
       {!hideSidebar && (
         <aside 
           className={`
@@ -596,6 +600,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
             lg:translate-x-0
             ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
             overflow-hidden
+            will-change-transform
            `}
         >
           <Sidebar
@@ -609,8 +614,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </aside>
       )}
 
-      {/* Main Content - removed min-h-screen to allow natural scrolling */}
-      <div className={`flex-1 flex flex-col ${!hideSidebar ? 'lg:ml-80' : ''}`}>
+      {/* Main Content - scrolls independently, sidebar stays fixed */}
+      <div className={`flex-1 flex flex-col ${!hideSidebar ? 'lg:ml-80' : ''} min-h-screen`}>
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
@@ -640,7 +645,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         </header>
 
         {/* Content area - uses natural window scrolling, independent from sidebar */}
-        <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20">
+        <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20 w-full">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
