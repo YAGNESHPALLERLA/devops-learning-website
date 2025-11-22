@@ -156,14 +156,23 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600 relative z-[60] overflow-y-auto">
-      {/* Navigation */}
-      <nav className="flex-1 p-4 overflow-y-auto">
+    <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600 relative z-[60]">
+      {/* Navigation - independent scroll container */}
+      <nav 
+        className="flex-1 p-4 overflow-y-auto overscroll-contain"
+        onWheel={(e) => {
+          // Prevent sidebar scroll from propagating to window
+          e.stopPropagation();
+        }}
+        style={{ 
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#3a3a3a #1a1a1a'
+        }}
+      >
         <div className="space-y-1">
           {items.map(item => renderSidebarItem(item))}
         </div>
       </nav>
-
     </div>
   );
 }

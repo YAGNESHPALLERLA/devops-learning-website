@@ -568,16 +568,19 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         />
       )}
 
-      {/* Sidebar - Fixed below header on desktop */}
+      {/* Sidebar - Fixed below header on desktop with independent scroll */}
       {!hideSidebar && (
-        <aside className={`
-          fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
-          transform transition-transform duration-300 ease-in-out
-          top-0 h-screen
-          lg:top-[80px] lg:h-[calc(100vh-80px)]
-          lg:translate-x-0
-          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-         `}>
+        <aside 
+          className={`
+            fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+            transform transition-transform duration-300 ease-in-out
+            top-0 h-screen
+            lg:top-[80px] lg:h-[calc(100vh-80px)]
+            lg:translate-x-0
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            overflow-hidden
+           `}
+        >
           <Sidebar
             items={navigationItems}
             onThisPage={onThisPage || []}
@@ -619,7 +622,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
           </div>
         </header>
 
-        {/* Content area - removed overflow-y-auto to allow natural window scrolling */}
+        {/* Content area - uses natural window scrolling, independent from sidebar */}
         <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20">
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
