@@ -197,6 +197,9 @@ export default function LLMsPage() {
 
   // Custom setActiveSection that handles child items correctly
   const handleSetActiveSection = (sectionId: string) => {
+    // Debug: log the section being set
+    console.log('handleSetActiveSection called with:', sectionId);
+    
     // Mark that this is a user-initiated navigation (should scroll)
     shouldScrollRef.current = true;
     isUserScrollingRef.current = false;
@@ -204,6 +207,7 @@ export default function LLMsPage() {
     
     // Check if this is a direct section (not a subsection)
     if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
+      console.log('Setting as direct section:', sectionId);
       setActiveSection(sectionId);
       setActiveSubsection(null);
       // Update URL hash
@@ -215,6 +219,7 @@ export default function LLMsPage() {
     } else if (SUBSECTION_PARENT[sectionId]) {
       // It's a subsection, find its parent
       const parentSection = SUBSECTION_PARENT[sectionId];
+      console.log('Setting as subsection:', sectionId, 'with parent:', parentSection);
       setActiveSection(parentSection);
       setActiveSubsection(sectionId);
       // Update URL hash
@@ -316,10 +321,10 @@ export default function LLMsPage() {
           }
         }
         
-        // Reset user scrolling flag after scroll completes
+        // Reset user scrolling flag after scroll completes (longer delay to prevent scroll listener interference)
         setTimeout(() => {
           isUserScrollingRef.current = false;
-        }, 500);
+        }, 2000); // Increased to 2 seconds to prevent scroll listener from interfering
       }, 200);
       
       return () => clearTimeout(scrollTimeout);

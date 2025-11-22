@@ -54,18 +54,22 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
     // Check if the href is a hash link (client-side navigation)
     if (href.includes('#') && setActiveSection) {
       e.preventDefault();
+      e.stopPropagation();
       const sectionId = href.split('#')[1];
+      
+      // Debug: log the section being navigated to
+      console.log('Sidebar click - navigating to:', sectionId, 'from href:', href, 'itemId:', itemId);
+      
       // Always use the sectionId from the href (the actual section ID)
       // This ensures we navigate to the correct section, not the parent group
+      // setActiveSection is actually handleSetActiveSection which will update the hash
       setActiveSection(sectionId);
       if (setActiveSubsection) {
         // Only set as subsection if it's not a direct section and has a parent
         setActiveSubsection((itemId === sectionId || !parentId) ? null : sectionId);
       }
 
-      // Update URL hash
-      window.history.replaceState(null, '', href);
-
+      // Don't update hash here - handleSetActiveSection already does it
       // Don't scroll here - let the page's useEffect handle scrolling
       // This prevents double-scrolling and ensures consistent behavior
     }

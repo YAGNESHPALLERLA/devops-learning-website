@@ -555,7 +555,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         clearTimeout(programmaticScrollTimeout);
         programmaticScrollTimeout = setTimeout(() => {
           isScrollingProgrammatically = false;
-        }, 1500);
+        }, 2000); // Increased delay to prevent interference
         return;
       }
       
@@ -564,6 +564,9 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
+        // Double-check that we're not in a programmatic scroll
+        if (isScrollingProgrammatically) return;
+        
         const sections = onThisPage.map(item => document.getElementById(item.id)).filter(Boolean);
         const scrollPosition = window.scrollY + 100;
 
@@ -574,6 +577,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
             const currentSection = externalActiveSection !== undefined ? externalActiveSection : '';
             if (section.id !== currentSection) {
               // ONLY update state for highlighting - DO NOT trigger any scrolling
+              // But only if this is user scrolling, not programmatic
               setActiveSection(section.id);
               if (setActiveSubsection) {
                 setActiveSubsection(null);
@@ -582,7 +586,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
             break;
           }
         }
-      }, 200);
+      }, 300); // Increased debounce delay
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
