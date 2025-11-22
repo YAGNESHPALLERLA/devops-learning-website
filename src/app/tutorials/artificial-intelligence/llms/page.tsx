@@ -224,6 +224,10 @@ export default function LLMsPage() {
       if (!hash || hash === 'llms' || hash === 'core-concepts' || hash === 'training-fine-tuning' || hash === 'practical-applications' || hash === 'advanced-topics' || hash === 'operations-applications') {
         setActiveSection('llm-introduction');
         setActiveSubsection(null);
+        // Clear hash if it's a parent group
+        if (hash && (hash === 'llms' || hash === 'core-concepts' || hash === 'training-fine-tuning' || hash === 'practical-applications' || hash === 'advanced-topics' || hash === 'operations-applications')) {
+          window.history.replaceState(null, '', window.location.pathname);
+        }
         return;
       }
 
@@ -233,11 +237,26 @@ export default function LLMsPage() {
         setActiveSubsection(null);
         // Mark for scrolling when hash changes (e.g., browser back/forward)
         shouldScrollRef.current = true;
+      } else {
+        // If hash is not in PAGE_HEADINGS, default to first section
+        setActiveSection('llm-introduction');
+        setActiveSubsection(null);
+        window.history.replaceState(null, '', window.location.pathname);
       }
-      // If hash is not in PAGE_HEADINGS, ignore it (might be invalid or parent group)
     };
 
-    handleHashChange();
+    // On initial load, if there's no hash, ensure we start at the top
+    if (!window.location.hash) {
+      setActiveSection('llm-introduction');
+      setActiveSubsection(null);
+      // Scroll to top on initial load after a small delay to ensure DOM is ready
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 100);
+    } else {
+      handleHashChange();
+    }
+    
     window.addEventListener('hashchange', handleHashChange);
     
     return () => {
