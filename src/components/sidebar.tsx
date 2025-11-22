@@ -98,17 +98,8 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
           {hasChildren ? (
             <button
               onClick={() => {
+                // Only toggle expand/collapse for parent items, don't navigate
                 toggleExpanded(item.id);
-                if (setActiveSection) {
-                  const sectionId = item.href.includes('#') ? item.href.split('#')[1] : item.id;
-                  setActiveSection(sectionId);
-                  if (setActiveSubsection) {
-                    setActiveSubsection(null);
-                  }
-                  setTimeout(() => {
-                    scrollToSection(sectionId);
-                  }, 100);
-                }
               }}
               className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
                 active

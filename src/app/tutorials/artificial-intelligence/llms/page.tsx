@@ -193,12 +193,14 @@ export default function LLMsPage() {
   const pageHeadings = PAGE_HEADINGS;
   const isUserScrollingRef = useRef(false);
   const shouldScrollRef = useRef(false);
+  const isProgrammaticNavigationRef = useRef(false);
 
   // Custom setActiveSection that handles child items correctly
   const handleSetActiveSection = (sectionId: string) => {
     // Mark that this is a user-initiated navigation (should scroll)
     shouldScrollRef.current = true;
     isUserScrollingRef.current = false;
+    isProgrammaticNavigationRef.current = true;
     
     // Check if this is a direct section (not a subsection)
     if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
@@ -206,19 +208,42 @@ export default function LLMsPage() {
       setActiveSubsection(null);
       // Update URL hash
       window.history.replaceState(null, '', `#${sectionId}`);
-    } else {
+      // Reset flag after a short delay
+      setTimeout(() => {
+        isProgrammaticNavigationRef.current = false;
+      }, 100);
+    } else if (SUBSECTION_PARENT[sectionId]) {
       // It's a subsection, find its parent
-      const parentSection = SUBSECTION_PARENT[sectionId] || 'llms';
+      const parentSection = SUBSECTION_PARENT[sectionId];
       setActiveSection(parentSection);
       setActiveSubsection(sectionId);
       // Update URL hash
       window.history.replaceState(null, '', `#${sectionId}`);
+      // Reset flag after a short delay
+      setTimeout(() => {
+        isProgrammaticNavigationRef.current = false;
+      }, 100);
+    } else {
+      // Invalid section ID (like a parent group ID), default to first section
+      console.warn(`Invalid section ID: ${sectionId}, defaulting to llm-introduction`);
+      setActiveSection('llm-introduction');
+      setActiveSubsection(null);
+      window.history.replaceState(null, '', window.location.pathname);
+      // Reset flag after a short delay
+      setTimeout(() => {
+        isProgrammaticNavigationRef.current = false;
+      }, 100);
     }
   };
 
   // Handle URL hash changes
   useEffect(() => {
     const handleHashChange = () => {
+      // Skip if this is a programmatic navigation (to prevent interference)
+      if (isProgrammaticNavigationRef.current) {
+        return;
+      }
+      
       const hash = window.location.hash.slice(1);
       // If no hash or it's a parent group ID, default to first section
       if (!hash || hash === 'llms' || hash === 'core-concepts' || hash === 'training-fine-tuning' || hash === 'practical-applications' || hash === 'advanced-topics' || hash === 'operations-applications') {
@@ -236,6 +261,12 @@ export default function LLMsPage() {
         setActiveSection(hash);
         setActiveSubsection(null);
         // Mark for scrolling when hash changes (e.g., browser back/forward)
+        shouldScrollRef.current = true;
+      } else if (SUBSECTION_PARENT[hash]) {
+        // It's a subsection, find its parent
+        const parentSection = SUBSECTION_PARENT[hash];
+        setActiveSection(parentSection);
+        setActiveSubsection(hash);
         shouldScrollRef.current = true;
       } else {
         // If hash is not in PAGE_HEADINGS, default to first section
