@@ -43,59 +43,59 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
 };
 
 const azureImages: Record<string, GalleryImage> = {
-  image1: { src: '/tutorials/azure/images/image1.png', width: 1658, height: 478, alt: 'Azure portal management groups cards' },
-  image2: { src: '/tutorials/azure/images/image2.png', width: 1653, height: 839, alt: 'Azure hierarchy view screenshot' },
-  image3: { src: '/tutorials/azure/images/image3.png', width: 1653, height: 463, alt: 'Azure subscriptions blade list' },
-  image4: { src: '/tutorials/azure/images/image4.png', width: 1797, height: 606, alt: 'Diagram of management groups and subscriptions' },
-  image5: { src: '/tutorials/azure/images/image5.png', width: 1666, height: 512, alt: 'Resource groups overview screen' },
-  image6: { src: '/tutorials/azure/images/image6.png', width: 1648, height: 458, alt: 'Resource group resources list' },
-  image7: { src: '/tutorials/azure/images/image7.png', width: 1663, height: 474, alt: 'Search for resource groups in Azure portal' },
-  image8: { src: '/tutorials/azure/images/image8.png', width: 1641, height: 915, alt: 'Create resource group basics tab' },
-  image9: { src: '/tutorials/azure/images/image9.png', width: 1622, height: 914, alt: 'Resource group creation form details' },
-  image10: { src: '/tutorials/azure/images/image10.png', width: 784, height: 920, alt: 'Review and create page for resource group' },
-  image11: { src: '/tutorials/azure/images/image11.png', width: 1638, height: 409, alt: 'Search storage accounts in Azure portal' },
-  image12: { src: '/tutorials/azure/images/image12.png', width: 1665, height: 411, alt: 'Storage accounts list with create button' },
-  image13: { src: '/tutorials/azure/images/image13.png', width: 1113, height: 923, alt: 'Storage account basics configuration' },
-  image14: { src: '/tutorials/azure/images/image14.png', width: 1247, height: 911, alt: 'Subscription selection step' },
-  image15: { src: '/tutorials/azure/images/image15.png', width: 1505, height: 671, alt: 'Choose resource group for storage account' },
-  image16: { src: '/tutorials/azure/images/image16.png', width: 1661, height: 514, alt: 'Resource group showing created storage account' },
-  image17: { src: '/tutorials/azure/images/image17.png', width: 1677, height: 904, alt: 'Azure storage services comparison graphic' },
-  image18: { src: '/tutorials/azure/images/image18.png', width: 1659, height: 899, alt: 'Storage account overview blade' },
-  image19: { src: '/tutorials/azure/images/image19.png', width: 1376, height: 657, alt: 'Containers tab inside storage account' },
-  image20: { src: '/tutorials/azure/images/image20.png', width: 1665, height: 614, alt: 'Create container dialog' },
-  image21: { src: '/tutorials/azure/images/image21.png', width: 1659, height: 544, alt: 'Container list after creation' },
-  image22: { src: '/tutorials/azure/images/image22.png', width: 1918, height: 535, alt: 'Upload dialog for blobs' },
-  image23: { src: '/tutorials/azure/images/image23.png', width: 1645, height: 591, alt: 'Blob container contents view' },
-  image24: { src: '/tutorials/azure/images/image24.png', width: 1920, height: 600, alt: 'Blob properties panel' },
-  image25: { src: '/tutorials/azure/images/image25.png', width: 1920, height: 870, alt: 'Change blob access tier dialog' },
-  image26: { src: '/tutorials/azure/images/image26.png', width: 1920, height: 609, alt: 'Blob storage hierarchy diagram' },
-  image27: { src: '/tutorials/azure/images/image27.png', width: 1668, height: 583, alt: 'Azure blob storage architecture graphic' },
-  image28: { src: '/tutorials/azure/images/image28.png', width: 737, height: 584, alt: 'Blob types comparison table' },
-  image29: { src: '/tutorials/azure/images/image29.png', width: 733, height: 859, alt: 'Block blob illustration' },
-  image30: { src: '/tutorials/azure/images/image30.png', width: 1920, height: 535, alt: 'Block blob workflow diagram' },
-  image31: { src: '/tutorials/azure/images/image31.png', width: 731, height: 860, alt: 'Append blob architecture diagram' },
-  image32: { src: '/tutorials/azure/images/image32.png', width: 1920, height: 535, alt: 'Storage access tier comparison chart' },
-  image33: { src: '/tutorials/azure/images/image33.png', width: 1669, height: 350, alt: 'Search storage accounts for ADLS' },
-  image34: { src: '/tutorials/azure/images/image34.png', width: 1233, height: 920, alt: 'ADLS storage account basics tab' },
-  image35: { src: '/tutorials/azure/images/image35.png', width: 1241, height: 916, alt: 'ADLS advanced settings screen' },
-  image36: { src: '/tutorials/azure/images/image36.png', width: 1257, height: 914, alt: 'ADLS networking configuration' },
-  image37: { src: '/tutorials/azure/images/image37.png', width: 1495, height: 617, alt: 'ADLS review and create screen' },
-  image38: { src: '/tutorials/azure/images/image38.png', width: 1669, height: 650, alt: 'Resource group showing ADLS account' },
-  image39: { src: '/tutorials/azure/images/image39.png', width: 1714, height: 915, alt: 'Data lake services comparison graphic' },
-  image40: { src: '/tutorials/azure/images/image40.png', width: 1669, height: 913, alt: 'ADLS storage account overview' },
-  image41: { src: '/tutorials/azure/images/image41.png', width: 1377, height: 618, alt: 'ADLS containers tab view' },
-  image42: { src: '/tutorials/azure/images/image42.png', width: 1678, height: 546, alt: 'Create ADLS container modal' },
-  image43: { src: '/tutorials/azure/images/image43.png', width: 1650, height: 550, alt: 'ADLS container list view' },
-  image44: { src: '/tutorials/azure/images/image44.png', width: 1376, height: 621, alt: 'ADLS upload dialog' },
-  image45: { src: '/tutorials/azure/images/image45.png', width: 1656, height: 536, alt: 'ADLS blob details view' },
-  image46: { src: '/tutorials/azure/images/image46.png', width: 1914, height: 863, alt: 'ADLS folder structure screenshot' },
-  image47: { src: '/tutorials/azure/images/image47.png', width: 1652, height: 573, alt: 'Create subfolder in ADLS container' },
-  image48: { src: '/tutorials/azure/images/image48.png', width: 1920, height: 592, alt: 'ADLS file upload dialog' },
-  image49: { src: '/tutorials/azure/images/image49.png', width: 1918, height: 763, alt: 'Select files to upload in ADLS' },
-  image50: { src: '/tutorials/azure/images/image50.png', width: 1920, height: 567, alt: 'ADLS upload progress screen' },
-  image51: { src: '/tutorials/azure/images/image51.png', width: 1669, height: 591, alt: 'ADLS uploaded file details' },
-  image52: { src: '/tutorials/azure/images/image52.png', width: 1669, height: 591, alt: 'ADLS blob types comparison table' },
-  image53: { src: '/tutorials/azure/images/image53.png', width: 1669, height: 591, alt: 'ADLS access tier comparison chart' },
+  image_01: { src: '/tutorials/azure/images/image-01.png', width: 1920, height: 1080, alt: 'Azure Basics image-01.png' },
+  image_02: { src: '/tutorials/azure/images/image-02.png', width: 1920, height: 1080, alt: 'Azure Basics image-02.png' },
+  image_03: { src: '/tutorials/azure/images/image-03.png', width: 1920, height: 1080, alt: 'Azure Basics image-03.png' },
+  image_04: { src: '/tutorials/azure/images/image-04.png', width: 1920, height: 1080, alt: 'Azure Basics image-04.png' },
+  image_05: { src: '/tutorials/azure/images/image-05.png', width: 1920, height: 1080, alt: 'Azure Basics image-05.png' },
+  image_06: { src: '/tutorials/azure/images/image-06.png', width: 1920, height: 1080, alt: 'Azure Basics image-06.png' },
+  image_07: { src: '/tutorials/azure/images/image-07.png', width: 1920, height: 1080, alt: 'Azure Basics image-07.png' },
+  image_08: { src: '/tutorials/azure/images/image-08.png', width: 1920, height: 1080, alt: 'Azure Basics image-08.png' },
+  image_09: { src: '/tutorials/azure/images/image-09.png', width: 1920, height: 1080, alt: 'Azure Basics image-09.png' },
+  image_10: { src: '/tutorials/azure/images/image-10.png', width: 1920, height: 1080, alt: 'Azure Basics image-10.png' },
+  image_11: { src: '/tutorials/azure/images/image-11.png', width: 1920, height: 1080, alt: 'Azure Basics image-11.png' },
+  image_12: { src: '/tutorials/azure/images/image-12.png', width: 1920, height: 1080, alt: 'Azure Basics image-12.png' },
+  image_13: { src: '/tutorials/azure/images/image-13.png', width: 1920, height: 1080, alt: 'Azure Basics image-13.png' },
+  image_14: { src: '/tutorials/azure/images/image-14.png', width: 1920, height: 1080, alt: 'Azure Basics image-14.png' },
+  image_15: { src: '/tutorials/azure/images/image-15.png', width: 1920, height: 1080, alt: 'Azure Basics image-15.png' },
+  image_16: { src: '/tutorials/azure/images/image-16.png', width: 1920, height: 1080, alt: 'Azure Basics image-16.png' },
+  image_17: { src: '/tutorials/azure/images/image-17.png', width: 1920, height: 1080, alt: 'Azure Basics image-17.png' },
+  image_18: { src: '/tutorials/azure/images/image-18.png', width: 1920, height: 1080, alt: 'Azure Basics image-18.png' },
+  image_19: { src: '/tutorials/azure/images/image-19.png', width: 1920, height: 1080, alt: 'Azure Basics image-19.png' },
+  image_20: { src: '/tutorials/azure/images/image-20.png', width: 1920, height: 1080, alt: 'Azure Basics image-20.png' },
+  image_21: { src: '/tutorials/azure/images/image-21.png', width: 1920, height: 1080, alt: 'Azure Basics image-21.png' },
+  image_22: { src: '/tutorials/azure/images/image-22.png', width: 1920, height: 1080, alt: 'Azure Basics image-22.png' },
+  image_23: { src: '/tutorials/azure/images/image-23.png', width: 1920, height: 1080, alt: 'Azure Basics image-23.png' },
+  image_24: { src: '/tutorials/azure/images/image-24.png', width: 1920, height: 1080, alt: 'Azure Basics image-24.png' },
+  image_25: { src: '/tutorials/azure/images/image-25.png', width: 1920, height: 1080, alt: 'Azure Basics image-25.png' },
+  image_26: { src: '/tutorials/azure/images/image-26.png', width: 1920, height: 1080, alt: 'Azure Basics image-26.png' },
+  image_27: { src: '/tutorials/azure/images/image-27.png', width: 1920, height: 1080, alt: 'Azure Basics image-27.png' },
+  image_28: { src: '/tutorials/azure/images/image-28.png', width: 1920, height: 1080, alt: 'Azure Basics image-28.png' },
+  image_29: { src: '/tutorials/azure/images/image-29.png', width: 1920, height: 1080, alt: 'Azure Basics image-29.png' },
+  image_30: { src: '/tutorials/azure/images/image-30.png', width: 1920, height: 1080, alt: 'Azure Basics image-30.png' },
+  image_31: { src: '/tutorials/azure/images/image-31.png', width: 1920, height: 1080, alt: 'Azure Basics image-31.png' },
+  image_32: { src: '/tutorials/azure/images/image-32.png', width: 1920, height: 1080, alt: 'Azure Basics image-32.png' },
+  image_33: { src: '/tutorials/azure/images/image-33.png', width: 1920, height: 1080, alt: 'Azure Basics image-33.png' },
+  image_34: { src: '/tutorials/azure/images/image-34.png', width: 1920, height: 1080, alt: 'Azure Basics image-34.png' },
+  image_35: { src: '/tutorials/azure/images/image-35.png', width: 1920, height: 1080, alt: 'Azure Basics image-35.png' },
+  image_36: { src: '/tutorials/azure/images/image-36.png', width: 1920, height: 1080, alt: 'Azure Basics image-36.png' },
+  image_37: { src: '/tutorials/azure/images/image-37.png', width: 1920, height: 1080, alt: 'Azure Basics image-37.png' },
+  image_38: { src: '/tutorials/azure/images/image-38.png', width: 1920, height: 1080, alt: 'Azure Basics image-38.png' },
+  image_39: { src: '/tutorials/azure/images/image-39.png', width: 1920, height: 1080, alt: 'Azure Basics image-39.png' },
+  image_40: { src: '/tutorials/azure/images/image-40.png', width: 1920, height: 1080, alt: 'Azure Basics image-40.png' },
+  image_41: { src: '/tutorials/azure/images/image-41.png', width: 1920, height: 1080, alt: 'Azure Basics image-41.png' },
+  image_42: { src: '/tutorials/azure/images/image-42.png', width: 1920, height: 1080, alt: 'Azure Basics image-42.png' },
+  image_43: { src: '/tutorials/azure/images/image-43.png', width: 1920, height: 1080, alt: 'Azure Basics image-43.png' },
+  image_44: { src: '/tutorials/azure/images/image-44.png', width: 1920, height: 1080, alt: 'Azure Basics image-44.png' },
+  image_45: { src: '/tutorials/azure/images/image-45.png', width: 1920, height: 1080, alt: 'Azure Basics image-45.png' },
+  image_46: { src: '/tutorials/azure/images/image-46.png', width: 1920, height: 1080, alt: 'Azure Basics image-46.png' },
+  image_47: { src: '/tutorials/azure/images/image-47.png', width: 1920, height: 1080, alt: 'Azure Basics image-47.png' },
+  image_48: { src: '/tutorials/azure/images/image-48.png', width: 1920, height: 1080, alt: 'Azure Basics image-48.png' },
+  image_49: { src: '/tutorials/azure/images/image-49.png', width: 1920, height: 1080, alt: 'Azure Basics image-49.png' },
+  image_50: { src: '/tutorials/azure/images/image-50.png', width: 1920, height: 1080, alt: 'Azure Basics image-50.png' },
+  image_51: { src: '/tutorials/azure/images/image-51.png', width: 1920, height: 1080, alt: 'Azure Basics image-51.png' },
+  image_52: { src: '/tutorials/azure/images/image-52.png', width: 1920, height: 1080, alt: 'Azure Basics image-52.png' },
+  image_53: { src: '/tutorials/azure/images/image-53.png', width: 1920, height: 1080, alt: 'Azure Basics image-53.png' },
 };
 
 const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
@@ -112,14 +112,12 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'azure-hierarchy': 'azure-basics'
 };
 
-// Helper function to create module-specific navigation items
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-basics';
   const moduleSections = PAGE_HEADINGS.map(heading => {
     const subsections = Object.entries(SUBSECTION_PARENT)
       .filter(([_, parent]) => parent === heading.id)
       .map(([subsectionId, _]) => {
-        // Find the subsection title from the content (we'll need to map these)
         const subsectionTitles: Record<string, string> = {
           'azure-hierarchy': 'Azure Hierarchy'
         };
@@ -147,25 +145,19 @@ export default function AzureDataEngineerPage() {
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
 
-  // Custom setActiveSection that handles child items correctly
   const handleSetActiveSection = (sectionId: string) => {
-    // Check if this is a direct section (not a subsection)
     if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
       setActiveSubsection(null);
-      // Update URL hash
       window.history.replaceState(null, '', `#${sectionId}`);
     } else {
-      // It's a subsection, find its parent
       const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
       setActiveSection(parentSection);
       setActiveSubsection(sectionId);
-      // Update URL hash
       window.history.replaceState(null, '', `#${sectionId}`);
     }
   };
 
-  // Handle URL hash changes
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
@@ -175,12 +167,10 @@ export default function AzureDataEngineerPage() {
         return;
       }
 
-      // Check if hash is a direct section
       if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
         setActiveSection(hash);
         setActiveSubsection(null);
       } else {
-        // It's a subsection, find parent
         const parentSection = SUBSECTION_PARENT[hash] || 'azure-basics';
         setActiveSection(parentSection);
         setActiveSubsection(hash);
@@ -189,22 +179,18 @@ export default function AzureDataEngineerPage() {
 
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
-    
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 
-  // Scroll to active section after it renders
   useEffect(() => {
     if (activeSection) {
-      // Small delay to ensure DOM is updated
       setTimeout(() => {
         const element = document.getElementById(activeSection);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else if (activeSubsection) {
-          // Try scrolling to subsection if main section not found
           const subElement = document.getElementById(activeSubsection);
           if (subElement) {
             subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -214,12 +200,10 @@ export default function AzureDataEngineerPage() {
     }
   }, [activeSection, activeSubsection]);
 
-  // Get current section index for navigation
   const getCurrentSectionIndex = () => {
     return PAGE_HEADINGS.findIndex(heading => heading.id === activeSection);
   };
 
-  // Navigation functions
   const goToNextSection = () => {
     const currentIndex = getCurrentSectionIndex();
     if (currentIndex < PAGE_HEADINGS.length - 1) {
@@ -241,8 +225,8 @@ export default function AzureDataEngineerPage() {
   const hasPrevious = currentIndex > 0;
 
   return (
-    <TechLayout 
-      technology="azure-data-engineer" 
+    <TechLayout
+      technology="azure-data-engineer"
       onThisPage={pageHeadings}
       activeSection={activeSection}
       setActiveSection={handleSetActiveSection}
@@ -251,7 +235,6 @@ export default function AzureDataEngineerPage() {
       customNavigationItems={createModuleNavigationItems()}
     >
       <div className="min-h-screen">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-500/30">
             <span className="text-blue-400 font-semibold flex items-center justify-center space-x-2">
@@ -267,561 +250,553 @@ export default function AzureDataEngineerPage() {
           <p className="text-gray-400 text-xl">Learn the fundamentals of Azure cloud infrastructure and services</p>
         </div>
 
-        {/* Azure Basics Section */}
         {activeSection === 'azure-basics' && (
         <section
           id="azure-basics"
           className="mb-20 scroll-mt-24"
         >
           <h2 className="text-4xl font-bold text-white mb-8 border-l-4 border-red-500 pl-4">Azure Basics</h2>
-          
           <div className="space-y-12">
-            {/* Azure Hierarchy */}
             <div id="azure-hierarchy" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
-              <h3 className="text-3xl font-bold text-white mb-6">1. Azure Hierarchy</h3>
-              
-              <div className="space-y-6">
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-                  <h4 className="text-2xl font-semibold text-white mb-4">1. Management Groups (The Top-Level)</h4>
-                  <div className="space-y-3 text-gray-300">
-                    <p><strong className="text-blue-400">What it is:</strong> This is the <strong>highest level</strong> of Azure's structure. It's like a <strong>parent folder</strong> that helps organize your entire Azure environment.</p>
-                    <p><strong className="text-blue-400">Purpose:</strong> It helps you <strong>manage and organize multiple subscriptions</strong> across your organization. You can group subscriptions based on departments, teams, or projects.</p>
-                    <p><strong className="text-blue-400">Example:</strong> Imagine a company with multiple divisions, like Finance, IT, and Marketing. You could have separate management groups for each of these divisions.</p>
-                  </div>
-                  <ImageGallery images={getImages('image1', 'image2')} />
-                </div>
-
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-                  <h4 className="text-2xl font-semibold text-white mb-4">2. Subscriptions (Middle Layer)</h4>
-                  <div className="space-y-3 text-gray-300">
-                    <p><strong className="text-blue-400">What it is:</strong> Underneath management groups, you have <strong>subscriptions</strong>. A <strong>subscription</strong> is like a <strong>container</strong> for Azure resources, where you'll define limits on resources and billing.</p>
-                    <p><strong className="text-blue-400">Purpose:</strong> It helps with organizing resources, managing access, and billing. You can have multiple subscriptions for different projects or teams. Each subscription has its own <strong>resource limits</strong> and <strong>billing</strong>.</p>
-                    <p><strong className="text-blue-400">Example:</strong> If your company has different projects, like a website and an app, you could create separate subscriptions for them. One for the website, one for the app.</p>
-                  </div>
-                  <ImageGallery images={getImages('image3', 'image4', 'image5', 'image6')} />
-                </div>
-
-                <div id="resource-group-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-                  <h4 className="text-2xl font-semibold text-white mb-4">3. Resource Groups (Sub-Containers)</h4>
-                  <div className="space-y-3 text-gray-300">
-                    <p><strong className="text-blue-400">What it is:</strong> Inside each subscription, you can have <strong>resource groups</strong>. These are containers that hold related resources.</p>
-                    <p><strong className="text-blue-400">Purpose:</strong> They help organize resources based on their lifecycle and permissions. All the resources in a group are usually related to the same project or service.</p>
-                    <p><strong className="text-blue-400">Example:</strong> If you're building a web app, you might have a resource group called <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code> where you store everything related to the app, such as databases, storage accounts, and virtual machines.</p>
-                  </div>
-                </div>
-
-                <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-                  <h4 className="text-2xl font-semibold text-white mb-4">4. Resources (The Actual Items)</h4>
-                  <div className="space-y-3 text-gray-300">
-                    <p><strong className="text-blue-400">What it is:</strong> These are the <strong>individual services</strong> or <strong>products</strong> that you create in Azure, like <strong>virtual machines (VMs)</strong>, <strong>storage accounts</strong>, <strong>databases</strong>, or <strong>networks</strong>.</p>
-                    <p><strong className="text-blue-400">Purpose:</strong> This is where the actual work happens! Resources are the <strong>building blocks</strong> of your cloud environment.</p>
-                    <p><strong className="text-blue-400">Example:</strong> In your <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code> resource group, you could have resources like a VM to run your website, a database to store your data, and a storage account for storing files.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">Summary:</h5>
-                <ul className="space-y-2 text-gray-300">
-                  <li><strong className="text-blue-400">Management Groups:</strong> High-level containers for organizing multiple subscriptions.</li>
-                  <li><strong className="text-blue-400">Subscriptions:</strong> They hold resources and manage access to resources.</li>
-                  <li><strong className="text-blue-400">Resource Groups:</strong> Containers inside subscriptions to organize and manage resources by project or lifecycle.</li>
-                  <li><strong className="text-blue-400">Resources:</strong> The actual services you use in Azure.</li>
-                </ul>
-              </div>
-
-              
+                      <p className="text-gray-300">Azure Data Egieer</p>
+                      <p className="text-gray-300">Azure Basics</p>
             </div>
           </div>
         </section>
         )}
-
-        {/* Resource Group */}
+        {activeSection === 'azure-basics' && (
+        <section
+          id="azure-basics"
+          className="mb-20 scroll-mt-24"
+        >
+          <h2 className="text-4xl font-bold text-white mb-8 border-l-4 border-red-500 pl-4">Azure Basics</h2>
+          <div className="space-y-12">
+            <div id="azure-hierarchy" className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24">
+                      <p className="text-gray-300">1. Azure hierarchy</p>
+                      <p className="text-gray-300">1. Maagemet -Groups (The Top-Level)</p>
+                      <p className="text-gray-300">What it is: This is the highest level of Azure’s structure. It's like a paret folder that helps orgaize your etire Azure eviromet.</p>
+                      <p className="text-gray-300">Purpose: It helps you maage ad orgaize multiple subscriptios across your orgaizatio. You ca group subscriptios based o departmets, teams, or projects.</p>
+                      <p className="text-gray-300">Example: Imagie a compay with multiple divisios, like Fiace, IT, ad Marketig. You could have separate maagemet gGroups for each of these divisios.</p>
+                      <p className="text-gray-300">2. Subscriptios (Middle Layer)</p>
+                      <p className="text-gray-300">What it is: Udereath maagemet gGroups, you have subscriptios. A subscriptio is like a cotaier for Azure resources, where you’ll defie limit's o resources ad billig.</p>
+                      <p className="text-gray-300">Purpose: It helps with orgaizig resources, maagig access, ad billig. You ca have multiple subscriptios for differet projects or teams. Each subscriptio has it's ow resource limit's ad billig.</p>
+                      <p className="text-gray-300">Example: If your compay has differet projects, like a website ad a app, you could create separate subscriptios for them. Oe for the website, oe for the app.</p>
+                      <p className="text-gray-300">3. Resource -Groups (Sub-Cotaiers)</p>
+                      <p className="text-gray-300">What it is: Iside each subscriptio, you ca have resource gGroups. These are cotaiers that hold related resources.</p>
+                      <p className="text-gray-300">Purpose: They help orgaize resources based o their lifecycle ad permissios. All the resources i a group are usually related to the same project or service.</p>
+                      <p className="text-gray-300">Example: If you're buildig a web app, you might have a resource group called "rg-ohg365-dev" where you store everythig related to the app, such as databases, storage accouts, ad virtual machies.</p>
+                      <p className="text-gray-300">4. Resources (The Actual Items)</p>
+                      <p className="text-gray-300">What it is: These are the idividual services or products that you create i Azure, like virtual machies (VMs), storage accouts, databases, or etworks.</p>
+                      <p className="text-gray-300">Purpose: This is where the actual work happes! Resources are the buildig blocks of your cloud eviromet.</p>
+                      <p className="text-gray-300">Example: I your "rg-ohg365-dev" resource group, you could have resources like a VM to ru your website, a database to store your data, ad a storage accout for storig files.</p>
+                      <p className="text-gray-300">Maagemet -Groups: High-level cotaiers for orgaizig multiple subscriptios.</p>
+                      <p className="text-gray-300">Subscriptios: They hold resources ad maage access to resources.</p>
+                      <p className="text-gray-300">Resource -Groups: Cotaiers iside subscriptios to orgaize ad maage resources by project or lifecycle.</p>
+                      <p className="text-gray-300">Resources: The actual services you use i Azure.</p>
+            </div>
+          </div>
+        </section>
+        )}
         {activeSection === 'resource-group' && (
         <section
           id="resource-group"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">2. Resource Group</h3>
-          
-          <div className="space-y-6">
-            <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-              <h4 className="text-2xl font-semibold text-white mb-4">2.1 What is a Resource Group?</h4>
-              <p className="text-gray-300 mb-4">A <strong className="text-blue-400">Resource Group</strong> in Azure is like a <strong>folder</strong> that holds all the resources (services) related to a project or app.</p>
-              <p className="text-gray-300 mb-4">For example: If you build a website, you might have:</p>
-              <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
-                <li>A <strong>Virtual Machine (VM)</strong> for the web server</li>
-                <li>A <strong>Storage Account</strong> for images</li>
-                <li>A <strong>Database</strong> for user data</li>
-              </ul>
-              <p className="text-gray-300 mt-4">You can put all of these inside <strong>one Resource Group</strong> G�� making it easier to manage, monitor, and delete them together.</p>
-            </div>
-
-            <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-              <h4 className="text-2xl font-semibold text-white mb-4">2.2 Create a Resource Group</h4>
-              <div className="space-y-4 text-gray-300">
-                <ol className="list-decimal list-inside space-y-3 ml-2">
-                  <li>Sign in to the Azure Portal</li>
-                  <li>In the <strong>search</strong> menu, <strong>search</strong> for <strong>Resource groups</strong>.</li>
-                  <li>Click on the resource group and click on the create button</li>
-                </ol>
-
-                <ImageGallery images={getImages('image7')} />
-                
-                <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Overview of resource group:</h5>
-                  <p className="text-gray-300 mb-2"><strong>Name: rg-ohg365-dev</strong> G�� This is your Resource Group's name. Usually, names include clues about the project or environment:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li><code className="bg-gray-900 px-1 rounded">rg</code> = Resource Group</li>
-                    <li><code className="bg-gray-900 px-1 rounded">ohg365</code> = Project or team name</li>
-                    <li><code className="bg-gray-900 px-1 rounded">dev</code> = Environment (like dev, test, or prod)</li>
-                  </ul>
-                </div>
-
-                <div className="mt-6">
-                  <h5 className="text-xl font-semibold text-white mb-3">Buttons:</h5>
-                  <ul className="space-y-2 text-gray-300">
-                    <li><span className="text-xl">GP�</span> <strong>Create:</strong> Add new Azure resources (like VMs, storage, databases).</li>
-                    <li><span className="text-xl">G��n+�</span> <strong>Manage view:</strong> Customize how your resources list looks.</li>
-                    <li><span className="text-xl">=���n+�</span> <strong>Delete resource group:</strong> Deletes the entire group and all its resources (be careful!).</li>
-                    <li><span className="text-xl">=���</span> <strong>Refresh:</strong> Updates the view if new resources were added.</li>
-                    <li><span className="text-xl">=���</span> <strong>Export to CSV:</strong> Export your resource details (helpful for reports).</li>
-                    <li><span className="text-xl">=���</span> <strong>Open query:</strong> Create or run custom filters using Azure Resource Graph.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <ImageGallery images={getImages('image8', 'image9', 'image10', 'image11', 'image12')} />
-          </div>
+                    <p className="text-gray-300">2. Resource Group</p>
+                    <p className="text-gray-300">2.1 What is a Resource Group?</p>
+                    <p className="text-gray-300">A Resource Group i Azure is like a folder that holds all the resources (services) related to a project or app.</p>
+                    <p className="text-gray-300">For example:If you build a website, you might have:</p>
+                    <p className="text-gray-300">A Virtual Machie (VM) for the web server</p>
+                    <p className="text-gray-300">A Storage Accout for images</p>
+                    <p className="text-gray-300">A Database for user data</p>
+                    <p className="text-gray-300">You ca put all of these iside oe Resource Group - makig it easier to maage, moitor, ad delete them together.</p>
+                    <p className="text-gray-300">2.2 Create a Resource Group</p>
+                    <p className="text-gray-300">Sig i to the Azure Portal</p>
+                    <p className="text-gray-300">I the search meu, search for Resource gGroups.</p>
+                    <p className="text-gray-300">Click o the resource group ad click o the create butto</p>
+                    <p className="text-gray-300">Overview of resource group:</p>
+                    <p className="text-gray-300">Name: rg-ohg365-dev → This is your Resource Group’s ame.Usually, ames iclude clues about the project or eviromet:</p>
+                    <p className="text-gray-300">rg ✓ Resource Group</p>
+                    <p className="text-gray-300">ohg365 ✓ Project or team ame</p>
+                    <p className="text-gray-300">dev ✓ Eviromet (like dev, test, or prod)</p>
+                    <p className="text-gray-300">Buttos:</p>
+                    <p className="text-gray-300">➕ Create: Add ew Azure resources (like VMs, storage, databases).</p>
+                    <p className="text-gray-300">⚙️ Maage view: Customize how your resources list looks.</p>
+                    <p className="text-gray-300">🗑️ Delete resource group: Deletes the etire group ad all it's resources (be careful!).</p>
+                    <p className="text-gray-300">🔁 Refresh: Updates the view if ew resources were added.</p>
+                    <p className="text-gray-300">📤 Export to CSV: Export your resource details (helpful for reports).</p>
+                    <p className="text-gray-300">📊 Ope query: Create or ru custom filters usig Azure Resource -raph.</p>
         </section>
         )}
-
-        {/* Azure Blob Storage */}
         {activeSection === 'azure-blob-storage' && (
         <section
           id="azure-blob-storage"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">3. Azure Blob Storage</h3>
-          
-          <p className="text-gray-300 mb-6 text-lg">
-            Azure Blob Storage is Microsoft's cloud-based service designed to store large amounts of data of various types G�� including structured, semi-structured, and unstructured data.
-          </p>
-          <p className="text-gray-300 mb-6">
-            It is ideal for storing files such as CSV, text, Excel, JSON, Parquet, Avro, XML, images, videos, backups, and logs.
-          </p>
-          <p className="text-gray-300 mb-6">
-            The term "Blob" stands for <strong className="text-blue-400">Binary Large Object</strong>, meaning it can store any type of binary data. Blob Storage provides a flat namespace, meaning all files (blobs) are stored in containers within a storage account, rather than in a traditional hierarchical folder system.
-          </p>
-
-          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6 mb-6">
-            <p className="text-white font-semibold mb-3">Azure Blob Storage is highly scalable, secure, and cost-efficient, making it suitable for:</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-300">
-              <li>Storing and serving large files (media, documents, etc.)</li>
-              <li>Data lakes and analytics workloads</li>
-              <li>Backup and disaster recovery</li>
-              <li>Archiving and compliance storage</li>
-            </ul>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mb-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">3.1 Create an Azure Blob Storage</h4>
-            <div className="space-y-4 text-gray-300">
-              <ol className="list-decimal list-inside space-y-3 ml-2">
-                <li>Go to Azure Portal</li>
-                <li>In the search bar, type "Storage Accounts" or "blob"</li>
-                <li>Click on storage accounts and click on create button</li>
-                <li>Click "Review + Create"</li>
-              </ol>
-
-              <ImageGallery images={getImages('image13')} />
-
-              <div className="mt-6 space-y-6">
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-lg font-semibold text-white mb-2">1n+�G�� Subscription</h5>
-                  <p className="mb-2">This is where you choose which Azure Subscription will own this storage account.</p>
-                  <p>A subscription is linked to your billing and access control.</p>
-                  <p className="mt-2 text-blue-400">Example: You might have separate subscriptions for development, testing, or production environments.</p>
-                  <p className="text-blue-300">=��� You selected: Azure subscription 1</p>
-                </div>
-
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-lg font-semibold text-white mb-2">2n+�G�� Resource Group</h5>
-                  <p className="mb-2">Choose or create a Resource Group to organize related Azure resources.</p>
-                  <p className="mb-2">Resource Groups act like folders G�� all your related resources (VMs, storage, databases) are stored here for easy management.</p>
-                  <p className="text-blue-300">=��� In your case, you selected rg-ohg365-dev, which is perfect for development resources.</p>
-                  <p className="mt-2 text-blue-400">=��� Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.</p>
-                </div>
-
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-lg font-semibold text-white mb-2">3n+�G�� Storage Account Name</h5>
-                  <p className="mb-2">This is the unique name for your storage account (like a domain name).</p>
-                  <p className="mb-2">It must be globally unique, lowercase, and 3G��24 characters long.</p>
-                  <p>This name will form part of the URL to access your data.</p>
-                  <p className="mt-2 text-blue-400">=��� Example: If your name is blobohg365dev</p>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-lg font-semibold text-white mb-2">4n+�G�� Preferred Storage Type</h5>
-                  <p className="mb-2">Select what kind of storage service you want to enable.</p>
-                  <p className="mb-2">The default (and most common) option is: <strong>Azure Blob Storage or Azure Data Lake Storage Gen2</strong></p>
-                  <p className="mb-2">=��� This means your account will support:</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>Blob storage (for files, media, etc.)</li>
-                    <li>Data Lake capabilities (for analytics and big data processing)</li>
-                  </ul>
-                  <p className="mt-2 text-blue-400">=��� Tip: Keep this as default unless you have a specific need for file shares or queue services.</p>
-                </div>
-
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-lg font-semibold text-white mb-2">5n+�G�� Performance & Redundancy Settings</h5>
-                  <div className="mb-4">
-                    <p className="font-semibold mb-2">G��n+� Performance:</p>
-                    <ul className="list-disc list-inside ml-4 space-y-1">
-                      <li><strong>Standard:</strong> Uses HDD-based storage G�� cheaper, good for general use.</li>
-                      <li><strong>Premium:</strong> Uses SSD-based storage G�� faster, ideal for workloads needing low latency (like databases or VMs).</li>
-                    </ul>
-                    <p className="mt-2 text-blue-300">=��� You selected: Standard (recommended)</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-2">=��� Redundancy:</p>
-                    <p className="mb-3">Defines how Azure will replicate your data to keep it safe.</p>
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full border border-gray-600">
-                        <thead>
-                          <tr className="bg-gray-700">
-                            <th className="border border-gray-600 px-4 py-2 text-left">Option</th>
-                            <th className="border border-gray-600 px-4 py-2 text-left">Meaning</th>
-                            <th className="border border-gray-600 px-4 py-2 text-left">Copies of Data</th>
-                          </tr>
-                        </thead>
-                        <tbody className="text-sm">
-                          <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>LRS</strong> (Locally-redundant storage)</td>
-                            <td className="border border-gray-600 px-4 py-2">Keeps 3 copies in one data center</td>
-                            <td className="border border-gray-600 px-4 py-2">3</td>
-                          </tr>
-                          <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>ZRS</strong> (Zone-redundant storage)</td>
-                            <td className="border border-gray-600 px-4 py-2">Copies across 3 availability zones in the same region</td>
-                            <td className="border border-gray-600 px-4 py-2">3</td>
-                          </tr>
-                          <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>GRS</strong> (Geo-redundant storage)</td>
-                            <td className="border border-gray-600 px-4 py-2">Copies data to another region (for disaster recovery)</td>
-                            <td className="border border-gray-600 px-4 py-2">6</td>
-                          </tr>
-                          <tr>
-                            <td className="border border-gray-600 px-4 py-2"><strong>RA-GRS</strong> (Read-access Geo-redundant)</td>
-                            <td className="border border-gray-600 px-4 py-2">Same as GRS but allows read access to secondary region</td>
-                            <td className="border border-gray-600 px-4 py-2">6</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <p className="mt-3 text-blue-300">=��� You selected: LRS (best for development/testing)</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 space-y-3">
-                <p className="font-semibold">Click on create</p>
-                <p className="font-semibold">Navigate to Your Resource Group</p>
-                <ol className="list-decimal list-inside space-y-2 ml-2">
-                  <li>In the left-hand menu, click on <strong>Resource groups</strong></li>
-                  <li>Find and click your resource group G�� in your case: =��� <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code></li>
-                </ol>
-                <p className="font-semibold mt-4">Check for the Storage Account</p>
-                <p className="mb-2">Inside the <strong>Overview</strong> tab of your resource group, you'll see a list of all resources.</p>
-                <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> blobohg365dev (or whatever name you used)</p>
-                <p className="text-green-400">If it appears there, = congratulations — your ADLS Gen2 Storage account has been successfully created</p>
-              </div>
-
-              <ImageGallery images={getImages('image16', 'image17')} />
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">3.2 Types of Azure Storage Services</h4>
-            <p className="text-gray-300 mb-4">Azure Storage provides <strong>four main types of services</strong> under one <strong>Storage Account</strong>.</p>
-            
-            <ImageGallery images={getImages('image19', 'image45')} />
-            
-            <div className="space-y-6">
-              <div className="p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">1n+�G�� Data Lake Storage</h5>
-                <p className="text-gray-300 mb-2">=��� <strong>Purpose:</strong> Designed to store large volumes of unstructured or semi-structured data such as files, images, videos, logs, and backups.</p>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��� Key Features:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Data is stored as Blobs (Binary Large Objects) within containers.</li>
-                    <li>Ideal for storing large, raw data that doesn't fit into traditional databases.</li>
-                    <li>Supports various formats: text, binary, documents, media, and backups.</li>
-                  </ul>
-                </div>
-                <div className="mb-3">
-                  <p className="font-semibold text-blue-400 mb-2">=��+ Common Use Cases:</p>
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 ml-4">
-                    <li>Hosting media content like images and videos for websites.</li>
-                    <li>Long-term storage for backups and archival data.</li>
-                    <li>Centralized data lake for analytics and big data processing.</li>
-                    <li>Hosting static websites.</li>
-                  </ul>
-                </div>
-                <p className="text-blue-400">=��� Supported File Types: .txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.</p>
-              </div>
-
-              <ImageGallery images={getImages('image39')} />
-
-              {/* File Service, Queue Service, Table Service sections remain similar to above */}
-            </div>
-
-            <div className="mt-6 overflow-x-auto">
-              <h5 className="text-xl font-semibold text-white mb-4">=��� Summary Table</h5>
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Datalake Service</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Type of Data</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Description</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Example Use Case</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Blob Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Unstructured / Semi-structured</td>
-                    <td className="border border-gray-600 px-4 py-2">Stores large objects (files, media, backups)</td>
-                    <td className="border border-gray-600 px-4 py-2">Images, videos, logs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>File Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">File-based</td>
-                    <td className="border border-gray-600 px-4 py-2">Shared file storage via SMB/NFS</td>
-                    <td className="border border-gray-600 px-4 py-2">Shared drives, app configs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Queue Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Messaging</td>
-                    <td className="border border-gray-600 px-4 py-2">Message-based communication between components</td>
-                    <td className="border border-gray-600 px-4 py-2">Background tasks, event processing</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Table Service</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Structured (NoSQL)</td>
-                    <td className="border border-gray-600 px-4 py-2">Key-value, schema-less table storage</td>
-                    <td className="border border-gray-600 px-4 py-2">User profiles, IoT data</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">Explore Datalake Service</h4>
-            <div className="space-y-4 text-gray-300">
-              <p className="font-semibold">Once your storage account is created:</p>
-              <ol className="list-decimal list-inside space-y-3 ml-2">
-                <li>Go to your <strong>Storage Account</strong></li>
-              </ol>
-
-              <ImageGallery images={getImages('image20', 'image46')} />
-
-              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
-                <li>Under <strong>Data storage</strong>, click <strong>Containers</strong> G�� This is where your blobs live.</li>
-                <li>Click <strong>GP� Container</strong> to create one:
-                  <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
-                    <li><strong>Name:</strong> images, videos, or backups (any name)</li>
-                    <li><strong>Public access level:</strong>
-                      <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                        <li><strong>Private (default)</strong> G�� Only you can access</li>
-                        <li><strong>Blob (anonymous read)</strong> G�� Anyone with the link can read blobs</li>
-                        <li><strong>Container (public)</strong> G�� Everyone can see contents</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>Click <strong>Create</strong></li>
-              </ol>
-
-              <ImageGallery images={getImages('image18')} />
-
-              <ImageGallery images={getImages('image21', 'image22', 'image47', 'image48')} />
-
-              <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                <h5 className="text-xl font-semibold text-white mb-3">Subfolder:</h5>
-                <p className="text-gray-300 mb-3">You can create subfolders within containers for better organization.</p>
-                <h5 className="text-xl font-semibold text-white mb-3">Upload file:</h5>
-                <ol className="list-decimal list-inside space-y-2 ml-2">
-                  <li>Click your new container (e.g., images)</li>
-                  <li>Click <strong>Upload</strong></li>
-                  <li>Choose a file from your computer (like a .jpg, .txt, or .mp4)</li>
-                </ol>
-                <p className="mt-4">Once uploaded, you can:</p>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>View <strong>Properties</strong> (size, type, last modified)</li>
-                  <li>Get the <strong>URL</strong> to access the file</li>
-                  <li>Change the <strong>access tier</strong></li>
-                </ul>
-
-                <ImageGallery images={getImages('image23', 'image24', 'image25', 'image26', 'image27', 'image28', 'image29', 'image49', 'image50', 'image51', 'image52', 'image53')} />
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-                <pre className="text-gray-300 font-mono text-sm">
-{`Storage Account
-   G��G��G�� DataLake Service
-        G��G��G�� Container (like a folder)
-             G��G��G�� Blob (the actual file)`}
-                </pre>
-              </div>
-
-              <ImageGallery images={getImages('image46', 'image47', 'image48', 'image49', 'image50', 'image51')} />
-            </div>
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">Types of Blob Types</h4>
-            <ImageGallery images={getImages('image30', 'image31', 'image32', 'image33')} />
-            <div className="overflow-x-auto mb-6">
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Blob Type</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Best For</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Example Use</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Block Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Storing text or binary data</td>
-                    <td className="border border-gray-600 px-4 py-2">Images, videos, documents, CSVs</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Append Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Data that is constantly added to (append-only)</td>
-                    <td className="border border-gray-600 px-4 py-2">Logs, telemetry, audit data</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2">=��� <strong>Page Blob</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">Random read/write access</td>
-                    <td className="border border-gray-600 px-4 py-2">Virtual machine disks (VHD files)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* Blob type details are the same as above */}
-            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37')} />
-          </div>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 mt-6">
-            <h4 className="text-2xl font-semibold text-white mb-4">Types of Access Tiers</h4>
-            <p className="text-gray-300 mb-4">Azure lets you store data in <strong>different tiers</strong> based on how often you need it. This helps <strong>save money</strong> =�Ʀ by matching storage cost to usage.</p>
-            <div className="overflow-x-auto">
-              <table className="min-w-full border border-gray-600">
-                <thead>
-                  <tr className="bg-gray-700">
-                    <th className="border border-gray-600 px-4 py-2 text-left">Tier</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Cost</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Availability</th>
-                    <th className="border border-gray-600 px-4 py-2 text-left">Best For</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Hot</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=�Ʀ Highest cost</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Always available</td>
-                    <td className="border border-gray-600 px-4 py-2">Frequently accessed data (e.g., active apps, websites)</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Cool</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=��+ Cheaper</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Slight delay in access</td>
-                    <td className="border border-gray-600 px-4 py-2">Infrequently accessed data (e.g., monthly reports)</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Cold</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=�ƺ Cheaper than Cool</td>
-                    <td className="border border-gray-600 px-4 py-2">GŦn+� Slower access</td>
-                    <td className="border border-gray-600 px-4 py-2">Rarely accessed data but still retrievable</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-600 px-4 py-2"><strong>Archive</strong></td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Cheapest</td>
-                    <td className="border border-gray-600 px-4 py-2">=��� Retrieval takes hours</td>
-                    <td className="border border-gray-600 px-4 py-2">Long-term backups, compliance storage</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <ImageGallery images={getImages('image34', 'image35', 'image36', 'image37')} />
-          </div>
+                    <p className="text-gray-300">3. Azure Blob Storage</p>
+                    <p className="text-gray-300">Azure Blob Storage is Microsoft’s cloud-based service desiged to store large amouts of data of various types - icludig structured, semi-structured, ad ustructured data.</p>
+                    <p className="text-gray-300">It is ideal for storig files such as CSV, text, Excel, JSON, Parquet, Avro, XML, images, videos, backups, ad logs.</p>
+                    <p className="text-gray-300">The term “Blob” stads for Biary Large Object, meaig it ca store ay type of biary data. Blob Storage provides a flat amespace, meaig all files (blobs) are stored i cotaiers withi a storage accout, rather tha i a traditioal hierarchical folder system.</p>
+                    <p className="text-gray-300">Azure Blob Storage is highly scalable, secure, ad cost-efficiet, makig it suitable for:</p>
+                    <p className="text-gray-300">Storig ad servig large files (media, documets, etc.)</p>
+                    <p className="text-gray-300">Data lakes ad aalytics workloads</p>
+                    <p className="text-gray-300">Backup ad disaster recovery</p>
+                    <p className="text-gray-300">Archivig ad compliace storage</p>
+                    <p className="text-gray-300">3.1 Create a Azure Blob Storage:</p>
+                    <p className="text-gray-300">-o to Azure Portal</p>
+                    <p className="text-gray-300">I the search bar, type “Storage Accouts” or “blob”</p>
+                    <p className="text-gray-300">Click o storage accouts ad click o create butto</p>
+                    <p className="text-gray-300">Click “Review + Create”</p>
+                    <p className="text-gray-300">1️⃣ Subscriptio</p>
+                    <p className="text-gray-300">This is where you choose which Azure Subscriptio will ow this storage accout.</p>
+                    <p className="text-gray-300">A subscriptio is liked to your billig ad access cotrol.</p>
+                    <p className="text-gray-300">Example: You might have separate subscriptios for developmet, testig, or productio eviromets.🟦 You selected: Azure subscriptio 1</p>
+                    <p className="text-gray-300">2️⃣ Resource Group</p>
+                    <p className="text-gray-300">Choose or create a Resource Group to orgaize related Azure resources.</p>
+                    <p className="text-gray-300">Resource -Groups act like folders - all your related resources (VMs, storage, databases) are stored here for easy maagemet.</p>
+                    <p className="text-gray-300">I your case, you selected rg-ohg365-dev, which is perfect for developmet resources.🟦 Tip: Keepig related resources i the same group helps you track cost, permissios, ad maage everythig easily.</p>
+                    <p className="text-gray-300">3️⃣ Storage Accout Name</p>
+                    <p className="text-gray-300">This is the uique ame for your storage accout (like a domai ame).</p>
+                    <p className="text-gray-300">It must be globally uique, lowercase, ad 3–24 characters log.</p>
+                    <p className="text-gray-300">This ame will form part of the URL to access your data.</p>
+                    <p className="text-gray-300">🧩 Example:If your ame is blobohg365dev</p>
+                    <p className="text-gray-300">4️⃣ Preferred Storage Type</p>
+                    <p className="text-gray-300">Select what kid of storage service you wat to eable.</p>
+                    <p className="text-gray-300">The default (ad most commo) optio is:Azure Blob Storage or Azure Data Lake Storage Gen2</p>
+                    <p className="text-gray-300">🧠 This meas your accout will support:</p>
+                    <p className="text-gray-300">Blob storage (for files, media, etc.)</p>
+                    <p className="text-gray-300">Data Lake capabilities (for aalytics ad big data processig)</p>
+                    <p className="text-gray-300">🟦 Tip: Keep this as default uless you have a specific eed for file shares or queue services.</p>
+                    <p className="text-gray-300">5️⃣ Performace & Redudacy Settigs</p>
+                    <p className="text-gray-300">⚙️ Performace:</p>
+                    <p className="text-gray-300">Stadard: Uses HDD-based storage - cheaper, good for geeral use.</p>
+                    <p className="text-gray-300">Premium: Uses SSD-based storage - faster, ideal for workloads eedig low latecy (like databases or VMs).</p>
+                    <p className="text-gray-300">🟦 You selected: Stadard (recommeded)</p>
+                    <p className="text-gray-300">🧭 Redudacy:</p>
+                    <p className="text-gray-300">Defies how Azure will replicate your data to keep it safe.</p>
+                    <p className="text-gray-300">Optio</p>
+                    <p className="text-gray-300">Meaig</p>
+                    <p className="text-gray-300">Copies of Data</p>
+                    <p className="text-gray-300">LRS (Locally-redudat storage)</p>
+                    <p className="text-gray-300">Keeps 3 copies i oe data ceter</p>
+                    <p className="text-gray-300">3</p>
+                    <p className="text-gray-300">ZRS (Zoe-redudat storage)</p>
+                    <p className="text-gray-300">Copies across 3 availability zoes i the same regio</p>
+                    <p className="text-gray-300">3</p>
+                    <p className="text-gray-300">-RS (-eo-redudat storage)</p>
+                    <p className="text-gray-300">Copies data to aother regio (for disaster recovery)</p>
+                    <p className="text-gray-300">6</p>
+                    <p className="text-gray-300">RA--RS (Read-access -eo-redudat)</p>
+                    <p className="text-gray-300">Same as -RS but allows read access to secodary regio</p>
+                    <p className="text-gray-300">6</p>
+                    <p className="text-gray-300">🟦 You selected: LRS (best for developmet/testig)</p>
+                    <p className="text-gray-300">Click o create</p>
+                    <p className="text-gray-300">Navigate to Your Resource Group</p>
+                    <p className="text-gray-300">I the left-had meu, click o Resource gGroups</p>
+                    <p className="text-gray-300">Fid ad click your resource group - i your case:👉 rg-ohg365-dev</p>
+                    <p className="text-gray-300">Check for the Storage Accout</p>
+                    <p className="text-gray-300">Iside the Overview tab of your resource group, you’ll see a list of all resources.</p>
+                    <p className="text-gray-300">Look for a item that looks like this:Type: Storage accoutName: blobohg365dev (or whatever ame you used)</p>
+                    <p className="text-gray-300">If it appears there, 🎉 cogratulatios - your Blob Storage accout has bee successfully created</p>
+                    <p className="text-gray-300">3.2 Types of Azure Storage Services:</p>
+                    <p className="text-gray-300">Azure Storage provides four mai types of services uder oe Storage Accout.</p>
+                    <p className="text-gray-300">1️⃣ Blob Service</p>
+                    <p className="text-gray-300">🧱 Used to store ustructured or semi-structured data like files, images, videos, logs, ad backups.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Stores data as Blobs (Biary Large Objects) iside cotaiers.</p>
+                    <p className="text-gray-300">Best for storig flat files ad large objects that do’t fit i a database.</p>
+                    <p className="text-gray-300">Data ca be text, biary, documets, media, or backups.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Storig images or videos for websites</p>
+                    <p className="text-gray-300">Backups ad archives</p>
+                    <p className="text-gray-300">Data lake for aalytics</p>
+                    <p className="text-gray-300">Hostig static websites</p>
+                    <p className="text-gray-300">📦 Example File Types:</p>
+                    <p className="text-gray-300">.txt, .csv, .jso, .xml, .jpg, .mp4, .zip, .bak</p>
+                    <p className="text-gray-300">2️⃣ File Service</p>
+                    <p className="text-gray-300">📁 Used for shared file storage that behaves like a traditioal file server.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides Azure Files, a fully maaged file share i the cloud.</p>
+                    <p className="text-gray-300">Uses the SMB (Server Message Block) or NFS (Network File System) protocols - the same used by o-premises file servers.</p>
+                    <p className="text-gray-300">Ca be mouted to Widows, Liux, or macOS systems.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Shared etwork drives for teams</p>
+                    <p className="text-gray-300">“Lift ad shift” of o-premises file servers</p>
+                    <p className="text-gray-300">Applicatio cofiguratios shared across multiple VMs</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">You have multiple virtual machies eedig access to the same cofiguratio files - you ca store those files i Azure Files ad mout them just like a shared folder.</p>
+                    <p className="text-gray-300">3️⃣ Queue Service</p>
+                    <p className="text-gray-300">📬 Used for reliable messagig betwee applicatio compoets.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides asychroous commuicatio betwee services usig message queues.</p>
+                    <p className="text-gray-300">Stores messages i a queue, which ca be processed later by backgroud services or workers.</p>
+                    <p className="text-gray-300">Esures messages are delivered at least oce ad processed i FIFO (First-I, First-Out) order.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Sedig backgroud jobs (like image processig or email sedig)</p>
+                    <p className="text-gray-300">Decouplig app compoets for scalability</p>
+                    <p className="text-gray-300">Evet-drive architecture</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">A web app uploads a image → seds a message to a queue → a backgroud process picks it up ad resizes the image.</p>
+                    <p className="text-gray-300">4️⃣ Table Service</p>
+                    <p className="text-gray-300">🧮 Used to store large amouts of structured, o-relatioal data.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides NoSQL key-value storage.</p>
+                    <p className="text-gray-300">Stores data i tables with etities (rows) ad properties (colums).</p>
+                    <p className="text-gray-300">Flexible schema - you ca add or remove colums aytime.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Storig user profiles, IoT data, or metadata</p>
+                    <p className="text-gray-300">Fast lookups by key</p>
+                    <p className="text-gray-300">Lightweight applicatios eedig scalable, cheap storage</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">You have millios of IoT sesors sedig temperature data - you ca store this efficietly i Azure Table Storage.</p>
+                    <p className="text-gray-300">🧠 Summary Table</p>
+                    <p className="text-gray-300">Storage Service</p>
+                    <p className="text-gray-300">Type of Data</p>
+                    <p className="text-gray-300">Descriptio</p>
+                    <p className="text-gray-300">Example Use Case</p>
+                    <p className="text-gray-300">Blob Service</p>
+                    <p className="text-gray-300">Ustructured / Semi-structured</p>
+                    <p className="text-gray-300">Stores large objects (files, media, backups)</p>
+                    <p className="text-gray-300">Images, videos, logs</p>
+                    <p className="text-gray-300">File Service</p>
+                    <p className="text-gray-300">File-based</p>
+                    <p className="text-gray-300">Shared file storage via SMB/NFS</p>
+                    <p className="text-gray-300">Shared drives, app cofigs</p>
+                    <p className="text-gray-300">Queue Service</p>
+                    <p className="text-gray-300">Messagig</p>
+                    <p className="text-gray-300">Message-based commuicatio betwee compoets</p>
+                    <p className="text-gray-300">Backgroud tasks, evet processig</p>
+                    <p className="text-gray-300">Table Service</p>
+                    <p className="text-gray-300">Structured (NoSQL)</p>
+                    <p className="text-gray-300">Key-value, schema-less table storage</p>
+                    <p className="text-gray-300">User profiles, IoT data</p>
+                    <p className="text-gray-300">Explore Blob Service</p>
+                    <p className="text-gray-300">Oce your storage accout is created:</p>
+                    <p className="text-gray-300">-o to your Storage Accout</p>
+                    <p className="text-gray-300">Uder Data storage, click Cotaiers → This is where your blobs live.</p>
+                    <p className="text-gray-300">Click ➕ Cotaier to create oe:</p>
+                    <p className="text-gray-300">Name: images, videos, or backups (ay ame)</p>
+                    <p className="text-gray-300">Public access level:</p>
+                    <p className="text-gray-300">Private (default) – Oly you ca access</p>
+                    <p className="text-gray-300">Blob (aoymous read) – Ayoe with the lik ca read blobs</p>
+                    <p className="text-gray-300">Cotaier (public) – Everyoe ca see cotets</p>
+                    <p className="text-gray-300">Click Create</p>
+                    <p className="text-gray-300">Upload & Maage Blobs</p>
+                    <p className="text-gray-300">Click your ew cotaier (e.g., images)</p>
+                    <p className="text-gray-300">Click Upload</p>
+                    <p className="text-gray-300">Choose a file from your computer (like a .jpg, .txt, or .mp4)</p>
+                    <p className="text-gray-300">Oce uploaded, you ca:</p>
+                    <p className="text-gray-300">View Properties (size, type, last modified)</p>
+                    <p className="text-gray-300">-et the URL to access the file</p>
+                    <p className="text-gray-300">Chage the access tier</p>
+                    <p className="text-gray-300">Storage Accout</p>
+                    <p className="text-gray-300">└── Blob Service</p>
+                    <p className="text-gray-300">└── Cotaier (like a folder)</p>
+                    <p className="text-gray-300">└── Blob (the actual file)</p>
+                    <p className="text-gray-300">Types of Blob Types:</p>
+                    <p className="text-gray-300">Blob Type</p>
+                    <p className="text-gray-300">Best For</p>
+                    <p className="text-gray-300">Example Use</p>
+                    <p className="text-gray-300">🧱 Block Blob</p>
+                    <p className="text-gray-300">Storig text or biary data</p>
+                    <p className="text-gray-300">Images, videos, documets, CSVs</p>
+                    <p className="text-gray-300">📜 Apped Blob</p>
+                    <p className="text-gray-300">Data that is costatly added to (apped-oly)</p>
+                    <p className="text-gray-300">Logs, telemetry, audit data</p>
+                    <p className="text-gray-300">📄 Page Blob</p>
+                    <p className="text-gray-300">Radom read/write access</p>
+                    <p className="text-gray-300">Virtual machie disks (VHD files)</p>
+                    <p className="text-gray-300">🧱 1. Block Blob</p>
+                    <p className="text-gray-300">Most commo blob type used i Azure.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Stores text ad biary data (files like .txt, .jpg, .mp4, .csv, etc.)</p>
+                    <p className="text-gray-300">Data is split ito blocks, ad each block is idetified by a block ID.</p>
+                    <p className="text-gray-300">You ca upload or update blocks idividually ad commit them together.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig images, videos, PDFs, ad backups.</p>
+                    <p className="text-gray-300">Data files for aalytics (CSV, JSON, Parquet).</p>
+                    <p className="text-gray-300">Large files uploaded i chuks.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">You upload a 500 MB video file - Azure divides it ito smaller blocks ad uploads each part separately for speed ad reliability.</p>
+                    <p className="text-gray-300">📜 2. Apped Blob</p>
+                    <p className="text-gray-300">Special type of blob for data that grows over time.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Optimized for apped operatios - you ca oly add ew data to the ed, ot modify or delete existig data.</p>
+                    <p className="text-gray-300">Each time you add ew iformatio, it’s appeded to the blob.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig log files.</p>
+                    <p className="text-gray-300">Applicatio telemetry or diagostics data.</p>
+                    <p className="text-gray-300">Streamig data that’s costatly beig added.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">You’re loggig website visit's. Each time a ew visitor arrives, their data (timestamp, IP, etc.) is appeded to the existig log file.</p>
+                    <p className="text-gray-300">📄 3. Page Blob</p>
+                    <p className="text-gray-300">Desiged for radom read/write operatios.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Data is stored i fixed-size 512-byte pages.</p>
+                    <p className="text-gray-300">Allows fast read ad write access to specific parts of the blob.</p>
+                    <p className="text-gray-300">Commoly used for storig Virtual Hard Disk (VHD) files that power Azure Virtual Machies.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig Azure VM disks (OS ad data disks).</p>
+                    <p className="text-gray-300">Large databases that require radom access.</p>
+                    <p className="text-gray-300">Ay workload that reads/writes frequetly to specific sectios of a file.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">Whe you start a Azure Virtual Machie, it's disk (a .vhd file) is stored as a Page Blob, allowig the VM to quickly read or write data aywhere o the disk.</p>
+                    <p className="text-gray-300">Blob Type</p>
+                    <p className="text-gray-300">Structure</p>
+                    <p className="text-gray-300">Read/Write Behavior</p>
+                    <p className="text-gray-300">Commo Use</p>
+                    <p className="text-gray-300">Block Blob</p>
+                    <p className="text-gray-300">Data stored as blocks</p>
+                    <p className="text-gray-300">Upload/replace blocks</p>
+                    <p className="text-gray-300">Files, media, documets</p>
+                    <p className="text-gray-300">Apped Blob</p>
+                    <p className="text-gray-300">Sequetially added blocks</p>
+                    <p className="text-gray-300">Apped-oly</p>
+                    <p className="text-gray-300">Logs, telemetry, streamig data</p>
+                    <p className="text-gray-300">Page Blob</p>
+                    <p className="text-gray-300">Fixed 512-byte pages</p>
+                    <p className="text-gray-300">Radom read/write</p>
+                    <p className="text-gray-300">VM disks, large databases</p>
+                    <p className="text-gray-300">Types of Access Tiers:</p>
+                    <p className="text-gray-300">Azure lets you store data i differet tiers based o how ofte you eed it.This helps save moey 💰 by matchig storage cost to usage.</p>
+                    <p className="text-gray-300">Tier</p>
+                    <p className="text-gray-300">Cost</p>
+                    <p className="text-gray-300">Availability</p>
+                    <p className="text-gray-300">Best For</p>
+                    <p className="text-gray-300">Hot</p>
+                    <p className="text-gray-300">💰 Highest cost</p>
+                    <p className="text-gray-300">🔥 Always available</p>
+                    <p className="text-gray-300">Frequetly accessed data (e.g., active apps, websites)</p>
+                    <p className="text-gray-300">Cool</p>
+                    <p className="text-gray-300">💸 Cheaper</p>
+                    <p className="text-gray-300">🕓 Slight delay i access</p>
+                    <p className="text-gray-300">Ifrequetly accessed data (e.g., mothly reports)</p>
+                    <p className="text-gray-300">Cold</p>
+                    <p className="text-gray-300">💧 Cheaper tha Cool</p>
+                    <p className="text-gray-300">⏱️ Slower access</p>
+                    <p className="text-gray-300">Rarely accessed data but still retrievable</p>
+                    <p className="text-gray-300">Archive</p>
+                    <p className="text-gray-300">🧊 Cheapest</p>
+                    <p className="text-gray-300">💤 Retrieval takes hours</p>
+                    <p className="text-gray-300">Log-term backups, compliace storage</p>
         </section>
         )}
-
-        {/* Azure Data Lake Storage Gen2 */}
         {activeSection === 'azure-data-lake' && (
         <section
           id="azure-data-lake"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</h3>
-          
-          <p className="text-gray-300 mb-6 text-lg">
-            Azure Data Lake Storage Gen2 is a highly scalable and secure <strong>cloud storage service optimized for big data analytics</strong> and data lakes. It builds on Azure Blob Storage capabilities but adds <strong>file system semantics, hierarchical namespaces, and enhanced performance</strong> for analytics workloads.
-          </p>
-          <p className="text-gray-300 mb-6">
-            ADLS Gen2 is designed to store massive volumes of <strong>structured, semi-structured, and unstructured data</strong>, making it ideal for big data and machine learning scenarios.
-          </p>
-
-          <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
-            <h4 className="text-2xl font-semibold text-white mb-4">4.1 Create an Azure Data Lake Storage</h4>
-            <div className="space-y-4 text-gray-300">
-              <ol className="list-decimal list-inside space-y-3 ml-2">
-                <li>Go to Azure Portal</li>
-                <li>In the search bar, type "Storage Accounts" or "ADLS Gen2"</li>
-              </ol>
-
-              <ImageGallery images={getImages('image38')} />
-
-              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
-                <li>Click on storage accounts and click on create button</li>
-              </ol>
-
-              <ImageGallery images={getImages('image39')} />
-
-              <ol className="list-decimal list-inside space-y-3 ml-2 mt-6">
-                <li>Fill required details</li>
-              </ol>
-
-              <ImageGallery images={getImages('image40', 'image41', 'image42', 'image43')} />
-
-              <div className="mt-6 space-y-3">
-                <p className="font-semibold">Navigate to Your Resource Group</p>
-                <ol className="list-decimal list-inside space-y-2 ml-2">
-                  <li>In the left-hand menu, click on <strong>Resource groups</strong></li>
-                  <li>Find and click your resource group — in your case: = <code className="bg-gray-800 px-2 py-1 rounded">rg-ohg365-dev</code></li>
-                </ol>
-                <p className="font-semibold mt-4">Check for the Storage Account</p>
-                <p className="mb-2">Inside the <strong>Overview</strong> tab of your resource group, you'll see a list of all resources.</p>
-                <p className="mb-2">Look for an item that looks like this: <strong>Type:</strong> Storage account <strong>Name:</strong> adlsohg365dev (or whatever name you used)</p>
-                <p className="text-green-400">If it appears there, = congratulations — your ADLS Gen2 Storage account has been successfully created</p>
-              </div>
-
-              <ImageGallery images={getImages('image44')} />
-            </div>
-          </div>
+                    <p className="text-gray-300">4. Azure Data Lake Storage Gen2 (ADLS Gen2)</p>
+                    <p className="text-gray-300">Azure Data Lake Storage Gen2 is a highly scalable ad secure cloud storage service optimized for big data aalytics ad data lakes. It builds o Azure Blob Storage capabilities but adds file system sematics, hierarchical amespaces, ad ehaced performace for aalytics workloads.</p>
+                    <p className="text-gray-300">ADLS Gen2 is desiged to store massive volumes of structured, semi-structured, ad ustructured data, makig it ideal for big data ad machie learig scearios.</p>
+                    <p className="text-gray-300">Key Features ad Use Cases:</p>
+                    <p className="text-gray-300">Hierarchical Namespace: Ulike traditioal Blob Storage, ADLS Gen2 supports folders ad directories, eablig efficiet orgaizatio ad faster file operatios at scale.</p>
+                    <p className="text-gray-300">Optimized for Aalytics: Supports Hadoop Distributed File System (HDFS) ad itegrates seamlessly with aalytics frameworks like Azure Databricks, HDIsight, ad Azure Syapse Aalytics.</p>
+                    <p className="text-gray-300">Supports Multiple Data Types: You ca store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, ad more.</p>
+                    <p className="text-gray-300">Security ad Compliace: Provides eterprise-grade security with Azure Active Directory itegratio, role-based access cotrol (RBAC), ad ecryptio at rest ad i trasit.</p>
+                    <p className="text-gray-300">Cost-effective ad Scalable: Automatically scales to hadle petabytes of data ad millios of files with optimized storage tiers ad pricig optios.</p>
+                    <p className="text-gray-300">Commo Uses of ADLS Gen2:</p>
+                    <p className="text-gray-300">Buildig data lakes for big data aalytics ad machie learig.</p>
+                    <p className="text-gray-300">Storig large datasets for ETL (Extract, Trasform, Load) processes.</p>
+                    <p className="text-gray-300">Itegratig with aalytics tools to perform complex queries ad trasformatios.</p>
+                    <p className="text-gray-300">Secure ad compliat storage for sesitive data ad audit logs.</p>
+                    <p className="text-gray-300">Archivig ad log-term data retetio with tiered storage optios.</p>
+                    <p className="text-gray-300">4.1 Create a Azure Data Lake Storage</p>
+                    <p className="text-gray-300">-o to Azure Portal</p>
+                    <p className="text-gray-300">I the search bar, type “Storage Accouts” or “ADLS Gen2”</p>
+                    <p className="text-gray-300">Click o storage accouts ad click o create butto</p>
+                    <p className="text-gray-300">Fill required details</p>
+                    <p className="text-gray-300">Navigate to Your Resource Group</p>
+                    <p className="text-gray-300">I the left-had meu, click o Resource gGroups</p>
+                    <p className="text-gray-300">Fid ad click your resource group - i your case:👉 rg-ohg365-dev</p>
+                    <p className="text-gray-300">Check for the Storage Accout</p>
+                    <p className="text-gray-300">Iside the Overview tab of your resource group, you’ll see a list of all resources.</p>
+                    <p className="text-gray-300">Look for a item that looks like this:Type: Storage accoutName: adlsohg365dev (or whatever ame you used)</p>
+                    <p className="text-gray-300">If it appears there, 🎉 cogratulatios - your ADLS Gen2 Storage accout has bee successfully created</p>
+                    <p className="text-gray-300">3.2 Types of Azure Storage Services:</p>
+                    <p className="text-gray-300">Azure Storage provides four mai types of services uder oe Storage Accout.</p>
+                    <p className="text-gray-300">1️⃣ Data Lake Storage</p>
+                    <p className="text-gray-300">🧱 Purpose: Desiged to store large volumes of ustructured or semi-structured data such as files, images, videos, logs, ad backups.🔹 Key Features:</p>
+                    <p className="text-gray-300">Data is stored as Blobs (Biary Large Objects) withi cotaiers.</p>
+                    <p className="text-gray-300">Ideal for storig large, raw data that does’t fit ito traditioal databases.</p>
+                    <p className="text-gray-300">Supports various formats: text, biary, documets, media, ad backups.</p>
+                    <p className="text-gray-300">💾 Commo Use Cases:</p>
+                    <p className="text-gray-300">Hostig media cotet like images ad videos for websites.</p>
+                    <p className="text-gray-300">Log-term storage for backups ad archival data.</p>
+                    <p className="text-gray-300">Cetralized data lake for aalytics ad big data processig.</p>
+                    <p className="text-gray-300">Hostig static websites.</p>
+                    <p className="text-gray-300">📦 Supported File Types:.txt, .csv, .jso, .xml, .jpg, .mp4, .zip, .bak, ad more.</p>
+                    <p className="text-gray-300">2️⃣ File Service</p>
+                    <p className="text-gray-300">📁 Used for shared file storage that behaves like a traditioal file server.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides Azure Files, a fully maaged file share i the cloud.</p>
+                    <p className="text-gray-300">Uses the SMB (Server Message Block) or NFS (Network File System) protocols - the same used by o-premises file servers.</p>
+                    <p className="text-gray-300">Ca be mouted to Widows, Liux, or macOS systems.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Shared etwork drives for teams</p>
+                    <p className="text-gray-300">“Lift ad shift” of o-premises file servers</p>
+                    <p className="text-gray-300">Applicatio cofiguratios shared across multiple VMs</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">You have multiple virtual machies eedig access to the same cofiguratio files - you ca store those files i Azure Files ad mout them just like a shared folder.</p>
+                    <p className="text-gray-300">3️⃣ Queue Service</p>
+                    <p className="text-gray-300">📬 Used for reliable messagig betwee applicatio compoets.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides asychroous commuicatio betwee services usig message queues.</p>
+                    <p className="text-gray-300">Stores messages i a queue, which ca be processed later by backgroud services or workers.</p>
+                    <p className="text-gray-300">Esures messages are delivered at least oce ad processed i FIFO (First-I, First-Out) order.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Sedig backgroud jobs (like image processig or email sedig)</p>
+                    <p className="text-gray-300">Decouplig app compoets for scalability</p>
+                    <p className="text-gray-300">Evet-drive architecture</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">A web app uploads a image → seds a message to a queue → a backgroud process picks it up ad resizes the image.</p>
+                    <p className="text-gray-300">4️⃣ Table Service</p>
+                    <p className="text-gray-300">🧮 Used to store large amouts of structured, o-relatioal data.</p>
+                    <p className="text-gray-300">🔹 Descriptio:</p>
+                    <p className="text-gray-300">Provides NoSQL key-value storage.</p>
+                    <p className="text-gray-300">Stores data i tables with etities (rows) ad properties (colums).</p>
+                    <p className="text-gray-300">Flexible schema - you ca add or remove colums aytime.</p>
+                    <p className="text-gray-300">💾 Example Uses:</p>
+                    <p className="text-gray-300">Storig user profiles, IoT data, or metadata</p>
+                    <p className="text-gray-300">Fast lookups by key</p>
+                    <p className="text-gray-300">Lightweight applicatios eedig scalable, cheap storage</p>
+                    <p className="text-gray-300">📦 Example Sceario:</p>
+                    <p className="text-gray-300">You have millios of IoT sesors sedig temperature data - you ca store this efficietly i Azure Table Storage.</p>
+                    <p className="text-gray-300">🧠 Summary Table</p>
+                    <p className="text-gray-300">Datalake Service</p>
+                    <p className="text-gray-300">Type of Data</p>
+                    <p className="text-gray-300">Descriptio</p>
+                    <p className="text-gray-300">Example Use Case</p>
+                    <p className="text-gray-300">Blob Service</p>
+                    <p className="text-gray-300">Ustructured / Semi-structured</p>
+                    <p className="text-gray-300">Stores large objects (files, media, backups)</p>
+                    <p className="text-gray-300">Images, videos, logs</p>
+                    <p className="text-gray-300">File Service</p>
+                    <p className="text-gray-300">File-based</p>
+                    <p className="text-gray-300">Shared file storage via SMB/NFS</p>
+                    <p className="text-gray-300">Shared drives, app cofigs</p>
+                    <p className="text-gray-300">Queue Service</p>
+                    <p className="text-gray-300">Messagig</p>
+                    <p className="text-gray-300">Message-based commuicatio betwee compoets</p>
+                    <p className="text-gray-300">Backgroud tasks, evet processig</p>
+                    <p className="text-gray-300">Table Service</p>
+                    <p className="text-gray-300">Structured (NoSQL)</p>
+                    <p className="text-gray-300">Key-value, schema-less table storage</p>
+                    <p className="text-gray-300">User profiles, IoT data</p>
+                    <p className="text-gray-300">Explore Datalake Service</p>
+                    <p className="text-gray-300">Oce your storage accout is created:</p>
+                    <p className="text-gray-300">-o to your Storage Accout</p>
+                    <p className="text-gray-300">Uder Data storage, click Cotaiers → This is where your blobs live.</p>
+                    <p className="text-gray-300">Click ➕ Cotaier to create oe:</p>
+                    <p className="text-gray-300">Name: images, videos, or backups (ay ame)</p>
+                    <p className="text-gray-300">Public access level:</p>
+                    <p className="text-gray-300">Private (default) – Oly you ca access</p>
+                    <p className="text-gray-300">Blob (aoymous read) – Ayoe with the lik ca read blobs</p>
+                    <p className="text-gray-300">Cotaier (public) – Everyoe ca see cotets</p>
+                    <p className="text-gray-300">Click Create</p>
+                    <p className="text-gray-300">Upload & Maage Blobs</p>
+                    <p className="text-gray-300">Click your ew cotaier (e.g., images)</p>
+                    <p className="text-gray-300">Click Upload</p>
+                    <p className="text-gray-300">Choose a file from your computer (like a .jpg, .txt, or .mp4)</p>
+                    <p className="text-gray-300">Oce uploaded, you ca:</p>
+                    <p className="text-gray-300">View Properties (size, type, last modified)</p>
+                    <p className="text-gray-300">-et the URL to access the file</p>
+                    <p className="text-gray-300">Chage the access tier</p>
+                    <p className="text-gray-300">Storage Accout</p>
+                    <p className="text-gray-300">└── DataLake Service</p>
+                    <p className="text-gray-300">└── Cotaier (like a folder)</p>
+                    <p className="text-gray-300">└── Blob (the actual file)</p>
+                    <p className="text-gray-300">Subfolder:</p>
+                    <p className="text-gray-300">Upload file:</p>
+                    <p className="text-gray-300">Types of Blob Types:</p>
+                    <p className="text-gray-300">Blob Type</p>
+                    <p className="text-gray-300">Best For</p>
+                    <p className="text-gray-300">Example Use</p>
+                    <p className="text-gray-300">🧱 Block Blob</p>
+                    <p className="text-gray-300">Storig text or biary data</p>
+                    <p className="text-gray-300">Images, videos, documets, CSVs</p>
+                    <p className="text-gray-300">📜 Apped Blob</p>
+                    <p className="text-gray-300">Data that is costatly added to (apped-oly)</p>
+                    <p className="text-gray-300">Logs, telemetry, audit data</p>
+                    <p className="text-gray-300">📄 Page Blob</p>
+                    <p className="text-gray-300">Radom read/write access</p>
+                    <p className="text-gray-300">Virtual machie disks (VHD files)</p>
+                    <p className="text-gray-300">🧱 1. Block Blob</p>
+                    <p className="text-gray-300">Most commo blob type used i Azure.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Stores text ad biary data (files like .txt, .jpg, .mp4, .csv, etc.)</p>
+                    <p className="text-gray-300">Data is split ito blocks, ad each block is idetified by a block ID.</p>
+                    <p className="text-gray-300">You ca upload or update blocks idividually ad commit them together.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig images, videos, PDFs, ad backups.</p>
+                    <p className="text-gray-300">Data files for aalytics (CSV, JSON, Parquet).</p>
+                    <p className="text-gray-300">Large files uploaded i chuks.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">You upload a 500 MB video file - Azure divides it ito smaller blocks ad uploads each part separately for speed ad reliability.</p>
+                    <p className="text-gray-300">📜 2. Apped Blob</p>
+                    <p className="text-gray-300">Special type of blob for data that grows over time.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Optimized for apped operatios - you ca oly add ew data to the ed, ot modify or delete existig data.</p>
+                    <p className="text-gray-300">Each time you add ew iformatio, it’s appeded to the blob.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig log files.</p>
+                    <p className="text-gray-300">Applicatio telemetry or diagostics data.</p>
+                    <p className="text-gray-300">Streamig data that’s costatly beig added.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">You’re loggig website visit's. Each time a ew visitor arrives, their data (timestamp, IP, etc.) is appeded to the existig log file.</p>
+                    <p className="text-gray-300">📄 3. Page Blob</p>
+                    <p className="text-gray-300">Desiged for radom read/write operatios.</p>
+                    <p className="text-gray-300">💡 What it is:</p>
+                    <p className="text-gray-300">Data is stored i fixed-size 512-byte pages.</p>
+                    <p className="text-gray-300">Allows fast read ad write access to specific parts of the blob.</p>
+                    <p className="text-gray-300">Commoly used for storig Virtual Hard Disk (VHD) files that power Azure Virtual Machies.</p>
+                    <p className="text-gray-300">✅ Use Cases:</p>
+                    <p className="text-gray-300">Storig Azure VM disks (OS ad data disks).</p>
+                    <p className="text-gray-300">Large databases that require radom access.</p>
+                    <p className="text-gray-300">Ay workload that reads/writes frequetly to specific sectios of a file.</p>
+                    <p className="text-gray-300">📘 Example:</p>
+                    <p className="text-gray-300">Whe you start a Azure Virtual Machie, it's disk (a .vhd file) is stored as a Page Blob, allowig the VM to quickly read or write data aywhere o the disk.</p>
+                    <p className="text-gray-300">Blob Type</p>
+                    <p className="text-gray-300">Structure</p>
+                    <p className="text-gray-300">Read/Write Behavior</p>
+                    <p className="text-gray-300">Commo Use</p>
+                    <p className="text-gray-300">Block Blob</p>
+                    <p className="text-gray-300">Data stored as blocks</p>
+                    <p className="text-gray-300">Upload/replace blocks</p>
+                    <p className="text-gray-300">Files, media, documets</p>
+                    <p className="text-gray-300">Apped Blob</p>
+                    <p className="text-gray-300">Sequetially added blocks</p>
+                    <p className="text-gray-300">Apped-oly</p>
+                    <p className="text-gray-300">Logs, telemetry, streamig data</p>
+                    <p className="text-gray-300">Page Blob</p>
+                    <p className="text-gray-300">Fixed 512-byte pages</p>
+                    <p className="text-gray-300">Radom read/write</p>
+                    <p className="text-gray-300">VM disks, large databases</p>
+                    <p className="text-gray-300">Types of Access Tiers:</p>
+                    <p className="text-gray-300">Azure lets you store data i differet tiers based o how ofte you eed it.This helps save moey 💰 by matchig storage cost to usage.</p>
+                    <p className="text-gray-300">Tier</p>
+                    <p className="text-gray-300">Cost</p>
+                    <p className="text-gray-300">Availability</p>
+                    <p className="text-gray-300">Best For</p>
+                    <p className="text-gray-300">Hot</p>
+                    <p className="text-gray-300">💰 Highest cost</p>
+                    <p className="text-gray-300">🔥 Always available</p>
+                    <p className="text-gray-300">Frequetly accessed data (e.g., active apps, websites)</p>
+                    <p className="text-gray-300">Cool</p>
+                    <p className="text-gray-300">💸 Cheaper</p>
+                    <p className="text-gray-300">🕓 Slight delay i access</p>
+                    <p className="text-gray-300">Ifrequetly accessed data (e.g., mothly reports)</p>
+                    <p className="text-gray-300">Cold</p>
+                    <p className="text-gray-300">💧 Cheaper tha Cool</p>
+                    <p className="text-gray-300">⏱️ Slower access</p>
+                    <p className="text-gray-300">Rarely accessed data but still retrievable</p>
+                    <p className="text-gray-300">Archive</p>
+                    <p className="text-gray-300">🧊 Cheapest</p>
+                    <p className="text-gray-300">💤 Retrieval takes hours</p>
+                    <p className="text-gray-300">Log-term backups, compliace storage</p>
         </section>
         )}
 
-        {/* Navigation Buttons */}
         <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-700">
           <button
             onClick={goToPreviousSection}
