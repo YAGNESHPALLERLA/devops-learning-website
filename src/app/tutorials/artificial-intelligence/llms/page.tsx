@@ -200,22 +200,21 @@ export default function LLMsPage() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
+      // If no hash or it's a parent group ID, default to first section
       if (!hash || hash === 'llms' || hash === 'core-concepts' || hash === 'training-fine-tuning' || hash === 'practical-applications' || hash === 'advanced-topics' || hash === 'operations-applications') {
         setActiveSection('llm-introduction');
         setActiveSubsection(null);
         return;
       }
 
-      // Check if hash is a direct section
+      // Check if hash is a valid section ID in PAGE_HEADINGS
       if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
         setActiveSection(hash);
         setActiveSubsection(null);
-      } else {
-        // It's a subsection or parent group, find parent
-        const parentSection = SUBSECTION_PARENT[hash] || 'core-concepts';
-        setActiveSection(hash);
-        setActiveSubsection(null);
+        // Mark for scrolling when hash changes (e.g., browser back/forward)
+        shouldScrollRef.current = true;
       }
+      // If hash is not in PAGE_HEADINGS, ignore it (might be invalid or parent group)
     };
 
     handleHashChange();
