@@ -153,6 +153,25 @@ export default function AzureDataEngineerPage() {
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
 
+  const scrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      // Get the header height dynamically (sticky header is approximately 80px)
+      const headerHeight = 80;
+      const spacing = 20;
+      const offset = headerHeight + spacing;
+      
+      // Use offsetTop for more reliable positioning
+      const elementTop = element.offsetTop;
+      const offsetPosition = elementTop - offset;
+      
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const handleSetActiveSection = (sectionId: string) => {
     if (sectionId === 'azure-basics') {
       setActiveSection('azure-hierarchy');
@@ -160,11 +179,7 @@ export default function AzureDataEngineerPage() {
       window.history.replaceState(null, '', `#azure-hierarchy`);
       // Scroll to section
       setTimeout(() => {
-        const element = document.getElementById('azure-hierarchy');
-        if (element) {
-          const offsetTop = element.offsetTop - 100;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        }
+        scrollToElement('azure-hierarchy');
       }, 100);
     } else if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
       setActiveSection(sectionId);
@@ -172,11 +187,7 @@ export default function AzureDataEngineerPage() {
       window.history.replaceState(null, '', `#${sectionId}`);
       // Scroll to section
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const offsetTop = element.offsetTop - 100;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        }
+        scrollToElement(sectionId);
       }, 100);
     } else {
       const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
@@ -185,27 +196,38 @@ export default function AzureDataEngineerPage() {
       window.history.replaceState(null, '', `#${sectionId}`);
       // Scroll to section
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const offsetTop = element.offsetTop - 100;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        }
+        scrollToElement(sectionId);
       }, 100);
     }
   };
 
   useEffect(() => {
+    const scrollToElement = (elementId: string) => {
+      const element = document.getElementById(elementId);
+      if (element) {
+        // Get the header height dynamically (sticky header is approximately 80px)
+        const headerHeight = 80;
+        const spacing = 20;
+        const offset = headerHeight + spacing;
+        
+        // Use offsetTop for more reliable positioning
+        const elementTop = element.offsetTop;
+        const offsetPosition = elementTop - offset;
+        
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      }
+    };
+
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
       if (!hash || hash === 'azure-basics') {
         setActiveSection('azure-hierarchy');
         setActiveSubsection(null);
         setTimeout(() => {
-          const element = document.getElementById('azure-hierarchy');
-          if (element) {
-            const offsetTop = element.offsetTop - 100;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
+          scrollToElement('azure-hierarchy');
         }, 100);
         return;
       }
@@ -214,21 +236,13 @@ export default function AzureDataEngineerPage() {
         setActiveSection(hash);
         setActiveSubsection(null);
         setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            const offsetTop = element.offsetTop - 100;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
+          scrollToElement(hash);
         }, 100);
       } else {
         setActiveSection(hash);
         setActiveSubsection(null);
         setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            const offsetTop = element.offsetTop - 100;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
+          scrollToElement(hash);
         }, 100);
       }
     };
@@ -241,18 +255,31 @@ export default function AzureDataEngineerPage() {
   }, []);
 
   useEffect(() => {
+    const scrollToElement = (elementId: string) => {
+      const element = document.getElementById(elementId);
+      if (element) {
+        // Get the header height dynamically (sticky header is approximately 80px)
+        const headerHeight = 80;
+        const spacing = 20;
+        const offset = headerHeight + spacing;
+        
+        // Use offsetTop for more reliable positioning
+        const elementTop = element.offsetTop;
+        const offsetPosition = elementTop - offset;
+        
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      }
+    };
+
     if (activeSection) {
       setTimeout(() => {
-        const element = document.getElementById(activeSection);
-        if (element) {
-          const offsetTop = element.offsetTop - 100;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        } else if (activeSubsection) {
-          const subElement = document.getElementById(activeSubsection);
-          if (subElement) {
-            const offsetTop = subElement.offsetTop - 100;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
+        if (activeSubsection) {
+          scrollToElement(activeSubsection);
+        } else {
+          scrollToElement(activeSection);
         }
       }, 150);
     }

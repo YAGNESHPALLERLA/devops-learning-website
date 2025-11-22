@@ -41,9 +41,17 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 100;
+      // Get the header height dynamically (sticky header is approximately 80px)
+      const headerHeight = 80;
+      const spacing = 20;
+      const offset = headerHeight + spacing;
+      
+      // Use offsetTop for more reliable positioning
+      const elementTop = element.offsetTop;
+      const offsetPosition = elementTop - offset;
+      
       window.scrollTo({
-        top: offsetTop,
+        top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
     }
