@@ -12,6 +12,14 @@ export default function ArtificialIntelligenceLandingPage() {
       icon: '🤖',
       href: '/tutorials/artificial-intelligence/llms',
       topics: ['LLM Fundamentals', 'Architecture', 'Training', 'Applications', 'Fine-tuning']
+    },
+    {
+      id: 'generative-ai',
+      title: 'Generative AI',
+      description: 'Master Generative AI models including GANs, VAEs, Diffusion Models, and their applications',
+      icon: '✨',
+      href: '/tutorials/artificial-intelligence/generative-ai',
+      topics: ['GANs & VAEs', 'Diffusion Models', 'Multimodal AI', 'Prompt Engineering', 'Ethics & Safety']
     }
   ];
 
@@ -98,6 +106,10 @@ export default function ArtificialIntelligenceLandingPage() {
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-2">✓</span>
                   <span>Large Language Models (LLMs) fundamentals</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-400 mr-2">✓</span>
+                  <span>Generative AI models (GANs, VAEs, Diffusion)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-purple-400 mr-2">✓</span>
