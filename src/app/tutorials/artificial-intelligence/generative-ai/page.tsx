@@ -768,6 +768,7 @@ export default function GenerativeAIPage() {
                 </p>
               </div>
             </div>
+          </div>
         </section>
       </div>
     </TechLayout>
