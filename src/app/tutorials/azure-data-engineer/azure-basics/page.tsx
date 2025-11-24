@@ -129,6 +129,35 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'azure-data-lake': 'azure-basics'
 };
 
+const storageTierHeaders = ['Tier', 'Cost', 'Availability', 'Best For'];
+
+const storageTierRows = [
+  {
+    tier: 'Hot',
+    cost: '💰 Highest cost',
+    availability: '🔥 Always available',
+    bestFor: 'Frequently accessed data (e.g., active apps, websites)'
+  },
+  {
+    tier: 'Cool',
+    cost: '💸 Cheaper',
+    availability: '🕓 Slight delay in access',
+    bestFor: 'Infrequently accessed data (e.g., monthly reports)'
+  },
+  {
+    tier: 'Cold',
+    cost: '💧 Cheaper than Cool',
+    availability: '⏱️ Slower access',
+    bestFor: 'Rarely accessed data but still retrievable'
+  },
+  {
+    tier: 'Archive',
+    cost: '🧊 Cheapest',
+    availability: '💤 Retrieval takes hours',
+    bestFor: 'Long-term backups, compliance storage'
+  }
+];
+
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-basics';
   
@@ -692,66 +721,29 @@ export default function AzureDataEngineerPage() {
                   <h5 className="text-xl font-semibold text-white mb-3">Types of Access Tiers:</h5>
                 </div>
                 <p className="mb-3">Azure lets you store data in different tiers based on how often you need it.This helps save money 💰 by matching storage cost to usage.</p>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Tier</h5>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+                  {storageTierHeaders.map(header => (
+                    <div key={header} className="p-4 bg-gray-800 rounded-lg">
+                      <h5 className="text-xl font-semibold text-white mb-3">{header}</h5>
+                    </div>
+                  ))}
                 </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Cost</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Availability</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Best For</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Hot</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">💰 Highest cost</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">🔥 Always available</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Frequently accessed data (e.g., active apps, websites)</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Cool</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">💸 Cheaper</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">🕓 Slight delay in access</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Infrequently accessed data (e.g., monthly reports)</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Cold</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">💧 Cheaper than Cool</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">⏱️ Slower access</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Rarely accessed data but still retrievable</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Archive</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">🧊 Cheapest</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">💤 Retrieval takes hours</h5>
-                </div>
-                <div className="p-4 bg-gray-800 rounded-lg">
-                  <h5 className="text-xl font-semibold text-white mb-3">Long-term backups, compliance storage</h5>
-                </div>
+                {storageTierRows.map(row => (
+                  <div key={row.tier} className="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div className="p-4 bg-gray-800 rounded-lg">
+                      <h5 className="text-xl font-semibold text-white mb-3">{row.tier}</h5>
+                    </div>
+                    <div className="p-4 bg-gray-800 rounded-lg">
+                      <h5 className="text-xl font-semibold text-white mb-3">{row.cost}</h5>
+                    </div>
+                    <div className="p-4 bg-gray-800 rounded-lg">
+                      <h5 className="text-xl font-semibold text-white mb-3">{row.availability}</h5>
+                    </div>
+                    <div className="p-4 bg-gray-800 rounded-lg">
+                      <h5 className="text-xl font-semibold text-white mb-3">{row.bestFor}</h5>
+                    </div>
+                  </div>
+                ))}
                 <p className="mb-3"><strong className="text-blue-400">Hierarchical Namespace:</strong> Unlike traditional Blob Storage, ADLS Gen2 supports folders and directories, enabling efficient organization and faster file operations at scale.</p>
                 <p className="mb-3"><strong className="text-blue-400">Optimized for Analytics:</strong> Supports Hadoop Distributed File System (HDFS) and integrates seamlessly with analytics frameworks like Azure Databricks, HDInsight, and Azure Synapse Analytics.</p>
                 <p className="mb-3"><strong className="text-blue-400">Supports Multiple Data Types:</strong> You can store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, and more.</p>
