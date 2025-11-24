@@ -119,18 +119,25 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
           {item.text}
         </p>
       );
-    } else if (item.type === 'list') {
+      return;
+    }
+
+    if (item.type === 'list') {
       nodes.push(
-        <p key={`list-${index}`} className="mb-3 pl-4 before:content-['•'] before:mr-2">
+        <ul key={`list-${index}`} className="list-disc list-inside space-y-2 mb-4 ml-4 text-gray-300">
+          <li>{item.text}</li>
+        </ul>
+      );
+      return;
+    }
+
+    if (item.type === 'subheading' || item.type === 'heading') {
+      nodes.push(
+        <p key={`heading-${index}`} className="mb-3 text-gray-100">
           {item.text}
         </p>
       );
-    } else if (item.type === 'subheading' || item.type === 'heading') {
-      nodes.push(
-        <div key={`heading-${index}`} className="p-4 bg-gray-800 rounded-lg">
-          <h5 className="text-xl font-semibold text-white mb-3">{item.text}</h5>
-        </div>
-      );
+      return;
     }
   });
 
