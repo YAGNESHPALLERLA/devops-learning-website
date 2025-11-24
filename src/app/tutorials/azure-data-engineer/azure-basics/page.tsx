@@ -280,16 +280,27 @@ export default function AzureDataEngineerPage() {
               >
                 <h4 className="text-2xl font-semibold text-white mb-4">{group.title}</h4>
               <div className="space-y-6 text-gray-300">
-                  {group.sections.map((section, sectionIndex) => (
-                    <div key={`${group.id}-${sectionIndex}`} className="space-y-4">
-                      {section.title && section.title.trim().length > 0 && (
+                  {group.sections.map((section, sectionIndex) => {
+                    const normalizedTitle = section.title?.trim().toLowerCase();
+                    const firstHeading = section.content.find(item => item.type === 'heading');
+                    const normalizedFirstHeading = firstHeading?.text?.trim().toLowerCase();
+                    const showSectionTitle = Boolean(
+                      section.title &&
+                        section.title.trim().length > 0 &&
+                        normalizedTitle !== normalizedFirstHeading
+                    );
+
+                    return (
+                      <div key={`${group.id}-${sectionIndex}`} className="space-y-4">
+                        {showSectionTitle && (
                 <div className="p-4 bg-gray-800 rounded-lg">
-                          <h5 className="text-xl font-semibold text-white mb-3">{section.title}</h5>
+                            <h5 className="text-xl font-semibold text-white mb-3">{section.title}</h5>
                 </div>
-                      )}
-                      <SectionContent content={section.content} />
-                </div>
-                  ))}
+                        )}
+                        <SectionContent content={section.content} />
+                      </div>
+                    );
+                  })}
                 </div>
                 </div>
             ))}

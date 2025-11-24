@@ -610,7 +610,9 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
         // Double-check that we're not in a programmatic scroll
         if (isScrollingProgrammatically) return;
         
-        const sections = sectionList.map(item => document.getElementById(item.id)).filter(Boolean);
+        const sections = sectionList
+          .map(item => document.getElementById(item.id))
+          .filter((section): section is HTMLElement => Boolean(section && section.offsetParent !== null));
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
