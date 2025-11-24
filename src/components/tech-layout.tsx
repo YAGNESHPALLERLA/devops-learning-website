@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Sidebar from './sidebar';
 
 // Define the types for the props
@@ -525,19 +525,62 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
   return [...baseItems, ...(techItems[tech as keyof typeof techItems] || [])];
 };
 
-export default function TechLayout({ children, onThisPage, technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection, hideSidebar = false, customNavigationItems }: TechLayoutProps) {
+export default function TechLayout({ children, onThisPage = [], technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection, hideSidebar = false, customNavigationItems }: TechLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [internalActiveSection, setInternalActiveSection] = useState('');
 
   const activeSection = externalActiveSection !== undefined ? externalActiveSection : internalActiveSection;
   const setActiveSection = externalSetActiveSection || setInternalActiveSection;
 
+  const sectionList = useMemo(() => onThisPage ?? [], [onThisPage]);
+  const resolvedActiveSection = useMemo(() => {
+    if (!sectionList.length) return activeSection;
+    if (activeSection && sectionList.some(section => section.id === activeSection)) {
+      return activeSection;
+    }
+    return sectionList[0]?.id;
+  }, [sectionList, activeSection]);
+
+  useEffect(() => {
+    if (!sectionList.length) return;
+    sectionList.forEach(section => {
+      const el = document.getElementById(section.id);
+      if (!el) return;
+      const datasetKey = 'techPrevDisplay';
+      if (!el.dataset[datasetKey]) {
+        el.dataset[datasetKey] = el.style.display || '';
+      }
+      if (!resolvedActiveSection || resolvedActiveSection === section.id) {
+        el.style.display = el.dataset[datasetKey] ?? '';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+
+    return () => {
+      sectionList.forEach(section => {
+        const el = document.getElementById(section.id);
+        if (!el) return;
+        const datasetKey = 'techPrevDisplay';
+        if (el.dataset[datasetKey] !== undefined) {
+          el.style.display = el.dataset[datasetKey] ?? '';
+          delete el.dataset[datasetKey];
+        } else {
+          el.style.removeProperty('display');
+        }
+      });
+    };
+  }, [sectionList, resolvedActiveSection]);
+
   // Use custom navigation items if provided, otherwise use default
   const navigationItems = customNavigationItems || getTechNavigationItems(technology);
+  const currentIndex = resolvedActiveSection ? sectionList.findIndex(section => section.id === resolvedActiveSection) : -1;
+  const hasPrevious = currentIndex > 0;
+  const hasNext = currentIndex >= 0 && currentIndex < sectionList.length - 1;
 
   // Handle scroll to update active section (for sidebar highlighting only - NO scrolling)
   useEffect(() => {
-    if (!onThisPage) return; // Skip scroll handling if no onThisPage prop
+    if (!sectionList.length) return; // Skip scroll handling if no onThisPage prop
     
     let scrollTimeout: NodeJS.Timeout;
     let lastScrollY = window.scrollY;
@@ -567,7 +610,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         // Double-check that we're not in a programmatic scroll
         if (isScrollingProgrammatically) return;
         
-        const sections = onThisPage.map(item => document.getElementById(item.id)).filter(Boolean);
+        const sections = sectionList.map(item => document.getElementById(item.id)).filter(Boolean);
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -595,7 +638,7 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
       clearTimeout(scrollTimeout);
       clearTimeout(programmaticScrollTimeout);
     };
-  }, [onThisPage, setActiveSection, setActiveSubsection, externalActiveSection]);
+  }, [sectionList, setActiveSection, setActiveSubsection, externalActiveSection]);
 
   return (
     <div className="flex min-h-screen bg-[#1a1a1a] relative">
@@ -623,8 +666,8 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
         >
           <Sidebar
             items={navigationItems}
-            onThisPage={onThisPage || []}
-            activeSection={activeSection}
+            onThisPage={sectionList}
+            activeSection={resolvedActiveSection}
             setActiveSection={setActiveSection}
             activeSubsection={activeSubsection}
             setActiveSubsection={setActiveSubsection}
@@ -667,6 +710,63 @@ export default function TechLayout({ children, onThisPage, technology, activeSec
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}
+              {sectionList.length > 1 && resolvedActiveSection && setActiveSection && (
+                <div className="flex flex-col gap-4 mt-12 pt-8 border-t border-gray-700">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <button
+                      onClick={() => {
+                        if (!hasPrevious) return;
+                        const target = sectionList[currentIndex - 1];
+                        if (target) setActiveSection(target.id);
+                      }}
+                      disabled={!hasPrevious}
+                      className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                        hasPrevious
+                          ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500'
+                          : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+                      }`}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                      <span>Previous</span>
+                      {hasPrevious && (
+                        <span className="text-sm text-gray-400">
+                          {sectionList[currentIndex - 1]?.title}
+                        </span>
+                      )}
+                    </button>
+
+                    <div className="text-sm text-gray-400 text-center md:text-right">
+                      {currentIndex + 1} of {sectionList.length}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        if (!hasNext) return;
+                        const target = sectionList[currentIndex + 1];
+                        if (target) setActiveSection(target.id);
+                      }}
+                      disabled={!hasNext}
+                      className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                        hasNext
+                          ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500'
+                          : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+                      }`}
+                    >
+                      {hasNext && (
+                        <span className="text-sm text-gray-400">
+                          {sectionList[currentIndex + 1]?.title}
+                        </span>
+                      )}
+                      <span>Next</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              )}
             </article>
           </div>
         </main>

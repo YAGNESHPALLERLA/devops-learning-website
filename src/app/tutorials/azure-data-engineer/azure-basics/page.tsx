@@ -239,30 +239,6 @@ export default function AzureDataEngineerPage() {
     }
   }, [activeSection, activeSubsection]);
 
-  const getCurrentSectionIndex = () => {
-    return PAGE_HEADINGS.findIndex(heading => heading.id === activeSection);
-  };
-
-  const goToNextSection = () => {
-    const currentIndex = getCurrentSectionIndex();
-    if (currentIndex < PAGE_HEADINGS.length - 1) {
-      const nextSection = PAGE_HEADINGS[currentIndex + 1];
-      handleSetActiveSection(nextSection.id);
-    }
-  };
-
-  const goToPreviousSection = () => {
-    const currentIndex = getCurrentSectionIndex();
-    if (currentIndex > 0) {
-      const prevSection = PAGE_HEADINGS[currentIndex - 1];
-      handleSetActiveSection(prevSection.id);
-    }
-  };
-
-  const currentIndex = getCurrentSectionIndex();
-  const hasNext = currentIndex < PAGE_HEADINGS.length - 1;
-  const hasPrevious = currentIndex > 0;
-
   return (
     <TechLayout
       technology="azure-data-engineer"
@@ -303,60 +279,22 @@ export default function AzureDataEngineerPage() {
                 className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10"
               >
                 <h4 className="text-2xl font-semibold text-white mb-4">{group.title}</h4>
-                <div className="space-y-6 text-gray-300">
+              <div className="space-y-6 text-gray-300">
                   {group.sections.map((section, sectionIndex) => (
                     <div key={`${group.id}-${sectionIndex}`} className="space-y-4">
                       {section.title && section.title.trim().length > 0 && (
-                        <div className="p-4 bg-gray-800 rounded-lg">
+                <div className="p-4 bg-gray-800 rounded-lg">
                           <h5 className="text-xl font-semibold text-white mb-3">{section.title}</h5>
-                        </div>
+                </div>
                       )}
                       <SectionContent content={section.content} />
-                    </div>
+                </div>
                   ))}
                 </div>
-              </div>
+                </div>
             ))}
           </div>
         </section>
-
-        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-700 relative z-10">
-          <button
-            onClick={goToPreviousSection}
-            disabled={!hasPrevious}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${hasPrevious ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500' : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'}`}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span>Previous</span>
-            {hasPrevious && (
-              <span className="text-sm text-gray-400">
-                {PAGE_HEADINGS[currentIndex - 1]?.title}
-              </span>
-            )}
-          </button>
-
-          <div className="text-sm text-gray-400">
-            {currentIndex + 1} of {PAGE_HEADINGS.length}
-          </div>
-
-          <button
-            onClick={goToNextSection}
-            disabled={!hasNext}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${hasNext ? 'bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-gray-500' : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'}`}
-          >
-            <span>Next</span>
-            {hasNext && (
-              <span className="text-sm text-gray-400">
-                {PAGE_HEADINGS[currentIndex + 1]?.title}
-              </span>
-            )}
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
       </div>
     </TechLayout>
   );
