@@ -43,14 +43,14 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
   );
 };
 
+type CourseContentItem =
+  | { type: 'paragraph'; text: string; heading_level?: number | null }
+  | { type: 'heading'; text: string; heading_level?: number | null }
+  | { type: 'image'; alt?: string; src: string };
+
 type CourseSection = {
   title: string;
-  content: Array<
-    | { type: 'paragraph'; text: string }
-    | { type: 'subheading' | 'heading'; text: string }
-    | { type: 'image'; alt?: string; src: string }
-    | { type: 'list'; text: string }
-  >;
+  content: CourseContentItem[];
 };
 
 type CourseGroup = {
@@ -66,7 +66,10 @@ const PAGE_HEADINGS = courseContent.map(section => ({
   title: section.title
 }));
 
-const SUBSECTION_PARENT: Record<string, string> = {};
+const SUBSECTION_PARENT: Record<string, string> = PAGE_HEADINGS.reduce((acc, heading) => {
+  acc[heading.id] = heading.id;
+  return acc;
+}, {} as Record<string, string>);
 
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-basics';
@@ -122,21 +125,21 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
       return;
     }
 
-    if (item.type === 'list') {
-      nodes.push(
-        <ul key={`list-${index}`} className="list-disc list-inside space-y-2 mb-4 ml-4 text-gray-300">
-          <li>{item.text}</li>
-        </ul>
-      );
-      return;
-    }
-
-    if (item.type === 'subheading' || item.type === 'heading') {
-      nodes.push(
-        <p key={`heading-${index}`} className="mb-3 text-gray-100">
-          {item.text}
-        </p>
-      );
+    if (item.type === 'heading') {
+      const level = item.heading_level ?? 2;
+      if (level <= 1) {
+        nodes.push(
+          <div key={`heading-${index}`} className="p-4 bg-gray-800 rounded-lg">
+            <h5 className="text-xl font-semibold text-white mb-3">{item.text}</h5>
+          </div>
+        );
+      } else {
+        nodes.push(
+          <p key={`heading-${index}`} className="mb-3 font-semibold text-gray-200">
+            {item.text}
+          </p>
+        );
+      }
       return;
     }
   });
