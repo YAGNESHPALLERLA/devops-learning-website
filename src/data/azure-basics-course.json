@@ -4,22 +4,17 @@
     "title": "Azure Hierarchy",
     "sections": [
       {
-        "title": "1. Azure hierarchy",
+        "title": "Azure Hierarchy Overview",
         "content": [
           {
             "type": "heading",
             "text": "1. Azure hierarchy",
             "heading_level": 1
-          }
-        ]
-      },
-      {
-        "title": "1. Management Groups (The Top-Level)",
-        "content": [
+          },
           {
             "type": "heading",
             "text": "1. Management Groups (The Top-Level)",
-            "heading_level": 1
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -35,16 +30,11 @@
             "type": "paragraph",
             "text": "Example: Imagine a company with multiple divisions, like Finance, IT, and Marketing. You could have separate management groups for each of these divisions.",
             "heading_level": null
-          }
-        ]
-      },
-      {
-        "title": "2. Subscriptions (Middle Layer)",
-        "content": [
+          },
           {
             "type": "heading",
             "text": "2. Subscriptions (Middle Layer)",
-            "heading_level": 1
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -60,16 +50,11 @@
             "type": "paragraph",
             "text": "Example: If your company has different projects, like a website and an app, you could create separate subscriptions for them. One for the website, one for the app.",
             "heading_level": null
-          }
-        ]
-      },
-      {
-        "title": "3. Resource Groups (Sub-Containers)",
-        "content": [
+          },
           {
             "type": "heading",
             "text": "3. Resource Groups (Sub-Containers)",
-            "heading_level": 1
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -85,16 +70,11 @@
             "type": "paragraph",
             "text": "Example: If you're building a web app, you might have a resource group called \"rg-ohg365-dev\" where you store everything related to the app, such as databases, storage accounts, and virtual machines.",
             "heading_level": null
-          }
-        ]
-      },
-      {
-        "title": "4. Resources (The Actual Items)",
-        "content": [
+          },
           {
             "type": "heading",
             "text": "4. Resources (The Actual Items)",
-            "heading_level": 1
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -114,52 +94,52 @@
           {
             "type": "heading",
             "text": "Management Groups: High-level containers for organizing multiple subscriptions.",
-            "heading_level": 2
+            "heading_level": 3
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-01.png",
-            "alt": "4. Resources (The Actual Items) - image-01.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-01.png",
+            "alt": "Azure hierarchy illustration 1"
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-02.png",
-            "alt": "4. Resources (The Actual Items) - image-02.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-02.png",
+            "alt": "Azure hierarchy illustration 2"
           },
           {
             "type": "heading",
             "text": "Subscriptions: They hold resources and manage access to resources.",
-            "heading_level": 2
+            "heading_level": 3
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-03.png",
-            "alt": "4. Resources (The Actual Items) - image-03.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-03.png",
+            "alt": "Azure hierarchy illustration 3"
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-04.png",
-            "alt": "4. Resources (The Actual Items) - image-04.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-04.png",
+            "alt": "Azure hierarchy illustration 4"
           },
           {
-            "type": "paragraph",
+            "type": "heading",
             "text": "Resource Groups: Containers inside subscriptions to organize and manage resources by project or lifecycle.",
-            "heading_level": null
+            "heading_level": 3
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-05.png",
-            "alt": "4. Resources (The Actual Items) - image-05.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-05.png",
+            "alt": "Azure hierarchy illustration 5"
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-06.png",
-            "alt": "4. Resources (The Actual Items) - image-06.png"
+            "src": "/tutorials/azure/images/azure-hierarchy-06.png",
+            "alt": "Azure hierarchy illustration 6"
           },
           {
             "type": "heading",
             "text": "Resources: The actual services you use in Azure.",
-            "heading_level": 2
+            "heading_level": 3
           }
         ]
       }
