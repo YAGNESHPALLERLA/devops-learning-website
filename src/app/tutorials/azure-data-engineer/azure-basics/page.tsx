@@ -47,7 +47,8 @@ type CourseContentItem =
   | { type: 'paragraph'; text: string; heading_level?: number | null }
   | { type: 'heading'; text: string; heading_level?: number | null }
   | { type: 'image'; alt?: string; src: string }
-  | { type: 'table'; rows: string[][]; caption?: string };
+  | { type: 'list'; items: string[] }
+  | { type: 'table'; rows: string[][]; headers?: string[]; caption?: string };
 
 type CourseSection = {
   title: string;
@@ -62,33 +63,82 @@ type CourseGroup = {
 
 const courseContent = courseSections as CourseGroup[];
 
+// Generate subsection IDs from titles
+const generateSubsectionId = (groupId: string, sectionTitle: string, index: number): string => {
+  const slug = sectionTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+  return `${groupId}-${slug || index}`;
+};
+
+// Build flat list of all subsections for navigation
+type SubsectionInfo = {
+  id: string;
+  title: string;
+  parentId: string;
+  parentTitle: string;
+  sectionIndex: number;
+};
+
+const ALL_SUBSECTIONS: SubsectionInfo[] = [];
+const SUBSECTION_MAP: Record<string, SubsectionInfo> = {};
+
+courseContent.forEach(group => {
+  group.sections.forEach((section, index) => {
+    const subsectionId = generateSubsectionId(group.id, section.title, index);
+    const info: SubsectionInfo = {
+      id: subsectionId,
+      title: section.title,
+      parentId: group.id,
+      parentTitle: group.title,
+      sectionIndex: index
+    };
+    ALL_SUBSECTIONS.push(info);
+    SUBSECTION_MAP[subsectionId] = info;
+  });
+});
+
+// Main sections for sidebar
 const PAGE_HEADINGS = courseContent.map(section => ({
   id: section.id,
   title: section.title
 }));
 
-const SUBSECTION_PARENT: Record<string, string> = PAGE_HEADINGS.reduce((acc, heading) => {
-  acc[heading.id] = heading.id;
-  return acc;
-}, {} as Record<string, string>);
-
+// Create navigation items with subsections as children
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-basics';
   
-  // Single "Azure Basics" dropdown with all sections as children
-  return [
-    {
-      id: 'azure-basics',
-      title: 'Azure Basics',
-      href: `${basePath}#azure-basics`,
-      icon: '📘',
-      children: PAGE_HEADINGS.map(heading => ({
-        id: heading.id,
-        title: heading.title,
-        href: `${basePath}#${heading.id}`
-      }))
-    }
-  ];
+  const icons: Record<string, string> = {
+    'azure-hierarchy': '🏗️',
+    'resource-group': '📦',
+    'azure-blob-storage': '💾',
+    'azure-data-lake': '🌊'
+  };
+  
+  return courseContent.map(group => {
+    const children = group.sections.map((section, index) => {
+      const subsectionId = generateSubsectionId(group.id, section.title, index);
+      return {
+        id: subsectionId,
+        title: section.title,
+        href: `${basePath}#${subsectionId}`
+      };
+    });
+    
+    // First child as default for parent link
+    const firstChildId = children.length > 0 ? children[0].id : group.id;
+    
+    return {
+      id: group.id,
+      title: group.title,
+      href: `${basePath}#${firstChildId}`,
+      icon: icons[group.id] || '📘',
+      children
+    };
+  });
 };
 
 const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
@@ -119,7 +169,7 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
 
     if (item.type === 'paragraph') {
       nodes.push(
-        <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed">
+        <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed text-gray-300">
           {item.text}
         </p>
       );
@@ -130,33 +180,52 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
       const level = item.heading_level ?? 2;
       if (level <= 1) {
         nodes.push(
-          <div key={`heading-${index}`} className="p-4 sm:p-5 bg-gray-800 rounded-lg">
-            <h5 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{item.text}</h5>
+          <div key={`heading-${index}`} className="p-4 sm:p-5 bg-gray-800 rounded-lg mt-6 mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">{item.text}</h3>
           </div>
+        );
+      } else if (level === 2) {
+        nodes.push(
+          <h4 key={`heading-${index}`} className="text-lg sm:text-xl font-semibold text-white mt-6 mb-3">
+            {item.text}
+          </h4>
         );
       } else {
         nodes.push(
-          <p key={`heading-${index}`} className="mb-3 font-bold text-gray-200 text-base sm:text-lg">
+          <h5 key={`heading-${index}`} className="text-base sm:text-lg font-medium text-gray-200 mt-4 mb-2">
             {item.text}
-          </p>
+          </h5>
         );
       }
       return;
     }
 
+    if (item.type === 'list') {
+      nodes.push(
+        <ul key={`list-${index}`} className="list-disc list-inside space-y-2 mb-4 text-gray-300">
+          {item.items.map((listItem, listIndex) => (
+            <li key={`list-item-${listIndex}`} className="text-base sm:text-lg">
+              {listItem}
+            </li>
+          ))}
+        </ul>
+      );
+      return;
+    }
+
     if (item.type === 'table') {
       flushImages();
-      const { rows, caption } = item;
-      if (rows && rows.length > 0) {
-        const headerRow = rows[0];
-        const dataRows = rows.slice(1);
-        
+      const rows = item.rows || [];
+      const headers = item.headers || (rows.length > 0 ? rows[0] : []);
+      const dataRows = item.headers ? rows : rows.slice(1);
+      
+      if (headers.length > 0 || dataRows.length > 0) {
         nodes.push(
           <div key={`table-${index}`} className="my-6 overflow-x-auto rounded-lg border border-gray-700">
             <table className="min-w-full text-xs sm:text-sm">
               <thead>
                 <tr className="bg-gray-700">
-                  {headerRow.map((cell, cellIndex) => (
+                  {headers.map((cell, cellIndex) => (
                     <th
                       key={`header-${cellIndex}`}
                       className="border border-gray-600 px-3 sm:px-4 py-2 text-left font-semibold text-white whitespace-pre-wrap break-words"
@@ -184,8 +253,8 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
                 ))}
               </tbody>
             </table>
-            {caption && (
-              <p className="mt-2 text-sm text-gray-400 italic text-center">{caption}</p>
+            {item.caption && (
+              <p className="mt-2 text-sm text-gray-400 italic text-center">{item.caption}</p>
             )}
           </div>
         );
@@ -200,31 +269,58 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
 };
 
 export default function AzureDataEngineerPage() {
-  const [activeSection, setActiveSection] = useState('azure-hierarchy');
+  // activeSection now holds the subsection ID
+  const [activeSection, setActiveSection] = useState(ALL_SUBSECTIONS[0]?.id || 'azure-hierarchy');
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
-  const pageHeadings = PAGE_HEADINGS;
-  const isUserScrollingRef = useRef(false);
   const shouldScrollRef = useRef(false);
 
-  // Custom setActiveSection that handles child items correctly
+  // Get current subsection info
+  const currentSubsection = SUBSECTION_MAP[activeSection];
+  const currentIndex = ALL_SUBSECTIONS.findIndex(s => s.id === activeSection);
+  const hasPrevious = currentIndex > 0;
+  const hasNext = currentIndex < ALL_SUBSECTIONS.length - 1;
+
+  // Get the content for the current subsection
+  const getCurrentContent = (): { group: CourseGroup; section: CourseSection } | null => {
+    if (!currentSubsection) return null;
+    const group = courseContent.find(g => g.id === currentSubsection.parentId);
+    if (!group) return null;
+    const section = group.sections[currentSubsection.sectionIndex];
+    if (!section) return null;
+    return { group, section };
+  };
+
+  const goToPreviousSection = () => {
+    if (hasPrevious) {
+      const prevId = ALL_SUBSECTIONS[currentIndex - 1].id;
+      handleSetActiveSection(prevId);
+    }
+  };
+
+  const goToNextSection = () => {
+    if (hasNext) {
+      const nextId = ALL_SUBSECTIONS[currentIndex + 1].id;
+      handleSetActiveSection(nextId);
+    }
+  };
+
+  // Custom setActiveSection that handles navigation
   const handleSetActiveSection = (sectionId: string) => {
-    // Mark that this is a user-initiated navigation (should scroll)
     shouldScrollRef.current = true;
-    isUserScrollingRef.current = false;
     
-    // Check if this is a direct section (not a subsection)
-    if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
+    // Check if it's a subsection ID
+    if (SUBSECTION_MAP[sectionId]) {
       setActiveSection(sectionId);
       setActiveSubsection(null);
-      // Update URL hash
       window.history.replaceState(null, '', `#${sectionId}`);
-    } else {
-      // It's a subsection, find its parent
-      const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-basics';
-      setActiveSection(parentSection);
-      setActiveSubsection(sectionId);
-      // Update URL hash
-      window.history.replaceState(null, '', `#${sectionId}`);
+    } else if (PAGE_HEADINGS.some(h => h.id === sectionId)) {
+      // It's a main section ID, navigate to its first subsection
+      const firstSubsection = ALL_SUBSECTIONS.find(s => s.parentId === sectionId);
+      if (firstSubsection) {
+        setActiveSection(firstSubsection.id);
+        setActiveSubsection(null);
+        window.history.replaceState(null, '', `#${firstSubsection.id}`);
+      }
     }
   };
 
@@ -232,21 +328,23 @@ export default function AzureDataEngineerPage() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      if (!hash || hash === 'azure-basics') {
-        setActiveSection('azure-hierarchy');
+      if (!hash) {
+        setActiveSection(ALL_SUBSECTIONS[0]?.id || 'azure-hierarchy');
         setActiveSubsection(null);
         return;
       }
 
-      // Check if hash is a direct section
-      if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
+      // Check if hash is a subsection ID
+      if (SUBSECTION_MAP[hash]) {
         setActiveSection(hash);
         setActiveSubsection(null);
-      } else {
-        // It's a subsection, find parent
-        const parentSection = SUBSECTION_PARENT[hash] || 'azure-basics';
-        setActiveSection(parentSection);
-        setActiveSubsection(hash);
+      } else if (PAGE_HEADINGS.some(h => h.id === hash)) {
+        // It's a main section, navigate to first subsection
+        const firstSubsection = ALL_SUBSECTIONS.find(s => s.parentId === hash);
+        if (firstSubsection) {
+          setActiveSection(firstSubsection.id);
+          setActiveSubsection(null);
+        }
       }
     };
 
@@ -258,46 +356,26 @@ export default function AzureDataEngineerPage() {
     };
   }, []);
 
-  // Scroll to active section after it renders - ONLY if user clicked sidebar
+  // Scroll to top when section changes
   useEffect(() => {
-    if (activeSection && shouldScrollRef.current) {
-      // Reset the flag
+    if (shouldScrollRef.current) {
       shouldScrollRef.current = false;
-      isUserScrollingRef.current = true;
-      
-      // Small delay to ensure DOM is updated
-      const scrollTimeout = setTimeout(() => {
-        const element = document.getElementById(activeSection);
-        if (element) {
-          // Use scrollIntoView with scroll-margin-top support
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (activeSubsection) {
-          // Try scrolling to subsection if main section not found
-          const subElement = document.getElementById(activeSubsection);
-          if (subElement) {
-            subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-        
-        // Reset user scrolling flag after scroll completes
-        setTimeout(() => {
-          isUserScrollingRef.current = false;
-        }, 500);
-      }, 200);
-      
-      return () => clearTimeout(scrollTimeout);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [activeSection, activeSubsection]);
+  }, [activeSection]);
+
+  const currentContent = getCurrentContent();
 
   return (
     <TechLayout
       technology="azure-data-engineer"
-      onThisPage={pageHeadings}
+      onThisPage={PAGE_HEADINGS}
       activeSection={activeSection}
       setActiveSection={handleSetActiveSection}
       activeSubsection={activeSubsection}
       setActiveSubsection={setActiveSubsection}
       customNavigationItems={createModuleNavigationItems()}
+      hideNavButtons={true}
     >
       <div className="min-h-screen relative px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16 relative z-10">
@@ -317,47 +395,81 @@ export default function AzureDataEngineerPage() {
           </p>
         </div>
 
-        <section
-          id="azure-basics"
-          className="bg-[#252525] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-600 scroll-mt-24 mb-16 sm:mb-20"
-        >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Azure Basics</h3>
-          
-          <div className="space-y-8 sm:space-y-12 relative z-10">
-            {courseContent.map(group => (
-              <div
-                key={group.id}
-                id={group.id}
-                className="bg-[#1a1a1a] rounded-xl p-4 sm:p-5 border border-gray-700 scroll-mt-24 relative z-10 shadow-lg shadow-black/20"
-              >
-                <h4 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4">{group.title}</h4>
-              <div className="space-y-5 sm:space-y-6 text-gray-300 text-base sm:text-lg">
-                  {group.sections.map((section, sectionIndex) => {
-                    const normalizedTitle = section.title?.trim().toLowerCase();
-                    const firstHeading = section.content.find(item => item.type === 'heading');
-                    const normalizedFirstHeading = firstHeading?.text?.trim().toLowerCase();
-                    const showSectionTitle = Boolean(
-                      section.title &&
-                        section.title.trim().length > 0 &&
-                        normalizedTitle !== normalizedFirstHeading
-                    );
+        {/* Current Section Content */}
+        {currentContent && (
+          <section
+            id={activeSection}
+            className="bg-[#252525] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-600 scroll-mt-24 mb-8"
+          >
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
+              <span>{currentContent.group.title}</span>
+              <span>›</span>
+              <span className="text-blue-400">{currentContent.section.title}</span>
+            </div>
+            
+            {/* Section Title */}
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 pb-4 border-b border-gray-700">
+              {currentContent.section.title}
+            </h2>
+            
+            {/* Section Content */}
+            <div className="text-gray-300">
+              <SectionContent content={currentContent.section.content} />
+            </div>
+          </section>
+        )}
 
-                    return (
-                      <div key={`${group.id}-${sectionIndex}`} className="space-y-3 sm:space-y-4">
-                        {showSectionTitle && (
-                <div className="p-3 sm:p-4 bg-gray-800 rounded-lg">
-                            <h5 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{section.title}</h5>
+        {/* Navigation Buttons */}
+        <div className="flex justify-between items-center mt-8 pt-8 border-t border-gray-700 mb-16">
+          <button
+            onClick={goToPreviousSection}
+            disabled={!hasPrevious}
+            className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 ${
+              hasPrevious
+                ? 'bg-gray-800 hover:bg-gray-700 text-white cursor-pointer'
+                : 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
+            }`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <div className="text-left">
+              <div className="text-xs text-gray-400">Previous</div>
+              {hasPrevious && (
+                <div className="text-sm font-medium">
+                  {ALL_SUBSECTIONS[currentIndex - 1]?.title}
                 </div>
-                        )}
-                        <SectionContent content={section.content} />
-                      </div>
-                    );
-                  })}
-                </div>
-                </div>
-            ))}
+              )}
+            </div>
+          </button>
+
+          <div className="text-sm text-gray-400">
+            {currentIndex + 1} of {ALL_SUBSECTIONS.length}
           </div>
-        </section>
+
+          <button
+            onClick={goToNextSection}
+            disabled={!hasNext}
+            className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 ${
+              hasNext
+                ? 'bg-gray-800 hover:bg-gray-700 text-white cursor-pointer'
+                : 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
+            }`}
+          >
+            <div className="text-right">
+              <div className="text-xs text-gray-400">Next</div>
+              {hasNext && (
+                <div className="text-sm font-medium">
+                  {ALL_SUBSECTIONS[currentIndex + 1]?.title}
+                </div>
+              )}
+            </div>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </TechLayout>
   );

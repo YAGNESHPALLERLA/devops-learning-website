@@ -8,8 +8,8 @@
         "content": [
           {
             "type": "heading",
-            "text": "Azure hierarchy",
-            "heading_level": 1
+            "text": "Azure resource hierarchy",
+            "heading_level": 2
           },
           {
             "type": "heading",
@@ -17,9 +17,9 @@
             "heading_level": 2
           },
           {
-            "type": "paragraph",
+            "type": "heading",
             "text": "What it is: This is the highest level of Azure’s structure. It's like a parent folder that helps organize your entire Azure environment.",
-            "heading_level": null
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -57,9 +57,9 @@
             "heading_level": 2
           },
           {
-            "type": "paragraph",
+            "type": "heading",
             "text": "What it is: Inside each subscription, you can have resource groups. These are containers that hold related resources.",
-            "heading_level": null
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -82,9 +82,9 @@
             "heading_level": null
           },
           {
-            "type": "paragraph",
+            "type": "heading",
             "text": "Purpose: This is where the actual work happens! Resources are the building blocks of your cloud environment.",
-            "heading_level": null
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -94,52 +94,92 @@
           {
             "type": "heading",
             "text": "Management Groups: High-level containers for organizing multiple subscriptions.",
-            "heading_level": 3
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "Go to the Azure portal and search for Management Groups.",
+            "heading_level": 2
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-01.png",
-            "alt": "Azure hierarchy illustration 1"
+            "alt": "Image 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the management group, all subscriptions under that group are displayed, and the corresponding subscription is automatically highlighted.",
+            "heading_level": null
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-02.png",
-            "alt": "Azure hierarchy illustration 2"
+            "alt": "Image 2"
           },
           {
             "type": "heading",
             "text": "Subscriptions: They hold resources and manage access to resources.",
-            "heading_level": 3
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "Go to the Azure portal and search for Subscriptions.",
+            "heading_level": 2
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-03.png",
-            "alt": "Azure hierarchy illustration 3"
+            "alt": "Image 3"
+          },
+          {
+            "type": "heading",
+            "text": "After that, click on the subscription to view the list of subscriptions",
+            "heading_level": 2
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-04.png",
-            "alt": "Azure hierarchy illustration 4"
+            "alt": "Image 4"
           },
           {
             "type": "heading",
             "text": "Resource Groups: Containers inside subscriptions to organize and manage resources by project or lifecycle.",
-            "heading_level": 3
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "Go to the Azure portal and search for Resource Groups.",
+            "heading_level": 2
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-05.png",
-            "alt": "Azure hierarchy illustration 5"
+            "alt": "Image 5"
+          },
+          {
+            "type": "heading",
+            "text": "After that, click on the Resource Groups to view the list of Resource Groups.",
+            "heading_level": 2
           },
           {
             "type": "image",
             "src": "/tutorials/azure/images/azure-hierarchy-06.png",
-            "alt": "Azure hierarchy illustration 6"
+            "alt": "Image 6"
           },
           {
             "type": "heading",
             "text": "Resources: The actual services you use in Azure.",
-            "heading_level": 3
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "After clicking on the resource group, we can see all the resources inside it. All resources are automatically contained within the resource group.",
+            "heading_level": 2
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/azure-hierarchy-07.png",
+            "alt": "Image 7"
           }
         ]
       }
@@ -150,22 +190,17 @@
     "title": "Resource Group",
     "sections": [
       {
-        "title": "Resource Group",
+        "title": "Resource Group Overview",
         "content": [
           {
             "type": "heading",
             "text": "Resource Group",
-            "heading_level": 1
-          }
-        ]
-      },
-      {
-        "title": "What is a Resource Group?",
-        "content": [
+            "heading_level": 2
+          },
           {
             "type": "heading",
-            "text": "What is a Resource Group?",
-            "heading_level": 1
+            "text": "What is a Resource Group",
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -178,79 +213,87 @@
             "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "A Virtual Machine (VM) for the web server",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "A Storage Account for images",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "A Database for user data",
-            "heading_level": 2
+            "type": "list",
+            "items": [
+              "A Virtual Machine (VM) for the web server",
+              "A Storage Account for images",
+              "A Database for user data"
+            ]
           },
           {
             "type": "paragraph",
             "text": "You can put all of these inside one Resource Group — making it easier to manage, monitor, and delete them together.",
             "heading_level": null
-          }
-        ]
-      },
-      {
-        "title": "Create a Resource Group",
-        "content": [
+          },
           {
             "type": "heading",
             "text": "Create a Resource Group",
-            "heading_level": 1
-          },
-          {
-            "type": "heading",
-            "text": "Sign in to the Azure Portal",
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "In the search menu, search for Resource groups.",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "→ Sign in to the Azure Portal",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "→ In the search menu, search for Resource groups.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-07.png",
-            "alt": "2.2 Create a Resource Group - image-07.png"
+            "src": "/tutorials/azure/images/resource-group-01.png",
+            "alt": "Image 1"
           },
           {
-            "type": "heading",
-            "text": "Click on the resource group and click on the create button",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-08.png",
-            "alt": "2.2 Create a Resource Group - image-08.png"
+            "type": "paragraph",
+            "text": "Click on the resource group and click on the create button.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-09.png",
-            "alt": "2.2 Create a Resource Group - image-09.png"
+            "src": "/tutorials/azure/images/resource-group-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, we can see the Resource group section. We should provide the resource group name and then click the Next button.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-10.png",
-            "alt": "2.2 Create a Resource Group - image-10.png"
+            "src": "/tutorials/azure/images/resource-group-03.png",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Next button, we can view the Resource groups. In the Resource groups section, there is a Tags option. Click on the Tags option and select the required options. Then click the Review + Create button.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-11.png",
-            "alt": "2.2 Create a Resource Group - image-11.png"
+            "src": "/tutorials/azure/images/resource-group-04.png",
+            "alt": "Image 4"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Review & Create button, we will be taken to the Review + Create page. Verify the details, and then click the Create button.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/image-12.png",
-            "alt": "2.2 Create a Resource Group - image-12.png"
+            "src": "/tutorials/azure/images/resource-group-05.png",
+            "alt": "Image 5"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, we can see the resource group. In that resource group, we are able to view the list of resource groups in the Resource Manager.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/resource-group-06.png",
+            "alt": "Image 6"
           },
           {
             "type": "heading",
@@ -259,23 +302,16 @@
           },
           {
             "type": "paragraph",
-            "text": "Name: rg-ohg365-dev → This is your Resource Group’s name.Usually, names include clues about the project or environment:",
+            "text": "Name: rg-ohg365-dev → This is your Resource Group’s name.Usually,  names include clues about the project or environment:",
             "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "rg = Resource Group",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "ohg365 = Project or team name",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "dev = Environment (like dev, test, or prod)",
-            "heading_level": 2
+            "type": "list",
+            "items": [
+              "rg = Resource Group",
+              "ohg365 = Project or team name",
+              "dev = Environment (like dev, test, or prod)"
+            ]
           },
           {
             "type": "heading",
@@ -283,34 +319,34 @@
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "➕ Create: Add new Azure resources (like VMs, storage, databases).",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Create: Add new Azure resources (like VMs, storage, databases).",
+            "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "⚙️ Manage view: Customize how your resources list looks.",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Manage view: Customize how your resources list looks.",
+            "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "🗑️ Delete resource group: Deletes the entire group and all its resources (be careful!).",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Delete resource group: Deletes the entire group and all its resources (be careful!).",
+            "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "🔁 Refresh: Updates the view if new resources were added.",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Refresh: Updates the view if new resources were added.",
+            "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "📤 Export to CSV: Export your resource details (helpful for reports).",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Export to CSV: Export your resource details (helpful for reports).",
+            "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "📊 Open query: Create or run custom filters using Azure Resource Graph.",
-            "heading_level": 2
+            "type": "paragraph",
+            "text": "Open query: Create or run custom filters using Azure Resource Graph.",
+            "heading_level": null
           }
         ]
       }
@@ -321,12 +357,12 @@
     "title": "Azure Blob Storage",
     "sections": [
       {
-        "title": "Azure Blob Storage Guide",
+        "title": "Azure Blob Storage Overview",
         "content": [
           {
             "type": "heading",
             "text": "Azure Blob Storage",
-            "heading_level": 1
+            "heading_level": 2
           },
           {
             "type": "paragraph",
@@ -349,224 +385,218 @@
             "heading_level": null
           },
           {
-            "type": "paragraph",
-            "text": "Storing and serving large files (media, documents, etc.)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data lakes and analytics workloads",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Backup and disaster recovery",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Archiving and compliance storage",
-            "heading_level": null
+            "type": "list",
+            "items": [
+              "Storing and serving large files (media, documents, etc.)",
+              "Data lakes and analytics workloads",
+              "Backup and disaster recovery",
+              "Archiving and compliance storage"
+            ]
           },
           {
             "type": "heading",
-            "text": "Create an Azure Blob Storage:",
+            "text": "Create an Azure Blob Storage",
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "Go to Azure Portal",
-            "heading_level": 3
-          },
-          {
-            "type": "heading",
-            "text": "In the search bar, type “Storage Accounts” or “blob”",
-            "heading_level": 3
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-01.png",
-            "alt": "Azure Blob Storage illustration 1"
-          },
-          {
-            "type": "heading",
-            "text": "Click on storage accounts and click on create button",
-            "heading_level": 3
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-02.png",
-            "alt": "Azure Blob Storage illustration 2"
-          },
-          {
-            "type": "heading",
-            "text": "Click “Review + Create”",
-            "heading_level": 3
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-03.png",
-            "alt": "Azure Blob Storage illustration 3"
-          },
-          {
-            "type": "heading",
-            "text": "Subscription",
-            "heading_level": 3
-          },
-          {
             "type": "paragraph",
-            "text": "This is where you choose which Azure Subscription will own this storage account.",
+            "text": "→ Go to Azure Portal",
             "heading_level": null
           },
           {
             "type": "paragraph",
-            "text": "A subscription is linked to your billing and access control.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Example: You might have separate subscriptions for development, testing, or production environments.🟦 You selected: Azure subscription 1",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Resource Group",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "Choose or create a Resource Group to organize related Azure resources.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Resource Groups act like folders — all your related resources (VMs, storage, databases) are stored here for easy management.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "In your case, you selected rg-ohg365-dev, which is perfect for development resources.🟦 Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Storage Account Name",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "This is the unique name for your storage account (like a domain name).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "It must be globally unique, lowercase, and 3–24 characters long.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "This name will form part of the URL to access your data.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🧩 Example:If your name is blobohg365dev",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Preferred Storage Type",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "Select what kind of storage service you want to enable.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "The default (and most common) option is:Azure Blob Storage or Azure Data Lake Storage Gen2",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🧠 This means your account will support:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Blob storage (for files, media, etc.)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data Lake capabilities (for analytics and big data processing)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🟦 Tip: Keep this as default unless you have a specific need for file shares or queue services.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Performance & Redundancy Settings",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "⚙️ Performance:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Standard: Uses HDD-based storage — cheaper, good for general use.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Premium: Uses SSD-based storage — faster, ideal for workloads needing low latency (like databases or VMs).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🟦 You selected: Standard (recommended)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🧭 Redundancy:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Defines how Azure will replicate your data to keep it safe.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "OptionMeaningCopies of DataLRS (Locally-redundant storage)Keeps 3 copies in one data center3ZRS (Zone-redundant storage)Copies across 3 availability zones in the same region3GRS (Geo-redundant storage)Copies data to another region (for disaster recovery)6RA-GRS (Read-access Geo-redundant)Same as GRS but allows read access to secondary region6",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🟦 You selected: LRS (best for development/testing)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Click on create",
+            "text": "→ In the search bar, type “Storage Accounts” or “blob”",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-04.png",
-            "alt": "Azure Blob Storage illustration 4"
+            "src": "/tutorials/azure/images/blob-storage-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Click on storage accounts and click on create button",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-05.png",
-            "alt": "Azure Blob Storage illustration 5"
+            "src": "/tutorials/azure/images/blob-storage-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create option, we will see the Basic details section. Fill in all the required details and then click the Review + Create button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-storage-03.png",
+            "alt": "Image 3"
+          },
+          {
+            "type": "heading",
+            "text": "1️⃣ Subscription",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "This is where you choose which Azure Subscription will own this storage account.",
+              "A subscription is linked to your billing and access control.",
+              "Example: You might have separate subscriptions for development, testing, or production environments.You selected: Azure subscription 1"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "2️⃣ Resource Group",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Choose or create a Resource Group to organize related Azure resources.",
+              "Resource Groups act like folders — all your related resources (VMs, storage, databases) are stored here for easy management.",
+              "In your case, you selected rg-ohg365-dev, which is perfect for development resources."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Tip: Keeping related resources in the same group helps you track cost, permissions, and manage everything easily.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "3️⃣ Storage Account Name",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "This is the unique name for your storage account (like a domain name).",
+              "It must be globally unique, lowercase, and 3–24 characters long.",
+              "This name will form part of the URL to access your data."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Example:If your name is blobohg365dev",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "4️⃣ Preferred Storage Type",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Select what kind of storage service you want to enable.",
+              "The default (and most common) option is:Azure Blob Storage or Azure Data Lake Storage Gen2"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This means your account will support:",
+            "heading_level": null
+          },
+          {
+            "type": "list",
+            "items": [
+              "Blob storage (for files, media, etc.)",
+              "Data Lake capabilities (for analytics and big data processing)"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Tip: Keep this as default unless you have a specific need for file shares           or queue services.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "5️⃣ Performance & Redundancy Settings",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Performance:",
+            "heading_level": null
+          },
+          {
+            "type": "list",
+            "items": [
+              "Standard: Uses HDD-based storage — cheaper, good for general use.",
+              "Premium: Uses SSD-based storage — faster, ideal for workloads needing low latency (like databases or VMs)."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "You selected: Standard (recommended)",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "Redundancy",
+            "heading_level": 3
+          },
+          {
+            "type": "paragraph",
+            "text": "Defines how Azure replicates your data to keep it safe.",
+            "heading_level": null
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Option",
+                "Meaning",
+                "Copies of Data"
+              ],
+              [
+                "LRS (Locally-redundant storage)",
+                "Stores 3 copies of your data within a single data center",
+                "3"
+              ],
+              [
+                "ZRS (Zone-redundant storage)",
+                "Stores copies across 3 availability zones within the same region",
+                "3"
+              ],
+              [
+                "GRS (Geo-redundant storage)",
+                "Replicates your data to a secondary region for disaster recovery",
+                "6"
+              ],
+              [
+                "RA-GRS (Read-access Geo-redundant storage)",
+                "Same as GRS, but also provides read access to the secondary region",
+                "6"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "You selected: LRS (best for development and testing).",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking Review + Create, the Blob Storage section will appear. Review all the details you have provided, and then click the Create button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-storage-04.png",
+            "alt": "Image 4"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, we will be taken to the Overview page. Then click Go to resource.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-storage-05.png",
+            "alt": "Image 5"
           },
           {
             "type": "heading",
@@ -574,29 +604,23 @@
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "In the left-hand menu, click on Resource groups",
-            "heading_level": 3
-          },
-          {
-            "type": "heading",
-            "text": "Find and click your resource group — in your case:👉 rg-ohg365-dev",
-            "heading_level": 3
+            "type": "list",
+            "items": [
+              "In the left-hand menu, click on Resource groups",
+              "Find and click your resource group — in your case:→ rg-ohg365-dev"
+            ]
           },
           {
             "type": "heading",
             "text": "Check for the Storage Account",
-            "heading_level": 3
+            "heading_level": 2
           },
           {
-            "type": "paragraph",
-            "text": "Inside the Overview tab of your resource group, you’ll see a list of all resources.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Look for an item that looks like this:Type: Storage accountName: blobohg365dev (or whatever name you used)",
-            "heading_level": null
+            "type": "list",
+            "items": [
+              "Inside the Overview tab of your resource group, you’ll see a list of all resources.",
+              "Look for an item that looks like this:Type: Storage accountName: blobohg365dev (or whatever name you used)"
+            ]
           },
           {
             "type": "paragraph",
@@ -605,17 +629,212 @@
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-06.png",
-            "alt": "Azure Blob Storage illustration 6"
-          },
+            "src": "/tutorials/azure/images/blob-storage-06.png",
+            "alt": "Image 6"
+          }
+        ]
+      },
+      {
+        "title": "Types of Azure Storage Services",
+        "content": [
           {
             "type": "heading",
-            "text": "Types of Azure Storage Services:",
+            "text": "Types of Azure Storage Services",
             "heading_level": 2
           },
           {
             "type": "paragraph",
             "text": "Azure Storage provides four main types of services under one Storage Account.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "heading",
+            "text": "1️⃣ Blob Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used to store unstructured or semi-structured data like files, images, videos, logs, and backups.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹  Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Stores data as Blobs (Binary Large Objects) inside containers.",
+              "Best for storing flat files and large objects that don’t fit in a database.",
+              "Data can be text, binary, documents, media, or backups."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing images or videos for websites",
+              "Backups and archives",
+              "Data lake for analytics",
+              "Hosting static websites"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example File Types:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": ".txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "2️⃣ File Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used for shared file storage that behaves like a traditional file server.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹  Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides Azure Files, a fully managed file share in the cloud.",
+              "Uses the SMB (Server Message Block) or NFS (Network File System) protocols the same used by on-premises file servers.",
+              "Can be mounted to Windows, Linux, or macOS systems."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Shared network drives for teams",
+              "“Lift and shift” of on-premises file servers",
+              "Application configurations shared across multiple VMs"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You have multiple virtual machines needing access to the same configuration files. You can store those files in Azure Files and mount them just like a shared folder.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "3️⃣ Queue Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used for reliable messaging between application components.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹  Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides asynchronous communication between services using message queues.",
+              "Stores messages in a queue, which can be processed later by background services or workers.",
+              "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Sending background jobs (like image processing or email sending)",
+              "Decoupling app components for scalability",
+              "Event-driven architecture"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "A web app uploads an image → sends a message to a queue → a background process picks it up and resizes the image.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "4️⃣ Table Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used to store large amounts of structured, non-relational data.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹 Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides NoSQL key-value storage.",
+              "Stores data in tables with entities (rows) and properties (columns).",
+              "Flexible schema you can add or remove columns anytime."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing user profiles, IoT data, or metadata",
+              "Fast lookups by key",
+              "Lightweight applications needing scalable, cheap storage"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You have millions of IoT sensors sending temperature data you can store this efficiently in Azure Table Storage.",
             "heading_level": null
           },
           {
@@ -630,289 +849,28 @@
               [
                 "Blob Service",
                 "Unstructured / Semi-structured",
-                "Stores large objects (files, media, backups)",
+                "Stores large objects such as files and media",
                 "Images, videos, logs"
               ],
               [
                 "File Service",
                 "File-based",
-                "Shared file storage via SMB/NFS",
-                "Shared drives, app configs"
+                "Provides shared file storage using SMB/NFS protocols",
+                "Shared drives, application configurations"
               ],
               [
                 "Queue Service",
                 "Messaging",
-                "Message-based communication between components",
+                "Enables message-based communication between application components",
                 "Background tasks, event processing"
               ],
               [
                 "Table Service",
                 "Structured (NoSQL)",
-                "Key-value, schema-less table storage",
+                "Schema-less key-value table storage",
                 "User profiles, IoT data"
               ]
-            ],
-            "caption": "Types of Azure Storage Services"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-07.png",
-            "alt": "Azure Blob Storage illustration 7"
-          },
-          {
-            "type": "heading",
-            "text": "Blob Service",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "🧱 Used to store unstructured or semi-structured data like files, images, videos, logs, and backups.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🔹 Description:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Stores data as Blobs (Binary Large Objects) inside containers.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Best for storing flat files and large objects that don’t fit in a database.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data can be text, binary, documents, media, or backups.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💾 Example Uses:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing images or videos for websites",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Backups and archives",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data lake for analytics",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Hosting static websites",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📦 Example File Types:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": ".txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "File Service",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "📁 Used for shared file storage that behaves like a traditional file server.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🔹 Description:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Provides Azure Files, a fully managed file share in the cloud.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Uses the SMB (Server Message Block) or NFS (Network File System) protocols — the same used by on-premises file servers.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Can be mounted to Windows, Linux, or macOS systems.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💾 Example Uses:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Shared network drives for teams",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "“Lift and shift” of on-premises file servers",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Application configurations shared across multiple VMs",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📦 Example Scenario:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "You have multiple virtual machines needing access to the same configuration files — you can store those files in Azure Files and mount them just like a shared folder.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Queue Service",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "📬 Used for reliable messaging between application components.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🔹 Description:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Provides asynchronous communication between services using message queues.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Stores messages in a queue, which can be processed later by background services or workers.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💾 Example Uses:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Sending background jobs (like image processing or email sending)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Decoupling app components for scalability",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Event-driven architecture",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📦 Example Scenario:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "A web app uploads an image → sends a message to a queue → a background process picks it up and resizes the image.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Table Service",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "🧮 Used to store large amounts of structured, non-relational data.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🔹 Description:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Provides NoSQL key-value storage.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Stores data in tables with entities (rows) and properties (columns).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Flexible schema — you can add or remove columns anytime.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💾 Example Uses:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing user profiles, IoT data, or metadata",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Fast lookups by key",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Lightweight applications needing scalable, cheap storage",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📦 Example Scenario:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "You have millions of IoT sensors sending temperature data — you can store this efficiently in Azure Table Storage.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "🧠 Summary Table",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storage ServiceType of DataDescriptionExample Use CaseBlob ServiceUnstructured / Semi-structuredStores large objects (files, media, backups)Images, videos, logsFile ServiceFile-basedShared file storage via SMB/NFSShared drives, app configsQueue ServiceMessagingMessage-based communication between componentsBackground tasks, event processingTable ServiceStructured (NoSQL)Key-value, schema-less table storageUser profiles, IoT data",
-            "heading_level": null
+            ]
           },
           {
             "type": "heading",
@@ -926,63 +884,62 @@
           },
           {
             "type": "paragraph",
-            "text": "Go to your Storage Account",
+            "text": "→ Go to your Storage Account",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-08.png",
-            "alt": "Azure Blob Storage illustration 8"
+            "src": "/tutorials/azure/images/blob-services-02.png",
+            "alt": "Image 2"
           },
           {
             "type": "paragraph",
-            "text": "Under Data storage, click Containers → This is where your blobs live.",
+            "text": "—> Under Data storage, click Containers → This is where your blobs live.",
             "heading_level": null
           },
           {
             "type": "paragraph",
-            "text": "Click ➕ Container to create one:",
+            "text": "—> Click ➕ Container to create one:",
             "heading_level": null
           },
           {
-            "type": "paragraph",
-            "text": "Name: images, videos, or backups (any name)",
-            "heading_level": null
+            "type": "list",
+            "items": [
+              "Name: images, videos, or backups (any name)"
+            ]
           },
           {
-            "type": "paragraph",
+            "type": "heading",
             "text": "Public access level:",
-            "heading_level": null
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Private (default) – Only you can access",
+              "Blob (anonymous read) – Anyone with the link can read blobs",
+              "Container (public) – Everyone can see contents"
+            ]
           },
           {
             "type": "paragraph",
-            "text": "Private (default) – Only you can access",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Blob (anonymous read) – Anyone with the link can read blobs",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Container (public) – Everyone can see contents",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Click Create",
+            "text": "Click on Add container. A new container panel will appear on the right side. Enter the container name and then click the Create button.",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-09.png",
-            "alt": "Azure Blob Storage illustration 9"
+            "src": "/tutorials/azure/images/blob-services-03.png",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, the container section will display the list of container names.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-10.png",
-            "alt": "Azure Blob Storage illustration 10"
+            "src": "/tutorials/azure/images/blob-services-04.png",
+            "alt": "Image 4"
           },
           {
             "type": "heading",
@@ -990,39 +947,16 @@
             "heading_level": 2
           },
           {
-            "type": "paragraph",
-            "text": "Click your new container (e.g., images)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Click Upload",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Once uploaded, you can:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "View Properties (size, type, last modified)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Get the URL to access the file",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Change the access tier",
-            "heading_level": null
+            "type": "list",
+            "items": [
+              "Click your new container (e.g., images)",
+              "Click Upload",
+              "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
+              "Once uploaded, you can:",
+              "View Properties (size, type, last modified)",
+              "Get the URL to access the file",
+              "Change the access tier"
+            ]
           },
           {
             "type": "paragraph",
@@ -1045,1042 +979,124 @@
             "heading_level": null
           },
           {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-11.png",
-            "alt": "Azure Blob Storage illustration 11"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-12.png",
-            "alt": "Azure Blob Storage illustration 12"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-13.png",
-            "alt": "Azure Blob Storage illustration 13"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-14.png",
-            "alt": "Azure Blob Storage illustration 14"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-15.png",
-            "alt": "Azure Blob Storage illustration 15"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-16.png",
-            "alt": "Azure Blob Storage illustration 16"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-17.png",
-            "alt": "Azure Blob Storage illustration 17"
-          },
-          {
-            "type": "table",
-            "rows": [
-              [
-                "Blob Type",
-                "Structure",
-                "Read/Write Behavior",
-                "Common Use"
-              ],
-              [
-                "Block Blob",
-                "Data stored as blocks",
-                "Upload/replace blocks",
-                "Files, media, documents"
-              ],
-              [
-                "Append Blob",
-                "Sequentially added blocks",
-                "Append-only",
-                "Logs, telemetry, streaming data"
-              ],
-              [
-                "Page Blob",
-                "Fixed 512-byte pages",
-                "Random read/write",
-                "VM disks, large databases"
-              ]
-            ],
-            "caption": "Types of Blobs"
-          },
-          {
-            "type": "heading",
-            "text": "Types of Blob Types:",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-13.png",
-            "alt": "Azure Blob Storage illustration 17"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-18.png",
-            "alt": "Azure Blob Storage illustration 18"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-19.png",
-            "alt": "Azure Blob Storage illustration 19"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-20.png",
-            "alt": "Azure Blob Storage illustration 20"
-          },
-          {
             "type": "paragraph",
-            "text": "Blob TypeBest ForExample Use🧱 Block BlobStoring text or binary dataImages, videos, documents, CSVs📜 Append BlobData that is constantly added to (append-only)Logs, telemetry, audit data📄 Page BlobRandom read/write accessVirtual machine disks (VHD files)",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "🧱 Block Blob",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "Most common blob type used in Azure.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💡 What it is:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data is split into blocks, and each block is identified by a block ID.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "You can upload or update blocks individually and commit them together.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "✅ Use Cases:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing images, videos, PDFs, and backups.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data files for analytics (CSV, JSON, Parquet).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Large files uploaded in chunks.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📘 Example:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "You upload a 500 MB video file — Azure divides it into smaller blocks and uploads each part separately for speed and reliability.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📜 Append Blob",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "Special type of blob for data that grows over time.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💡 What it is:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Optimized for append operations — you can only add new data to the end, not modify or delete existing data.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Each time you add new information, it’s appended to the blob.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "✅ Use Cases:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing log files.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Application telemetry or diagnostics data.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Streaming data that’s constantly being added.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📘 Example:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "You’re logging website visits. Each time a new visitor arrives, their data (timestamp, IP, etc.) is appended to the existing log file.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📄 Page Blob",
-            "heading_level": 3
-          },
-          {
-            "type": "paragraph",
-            "text": "Designed for random read/write operations.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "💡 What it is:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data is stored in fixed-size 512-byte pages.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Allows fast read and write access to specific parts of the blob.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "✅ Use Cases:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing Azure VM disks (OS and data disks).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Large databases that require random access.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Any workload that reads/writes frequently to specific sections of a file.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "📘 Example:",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "When you start an Azure Virtual Machine, its disk (a .vhd file) is stored as a Page Blob, allowing the VM to quickly read or write data anywhere on the disk.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Blob TypeStructureRead/Write BehaviorCommon UseBlock BlobData stored as blocksUpload/replace blocksFiles, media, documentsAppend BlobSequentially added blocksAppend-onlyLogs, telemetry, streaming dataPage BlobFixed 512-byte pagesRandom read/writeVM disks, large databases",
-            "heading_level": null
-          },
-          {
-            "type": "table",
-            "rows": [
-              [
-                "Tier",
-                "Cost",
-                "Availability",
-                "Best For"
-              ],
-              [
-                "Hot",
-                "💰 Highest cost",
-                "🔥 Always available",
-                "Frequently accessed data (e.g., active apps, websites)"
-              ],
-              [
-                "Cool",
-                "💸 Cheaper",
-                "🕓 Slight delay in access",
-                "Infrequently accessed data (e.g., monthly reports)"
-              ],
-              [
-                "Cold",
-                "💧 Cheaper than Cool",
-                "⏱️ Slower access",
-                "Rarely accessed data but still retrievable"
-              ],
-              [
-                "Archive",
-                "🧊 Cheapest",
-                "💤 Retrieval takes hours",
-                "Long-term backups, compliance storage"
-              ]
-            ],
-            "caption": "Azure Storage Access Tiers"
-          },
-          {
-            "type": "heading",
-            "text": "Types of Access Tiers:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Azure lets you store data in different tiers based on how often you need it.This helps save money 💰 by matching storage cost to usage.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "TierCostAvailabilityBest ForHot💰 Highest cost🔥 Always availableFrequently accessed data (e.g., active apps, websites)Cool💸 Cheaper🕓 Slight delay in accessInfrequently accessed data (e.g., monthly reports)Cold💧 Cheaper than Cool⏱️ Slower accessRarely accessed data but still retrievableArchive🧊 Cheapest💤 Retrieval takes hoursLong-term backups, compliance storage",
+            "text": "Click on the Add Directory option here. To create a folder.",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-13.png",
-            "alt": "Azure Blob Storage illustration 20"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-18.png",
-            "alt": "Azure Blob Storage illustration 20"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-21.png",
-            "alt": "Azure Blob Storage illustration 21"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/azure-blob-storage-22.png",
-            "alt": "Azure Blob Storage illustration 22"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "azure-data-lake",
-    "title": "Azure Data Lake Storage Gen2",
-    "sections": [
-      {
-        "title": "Azure Data Lake Storage Gen2 (ADLS Gen2)",
-        "content": [
-          {
-            "type": "heading",
-            "text": "Azure Data Lake Storage Gen2 (ADLS Gen2)",
-            "heading_level": 2
+            "src": "/tutorials/azure/images/blob-services-05.png",
+            "alt": "Image 5"
           },
           {
             "type": "paragraph",
-            "text": "Azure Data Lake Storage Gen2 is a highly scalable and securecloud storage service optimized for big data analyticsand data lakes. It builds on Azure Blob Storage capabilities but addsfile system semantics, hierarchical namespaces, and enhanced performancefor analytics workloads.",
+            "text": "After clicking Add Directory, the Add Virtual Directory panel will appear. Enter the directory name and then click the OK button.",
             "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "ADLS Gen2 is designed to store massive volumes ofstructured, semi-structured, and unstructured data, making it ideal for big data and machine learning scenarios.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Key Features and Use Cases:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Hierarchical Namespace:Unlike traditional Blob Storage, ADLS Gen2 supports folders and directories, enabling efficient organization and faster file operations at scale.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Optimized for Analytics:Supports Hadoop Distributed File System (HDFS) and integrates seamlessly with analytics frameworks like Azure Databricks, HDInsight, and Azure Synapse Analytics.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Supports Multiple Data Types:You can store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, and more.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Security and Compliance:Provides enterprise-grade security with Azure Active Directory integration, role-based access control (RBAC), and encryption at rest and in transit.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Cost-effective and Scalable:Automatically scales to handle petabytes of data and millions of files with optimized storage tiers and pricing options.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Common Uses of ADLS Gen2:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Buildingdata lakesfor big data analytics and machine learning.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Storing large datasets forETL (Extract, Transform, Load)processes.",
-            "heading_level": 2
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-06.png",
+            "alt": "Image 6"
           },
           {
             "type": "paragraph",
-            "text": "Integrating with analytics tools to perform complex queries and transformations.",
+            "text": "Click on the Upload option here.",
             "heading_level": null
           },
           {
-            "type": "heading",
-            "text": "Secure and compliantstorage for sensitive dataand audit logs.",
-            "heading_level": 2
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-07.png",
+            "alt": "Image 7"
           },
           {
             "type": "paragraph",
-            "text": "Archiving and long-term data retention with tiered storage options.",
+            "text": "After clicking the Upload option, the Upload Blob panel will appear at the top-right corner. Then click the Browse for files button.",
             "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-08.png",
+            "alt": "Image 8"
+          },
+          {
+            "type": "paragraph",
+            "text": "Choose the file here, and then click the Open button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-09.png",
+            "alt": "Image 9"
+          },
+          {
+            "type": "paragraph",
+            "text": "Finally, click on the Upload option here.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-10.png",
+            "alt": "Image 10"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Upload option, the file will appear in the list in the Overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/blob-services-11.png",
+            "alt": "Image 11"
           }
         ]
       },
       {
-        "title": "Create an Azure Data Lake Storage",
+        "title": "Types of Blobs",
         "content": [
           {
             "type": "heading",
-            "text": "CreateanAzure Data LakeStorage",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Go to Azure Portal",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "In the search bar, type “Storage Accounts”or “ADLS Gen2”",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-38.png",
-            "alt": "ADLS - image1.png"
-          },
-          {
-            "type": "heading",
-            "text": "Click on storage accounts and click on create button",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-39.png",
-            "alt": "ADLS - image2.png"
-          },
-          {
-            "type": "heading",
-            "text": "Fill required details",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-40.png",
-            "alt": "ADLS - image3.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-41.png",
-            "alt": "ADLS - image4.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-42.png",
-            "alt": "ADLS - image5.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-43.png",
-            "alt": "ADLS - image6.png"
-          },
-          {
-            "type": "heading",
-            "text": "Navigate to Your Resource Group",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "In the left-hand menu, click onResource groups",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Find and click your resource group — in your case:👉rg-ohg365-dev",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Check for the Storage Account",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Inside theOverviewtab of your resource group, you’ll see a list of all resources.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Look for an item that looks like this:Type:Storage accountName:adlsohg365dev(or whatever name you used)",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "If it appears there,🎉congratulations — yourADLS Gen2Storage accounthas been successfully created",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/image-44.png",
-            "alt": "ADLS - image7.png"
-          },
-          {
-            "type": "heading",
-            "text": "Types of Azure Storage Services:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Azure Storage providesfour main types of servicesunder oneStorage Account.",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image8.png",
-            "alt": "ADLS - image8.png"
-          },
-          {
-            "type": "heading",
-            "text": "1️⃣Data Lake Storage",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "🧱Purpose: Designed to store large volumes of unstructured or semi-structured data such as files, images, videos, logs, and backups.🔹Key Features:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Data is stored as Blobs (Binary Large Objects) within containers.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Ideal for storing large, raw data that doesn’t fit into traditional databases.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Supports various formats: text, binary, documents, media, and backups.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "💾Common Use Cases:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Hosting media content like images and videos for websites.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Long-term storage for backups and archival data.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Centralized data lake for analytics and big data processing.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Hosting static websites.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "📦Supported File Types:.txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "2️⃣File Service",
+            "text": "Types of Blobs",
             "heading_level": 2
           },
           {
             "type": "paragraph",
-            "text": "📁Used for shared file storage that behaves like a traditional file server.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "🔹Description:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "ProvidesAzure Files, a fully managedfile sharein the cloud.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Uses theSMB (Server Message Block)orNFS (Network File System)protocols — the same used by on-premises file servers.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Can bemountedto Windows, Linux, or macOS systems.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "💾Example Uses:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Shared network drives for teams",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "“Lift and shift” of on-premises file servers",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Application configurations shared across multiple VMs",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📦Example Scenario:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "You have multiple virtual machines needing access to the same configuration files — you can store those files inAzure Filesand mount them just like a shared folder.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "3️⃣Queue Service",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "📬Used for reliable messaging between application components.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "🔹Description:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Providesasynchronous communicationbetween services using message queues.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Stores messages in aqueue, which can be processed later by background services or workers.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Ensures messages aredelivered at least onceand processed inFIFO (First-In, First-Out)order.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "💾Example Uses:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Sending background jobs (like image processing or email sending)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Decoupling app components for scalability",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Event-driven architecture",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📦Example Scenario:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "A web app uploads an image → sends a message to aqueue→ a background process picks it up and resizes the image.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "4️⃣Table Service",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "🧮Used to store large amounts of structured, non-relational data.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "🔹Description:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "ProvidesNoSQL key-value storage.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Stores data intableswithentities (rows)andproperties (columns).",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Flexible schema — you can add or remove columns anytime.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "💾Example Uses:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing user profiles, IoT data, or metadata",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Fast lookups by key",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Lightweight applications needing scalable, cheap storage",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📦Example Scenario:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "You have millions of IoT sensors sending temperature data — you can store this efficiently inAzure Table Storage.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "🧠 Summary Table",
-            "heading_level": 2
-          },
-          {
-            "type": "table",
-            "rows": [
-              [
-                "Datalake Service",
-                "Type of Data",
-                "Description",
-                "Example Use Case"
-              ],
-              [
-                "Blob Service",
-                "Unstructured / Semi-structured",
-                "Stores large objects (files, media, backups)",
-                "Images, videos, logs"
-              ],
-              [
-                "File Service",
-                "File-based",
-                "Shared file storage via SMB/NFS",
-                "Shared drives, app configs"
-              ],
-              [
-                "Queue Service",
-                "Messaging",
-                "Message-based communication between components",
-                "Background tasks, event processing"
-              ],
-              [
-                "Table Service",
-                "Structured (NoSQL)",
-                "Key-value, schema-less table storage",
-                "User profiles, IoT data"
-              ]
-            ],
-            "caption": "Azure Datalake Service Summary"
-          },
-          {
-            "type": "heading",
-            "text": "ExploreDatalakeService",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Once your storage account is created:",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Go to yourStorage Account",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image9.png",
-            "alt": "ADLS - image9.png"
-          },
-          {
-            "type": "heading",
-            "text": "UnderData storage, clickContainers→ This is where your blobs live.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Click➕Containerto create one:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Name: images, videos, or backups (any name)",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Public access level:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Private (default)– Only you can access",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Blob (anonymous read)– Anyone with the link can read blobs",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Container (public)– Everyone can see contents",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "ClickCreate",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image10.png",
-            "alt": "ADLS - image10.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image11.png",
-            "alt": "ADLS - image11.png"
-          },
-          {
-            "type": "heading",
-            "text": "Upload & Manage Blobs",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Click your new container (e.g., images)",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "ClickUpload",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Once uploaded, you can:",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "ViewProperties(size, type, last modified)",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Get theURLto access the file",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Change theaccess tier",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Storage Account",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "└──DataLakeService",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "└── Container (like a folder)",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "└── Blob (the actual file)",
+            "text": "→ click on the upload option",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image12.png",
-            "alt": "ADLS - image12.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image13.png",
-            "alt": "ADLS - image13.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image14.png",
-            "alt": "ADLS - image14.png"
+            "src": "/tutorials/azure/images/blob-types-01.png",
+            "alt": "Image 1"
           },
           {
             "type": "paragraph",
-            "text": "Subfolder:",
+            "text": "After clicking the Upload option, the Browse for Files panel will appear. Below that, the Advanced dropdown option will be visible. Click on Advanced.",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image15.png",
-            "alt": "ADLS - image15.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image16.png",
-            "alt": "ADLS - image16.png"
+            "src": "/tutorials/azure/images/blob-types-02.png",
+            "alt": "Image 2"
           },
           {
             "type": "paragraph",
-            "text": "Upload file:",
+            "text": "After clicking the Advanced option, the Blob Types will be displayed. Here, select the blob type you want.",
             "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image17.png",
-            "alt": "ADLS - image17.png"
+            "src": "/tutorials/azure/images/blob-types-03.jpg",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After selecting the blob type, all items in the folder will be displayed in the Overview page.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image18.png",
-            "alt": "ADLS - image18.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image19.png",
-            "alt": "ADLS - image19.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image20.png",
-            "alt": "ADLS - image20.png"
-          },
-          {
-            "type": "heading",
-            "text": "Types of Blob Types:",
-            "heading_level": 2
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image17.png",
-            "alt": "ADLS - image17.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image21.png",
-            "alt": "ADLS - image21.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image22.png",
-            "alt": "ADLS - image22.png"
-          },
-          {
-            "type": "image",
-            "src": "/tutorials/azure/images/adls-image23.png",
-            "alt": "ADLS - image23.png"
-          },
-          {
-            "type": "heading",
-            "text": "Blob Types Overview",
-            "heading_level": 2
+            "src": "/tutorials/azure/images/blob-types-04.png",
+            "alt": "Image 4"
           },
           {
             "type": "table",
@@ -2097,7 +1113,7 @@
               ],
               [
                 "Append Blob",
-                "Data that is constantly added to (append-only)",
+                "Data that is constantly appended (append-only)",
                 "Logs, telemetry, audit data"
               ],
               [
@@ -2105,72 +1121,57 @@
                 "Random read/write access",
                 "Virtual machine disks (VHD files)"
               ]
-            ],
-            "caption": "Blob Types and Use Cases"
+            ]
           },
           {
             "type": "heading",
-            "text": "🧱1. Block Blob",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Most common blob typeused in Azure.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "💡What it is:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Storestextandbinarydata (files like .txt, .jpg, .mp4, .csv, etc.)",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Data is split intoblocks, and each block is identified by a block ID.",
+            "text": "1. Block Blob",
             "heading_level": 2
           },
           {
             "type": "paragraph",
-            "text": "You can upload or update blocks individually and commit them together.",
+            "text": "Most common blob type used in Azure.",
             "heading_level": null
           },
           {
             "type": "heading",
-            "text": "✅Use Cases:",
+            "text": "What it is:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+              "Data is split into blocks, and each block is identified by a block ID.",
+              "You can upload or update blocks individually and commit them together."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "✅ Use Cases:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing images, videos, PDFs, and backups.",
+              "Data files for analytics (CSV, JSON, Parquet).",
+              "Large files uploaded in chunks."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example:",
             "heading_level": 2
           },
           {
             "type": "paragraph",
-            "text": "Storing images, videos, PDFs, and backups.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Data files for analytics (CSV, JSON, Parquet).",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Large files uploaded in chunks.",
+            "text": "You upload a 500 MB video file — Azure divides it into smaller blocks and uploads each part separately for speed and reliability.",
             "heading_level": null
           },
           {
             "type": "heading",
-            "text": "📘Example:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "You upload a 500 MB video file — Azure divides it into smallerblocksand uploads each part separately for speed and reliability.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "📜2. Append Blob",
+            "text": "2. Append Blob",
             "heading_level": 2
           },
           {
@@ -2180,42 +1181,32 @@
           },
           {
             "type": "heading",
-            "text": "💡What it is:",
+            "text": "What it is:",
             "heading_level": 2
           },
           {
+            "type": "list",
+            "items": [
+              "Optimized for append operations — you can only add new data to the end, not modify or delete existing data.",
+              "Each time you add new information, it’s appended to the blob."
+            ]
+          },
+          {
             "type": "heading",
-            "text": "Optimized forappend operations— you can only add new data to the end, not modify or delete existing data.",
+            "text": "✅ Use Cases:",
             "heading_level": 2
           },
           {
-            "type": "paragraph",
-            "text": "Each time you add new information, it’s appended to the blob.",
-            "heading_level": null
+            "type": "list",
+            "items": [
+              "Storing log files.",
+              "Application telemetry or diagnostics data.",
+              "Streaming data that’s constantly being added."
+            ]
           },
           {
             "type": "heading",
-            "text": "✅Use Cases:",
-            "heading_level": 2
-          },
-          {
-            "type": "paragraph",
-            "text": "Storing log files.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Application telemetry or diagnostics data.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Streaming data that’s constantly being added.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📘Example:",
+            "text": "Example:",
             "heading_level": 2
           },
           {
@@ -2225,7 +1216,7 @@
           },
           {
             "type": "heading",
-            "text": "📄3. Page Blob",
+            "text": "3. Page Blob",
             "heading_level": 2
           },
           {
@@ -2235,58 +1226,39 @@
           },
           {
             "type": "heading",
-            "text": "💡What it is:",
+            "text": "What it is:",
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "Data is stored infixed-size 512-byte pages.",
-            "heading_level": 2
+            "type": "list",
+            "items": [
+              "Data is stored in fixed-size 512-byte pages.",
+              "Allows fast read and write access to specific parts of the blob.",
+              "Commonly used for storing Virtual Hard Disk (VHD) files that power Azure Virtual Machines."
+            ]
           },
           {
             "type": "heading",
-            "text": "Allowsfast read and write accessto specific parts of the blob.",
+            "text": "✅ Use Cases:",
             "heading_level": 2
           },
           {
-            "type": "heading",
-            "text": "Commonly used for storingVirtual Hard Disk (VHD)files that power Azure Virtual Machines.",
-            "heading_level": 2
+            "type": "list",
+            "items": [
+              "Storing Azure VM disks (OS and data disks).",
+              "Large databases that require random access.",
+              "Any workload that reads/writes frequently to specific sections of a file."
+            ]
           },
           {
             "type": "heading",
-            "text": "✅Use Cases:",
+            "text": "Example:",
             "heading_level": 2
           },
           {
             "type": "paragraph",
-            "text": "Storing Azure VM disks (OS and data disks).",
+            "text": "When you start an Azure Virtual Machine, its disk (a .vhd file) is stored as a Page Blob, allowing the VM to quickly read or write data anywhere on the disk.",
             "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Large databases that require random access.",
-            "heading_level": null
-          },
-          {
-            "type": "paragraph",
-            "text": "Any workload that reads/writes frequently to specific sections of a file.",
-            "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "📘Example:",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "When you start an Azure Virtual Machine, its disk (a .vhdfile) is stored as aPage Blob, allowing the VM to quickly read or write data anywhere on the disk.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Blob Types: Structure & Behavior",
-            "heading_level": 2
           },
           {
             "type": "table",
@@ -2299,8 +1271,8 @@
               ],
               [
                 "Block Blob",
-                "Data stored as blocks",
-                "Upload/replace blocks",
+                "Data storedas blocks",
+                "Upload or replace blocks",
                 "Files, media, documents"
               ],
               [
@@ -2313,25 +1285,24 @@
                 "Page Blob",
                 "Fixed 512-byte pages",
                 "Random read/write",
-                "VM disks, large databases"
+                "Virtual machine disks, large databases"
               ]
-            ],
-            "caption": "Blob Structure vs Usage"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Types of Access Tiers",
+        "content": [
+          {
+            "type": "heading",
+            "text": "Types of Access Tiers",
+            "heading_level": 2
           },
           {
             "type": "paragraph",
-            "text": "Types ofAccess Tiers:",
+            "text": "Azure lets you store data in different tiers based on how often you need it. This helps save money by matching storage cost to usage.",
             "heading_level": null
-          },
-          {
-            "type": "heading",
-            "text": "Azure lets you store data indifferent tiersbased on how often you need it.This helpssave money💰by matching storage cost to usage.",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
-            "text": "Access Tier Comparison",
-            "heading_level": 2
           },
           {
             "type": "table",
@@ -2366,28 +1337,942 @@
                 "Retrieval takes hours",
                 "Long-term backups, compliance storage"
               ]
-            ],
-            "caption": "Azure Storage Access Tiers"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Click on the upload option for access tiers",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image17.png",
-            "alt": "ADLS - image17.png"
+            "src": "/tutorials/azure/images/blob-tiers-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Upload option, the Browse for Files panel will appear below. The Advanced dropdown option will also be visible click on it.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image21.png",
-            "alt": "ADLS - image21.png"
+            "src": "/tutorials/azure/images/blob-tiers-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Advanced option, the Access Tiers section will appear. Click on it to view all access tier types, and then select one.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image24.png",
-            "alt": "ADLS - image24.png"
+            "src": "/tutorials/azure/images/blob-tiers-03.jpg",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After selecting the access tier, the file will be uploaded to the Overview page.",
+            "heading_level": null
           },
           {
             "type": "image",
-            "src": "/tutorials/azure/images/adls-image25.png",
-            "alt": "ADLS - image25.png"
+            "src": "/tutorials/azure/images/blob-tiers-04.png",
+            "alt": "Image 4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "azure-data-lake",
+    "title": "Azure Data Lake Storage",
+    "sections": [
+      {
+        "title": "Azure Data Lake Storage Overview",
+        "content": [
+          {
+            "type": "heading",
+            "text": "Azure Data Lake Storage Gen2 (ADLS Gen2)",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Azure Data Lake Storage Gen2 is a highly scalable and secure cloud storage service optimized for big data analytics and data lakes. It builds on Azure Blob Storage capabilities but adds file system semantics, hierarchical namespaces, and enhanced performance for analytics workloads.",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "ADLS Gen2 is designed to store massive volumes of structured, semi-structured, and unstructured data, making it ideal for big data and machine learning scenarios.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "Key Features and Use Cases:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Hierarchical Namespace: Unlike traditional Blob Storage, ADLS Gen2 supports folders and directories, enabling efficient organization and faster file operations at scale.",
+              "Optimized for Analytics: Supports Hadoop Distributed File System (HDFS) and integrates seamlessly with analytics frameworks like Azure Databricks, HDInsight, and Azure Synapse Analytics.",
+              "Supports Multiple Data Types: You can store CSV, JSON, Parquet, Avro, ORC, images, videos, logs, backups, and more.",
+              "Security and Compliance: Provides enterprise-grade security with Azure Active Directory integration, role-based access control (RBAC), and encryption at rest and in transit.",
+              "Cost-effective and Scalable: Automatically scales to handle petabytes of data and millions of files with optimized storage tiers and pricing options."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Common Uses of ADLS Gen2:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Building data lakes for big data analytics and machine learning.",
+              "Storing large datasets for ETL (Extract, Transform, Load) processes.",
+              "Integrating with analytics tools to perform complex queries and transformations.",
+              "Secure and compliant storage for sensitive data and audit logs.",
+              "Archiving and long-term data retention with tiered storage options."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Create an Azure Data Lake Storage",
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "→ Go to Azure Portal",
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "In the search bar, type “Storage Accounts” or “ADLS Gen2”",
+            "heading_level": 2
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "heading",
+            "text": "Click on storage accounts and click on create button",
+            "heading_level": 2
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, the Basic Details page will appear. Fill in all the required details, and then click the Next button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-03.jpg",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Next button, the Advanced field will appear. Select the required checkbox, and then click the Review + Create button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-04.png",
+            "alt": "Image 4"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Review + Create button, the Basic and Advanced fields will be displayed. Verify all the details, and then click the Create button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-05.png",
+            "alt": "Image 5"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, you will be taken to the Overview page. Here, click Go to resource.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-06.png",
+            "alt": "Image 6"
+          },
+          {
+            "type": "heading",
+            "text": "Navigate to Your Resource Group",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "In the left-hand menu, click on Resource groups",
+              "Find and click your resource group in your case: → rg-ohg365-de"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Check for the Storage Account",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Inside the Overview tab of your resource group, you’ll see a list of all resources."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Look for an item that looks like this: Type: Storage account Name: adlsohg365dev (or whatever name you used)",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "If it appears there, 🎉 congratulations your ADLS Gen2 Storage account has been successfully created",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Go to resource option, all resource names within the resource group will be displayed in the Overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-main-07.png",
+            "alt": "Image 7"
+          }
+        ]
+      },
+      {
+        "title": "Types of Azure Storage Services in ADLS",
+        "content": [
+          {
+            "type": "heading",
+            "text": "Types of Azure Storage Services",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Azure Storage provides four main types of services under one Storage Account.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "heading",
+            "text": "1️⃣ Data Lake Storage",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Purpose: Designed to store large volumes of unstructured or semi-structured data such as files, images, videos, logs, and backups.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "Key Features:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Data is stored as Blobs (Binary Large Objects) within containers.",
+              "Ideal for storing large, raw data that doesn’t fit into traditional databases.",
+              "Supports various formats: text, binary, documents, media, and backups."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Common Use Cases:",
+            "heading_level": null
+          },
+          {
+            "type": "list",
+            "items": [
+              "Hosting media content like images and videos for websites.",
+              "Long-term storage for backups and archival data.",
+              "Centralized data lake for analytics and big data processing.",
+              "Hosting static websites."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Supported File Types: .txt, .csv, .json, .xml, .jpg, .mp4, .zip, .bak, and more.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "2️⃣ File Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used for shared file storage that behaves like a traditional file server.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹 Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides Azure Files, a fully managed file share in the cloud.",
+              "Uses the SMB (Server Message Block) or NFS (Network File System) protocols the same used by on-premises file servers.",
+              "Can be mounted to Windows, Linux, or macOS systems."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Shared network drives for teams",
+              "“Lift and shift” of on-premises file servers",
+              "Application configurations shared across multiple VMs"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You have multiple virtual machines needing access to the same configuration files. You can store those files in Azure Files and mount them just like a shared folder.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "3️⃣ Queue Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used for reliable messaging between application components.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹 Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides asynchronous communication between services using message queues.",
+              "Stores messages in a queue, which can be processed later by background services or workers.",
+              "Ensures messages are delivered at least once and processed in FIFO (First-In, First-Out) order."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Sending background jobs (like image processing or email sending)",
+              "Decoupling app components for scalability",
+              "Event-driven architecture"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "A web app uploads an image → sends a message to a queue → a background process picks it up and resizes the image.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "4️⃣ Table Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Used to store large amounts of structured, non-relational data.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "🔹 Description:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Provides NoSQL key-value storage.",
+              "Stores data in tables with entities (rows) and properties (columns).",
+              "Flexible schema you can add or remove columns anytime."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Uses:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing user profiles, IoT data, or metadata",
+              "Fast lookups by key",
+              "Lightweight applications needing scalable, cheap storage"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example Scenario:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You have millions of IoT sensors sending temperature data you can store this efficiently in Azure Table Storage.",
+            "heading_level": null
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Service",
+                "Type of Data",
+                "Description",
+                "Example Use Case"
+              ],
+              [
+                "Blob Service",
+                "Unstructured / Semi-structured",
+                "Stores large objects such as files, media, and backups",
+                "Images, videos, logs"
+              ],
+              [
+                "File Service",
+                "File-based",
+                "Provides shared file storage via SMB/NFS",
+                "Shared drives, application configurations"
+              ],
+              [
+                "Queue Service",
+                "Messaging",
+                "Enables message-based communication between application components",
+                "Background tasks, event processing"
+              ],
+              [
+                "Table Service",
+                "Structured (NoSQL)",
+                "Key-value, schema-less table storage",
+                "User profiles, IoT data"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Explore Datalake Service",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Once your storage account is created:",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Go to your Storage Account",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Under Data storage, click Containers → This is where your blobs live.",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Click ➕ Container to create one:",
+            "heading_level": null
+          },
+          {
+            "type": "list",
+            "items": [
+              "Name: images, videos, or backups (any name)"
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Public access level:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Private (default) – Only you can access",
+              "Blob (anonymous read) – Anyone with the link can read blobs",
+              "Container (public) – Everyone can see contents"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Click on the Add Container button. A new container will open, where you need to enter the container name and then click Create.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-03.jpg",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Create button, it will be created and added to the items.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-04.png",
+            "alt": "Image 4"
+          },
+          {
+            "type": "heading",
+            "text": "Upload & Manage Blobs",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Click your new container (e.g., images)",
+              "Click Upload",
+              "Choose a file from your computer (like a .jpg, .txt, or .mp4)",
+              "Once uploaded, you can:",
+              "View Properties (size, type, last modified)",
+              "Get the URL to access the file",
+              "Change the access tier"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Storage Account",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "└── DataLake Service",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "└── Container (like a folder)",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "└── Blob (the actual file)",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "→  Click on the add directory button",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-05.png",
+            "alt": "Image 5"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking Add Directory, the directory name will appear at the bottom right. Enter the folder name and then click the Save button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-06.jpg",
+            "alt": "Image 6"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Save button, the page you created will appear on the overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-07.png",
+            "alt": "Image 7"
+          },
+          {
+            "type": "paragraph",
+            "text": "Subfolder:",
+            "heading_level": null
+          },
+          {
+            "type": "paragraph",
+            "text": "Click on the Add Directory, the directory name will appear at the bottom right. Enter the folder name and then click the Save button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-08.png",
+            "alt": "Image 8"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Save button, the page you created will appear on the overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-09.png",
+            "alt": "Image 9"
+          },
+          {
+            "type": "heading",
+            "text": "Upload file:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Click on the Upload option here.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-10.png",
+            "alt": "Image 10"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Upload option, the Upload panel will appear at the top-right corner. Then click the Browse for files button, Choose the file here, and then click the Open button.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-11.png",
+            "alt": "Image 11"
+          },
+          {
+            "type": "paragraph",
+            "text": "Finally, click on the Upload option here.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-12.png",
+            "alt": "Image 12"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Upload option, the file will appear in the list in the Overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-services-13.png",
+            "alt": "Image 13"
+          }
+        ]
+      },
+      {
+        "title": "Types of Blobs in ADLS",
+        "content": [
+          {
+            "type": "heading",
+            "text": "Types of Blob Types",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Click on the upload option",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-blobs-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "Once you click the Upload option, the Browse for Files page will appear. At the bottom of that page, select the Advanced dropdown option.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-blobs-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Advanced dropdown option, the Blob Types will appear. Select the blob type you want from the list.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-blobs-03.png",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After selecting the blob type, all items will be displayed on the Overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-blobs-04.png",
+            "alt": "Image 4"
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Best For",
+                "Example Use"
+              ],
+              [
+                "Block Blob",
+                "Storing text or binary data",
+                "Images, videos, documents, CSV files"
+              ],
+              [
+                "Append Blob",
+                "Data that is constantly appended (append-only)",
+                "Logs, telemetry, audit data"
+              ],
+              [
+                "",
+                "",
+                ""
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "1. Block Blob",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Most common blob type used in Azure.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "What it is:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Stores text and binary data (files like .txt, .jpg, .mp4, .csv, etc.)",
+              "Data is split into blocks, and each block is identified by a block ID.",
+              "You can upload or update blocks individually and commit them together."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Use Cases:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing images, videos, PDFs, and backups.",
+              "Data files for analytics (CSV, JSON, Parquet).",
+              "Large files uploaded in chunks."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You upload a 500 MB video file — Azure divides it into smaller blocks and uploads each part separately for speed and reliability.",
+            "heading_level": null
+          },
+          {
+            "type": "heading",
+            "text": "2. Append Blob",
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "Special type of blob for data that grows over time.",
+            "heading_level": 2
+          },
+          {
+            "type": "heading",
+            "text": "What it is:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Optimized for append operations — you can only add new data to the end, not modify or delete existing data.",
+              "Each time you add new information, it’s appended to the blob."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Use Cases:",
+            "heading_level": 2
+          },
+          {
+            "type": "list",
+            "items": [
+              "Storing log files.",
+              "Application telemetry or diagnostics data.",
+              "Streaming data that’s constantly being added."
+            ]
+          },
+          {
+            "type": "heading",
+            "text": "Example:",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "You’re logging website visits. Each time a new visitor arrives, their data (timestamp, IP, etc.) is appended to the existing log file.",
+            "heading_level": null
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Structure",
+                "Read/Write Behavior",
+                "Common Use"
+              ],
+              [
+                "Block Blob",
+                "Data stored as blocks",
+                "Upload or replace blocks",
+                "Files, media, documents"
+              ],
+              [
+                "Append Blob",
+                "Sequentially added blocks",
+                "Append-only",
+                "Logs, telemetry, streaming data"
+              ],
+              [
+                "",
+                "",
+                "",
+                ""
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Types of Access Tiers in ADLS",
+        "content": [
+          {
+            "type": "heading",
+            "text": "Types of Access Tiers",
+            "heading_level": 2
+          },
+          {
+            "type": "paragraph",
+            "text": "Azure lets you store data in different tiers based on how often you need it.This helps save money by matching storage cost to usage.",
+            "heading_level": null
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Tier",
+                "Cost",
+                "Availability",
+                "Best For"
+              ],
+              [
+                "Hot",
+                "Highest cost",
+                "Always available",
+                "Frequently accessed data (e.g., active apps, websites)"
+              ],
+              [
+                "Cool",
+                "Cheaper",
+                "Slight delay in access",
+                "Infrequently accessed data (e.g., monthly reports)"
+              ],
+              [
+                "Cold",
+                "Cheaper than Cool",
+                "Slower access",
+                "Rarely accessed data but still retrievable"
+              ],
+              [
+                "Archive",
+                "Cheapest",
+                "Retrieval takes hours",
+                "Long-term backups, compliance storage"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "→ Click on the upload option",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-tiers-01.png",
+            "alt": "Image 1"
+          },
+          {
+            "type": "paragraph",
+            "text": "Once you click the Upload option, the Browse for Files page will appear. At the bottom of that page, select the Advanced dropdown option.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-tiers-02.png",
+            "alt": "Image 2"
+          },
+          {
+            "type": "paragraph",
+            "text": "After clicking the Advanced option, the Access Tiers section will appear. Click on it to view all access tier types, and then select one.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-tiers-03.jpg",
+            "alt": "Image 3"
+          },
+          {
+            "type": "paragraph",
+            "text": "After selecting the access tier, the file will be uploaded to the Overview page.",
+            "heading_level": null
+          },
+          {
+            "type": "image",
+            "src": "/tutorials/azure/images/adls-tiers-04.png",
+            "alt": "Image 4"
           }
         ]
       }
