@@ -17,7 +17,7 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
   if (!images.length) return null;
 
   return (
-    <div className="flex flex-col gap-8 mt-8">
+    <div className="flex flex-col gap-6 sm:gap-8 mt-6 sm:mt-8">
       {images.map((image, index) => (
         <figure
           key={`${image.src}-${index}`}
@@ -33,7 +33,7 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
             className="h-auto w-full object-contain bg-white"
           />
           {image.caption && (
-            <figcaption className="border-t border-gray-300 px-4 py-3 text-sm text-gray-700">
+            <figcaption className="border-t border-gray-300 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-700">
               {image.caption}
             </figcaption>
           )}
@@ -119,7 +119,7 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
 
     if (item.type === 'paragraph') {
       nodes.push(
-        <p key={`paragraph-${index}`} className="mb-3">
+        <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed">
           {item.text}
         </p>
       );
@@ -130,13 +130,13 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
       const level = item.heading_level ?? 2;
       if (level <= 1) {
         nodes.push(
-          <div key={`heading-${index}`} className="p-4 bg-gray-800 rounded-lg">
-            <h5 className="text-xl font-semibold text-white mb-3">{item.text}</h5>
+          <div key={`heading-${index}`} className="p-4 sm:p-5 bg-gray-800 rounded-lg">
+            <h5 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{item.text}</h5>
           </div>
         );
       } else {
         nodes.push(
-          <p key={`heading-${index}`} className="mb-3 font-bold text-gray-200">
+          <p key={`heading-${index}`} className="mb-3 font-bold text-gray-200 text-base sm:text-lg">
             {item.text}
           </p>
         );
@@ -152,14 +152,14 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
         const dataRows = rows.slice(1);
         
         nodes.push(
-          <div key={`table-${index}`} className="my-6 overflow-x-auto">
-            <table className="min-w-full border border-gray-600 text-sm">
+          <div key={`table-${index}`} className="my-6 overflow-x-auto rounded-lg border border-gray-700">
+            <table className="min-w-full text-xs sm:text-sm">
               <thead>
                 <tr className="bg-gray-700">
                   {headerRow.map((cell, cellIndex) => (
                     <th
                       key={`header-${cellIndex}`}
-                      className="border border-gray-600 px-4 py-2 text-left font-semibold text-white"
+                      className="border border-gray-600 px-3 sm:px-4 py-2 text-left font-semibold text-white whitespace-pre-wrap break-words"
                     >
                       {cell}
                     </th>
@@ -175,7 +175,7 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
                     {row.map((cell, cellIndex) => (
                       <td
                         key={`cell-${rowIndex}-${cellIndex}`}
-                        className="border border-gray-600 px-4 py-2 text-gray-300"
+                        className="border border-gray-600 px-3 sm:px-4 py-2 text-gray-300 whitespace-pre-wrap break-words"
                       >
                         {cell}
                       </td>
@@ -299,37 +299,39 @@ export default function AzureDataEngineerPage() {
       setActiveSubsection={setActiveSubsection}
       customNavigationItems={createModuleNavigationItems()}
     >
-      <div className="min-h-screen relative">
-        <div className="text-center mb-16 relative z-10">
-          <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-500/30">
-            <span className="text-blue-400 font-semibold flex items-center justify-center space-x-2">
+      <div className="min-h-screen relative px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 relative z-10">
+          <div className="inline-block mb-4 sm:mb-6 px-4 sm:px-6 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-500/30">
+            <span className="text-blue-400 font-semibold flex items-center justify-center gap-2">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.482 18.394l6.625-3.844v7.688l-6.625-3.844zm7.875-10.463L12.606 2.65l-.096.056v7.694l8.849 5.138V7.93zm-9.481 5.138l-8.85-5.138L11.48 2.65l.096.056v10.462zm-.962 1.287L2.643 8.738v7.693l6.691 3.845v-7.688z" fill="#0078D4"/>
               </svg>
               <span>Azure Data Engineer</span>
             </span>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
             Azure Basics <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">Module</span>
           </h1>
-          <p className="text-gray-400 text-xl">Learn the fundamentals of Azure cloud infrastructure and services</p>
+          <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+            Learn the fundamentals of Azure cloud infrastructure and services
+          </p>
         </div>
 
         <section
           id="azure-basics"
-          className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
+          className="bg-[#252525] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-600 scroll-mt-24 mb-16 sm:mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">Azure Basics</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Azure Basics</h3>
           
-          <div className="space-y-12 relative z-10">
+          <div className="space-y-8 sm:space-y-12 relative z-10">
             {courseContent.map(group => (
               <div
                 key={group.id}
                 id={group.id}
-                className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24 relative z-10"
+                className="bg-[#1a1a1a] rounded-xl p-4 sm:p-5 border border-gray-700 scroll-mt-24 relative z-10 shadow-lg shadow-black/20"
               >
-                <h4 className="text-2xl font-semibold text-white mb-4">{group.title}</h4>
-              <div className="space-y-6 text-gray-300">
+                <h4 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4">{group.title}</h4>
+              <div className="space-y-5 sm:space-y-6 text-gray-300 text-base sm:text-lg">
                   {group.sections.map((section, sectionIndex) => {
                     const normalizedTitle = section.title?.trim().toLowerCase();
                     const firstHeading = section.content.find(item => item.type === 'heading');
@@ -341,10 +343,10 @@ export default function AzureDataEngineerPage() {
                     );
 
                     return (
-                      <div key={`${group.id}-${sectionIndex}`} className="space-y-4">
+                      <div key={`${group.id}-${sectionIndex}`} className="space-y-3 sm:space-y-4">
                         {showSectionTitle && (
-                <div className="p-4 bg-gray-800 rounded-lg">
-                            <h5 className="text-xl font-semibold text-white mb-3">{section.title}</h5>
+                <div className="p-3 sm:p-4 bg-gray-800 rounded-lg">
+                            <h5 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{section.title}</h5>
                 </div>
                         )}
                         <SectionContent content={section.content} />

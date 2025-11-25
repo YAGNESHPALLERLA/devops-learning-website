@@ -643,7 +643,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
   }, [sectionList, setActiveSection, setActiveSubsection, externalActiveSection]);
 
   return (
-    <div className="flex min-h-screen bg-[#1a1a1a] relative">
+    <div className="flex min-h-screen bg-[#1a1a1a] relative w-full overflow-x-hidden">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -656,7 +656,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
       {!hideSidebar && (
         <aside 
           className={`
-            fixed left-0 z-30 w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+            fixed left-0 z-30 w-full max-w-xs sm:max-w-sm lg:w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
             transform transition-transform duration-300 ease-in-out
             top-0 h-screen
             lg:top-[80px] lg:h-[calc(100vh-80px)]
@@ -678,7 +678,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
       )}
 
       {/* Main Content - scrolls independently, sidebar stays fixed */}
-      <div className={`flex-1 flex flex-col ${!hideSidebar ? 'lg:ml-80' : ''} min-h-screen`}>
+      <div className={`flex-1 flex flex-col ${!hideSidebar ? 'lg:ml-80' : ''} min-h-screen w-full`}>
         {/* Mobile header */}
         <header className="lg:hidden bg-[#1a1a1a] border-b border-gray-600">
           <div className="flex items-center justify-between px-4 py-4">
@@ -709,8 +709,8 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
 
         {/* Content area - uses natural window scrolling, independent from sidebar */}
         <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20 w-full">
-          <div className="max-w-5xl mx-auto px-8 py-12">
-            <article className="prose prose-lg max-w-none text-white">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
+            <article className="max-w-none text-white leading-relaxed space-y-6 break-words">
               {children}
               {sectionList.length > 1 && resolvedActiveSection && setActiveSection && (
                 <div className="flex flex-col gap-4 mt-12 pt-8 border-t border-gray-700">
