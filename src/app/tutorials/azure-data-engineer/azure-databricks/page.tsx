@@ -251,52 +251,60 @@ const azureImages: Record<string, GalleryImage> = {
 const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
   keys.map(key => azureImages[key]).filter(Boolean);
 
-// All sections as individual navigable pages
+// Main sections for sidebar (parent sections with expandable children)
 const PAGE_HEADINGS = [
+  { id: 'azure-databricks', title: 'Azure Databricks' },
+  { id: 'databricks-sql', title: 'Databricks SQL' },
+  { id: 'data-engineering', title: 'Data Engineering' },
+  { id: 'data-lakehouse', title: 'Data Lakehouse' }
+];
+
+// All subsections in order for navigation (prev/next)
+const ALL_SUBSECTIONS = [
   // Azure Databricks subsections
-  { id: 'introduction-to-azure-databricks', title: 'Introduction to Azure Databricks' },
-  { id: 'databricks-architecture', title: 'Databricks Architecture' },
-  { id: 'common-use-cases', title: 'Common Use Cases' },
-  { id: 'core-components', title: 'Core Components' },
-  { id: 'advantages', title: 'Advantages' },
-  { id: 'how-to-create', title: 'How to Create Azure Databricks' },
-  { id: 'workspace-overview', title: 'Workspace Overview' },
-  { id: 'databricks-features', title: 'Databricks Features' },
+  'introduction-to-azure-databricks',
+  'databricks-architecture',
+  'common-use-cases',
+  'core-components',
+  'advantages',
+  'how-to-create',
+  'workspace-overview',
+  'databricks-features',
   // Databricks SQL subsections
-  { id: 'sql-editor', title: 'SQL Editor' },
-  { id: 'queries', title: 'Queries' },
-  { id: 'dashboards', title: 'Dashboards' },
-  { id: 'genie', title: 'Genie' },
-  { id: 'alerts', title: 'Alerts' },
-  { id: 'query-history', title: 'Query History' },
-  { id: 'sql-data-warehouse', title: 'SQL Data Warehouse' },
+  'sql-editor',
+  'queries',
+  'dashboards',
+  'genie',
+  'alerts',
+  'query-history',
+  'sql-data-warehouse',
   // Data Engineering subsections
-  { id: 'jobs-runs', title: "Jobs run's" },
-  { id: 'data-ingestion', title: 'Data Ingestion' },
-  { id: 'ai-ml', title: 'AI/ML' },
-  { id: 'playground', title: 'Playground' },
-  { id: 'experiments', title: 'Experiments' },
-  { id: 'features', title: 'Features' },
-  { id: 'models', title: 'Models' },
-  { id: 'serving', title: 'Serving' },
-  { id: 'notebook-level-features', title: 'Notebook-level features' },
-  { id: 'file-level-features', title: 'File-level Features' },
-  { id: 'edit-level-features', title: 'Edit level features' },
-  { id: 'view-level-features', title: 'View level features' },
-  { id: 'run-level-features', title: 'Run-level features' },
-  { id: 'help-level-features', title: 'Help-level features' },
-  { id: 'language-level-features', title: 'Language-level features' },
-  { id: 'others-features', title: 'Others features' },
+  'jobs-runs',
+  'data-ingestion',
+  'ai-ml',
+  'playground',
+  'experiments',
+  'features',
+  'models',
+  'serving',
+  'notebook-level-features',
+  'file-level-features',
+  'edit-level-features',
+  'view-level-features',
+  'run-level-features',
+  'help-level-features',
+  'language-level-features',
+  'others-features',
   // Data Lakehouse subsections
-  { id: 'what-is-data-lakehouse', title: 'What is a Data Lakehouse?' },
-  { id: 'why-need-lakehouse', title: 'Why the Need for a Lakehouse?' },
-  { id: 'core-features-lakehouse', title: 'Core Features of a Data Lakehouse' },
-  { id: 'benefits-lakehouse', title: 'Benefits of a Data Lakehouse' },
-  { id: 'lakehouse-on-databricks', title: 'Data Lakehouse on Azure Databricks' },
-  { id: 'example-use-cases', title: 'Example Use Cases' },
-  { id: 'lakehouse-vs-lake-vs-warehouse', title: 'Lakehouse vs Data Lake vs Data Warehouse' },
-  { id: 'capabilities-databricks-lakehouse', title: 'Capabilities of a Databricks Lakehouse' },
-  { id: 'lakehouse-architecture', title: 'Data Lakehouse Architecture' }
+  'what-is-data-lakehouse',
+  'why-need-lakehouse',
+  'core-features-lakehouse',
+  'benefits-lakehouse',
+  'lakehouse-on-databricks',
+  'example-use-cases',
+  'lakehouse-vs-lake-vs-warehouse',
+  'capabilities-databricks-lakehouse',
+  'lakehouse-architecture'
 ];
 
 // Group subsections by parent for conditional rendering
@@ -350,87 +358,135 @@ const SUBSECTION_PARENT: Record<string, string> = {
   'lakehouse-architecture': 'data-lakehouse'
 };
 
-// Helper function to create module-specific navigation items
+// Subsection titles for display
+const SUBSECTION_TITLES: Record<string, string> = {
+  'introduction-to-azure-databricks': 'Introduction to Azure Databricks',
+  'databricks-architecture': 'Databricks Architecture',
+  'common-use-cases': 'Common Use Cases',
+  'core-components': 'Core Components',
+  'advantages': 'Advantages',
+  'how-to-create': 'How to Create Azure Databricks',
+  'workspace-overview': 'Workspace Overview',
+  'databricks-features': 'Databricks Features',
+  'sql-editor': 'SQL Editor',
+  'queries': 'Queries',
+  'dashboards': 'Dashboards',
+  'genie': 'Genie',
+  'alerts': 'Alerts',
+  'query-history': 'Query History',
+  'sql-data-warehouse': 'SQL Data Warehouse',
+  'jobs-runs': "Jobs Run's",
+  'data-ingestion': 'Data Ingestion',
+  'ai-ml': 'AI/ML',
+  'playground': 'Playground',
+  'experiments': 'Experiments',
+  'features': 'Features',
+  'models': 'Models',
+  'serving': 'Serving',
+  'notebook-level-features': 'Notebook-level Features',
+  'file-level-features': 'File-level Features',
+  'edit-level-features': 'Edit Level Features',
+  'view-level-features': 'View Level Features',
+  'run-level-features': 'Run-level Features',
+  'help-level-features': 'Help-level Features',
+  'language-level-features': 'Language-level Features',
+  'others-features': 'Others Features',
+  'what-is-data-lakehouse': 'What is a Data Lakehouse?',
+  'why-need-lakehouse': 'Why the Need for a Lakehouse?',
+  'core-features-lakehouse': 'Core Features of a Data Lakehouse',
+  'benefits-lakehouse': 'Benefits of a Data Lakehouse',
+  'lakehouse-on-databricks': 'Data Lakehouse on Azure Databricks',
+  'example-use-cases': 'Example Use Cases',
+  'lakehouse-vs-lake-vs-warehouse': 'Lakehouse vs Data Lake vs Data Warehouse',
+  'capabilities-databricks-lakehouse': 'Capabilities of Databricks Lakehouse',
+  'lakehouse-architecture': 'Data Lakehouse Architecture'
+};
+
+// Helper function to create module-specific navigation items with parent sections and children
 const createModuleNavigationItems = (): Array<{ id: string; title: string; href: string; icon?: string; children?: Array<{ id: string; title: string; href: string }> }> => {
   const basePath = '/tutorials/azure-data-engineer/azure-databricks';
-  const subsectionTitles: Record<string, string> = {
-    'introduction-to-azure-databricks': 'Introduction to Azure Databricks',
-    'databricks-architecture': 'Databricks Architecture',
-    'common-use-cases': 'Common Use Cases',
-    'core-components': 'Core Components',
-    'advantages': 'Advantages',
-    'how-to-create': 'How to Create Azure Databricks',
-    'workspace-overview': 'Workspace Overview',
-    'databricks-features': 'Databricks Features',
-    'sql-editor': 'SQL Editor',
-    'queries': 'Queries',
-    'dashboards': 'Dashboards',
-    'genie': 'Genie',
-    'alerts': 'Alerts',
-    'query-history': 'Query History',
-    'sql-data-warehouse': 'SQL Data Warehouse',
-    'data-engineering': 'Overview',
-    'jobs-runs': "Jobs run's",
-    'data-ingestion': 'Data Ingestion',
-    'ai-ml': 'AI/ML',
-    'playground': 'Playground',
-    'experiments': 'Experiments',
-    'features': 'Features',
-    'models': 'Models',
-    'serving': 'Serving',
-    'notebook-level-features': 'Notebook-level features',
-    'file-level-features': 'File-level Features',
-    'edit-level-features': 'Edit level features',
-    'view-level-features': 'View level features',
-    'run-level-features': 'Run-level features',
-    'help-level-features': 'Help-level features',
-    'language-level-features': 'Language-level features',
-    'others-features': 'Others features',
-    'data-lakehouse-intro': 'Data Lakehouse',
-    'what-is-data-lakehouse': 'What is a Data Lakehouse?',
-    'why-need-lakehouse': 'Why the Need for a Lakehouse?',
-    'core-features-lakehouse': 'Core Features of a Data Lakehouse',
-    'benefits-lakehouse': 'Benefits of a Data Lakehouse',
-    'lakehouse-on-databricks': 'Data Lakehouse on Azure Databricks',
-    'example-use-cases': 'Example Use Cases',
-    'lakehouse-vs-lake-vs-warehouse': 'Lakehouse vs Data Lake vs Data Warehouse',
-    'capabilities-databricks-lakehouse': 'Capabilities of a Databricks Lakehouse',
-    'lakehouse-architecture': 'Data Lakehouse Architecture'
-  };
-
-  const moduleSections = PAGE_HEADINGS.map(heading => {
-    const subsections = Object.entries(SUBSECTION_PARENT)
-      .filter(([_, parent]) => parent === heading.id)
-      .map(([subsectionId, _]) => ({
-        id: subsectionId,
-        title: subsectionTitles[subsectionId] || subsectionId,
-        href: `${basePath}#${subsectionId}`
-      }));
-
-    return {
-      id: heading.id,
-      title: heading.title,
-      href: `${basePath}#${heading.id}`,
-      icon: heading.id === 'azure-databricks' ? '🔷' : heading.id === 'databricks-sql' ? '💾' : heading.id === 'data-lakehouse' ? '🏗️' : '⚙️',
-      children: subsections.length > 0 ? subsections : undefined
-    };
-  });
-
-  return moduleSections;
+  
+  return [
+    {
+      id: 'azure-databricks',
+      title: 'Azure Databricks',
+      href: `${basePath}#introduction-to-azure-databricks`,
+      icon: '🔷',
+      children: AZURE_DATABRICKS_SECTIONS.map(id => ({
+        id,
+        title: SUBSECTION_TITLES[id] || id,
+        href: `${basePath}#${id}`
+      }))
+    },
+    {
+      id: 'databricks-sql',
+      title: 'Databricks SQL',
+      href: `${basePath}#sql-editor`,
+      icon: '💾',
+      children: DATABRICKS_SQL_SECTIONS.map(id => ({
+        id,
+        title: SUBSECTION_TITLES[id] || id,
+        href: `${basePath}#${id}`
+      }))
+    },
+    {
+      id: 'data-engineering',
+      title: 'Data Engineering',
+      href: `${basePath}#jobs-runs`,
+      icon: '⚙️',
+      children: DATA_ENGINEERING_SECTIONS.map(id => ({
+        id,
+        title: SUBSECTION_TITLES[id] || id,
+        href: `${basePath}#${id}`
+      }))
+    },
+    {
+      id: 'data-lakehouse',
+      title: 'Data Lakehouse',
+      href: `${basePath}#what-is-data-lakehouse`,
+      icon: '🏗️',
+      children: DATA_LAKEHOUSE_SECTIONS.map(id => ({
+        id,
+        title: SUBSECTION_TITLES[id] || id,
+        href: `${basePath}#${id}`
+      }))
+    }
+  ];
 };
 
 export default function AzureDatabricksPage() {
+  // activeSection stores the currently displayed subsection (e.g., 'introduction-to-azure-databricks')
   const [activeSection, setActiveSection] = useState('introduction-to-azure-databricks');
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
 
+  // Get the parent section for the current subsection
+  const getParentSection = (subsectionId: string): string => {
+    return SUBSECTION_PARENT[subsectionId] || 'azure-databricks';
+  };
+
   // Custom setActiveSection that handles navigation
   const handleSetActiveSection = (sectionId: string) => {
-    // All sections are now individual pages
-    setActiveSection(sectionId);
-    setActiveSubsection(null);
-    // Update URL hash
-    window.history.replaceState(null, '', `#${sectionId}`);
+    // Check if it's a parent section (clicked on main section header)
+    const isParentSection = PAGE_HEADINGS.some(h => h.id === sectionId);
+    
+    if (isParentSection) {
+      // Navigate to first subsection of this parent
+      let firstSubsection = '';
+      if (sectionId === 'azure-databricks') firstSubsection = 'introduction-to-azure-databricks';
+      else if (sectionId === 'databricks-sql') firstSubsection = 'sql-editor';
+      else if (sectionId === 'data-engineering') firstSubsection = 'jobs-runs';
+      else if (sectionId === 'data-lakehouse') firstSubsection = 'what-is-data-lakehouse';
+      
+      setActiveSection(firstSubsection);
+      setActiveSubsection(null);
+      window.history.replaceState(null, '', `#${firstSubsection}`);
+    } else {
+      // It's a subsection, set it directly
+      setActiveSection(sectionId);
+      setActiveSubsection(null);
+      window.history.replaceState(null, '', `#${sectionId}`);
+    }
   };
 
   // Handle URL hash changes
@@ -443,10 +499,13 @@ export default function AzureDatabricksPage() {
         return;
       }
 
-      // Check if hash is a valid section
-      if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
+      // Check if hash is a valid subsection
+      if (ALL_SUBSECTIONS.includes(hash)) {
         setActiveSection(hash);
         setActiveSubsection(null);
+      } else if (PAGE_HEADINGS.some(h => h.id === hash)) {
+        // It's a parent section, navigate to first subsection
+        handleSetActiveSection(hash);
       } else {
         // Default to first section
         setActiveSection('introduction-to-azure-databricks');
@@ -460,6 +519,7 @@ export default function AzureDatabricksPage() {
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Scroll to top after section change
@@ -472,31 +532,34 @@ export default function AzureDatabricksPage() {
     }
   }, [activeSection]);
 
-  // — current section index for navigation
-  const getCurrentSectionIndex = () => {
-    return PAGE_HEADINGS.findIndex(heading => heading.id === activeSection);
+  // Get current subsection index for navigation
+  const getCurrentSubsectionIndex = () => {
+    return ALL_SUBSECTIONS.indexOf(activeSection);
   };
 
-  // Navigation functions
+  // Navigation functions using ALL_SUBSECTIONS for prev/next
   const goToNextSection = () => {
-    const currentIndex = getCurrentSectionIndex();
-    if (currentIndex < PAGE_HEADINGS.length - 1) {
-      const nextSection = PAGE_HEADINGS[currentIndex + 1];
-      handleSetActiveSection(nextSection.id);
+    const currentIndex = getCurrentSubsectionIndex();
+    if (currentIndex < ALL_SUBSECTIONS.length - 1) {
+      const nextSubsection = ALL_SUBSECTIONS[currentIndex + 1];
+      handleSetActiveSection(nextSubsection);
     }
   };
 
   const goToPreviousSection = () => {
-    const currentIndex = getCurrentSectionIndex();
+    const currentIndex = getCurrentSubsectionIndex();
     if (currentIndex > 0) {
-      const prevSection = PAGE_HEADINGS[currentIndex - 1];
-      handleSetActiveSection(prevSection.id);
+      const prevSubsection = ALL_SUBSECTIONS[currentIndex - 1];
+      handleSetActiveSection(prevSubsection);
     }
   };
 
-  const currentIndex = getCurrentSectionIndex();
-  const hasNext = currentIndex < PAGE_HEADINGS.length - 1;
+  const currentIndex = getCurrentSubsectionIndex();
+  const hasNext = currentIndex < ALL_SUBSECTIONS.length - 1;
   const hasPrevious = currentIndex > 0;
+  
+  // Get current parent section for highlighting in sidebar
+  const currentParentSection = getParentSection(activeSection);
 
   return (
     <TechLayout 
@@ -507,6 +570,7 @@ export default function AzureDatabricksPage() {
       activeSubsection={activeSubsection}
       setActiveSubsection={setActiveSubsection}
       customNavigationItems={createModuleNavigationItems()}
+      hideNavButtons={true}
     >
       <div className="min-h-screen">
         {/* Header */}
@@ -528,10 +592,12 @@ export default function AzureDatabricksPage() {
         {/* Azure Databricks Section */}
         {AZURE_DATABRICKS_SECTIONS.includes(activeSection) && (
         <section
-          id="azure-databricks"
+          id={activeSection}
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">Azure Databricks</h3>
+          <h3 className="text-3xl font-bold text-white mb-6">
+            {SUBSECTION_TITLES[activeSection] || activeSection}
+          </h3>
           
           <div className="space-y-12">
             {/* Introduction to Azure Databricks */}
@@ -1360,10 +1426,12 @@ export default function AzureDatabricksPage() {
         {/* Databricks SQL Section */}
         {DATABRICKS_SQL_SECTIONS.includes(activeSection) && (
         <section
-          id="databricks-sql"
+          id={activeSection}
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">Databricks SQL</h3>
+          <h3 className="text-3xl font-bold text-white mb-6">
+            {SUBSECTION_TITLES[activeSection] || activeSection}
+          </h3>
           
           <div className="space-y-12">
             <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
@@ -2093,11 +2161,12 @@ export default function AzureDatabricksPage() {
 
         {/* Data Engineering Section */}
         {DATA_ENGINEERING_SECTIONS.includes(activeSection) && (
-        <section id="azure-databricks-1" className="space-y-8 scroll-mt-24">
+        <section id={activeSection} className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20">
+          <h3 className="text-3xl font-bold text-white mb-6">
+            {SUBSECTION_TITLES[activeSection] || activeSection}
+          </h3>
           <div className="space-y-8">
-            {/* Data Engineering - Main Heading */}
-            <div id="data-engineering" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h3 className="text-3xl font-bold text-white mb-6">Data Engineering</h3>
+            <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
               
               {/* Jobs run's - 1st subheading */}
               <div id="jobs-runs" className="mb-8" style={{ display: activeSection === 'jobs-runs' ? 'block' : 'none' }}>
@@ -3587,11 +3656,12 @@ export default function AzureDatabricksPage() {
 
         {/* Data Lakehouse Section */}
         {DATA_LAKEHOUSE_SECTIONS.includes(activeSection) && (
-        <section id="data-lakehouse" className="space-y-8 scroll-mt-24">
+        <section id={activeSection} className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20">
+          <h3 className="text-3xl font-bold text-white mb-6">
+            {SUBSECTION_TITLES[activeSection] || activeSection}
+          </h3>
           <div className="space-y-8">
-            {/* Data Lakehouse - Main Heading */}
             <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h3 className="text-3xl font-bold text-white mb-6">Data Lakehouse</h3>
               
               {/* Data Lakehouse Introduction */}
               <div id="data-lakehouse-intro" className="mb-8">
@@ -3943,13 +4013,13 @@ export default function AzureDatabricksPage() {
             <span>Previous</span>
             {hasPrevious && (
               <span className="text-sm text-gray-400">
-                {PAGE_HEADINGS[currentIndex - 1]?.title}
+                {SUBSECTION_TITLES[ALL_SUBSECTIONS[currentIndex - 1]] || ALL_SUBSECTIONS[currentIndex - 1]}
               </span>
             )}
           </button>
 
           <div className="text-sm text-gray-400">
-            {currentIndex + 1} of {PAGE_HEADINGS.length}
+            {currentIndex + 1} of {ALL_SUBSECTIONS.length}
           </div>
 
           <button
@@ -3964,7 +4034,7 @@ export default function AzureDatabricksPage() {
             <span>Next</span>
             {hasNext && (
               <span className="text-sm text-gray-400">
-                {PAGE_HEADINGS[currentIndex + 1]?.title}
+                {SUBSECTION_TITLES[ALL_SUBSECTIONS[currentIndex + 1]] || ALL_SUBSECTIONS[currentIndex + 1]}
               </span>
             )}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

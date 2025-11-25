@@ -18,7 +18,7 @@ export async function POST(_request: NextRequest) {
     let user = await db.collection('website-users').findOne({ email: email.toLowerCase().trim() });
     let userSource = 'website-users';
     
-    // If not found, check 'users' collection (Jobcy users, but also has website users for compatibility)
+    // If not found, check 'users' collection
     if (!user) {
       user = await db.collection('users').findOne({ email: email.toLowerCase().trim() });
       userSource = 'users';

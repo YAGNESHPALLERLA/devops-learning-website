@@ -132,7 +132,7 @@ function RegisterForm() {
         setIsSuccess(true);
         
         // Auto login after successful registration
-        const loginResponse = await fetch(`/api/jobcy/login`, {
+        const loginResponse = await fetch(`/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

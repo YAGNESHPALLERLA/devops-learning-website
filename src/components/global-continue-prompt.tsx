@@ -35,11 +35,6 @@ const excludedRoutes = [
   '/signup',
   '/register',
   '/continue',
-  '/jobcy/user/auth/login',
-  '/jobcy/user/auth/signup',
-  '/jobcy/hr/auth/login',
-  '/jobcy/admin/auth/login',
-  '/jobcy/company/auth/login',
 ];
 
 // Only show modal for tutorials dropdown routes

@@ -137,7 +137,7 @@ export default function ContinueModal({ registeredEmail, redirectTo, onClose }: 
 
           {/* Info Text */}
           <p className="text-xs text-gray-500 text-center mt-6">
-            Sign in to access tutorials, courses, and Jobcy portal
+            Sign in to access tutorials and courses
           </p>
         </div>
       </div>

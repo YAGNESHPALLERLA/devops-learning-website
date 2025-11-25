@@ -21,14 +21,10 @@ export default function LoginPrompt() {
     }
     hasStartedTimerRef.current = false;
 
-    // Don't show on login/signup pages or Jobcy auth pages
+    // Don't show on login/signup pages
     const isAuthPage = 
       pathname === "/login" ||
-      pathname === "/signup" ||
-      pathname.startsWith("/jobcy/user/auth") ||
-      pathname.startsWith("/jobcy/hr/auth") ||
-      pathname.startsWith("/jobcy/admin/auth") ||
-      pathname.startsWith("/jobcy/company/auth");
+      pathname === "/signup";
 
     if (isAuthPage) {
       setShowModal(false);
@@ -62,11 +58,7 @@ export default function LoginPrompt() {
           const currentPath = window.location.pathname;
           const stillAuthPage = 
             currentPath === "/login" ||
-            currentPath === "/signup" ||
-            currentPath.startsWith("/jobcy/user/auth") ||
-            currentPath.startsWith("/jobcy/hr/auth") ||
-            currentPath.startsWith("/jobcy/admin/auth") ||
-            currentPath.startsWith("/jobcy/company/auth");
+            currentPath === "/signup";
           
           if (!stillAuthPage) {
             setShowModal(true);

@@ -22,7 +22,7 @@ export async function connectDB(): Promise<Db> {
 
   try {
     await client.connect();
-    db = client.db('jobcy-data');
+    db = client.db('ohg365-data');
     console.log('✅ MongoDB connected successfully');
     return db;
   } catch (error) {

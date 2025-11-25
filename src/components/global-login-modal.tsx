@@ -71,7 +71,7 @@ export default function GlobalLoginModal({ isOpen, onClose }: GlobalLoginModalPr
     setLoginError("");
 
     try {
-      const response = await fetch(`/api/jobcy/login`, {
+      const response = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -222,12 +222,12 @@ export default function GlobalLoginModal({ isOpen, onClose }: GlobalLoginModalPr
           <p className="text-xs text-gray-500">
             Don't have an account?{" "}
             <a
-              href="/jobcy/user/auth/signup"
+              href="/signup"
               className="text-rose-400 hover:text-rose-300 font-medium"
               onClick={(e) => {
                 e.preventDefault();
                 onClose();
-                router.push("/jobcy/user/auth/signup");
+                router.push("/signup");
               }}
             >
               Sign up

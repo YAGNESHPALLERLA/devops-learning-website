@@ -125,7 +125,7 @@ function ActiveLoginForm() {
     setLoginError("");
 
     try {
-      const response = await fetch(`/api/jobcy/login`, {
+      const response = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -148,12 +148,6 @@ function ActiveLoginForm() {
         // Redirect based on role or redirect parameter
         if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
           router.push(redirectTo);
-        } else if (data.user.role === "admin") {
-          router.push("/jobcy/admin/dashboard");
-        } else if (data.user.role === "hr") {
-          router.push("/jobcy/hr/dashboard");
-        } else if (data.user.role === "company") {
-          router.push("/jobcy/company/dashboard");
         } else {
           router.push("/");
         }
@@ -181,8 +175,7 @@ function ActiveLoginForm() {
               </div>
             </Link>
             <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-            <p className="text-gray-400">Sign in to access tutorials, courses, and Jobcy portal</p>
-            <p className="text-xs text-gray-500 mt-1">Same credentials work for both main website and Jobcy</p>
+            <p className="text-gray-400">Sign in to access tutorials and courses</p>
           </div>
 
           {/* Error Message */}
@@ -279,7 +272,7 @@ function ActiveLoginForm() {
               </Link>
             </p>
             <p className="text-xs text-gray-500">
-              Same credentials work for both main website and Jobcy portal
+              Your credentials for accessing all features
             </p>
           </div>
         </div>

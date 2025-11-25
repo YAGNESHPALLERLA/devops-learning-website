@@ -14,6 +14,7 @@ interface TechLayoutProps {
   setActiveSubsection?: (section: string | null) => void;
   hideSidebar?: boolean;
   customNavigationItems?: SidebarItem[];
+  hideNavButtons?: boolean;
 }
 
 interface SidebarItem {
@@ -525,7 +526,7 @@ const getTechNavigationItems = (tech: string): SidebarItem[] => {
   return [...baseItems, ...(techItems[tech as keyof typeof techItems] || [])];
 };
 
-export default function TechLayout({ children, onThisPage = [], technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection, hideSidebar = false, customNavigationItems }: TechLayoutProps) {
+export default function TechLayout({ children, onThisPage = [], technology, activeSection: externalActiveSection, setActiveSection: externalSetActiveSection, activeSubsection, setActiveSubsection, hideSidebar = false, customNavigationItems, hideNavButtons = false }: TechLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [internalActiveSection, setInternalActiveSection] = useState('');
 
@@ -729,7 +730,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
             <article className="max-w-none text-white leading-relaxed space-y-6 break-words">
               {children}
-              {sectionList.length > 1 && resolvedActiveSection && setActiveSection && (
+              {!hideNavButtons && sectionList.length > 1 && resolvedActiveSection && setActiveSection && (
                 <div className="flex flex-col gap-4 mt-12 pt-8 border-t border-gray-700">
                   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <button

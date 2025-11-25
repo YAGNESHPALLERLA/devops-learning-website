@@ -113,7 +113,7 @@ function SignupForm() {
         setIsSuccess(true);
         
         // Auto login after successful signup
-        const loginResponse = await fetch(`/api/jobcy/login`, {
+        const loginResponse = await fetch(`/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -133,12 +133,6 @@ function SignupForm() {
             // Prioritize redirect parameter (especially for tutorials)
             if (redirectTo && redirectTo !== "/" && redirectTo !== "/login" && redirectTo !== "/signup") {
               router.push(redirectTo);
-            } else if (loginData.user.role === "admin") {
-              router.push("/jobcy/admin/dashboard");
-            } else if (loginData.user.role === "hr") {
-              router.push("/jobcy/hr/dashboard");
-            } else if (loginData.user.role === "company") {
-              router.push("/jobcy/company/dashboard");
             } else {
               router.push("/");
             }
@@ -352,7 +346,7 @@ function SignupForm() {
               </Link>
             </p>
             <p className="text-sm text-gray-500">
-              Your account works for both the main website and Jobcy portal
+              Your account for accessing all features
             </p>
           </div>
         </div>

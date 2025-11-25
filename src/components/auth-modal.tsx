@@ -115,7 +115,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoginError("");
 
     try {
-      const response = await fetch(`/api/jobcy/login`, {
+      const response = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,7 +165,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
         setSignupError(data.error || data.message || "Registration failed");
       } else {
         // Auto login after signup
-        const loginResponse = await fetch(`/api/jobcy/login`, {
+        const loginResponse = await fetch(`/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -522,7 +522,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
             )}
           </p>
           <p className="text-xs text-gray-600 mt-2">
-            Your account works for both the main website and Jobcy portal
+            Your account for accessing all features
           </p>
         </div>
       </div>

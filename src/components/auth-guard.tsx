@@ -11,11 +11,6 @@ const publicRoutes = [
   "/signup",
   "/register",
   "/continue",
-  "/jobcy/user/auth/login",
-  "/jobcy/user/auth/signup",
-  "/jobcy/hr/auth/login",
-  "/jobcy/admin/auth/login",
-  "/jobcy/company/auth/login",
 ];
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
@@ -30,9 +25,8 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
 
     const currentPath = window.location.pathname;
-    const isJobcyRoute = currentPath.startsWith("/jobcy");
 
-    if (!AUTH_SYSTEM_AVAILABLE && !isJobcyRoute) {
+    if (!AUTH_SYSTEM_AVAILABLE) {
       setIsAuthenticated(true);
       return;
     }
@@ -165,37 +159,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
           return;
         }
         
-        // Token is valid - extract and store registered email from user object
-        let registeredEmail = localStorage.getItem("registeredEmail");
-        
-        // If no registeredEmail, try to extract from user object
-        if (!registeredEmail || registeredEmail.trim() === '') {
-          const userStr = localStorage.getItem("user");
-          console.log('[AUTH_GUARD] Checking user object for email, userStr exists:', !!userStr);
-          if (userStr) {
-            try {
-              const user = JSON.parse(userStr);
-              console.log('[AUTH_GUARD] Parsed user object:', user);
-              if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
-                registeredEmail = user.email.trim();
-                console.log('[AUTH_GUARD] Found email in user object:', registeredEmail);
-                if (registeredEmail) {
-                  localStorage.setItem("registeredEmail", registeredEmail);
-                }
-              }
-            } catch (e) {
-              console.error('[AUTH_GUARD] Error parsing user object:', e);
-            }
-          }
-        }
-        
-        // Token is valid - allow access regardless of registeredEmail
-        // registeredEmail is only used for the "continue" modal, not for blocking access
-        if (registeredEmail && registeredEmail.trim() !== '') {
-          console.log('[AUTH_GUARD] ✅ Token valid and registered email exists:', registeredEmail, '- allowing access (modal will show)');
-        } else {
-          console.log('[AUTH_GUARD] ✅ Token valid but no registered email - allowing access anyway (token is sufficient)');
-        }
+        // Token is valid
         setIsAuthenticated(true);
       } catch {
         // Invalid token format
@@ -238,7 +202,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       pathname === route || pathname.startsWith(route)
     );
 
-    if (!AUTH_SYSTEM_AVAILABLE && !pathname.startsWith("/jobcy")) {
+    if (!AUTH_SYSTEM_AVAILABLE) {
       setIsAuthenticated(true);
       return;
     }
@@ -276,37 +240,6 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
     
     if (isValid) {
-      // Token is valid - extract and store registered email from user object
-      let registeredEmail = localStorage.getItem("registeredEmail");
-      
-      // If no registeredEmail, try to extract from user object
-      if (!registeredEmail || registeredEmail.trim() === '') {
-        const userStr = localStorage.getItem("user");
-        console.log('[AUTH_GUARD] Checking user object for email (non-tutorial), userStr exists:', !!userStr);
-        if (userStr) {
-          try {
-            const user = JSON.parse(userStr);
-            console.log('[AUTH_GUARD] Parsed user object (non-tutorial):', user);
-            if (user && user.email && typeof user.email === 'string' && user.email.trim() !== '') {
-              registeredEmail = user.email.trim();
-              console.log('[AUTH_GUARD] Found email in user object (non-tutorial):', registeredEmail);
-              if (registeredEmail) {
-                localStorage.setItem("registeredEmail", registeredEmail);
-              }
-            }
-          } catch (e) {
-            console.error('[AUTH_GUARD] Error parsing user object (non-tutorial):', e);
-          }
-        }
-      }
-      
-      // Token is valid - allow access regardless of registeredEmail
-      // registeredEmail is only used for the "continue" modal, not for blocking access
-      if (registeredEmail && registeredEmail.trim() !== '') {
-        console.log('[AUTH_GUARD] ✅ Token valid and registered email exists (non-tutorial route):', registeredEmail, '- allowing access (modal will show)');
-      } else {
-        console.log('[AUTH_GUARD] ✅ Token valid but no registered email (non-tutorial route) - allowing access anyway (token is sufficient)');
-      }
       setIsAuthenticated(true);
     } else {
       if (isTutorialDropdownRoute) {
@@ -349,4 +282,3 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
