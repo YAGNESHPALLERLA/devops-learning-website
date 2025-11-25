@@ -135,7 +135,7 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
         );
       } else {
         nodes.push(
-          <p key={`heading-${index}`} className="mb-3 font-semibold text-gray-200">
+          <p key={`heading-${index}`} className="mb-3 font-bold text-gray-200">
             {item.text}
           </p>
         );

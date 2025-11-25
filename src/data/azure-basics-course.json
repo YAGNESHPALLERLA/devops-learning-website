@@ -8,12 +8,12 @@
         "content": [
           {
             "type": "heading",
-            "text": "1. Azure hierarchy",
+            "text": "Azure hierarchy",
             "heading_level": 1
           },
           {
             "type": "heading",
-            "text": "1. Management Groups (The Top-Level)",
+            "text": "Management Groups (The Top-Level)",
             "heading_level": 2
           },
           {
@@ -33,7 +33,7 @@
           },
           {
             "type": "heading",
-            "text": "2. Subscriptions (Middle Layer)",
+            "text": "Subscriptions (Middle Layer)",
             "heading_level": 2
           },
           {
@@ -53,7 +53,7 @@
           },
           {
             "type": "heading",
-            "text": "3. Resource Groups (Sub-Containers)",
+            "text": "Resource Groups (Sub-Containers)",
             "heading_level": 2
           },
           {
@@ -73,7 +73,7 @@
           },
           {
             "type": "heading",
-            "text": "4. Resources (The Actual Items)",
+            "text": "Resources (The Actual Items)",
             "heading_level": 2
           },
           {
@@ -325,7 +325,7 @@
         "content": [
           {
             "type": "heading",
-            "text": "3. Azure Blob Storage",
+            "text": "Azure Blob Storage",
             "heading_level": 1
           },
           {
@@ -370,7 +370,7 @@
           },
           {
             "type": "heading",
-            "text": "3.1 Create an Azure Blob Storage:",
+            "text": "Create an Azure Blob Storage:",
             "heading_level": 2
           },
           {
@@ -410,7 +410,7 @@
           },
           {
             "type": "heading",
-            "text": "1️⃣ Subscription",
+            "text": "Subscription",
             "heading_level": 3
           },
           {
@@ -430,7 +430,7 @@
           },
           {
             "type": "heading",
-            "text": "2️⃣ Resource Group",
+            "text": "Resource Group",
             "heading_level": 3
           },
           {
@@ -450,7 +450,7 @@
           },
           {
             "type": "heading",
-            "text": "3️⃣ Storage Account Name",
+            "text": "Storage Account Name",
             "heading_level": 3
           },
           {
@@ -475,7 +475,7 @@
           },
           {
             "type": "heading",
-            "text": "4️⃣ Preferred Storage Type",
+            "text": "Preferred Storage Type",
             "heading_level": 3
           },
           {
@@ -510,7 +510,7 @@
           },
           {
             "type": "heading",
-            "text": "5️⃣ Performance & Redundancy Settings",
+            "text": "Performance & Redundancy Settings",
             "heading_level": 3
           },
           {
@@ -610,7 +610,7 @@
           },
           {
             "type": "heading",
-            "text": "3.2 Types of Azure Storage Services:",
+            "text": "Types of Azure Storage Services:",
             "heading_level": 2
           },
           {
@@ -625,7 +625,7 @@
           },
           {
             "type": "heading",
-            "text": "1️⃣ Blob Service",
+            "text": "Blob Service",
             "heading_level": 3
           },
           {
@@ -690,7 +690,7 @@
           },
           {
             "type": "heading",
-            "text": "2️⃣ File Service",
+            "text": "File Service",
             "heading_level": 3
           },
           {
@@ -750,7 +750,7 @@
           },
           {
             "type": "heading",
-            "text": "3️⃣ Queue Service",
+            "text": "Queue Service",
             "heading_level": 3
           },
           {
@@ -810,7 +810,7 @@
           },
           {
             "type": "heading",
-            "text": "4️⃣ Table Service",
+            "text": "Table Service",
             "heading_level": 3
           },
           {
@@ -1075,7 +1075,7 @@
           },
           {
             "type": "heading",
-            "text": "🧱 1. Block Blob",
+            "text": "🧱 Block Blob",
             "heading_level": 3
           },
           {
@@ -1135,7 +1135,7 @@
           },
           {
             "type": "heading",
-            "text": "📜 2. Append Blob",
+            "text": "📜 Append Blob",
             "heading_level": 3
           },
           {
@@ -1190,7 +1190,7 @@
           },
           {
             "type": "heading",
-            "text": "📄 3. Page Blob",
+            "text": "📄 Page Blob",
             "heading_level": 3
           },
           {
