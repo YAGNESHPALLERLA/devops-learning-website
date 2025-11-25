@@ -656,21 +656,38 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
       {!hideSidebar && (
         <aside 
           className={`
-            fixed left-0 z-30 w-full max-w-xs sm:max-w-sm lg:w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+            fixed left-0 z-50 w-full max-w-xs sm:max-w-sm lg:w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
             transform transition-transform duration-300 ease-in-out
             top-0 h-screen
             lg:top-[80px] lg:h-[calc(100vh-80px)]
-            lg:translate-x-0
+            lg:translate-x-0 lg:z-30
             ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
             overflow-hidden
             will-change-transform
            `}
         >
+          {/* Mobile close button */}
+          <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-600 bg-[#1a1a1a]">
+            <span className="text-white font-semibold">Menu</span>
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-200"
+              aria-label="Close sidebar"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <Sidebar
             items={navigationItems}
             onThisPage={sectionList}
             activeSection={resolvedActiveSection}
-            setActiveSection={setActiveSection}
+            setActiveSection={(sectionId: string) => {
+              setActiveSection(sectionId);
+              // Close sidebar on mobile after selection
+              setSidebarOpen(false);
+            }}
             activeSubsection={activeSubsection}
             setActiveSubsection={setActiveSubsection}
           />
