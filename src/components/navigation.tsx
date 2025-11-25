@@ -63,15 +63,13 @@ export default function Navigation() {
       <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Terminal
       </Link>
-      {/* Apply Jobs button disabled */}
-      {/* <Link 
-        href="/jobcy"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative px-4 py-2 bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold rounded-lg shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/50 hover:bg-gradient-to-r hover:from-red-600 hover:to-rose-700 hover:text-white transform hover:-translate-y-1 transition-all duration-300 animate-pulse hover:animate-none overflow-hidden whitespace-nowrap"
+      <button
+        disabled
+        className="relative px-4 py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-bold rounded-lg shadow-lg shadow-gray-500/30 cursor-not-allowed opacity-60 overflow-hidden whitespace-nowrap"
+        aria-label="Apply Jobs (Disabled)"
       >
         💼 Apply Jobs
-      </Link> */}
+      </button>
     </div>
   );
 }
