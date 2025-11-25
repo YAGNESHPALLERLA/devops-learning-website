@@ -251,12 +251,59 @@ const azureImages: Record<string, GalleryImage> = {
 const getImages = (...keys: (keyof typeof azureImages)[]): GalleryImage[] =>
   keys.map(key => azureImages[key]).filter(Boolean);
 
+// All sections as individual navigable pages
 const PAGE_HEADINGS = [
-  { id: 'azure-databricks', title: 'Azure Databricks' },
-  { id: 'databricks-sql', title: 'Databricks SQL' },
-  { id: 'azure-databricks-1', title: 'Data Engineering' },
-  { id: 'data-lakehouse', title: 'Data Lakehouse' }
+  // Azure Databricks subsections
+  { id: 'introduction-to-azure-databricks', title: 'Introduction to Azure Databricks' },
+  { id: 'databricks-architecture', title: 'Databricks Architecture' },
+  { id: 'common-use-cases', title: 'Common Use Cases' },
+  { id: 'core-components', title: 'Core Components' },
+  { id: 'advantages', title: 'Advantages' },
+  { id: 'how-to-create', title: 'How to Create Azure Databricks' },
+  { id: 'workspace-overview', title: 'Workspace Overview' },
+  { id: 'databricks-features', title: 'Databricks Features' },
+  // Databricks SQL subsections
+  { id: 'sql-editor', title: 'SQL Editor' },
+  { id: 'queries', title: 'Queries' },
+  { id: 'dashboards', title: 'Dashboards' },
+  { id: 'genie', title: 'Genie' },
+  { id: 'alerts', title: 'Alerts' },
+  { id: 'query-history', title: 'Query History' },
+  { id: 'sql-data-warehouse', title: 'SQL Data Warehouse' },
+  // Data Engineering subsections
+  { id: 'jobs-runs', title: "Jobs run's" },
+  { id: 'data-ingestion', title: 'Data Ingestion' },
+  { id: 'ai-ml', title: 'AI/ML' },
+  { id: 'playground', title: 'Playground' },
+  { id: 'experiments', title: 'Experiments' },
+  { id: 'features', title: 'Features' },
+  { id: 'models', title: 'Models' },
+  { id: 'serving', title: 'Serving' },
+  { id: 'notebook-level-features', title: 'Notebook-level features' },
+  { id: 'file-level-features', title: 'File-level Features' },
+  { id: 'edit-level-features', title: 'Edit level features' },
+  { id: 'view-level-features', title: 'View level features' },
+  { id: 'run-level-features', title: 'Run-level features' },
+  { id: 'help-level-features', title: 'Help-level features' },
+  { id: 'language-level-features', title: 'Language-level features' },
+  { id: 'others-features', title: 'Others features' },
+  // Data Lakehouse subsections
+  { id: 'what-is-data-lakehouse', title: 'What is a Data Lakehouse?' },
+  { id: 'why-need-lakehouse', title: 'Why the Need for a Lakehouse?' },
+  { id: 'core-features-lakehouse', title: 'Core Features of a Data Lakehouse' },
+  { id: 'benefits-lakehouse', title: 'Benefits of a Data Lakehouse' },
+  { id: 'lakehouse-on-databricks', title: 'Data Lakehouse on Azure Databricks' },
+  { id: 'example-use-cases', title: 'Example Use Cases' },
+  { id: 'lakehouse-vs-lake-vs-warehouse', title: 'Lakehouse vs Data Lake vs Data Warehouse' },
+  { id: 'capabilities-databricks-lakehouse', title: 'Capabilities of a Databricks Lakehouse' },
+  { id: 'lakehouse-architecture', title: 'Data Lakehouse Architecture' }
 ];
+
+// Group subsections by parent for conditional rendering
+const AZURE_DATABRICKS_SECTIONS = ['introduction-to-azure-databricks', 'databricks-architecture', 'common-use-cases', 'core-components', 'advantages', 'how-to-create', 'workspace-overview', 'databricks-features'];
+const DATABRICKS_SQL_SECTIONS = ['sql-editor', 'queries', 'dashboards', 'genie', 'alerts', 'query-history', 'sql-data-warehouse'];
+const DATA_ENGINEERING_SECTIONS = ['jobs-runs', 'data-ingestion', 'ai-ml', 'playground', 'experiments', 'features', 'models', 'serving', 'notebook-level-features', 'file-level-features', 'edit-level-features', 'view-level-features', 'run-level-features', 'help-level-features', 'language-level-features', 'others-features'];
+const DATA_LAKEHOUSE_SECTIONS = ['what-is-data-lakehouse', 'why-need-lakehouse', 'core-features-lakehouse', 'benefits-lakehouse', 'lakehouse-on-databricks', 'example-use-cases', 'lakehouse-vs-lake-vs-warehouse', 'capabilities-databricks-lakehouse', 'lakehouse-architecture'];
 
 const SUBSECTION_PARENT: Record<string, string> = {
   'introduction-to-azure-databricks': 'azure-databricks',
@@ -373,26 +420,17 @@ const createModuleNavigationItems = (): Array<{ id: string; title: string; href:
 };
 
 export default function AzureDatabricksPage() {
-  const [activeSection, setActiveSection] = useState('azure-databricks');
+  const [activeSection, setActiveSection] = useState('introduction-to-azure-databricks');
   const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
   const pageHeadings = PAGE_HEADINGS;
 
-  // Custom setActiveSection that handles child items correctly
+  // Custom setActiveSection that handles navigation
   const handleSetActiveSection = (sectionId: string) => {
-    // Check if this is a direct section (not a subsection)
-    if (PAGE_HEADINGS.some(heading => heading.id === sectionId)) {
-      setActiveSection(sectionId);
-      setActiveSubsection(null);
-      // Update URL hash
-      window.history.replaceState(null, '', `#${sectionId}`);
-    } else {
-      // It's a subsection, find its parent
-      const parentSection = SUBSECTION_PARENT[sectionId] || 'azure-databricks';
-      setActiveSection(parentSection);
-      setActiveSubsection(sectionId);
-      // Update URL hash
-      window.history.replaceState(null, '', `#${sectionId}`);
-    }
+    // All sections are now individual pages
+    setActiveSection(sectionId);
+    setActiveSubsection(null);
+    // Update URL hash
+    window.history.replaceState(null, '', `#${sectionId}`);
   };
 
   // Handle URL hash changes
@@ -400,20 +438,19 @@ export default function AzureDatabricksPage() {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
       if (!hash) {
-        setActiveSection('azure-databricks');
+        setActiveSection('introduction-to-azure-databricks');
         setActiveSubsection(null);
         return;
       }
 
-      // Check if hash is a direct section
+      // Check if hash is a valid section
       if (PAGE_HEADINGS.some(heading => heading.id === hash)) {
         setActiveSection(hash);
         setActiveSubsection(null);
       } else {
-        // It's a subsection, find parent
-        const parentSection = SUBSECTION_PARENT[hash] || 'azure-basics';
-        setActiveSection(parentSection);
-        setActiveSubsection(hash);
+        // Default to first section
+        setActiveSection('introduction-to-azure-databricks');
+        setActiveSubsection(null);
       }
     };
 
@@ -425,24 +462,15 @@ export default function AzureDatabricksPage() {
     };
   }, []);
 
-  // Scroll to active section after it renders
+  // Scroll to top after section change
   useEffect(() => {
     if (activeSection) {
       // Small delay to ensure DOM is updated
       setTimeout(() => {
-        const element = document.getElementById(activeSection);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (activeSubsection) {
-          // Try scrolling to subsection if main section not found
-          const subElement = document.getElementById(activeSubsection);
-          if (subElement) {
-            subElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      }, 150);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     }
-  }, [activeSection, activeSubsection]);
+  }, [activeSection]);
 
   // — current section index for navigation
   const getCurrentSectionIndex = () => {
@@ -498,7 +526,7 @@ export default function AzureDatabricksPage() {
         </div>
 
         {/* Azure Databricks Section */}
-        {activeSection === 'azure-databricks' && (
+        {AZURE_DATABRICKS_SECTIONS.includes(activeSection) && (
         <section
           id="azure-databricks"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
@@ -507,7 +535,7 @@ export default function AzureDatabricksPage() {
           
           <div className="space-y-12">
             {/* Introduction to Azure Databricks */}
-            <div id="introduction-to-azure-databricks" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="introduction-to-azure-databricks" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'introduction-to-azure-databricks' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Introduction to Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div>
@@ -568,7 +596,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Databricks Architecture */}
-            <div id="databricks-architecture" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="databricks-architecture" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'databricks-architecture' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Databricks Architecture</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -642,7 +670,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Common Use Cases */}
-            <div id="common-use-cases" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="common-use-cases" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'common-use-cases' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Common Use Cases of Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3">
@@ -678,7 +706,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Core Components */}
-            <div id="core-components" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="core-components" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'core-components' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Core Components of Azure Databricks</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -734,7 +762,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Advantages */}
-            <div id="advantages" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="advantages" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'advantages' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Advantages of Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3">
@@ -773,7 +801,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* How to Create */}
-            <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'how-to-create' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">How to Create Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-4">
@@ -837,7 +865,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Workspace Overview */}
-            <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'workspace-overview' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Databricks Workspace Overview</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3 mb-4">
@@ -920,7 +948,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Databricks Features */}
-            <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'databricks-features' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Databricks Features</h4>
               <div className="space-y-8 text-gray-300">
                 {/* Workspace */}
@@ -1330,7 +1358,7 @@ export default function AzureDatabricksPage() {
         )}
 
         {/* Databricks SQL Section */}
-        {activeSection === 'databricks-sql' && (
+        {DATABRICKS_SQL_SECTIONS.includes(activeSection) && (
         <section
           id="databricks-sql"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
@@ -1352,7 +1380,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* SQL Editor */}
-            <div id="sql-editor" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="sql-editor" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'sql-editor' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">SQL Editor</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1504,7 +1532,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Queries */}
-            <div id="queries" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="queries" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'queries' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Queries</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1535,7 +1563,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Dashboards */}
-            <div id="dashboards" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="dashboards" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'dashboards' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Dashboards</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1600,7 +1628,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Genie */}
-            <div id="genie" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="genie" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'genie' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Genie</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1689,7 +1717,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Alerts */}
-            <div id="alerts" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="alerts" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'alerts' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Alerts</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1791,7 +1819,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Query History */}
-            <div id="query-history" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="query-history" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'query-history' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">Query History</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -1897,7 +1925,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* SQL Data Warehouse */}
-            <div id="sql-data-warehouse" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="sql-data-warehouse" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'sql-data-warehouse' ? 'block' : 'none' }}>
               <h4 className="text-2xl font-semibold text-white mb-4">SQL Data Warehouse</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
@@ -2064,7 +2092,7 @@ export default function AzureDatabricksPage() {
         )}
 
         {/* Data Engineering Section */}
-        {activeSection === 'azure-databricks-1' && (
+        {DATA_ENGINEERING_SECTIONS.includes(activeSection) && (
         <section id="azure-databricks-1" className="space-y-8 scroll-mt-24">
           <div className="space-y-8">
             {/* Data Engineering - Main Heading */}
@@ -2072,7 +2100,7 @@ export default function AzureDatabricksPage() {
               <h3 className="text-3xl font-bold text-white mb-6">Data Engineering</h3>
               
               {/* Jobs run's - 1st subheading */}
-              <div id="jobs-runs" className="mb-8">
+              <div id="jobs-runs" className="mb-8" style={{ display: activeSection === 'jobs-runs' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Jobs run's</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2159,7 +2187,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Data Ingestion - 2nd subheading */}
-              <div id="data-ingestion" className="mb-8">
+              <div id="data-ingestion" className="mb-8" style={{ display: activeSection === 'data-ingestion' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Data Ingestion</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2278,11 +2306,11 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* AI/ML - Main Heading */}
-            <div id="ai-ml" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="ai-ml" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'ai-ml' ? 'block' : 'none' }}>
               <h3 className="text-3xl font-bold text-white mb-6">AI/ML</h3>
               
               {/* Playground - 1st subheading */}
-              <div id="playground" className="mb-8">
+              <div id="playground" className="mb-8" style={{ display: activeSection === 'playground' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Playground</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2415,7 +2443,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Experiments - 2nd subheading */}
-              <div id="experiments" className="mb-8">
+              <div id="experiments" className="mb-8" style={{ display: activeSection === 'experiments' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Experiments</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2572,7 +2600,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Features - 3rd subheading */}
-              <div id="features" className="mb-8">
+              <div id="features" className="mb-8" style={{ display: activeSection === 'features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2746,7 +2774,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Models - 4th subheading */}
-              <div id="models" className="mb-8">
+              <div id="models" className="mb-8" style={{ display: activeSection === 'models' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Models</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2810,7 +2838,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Serving - 5th subheading */}
-              <div id="serving" className="mb-8">
+              <div id="serving" className="mb-8" style={{ display: activeSection === 'serving' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Serving</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -2969,7 +2997,7 @@ export default function AzureDatabricksPage() {
             </div>
 
             {/* Notebook-level features - Main Heading */}
-            <div id="notebook-level-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
+            <div id="notebook-level-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24" style={{ display: activeSection === 'notebook-level-features' ? 'block' : 'none' }}>
               <h3 className="text-3xl font-bold text-white mb-6">Notebook-level features</h3>
               
               <div className="space-y-4 text-gray-300 mb-8">
@@ -3075,7 +3103,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* File-level Features - 1st subheading */}
-              <div id="file-level-features" className="mb-8">
+              <div id="file-level-features" className="mb-8" style={{ display: activeSection === 'file-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">File-level Features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -3163,7 +3191,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Edit level features - 2nd subheading */}
-              <div id="edit-level-features" className="mb-8">
+              <div id="edit-level-features" className="mb-8" style={{ display: activeSection === 'edit-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Edit level features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -3237,7 +3265,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* View level features - 3rd subheading */}
-              <div id="view-level-features" className="mb-8">
+              <div id="view-level-features" className="mb-8" style={{ display: activeSection === 'view-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">View level features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -3301,7 +3329,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Run-level features - 4th subheading */}
-              <div id="run-level-features" className="mb-8">
+              <div id="run-level-features" className="mb-8" style={{ display: activeSection === 'run-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Run-level features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -3380,7 +3408,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Help-level features - 5th subheading */}
-              <div id="help-level-features" className="mb-8">
+              <div id="help-level-features" className="mb-8" style={{ display: activeSection === 'help-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Help-level features</h4>
                 <div className="space-y-4 text-gray-300">
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
@@ -3441,7 +3469,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Language-level features - 6th subheading */}
-              <div id="language-level-features" className="mb-8">
+              <div id="language-level-features" className="mb-8" style={{ display: activeSection === 'language-level-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Language-level features</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>
@@ -3504,7 +3532,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Others features - 7th subheading */}
-              <div id="others-features" className="mb-8">
+              <div id="others-features" className="mb-8" style={{ display: activeSection === 'others-features' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Others features</h4>
                 <div className="space-y-4 text-gray-300">
                   <div className="p-4 bg-gray-800 rounded-lg mt-4">
@@ -3558,7 +3586,7 @@ export default function AzureDatabricksPage() {
         )}
 
         {/* Data Lakehouse Section */}
-        {activeSection === 'data-lakehouse' && (
+        {DATA_LAKEHOUSE_SECTIONS.includes(activeSection) && (
         <section id="data-lakehouse" className="space-y-8 scroll-mt-24">
           <div className="space-y-8">
             {/* Data Lakehouse - Main Heading */}
@@ -3645,7 +3673,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* What is a Data Lakehouse? */}
-              <div id="what-is-data-lakehouse" className="mb-8">
+              <div id="what-is-data-lakehouse" className="mb-8" style={{ display: activeSection === 'what-is-data-lakehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">What is a Data Lakehouse?</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>A data lakehouse is a modern way to store and manage data. It brings together the best parts of data lakes and data warehouses into one system.</p>
@@ -3659,7 +3687,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Why the Need for a Lakehouse? */}
-              <div id="why-need-lakehouse" className="mb-8">
+              <div id="why-need-lakehouse" className="mb-8" style={{ display: activeSection === 'why-need-lakehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Why the Need for a Lakehouse?</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>Traditionally, organizations used:</p>
@@ -3679,7 +3707,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Core Features of a Data Lakehouse */}
-              <div id="core-features-lakehouse" className="mb-8">
+              <div id="core-features-lakehouse" className="mb-8" style={{ display: activeSection === 'core-features-lakehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Core Features of a Data Lakehouse</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>Here are the main features that make a lakehouse powerful:</p>
@@ -3708,7 +3736,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Benefits of a Data Lakehouse */}
-              <div id="benefits-lakehouse" className="mb-8">
+              <div id="benefits-lakehouse" className="mb-8" style={{ display: activeSection === 'benefits-lakehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Benefits of a Data Lakehouse</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>A lakehouse provides several advantages over traditional data systems:</p>
@@ -3726,7 +3754,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Data Lakehouse on Azure Databricks */}
-              <div id="lakehouse-on-databricks" className="mb-8">
+              <div id="lakehouse-on-databricks" className="mb-8" style={{ display: activeSection === 'lakehouse-on-databricks' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Data Lakehouse on Azure Databricks</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>Azure Databricks is one of the best platforms to build and manage a lakehouse. It combines:</p>
@@ -3749,7 +3777,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Example Use Cases */}
-              <div id="example-use-cases" className="mb-8">
+              <div id="example-use-cases" className="mb-8" style={{ display: activeSection === 'example-use-cases' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Example Use Cases</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>A data lakehouse can be used for:</p>
@@ -3764,7 +3792,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Lakehouse vs Data Lake vs Data Warehouse */}
-              <div id="lakehouse-vs-lake-vs-warehouse" className="mb-8">
+              <div id="lakehouse-vs-lake-vs-warehouse" className="mb-8" style={{ display: activeSection === 'lakehouse-vs-lake-vs-warehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Lakehouse vs Data Lake vs Data Warehouse</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>Over the years, data management systems have evolved from data warehouses, to data lakes, and now to data lakehouses — each solving different challenges and enabling new ways to use data for analytics, business intelligence (BI), and machine learning (ML).</p>
@@ -3799,7 +3827,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Capabilities of a Databricks Lakehouse */}
-              <div id="capabilities-databricks-lakehouse" className="mb-8">
+              <div id="capabilities-databricks-lakehouse" className="mb-8" style={{ display: activeSection === 'capabilities-databricks-lakehouse' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Capabilities of a Databricks Lakehouse</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>A Databricks Lakehouse brings together the best features of data lakes and data warehouses into a single, powerful platform. It removes the need to maintain separate systems for analytics, machine learning (ML), and business intelligence (BI), helping organizations manage all their data workloads in one unified environment.</p>
@@ -3823,7 +3851,7 @@ export default function AzureDatabricksPage() {
               </div>
 
               {/* Data Lakehouse Architecture */}
-              <div id="lakehouse-architecture" className="mb-8">
+              <div id="lakehouse-architecture" className="mb-8" style={{ display: activeSection === 'lakehouse-architecture' ? 'block' : 'none' }}>
                 <h4 className="text-2xl font-semibold text-white mb-4">Data Lakehouse Architecture</h4>
                 <div className="space-y-4 text-gray-300">
                   <p>A Data Lakehouse is a modern data architecture that blends the best parts of data lakes and data warehouses. It provides the flexibility, scalability, and low cost of data lakes, while also offering the performance, data management, and reliability of data warehouses — all within a single unified platform.</p>
