@@ -46,7 +46,8 @@ const ImageGallery = ({ images }: { images: GalleryImage[] }) => {
 type CourseContentItem =
   | { type: 'paragraph'; text: string; heading_level?: number | null }
   | { type: 'heading'; text: string; heading_level?: number | null }
-  | { type: 'image'; alt?: string; src: string };
+  | { type: 'image'; alt?: string; src: string }
+  | { type: 'table'; rows: string[][]; caption?: string };
 
 type CourseSection = {
   title: string;
@@ -138,6 +139,55 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
           <p key={`heading-${index}`} className="mb-3 font-bold text-gray-200">
             {item.text}
           </p>
+        );
+      }
+      return;
+    }
+
+    if (item.type === 'table') {
+      flushImages();
+      const { rows, caption } = item;
+      if (rows && rows.length > 0) {
+        const headerRow = rows[0];
+        const dataRows = rows.slice(1);
+        
+        nodes.push(
+          <div key={`table-${index}`} className="my-6 overflow-x-auto">
+            <table className="min-w-full border border-gray-600 text-sm">
+              <thead>
+                <tr className="bg-gray-700">
+                  {headerRow.map((cell, cellIndex) => (
+                    <th
+                      key={`header-${cellIndex}`}
+                      className="border border-gray-600 px-4 py-2 text-left font-semibold text-white"
+                    >
+                      {cell}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {dataRows.map((row, rowIndex) => (
+                  <tr
+                    key={`row-${rowIndex}`}
+                    className={rowIndex % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}
+                  >
+                    {row.map((cell, cellIndex) => (
+                      <td
+                        key={`cell-${rowIndex}-${cellIndex}`}
+                        className="border border-gray-600 px-4 py-2 text-gray-300"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {caption && (
+              <p className="mt-2 text-sm text-gray-400 italic text-center">{caption}</p>
+            )}
+          </div>
         );
       }
       return;

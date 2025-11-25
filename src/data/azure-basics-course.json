@@ -619,6 +619,42 @@
             "heading_level": null
           },
           {
+            "type": "table",
+            "rows": [
+              [
+                "Storage Service",
+                "Type of Data",
+                "Description",
+                "Example Use Case"
+              ],
+              [
+                "Blob Service",
+                "Unstructured / Semi-structured",
+                "Stores large objects (files, media, backups)",
+                "Images, videos, logs"
+              ],
+              [
+                "File Service",
+                "File-based",
+                "Shared file storage via SMB/NFS",
+                "Shared drives, app configs"
+              ],
+              [
+                "Queue Service",
+                "Messaging",
+                "Message-based communication between components",
+                "Background tasks, event processing"
+              ],
+              [
+                "Table Service",
+                "Structured (NoSQL)",
+                "Key-value, schema-less table storage",
+                "User profiles, IoT data"
+              ]
+            ],
+            "caption": "Types of Azure Storage Services"
+          },
+          {
             "type": "image",
             "src": "/tutorials/azure/images/azure-blob-storage-07.png",
             "alt": "Azure Blob Storage illustration 7"
@@ -1044,6 +1080,36 @@
             "alt": "Azure Blob Storage illustration 17"
           },
           {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Structure",
+                "Read/Write Behavior",
+                "Common Use"
+              ],
+              [
+                "Block Blob",
+                "Data stored as blocks",
+                "Upload/replace blocks",
+                "Files, media, documents"
+              ],
+              [
+                "Append Blob",
+                "Sequentially added blocks",
+                "Append-only",
+                "Logs, telemetry, streaming data"
+              ],
+              [
+                "Page Blob",
+                "Fixed 512-byte pages",
+                "Random read/write",
+                "VM disks, large databases"
+              ]
+            ],
+            "caption": "Types of Blobs"
+          },
+          {
             "type": "heading",
             "text": "Types of Blob Types:",
             "heading_level": 2
@@ -1254,6 +1320,42 @@
             "heading_level": null
           },
           {
+            "type": "table",
+            "rows": [
+              [
+                "Tier",
+                "Cost",
+                "Availability",
+                "Best For"
+              ],
+              [
+                "Hot",
+                "💰 Highest cost",
+                "🔥 Always available",
+                "Frequently accessed data (e.g., active apps, websites)"
+              ],
+              [
+                "Cool",
+                "💸 Cheaper",
+                "🕓 Slight delay in access",
+                "Infrequently accessed data (e.g., monthly reports)"
+              ],
+              [
+                "Cold",
+                "💧 Cheaper than Cool",
+                "⏱️ Slower access",
+                "Rarely accessed data but still retrievable"
+              ],
+              [
+                "Archive",
+                "🧊 Cheapest",
+                "💤 Retrieval takes hours",
+                "Long-term backups, compliance storage"
+              ]
+            ],
+            "caption": "Azure Storage Access Tiers"
+          },
+          {
             "type": "heading",
             "text": "Types of Access Tiers:",
             "heading_level": 2
@@ -1335,6 +1437,130 @@
             "heading_level": 2
           },
           {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Structure",
+                "Read/Write Behavior",
+                "Common Use"
+              ],
+              [
+                "Block Blob",
+                "Data stored as blocks",
+                "Upload/replace blocks",
+                "Files, media, documents"
+              ],
+              [
+                "Append Blob",
+                "Sequentially added blocks",
+                "Append-only",
+                "Logs, telemetry, streaming data"
+              ],
+              [
+                "Page Blob",
+                "Fixed 512-byte pages",
+                "Random read/write",
+                "VM disks, large databases"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Best For",
+                "Example Use"
+              ],
+              [
+                "🧱 Block Blob",
+                "Storing text or binary data",
+                "Images, videos, documents, CSVs"
+              ],
+              [
+                "📜 Append Blob",
+                "Data that is constantly added to (append-only)",
+                "Logs, telemetry, audit data"
+              ],
+              [
+                "📄 Page Blob",
+                "Random read/write access",
+                "Virtual machine disks (VHD files)"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Datalake Service",
+                "Type of Data",
+                "Description",
+                "Example Use Case"
+              ],
+              [
+                "Blob Service",
+                "Unstructured / Semi-structured",
+                "Stores large objects (files, media, backups)",
+                "Images, videos, logs"
+              ],
+              [
+                "File Service",
+                "File-based",
+                "Shared file storage via SMB/NFS",
+                "Shared drives, app configs"
+              ],
+              [
+                "Queue Service",
+                "Messaging",
+                "Message-based communication between components",
+                "Background tasks, event processing"
+              ],
+              [
+                "Table Service",
+                "Structured (NoSQL)",
+                "Key-value, schema-less table storage",
+                "User profiles, IoT data"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Datalake Service",
+                "Type of Data",
+                "Description",
+                "Example Use Case"
+              ],
+              [
+                "Blob Service",
+                "Unstructured / Semi-structured",
+                "Stores large objects (files, media, backups)",
+                "Images, videos, logs"
+              ],
+              [
+                "File Service",
+                "File-based",
+                "Shared file storage via SMB/NFS",
+                "Shared drives, app configs"
+              ],
+              [
+                "Queue Service",
+                "Messaging",
+                "Message-based communication between components",
+                "Background tasks, event processing"
+              ],
+              [
+                "Table Service",
+                "Structured (NoSQL)",
+                "Key-value, schema-less table storage",
+                "User profiles, IoT data"
+              ]
+            ]
+          },
+          {
             "type": "heading",
             "text": "Security and Compliance:Provides enterprise-grade security with Azure Active Directory integration, role-based access control (RBAC), and encryption at rest and in transit.",
             "heading_level": 2
@@ -1393,6 +1619,95 @@
             "type": "heading",
             "text": "In the search bar, type “Storage Accounts”or “ADLS Gen2”",
             "heading_level": 2
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Structure",
+                "Read/Write Behavior",
+                "Common Use"
+              ],
+              [
+                "Block Blob",
+                "Data stored as blocks",
+                "Upload/replace blocks",
+                "Files, media, documents"
+              ],
+              [
+                "Append Blob",
+                "Sequentially added blocks",
+                "Append-only",
+                "Logs, telemetry, streaming data"
+              ],
+              [
+                "Page Blob",
+                "Fixed 512-byte pages",
+                "Random read/write",
+                "VM disks, large databases"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Blob Type",
+                "Best For",
+                "Example Use"
+              ],
+              [
+                "🧱 Block Blob",
+                "Storing text or binary data",
+                "Images, videos, documents, CSVs"
+              ],
+              [
+                "📜 Append Blob",
+                "Data that is constantly added to (append-only)",
+                "Logs, telemetry, audit data"
+              ],
+              [
+                "📄 Page Blob",
+                "Random read/write access",
+                "Virtual machine disks (VHD files)"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "rows": [
+              [
+                "Datalake Service",
+                "Type of Data",
+                "Description",
+                "Example Use Case"
+              ],
+              [
+                "Blob Service",
+                "Unstructured / Semi-structured",
+                "Stores large objects (files, media, backups)",
+                "Images, videos, logs"
+              ],
+              [
+                "File Service",
+                "File-based",
+                "Shared file storage via SMB/NFS",
+                "Shared drives, app configs"
+              ],
+              [
+                "Queue Service",
+                "Messaging",
+                "Message-based communication between components",
+                "Background tasks, event processing"
+              ],
+              [
+                "Table Service",
+                "Structured (NoSQL)",
+                "Key-value, schema-less table storage",
+                "User profiles, IoT data"
+              ]
+            ]
           },
           {
             "type": "image",
