@@ -503,12 +503,12 @@ export default function AzureDatabricksPage() {
           id="azure-databricks"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">5. Azure Databricks</h3>
+          <h3 className="text-3xl font-bold text-white mb-6">Azure Databricks</h3>
           
           <div className="space-y-12">
             {/* Introduction to Azure Databricks */}
             <div id="introduction-to-azure-databricks" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">1. Introduction to Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Introduction to Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h5 className="text-xl font-semibold text-white mb-3">What is Azure Databricks?</h5>
@@ -569,7 +569,7 @@ export default function AzureDatabricksPage() {
 
             {/* Databricks Architecture */}
             <div id="databricks-architecture" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">2. Databricks Architecture</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Databricks Architecture</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   Azure Databricks follows a multi-layer architecture built on top of Apache Spark and Delta Lake, integrated deeply with Azure cloud services. It unifies data engineering, analytics, and AI within a single environment.
@@ -643,7 +643,7 @@ export default function AzureDatabricksPage() {
 
             {/* Common Use Cases */}
             <div id="common-use-cases" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">3. Common Use Cases of Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Common Use Cases of Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3">
                   <div>
@@ -679,7 +679,7 @@ export default function AzureDatabricksPage() {
 
             {/* Core Components */}
             <div id="core-components" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">4. Core Components of Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Core Components of Azure Databricks</h4>
               <div className="space-y-6 text-gray-300">
                 <div className="p-4 bg-gray-800 rounded-lg">
                   <h5 className="text-xl font-semibold text-white mb-3">Workspace</h5>
@@ -735,7 +735,7 @@ export default function AzureDatabricksPage() {
 
             {/* Advantages */}
             <div id="advantages" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">5. Advantages of Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Advantages of Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3">
                   <div>
@@ -774,7 +774,7 @@ export default function AzureDatabricksPage() {
 
             {/* How to Create */}
             <div id="how-to-create" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">6. How to Create Azure Databricks</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">How to Create Azure Databricks</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-4">
                   <div>
@@ -838,7 +838,7 @@ export default function AzureDatabricksPage() {
 
             {/* Workspace Overview */}
             <div id="workspace-overview" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">7. Databricks Workspace Overview</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Databricks Workspace Overview</h4>
               <div className="space-y-4 text-gray-300">
                 <div className="space-y-3 mb-4">
                   <p><strong className="text-blue-400">Click on Databricks Workspace</strong></p>
@@ -921,7 +921,7 @@ export default function AzureDatabricksPage() {
 
             {/* Databricks Features */}
             <div id="databricks-features" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">8. Databricks Features</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Databricks Features</h4>
               <div className="space-y-8 text-gray-300">
                 {/* Workspace */}
                 <div className="p-4 bg-gray-800 rounded-lg">
@@ -1335,7 +1335,7 @@ export default function AzureDatabricksPage() {
           id="databricks-sql"
           className="bg-[#252525] rounded-xl p-8 border border-gray-600 scroll-mt-24 mb-20"
         >
-          <h3 className="text-3xl font-bold text-white mb-6">6. Databricks SQL</h3>
+          <h3 className="text-3xl font-bold text-white mb-6">Databricks SQL</h3>
           
           <div className="space-y-12">
             <div className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700">
@@ -1353,7 +1353,7 @@ export default function AzureDatabricksPage() {
 
             {/* SQL Editor */}
             <div id="sql-editor" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">1. SQL Editor</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">SQL Editor</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   The <strong className="text-blue-400">SQL Editor</strong> in Databricks allows users to write, run, and visualize SQL queries directly on data stored in Unity Catalog, Delta tables, or external databases — all without needing to create a separate notebook.
@@ -1505,7 +1505,7 @@ export default function AzureDatabricksPage() {
 
             {/* Queries */}
             <div id="queries" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">2. Queries</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Queries</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   The Queries interface lets you develop and manage SQL statements that interact directly with data in Databricks SQL Warehouses. You can track query execution history, collaborate with team members, tag queries for organization, and use scheduling for automated reporting.
@@ -1536,7 +1536,7 @@ export default function AzureDatabricksPage() {
 
             {/* Dashboards */}
             <div id="dashboards" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">3. Dashboards</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Dashboards</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   Databricks Dashboards provide a powerful visualization layer built directly on top of Databricks SQL. They support real-time data refresh, query scheduling, and access control for collaboration.
@@ -1601,7 +1601,7 @@ export default function AzureDatabricksPage() {
 
             {/* Genie */}
             <div id="genie" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">4. Genie</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Genie</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   <strong className="text-blue-400">Databricks </strong> is a Generative AI-powered assistant built into the Databricks SQL workspace. It allows users to ask questions about data using natural language (like English sentences) — and Genie automatically generates SQL queries, runs them, and visualizes the results.
@@ -1690,7 +1690,7 @@ export default function AzureDatabricksPage() {
 
             {/* Alerts */}
             <div id="alerts" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">5. Alerts</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Alerts</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   Alerts in Azure Databricks help you automatically monitor data conditions or metrics in your SQL queries and get notified when something important changes. They make it easy to track trends, catch issues early, and stay updated without checking dashboards manually.
@@ -1792,7 +1792,7 @@ export default function AzureDatabricksPage() {
 
             {/* Query History */}
             <div id="query-history" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">6. Query History</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">Query History</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   The Query History page in Databricks provides a complete log of all SQL queries executed in your workspace. It helps users monitor performance, debug issues, track usage, and ensure compliance — all in one place.
@@ -1898,7 +1898,7 @@ export default function AzureDatabricksPage() {
 
             {/* SQL Data Warehouse */}
             <div id="sql-data-warehouse" className="bg-[#1a1a1a] rounded-lg p-6 border border-gray-700 scroll-mt-24">
-              <h4 className="text-2xl font-semibold text-white mb-4">7. SQL Data Warehouse</h4>
+              <h4 className="text-2xl font-semibold text-white mb-4">SQL Data Warehouse</h4>
               <div className="space-y-4 text-gray-300">
                 <p>
                   A SQL Warehouse (formerly called SQL Endpoint) is the compute resource in Databricks used to run SQL queries, dashboards, and alerts. It is designed for data analysts, BI developers, and engineers who work with SQL-based data processing — similar to how a cluster runs notebooks, but optimized for SQL workloads.
@@ -3835,21 +3835,21 @@ export default function AzureDatabricksPage() {
                     
                     <div className="mt-4 space-y-4">
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">1. Data Ingestion Layer</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Data Ingestion Layer</h6>
                         <p><strong>Purpose:</strong> Collect and bring data from multiple sources into the lakehouse.</p>
                         <p><strong>Description:</strong> This layer handles the movement of data from different systems such as databases (e.g., SQL Server, Oracle, MySQL), applications (CRM, ERP, SaaS tools), IoT devices and sensors, logs, events, and streaming sources (Kafka, Azure Event Hub). Data can arrive in batch or real-time mode.</p>
                         <p><strong>Tools:</strong> Databricks Auto Loader, Azure Data Factory, Kafka, Apache NiFi, AWS Glue, etc.</p>
                       </div>
                       
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">2. Storage Layer</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Storage Layer</h6>
                         <p><strong>Purpose:</strong> Store all types of data efficiently in open, scalable cloud storage.</p>
                         <p><strong>Description:</strong> This layer serves as the foundation of the Lakehouse. It stores raw data (unprocessed), processed data, and aggregated and curated data. It supports structured, semi-structured, and unstructured formats (e.g., Parquet, JSON, Avro, images, videos, etc.). The data is stored in open formats for interoperability and long-term accessibility.</p>
                         <p><strong>Tools / Technologies:</strong> Delta Lake, Apache Parquet, ORC, Cloud Object Storage (ADLS, S3, GCS).</p>
                       </div>
                       
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">3. Metadata and Transaction Layer</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Metadata and Transaction Layer</h6>
                         <p><strong>Purpose:</strong> Manage reliability, schema, and version control.</p>
                         <p><strong>Description:</strong> This layer introduces ACID transaction support and metadata management over the data lake, turning it into a "Lakehouse." It tracks every operation — insert, update, delete — ensuring consistency and data integrity.</p>
                         <p><strong>Capabilities include:</strong> Schema enforcement and evolution, Time travel (data versioning), Data indexing for fast queries, Optimized performance through caching and Z-ordering.</p>
@@ -3857,21 +3857,21 @@ export default function AzureDatabricksPage() {
                       </div>
                       
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">4. Processing and Compute Layer</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Processing and Compute Layer</h6>
                         <p><strong>Purpose:</strong> Transform, clean, and prepare data for analytics and machine learning.</p>
                         <p><strong>Description:</strong> In this layer, raw data is processed and refined for various workloads: Data cleaning and transformations, Aggregations and feature engineering, Real-time stream processing, Batch and interactive query processing. The separation of compute and storage allows scaling compute independently for efficiency.</p>
                         <p><strong>Tools:</strong> Apache Spark, Databricks Runtime, SQL engines, PySpark, MLflow.</p>
                       </div>
                       
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">5. Serving and Consumption Layer</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Serving and Consumption Layer</h6>
                         <p><strong>Purpose:</strong> Deliver ready-to-use data for analytics, BI, and machine learning.</p>
                         <p><strong>Description:</strong> This layer provides optimized access to curated data for: Dashboards and visualizations (Power BI, Tableau, Looker), Ad-hoc SQL queries, Data science and AI models, API-driven applications. Users can interact with the same underlying data, ensuring a single source of truth across teams.</p>
                         <p><strong>Tools:</strong> Databricks SQL, Power BI, Tableau, Jupyter, MLflow, APIs.</p>
                       </div>
                       
                       <div>
-                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">6. Governance and Security Layer (Spanning All Layers)</h6>
+                        <h6 className="text-lg font-semibold text-white mt-3 mb-2">Governance and Security Layer (Spanning All Layers)</h6>
                         <p><strong>Purpose:</strong> Enforce control, compliance, and data protection.</p>
                         <p><strong>Description:</strong> This is a horizontal layer across all stages of the architecture. It manages: Access control (role-based and attribute-based), Data lineage and cataloging, Audit logs and compliance tracking, Data masking and encryption.</p>
                         <p><strong>Tools:</strong> Unity Catalog (Databricks), Purview, Ranger, AWS Lake Formation.</p>
