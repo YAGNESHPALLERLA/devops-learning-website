@@ -1,18 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useSearchParams, useRouter } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getChallengeByLanguage } from '@/data/challenges';
-import { updateProgressCode, getLanguageProgress } from '@/lib/challenge-code';
+import { updateProgressCode } from '@/lib/challenge-code';
 
 type Phase = 'intro' | 'mcq' | 'coding' | 'results';
 
 export default function LevelChallengePage() {
   const params = useParams();
   const searchParams = useSearchParams();
-  const router = useRouter();
   
   const language = params.language as string;
   const levelNum = parseInt(params.level as string);
@@ -61,6 +60,24 @@ export default function LevelChallengePage() {
       return () => clearInterval(timer);
     }
   }, [phase, levelData]);
+
+  // Calculate results (before early return to use in useEffect)
+  const mcqCorrect = levelData ? mcqAnswers.filter((answer, index) => 
+    answer === levelData.mcqs[index].correctAnswer
+  ).length : 0;
+  const mcqPercentage = levelData ? Math.round((mcqCorrect / levelData.mcqs.length) * 100) : 0;
+  const codingPassed = codingResults.filter(r => r).length;
+  const allCodingPassed = levelData ? codingPassed === levelData.codingChallenges.length : false; // Must pass ALL coding challenges
+  const mcqPassed = levelData ? mcqPercentage >= levelData.passingScore : false;
+  const passed = mcqPassed && allCodingPassed; // Both MCQ AND all coding challenges required
+
+  // Update code when level is completed
+  useEffect(() => {
+    if (phase === 'results' && passed && userCode && levelData) {
+      const newCode = updateProgressCode(userCode, language as 'python' | 'java' | 'javascript' | 'sql', levelNum);
+      setCurrentCode(newCode);
+    }
+  }, [phase, passed, userCode, language, levelNum, levelData]);
 
   if (!challengeData || !levelData) {
     return (
@@ -125,24 +142,6 @@ export default function LevelChallengePage() {
       setPhase('results');
     }
   };
-
-  // Calculate results
-  const mcqCorrect = mcqAnswers.filter((answer, index) => 
-    answer === levelData.mcqs[index].correctAnswer
-  ).length;
-  const mcqPercentage = Math.round((mcqCorrect / levelData.mcqs.length) * 100);
-  const codingPassed = codingResults.filter(r => r).length;
-  const allCodingPassed = codingPassed === levelData.codingChallenges.length; // Must pass ALL coding challenges
-  const mcqPassed = mcqPercentage >= levelData.passingScore;
-  const passed = mcqPassed && allCodingPassed; // Both MCQ AND all coding challenges required
-
-  // Update code when level is completed
-  useEffect(() => {
-    if (phase === 'results' && passed && userCode) {
-      const newCode = updateProgressCode(userCode, language as 'python' | 'java' | 'javascript' | 'sql', levelNum);
-      setCurrentCode(newCode);
-    }
-  }, [phase, passed, userCode, language, levelNum]);
 
   const copyCode = () => {
     navigator.clipboard.writeText(currentCode);
