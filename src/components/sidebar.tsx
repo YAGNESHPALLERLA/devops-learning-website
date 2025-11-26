@@ -93,7 +93,8 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
   const renderSidebarItem = (item: SidebarItem, level = 0, parentId?: string) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.includes(item.id);
-    const childActive = hasChildren && item.children!.some(child => child.id === activeSubsection);
+    // Check if any child matches the activeSection (not activeSubsection which is always null)
+    const childActive = hasChildren && item.children!.some(child => child.id === activeSection);
     const active = isActive(item.href) || (activeSection && item.id === activeSection) || childActive;
 
     return (

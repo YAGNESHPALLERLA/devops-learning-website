@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface SearchResult {
@@ -10,36 +10,93 @@ interface SearchResult {
 }
 
 const searchData: SearchResult[] = [
-  { title: 'DevOps', path: '/devops', description: 'Containerization, CI/CD, infrastructure automation' },
-  { title: 'Docker', path: '/docs/docker', description: 'Container management and Docker fundamentals' },
-  { title: 'Kubernetes', path: '/docs/kubernetes', description: 'Container orchestration and scaling' },
-  { title: 'Jenkins', path: '/docs/jenkins', description: 'CI/CD pipelines and automation' },
-  { title: 'Linux Basics', path: '/docs/linux-basics', description: 'Command line and system administration' },
-  { title: 'Cloud Computing', path: '/docs/cloud', description: 'AWS, Azure, and cloud platforms' },
-  { title: 'Monitoring', path: '/docs/monitoring', description: 'Prometheus, Grafana, and observability' },
-  { title: 'Infrastructure as Code', path: '/docs/iac', description: 'Terraform, Ansible, and automation' },
-  { title: 'Scripting Languages', path: '/docs/scripting-languages', description: 'Bash, Python for DevOps' },
-  { title: 'Version Control', path: '/docs/version-control', description: 'Git, GitHub, and collaboration' },
-  { title: 'DevOps Tools', path: '/docs/tools', description: 'Essential tools and integrations' },
-  { title: 'DevOps Concepts', path: '/docs/concepts', description: 'Microservices, SRE, best practices' },
-  { title: 'What is DevOps?', path: '/docs/what-is-devops', description: 'Introduction and cultural aspects' },
-  { title: 'Java', path: '/java', description: 'Java programming and Spring Framework' },
-  { title: 'Python', path: '/python', description: 'Python programming and data science' },
-  { title: 'SQL', path: '/sql', description: 'Database design and SQL queries' },
-  { title: 'Web Development', path: '/web-dev', description: 'HTML, CSS, JavaScript, React' },
-  { title: 'Data Science', path: '/data-science', description: 'Machine learning and data analysis' },
+  // Main Courses
+  { title: 'All Courses', path: '/tutorials/courses', description: 'Browse all available courses and tutorials' },
+  { title: 'DevOps', path: '/devops', description: 'Docker, Kubernetes, CI/CD, AWS, Azure, GCP, infrastructure automation' },
+  { title: 'Java', path: '/java', description: 'Java programming, Spring Framework, enterprise applications' },
+  { title: 'Java Full Stack', path: '/tutorials/java-fullstack', description: 'Spring Boot, React, microservices, full stack development' },
+  { title: 'Python', path: '/python', description: 'Python programming, Django, Flask, data science' },
+  { title: 'Python Full Stack', path: '/tutorials/python-fullstack', description: 'Django, Flask, React, full stack web development' },
+  { title: 'SQL', path: '/sql', description: 'Database design, SQL queries, NoSQL databases' },
+  { title: 'SQL & Databases', path: '/sql', description: 'SQL, NoSQL, data modeling, database management' },
+  { title: 'Web Development', path: '/web-dev', description: 'HTML, CSS, JavaScript, React, Node.js' },
+  { title: 'Linux', path: '/linux', description: 'Linux commands, shell scripting, system administration' },
+  
+  // Azure Data Engineering
+  { title: 'Azure Data Engineer', path: '/tutorials/azure-data-engineer', description: 'Azure cloud data engineering, pipelines, analytics' },
+  { title: 'Azure Basics', path: '/tutorials/azure-data-engineer/azure-basics', description: 'Azure fundamentals, resource hierarchy, storage services' },
+  { title: 'Azure Hierarchy', path: '/tutorials/azure-data-engineer/azure-basics#azure-hierarchy', description: 'Management groups, subscriptions, resource groups' },
+  { title: 'Resource Group', path: '/tutorials/azure-data-engineer/azure-basics#resource-group', description: 'Azure resource groups, organization, management' },
+  { title: 'Azure Blob Storage', path: '/tutorials/azure-data-engineer/azure-basics#azure-blob-storage', description: 'Blob storage, containers, access tiers' },
+  { title: 'Azure Data Lake Storage', path: '/tutorials/azure-data-engineer/azure-basics#azure-data-lake', description: 'ADLS Gen2, hierarchical namespace, big data storage' },
+  { title: 'Azure Databricks', path: '/tutorials/azure-data-engineer/azure-databricks', description: 'Apache Spark, data engineering, machine learning, notebooks' },
+  { title: 'Databricks SQL', path: '/tutorials/azure-data-engineer/azure-databricks#databricks-sql', description: 'SQL editor, queries, dashboards, data warehouse' },
+  { title: 'Databricks Data Engineering', path: '/tutorials/azure-data-engineer/azure-databricks#data-engineering', description: 'Jobs, data ingestion, ETL pipelines' },
+  { title: 'Azure Data Factory', path: '/tutorials/azure-data-engineer/azure-data-factory', description: 'Data pipelines, ETL, data integration' },
+  
+  // AI & Data Science
+  { title: 'Artificial Intelligence', path: '/tutorials/artificial-intelligence', description: 'AI, machine learning, neural networks, deep learning' },
+  { title: 'AI', path: '/tutorials/artificial-intelligence', description: 'Artificial intelligence, NLP, computer vision' },
+  { title: 'Generative AI', path: '/tutorials/artificial-intelligence/generative-ai', description: 'GenAI, LLMs, ChatGPT, prompt engineering' },
+  { title: 'Large Language Models', path: '/tutorials/artificial-intelligence/llms', description: 'LLMs, transformers, GPT, BERT, language models' },
+  { title: 'LLMs', path: '/tutorials/artificial-intelligence/llms', description: 'Large language models, NLP, text generation' },
+  { title: 'Data Science', path: '/tutorials/data-science-ai', description: 'Machine learning, data analysis, visualization, statistics' },
+  { title: 'Data Engineering', path: '/tutorials/data-engineering', description: 'Data pipelines, ETL, data warehousing, big data' },
+  { title: 'Machine Learning', path: '/tutorials/data-science-ai', description: 'ML algorithms, model training, deep learning' },
+  
+  // Other Courses
+  { title: 'SAP', path: '/tutorials/sap', description: 'SAP modules, ERP, enterprise solutions' },
+  { title: 'Microsoft Fabric', path: '/tutorials/microsoft-fabric', description: 'Data integration, analytics, Power BI, Synapse' },
+  { title: 'Medical Coding', path: '/tutorials/medical-coding', description: 'ICD-10, CPT codes, healthcare documentation, billing' },
+  { title: 'Government Jobs', path: '/tutorials/government-jobs', description: 'Government job preparation, exams, notifications' },
+  { title: 'Programming', path: '/tutorials/programming', description: 'Programming languages, coding tutorials' },
+  
+  // DevOps Topics
+  { title: 'Docker', path: '/devops#docker-basics', description: 'Container management, Dockerfile, Docker Compose' },
+  { title: 'Kubernetes', path: '/devops#kubernetes-basics', description: 'Container orchestration, pods, deployments, services' },
+  { title: 'Jenkins', path: '/devops#jenkins-basics', description: 'CI/CD pipelines, automation, build jobs' },
+  { title: 'CI/CD', path: '/devops#cicd', description: 'Continuous integration, continuous deployment, pipelines' },
+  { title: 'Terraform', path: '/devops#ansible-basics', description: 'Infrastructure as code, provisioning, automation' },
+  { title: 'Ansible', path: '/devops#ansible-basics', description: 'Configuration management, playbooks, automation' },
+  { title: 'Git', path: '/devops#git-fundamentals', description: 'Version control, branching, merging, GitHub' },
+  { title: 'GitHub', path: '/devops#github-gitlab', description: 'Git hosting, pull requests, actions, collaboration' },
+  { title: 'AWS', path: '/devops#cloud-platforms', description: 'Amazon Web Services, EC2, S3, Lambda' },
+  { title: 'Azure', path: '/tutorials/azure-data-engineer', description: 'Microsoft Azure cloud services' },
+  { title: 'GCP', path: '/devops#cloud-platforms', description: 'Google Cloud Platform, compute, storage' },
+  { title: 'Prometheus', path: '/devops#prometheus-basics', description: 'Monitoring, metrics, alerting' },
+  { title: 'Grafana', path: '/devops#grafana-dashboards', description: 'Dashboards, visualization, monitoring' },
+  
+  // Tools & Utilities
   { title: 'Code Terminal', path: '/code-terminal', description: 'Online code execution environment' },
   { title: 'Terminal', path: '/terminal', description: 'Interactive terminal practice' },
+  
+  // Challenges
+  { title: 'Challenges', path: '/challenges', description: 'Daily coding challenges, quizzes, and badges' },
+  { title: 'Coding Challenges', path: '/challenges', description: 'Programming challenges with MCQs and coding problems' },
+  { title: 'Daily Quiz', path: '/challenges', description: 'Daily programming quizzes with levels and badges' },
+  { title: 'Python Challenges', path: '/challenges/python', description: 'Python programming challenges and quizzes' },
+  { title: 'Java Challenges', path: '/challenges/java', description: 'Java programming challenges and quizzes' },
+  { title: 'JavaScript Challenges', path: '/challenges/javascript', description: 'JavaScript programming challenges and quizzes' },
+  { title: 'SQL Challenges', path: '/challenges/sql', description: 'SQL database challenges and quizzes' },
+  
+  // General
+  { title: 'Home', path: '/', description: 'OneHubGlobal homepage' },
+  { title: 'Tutorials', path: '/tutorials', description: 'All tutorials and learning resources' },
+  { title: 'Apply Jobs', path: '/apply-jobs', description: 'Job applications, career opportunities' },
 ];
 
 export default function SearchBar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (searchQuery: string) => {
     setQuery(searchQuery);
+    setSelectedIndex(-1);
     
     if (searchQuery.trim() === '') {
       setResults([]);
@@ -50,148 +107,182 @@ export default function SearchBar() {
       (item) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    ).slice(0, 8);
     
     setResults(filtered);
   };
 
   const handleResultClick = (path: string) => {
     router.push(path);
-    setIsOpen(false);
+    setIsExpanded(false);
     setQuery('');
     setResults([]);
   };
 
-  // Handle escape key to close search
+  const handleExpand = () => {
+    setIsExpanded(true);
+    setTimeout(() => inputRef.current?.focus(), 100);
+  };
+
+  const handleCollapse = () => {
+    if (query === '') {
+      setIsExpanded(false);
+      setResults([]);
+    }
+  };
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsExpanded(false);
+      setQuery('');
+      setResults([]);
+      inputRef.current?.blur();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.min(prev + 1, results.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => Math.max(prev - 1, -1));
+    } else if (e.key === 'Enter' && selectedIndex >= 0 && results[selectedIndex]) {
+      handleResultClick(results[selectedIndex].path);
+    }
+  };
+
+  // Handle click outside to close
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
-        setIsOpen(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
         setQuery('');
         setResults([]);
       }
     };
 
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isExpanded]);
+
+  // Handle Cmd/Ctrl + K shortcut
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        handleExpand();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
-    <>
-      {/* Search Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-[#252525] border border-gray-600 text-white hover:border-rose-500 transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/20"
+    <div ref={containerRef} className="relative">
+      {/* Search Input Container */}
+      <div 
+        className={`flex items-center transition-all duration-300 ${
+          isExpanded 
+            ? 'w-72 md:w-80' 
+            : 'w-10 h-10'
+        }`}
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <span className="hidden md:inline">Search...</span>
-        <kbd className="hidden md:inline-block px-2 py-1 text-xs font-semibold bg-gray-700 rounded">⌘K</kbd>
-      </button>
+        {/* Search Icon / Button */}
+        <button
+          onClick={handleExpand}
+          className={`flex items-center justify-center transition-all duration-300 ${
+            isExpanded ? 'pl-4 pr-2' : 'w-10 h-10'
+          }`}
+        >
+          <svg 
+            className={`w-5 h-5 transition-colors duration-300 ${isExpanded ? 'text-rose-400' : 'text-gray-400 hover:text-white'}`} 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
 
-      {/* Search Modal */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
-          <div className="w-full max-w-2xl bg-[#1a1a1a] rounded-xl border border-gray-600 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            {/* Search Input */}
-            <div className="p-4 border-b border-gray-600">
-              <div className="flex items-center space-x-3">
-                <svg className="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        {/* Input Field */}
+        {isExpanded && (
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => handleSearch(e.target.value)}
+            onBlur={handleCollapse}
+            onKeyDown={handleKeyDown}
+            placeholder="Search..."
+            className="search-input flex-1 bg-transparent text-white text-sm outline-none border-none ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 py-2 pr-2"
+          />
+        )}
+
+        {/* Clear Button */}
+        {isExpanded && query && (
+          <button
+            onClick={() => {
+              setQuery('');
+              setResults([]);
+              inputRef.current?.focus();
+            }}
+            className="pr-3 text-gray-500 hover:text-white transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Search Results Dropdown */}
+      {isExpanded && results.length > 0 && (
+        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl shadow-black/50 overflow-hidden z-50">
+          {results.map((result, index) => (
+            <button
+              key={result.path}
+              onClick={() => handleResultClick(result.path)}
+              onMouseEnter={() => setSelectedIndex(index)}
+              className={`w-full px-4 py-3 text-left transition-colors flex items-center gap-3 ${
+                selectedIndex === index 
+                  ? 'bg-rose-500/20 text-white' 
+                  : 'text-gray-300 hover:bg-[#2a2a2a]'
+              }`}
+            >
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                selectedIndex === index 
+                  ? 'bg-rose-500' 
+                  : 'bg-gray-700'
+              }`}>
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => handleSearch(e.target.value)}
-                  placeholder="Search topics, tutorials, documentation..."
-                  className="flex-1 bg-transparent text-white text-lg outline-none placeholder-gray-500"
-                  autoFocus
-                />
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-500 hover:text-white transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
               </div>
-            </div>
-
-            {/* Search Results */}
-            <div className="max-h-96 overflow-y-auto">
-              {results.length === 0 && query !== '' && (
-                <div className="p-8 text-center text-gray-500">
-                  No results found for &quot;{query}&quot;
+              <div className="flex-1 min-w-0">
+                <div className={`font-medium text-sm truncate ${selectedIndex === index ? 'text-white' : 'text-gray-200'}`}>
+                  {result.title}
                 </div>
-              )}
-              
-              {results.length === 0 && query === '' && (
-                <div className="p-8 text-center text-gray-500">
-                  <svg className="w-12 h-12 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                  <p className="text-lg mb-2">Start typing to search</p>
-                  <p className="text-sm">Search for tutorials, documentation, and more...</p>
-                </div>
-              )}
-
-              {results.map((result) => (
-                <button
-                  key={result.path}
-                  onClick={() => handleResultClick(result.path)}
-                  className="w-full p-4 text-left hover:bg-[#252525] border-b border-gray-700 transition-colors group"
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-rose-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-white font-medium group-hover:text-rose-400 transition-colors">
-                        {result.title}
-                      </div>
-                      <div className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
-                        {result.description}
-                      </div>
-                    </div>
-                    <svg className="w-5 h-5 text-gray-600 group-hover:text-rose-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {/* Footer */}
-            <div className="p-3 border-t border-gray-700 flex items-center justify-between text-xs text-gray-500">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-1">
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">↑</kbd>
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">↓</kbd>
-                  <span>to navigate</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <kbd className="px-2 py-1 bg-gray-800 rounded">↵</kbd>
-                  <span>to select</span>
+                <div className="text-xs text-gray-500 truncate">
+                  {result.description}
                 </div>
               </div>
-              <div className="flex items-center space-x-1">
-                <kbd className="px-2 py-1 bg-gray-800 rounded">esc</kbd>
-                <span>to close</span>
-              </div>
-            </div>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* No Results Message */}
+      {isExpanded && query && results.length === 0 && (
+        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl shadow-black/50 p-4 z-50">
+          <div className="text-center text-gray-500 text-sm">
+            No results found for &quot;{query}&quot;
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
-

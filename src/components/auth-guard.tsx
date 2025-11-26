@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 // Public routes that don't require authentication
@@ -16,7 +16,6 @@ const publicRoutes = [
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     // IMMEDIATE check - don't wait for pathname
@@ -259,7 +258,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       }
       setIsAuthenticated(false);
     }
-  }, [pathname, router]);
+  }, [pathname]);
 
   // Show nothing while checking authentication
   if (isAuthenticated === null) {

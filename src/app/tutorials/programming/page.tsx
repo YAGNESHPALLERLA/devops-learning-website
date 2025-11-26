@@ -1,38 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
-
-interface TechnologyCardProps {
-  title: string;
-  description: string;
-  icon: string;
-  link: string;
-  gradient: string;
-}
-
-function TechnologyCard({ title, description, icon, link, gradient }: TechnologyCardProps) {
-  return (
-    <Link href={link} className="block group">
-      <div className="relative bg-[#252525] rounded-xl p-8 transition-all duration-500 border border-gray-600 hover:border-rose-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-        <div className="relative z-10 text-center">
-          <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-500">
-            {icon}
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-red-500 transition-all duration-300">
-            {title}
-          </h3>
-          <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
-            {description}
-          </p>
-          <div className={`mt-6 w-full h-1 bg-gradient-to-r ${gradient} rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
-        </div>
-      </div>
-    </Link>
-  );
-}
+import { TechnologyCard, CardGrid } from '@/components/ui/technology-card';
 
 // Check auth BEFORE component renders - runs at module level
 let hasCheckedAuth = false;
@@ -185,7 +155,7 @@ export default function ProgrammingPage() {
           <p className="text-gray-400 text-xl">Master programming languages, frameworks, and development tools</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <CardGrid columns={3} className="max-w-6xl mx-auto">
           <TechnologyCard
             title="DevOps"
             description="Learn containerization, CI/CD, infrastructure automation, and cloud platforms"
@@ -228,7 +198,7 @@ export default function ProgrammingPage() {
             link="/data-science"
             gradient="from-blue-500 to-cyan-500"
           />
-        </div>
+        </CardGrid>
       </div>
     </main>
   );

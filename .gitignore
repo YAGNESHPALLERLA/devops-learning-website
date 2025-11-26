@@ -92,3 +92,9 @@ src/app/types/
 
 # TypeScript build cache
 tsconfig.tsbuildinfo
+
+# Word documents (source files for tutorials)
+*.docx
+
+# Plan files
+*.plan.md

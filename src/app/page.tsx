@@ -58,41 +58,47 @@ const handleTutorialClick = (e: React.MouseEvent, href: string) => {
 };
 
 export default function HomePage() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [smoothPosition, setSmoothPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     // Home page is now public - no authentication required
     setIsLoaded(true);
     
-    let rafId: number | null = null;
-    let lastUpdateTime = 0;
-    const throttleMs = 16; // ~60fps
+    // Track mouse position directly
+    let targetX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
+    let targetY = typeof window !== 'undefined' ? window.innerHeight / 2 : 0;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationId: number | null = null;
     
     const handleMouseMove = (e: MouseEvent) => {
-      const now = performance.now();
+      targetX = e.clientX;
+      targetY = e.clientY;
+    };
+
+    // Smooth animation loop - direct following with slight smoothing
+    const animate = () => {
+      // High lerp factor for responsive following (0.15 = smooth but responsive)
+      const lerpFactor = 0.12;
       
-      // Throttle updates to ~60fps for smooth performance
-      if (now - lastUpdateTime < throttleMs) {
-        return;
-      }
+      // Smoothly interpolate towards target
+      currentX += (targetX - currentX) * lerpFactor;
+      currentY += (targetY - currentY) * lerpFactor;
       
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
+      // Always update state for smooth animation
+      setSmoothPosition({ x: currentX, y: currentY });
       
-      rafId = requestAnimationFrame(() => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
-        lastUpdateTime = now;
-      });
+      animationId = requestAnimationFrame(animate);
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    animationId = requestAnimationFrame(animate);
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
       }
     };
   }, []);
@@ -110,9 +116,10 @@ export default function HomePage() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* Dynamic mouse-following gradient orb - Enhanced with smooth transform */}
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-60 will-change-transform"
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-60"
           style={{
-            transform: `translate(${mousePosition.x - 300}px, ${mousePosition.y - 300}px) translateZ(0)`,
+            transform: `translate3d(${smoothPosition.x - 300}px, ${smoothPosition.y - 300}px, 0)`,
+            willChange: 'transform',
             background: `radial-gradient(circle, 
               rgba(236, 72, 153, 0.4) 0%, 
               rgba(168, 85, 247, 0.3) 25%, 
@@ -124,9 +131,10 @@ export default function HomePage() {
         
         {/* Secondary mouse-following gradient for depth */}
         <div 
-          className="absolute w-[400px] h-[400px] rounded-full blur-2xl opacity-40 will-change-transform"
+          className="absolute w-[400px] h-[400px] rounded-full blur-2xl opacity-40"
           style={{
-            transform: `translate(${mousePosition.x - 200}px, ${mousePosition.y - 200}px) translateZ(0)`,
+            transform: `translate3d(${smoothPosition.x - 200}px, ${smoothPosition.y - 200}px, 0)`,
+            willChange: 'transform',
             background: `radial-gradient(circle, 
               rgba(251, 146, 60, 0.35) 0%, 
               rgba(236, 72, 153, 0.3) 30%, 
@@ -137,9 +145,10 @@ export default function HomePage() {
         
         {/* Tertiary mouse-following gradient for extra glow */}
         <div 
-          className="absolute w-[300px] h-[300px] rounded-full blur-xl opacity-50 will-change-transform"
+          className="absolute w-[300px] h-[300px] rounded-full blur-xl opacity-50"
           style={{
-            transform: `translate(${mousePosition.x - 150}px, ${mousePosition.y - 150}px) translateZ(0)`,
+            transform: `translate3d(${smoothPosition.x - 150}px, ${smoothPosition.y - 150}px, 0)`,
+            willChange: 'transform',
             background: `radial-gradient(circle, 
               rgba(34, 211, 238, 0.4) 0%, 
               rgba(59, 130, 246, 0.3) 40%, 
@@ -476,11 +485,11 @@ export default function HomePage() {
           </div>
 
           {/* Job Portal Features */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gradient-to-br from-rose-500/10 to-red-600/10 backdrop-blur-sm border border-rose-500/20 rounded-2xl p-8 hover:border-rose-500/40 transition-all duration-500">
-              <div className="text-6xl mb-6">💼</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-rose-500/10 to-red-600/10 backdrop-blur-sm border border-rose-500/20 rounded-2xl p-8 hover:border-rose-500/40 transition-all duration-500 h-full flex flex-col">
+              <div className="text-6xl mb-6 h-16 flex items-center justify-center">💼</div>
               <h3 className="text-2xl font-bold text-white mb-4">Job Listings</h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 flex-1 min-h-[80px]">
                 Browse through curated job listings from top companies across various industries and skill levels.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -499,10 +508,10 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500">
-              <div className="text-6xl mb-6">📝</div>
+            <div className="bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500 h-full flex flex-col">
+              <div className="text-6xl mb-6 h-16 flex items-center justify-center">📝</div>
               <h3 className="text-2xl font-bold text-white mb-4">Easy Applications</h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 flex-1 min-h-[80px]">
                 Apply to jobs with just a few clicks. Upload your resume and track all your applications in one place.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -521,10 +530,10 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500">
-              <div className="text-6xl mb-6">🤝</div>
+            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500 h-full flex flex-col">
+              <div className="text-6xl mb-6 h-16 flex items-center justify-center">🤝</div>
               <h3 className="text-2xl font-bold text-white mb-4">Connect & Network</h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 flex-1 min-h-[80px]">
                 Build your professional network, connect with recruiters, and get real-time updates on opportunities.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -600,14 +609,14 @@ export default function HomePage() {
           </div>
 
           {/* Bank Coaching Features Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* SBI Coaching */}
-            <div className="group bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🏛️</div>
+            <div className="group bg-gradient-to-br from-blue-500/10 to-indigo-600/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 h-full flex flex-col">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 h-16 flex items-center justify-center">🏛️</div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
                 SBI Coaching
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed flex-1 min-h-[80px]">
                 Complete preparation for SBI PO, Clerk, and Specialist Officer exams with expert faculty and comprehensive study material.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -627,12 +636,12 @@ export default function HomePage() {
             </div>
 
             {/* IBPS Coaching */}
-            <div className="group bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">💼</div>
+            <div className="group bg-gradient-to-br from-emerald-500/10 to-teal-600/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20 h-full flex flex-col">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 h-16 flex items-center justify-center">💼</div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
                 IBPS Coaching
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed flex-1 min-h-[80px]">
                 Specialized coaching for IBPS PO, Clerk, RRB, and Specialist Officer positions across all public sector banks.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -652,12 +661,12 @@ export default function HomePage() {
             </div>
 
             {/* RBI Coaching */}
-            <div className="group bg-gradient-to-br from-purple-500/10 to-violet-600/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🏦</div>
+            <div className="group bg-gradient-to-br from-purple-500/10 to-violet-600/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 h-full flex flex-col">
+              <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 h-16 flex items-center justify-center">🏦</div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
                 RBI Coaching
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed flex-1 min-h-[80px]">
                 Elite coaching for RBI Grade B, Assistant, and other RBI examinations with focus on economic and financial concepts.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -722,8 +731,8 @@ export default function HomePage() {
           <p className="text-gray-400 text-lg mb-16 max-w-3xl mx-auto">The best platform to accelerate your tech career with industry-leading features and comprehensive learning paths</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale">
+            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                 </svg>
@@ -731,13 +740,13 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Video Tutorials
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed flex-1">
                 150+ high-quality video tutorials with hands-on examples from industry experts. Learn at your own pace with comprehensive coverage of all topics.
               </p>
             </div>
             
-            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2" style={{ transitionDelay: '0.1s' }}>
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale">
+            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2 h-full flex flex-col" style={{ transitionDelay: '0.1s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                 </svg>
@@ -745,13 +754,13 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Interactive Learning
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed flex-1">
                 Practice with built-in code terminals, interactive exercises, and real-world projects. Get hands-on experience with cutting-edge technologies.
               </p>
             </div>
             
-            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2" style={{ transitionDelay: '0.2s' }}>
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale">
+            <div className="group text-center p-8 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/20 hover:-translate-y-2 h-full flex flex-col" style={{ transitionDelay: '0.2s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:animate-scale flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
@@ -759,7 +768,7 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Industry Ready
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed flex-1">
                 Learn in-demand skills with curriculum designed by professionals for real-world success. Get job-ready with industry-standard practices.
               </p>
             </div>
@@ -850,8 +859,8 @@ export default function HomePage() {
           {/* Test Levels Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Bronze Level Card */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center mb-6 shadow-lg flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -859,10 +868,10 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 🥉 Bronze Level
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed min-h-[80px]">
                 Perfect for beginners. Score 40-60% to achieve Bronze level and build your foundation with comprehensive study materials.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start text-gray-300">
                   <svg className="w-5 h-5 text-amber-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -906,8 +915,8 @@ export default function HomePage() {
             </div>
 
             {/* Silver Level Card */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center mb-6 shadow-lg flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -915,10 +924,10 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 🥈 Silver Level
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed min-h-[80px]">
                 Intermediate level. Score 60-80% to achieve Silver level and demonstrate solid understanding of exam patterns.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start text-gray-300">
                   <svg className="w-5 h-5 text-gray-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -962,8 +971,8 @@ export default function HomePage() {
             </div>
 
             {/* Gold Level Card */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center mb-6 shadow-lg flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -971,10 +980,10 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 🥇 Gold Level
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed min-h-[80px]">
                 Expert level. Score 80%+ to achieve Gold level and join the elite group of top performers with exclusive benefits.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start text-gray-300">
                   <svg className="w-5 h-5 text-yellow-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -1108,8 +1117,8 @@ export default function HomePage() {
           {/* Career Opportunities Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Professional Certifications Card */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mb-6 shadow-lg flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
@@ -1119,10 +1128,10 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Professional Certifications
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed min-h-[80px]">
                 Earn industry-recognized certifications that validate your skills and boost your career prospects. Our certification programs are designed by experts and accepted worldwide.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start text-gray-300">
                   <svg className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -1160,8 +1169,8 @@ export default function HomePage() {
             </div>
 
             {/* Internship Opportunities Card */}
-            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="bg-[#252525] border border-gray-600 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center mb-6 shadow-lg flex-shrink-0">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h8m-8 4h8m-8 4h4"></path>
@@ -1170,10 +1179,10 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Internship Opportunities
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed min-h-[80px]">
                 Gain real-world experience through our internship programs. Work on live projects, collaborate with professionals, and build your portfolio while learning.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 <li className="flex items-start text-gray-300">
                   <svg className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>

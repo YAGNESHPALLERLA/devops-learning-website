@@ -8,11 +8,6 @@
         "content": [
           {
             "type": "heading",
-            "text": "Introduction to Azure Databricks",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
             "text": "What is Azure Databricks?",
             "heading_level": 2
           },
@@ -101,11 +96,6 @@
       {
         "title": "Databricks Architecture",
         "content": [
-          {
-            "type": "heading",
-            "text": "Databricks Architecture",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure Databricks follows a multi-layer architecture built on top of Apache Spark and Delta Lake, integrated deeply with Azure cloud services. It unifies data engineering, analytics, and AI within a single environment.",
@@ -263,11 +253,6 @@
         "content": [
           {
             "type": "heading",
-            "text": "Common Use Cases of Azure Databricks",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
             "text": "Data Engineering:",
             "heading_level": 2
           },
@@ -361,11 +346,6 @@
       {
         "title": "Core Components of Azure Databricks",
         "content": [
-          {
-            "type": "heading",
-            "text": "Core Components of Azure Databricks",
-            "heading_level": 2
-          },
           {
             "type": "heading",
             "text": "Workspace:",
@@ -473,11 +453,6 @@
         "content": [
           {
             "type": "heading",
-            "text": "Advantages of Azure Databricks",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
             "text": "Unified Analytics and AI Platform:",
             "heading_level": 2
           },
@@ -580,22 +555,11 @@
       },
       {
         "title": "Databricks",
-        "content": [
-          {
-            "type": "heading",
-            "text": "Databricks",
-            "heading_level": 2
-          }
-        ]
+        "content": []
       },
       {
         "title": "How to Create Azure Databricks",
         "content": [
-          {
-            "type": "heading",
-            "text": "How to Create Azure Databricks",
-            "heading_level": 2
-          },
           {
             "type": "list",
             "items": [
@@ -764,11 +728,6 @@
       {
         "title": "Databricks Workspace Overview",
         "content": [
-          {
-            "type": "heading",
-            "text": "Databricks Workspace Overview",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Click on Databricks Workspace",
@@ -1003,11 +962,6 @@
       {
         "title": "Databricks Features",
         "content": [
-          {
-            "type": "heading",
-            "text": "Databricks Features",
-            "heading_level": 2
-          },
           {
             "type": "heading",
             "text": "Workspace",
@@ -1470,11 +1424,6 @@
         "title": "SQL Editor",
         "content": [
           {
-            "type": "heading",
-            "text": "SQL Editor",
-            "heading_level": 2
-          },
-          {
             "type": "image",
             "src": "/tutorials/azure/images/databricks-1-29.png",
             "alt": "Image 29"
@@ -1678,11 +1627,6 @@
         "title": "Dashboards",
         "content": [
           {
-            "type": "heading",
-            "text": "Dashboards",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "Databricks Dashboards provide a powerful visualization layer built directly on top of Databricks SQL. They support real-time data refresh, query scheduling, and access control for collaboration.",
             "heading_level": null
@@ -1795,11 +1739,6 @@
       {
         "title": "Genie",
         "content": [
-          {
-            "type": "heading",
-            "text": "Genie",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Databricks Genie is a Generative AI-powered assistant built into the Databricks SQL workspace.It allows users to ask questions about data using natural language (like English sentences) — and Genie automatically generates SQL queries, runs them, and visualizes the results.",
@@ -1923,11 +1862,6 @@
         "title": "Alerts",
         "content": [
           {
-            "type": "heading",
-            "text": "Alerts",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "Alerts in Azure Databricks help you automatically monitor data conditions or metrics in your SQL queries and get notified when something important changes.They make it easy to track trends, catch issues early, and stay updated without checking dashboards manually.",
             "heading_level": null
@@ -2042,11 +1976,6 @@
         "title": "Query History",
         "content": [
           {
-            "type": "heading",
-            "text": "Query History",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "The Query History page in Databricks provides a complete log of all SQL queries executed in your workspace.It helps users monitor performance, debug issues, track usage, and ensure compliance — all in one place.",
             "heading_level": null
@@ -2160,11 +2089,6 @@
       {
         "title": "SQL Data Warehouse",
         "content": [
-          {
-            "type": "heading",
-            "text": "SQL Data Warehouse",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "A SQL Warehouse (formerly called SQL Endpoint) is the compute resource in Databricks used to run SQL queries, dashboards, and alerts.",
@@ -2426,11 +2350,6 @@
         "title": "Data Ingestion",
         "content": [
           {
-            "type": "heading",
-            "text": "Data Ingestion",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "Data ingestion means bringing data into Databricks from different sources — databases, APIs, files, or cloud storage — so that you can analyze or transform it later.",
             "heading_level": null
@@ -2601,11 +2520,6 @@
       {
         "title": "Playground",
         "content": [
-          {
-            "type": "heading",
-            "text": "Playground",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "The Playground in Databricks is an interactive environment where you can experiment with AI models, build and test prompts, and prototype intelligent agents before deploying them into production.",
@@ -2793,11 +2707,6 @@
       {
         "title": "Experiments",
         "content": [
-          {
-            "type": "heading",
-            "text": "Experiments",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "In Databricks, Experiments represent the core of model development and tracking.An experiment records each run of your machine learning or AI workflow — including:",
@@ -3008,11 +2917,6 @@
       {
         "title": "Features",
         "content": [
-          {
-            "type": "heading",
-            "text": "Features",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "In Machine Learning, features are the input variables (columns) used by a model to make predictions.For example:",
@@ -3240,11 +3144,6 @@
         "title": "Models",
         "content": [
           {
-            "type": "heading",
-            "text": "Models",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "`This section is part of Databricks Machine Learning.  it helps you register, version, manage, and serve ML models built using MLflow or other frameworks.",
             "heading_level": null
@@ -3403,11 +3302,6 @@
       {
         "title": "Serving",
         "content": [
-          {
-            "type": "heading",
-            "text": "Serving",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Model Serving in Databricks allows you to:",
@@ -3599,11 +3493,6 @@
       {
         "title": "File-level Features",
         "content": [
-          {
-            "type": "heading",
-            "text": "File-level Features",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "File menu contains all options related to creating, managing, importing, exporting, and sharing notebooks in Databricks.",
@@ -3928,11 +3817,6 @@
       {
         "title": "Edit level features",
         "content": [
-          {
-            "type": "heading",
-            "text": "Edit level features",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Edit menu provides tools for:",
@@ -4380,11 +4264,6 @@
       {
         "title": "View level features",
         "content": [
-          {
-            "type": "heading",
-            "text": "View level features",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "View menu allows you to:",
@@ -4970,11 +4849,6 @@
         "title": "Run-level features",
         "content": [
           {
-            "type": "heading",
-            "text": "Run-level features",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "The Run menu in Databricks allows you to execute, debug, clear outputs, and control compute sessions in your notebook.",
             "heading_level": null
@@ -5162,11 +5036,6 @@
         "title": "Help-level features",
         "content": [
           {
-            "type": "heading",
-            "text": "Help-level features",
-            "heading_level": 2
-          },
-          {
             "type": "image",
             "src": "/tutorials/azure/images/databricks-2-13.png",
             "alt": "Image 13"
@@ -5239,11 +5108,6 @@
         "title": "Language-level features",
         "content": [
           {
-            "type": "heading",
-            "text": "Language-level features",
-            "heading_level": 2
-          },
-          {
             "type": "image",
             "src": "/tutorials/azure/images/databricks-2-14.png",
             "alt": "Image 14"
@@ -5299,11 +5163,6 @@
       {
         "title": "Others features",
         "content": [
-          {
-            "type": "heading",
-            "text": "Others features",
-            "heading_level": 2
-          },
           {
             "type": "image",
             "src": "/tutorials/azure/images/databricks-2-15.png",
@@ -5464,11 +5323,6 @@
       {
         "title": "Data Lakehouse Overview",
         "content": [
-          {
-            "type": "heading",
-            "text": "Data Lakehouse",
-            "heading_level": 2
-          },
           {
             "type": "heading",
             "text": "What is a Data Lakehouse?",

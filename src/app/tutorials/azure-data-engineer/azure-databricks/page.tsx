@@ -169,34 +169,80 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
     flushImages();
 
     if (item.type === 'paragraph') {
-      nodes.push(
-        <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed text-gray-300">
-          {item.text}
-        </p>
-      );
+      const text = item.text || '';
+      // Check if paragraph contains a colon - highlight text before colon as sub-heading
+      const colonIndex = text.indexOf(':');
+      if (colonIndex > 0 && colonIndex < 50) {
+        // Only treat as sub-heading if colon is within first 50 chars (likely a label)
+        const beforeColon = text.substring(0, colonIndex);
+        const afterColon = text.substring(colonIndex + 1);
+        nodes.push(
+          <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed text-gray-300">
+            <span className="font-bold text-cyan-400">{beforeColon}:</span>
+            {afterColon}
+          </p>
+        );
+      } else {
+        nodes.push(
+          <p key={`paragraph-${index}`} className="mb-3 text-base sm:text-lg leading-relaxed text-gray-300">
+            {text}
+          </p>
+        );
+      }
       return;
     }
 
     if (item.type === 'heading') {
       const level = item.heading_level ?? 2;
+      const text = item.text || '';
+      
+      // Check if heading contains colon - highlight only the part before colon
+      const colonIndex = text.indexOf(':');
+      const hasColonLabel = colonIndex > 0 && colonIndex < 50;
+      
       if (level <= 1) {
         nodes.push(
           <div key={`heading-${index}`} className="p-4 sm:p-5 bg-gray-800 rounded-lg mt-6 mb-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-white">{item.text}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-rose-400">{text}</h3>
           </div>
         );
       } else if (level === 2) {
-        nodes.push(
-          <h4 key={`heading-${index}`} className="text-lg sm:text-xl font-semibold text-white mt-6 mb-3">
-            {item.text}
-          </h4>
-        );
+        if (hasColonLabel) {
+          // Has colon label - highlight only the part before colon
+          const beforeColon = text.substring(0, colonIndex);
+          const afterColon = text.substring(colonIndex + 1);
+          nodes.push(
+            <h4 key={`heading-${index}`} className="text-lg sm:text-xl font-semibold mt-6 mb-3 text-gray-300">
+              <span className="text-cyan-400">{beforeColon}:</span>
+              {afterColon}
+            </h4>
+          );
+        } else {
+          // Regular heading - rose color
+          nodes.push(
+            <h4 key={`heading-${index}`} className="text-lg sm:text-xl font-semibold mt-6 mb-3 text-rose-400">
+              {text}
+            </h4>
+          );
+        }
       } else {
-        nodes.push(
-          <h5 key={`heading-${index}`} className="text-base sm:text-lg font-medium text-gray-200 mt-4 mb-2">
-            {item.text}
-          </h5>
-        );
+        // Level 3+ headings - cyan color for sub-headings
+        if (hasColonLabel) {
+          const beforeColon = text.substring(0, colonIndex);
+          const afterColon = text.substring(colonIndex + 1);
+          nodes.push(
+            <h5 key={`heading-${index}`} className="text-base sm:text-lg font-semibold mt-4 mb-2 text-gray-300">
+              <span className="text-cyan-400">{beforeColon}:</span>
+              {afterColon}
+            </h5>
+          );
+        } else {
+          nodes.push(
+            <h5 key={`heading-${index}`} className="text-base sm:text-lg font-semibold text-cyan-400 mt-4 mb-2">
+              {text}
+            </h5>
+          );
+        }
       }
       return;
     }

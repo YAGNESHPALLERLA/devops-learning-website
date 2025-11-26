@@ -195,14 +195,17 @@ function GlobalContinuePromptInner() {
           
           setHasChecked(true);
         } else {
-          console.log('[GLOBAL_CONTINUE] ❌ Email not found in database:', data.message || 'Email does not exist');
+          // Email not in database - this is normal, not an error
+          console.log('[GLOBAL_CONTINUE] Email not found in database (this is normal for new users)');
           // Email not in database - clear it from localStorage
           localStorage.removeItem('registeredEmail');
           // sessionStorage already set above, so we won't check again this session
           setHasChecked(true);
         }
-      } catch (error) {
-        console.error('[GLOBAL_CONTINUE] Error checking email in database:', error);
+      } catch {
+        // Network error or API unavailable - silently handle
+        // This is expected in development or when API is unavailable
+        console.log('[GLOBAL_CONTINUE] API check skipped (network unavailable or API error)');
         // On error, don't show modal to be safe
         // sessionStorage already set above, so we won't check again this session
         setHasChecked(true);

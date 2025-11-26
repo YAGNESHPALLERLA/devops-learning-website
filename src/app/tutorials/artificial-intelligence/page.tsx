@@ -53,31 +53,31 @@ export default function ArtificialIntelligenceLandingPage() {
         </div>
 
         {/* Modules Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {modules.map((module) => (
             <Link
               key={module.id}
               href={module.href}
-              className="group relative bg-[#1a1a1a] rounded-xl p-8 border border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+              className="group relative bg-[#1a1a1a] rounded-xl p-8 border border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 h-full flex flex-col"
             >
               <div className="flex items-start space-x-4 mb-4">
-                <div className="text-4xl">{module.icon}</div>
+                <div className="text-4xl flex-shrink-0">{module.icon}</div>
                 <div className="flex-1">
                   <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
                     {module.title}
                   </h2>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-400 text-sm mb-4 min-h-[40px]">
                     {module.description}
                   </p>
                 </div>
               </div>
               
-              <div className="mt-6">
+              <div className="mt-auto">
                 <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wide">Topics Covered</h3>
                 <ul className="space-y-2">
                   {module.topics.map((topic, index) => (
                     <li key={index} className="flex items-center text-gray-300 text-sm">
-                      <svg className="w-4 h-4 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 mr-2 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {topic}

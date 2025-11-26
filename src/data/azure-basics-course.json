@@ -8,11 +8,6 @@
         "content": [
           {
             "type": "heading",
-            "text": "Azure resource hierarchy",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
             "text": "Management Groups (The Top-Level)",
             "heading_level": 2
           },
@@ -194,11 +189,6 @@
         "content": [
           {
             "type": "heading",
-            "text": "Resource Group",
-            "heading_level": 2
-          },
-          {
-            "type": "heading",
             "text": "What is a Resource Group",
             "heading_level": 2
           },
@@ -359,11 +349,6 @@
       {
         "title": "Azure Blob Storage Overview",
         "content": [
-          {
-            "type": "heading",
-            "text": "Azure Blob Storage",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure Blob Storage is Microsoft’s cloud-based service designed to store large amounts of data of various types — including structured, semi-structured, and unstructured data.",
@@ -637,11 +622,6 @@
       {
         "title": "Types of Azure Storage Services",
         "content": [
-          {
-            "type": "heading",
-            "text": "Types of Azure Storage Services",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure Storage provides four main types of services under one Storage Account.",
@@ -1054,11 +1034,6 @@
         "title": "Types of Blobs",
         "content": [
           {
-            "type": "heading",
-            "text": "Types of Blobs",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "→ click on the upload option",
             "heading_level": null
@@ -1295,11 +1270,6 @@
         "title": "Types of Access Tiers",
         "content": [
           {
-            "type": "heading",
-            "text": "Types of Access Tiers",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "Azure lets you store data in different tiers based on how often you need it. This helps save money by matching storage cost to usage.",
             "heading_level": null
@@ -1390,11 +1360,6 @@
       {
         "title": "Azure Data Lake Storage Overview",
         "content": [
-          {
-            "type": "heading",
-            "text": "Azure Data Lake Storage Gen2 (ADLS Gen2)",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure Data Lake Storage Gen2 is a highly scalable and secure cloud storage service optimized for big data analytics and data lakes. It builds on Azure Blob Storage capabilities but adds file system semantics, hierarchical namespaces, and enhanced performance for analytics workloads.",
@@ -1553,11 +1518,6 @@
       {
         "title": "Types of Azure Storage Services in ADLS",
         "content": [
-          {
-            "type": "heading",
-            "text": "Types of Azure Storage Services",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure Storage provides four main types of services under one Storage Account.",
@@ -1995,11 +1955,6 @@
         "title": "Types of Blobs in ADLS",
         "content": [
           {
-            "type": "heading",
-            "text": "Types of Blob Types",
-            "heading_level": 2
-          },
-          {
             "type": "paragraph",
             "text": "→ Click on the upload option",
             "heading_level": null
@@ -2189,11 +2144,6 @@
       {
         "title": "Types of Access Tiers in ADLS",
         "content": [
-          {
-            "type": "heading",
-            "text": "Types of Access Tiers",
-            "heading_level": 2
-          },
           {
             "type": "paragraph",
             "text": "Azure lets you store data in different tiers based on how often you need it.This helps save money by matching storage cost to usage.",

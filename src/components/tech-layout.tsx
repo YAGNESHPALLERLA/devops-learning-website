@@ -536,7 +536,9 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
   const sectionList = useMemo(() => onThisPage ?? [], [onThisPage]);
   const resolvedActiveSection = useMemo(() => {
     if (!sectionList.length) return activeSection;
-    if (activeSection && sectionList.some(section => section.id === activeSection)) {
+    // If activeSection is provided, use it directly (it might be a subsection ID)
+    // Don't fallback to first section - the activeSection is managed by the page component
+    if (activeSection) {
       return activeSection;
     }
     return sectionList[0]?.id;

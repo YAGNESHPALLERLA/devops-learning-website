@@ -1,13 +1,10 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import SearchBar from "@/components/search-bar";
 import Navigation from "@/components/navigation";
 
 export function ConditionalNav() {
-  const pathname = usePathname();
-
   // Original navigation for main site
   return (
     <nav className="bg-[#1a1a1a] border-b border-gray-600 sticky top-0 z-40 backdrop-blur-sm bg-opacity-95">

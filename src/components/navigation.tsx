@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export default function Navigation() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const tutorialLinks = [
     { href: '/tutorials/medical-coding', label: 'Medical Coding', icon: '🏥' },
@@ -14,6 +15,23 @@ export default function Navigation() {
   ];
 
   const handleLinkClick = () => setShowDropdown(false);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showDropdown]);
 
   return (
     <div className="hidden md:flex items-center space-x-6 mr-4">
@@ -25,7 +43,7 @@ export default function Navigation() {
       </Link>
       
       {/* Tutorials Dropdown */}
-      <div className="relative">
+      <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setShowDropdown(!showDropdown)}
           className="text-white hover:text-rose-400 transition-all duration-300 font-medium flex items-center space-x-1"
@@ -62,6 +80,12 @@ export default function Navigation() {
       
       <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Terminal
+      </Link>
+      <Link 
+        href="/challenges" 
+        className="relative px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg shadow-lg shadow-purple-500/30 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 overflow-hidden whitespace-nowrap"
+      >
+        🏆 Challenges
       </Link>
       <button
         disabled

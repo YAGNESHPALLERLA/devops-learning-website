@@ -967,8 +967,8 @@ footer {
   }
 }
 
-/* Smooth scrolling */
-html {
+/* Smooth scrolling - using attribute selector for Next.js compatibility */
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
 }
 
@@ -980,6 +980,14 @@ html {
 *:focus-visible {
   outline: 2px solid #e11d48;
   outline-offset: 2px;
+}
+
+/* Remove focus outline from search input */
+.search-input:focus,
+.search-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* Enhanced prose styling for documentation */
