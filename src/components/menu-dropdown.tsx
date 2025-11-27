@@ -8,7 +8,11 @@ interface MenuItem {
   label: string;
   slug: string;
   href?: string;
-  children?: MenuItem[];
+  children?: Array<{
+    label: string;
+    slug: string;
+    href: string;
+  }>;
 }
 
 export default function MenuDropdown() {
@@ -265,7 +269,7 @@ export default function MenuDropdown() {
                 </>
               ) : (
                 <Link
-                  href={item.href || `#`}
+                  href={`/menu/${item.slug}`}
                   role="menuitem"
                   onClick={() => {
                     setIsOpen(false);
