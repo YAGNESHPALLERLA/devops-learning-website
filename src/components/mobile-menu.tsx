@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, KeyboardEvent } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import menuConfig from '@/data/menu-config.json';
@@ -154,7 +154,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   </>
                 ) : (
                   <Link
-                    href={item.href || '#'}
+                    href={`/menu/${item.slug}`}
                     onClick={onClose}
                     className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 min-h-[44px] flex items-center"
                     role="menuitem"
