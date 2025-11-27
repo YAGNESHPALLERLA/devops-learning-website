@@ -4,6 +4,7 @@ import "./globals.css";
 import { ConditionalNav } from "@/components/conditional-nav";
 import AuthGuard from "@/components/auth-guard";
 import GlobalContinuePrompt from "@/components/global-continue-prompt";
+import { SiteNavigationJSONLD } from "@/components/seo-metadata";
 import { AUTH_SYSTEM_AVAILABLE } from "@/config/authStatus";
 
 const geistSans = Geist({
@@ -20,9 +21,9 @@ export const metadata: Metadata = {
   title: "OHG365 PVTLTD",
   description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
   icons: {
-    icon: '/ohg365.png',
-    shortcut: '/ohg365.png',
-    apple: '/ohg365.png',
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
 };
 
@@ -34,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        <link rel="icon" href="/ohg365.png" type="image/png" />
-        <link rel="shortcut icon" href="/ohg365.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/ohg365.png" />
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         {/* Blocking script that runs before React - checks auth for tutorial routes - MUST BE FIRST */}
         {AUTH_SYSTEM_AVAILABLE && (
           <script
@@ -246,6 +247,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SiteNavigationJSONLD />
         <AuthGuard>
           <GlobalContinuePrompt />
           <ConditionalNav />

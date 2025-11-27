@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import MenuDropdown from './menu-dropdown';
 
 export default function Navigation() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -34,13 +35,13 @@ export default function Navigation() {
   }, [showDropdown]);
 
   return (
-    <div className="hidden md:flex items-center space-x-6 mr-4">
+    <div className="hidden md:flex items-center space-x-6 mr-4" style={{ overflow: 'visible', position: 'relative' }}>
       <Link href="/" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
         Home
       </Link>
-      <Link href="/menu" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
-        Menu
-      </Link>
+      
+      {/* MENU Dropdown */}
+      <MenuDropdown />
       
       {/* Tutorials Dropdown */}
       <div className="relative" ref={dropdownRef}>
