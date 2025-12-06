@@ -54,36 +54,30 @@ function StatItem({ end, duration, label, suffix = '', prefix = '' }: StatItemPr
   }, [end, duration, isVisible]);
 
   return (
-    <div ref={ref} className="text-center p-6 rounded-xl bg-[#252525] border border-gray-600 hover:border-rose-500 transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/20 transform hover:scale-105">
-      <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-600 mb-2">
+    <div ref={ref} className="text-center p-6">
+      <div className="text-5xl md:text-6xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
         {prefix}{count}{suffix}
       </div>
-      <div className="text-white text-lg font-medium">{label}</div>
+      <div className="h-1 w-16 mx-auto mb-3" style={{ backgroundColor: 'var(--corp-accent)' }}></div>
+      <div className="text-lg font-medium" style={{ color: 'var(--text-secondary)' }}>{label}</div>
     </div>
   );
 }
 
-export default function StatsCounter() {
+interface StatsCounterProps {
+  className?: string;
+}
+
+export default function StatsCounter({ className = '' }: StatsCounterProps) {
   return (
-    <section className="py-16 px-4 bg-[#1a1a1a]">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Platform at a Glance
-          </h2>
-          <p className="text-white text-lg">
-            Join thousands of learners mastering technology
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <StatItem end={8} duration={2000} label="Technologies" suffix="+" />
-          <StatItem end={150} duration={2500} label="Video Tutorials" suffix="+" />
-          <StatItem end={100} duration={2000} label="Hours of Content" suffix="+" />
-          <StatItem end={50} duration={2500} label="Topics Covered" suffix="+" />
-        </div>
+    <div className={className}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <StatItem end={8} duration={2000} label="Technologies" suffix="+" />
+        <StatItem end={150} duration={2500} label="Video Tutorials" suffix="+" />
+        <StatItem end={100} duration={2000} label="Hours of Content" suffix="+" />
+        <StatItem end={50} duration={2500} label="Topics Covered" suffix="+" />
       </div>
-    </section>
+    </div>
   );
 }
 

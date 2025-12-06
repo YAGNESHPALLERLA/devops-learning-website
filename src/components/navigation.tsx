@@ -35,9 +35,12 @@ export default function Navigation() {
   }, [showDropdown]);
 
   return (
-    <div className="hidden md:flex items-center space-x-6 mr-4" style={{ overflow: 'visible', position: 'relative' }}>
-      <Link href="/" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
+    <div className="hidden md:flex items-center space-x-6 mr-4" style={{ overflow: 'visible', position: 'relative', zIndex: 110 }}>
+      <Link href="/" className="text-white/90 hover:text-white transition-all duration-300 font-bold">
         Home
+      </Link>
+      <Link href="/courses" className="text-white/90 hover:text-white transition-all duration-300 font-bold">
+        Courses
       </Link>
       
       {/* MENU Dropdown */}
@@ -47,7 +50,7 @@ export default function Navigation() {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setShowDropdown(!showDropdown)}
-          className="text-white hover:text-rose-400 transition-all duration-300 font-medium flex items-center space-x-1"
+          className="text-white/90 hover:text-white transition-all duration-300 font-bold flex items-center space-x-1"
         >
           <span>Tutorials</span>
           <svg 
@@ -61,13 +64,13 @@ export default function Navigation() {
         </button>
         
         {showDropdown && (
-          <div className="absolute top-full left-0 mt-2 w-64 bg-[#252525] border border-gray-600 rounded-lg shadow-2xl shadow-black/50 py-2 z-50">
+          <div className="absolute top-full left-0 mt-2 w-64 glass-dark rounded-lg shadow-xl py-2 z-[110]" style={{ position: 'absolute' }}>
             {tutorialLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={handleLinkClick}
-                className="block px-4 py-3 text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all duration-200"
+                className="block px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 transition-all text-sm"
               >
                 <div className="flex items-center space-x-2">
                   <span className="text-xl">{link.icon}</span>
@@ -79,7 +82,7 @@ export default function Navigation() {
         )}
       </div>
       
-      <Link href="/terminal" className="text-white hover:text-rose-400 transition-all duration-300 font-medium">
+      <Link href="/terminal" className="text-white/90 hover:text-white transition-all duration-300 font-bold">
         Terminal
       </Link>
       <Link 

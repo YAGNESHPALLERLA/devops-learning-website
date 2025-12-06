@@ -16,7 +16,7 @@ import CompactFooter from '@/components/home-2/CompactFooter';
 import ScrollAnimate from '@/components/home-2/ScrollAnimate';
 import { useTheme } from '@/hooks/useTheme';
 
-export default function HomePage() {
+export default function Home2Page() {
   const { mounted } = useTheme();
 
   useEffect(() => {
@@ -43,9 +43,9 @@ export default function HomePage() {
       <ScrollAnimate animation="fade-up" delay={200} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactTrusted />
-          </div>
+        </div>
       </ScrollAnimate>
-        
+      
       <ScrollAnimate animation="fade-scale" delay={300} triggerOnce={true}>
         <div id="vision" className="section-wrapper py-4">
           <VisionRoadmap />
@@ -55,33 +55,33 @@ export default function HomePage() {
       <ScrollAnimate animation="fade-left" delay={200} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <ProcessPath />
-          </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-up" delay={250} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactTechnologies />
-          </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-scale" delay={200} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactStats />
-              </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-up" delay={200} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactAlumni />
-              </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-right" delay={250} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactFeatures />
-              </div>
+        </div>
       </ScrollAnimate>
-
+      
       <ScrollAnimate animation="fade-up" delay={300} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactCourses />
@@ -91,13 +91,13 @@ export default function HomePage() {
       <ScrollAnimate animation="fade-scale" delay={250} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactCertifications />
-            </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-up" delay={200} triggerOnce={true}>
         <div className="section-wrapper py-4">
           <CompactWeeklyTests />
-            </div>
+        </div>
       </ScrollAnimate>
       
       <ScrollAnimate animation="fade-up" delay={100} triggerOnce={true}>

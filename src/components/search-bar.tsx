@@ -182,7 +182,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative" style={{ zIndex: 110 }}>
       {/* Search Input Container */}
       <div 
         className={`flex items-center transition-all duration-300 ${
@@ -199,7 +199,7 @@ export default function SearchBar() {
           }`}
         >
           <svg 
-            className={`w-5 h-5 transition-colors duration-300 ${isExpanded ? 'text-rose-400' : 'text-gray-400 hover:text-white'}`} 
+            className={`w-5 h-5 transition-colors duration-300 ${isExpanded ? 'text-white' : 'text-white/90 hover:text-white'}`} 
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
@@ -218,7 +218,7 @@ export default function SearchBar() {
             onBlur={handleCollapse}
             onKeyDown={handleKeyDown}
             placeholder="Search..."
-            className="search-input flex-1 bg-transparent text-white text-sm outline-none border-none ring-0 focus:ring-0 focus:outline-none placeholder-gray-500 py-2 pr-2"
+            className="search-input flex-1 bg-transparent text-white text-sm outline-none border-none ring-0 focus:ring-0 focus:outline-none placeholder-white/50 py-2 pr-2"
           />
         )}
 
@@ -241,7 +241,7 @@ export default function SearchBar() {
 
       {/* Search Results Dropdown */}
       {isExpanded && results.length > 0 && (
-        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl shadow-black/50 overflow-hidden z-50">
+        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 glass-dark rounded-xl shadow-xl overflow-hidden z-[110]" style={{ position: 'absolute' }}>
           {results.map((result, index) => (
             <button
               key={result.path}
@@ -249,24 +249,24 @@ export default function SearchBar() {
               onMouseEnter={() => setSelectedIndex(index)}
               className={`w-full px-4 py-3 text-left transition-colors flex items-center gap-3 ${
                 selectedIndex === index 
-                  ? 'bg-rose-500/20 text-white' 
-                  : 'text-gray-300 hover:bg-[#2a2a2a]'
+                  ? 'bg-white/10 text-white' 
+                  : 'text-white/90 hover:bg-white/10 hover:text-white'
               }`}
             >
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
                 selectedIndex === index 
-                  ? 'bg-rose-500' 
-                  : 'bg-gray-700'
+                  ? 'bg-white/20' 
+                  : 'bg-white/10'
               }`}>
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div className="flex-1 min-w-0">
-                <div className={`font-medium text-sm truncate ${selectedIndex === index ? 'text-white' : 'text-gray-200'}`}>
+                <div className={`font-medium text-sm truncate ${selectedIndex === index ? 'text-white' : 'text-white/90'}`}>
                   {result.title}
                 </div>
-                <div className="text-xs text-gray-500 truncate">
+                <div className="text-xs text-white/70 truncate">
                   {result.description}
                 </div>
               </div>
@@ -277,8 +277,8 @@ export default function SearchBar() {
 
       {/* No Results Message */}
       {isExpanded && query && results.length === 0 && (
-        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl shadow-black/50 p-4 z-50">
-          <div className="text-center text-gray-500 text-sm">
+        <div className="absolute top-full right-0 w-72 md:w-80 mt-2 glass-dark rounded-xl shadow-xl p-4 z-[110]" style={{ position: 'absolute' }}>
+          <div className="text-center text-white/70 text-sm">
             No results found for &quot;{query}&quot;
           </div>
         </div>
