@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -11,16 +12,32 @@ import { useTheme } from '@/hooks/useTheme';
 interface SharedNavProps {
   isScrolled?: boolean;
   showAnimatedLine?: boolean;
+  isFixed?: boolean;
+  hasGradientBlueNav?: boolean;
+  hideThemeToggle?: boolean;
 }
 
-export default function SharedNav({ isScrolled = false, showAnimatedLine = true }: SharedNavProps) {
+export default function SharedNav({ isScrolled = false, showAnimatedLine = true, isFixed = false, hasGradientBlueNav = false, hideThemeToggle = false }: SharedNavProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, setTheme } = useTheme();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const tutorialsButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Force dark theme on tutorials and courses pages
+  useEffect(() => {
+    if (hideThemeToggle) {
+      setTheme('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, [hideThemeToggle, setTheme]);
 
   // Close tutorials dropdown function
   const closeTutorialsDropdown = () => {
@@ -83,7 +100,35 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true 
   return (
     <>
       {/* Glass Navigation Bar */}
-      <nav className={`relative z-[100] w-full transition-all duration-300 ${isScrolled ? 'glass-dark py-3' : 'glass-dark py-4'} ${showAnimatedLine ? 'animated-line animated-line-bottom' : ''}`}>
+      <nav 
+        className={`${isFixed ? 'fixed top-0 left-0 right-0' : 'relative'} w-full transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'} ${showAnimatedLine ? 'animated-line animated-line-bottom' : ''}`}
+        style={
+          isFixed 
+            ? { 
+                position: 'fixed', 
+                top: '0', 
+                left: '0', 
+                right: '0', 
+                zIndex: 10000,
+                background: hasGradientBlueNav 
+                  ? 'rgba(15, 23, 42, 0.25)'
+                  : 'rgba(15, 23, 42, 0.35)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+              }
+            : {
+                position: 'relative',
+                zIndex: 10000,
+                background: 'rgba(15, 23, 42, 0.35)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+              }
+        }
+      >
         {/* Top animated line */}
         {showAnimatedLine && (
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
@@ -139,7 +184,7 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true 
               <div className="nav-line-vertical"></div>
               
               {/* Tutorials Dropdown */}
-              <div className="relative" ref={dropdownRef} style={{ zIndex: 110 }}>
+              <div className="relative" ref={dropdownRef} style={{ zIndex: 10001 }}>
                 <button
                   ref={tutorialsButtonRef}
                   onClick={() => {
@@ -169,14 +214,19 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true 
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </button>
                 
-                {showDropdown && dropdownPosition && (
+                {isMounted && showDropdown && dropdownPosition && createPortal(
                   <div 
                     data-tutorials-dropdown
-                    className="fixed w-56 glass-dark rounded-lg shadow-xl py-2 z-[110]" 
+                    className="fixed w-56 glass-dark rounded-lg shadow-xl py-2" 
                     style={{ 
                       top: `${dropdownPosition.top}px`,
                       left: `${dropdownPosition.left}px`,
-                      position: 'fixed'
+                      position: 'fixed',
+                      zIndex: 10001,
+                      background: 'rgba(8, 61, 119, 0.95)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)'
                     }}
                     onMouseLeave={(e) => {
                       // Close if mouse leaves the dropdown
@@ -212,7 +262,8 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true 
                         </div>
                       </Link>
                     ))}
-                  </div>
+                  </div>,
+                  document.body
                 )}
               </div>
               
@@ -243,24 +294,28 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true 
               >
                 Apply Jobs
               </button>
-              <div className="nav-line-vertical"></div>
-              <button
-                onClick={toggleTheme}
-                className="p-2 text-white/90 hover:text-white transition-colors relative group"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                  </svg>
-                )}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-3/4"></span>
-              </button>
-              <div className="nav-line-vertical"></div>
+              {!hideThemeToggle && (
+                <>
+                  <div className="nav-line-vertical"></div>
+                  <button
+                    onClick={toggleTheme}
+                    className="p-2 text-white/90 hover:text-white transition-colors relative group"
+                    aria-label="Toggle theme"
+                  >
+                    {theme === 'dark' ? (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                      </svg>
+                    )}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-3/4"></span>
+                  </button>
+                  <div className="nav-line-vertical"></div>
+                </>
+              )}
               <SearchBar />
             </div>
 

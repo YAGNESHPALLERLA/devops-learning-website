@@ -26,7 +26,7 @@ type Errors = {
 
 function AuthPausedNotice() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end))' }}>
       <div className="w-full max-w-xl space-y-6 text-center">
         <Link href="/" className="inline-block">
           <div className="flex items-center justify-center space-x-3">
@@ -161,7 +161,7 @@ function ActiveLoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end))' }}>
       <div className="w-full max-w-md">
         <div className="bg-[#1a1a1a] border border-gray-700 rounded-2xl shadow-2xl p-8">
           {/* Header */}

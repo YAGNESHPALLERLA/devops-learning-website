@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { getVideosForTopic } from '@/data/videoTutorials';
-import PageNavigation from '@/components/page-navigation';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function PythonPage() {
@@ -9422,13 +9421,6 @@ print(f"Test accuracy: {test_acc:.2f}")`}
     <TechLayout onThisPage={pageHeadings} technology="python" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

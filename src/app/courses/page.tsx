@@ -78,16 +78,16 @@ const courses = [
 
 export default function CoursesPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9))' }}>
       {/* Hero Carousel */}
-      <section className="w-full">
+      <section className="w-full -mt-0">
         <HeroCarousel />
       </section>
 
       {/* Courses Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-gradient-to-r from-purple-500/10 to-cyan-500/10 backdrop-blur-sm text-purple-400 text-sm font-semibold px-6 py-3 rounded-full mb-6 border border-purple-500/20">
+          <div className="inline-flex items-center glass-gradient text-purple-400 text-sm font-semibold px-6 py-3 rounded-full mb-6">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
@@ -105,7 +105,7 @@ export default function CoursesPage() {
             <Link
               key={course.href}
               href={course.href}
-              className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-2 border-gray-700 rounded-xl p-8 transition-all duration-500 hover:border-gray-600 hover:shadow-xl hover:shadow-purple-500/20 hover:-translate-y-2 overflow-hidden"
+              className="group relative glass-card glass-card-hover rounded-xl p-8 overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Background gradient on hover */}

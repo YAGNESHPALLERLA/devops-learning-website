@@ -26,8 +26,8 @@ export default function GovernmentJobsPage() {
   // Don't render anything until we've checked authentication
   if (isAuthenticated === null) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Checking authentication...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
+        <div style={{ color: 'var(--text-primary)' }}>Checking authentication...</div>
       </div>
     );
   }
@@ -35,14 +35,14 @@ export default function GovernmentJobsPage() {
   // If not authenticated (shouldn't reach here due to redirect, but safety check)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
+        <div style={{ color: 'var(--text-primary)' }}>Redirecting to registration...</div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] py-20">
+    <main className="min-h-screen pb-20" style={{ backgroundColor: '#000000', paddingTop: '120px' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full border border-indigo-500/30">

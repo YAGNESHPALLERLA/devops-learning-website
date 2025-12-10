@@ -41,7 +41,7 @@ export default function LearningPathPage({ params }: PageProps) {
 
   if (!pageData) {
     return (
-      <main className="min-h-screen bg-[#1a1a1a] py-20">
+      <main className="min-h-screen py-20" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Page Not Found</h1>
           <p className="text-gray-400">The learning path you're looking for doesn't exist.</p>

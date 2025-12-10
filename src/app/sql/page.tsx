@@ -6,7 +6,6 @@ import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { videoTutorialsData } from '@/data/videoTutorials';
 import { useState, useEffect } from 'react';
-import PageNavigation from '@/components/page-navigation';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function SQLPage() {
@@ -6233,13 +6232,6 @@ BEGIN; UPDATE...; INSERT...; COMMIT;`}
     <TechLayout onThisPage={pageHeadings} technology="sql" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

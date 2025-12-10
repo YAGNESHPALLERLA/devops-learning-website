@@ -646,7 +646,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
   }, [sectionList, setActiveSection, setActiveSubsection, externalActiveSection]);
 
   return (
-    <div className="flex min-h-screen bg-[#1a1a1a] relative w-full overflow-x-hidden">
+    <div className="flex min-h-screen relative w-full overflow-x-hidden" style={{ background: '#000000' }}>
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -659,7 +659,7 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
       {!hideSidebar && (
         <aside 
           className={`
-            fixed left-0 z-50 w-full max-w-xs sm:max-w-sm lg:w-80 bg-[#1a1a1a] shadow-2xl border-r border-gray-600
+            fixed left-0 z-50 w-full max-w-xs sm:max-w-sm lg:w-80 shadow-2xl
             transform transition-transform duration-300 ease-in-out
             top-0 h-screen
             lg:top-[80px] lg:h-[calc(100vh-80px)]
@@ -668,9 +668,10 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
             overflow-hidden
             will-change-transform
            `}
+          style={{ backgroundColor: 'rgba(26, 26, 26, 0.98)', borderRight: '1px solid rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', boxShadow: '2px 0 8px rgba(0, 0, 0, 0.3)' }}
         >
           {/* Mobile close button */}
-          <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-gray-600 bg-[#1a1a1a]">
+          <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b" style={{ borderBottomColor: 'rgba(255, 255, 255, 0.15)', backgroundColor: 'rgba(26, 26, 26, 0.98)' }}>
             <span className="text-white font-semibold">Menu</span>
             <button
               onClick={() => setSidebarOpen(false)}
@@ -728,8 +729,8 @@ export default function TechLayout({ children, onThisPage = [], technology, acti
         </header>
 
         {/* Content area - uses natural window scrolling, independent from sidebar */}
-        <main className="flex-1 bg-[#1a1a1a] relative z-10 pt-0 lg:pt-20 w-full">
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-10 lg:py-12">
+        <main className="flex-1 relative z-10 w-full" style={{ backgroundColor: '#000000', paddingTop: '120px', minHeight: '100vh' }}>
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
             <article className="max-w-none text-white leading-relaxed space-y-6 break-words">
               {children}
               {!hideNavButtons && sectionList.length > 1 && resolvedActiveSection && setActiveSection && (

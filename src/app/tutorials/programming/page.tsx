@@ -143,16 +143,16 @@ export default function ProgrammingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a] py-20">
+    <main className="min-h-screen pb-20" style={{ backgroundColor: '#000000', paddingTop: '120px' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-rose-500/20 to-red-500/20 rounded-full border border-rose-500/30">
             <span className="text-rose-400 font-semibold">💻 Programming</span>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className="text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
             Programming <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-red-500">Tutorials</span>
           </h1>
-          <p className="text-gray-400 text-xl">Master programming languages, frameworks, and development tools</p>
+          <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>Master programming languages, frameworks, and development tools</p>
         </div>
         
         <CardGrid columns={3} className="max-w-6xl mx-auto">

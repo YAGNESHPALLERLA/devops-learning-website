@@ -68,7 +68,7 @@ function ContinueForm() {
 
   if (!registeredEmail) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end))' }}>
         <div className="text-white">Loading...</div>
       </div>
     );
@@ -140,7 +140,7 @@ export default function ContinuePage() {
   }
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end))' }}>
         <div className="text-white">Loading...</div>
       </div>
     }>

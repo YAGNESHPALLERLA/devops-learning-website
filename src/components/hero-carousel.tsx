@@ -190,7 +190,7 @@ export default function HeroCarousel() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <div className="relative w-full h-[50vh] min-h-[400px] overflow-hidden z-10">
+    <div className="relative w-full h-[55vh] min-h-[450px] overflow-hidden" style={{ marginTop: 0 }}>
       {/* Professional Background Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40 z-5"></div>
       
@@ -222,7 +222,7 @@ export default function HeroCarousel() {
                                   '#0f0f0f'})`
             }}
           >
-            <div className="max-w-2xl text-left relative z-30">
+            <div className="max-w-2xl text-left relative z-30" style={{ paddingTop: '90px', paddingLeft: '2rem', paddingRight: '2rem', paddingBottom: '2rem' }}>
               <div className="inline-flex items-center bg-white/10 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-full mb-4 border border-white/20 shadow-lg">
                 <span className="w-1.5 h-1.5 bg-white rounded-full mr-2 animate-pulse"></span>
                 Featured Course

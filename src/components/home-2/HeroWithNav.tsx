@@ -16,9 +16,9 @@ export default function HeroWithNav() {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[85vh] flex flex-col overflow-hidden" style={{ zIndex: 1 }}>
       {/* Background Image with Ken Burns Effect */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0" style={{ zIndex: 0 }}>
         <div 
           className="kenburns-top w-full h-full bg-cover bg-center"
           style={{

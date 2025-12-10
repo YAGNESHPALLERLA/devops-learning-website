@@ -119,7 +119,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <div className="flex min-h-screen" style={{ background: '#000000' }}>
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -130,10 +130,15 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
 
       {/* Sidebar */}
       <aside className={`
-        fixed lg:relative inset-y-0 left-0 z-[60] w-80 bg-gradient-to-b from-gray-900 to-black shadow-2xl lg:shadow-xl border-r border-gray-700
+        fixed left-0 z-[60] w-80 shadow-2xl
         transform transition-transform duration-300 ease-in-out
+        top-0 h-screen
+        lg:top-[80px] lg:h-[calc(100vh-80px)]
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
+        overflow-hidden
+        will-change-transform
+      `}
+      style={{ backgroundColor: 'rgba(26, 26, 26, 0.98)', borderRight: '1px solid rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', boxShadow: '2px 0 8px rgba(0, 0, 0, 0.3)' }}>
         <Sidebar items={navigationItems} onThisPage={onThisPage} />
       </aside>
 
@@ -156,7 +161,7 @@ export default function DocsLayout({ children, onThisPage }: DocsLayoutProps) {
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-y-auto bg-gradient-to-br from-gray-900/50 to-black/50 relative z-10">
+        <main className="flex-1 overflow-y-auto relative z-10" style={{ background: '#000000', paddingTop: '120px' }}>
           <div className="max-w-5xl mx-auto px-8 py-12">
             <article className="prose prose-lg max-w-none text-white">
               {children}

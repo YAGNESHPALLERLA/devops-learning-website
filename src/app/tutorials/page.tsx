@@ -28,8 +28,8 @@ export default function TutorialsPage() {
   // Don't render anything until we've checked authentication
   if (isAuthenticated === null) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Checking authentication...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
+        <div style={{ color: 'var(--text-primary)' }}>Checking authentication...</div>
       </div>
     );
   }
@@ -37,14 +37,14 @@ export default function TutorialsPage() {
   // If not authenticated (shouldn't reach here due to redirect, but safety check)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
-        <div className="text-white">Redirecting to registration...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#000000' }}>
+        <div style={{ color: 'var(--text-primary)' }}>Redirecting to registration...</div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#1a1a1a]">
+    <main className="min-h-screen" style={{ backgroundColor: '#000000', paddingTop: '120px' }}>
       {/* Hero Section */}
       <section className="relative text-center py-20 px-4 overflow-hidden bg-gradient-to-b from-[#202020] to-[#1a1a1a]">
         <div className="absolute inset-0 overflow-hidden">

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
-import PageNavigation from '@/components/page-navigation';
 import { getVideosForTopic } from '@/data/videoTutorials';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
@@ -181,7 +180,7 @@ export default function DevOpsPage() {
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl border border-blue-500/30 mb-8">
                   <h2 className="text-3xl font-bold text-white mb-4">🎯 Our DevOps Learning Goal</h2>
                   <p className="text-white text-xl mb-4">Master DevOps practices, tools, and culture for modern software development.</p>
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">What You'll Achieve</h3>
                     <ul className="text-gray-300 space-y-2">
                       <li>• <strong className="text-white">Cultural Transformation:</strong> Learn to break down silos and foster collaboration</li>
@@ -193,7 +192,7 @@ export default function DevOpsPage() {
                 </div>
 
                 {/* Overview Section */}
-                <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-8">
+                <div id="overview" className="glass-section p-8 rounded-lg mb-8">
                   <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 DevOps Course Overview</h2>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
@@ -238,7 +237,7 @@ export default function DevOpsPage() {
                         to shorten the systems development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-3">📈 Historical Context</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>2009:</strong> Term "DevOps" coined by Patrick Debois</li>
@@ -247,7 +246,7 @@ export default function DevOpsPage() {
                             <li>• <strong>2016:</strong> DevOps becomes mainstream enterprise practice</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-3">🎯 Core Philosophy</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Collaboration:</strong> Break down traditional silos</li>
@@ -267,7 +266,7 @@ export default function DevOpsPage() {
                         Companies practicing DevOps deploy code 200x more frequently, with 2,555x faster lead times and 7x lower change failure rates.
                       </p>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-green-400 mb-3">🚀 Speed to Market</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Faster feature delivery</li>
@@ -276,7 +275,7 @@ export default function DevOpsPage() {
                             <li>• Customer satisfaction</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-blue-400 mb-3">🛡️ Reliability & Quality</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Fewer production failures</li>
@@ -285,7 +284,7 @@ export default function DevOpsPage() {
                             <li>• Improved system stability</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-purple-400 mb-3">👥 Team Collaboration</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Breaking down silos</li>
@@ -301,7 +300,7 @@ export default function DevOpsPage() {
                     <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-xl">
                       <h3 className="text-2xl font-bold text-white mb-4">⚔️ DevOps vs Traditional IT Operations</h3>
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-red-400 mb-3">❌ Traditional IT (Waterfall)</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Siloed teams:</strong> Dev and Ops work separately</li>
@@ -312,7 +311,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Documentation-heavy:</strong> Extensive manual documentation</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-green-400 mb-3">✅ DevOps Approach</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Collaborative teams:</strong> Dev and Ops work together</li>
@@ -330,7 +329,7 @@ export default function DevOpsPage() {
                     <div className="bg-purple-900/20 border border-purple-500/30 p-6 rounded-xl">
                       <h3 className="text-2xl font-bold text-white mb-4">🏆 Real-World DevOps Success Stories</h3>
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎬 Netflix: Streaming at Scale</h4>
                           <p className="text-gray-300 text-sm mb-2">
                             Netflix processes over 1 billion hours of content per week using DevOps practices. 
@@ -340,7 +339,7 @@ export default function DevOpsPage() {
                             <strong>Results:</strong> 99.99% uptime, ability to handle traffic spikes, rapid feature delivery
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🛒 Amazon: E-commerce Giant</h4>
                           <p className="text-gray-300 text-sm mb-2">
                             Amazon deploys new code every 11.6 seconds on average. Their "two-pizza teams" 
@@ -350,7 +349,7 @@ export default function DevOpsPage() {
                             <strong>Results:</strong> 50,000+ deployments per day, reduced time-to-market by 90%
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">💼 Capital One: Financial Services</h4>
                           <p className="text-gray-300 text-sm mb-2">
                             Capital One transformed from a traditional bank to a tech company, reducing 
@@ -401,7 +400,7 @@ export default function DevOpsPage() {
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🤝 Collaboration & Trust</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Psychological Safety:</strong> Team members feel safe to speak up and take risks</li>
@@ -411,7 +410,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Breaking down silos:</strong> Eliminating "us vs them" mentality</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-purple-400 mb-2">📊 Shared Responsibility</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Collective ownership:</strong> Everyone owns the entire system</li>
@@ -423,7 +422,7 @@ export default function DevOpsPage() {
                         </div>
                       </div>
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-yellow-400 mb-2">🔄 Continuous Improvement</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Kaizen mindset:</strong> Small, incremental improvements daily</li>
@@ -433,7 +432,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Innovation time:</strong> Dedicated time for exploring new ideas</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-red-400 mb-2">📚 Learning Culture</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Knowledge sharing:</strong> Regular tech talks and documentation</li>
@@ -451,7 +450,7 @@ export default function DevOpsPage() {
                   <div className="bg-red-900/20 border border-red-500/30 p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-white mb-4">⚠️ Common Cultural Transformation Challenges</h3>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-red-400 mb-3">🚫 Resistance to Change</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Fear of job loss:</strong> Automation anxiety</li>
@@ -460,7 +459,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Skill gaps:</strong> Fear of not being able to adapt</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-yellow-400 mb-3">💡 Overcoming Resistance</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Clear communication:</strong> Explain the "why" behind changes</li>
@@ -489,7 +488,7 @@ export default function DevOpsPage() {
                       It emphasizes systems thinking and optimizing the entire value stream, not just individual components.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-3">🎯 Core Principles</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Visualize work:</strong> Make work visible using Kanban boards</li>
@@ -499,7 +498,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Eliminate waste:</strong> Remove non-value-adding activities</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-3">🛠️ Implementation Practices</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Continuous Integration:</strong> Integrate code frequently</li>
@@ -528,7 +527,7 @@ export default function DevOpsPage() {
                       It emphasizes shortening and amplifying all feedback loops to enable fast detection and recovery.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-3">📊 Feedback Types</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Development feedback:</strong> Unit tests, code reviews, static analysis</li>
@@ -538,7 +537,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Business feedback:</strong> Customer satisfaction, business metrics</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-3">🚨 Amplification Techniques</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Make work visible:</strong> Dashboards, monitoring, alerting</li>
@@ -567,7 +566,7 @@ export default function DevOpsPage() {
                       It emphasizes taking risks, learning from failures, and constantly improving through experimentation.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-purple-400 mb-3">🧪 Experimentation Culture</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Foster experimentation:</strong> Encourage trying new approaches</li>
@@ -577,7 +576,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Hypothesis-driven:</strong> Test assumptions with experiments</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-purple-400 mb-3">📚 Knowledge Sharing</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Share knowledge:</strong> Documentation, tech talks</li>
@@ -656,7 +655,7 @@ export default function DevOpsPage() {
                     <h3 className="text-xl font-bold text-white mb-4">IaC Benefits</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔄 Automation</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Automated provisioning</li>
@@ -665,7 +664,7 @@ export default function DevOpsPage() {
                             <li>• Faster deployments</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📝 Version Control</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Infrastructure history</li>
@@ -676,7 +675,7 @@ export default function DevOpsPage() {
                         </div>
                       </div>
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-purple-400 mb-2">🧪 Testing</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Infrastructure testing</li>
@@ -685,7 +684,7 @@ export default function DevOpsPage() {
                             <li>• Security scanning</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-yellow-400 mb-2">🔄 Reproducibility</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• Identical environments</li>
@@ -806,7 +805,7 @@ export default function DevOpsPage() {
                     <h3 className="text-xl font-bold text-white mb-4">🧠 Automation Principles</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-blue-400 mb-2">🔄 Automate Everything Possible</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Repetitive tasks:</strong> Build, test, deploy, monitor</li>
@@ -816,7 +815,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Scaling operations:</strong> Auto-scaling based on demand</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-green-400 mb-2">⚡ Speed & Reliability</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Eliminate human error:</strong> Consistent, repeatable processes</li>
@@ -828,7 +827,7 @@ export default function DevOpsPage() {
                         </div>
                       </div>
                       <div className="space-y-4">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-purple-400 mb-2">🛡️ Quality & Consistency</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Standardized processes:</strong> Everyone follows the same procedures</li>
@@ -838,7 +837,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Code quality gates:</strong> Automated code review checks</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-yellow-400 mb-2">📊 Monitoring & Feedback</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Automated alerting:</strong> Proactive issue detection</li>
@@ -856,7 +855,7 @@ export default function DevOpsPage() {
                   <div className="bg-green-900/20 border border-green-500/30 p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-white mb-4">📈 Automation Maturity Levels</h3>
                     <div className="space-y-4">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-2">Level 1: Basic Automation</h4>
                         <p className="text-gray-300 text-sm mb-2">
                           Automate simple, repetitive tasks like builds and basic deployments. 
@@ -866,7 +865,7 @@ export default function DevOpsPage() {
                           <strong>Examples:</strong> Automated builds, basic deployment scripts, simple monitoring alerts
                         </div>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-2">Level 2: Process Automation</h4>
                         <p className="text-gray-300 text-sm mb-2">
                           Automate entire workflows and processes. Implement CI/CD pipelines 
@@ -876,7 +875,7 @@ export default function DevOpsPage() {
                           <strong>Examples:</strong> Full CI/CD pipelines, infrastructure as code, automated testing suites
                         </div>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-purple-400 mb-2">Level 3: Intelligent Automation</h4>
                         <p className="text-gray-300 text-sm mb-2">
                           Implement self-healing systems, predictive scaling, and AI-driven operations. 
@@ -952,7 +951,7 @@ export default function DevOpsPage() {
                   <div className="bg-gray-900 p-6 rounded-xl mb-6">
                     <h3 className="text-xl font-bold text-white mb-4">🎯 DevSecOps Principles</h3>
                     <div className="grid md:grid-cols-3 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-red-400 mb-3">🚀 Shift Left Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Early integration:</strong> Security from day one</li>
@@ -962,7 +961,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Security requirements:</strong> Define security criteria upfront</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-3">🔄 Continuous Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Automated scanning:</strong> Continuous vulnerability assessment</li>
@@ -972,7 +971,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Real-time monitoring:</strong> Continuous security monitoring</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-3">👥 Shared Responsibility</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Security champions:</strong> Security advocates in teams</li>
@@ -997,7 +996,7 @@ export default function DevOpsPage() {
                   <div className="bg-gray-900 p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-white mb-4">🛠️ Security Pipeline Stages</h3>
                     <div className="space-y-4">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-2">1. Commit Stage Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Pre-commit hooks:</strong> Local security checks before commit</li>
@@ -1006,7 +1005,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Dependency scanning:</strong> Check for vulnerable dependencies</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-2">2. Build Stage Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Static Application Security Testing (SAST):</strong> Analyze source code for vulnerabilities</li>
@@ -1015,7 +1014,7 @@ export default function DevOpsPage() {
                           <li>• <strong>License compliance:</strong> Ensure proper software licensing</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-purple-400 mb-2">3. Test Stage Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Dynamic Application Security Testing (DAST):</strong> Test running applications</li>
@@ -1024,7 +1023,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Penetration testing:</strong> Automated security penetration tests</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-yellow-400 mb-2">4. Deploy Stage Security</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Runtime security:</strong> Monitor applications in production</li>
@@ -1067,7 +1066,7 @@ export default function DevOpsPage() {
                   <div className="bg-gray-900 p-6 rounded-xl mb-6">
                     <h3 className="text-xl font-bold text-white mb-4">🌐 Major Cloud Platforms</h3>
                     <div className="grid md:grid-cols-3 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-3">🔵 Amazon Web Services (AWS)</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Market leader:</strong> Largest cloud provider globally</li>
@@ -1077,7 +1076,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Innovation pace:</strong> Rapid service development</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-3">🟢 Microsoft Azure</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Enterprise integration:</strong> Strong Microsoft ecosystem integration</li>
@@ -1087,7 +1086,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Developer tools:</strong> Comprehensive development platform</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-orange-400 mb-3">🟠 Google Cloud Platform (GCP)</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Data analytics:</strong> Industry-leading big data services</li>
@@ -1155,7 +1154,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-4">📊 Traditional Monitoring</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• <strong>Reactive approach:</strong> Respond to known issues</li>
@@ -1165,7 +1164,7 @@ export default function DevOpsPage() {
                         <li>• <strong>Known unknowns:</strong> Monitor for expected problems</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-4">🔍 Modern Observability</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• <strong>Proactive approach:</strong> Understand system behavior</li>
@@ -1245,7 +1244,7 @@ export default function DevOpsPage() {
                   <div className="bg-gray-900 p-6 rounded-xl mb-6">
                     <h3 className="text-xl font-bold text-white mb-4">🎯 Tool Selection Criteria</h3>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-blue-400 mb-3">🔍 Evaluation Factors</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Team expertise:</strong> Does your team have the skills to use this tool?</li>
@@ -1256,7 +1255,7 @@ export default function DevOpsPage() {
                           <li>• <strong>Vendor lock-in:</strong> How easy is it to migrate away?</li>
                         </ul>
                       </div>
-                      <div className="bg-gray-800 p-4 rounded-lg">
+                      <div className="glass-card glass-card-hover p-4 rounded-lg">
                         <h4 className="text-lg font-bold text-green-400 mb-3">✅ Best Practices</h4>
                         <ul className="text-gray-300 space-y-2 text-sm">
                           <li>• <strong>Start simple:</strong> Begin with essential tools, add complexity gradually</li>
@@ -1590,21 +1589,21 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-3 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-3">🎯 Learn by Doing</h3>
                       <p className="text-gray-300 text-sm">
                         Theory is important, but hands-on practice is essential. Build projects, 
                         break things, fix them, and learn from failures.
                       </p>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-3">🔄 Iterate and Improve</h3>
                       <p className="text-gray-300 text-sm">
                         Don't aim for perfection initially. Start simple, make it work, 
                         then continuously improve and optimize.
                       </p>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-purple-400 mb-3">👥 Community Learning</h3>
                       <p className="text-gray-300 text-sm">
                         Join DevOps communities, contribute to open source, and learn 
@@ -1631,7 +1630,7 @@ export default function DevOpsPage() {
                             Master Linux as it powers most DevOps infrastructure. Understanding Linux is non-negotiable for DevOps engineers.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Command-line navigation and file operations</li>
@@ -1642,7 +1641,7 @@ export default function DevOpsPage() {
                                 <li>• Shell scripting (bash, variables, loops, functions)</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Set up a Linux VM (Ubuntu or CentOS)</li>
@@ -1669,7 +1668,7 @@ export default function DevOpsPage() {
                             Git is the backbone of modern development workflows. Master it to collaborate effectively and manage code history.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Git basics (init, add, commit, push, pull)</li>
@@ -1680,7 +1679,7 @@ export default function DevOpsPage() {
                                 <li>• Pull requests and code reviews</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Create and manage GitHub repositories</li>
@@ -1707,7 +1706,7 @@ export default function DevOpsPage() {
                             Understanding networking is crucial for troubleshooting, security, and building distributed systems.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• OSI and TCP/IP models</li>
@@ -1718,7 +1717,7 @@ export default function DevOpsPage() {
                                 <li>• VPNs and network security</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Configure Nginx as reverse proxy</li>
@@ -1755,7 +1754,7 @@ export default function DevOpsPage() {
                             Containers revolutionized application deployment. Master Docker to build, ship, and run applications consistently.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Docker architecture and concepts</li>
@@ -1766,7 +1765,7 @@ export default function DevOpsPage() {
                                 <li>• Container security fundamentals</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Containerize a web application</li>
@@ -1793,7 +1792,7 @@ export default function DevOpsPage() {
                             Automate the software delivery process from code commit to production deployment.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• CI/CD concepts and benefits</li>
@@ -1804,7 +1803,7 @@ export default function DevOpsPage() {
                                 <li>• Deployment strategies (blue-green, canary)</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Build Jenkins pipeline with Jenkinsfile</li>
@@ -1831,7 +1830,7 @@ export default function DevOpsPage() {
                             Manage infrastructure through code for version control, automation, and reproducibility.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• IaC principles and benefits</li>
@@ -1842,7 +1841,7 @@ export default function DevOpsPage() {
                                 <li>• Testing infrastructure code</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Provision cloud infrastructure with Terraform</li>
@@ -1879,7 +1878,7 @@ export default function DevOpsPage() {
                             Kubernetes is the de facto standard for container orchestration. Master it to manage applications at scale.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Kubernetes architecture (pods, services, deployments)</li>
@@ -1890,7 +1889,7 @@ export default function DevOpsPage() {
                                 <li>• StatefulSets and persistent storage</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Deploy application to Kubernetes cluster</li>
@@ -1917,7 +1916,7 @@ export default function DevOpsPage() {
                             Build comprehensive monitoring systems to understand system behavior and troubleshoot issues proactively.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Three pillars: Metrics, Logs, Traces</li>
@@ -1928,7 +1927,7 @@ export default function DevOpsPage() {
                                 <li>• SLOs, SLIs, and SLAs</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Set up Prometheus + Grafana stack</li>
@@ -1955,7 +1954,7 @@ export default function DevOpsPage() {
                             Master at least one major cloud platform to leverage managed services and build cloud-native applications.
                           </p>
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-blue-400 mb-2">📚 Core Topics</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Cloud computing fundamentals (IaaS, PaaS, SaaS)</li>
@@ -1966,7 +1965,7 @@ export default function DevOpsPage() {
                                 <li>• Cost optimization strategies</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h4 className="text-sm font-bold text-green-400 mb-2">🎯 Practical Projects</h4>
                               <ul className="text-gray-300 text-xs space-y-1">
                                 <li>• Deploy 3-tier application on cloud</li>
@@ -1994,7 +1993,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-4">🔒 DevSecOps Engineer</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Security scanning and compliance</li>
@@ -2004,7 +2003,7 @@ export default function DevOpsPage() {
                         <li>• Compliance automation (SOC2, GDPR)</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-4">🏗️ Platform Engineer</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Internal developer platforms</li>
@@ -2014,7 +2013,7 @@ export default function DevOpsPage() {
                         <li>• Developer experience optimization</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-purple-400 mb-4">⚡ Site Reliability Engineer</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• SLO/SLI definition and tracking</li>
@@ -2024,7 +2023,7 @@ export default function DevOpsPage() {
                         <li>• Capacity planning and forecasting</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-yellow-400 mb-4">☁️ Cloud Architect</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Multi-cloud strategy and architecture</li>
@@ -2101,7 +2100,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-3 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-3">🤝 Cultural Transformation</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Break down silos between Dev and Ops</li>
@@ -2111,7 +2110,7 @@ export default function DevOpsPage() {
                         <li>• Encourage experimentation and innovation</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-3">🔄 Automation First</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Automate repetitive tasks and processes</li>
@@ -2121,7 +2120,7 @@ export default function DevOpsPage() {
                         <li>• Build self-service platforms for teams</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-purple-400 mb-3">📊 Measure Everything</h3>
                       <ul className="text-gray-300 space-y-2 text-sm">
                         <li>• Track deployment frequency and lead time</li>
@@ -2251,7 +2250,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-3">🚀 Deployment Frequency</h3>
                       <p className="text-gray-300 text-sm mb-3">
                         How often your organization successfully releases to production.
@@ -2267,7 +2266,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-3">⏱️ Lead Time for Changes</h3>
                       <p className="text-gray-300 text-sm mb-3">
                         Time from code commit to code successfully running in production.
@@ -2283,7 +2282,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-yellow-400 mb-3">🔄 Time to Restore Service (MTTR)</h3>
                       <p className="text-gray-300 text-sm mb-3">
                         How long it takes to restore service when an incident occurs.
@@ -2299,7 +2298,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-red-400 mb-3">❌ Change Failure Rate</h3>
                       <p className="text-gray-300 text-sm mb-3">
                         Percentage of changes that result in degraded service or require remediation.
@@ -2358,7 +2357,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="space-y-4">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <div className="flex items-start gap-4">
                         <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">1</div>
                         <div>
@@ -2371,7 +2370,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <div className="flex items-start gap-4">
                         <div className="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">2</div>
                         <div>
@@ -2384,7 +2383,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <div className="flex items-start gap-4">
                         <div className="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">3</div>
                         <div>
@@ -2397,7 +2396,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <div className="flex items-start gap-4">
                         <div className="bg-yellow-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">4</div>
                         <div>
@@ -2410,7 +2409,7 @@ export default function DevOpsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <div className="flex items-start gap-4">
                         <div className="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0">5</div>
                         <div>
@@ -2533,7 +2532,7 @@ export default function DevOpsPage() {
                     - it works the same way regardless of where it's deployed.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Docker Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Docker transformed software deployment by solving the age-old problem: "It works on my machine." 
@@ -2574,7 +2573,7 @@ export default function DevOpsPage() {
                     <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-500/30">
                       <h3 className="text-2xl font-bold text-blue-400 mb-4">🏗️ Docker Architecture Components</h3>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🐳 Docker Daemon</h4>
                           <p className="text-gray-300 text-sm mb-2">Background service managing containers</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -2583,7 +2582,7 @@ export default function DevOpsPage() {
                             <li>• Manages networking</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📋 Docker Client</h4>
                           <p className="text-gray-300 text-sm mb-2">Command-line interface for Docker</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -2592,7 +2591,7 @@ export default function DevOpsPage() {
                             <li>• Can connect to remote daemon</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📦 Docker Registry</h4>
                           <p className="text-gray-300 text-sm mb-2">Repository for Docker images</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -3066,7 +3065,7 @@ export default function DevOpsPage() {
                     YAML configurations, making it the cornerstone of modern DevOps workflows.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Compose Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Before Docker Compose, managing multi-container applications meant running dozens of 
@@ -3108,7 +3107,7 @@ export default function DevOpsPage() {
                     <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-500/30">
                       <h3 className="text-2xl font-bold text-blue-400 mb-4">🏗️ Compose File Structure</h3>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📋 Services</h4>
                           <p className="text-gray-300 text-sm mb-2">Container definitions with configuration</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -3118,7 +3117,7 @@ export default function DevOpsPage() {
                             <li>• Volume mounts</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🌐 Networks</h4>
                           <p className="text-gray-300 text-sm mb-2">Container communication setup</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -3128,7 +3127,7 @@ export default function DevOpsPage() {
                             <li>• External networks</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">💾 Volumes</h4>
                           <p className="text-gray-300 text-sm mb-2">Persistent data management</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -3553,7 +3552,7 @@ export default function DevOpsPage() {
                     These practices separate amateur containerization from enterprise-grade DevOps.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 Why Best Practices Matter</h3>
                     <p className="text-gray-300 mb-4">
                       In production environments, containers face real challenges: security threats, performance bottlenecks, 
@@ -3925,7 +3924,7 @@ export default function DevOpsPage() {
                     <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
                       <h3 className="text-xl font-bold text-green-400 mb-4">✅ Pre-Production Checklist</h3>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔒 Security</h4>
                           <ul className="text-gray-300 space-y-1 text-sm">
                             <li>□ Non-root user configured</li>
@@ -3936,7 +3935,7 @@ export default function DevOpsPage() {
                             <li>□ Capabilities dropped</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚡ Performance</h4>
                           <ul className="text-gray-300 space-y-1 text-sm">
                             <li>□ Multi-stage build implemented</li>
@@ -3947,7 +3946,7 @@ export default function DevOpsPage() {
                             <li>□ Build cache optimized</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📊 Operations</h4>
                           <ul className="text-gray-300 space-y-1 text-sm">
                             <li>□ Structured logging enabled</li>
@@ -4020,7 +4019,7 @@ export default function DevOpsPage() {
                     of it as an intelligent conductor orchestrating a symphony of containers.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Kubernetes Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Kubernetes was born from Google's 15+ years of experience running production workloads (Borg system). 
@@ -4067,7 +4066,7 @@ export default function DevOpsPage() {
                         It's the brain of your Kubernetes cluster.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📡 kube-apiserver</h4>
                           <p className="text-gray-300 text-sm mb-2">The frontend for Kubernetes control plane</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4077,7 +4076,7 @@ export default function DevOpsPage() {
                             <li>• Horizontally scalable for HA</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🗄️ etcd</h4>
                           <p className="text-gray-300 text-sm mb-2">Distributed key-value store for cluster state</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4087,7 +4086,7 @@ export default function DevOpsPage() {
                             <li>• Critical for disaster recovery</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📅 kube-scheduler</h4>
                           <p className="text-gray-300 text-sm mb-2">Assigns Pods to Nodes</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4097,7 +4096,7 @@ export default function DevOpsPage() {
                             <li>• Honors constraints and affinity rules</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎮 kube-controller-manager</h4>
                           <p className="text-gray-300 text-sm mb-2">Runs controller processes</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4116,7 +4115,7 @@ export default function DevOpsPage() {
                         Node components run on every node, maintaining running Pods and providing the Kubernetes runtime environment.
                       </p>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🤖 kubelet</h4>
                           <p className="text-gray-300 text-sm mb-2">Agent running on each node</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4126,7 +4125,7 @@ export default function DevOpsPage() {
                             <li>• Executes container runtime operations</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔌 kube-proxy</h4>
                           <p className="text-gray-300 text-sm mb-2">Network proxy on each node</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4136,7 +4135,7 @@ export default function DevOpsPage() {
                             <li>• Implements iptables/IPVS rules</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🐳 Container Runtime</h4>
                           <p className="text-gray-300 text-sm mb-2">Software for running containers</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4409,7 +4408,7 @@ export default function DevOpsPage() {
                         what containerized applications are running, on which nodes, and the policies around those applications.
                       </p>
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📦 Pods</h4>
                           <p className="text-gray-300 text-sm mb-2">Smallest deployable unit in K8s</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4419,7 +4418,7 @@ export default function DevOpsPage() {
                             <li>• Ephemeral by nature</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎮 ReplicaSets</h4>
                           <p className="text-gray-300 text-sm mb-2">Maintains desired Pod count</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4429,7 +4428,7 @@ export default function DevOpsPage() {
                             <li>• Usually managed by Deployments</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🚀 Deployments</h4>
                           <p className="text-gray-300 text-sm mb-2">Declarative Pod management</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4439,7 +4438,7 @@ export default function DevOpsPage() {
                             <li>• Most common workload type</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🌐 Services</h4>
                           <p className="text-gray-300 text-sm mb-2">Stable network endpoint</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4449,7 +4448,7 @@ export default function DevOpsPage() {
                             <li>• LoadBalancer (cloud integration)</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚙️ ConfigMaps</h4>
                           <p className="text-gray-300 text-sm mb-2">Configuration data storage</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4459,7 +4458,7 @@ export default function DevOpsPage() {
                             <li>• Command-line arguments</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔐 Secrets</h4>
                           <p className="text-gray-300 text-sm mb-2">Sensitive data storage</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -4531,7 +4530,7 @@ export default function DevOpsPage() {
                     Think of them as the autopilot for your application lifecycle.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 Why Deployments Are Game-Changers</h3>
                     <p className="text-gray-300 mb-4">
                       Before Deployments, managing application updates required manual coordination and often resulted in downtime. 
@@ -4878,7 +4877,7 @@ export default function DevOpsPage() {
                     ephemeral Pods. Think of Services as the networking glue that connects your microservices.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 Why Services Are Essential</h3>
                     <p className="text-gray-300 mb-4">
                       Pods are ephemeral and their IPs change when they restart. Services solve this by providing a stable 
@@ -5193,7 +5192,7 @@ export default function DevOpsPage() {
                     issue detection, and ensures optimal resource utilization.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Monitoring Imperative</h3>
                     <p className="text-gray-300 mb-4">
                       In dynamic Kubernetes environments with hundreds of containers constantly being created and destroyed, 
@@ -5537,7 +5536,7 @@ export default function DevOpsPage() {
                     de facto standard for CI/CD pipelines, trusted by millions of developers worldwide.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Jenkins Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Created by Kohsuke Kawaguchi at Sun Microsystems in 2004, Jenkins emerged from the need to 
@@ -5584,7 +5583,7 @@ export default function DevOpsPage() {
                         multiple Agent nodes, enabling horizontal scaling and resource optimization.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎯 Master Node (Controller)</h4>
                           <p className="text-gray-300 text-sm mb-2">Central coordination hub</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -5596,7 +5595,7 @@ export default function DevOpsPage() {
                             <li>• Handles plugin management</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚙️ Agent Nodes (Executors)</h4>
                           <p className="text-gray-300 text-sm mb-2">Build execution workers</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -5608,7 +5607,7 @@ export default function DevOpsPage() {
                             <li>• Isolated build environments</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📦 Build Workspace</h4>
                           <p className="text-gray-300 text-sm mb-2">Isolated execution environment</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -5618,7 +5617,7 @@ export default function DevOpsPage() {
                             <li>• Environment variables and secrets</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔌 Plugin System</h4>
                           <p className="text-gray-300 text-sm mb-2">Extensible functionality</p>
                           <ul className="text-gray-400 text-xs space-y-1">
@@ -5640,7 +5639,7 @@ export default function DevOpsPage() {
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-bold text-white mb-3">📝 Pipeline Types</h4>
-                          <div className="bg-gray-800 p-4 rounded-lg mb-4">
+                          <div className="glass-card glass-card-hover p-4 rounded-lg mb-4">
                             <h5 className="text-md font-bold text-blue-400 mb-2">Declarative Pipeline</h5>
                             <p className="text-gray-300 text-sm mb-2">Structured, opinionated syntax</p>
                             <ul className="text-gray-400 text-xs space-y-1">
@@ -5650,7 +5649,7 @@ export default function DevOpsPage() {
                               <li>• IDE support and syntax highlighting</li>
                             </ul>
                           </div>
-                          <div className="bg-gray-800 p-4 rounded-lg">
+                          <div className="glass-card glass-card-hover p-4 rounded-lg">
                             <h5 className="text-md font-bold text-green-400 mb-2">Scripted Pipeline</h5>
                             <p className="text-gray-300 text-sm mb-2">Full Groovy programming power</p>
                             <ul className="text-gray-400 text-xs space-y-1">
@@ -6018,7 +6017,7 @@ export default function DevOpsPage() {
                     bringing version control, code review, and infrastructure as code principles to automation.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Pipeline Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Introduced in Jenkins 2.0, Pipelines transformed Jenkins from a simple automation tool 
@@ -6503,7 +6502,7 @@ export default function DevOpsPage() {
                     continuous integration and deployment, offering native integration with GitHub's ecosystem.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The GitHub Actions Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       GitHub Actions eliminates the need for external CI/CD tools by providing native automation 
@@ -6551,7 +6550,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📋 Workflow Structure</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -6584,7 +6583,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚙️ Key Components</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Events:</strong> Push, PR, issues, releases, schedules</li>
@@ -6597,7 +6596,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Matrix:</strong> Run jobs across multiple configurations</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎯 Event Triggers</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>push:</strong> Code pushed to repository</li>
@@ -6609,7 +6608,7 @@ export default function DevOpsPage() {
                             <li>• <strong>repository_dispatch:</strong> External API triggers</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🖥️ Runner Types</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>GitHub-Hosted:</strong> Ubuntu, Windows, macOS</li>
@@ -6633,7 +6632,7 @@ export default function DevOpsPage() {
                         <div>
                           <h4 className="text-lg font-bold text-white mb-3">🔧 Popular Action Categories</h4>
                           <div className="space-y-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-blue-400 mb-2">🏗️ Build & Deploy</h5>
                               <ul className="text-gray-300 text-sm space-y-1">
                                 <li>• <strong>actions/setup-node:</strong> Node.js environment setup</li>
@@ -6643,7 +6642,7 @@ export default function DevOpsPage() {
                                 <li>• <strong>azure/webapps-deploy:</strong> Deploy to Azure App Service</li>
                               </ul>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-green-400 mb-2">🧪 Testing & Quality</h5>
                               <ul className="text-gray-300 text-sm space-y-1">
                                 <li>• <strong>actions/cache:</strong> Cache dependencies</li>
@@ -6995,7 +6994,7 @@ export default function DevOpsPage() {
                     in a single application. It's designed to streamline the entire software development lifecycle.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The GitLab DevOps Platform</h3>
                     <p className="text-gray-300 mb-4">
                       Unlike standalone CI/CD tools, GitLab provides a unified platform where development, 
@@ -7043,7 +7042,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📋 .gitlab-ci.yml Structure</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7080,7 +7079,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚙️ Pipeline Components</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Stages:</strong> Sequential execution phases</li>
@@ -7160,7 +7159,7 @@ export default function DevOpsPage() {
                     at SoundCloud, it's now a graduated project of the Cloud Native Computing Foundation (CNCF).
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Prometheus Monitoring Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Prometheus revolutionized monitoring by introducing a pull-based model, dimensional data model, 
@@ -7208,7 +7207,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎛️ Prometheus Server</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7237,7 +7236,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📡 Exporters & Targets</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7268,7 +7267,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🚨 Alertmanager</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7291,7 +7290,7 @@ export default function DevOpsPage() {
                             </code>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔍 Service Discovery</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7325,7 +7324,7 @@ export default function DevOpsPage() {
                         <div>
                           <h4 className="text-lg font-bold text-white mb-3">📈 Core Metric Types</h4>
                           <div className="space-y-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-blue-400 mb-2">Counter</h5>
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
@@ -7337,7 +7336,7 @@ export default function DevOpsPage() {
                                 </code>
                               </div>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-green-400 mb-2">Gauge</h5>
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
@@ -7354,7 +7353,7 @@ export default function DevOpsPage() {
                         <div>
                           <h4 className="text-lg font-bold text-white mb-3">📊 Advanced Metric Types</h4>
                           <div className="space-y-4">
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-purple-400 mb-2">Histogram</h5>
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
@@ -7369,7 +7368,7 @@ export default function DevOpsPage() {
                                 </code>
                               </div>
                             </div>
-                            <div className="bg-gray-800 p-4 rounded-lg">
+                            <div className="glass-card glass-card-hover p-4 rounded-lg">
                               <h5 className="text-md font-bold text-orange-400 mb-2">Summary</h5>
                               <div className="bg-gray-900 p-3 rounded mb-2">
                                 <code className="text-green-400">
@@ -7597,7 +7596,7 @@ export default function DevOpsPage() {
                     data sources, enabling teams to create comprehensive dashboards for monitoring and alerting.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Grafana Visualization Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Grafana has become the standard for data visualization in DevOps and observability. It provides 
@@ -7645,7 +7644,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎛️ Grafana Server</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7672,7 +7671,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📊 Data Sources</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -7701,7 +7700,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎨 Panel Types</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Time Series:</strong> Line, bar, and area charts</li>
@@ -7714,7 +7713,7 @@ export default function DevOpsPage() {
                             <li>• <strong>Table:</strong> Tabular data</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🔧 Dashboard Components</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Panels:</strong> Individual visualizations</li>
@@ -8068,7 +8067,7 @@ export default function DevOpsPage() {
                     process, store, search, and visualize logs from multiple sources in real-time.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The ELK Stack Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       The ELK Stack has become the de facto standard for log management in modern DevOps environments. 
@@ -8116,7 +8115,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-blue-400 mb-2">🔍 Elasticsearch</h4>
                           <p className="text-gray-300 text-sm mb-3">
                             Distributed search and analytics engine that stores and indexes log data for fast retrieval and analysis.
@@ -8150,7 +8149,7 @@ export default function DevOpsPage() {
                             <li>• Sharding and replication</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-green-400 mb-2">🔄 Logstash</h4>
                           <p className="text-gray-300 text-sm mb-3">
                             Data processing pipeline that ingests, transforms, and loads data from various sources into Elasticsearch.
@@ -8183,7 +8182,7 @@ export default function DevOpsPage() {
                             <li>• Error handling and retry logic</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-purple-400 mb-2">📊 Kibana</h4>
                           <p className="text-gray-300 text-sm mb-3">
                             Web interface that provides visualization and exploration capabilities for data stored in Elasticsearch.
@@ -8559,7 +8558,7 @@ export default function DevOpsPage() {
                     of proactive monitoring and operational excellence in production environments.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Alerting & Incident Response Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Modern alerting and incident response have evolved from reactive firefighting to proactive, 
@@ -8607,7 +8606,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📊 Alert Classification</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -8638,7 +8637,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">⚡ Alert Conditions & Thresholds</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -9097,7 +9096,7 @@ export default function DevOpsPage() {
                 <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-8 rounded-2xl border border-blue-500/30 mb-8">
                   <h2 className="text-3xl font-bold text-white mb-4">🎯 Our Linux Learning Goal</h2>
                   <p className="text-white text-xl mb-4">Go from zero to intermediate with the Linux command line – the backbone of servers, cloud systems, and automation.</p>
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">What You'll Achieve</h3>
                     <ul className="text-gray-300 space-y-2">
                       <li>• <strong className="text-white">Command Line Mastery:</strong> Navigate and manage files efficiently</li>
@@ -9119,7 +9118,7 @@ export default function DevOpsPage() {
                         It forms the core of most server operating systems and is the foundation of modern cloud computing and DevOps practices.
                       </p>
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-3">📈 Historical Context</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>1991:</strong> Linus Torvalds creates Linux kernel</li>
@@ -9128,7 +9127,7 @@ export default function DevOpsPage() {
                             <li>• <strong>2010s:</strong> Linux dominates cloud and containers</li>
                           </ul>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-3">🌍 Why DevOps Engineers Need Linux</h4>
                           <ul className="text-gray-300 space-y-2 text-sm">
                             <li>• <strong>Server Management:</strong> Most servers run Linux</li>
@@ -9562,7 +9561,7 @@ export default function DevOpsPage() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-blue-400 mb-3">🔍 Key Concepts</h3>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <strong>Repository:</strong> Storage for your project and its history</li>
@@ -9572,7 +9571,7 @@ export default function DevOpsPage() {
                         <li>• <strong>Remote:</strong> Version of repository hosted elsewhere</li>
                       </ul>
                     </div>
-                    <div className="bg-gray-800 p-6 rounded-xl">
+                    <div className="glass-card p-6 rounded-xl">
                       <h3 className="text-xl font-bold text-green-400 mb-3">⚡ Why Git Matters in DevOps</h3>
                       <ul className="text-gray-300 space-y-2">
                         <li>• <strong>Collaboration:</strong> Multiple developers working together</li>
@@ -10034,7 +10033,7 @@ export default function DevOpsPage() {
                     application deployment, and orchestration. It's designed to be simple, powerful, and agentless.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Ansible Automation Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Ansible revolutionized infrastructure automation by introducing a simple, human-readable approach 
@@ -10081,7 +10080,7 @@ export default function DevOpsPage() {
                       </p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">🎛️ Control Node</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -10108,7 +10107,7 @@ export default function DevOpsPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-gray-800 p-4 rounded-lg">
+                        <div className="glass-card glass-card-hover p-4 rounded-lg">
                           <h4 className="text-lg font-bold text-white mb-2">📡 Managed Nodes</h4>
                           <div className="bg-gray-900 p-4 rounded mb-3">
                             <code className="text-green-400">
@@ -10520,7 +10519,7 @@ export default function DevOpsPage() {
                     a policy you want your remote systems to enforce, or a set of steps in a general IT process.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Playbook Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Playbooks transform infrastructure management from manual, error-prone processes into 
@@ -10783,7 +10782,7 @@ export default function DevOpsPage() {
                     known file structure. Grouping content by roles also allows easy sharing of roles with other users.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 The Role Revolution</h3>
                     <p className="text-gray-300 mb-4">
                       Roles transform complex playbooks into modular, reusable components. They promote 
@@ -11008,7 +11007,7 @@ export default function DevOpsPage() {
                     complex integrations, and sophisticated orchestration patterns.
                   </p>
                   
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                  <div className="glass-card p-6 rounded-xl">
                     <h3 className="text-xl font-bold text-yellow-400 mb-3">🌟 Enterprise Automation Features</h3>
                     <p className="text-gray-300 mb-4">
                       Advanced Ansible capabilities include performance optimization, complex variable handling, 
@@ -11221,13 +11220,6 @@ export default function DevOpsPage() {
     <TechLayout onThisPage={pageHeadings} technology="devops" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

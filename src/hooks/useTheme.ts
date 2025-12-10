@@ -29,6 +29,11 @@ export function useTheme() {
     applyTheme(newTheme);
   };
 
-  return { theme, toggleTheme, mounted };
+  const setThemeDirectly = (newTheme: 'light' | 'dark') => {
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
+
+  return { theme, toggleTheme, setTheme: setThemeDirectly, mounted };
 }
 

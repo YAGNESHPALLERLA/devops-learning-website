@@ -46,6 +46,11 @@
           "href": "/menu/projects/intermediate"
         },
         {
+          "label": "Advanced Projects",
+          "slug": "advanced",
+          "href": "/menu/projects/advanced"
+        },
+        {
           "label": "Full-Stack Projects",
           "slug": "full-stack",
           "href": "/menu/projects/full-stack"

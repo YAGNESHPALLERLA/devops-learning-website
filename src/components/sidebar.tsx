@@ -106,10 +106,10 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
                 // Only toggle expand/collapse for parent items, don't navigate
                 toggleExpanded(item.id);
               }}
-              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
+              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
                 active
-                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg'
-                  : 'text-white hover:bg-gray-800/50 hover:border hover:border-gray-600 hover:shadow-md'
+                  ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-white border border-blue-500/30 shadow-md'
+                  : 'text-gray-300 hover:bg-gray-800/60 hover:text-white'
               }`}
             >
               <svg
@@ -129,10 +129,10 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
             <Link
               href={item.href}
               onClick={(e) => handleItemClick(e, item.id, item.href, parentId)}
-              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] group focus:outline-none focus:ring-2 focus:ring-gray-400/50 ${
+              className={`flex items-center w-full px-4 py-3 text-sm font-semibold rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
                 active
-                  ? 'bg-gray-700 text-white border border-gray-600 shadow-lg'
-                  : 'text-white hover:bg-gray-800/50 hover:border hover:border-gray-600 hover:shadow-md'
+                  ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-white border border-blue-500/30 shadow-md'
+                  : 'text-gray-300 hover:bg-gray-800/60 hover:text-white'
               }`}
             >
               {item.icon && <span className="mr-3 text-lg transition-transform duration-300 group-hover:scale-110">{item.icon}</span>}
@@ -151,7 +151,7 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#1a1a1a] border-r border-gray-600 relative z-[60]">
+    <div className="flex flex-col h-full relative z-[60]" style={{ backgroundColor: 'rgba(26, 26, 26, 0.98)', borderRight: '1px solid rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}>
       {/* Navigation - independent scroll container */}
       <nav 
         className="flex-1 p-4 overflow-y-auto overscroll-contain"
@@ -161,7 +161,7 @@ export default function Sidebar({ items, onThisPage: _onThisPage, activeSection,
         }}
         style={{ 
           scrollbarWidth: 'thin',
-          scrollbarColor: '#3a3a3a #1a1a1a'
+          scrollbarColor: 'rgba(255, 255, 255, 0.3) rgba(26, 26, 26, 0.5)'
         }}
       >
         <div className="space-y-1">

@@ -6,7 +6,6 @@ import TechLayout from '@/components/tech-layout';
 import VideoSection from '@/components/VideoSection';
 import { videoTutorialsData } from '@/data/videoTutorials';
 import { useState, useEffect } from 'react';
-import PageNavigation from '@/components/page-navigation';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function JavaPage() {
@@ -168,7 +167,7 @@ export default function JavaPage() {
           <main>
             <div className="animate-fade-in-up">
               {/* Hero Section */}
-              <div className="bg-gradient-to-r from-rose-600/10 to-red-600/10 border border-rose-500/20 p-12 rounded-lg mb-12">
+              <div className="glass-gradient p-12 rounded-lg mb-12" style={{ background: 'linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%)' }}>
                 <h1 id="introduction" className="text-5xl md:text-6xl font-bold mb-6 text-center text-white">
                   Java Tutorial
                 </h1>
@@ -189,7 +188,7 @@ export default function JavaPage() {
                   </button>
                 </div>
                 
-                <div className="bg-rose-900/20 border border-rose-500/30 rounded-lg p-6 text-center">
+                <div className="glass-card rounded-lg p-6 text-center" style={{ background: 'rgba(225, 29, 72, 0.2)' }}>
                   <p className="text-gray-300 text-lg">
                     <strong className="text-white">3+ Billion</strong> devices run Java. 
                     It's used for mobile apps, web applications, desktop apps, games, and much more!
@@ -198,7 +197,7 @@ export default function JavaPage() {
               </div>
 
               {/* Overview Section */}
-              <div id="overview" className="bg-gray-800/50 border border-gray-600 p-8 rounded-lg mb-12">
+              <div id="overview" className="glass-section p-8 rounded-lg mb-12">
                 <h2 className="text-3xl font-bold text-white mb-6 text-center">📋 Java Course Overview</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
@@ -13747,13 +13746,6 @@ public class ComparatorDemo {
     <TechLayout onThisPage={pageHeadings} technology="java" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

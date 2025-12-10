@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import TechLayout from '@/components/tech-layout';
-import PageNavigation from '@/components/page-navigation';
 
 export default function DataSciencePage() {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -612,13 +611,6 @@ export default function DataSciencePage() {
     <TechLayout onThisPage={pageHeadings} technology="data-science" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

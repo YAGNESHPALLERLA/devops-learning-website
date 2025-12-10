@@ -98,17 +98,17 @@
     {
       "slug": "beginner",
       "category": "projects",
-      "metaTitle": "Beginner Projects | OHG365",
-      "metaDesc": "Start building with beginner-friendly projects. Learn by doing with step-by-step tutorials and code examples.",
-      "h1": "Beginner Projects",
+      "metaTitle": "Beginner Projects - Azure Databricks | OHG365",
+      "metaDesc": "Learn Azure Databricks with hands-on beginner projects. Master CSV to Delta Lake, data cleaning, and aggregation techniques.",
+      "h1": "Azure Databricks Projects",
       "placeholderParagraphs": [
-        "Start your coding journey with our collection of beginner-friendly projects. Build real applications while learning fundamental concepts.",
-        "Each project includes step-by-step instructions, starter code, and solutions to help you learn and build confidence."
+        "Master Azure Databricks with hands-on projects. Learn to work with CSV files, Delta Lake, data cleaning, and aggregations.",
+        "Each project includes concepts, step-by-step tasks, and interview questions to help you learn and prepare for real-world scenarios."
       ],
       "samples": [
-        { "title": "Todo List App", "slug": "todo-list-app" },
-        { "title": "Calculator Project", "slug": "calculator-project" },
-        { "title": "Weather App", "slug": "weather-app" }
+        { "title": "CSV File to Delta Lake", "slug": "csv-to-delta-lake" },
+        { "title": "Data Cleaning & Data Processing", "slug": "data-cleaning-processing" },
+        { "title": "Aggregation & Reporting", "slug": "aggregation-reporting" }
       ],
       "cta": { "text": "Try Code Playground", "link": "/code-terminal" },
       "lastUpdated": "TBD",

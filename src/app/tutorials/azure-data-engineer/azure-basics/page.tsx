@@ -201,7 +201,7 @@ const SectionContent = ({ content }: { content: CourseSection['content'] }) => {
       
       if (level <= 1) {
         nodes.push(
-          <div key={`heading-${index}`} className="p-4 sm:p-5 bg-gray-800 rounded-lg mt-6 mb-4">
+          <div key={`heading-${index}`} className="p-4 sm:p-5 glass-card rounded-lg mt-6 mb-4">
             <h3 className="text-xl sm:text-2xl font-bold text-rose-400">{text}</h3>
           </div>
         );
@@ -445,7 +445,7 @@ export default function AzureDataEngineerPage() {
         {currentContent && (
         <section
             id={activeSection}
-            className="bg-[#252525] rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-600 scroll-mt-24 mb-8"
+            className="glass-section rounded-xl p-4 sm:p-6 lg:p-8 scroll-mt-24 mb-8"
         >
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">

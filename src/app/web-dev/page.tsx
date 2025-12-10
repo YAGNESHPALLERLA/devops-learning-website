@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import TechLayout from '@/components/tech-layout';
-import PageNavigation from '@/components/page-navigation';
 import { AUTH_SYSTEM_AVAILABLE } from '@/config/authStatus';
 
 export default function WebDevPage() {
@@ -575,13 +574,6 @@ export default function WebDevPage() {
     <TechLayout onThisPage={pageHeadings} technology="web-dev" activeSection={activeSection} setActiveSection={setActiveSection}>
       <div>
         {renderContent()}
-        
-        {/* Page Navigation - Shows on all sections */}
-        <PageNavigation
-          previousPage={navigation.previous}
-          nextPage={navigation.next}
-          onSectionChange={setActiveSection}
-        />
       </div>
     </TechLayout>
   );

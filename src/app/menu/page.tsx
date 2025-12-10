@@ -1,6 +1,6 @@
 export default function MenuPage() {
   return (
-    <main className="min-h-screen bg-[#1a1a1a] py-20">
+    <main className="min-h-screen py-20" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className="container mx-auto px-4">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Menu</h1>

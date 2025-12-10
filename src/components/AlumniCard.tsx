@@ -24,7 +24,7 @@ interface AlumniCardProps {
 
 export default function AlumniCard({ alumni, gradientClass, positionColor }: AlumniCardProps) {
   return (
-    <div className="bg-[#252525] border border-gray-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group">
+    <div className="glass-card glass-card-hover rounded-xl p-6 group">
       <div className="text-center mb-6">
         <div className={`w-24 h-24 ${gradientClass} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden`}>
           {alumni.profileImage ? (
@@ -52,7 +52,7 @@ export default function AlumniCard({ alumni, gradientClass, positionColor }: Alu
         <p className="text-gray-400 text-sm">{alumni.company}</p>
       </div>
       
-      <div className="bg-gray-800/50 rounded-lg p-4 mb-4">
+      <div className="glass rounded-lg p-4 mb-4">
         <p className="text-gray-300 text-sm italic leading-relaxed">
           "{alumni.testimonial}"
         </p>

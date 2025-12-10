@@ -5,7 +5,7 @@ import ScrollAnimate from './ScrollAnimate';
 
 const isoImages = [
   { id: 1, src: '/images/iso1.jpg', alt: 'ISO Certification 1' },
-  { id: 3, src: '/images/iso3.jpg', alt: 'ISO Certification 3' },
+  { id: 3, src: '/images/iso5.jpg', alt: 'ISO Certification 3' },
 ];
 
 export default function CompactTrusted() {

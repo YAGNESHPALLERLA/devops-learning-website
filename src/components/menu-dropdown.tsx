@@ -341,7 +341,7 @@ export default function MenuDropdown() {
         </svg>
       </button>
       
-      {isOpen && dropdownPosition && (
+      {isMounted && isOpen && dropdownPosition && createPortal(
         <div 
           role="menu"
           className="fixed w-80 rounded-lg shadow-2xl py-2 overflow-visible"
@@ -353,7 +353,7 @@ export default function MenuDropdown() {
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.3)',
-            zIndex: 10000
+            zIndex: 10001
           }}
           onMouseLeave={(e) => {
             // Check if mouse is really leaving (not going to submenu)
@@ -526,7 +526,8 @@ export default function MenuDropdown() {
               )}
             </div>
           ))}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
