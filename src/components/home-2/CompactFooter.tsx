@@ -89,7 +89,6 @@ export default function CompactFooter() {
               <div className="flex flex-col">
                 <span className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>OHG365</span>
                 <span className="text-xs leading-tight" style={{ color: 'var(--text-secondary)' }}>One Hub Global</span>
-                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>PVTLTD</span>
               </div>
             </Link>
             <p className="text-xs leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
@@ -207,7 +206,7 @@ export default function CompactFooter() {
           style={{ borderColor: 'rgba(122, 148, 165, 0.3)' }}
         >
           <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-            © {currentYear} OHG365 PVTLTD. All rights reserved.
+            © {currentYear} OHG365. All rights reserved.
           </p>
         </div>
       </div>

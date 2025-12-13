@@ -11,6 +11,7 @@ import {
   LogIn,
   X,
 } from "lucide-react";
+import Image from "next/image";
 
 type Errors = {
   email?: string;
@@ -123,8 +124,15 @@ export default function GlobalLoginModal({ isOpen, onClose }: GlobalLoginModalPr
         {/* Header */}
         <div className="text-center mb-6">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-rose-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold">OHG</span>
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+              <Image 
+                src="/logo.png" 
+                alt="OHG365 Logo" 
+                width={40} 
+                height={40} 
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="text-xl font-bold text-white">OneHubGlobal</span>
           </div>

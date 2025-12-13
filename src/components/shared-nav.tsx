@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import MenuDropdown from '@/components/menu-dropdown';
+import MobileMenu from '@/components/mobile-menu';
 import SearchBar from '@/components/search-bar';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -342,24 +343,7 @@ export default function SharedNav({ isScrolled = false, showAnimatedLine = true,
       </nav>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-[105] bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="glass-dark w-80 h-full p-6 z-[106]" onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col space-y-4 text-white">
-              <Link href="/" className="py-2 hover:opacity-80 font-semibold">Home</Link>
-              <Link href="/courses" className="py-2 hover:opacity-80">Courses</Link>
-              {tutorialLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="py-2 hover:opacity-80 flex items-center space-x-2">
-                  <span>{link.icon}</span>
-                  <span>{link.label}</span>
-                </Link>
-              ))}
-              <Link href="/terminal" className="py-2 hover:opacity-80">Terminal</Link>
-              <Link href="/challenges" className="py-2 hover:opacity-80">Challenges</Link>
-            </div>
-          </div>
-        </div>
-      )}
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </>
   );
 }

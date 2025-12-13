@@ -11,6 +11,7 @@ import {
   LogIn,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   AUTH_STATUS_DETAILS,
   AUTH_STATUS_HEADING,
@@ -30,8 +31,15 @@ function AuthPausedNotice() {
       <div className="w-full max-w-xl space-y-6 text-center">
         <Link href="/" className="inline-block">
           <div className="flex items-center justify-center space-x-3">
-            <div className="w-14 h-14 bg-gradient-to-br from-rose-500 to-purple-600 rounded-2xl flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">OHG</span>
+            <div className="w-14 h-14 rounded-2xl overflow-hidden flex items-center justify-center">
+              <Image 
+                src="/logo.png" 
+                alt="OHG365 Logo" 
+                width={56} 
+                height={56} 
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="text-left">
               <p className="text-2xl font-bold text-white leading-tight">
@@ -168,8 +176,15 @@ function ActiveLoginForm() {
           <div className="text-center mb-8">
             <Link href="/" className="inline-block mb-4">
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">OHG</span>
+                <div className="w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center">
+                  <Image 
+                    src="/logo.png" 
+                    alt="OHG365 Logo" 
+                    width={48} 
+                    height={48} 
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <span className="text-2xl font-bold text-white">OneHubGlobal</span>
               </div>

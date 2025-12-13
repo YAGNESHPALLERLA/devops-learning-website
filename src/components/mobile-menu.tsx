@@ -126,6 +126,66 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               Courses
             </Link>
 
+            {/* Tutorials Dropdown */}
+            <div className="mb-2">
+              <button
+                onClick={() => setActiveSubmenu(activeSubmenu === 'tutorials' ? null : 'tutorials')}
+                className="w-full px-4 py-3 text-left text-white hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 flex items-center justify-between min-h-[44px] focus:outline-none focus:ring-2 focus:ring-rose-500"
+                aria-expanded={activeSubmenu === 'tutorials'}
+                aria-haspopup="true"
+              >
+                <span>Tutorials</span>
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-200 ${activeSubmenu === 'tutorials' ? 'rotate-90' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              {activeSubmenu === 'tutorials' && (
+                <div className="ml-4 mt-2 space-y-1">
+                  <Link
+                    href="/tutorials/medical-coding"
+                    onClick={onClose}
+                    className="block px-4 py-3 text-gray-300 hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 min-h-[44px] flex items-center"
+                    role="menuitem"
+                  >
+                    <span className="mr-2">🏥</span>
+                    Medical Coding
+                  </Link>
+                  <Link
+                    href="/tutorials/programming"
+                    onClick={onClose}
+                    className="block px-4 py-3 text-gray-300 hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 min-h-[44px] flex items-center"
+                    role="menuitem"
+                  >
+                    <span className="mr-2">💻</span>
+                    Programming
+                  </Link>
+                  <Link
+                    href="/tutorials/government-jobs"
+                    onClick={onClose}
+                    className="block px-4 py-3 text-gray-300 hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 min-h-[44px] flex items-center"
+                    role="menuitem"
+                  >
+                    <span className="mr-2">🏛️</span>
+                    Government Jobs (SBI Jobs)
+                  </Link>
+                  <Link
+                    href="/tutorials/courses"
+                    onClick={onClose}
+                    className="block px-4 py-3 text-gray-300 hover:bg-rose-500/20 hover:text-rose-400 rounded-lg transition-all duration-200 min-h-[44px] flex items-center"
+                    role="menuitem"
+                  >
+                    <span className="mr-2">🎓</span>
+                    Courses
+                  </Link>
+                </div>
+              )}
+            </div>
+
             {/* MENU Dropdown Items */}
             {menuConfig.menu.map((item) => (
               <div key={item.slug} className="mb-2">

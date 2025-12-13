@@ -20,6 +20,7 @@ export default function MenuDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [isKeyboardNavigation, setIsKeyboardNavigation] = useState(false);
   const [submenuPosition, setSubmenuPosition] = useState<{ top: number; left: number } | null>(null);
   const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number } | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -57,12 +58,34 @@ export default function MenuDropdown() {
     setSubmenuPosition(null);
   }, []);
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside (supports both mouse and touch events)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    let touchStartTime = 0;
+    let touchTarget: Node | null = null;
+    
+    const handleTouchStart = (event: TouchEvent) => {
+      touchStartTime = Date.now();
+      touchTarget = event.target as Node;
+    };
+    
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node;
       
-      // Check if click is outside main menu
+      // For touch events, check if this is a click (not just a touch)
+      if (event.type === 'touchstart') {
+        // Store touch info but don't close yet - wait for touchend/click
+        return;
+      }
+      
+      // Check if the click is on a menu button or menu item (should not close)
+      const clickedElement = target as HTMLElement;
+      if (clickedElement.closest('button[role="menuitem"]') || 
+          clickedElement.closest('[role="menu"]') ||
+          clickedElement.closest('[data-submenu]')) {
+        return; // Don't close if clicking on menu items
+      }
+      
+      // For mouse events or touch events that became clicks, check if outside
       const isOutsideMainMenu = menuRef.current && !menuRef.current.contains(target);
       
       // Check if click is outside submenu
@@ -73,16 +96,51 @@ export default function MenuDropdown() {
         closeMenu();
       }
     };
+    
+    const handleTouchEnd = (event: TouchEvent) => {
+      // Only close if it was a tap (not a swipe) and outside the menu
+      const timeDiff = Date.now() - touchStartTime;
+      if (timeDiff < 300 && touchTarget) { // 300ms is a reasonable tap duration
+        const target = touchTarget; // Use the original touch target
+        
+        // Check if the touch was on a menu button or menu item (should not close)
+        const touchedElement = target as HTMLElement;
+        if (touchedElement.closest && (
+            touchedElement.closest('button[role="menuitem"]') || 
+            touchedElement.closest('[role="menu"]') ||
+            touchedElement.closest('[data-submenu]'))) {
+          // Reset touch tracking and return - don't close
+          touchTarget = null;
+          touchStartTime = 0;
+          return;
+        }
+        
+        const isOutsideMainMenu = menuRef.current && !menuRef.current.contains(target);
+        const submenuElement = document.querySelector('[data-submenu]');
+        const isOutsideSubmenu = !submenuElement || !submenuElement.contains(target);
+        
+        if (isOutsideMainMenu && isOutsideSubmenu) {
+          closeMenu();
+        }
+      }
+      // Reset touch tracking
+      touchTarget = null;
+      touchStartTime = 0;
+    };
 
     if (isOpen) {
       // Use a small delay to avoid closing immediately when opening
       const timeoutId = setTimeout(() => {
         document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleTouchStart, { passive: true });
+        document.addEventListener('touchend', handleTouchEnd, { passive: true });
       }, 100);
       
       return () => {
         clearTimeout(timeoutId);
         document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('touchstart', handleTouchStart);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     }
   }, [isOpen, activeSubmenu, closeMenu]);
@@ -138,24 +196,29 @@ export default function MenuDropdown() {
       setIsOpen(!isOpen);
       if (!isOpen) {
         setFocusedIndex(0);
+        setIsKeyboardNavigation(true);
       }
     } else if (e.key === 'Escape' && isOpen) {
       setIsOpen(false);
       setActiveSubmenu(null);
       setFocusedIndex(-1);
+      setIsKeyboardNavigation(false);
       buttonRef.current?.focus();
     } else if (e.key === 'ArrowDown' && isOpen) {
       e.preventDefault();
+      setIsKeyboardNavigation(true);
       const nextIndex = focusedIndex < menuConfig.menu.length - 1 ? focusedIndex + 1 : 0;
       setFocusedIndex(nextIndex);
     } else if (e.key === 'ArrowUp' && isOpen) {
       e.preventDefault();
+      setIsKeyboardNavigation(true);
       const prevIndex = focusedIndex > 0 ? focusedIndex - 1 : menuConfig.menu.length - 1;
       setFocusedIndex(prevIndex);
     }
   };
 
   const handleMenuItemKeyDown = (e: KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>, index: number, item: MenuItem) => {
+    setIsKeyboardNavigation(true);
     if (e.key === 'ArrowRight' && item.children) {
       e.preventDefault();
       handleSubmenuOpen(item.slug, index);
@@ -167,12 +230,14 @@ export default function MenuDropdown() {
       setIsOpen(false);
       setActiveSubmenu(null);
       setFocusedIndex(-1);
+      setIsKeyboardNavigation(false);
       setSubmenuPosition(null);
       buttonRef.current?.focus();
     }
   };
 
   const handleSubmenuKeyDown = (e: KeyboardEvent<HTMLAnchorElement>, parentIndex: number, childIndex: number, children: MenuItem[]) => {
+    setIsKeyboardNavigation(true);
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       const nextIndex = childIndex < children.length - 1 ? childIndex + 1 : 0;
@@ -189,12 +254,19 @@ export default function MenuDropdown() {
       setIsOpen(false);
       setActiveSubmenu(null);
       setFocusedIndex(-1);
+      setIsKeyboardNavigation(false);
       setSubmenuPosition(null);
       buttonRef.current?.focus();
     }
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (e?: React.MouseEvent | React.TouchEvent) => {
+    // Prevent event from bubbling to click outside handler
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
     if (newIsOpen && buttonRef.current) {
@@ -204,7 +276,11 @@ export default function MenuDropdown() {
         top: rect.bottom + 8, // 8px margin
         left: rect.left,
       });
-      setFocusedIndex(0);
+      // Only set focusedIndex if opened via keyboard, not mouse/touch
+      // For mouse/touch, we'll clear it so no item is highlighted by default
+      if (!isKeyboardNavigation) {
+        setFocusedIndex(-1);
+      }
     } else {
       // Clear any pending submenu timeout when closing menu
       if (submenuTimeoutRef.current) {
@@ -213,6 +289,7 @@ export default function MenuDropdown() {
       }
       setActiveSubmenu(null);
       setFocusedIndex(-1);
+      setIsKeyboardNavigation(false);
       setSubmenuPosition(null);
       setDropdownPosition(null);
     }
@@ -227,7 +304,7 @@ export default function MenuDropdown() {
     }
     
     // Calculate position function - defined first so we can use it in all cases
-    const calculatePosition = (): { top: number; left: number } | null => {
+    const calculatePosition = (): { top: number; left: number } => {
       // Try to get the button ref first for accurate positioning
       const button = menuButtonRefs.current[index];
       if (button) {
@@ -257,44 +334,45 @@ export default function MenuDropdown() {
         };
       }
       
-      return null;
+      // Ultimate fallback - ensure we always have a position
+      return {
+        top: 100 + (index * 44),
+        left: 400,
+      };
     };
     
     // Always set the new submenu immediately - React batches synchronous updates
     // This ensures only the current item's submenu is active (previous one will be cleared by render logic)
     setActiveSubmenu(itemSlug);
     
-    // Calculate and set position immediately
-    const position = calculatePosition();
-    if (position) {
-      setSubmenuPosition(position);
-    } else {
-      // If refs aren't ready, calculate after a brief delay
-      setTimeout(() => {
-        const delayedPosition = calculatePosition();
-        if (delayedPosition) {
-          setSubmenuPosition(delayedPosition);
-        } else {
-          // Ultimate fallback - ensure we always have a position
-          setSubmenuPosition({
-            top: 100 + (index * 44),
-            left: 400,
-          });
-        }
-      }, 10);
-    }
+    // Always set a position immediately (even if approximate)
+    const initialPosition = calculatePosition();
+    setSubmenuPosition(initialPosition);
     
     // Refine position after DOM update to ensure accuracy
-    setTimeout(() => {
-      const button = menuButtonRefs.current[index];
-      if (button) {
-        const rect = button.getBoundingClientRect();
-        setSubmenuPosition({
-          top: rect.top,
-          left: rect.right + 4,
-        });
-      }
-    }, 50);
+    // Use requestAnimationFrame for better timing on touch devices
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const button = menuButtonRefs.current[index];
+        if (button) {
+          const rect = button.getBoundingClientRect();
+          setSubmenuPosition({
+            top: rect.top,
+            left: rect.right + 4,
+          });
+        } else {
+          // If button still not available, try menu item
+          const menuItem = menuItemRefs.current[index];
+          if (menuItem) {
+            const rect = menuItem.getBoundingClientRect();
+            setSubmenuPosition({
+              top: rect.top,
+              left: rect.right + 4,
+            });
+          }
+        }
+      }, 0);
+    });
   };
 
   // Handle closing submenu with delay
@@ -322,7 +400,11 @@ export default function MenuDropdown() {
     <div className="relative" ref={menuRef} style={{ overflow: 'visible', zIndex: 10000 }}>
       <button
         ref={buttonRef}
-        onClick={toggleMenu}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMenu(e);
+        }}
         onKeyDown={handleKeyDown}
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -355,7 +437,20 @@ export default function MenuDropdown() {
             border: '1px solid rgba(255, 255, 255, 0.3)',
             zIndex: 10001
           }}
+          onClick={(e) => {
+            // Stop propagation to prevent click outside handler from firing
+            e.stopPropagation();
+          }}
+          onTouchStart={(e) => {
+            // Stop propagation to prevent touch handlers from closing menu
+            e.stopPropagation();
+          }}
           onMouseLeave={(e) => {
+            // Only use mouse events on non-touch devices
+            if ('ontouchstart' in window) {
+              return;
+            }
+            
             // Check if mouse is really leaving (not going to submenu)
             const relatedTarget = e.relatedTarget;
             const submenuElement = document.querySelector('[data-submenu]');
@@ -402,7 +497,13 @@ export default function MenuDropdown() {
                       menuButtonRefs.current[index] = el;
                     }}
                     role="menuitem"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      // Clear keyboard navigation focus when using mouse/touch
+                      setIsKeyboardNavigation(false);
+                      setFocusedIndex(-1);
+                      // Toggle submenu state
                       if (activeSubmenu === item.slug) {
                         setActiveSubmenu(null);
                         setSubmenuPosition(null);
@@ -410,13 +511,33 @@ export default function MenuDropdown() {
                         handleSubmenuOpen(item.slug, index);
                       }
                     }}
+                    onTouchStart={(e) => {
+                      // Prevent the click outside handler from firing
+                      e.stopPropagation();
+                      // Clear keyboard navigation focus when using touch
+                      setIsKeyboardNavigation(false);
+                      setFocusedIndex(-1);
+                    }}
                     onKeyDown={(e) => handleMenuItemKeyDown(e, index, item)}
-                    onMouseEnter={() => handleSubmenuOpen(item.slug, index)}
-                    onMouseLeave={() => handleSubmenuClose(item.slug)}
+                    onMouseEnter={() => {
+                      // Only use mouse events on non-touch devices
+                      if (!('ontouchstart' in window)) {
+                        // Clear keyboard navigation focus when using mouse
+                        setIsKeyboardNavigation(false);
+                        setFocusedIndex(-1);
+                        handleSubmenuOpen(item.slug, index);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      // Only use mouse events on non-touch devices
+                      if (!('ontouchstart' in window)) {
+                        handleSubmenuClose(item.slug);
+                      }
+                    }}
                     className={`w-full px-4 py-3 text-left text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center justify-between focus:outline-none focus:bg-white/10 focus:text-white min-h-[44px] ${
                       activeSubmenu === item.slug ? 'bg-white/10 text-white' : ''
                     } ${
-                      focusedIndex === index ? 'bg-white/10 text-white' : ''
+                      isKeyboardNavigation && focusedIndex === index ? 'bg-white/10 text-white' : ''
                     }`}
                     aria-haspopup="true"
                     aria-expanded={activeSubmenu === item.slug}
@@ -444,15 +565,18 @@ export default function MenuDropdown() {
                           left: `${submenuPosition.left - 8}px`,
                           width: '8px',
                           height: '44px',
-                          pointerEvents: 'auto',
+                          pointerEvents: 'ontouchstart' in window ? 'none' : 'auto',
                           zIndex: 10001
                         }}
                         onMouseEnter={() => {
-                          if (submenuTimeoutRef.current) {
-                            clearTimeout(submenuTimeoutRef.current);
-                            submenuTimeoutRef.current = null;
+                          // Only use mouse events on non-touch devices
+                          if (!('ontouchstart' in window)) {
+                            if (submenuTimeoutRef.current) {
+                              clearTimeout(submenuTimeoutRef.current);
+                              submenuTimeoutRef.current = null;
+                            }
+                            setActiveSubmenu(item.slug);
                           }
-                          setActiveSubmenu(item.slug);
                         }}
                       />
                       <div 
@@ -471,15 +595,31 @@ export default function MenuDropdown() {
                           overflowY: 'auto',
                           zIndex: 10002
                         }}
-                        onMouseEnter={() => {
-                          // Clear timeout and keep submenu open
-                          if (submenuTimeoutRef.current) {
-                            clearTimeout(submenuTimeoutRef.current);
-                            submenuTimeoutRef.current = null;
-                          }
-                          setActiveSubmenu(item.slug);
+                        onClick={(e) => {
+                          // Stop propagation to prevent click outside handler from firing
+                          e.stopPropagation();
                         }}
-                        onMouseLeave={() => handleSubmenuClose(item.slug)}
+                        onTouchStart={(e) => {
+                          // Stop propagation to prevent touch handlers from closing menu
+                          e.stopPropagation();
+                        }}
+                        onMouseEnter={() => {
+                          // Only use mouse events on non-touch devices
+                          if (!('ontouchstart' in window)) {
+                            // Clear timeout and keep submenu open
+                            if (submenuTimeoutRef.current) {
+                              clearTimeout(submenuTimeoutRef.current);
+                              submenuTimeoutRef.current = null;
+                            }
+                            setActiveSubmenu(item.slug);
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          // Only use mouse events on non-touch devices
+                          if (!('ontouchstart' in window)) {
+                            handleSubmenuClose(item.slug);
+                          }
+                        }}
                       >
                       {item.children.map((child, childIndex) => (
                         <Link
@@ -491,11 +631,18 @@ export default function MenuDropdown() {
                           }}
                           onKeyDown={(e) => handleSubmenuKeyDown(e, index, childIndex, item.children || [])}
                           onClick={() => {
+                            // Clear keyboard navigation focus when using mouse/touch
+                            setIsKeyboardNavigation(false);
+                            setFocusedIndex(-1);
                             setIsOpen(false);
                             setActiveSubmenu(null);
-                            setFocusedIndex(-1);
                             setSubmenuPosition(null);
                             setDropdownPosition(null);
+                          }}
+                          onTouchStart={(e) => {
+                            // Clear keyboard navigation focus when using touch
+                            setIsKeyboardNavigation(false);
+                            setFocusedIndex(-1);
                           }}
                           className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 focus:outline-none focus:bg-white/10 focus:text-white min-h-[44px] whitespace-nowrap"
                         >
@@ -511,14 +658,21 @@ export default function MenuDropdown() {
                 <Link
                   href={`/menu/${item.slug}`}
                   role="menuitem"
-                  onClick={() => {
-                    setIsOpen(false);
+                  onClick={(e) => {
+                    // Clear keyboard navigation focus when using mouse/touch
+                    setIsKeyboardNavigation(false);
                     setFocusedIndex(-1);
+                    setIsOpen(false);
                     setDropdownPosition(null);
+                  }}
+                  onTouchStart={(e) => {
+                    // Clear keyboard navigation focus when using touch
+                    setIsKeyboardNavigation(false);
+                    setFocusedIndex(-1);
                   }}
                   onKeyDown={(e) => handleMenuItemKeyDown(e, index, item)}
                   className={`block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 focus:outline-none focus:bg-white/10 focus:text-white min-h-[44px] ${
-                    focusedIndex === index ? 'bg-white/10 text-white' : ''
+                    isKeyboardNavigation && focusedIndex === index ? 'bg-white/10 text-white' : ''
                   }`}
                 >
                   {item.label}

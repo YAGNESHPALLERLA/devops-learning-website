@@ -18,12 +18,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OHG365 PVTLTD",
+  title: "OHG365",
   description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
   icons: {
     icon: '/logo.png',
     shortcut: '/logo.png',
     apple: '/logo.png',
+  },
+  openGraph: {
+    title: "OHG365",
+    description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
+    url: 'https://ohg365.com',
+    siteName: 'OHG365',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 1200,
+        alt: 'OHG365 Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OHG365',
+    description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
+    images: ['/logo.png'],
   },
 };
 

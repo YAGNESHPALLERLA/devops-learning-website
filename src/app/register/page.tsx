@@ -20,6 +20,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Errors = {
   name?: string;
@@ -203,8 +204,15 @@ function RegisterForm() {
           <div className="mb-8">
             <Link href="/" className="inline-block mb-6">
               <div className="flex items-center justify-center lg:justify-start space-x-3">
-                <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">OHG</span>
+                <div className="w-16 h-16 rounded-xl overflow-hidden flex items-center justify-center shadow-lg">
+                  <Image 
+                    src="/logo.png" 
+                    alt="OHG365 Logo" 
+                    width={64} 
+                    height={64} 
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <div>
                   <span className="text-3xl font-bold text-white">OneHubGlobal</span>

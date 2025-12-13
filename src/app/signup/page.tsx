@@ -13,6 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Errors = {
   name?: string;
@@ -178,8 +179,15 @@ function SignupForm() {
           <div className="text-center mb-8">
             <Link href="/" className="inline-block mb-4">
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">OHG</span>
+                <div className="w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center">
+                  <Image 
+                    src="/logo.png" 
+                    alt="OHG365 Logo" 
+                    width={48} 
+                    height={48} 
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <span className="text-2xl font-bold text-white">OneHubGlobal</span>
               </div>

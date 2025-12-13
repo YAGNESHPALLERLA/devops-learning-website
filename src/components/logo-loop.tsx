@@ -84,13 +84,29 @@ export default function LogoLoop({
           {logos.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex items-center justify-center mx-8 whitespace-nowrap"
+              className="flex items-center justify-center mx-8 whitespace-nowrap group"
               style={{ height: `${logoHeight}px` }}
             >
-              <div className="text-2xl font-bold text-gray-300 hover:text-white transition-colors duration-300">
+              <div 
+                className="text-2xl font-bold transition-colors duration-300"
+                style={{ 
+                  color: 'var(--text-primary)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--corp-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+              >
                 {logo.icon}
               </div>
-              <span className="ml-2 text-sm font-medium text-gray-400">
+              <span 
+                className="ml-2 text-sm font-semibold transition-colors duration-300"
+                style={{ 
+                  color: 'var(--text-primary)',
+                }}
+              >
                 {logo.name}
               </span>
             </div>
@@ -102,13 +118,29 @@ export default function LogoLoop({
           {logos.map((logo, index) => (
             <div
               key={`${logo.name}-duplicate-${index}`}
-              className="flex items-center justify-center mx-8 whitespace-nowrap"
+              className="flex items-center justify-center mx-8 whitespace-nowrap group"
               style={{ height: `${logoHeight}px` }}
             >
-              <div className="text-2xl font-bold text-gray-300 hover:text-white transition-colors duration-300">
+              <div 
+                className="text-2xl font-bold transition-colors duration-300"
+                style={{ 
+                  color: 'var(--text-primary)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--corp-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+              >
                 {logo.icon}
               </div>
-              <span className="ml-2 text-sm font-medium text-gray-400">
+              <span 
+                className="ml-2 text-sm font-semibold transition-colors duration-300"
+                style={{ 
+                  color: 'var(--text-primary)',
+                }}
+              >
                 {logo.name}
               </span>
             </div>
