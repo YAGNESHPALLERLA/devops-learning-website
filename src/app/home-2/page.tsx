@@ -21,12 +21,12 @@ export default function Home2Page() {
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.title = 'OHG365 - Your Career Journey Starts Here';
+      document.title = 'OHG 365 - Your Career Journey Starts Here';
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
           metaDescription.setAttribute(
             'content',
-          'Find job opportunities and enhance your skills to achieve your career goals. Learn, grow, and succeed with OHG365.'
+          'Find job opportunities and enhance your skills to achieve your career goals. Learn, grow, and succeed with OHG 365.'
           );
       }
     }

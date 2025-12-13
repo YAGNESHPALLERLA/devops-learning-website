@@ -1,6 +1,6 @@
 {
-  "name": "OHG365",
-  "short_name": "OHG365",
+  "name": "OHG 365",
+  "short_name": "OHG 365",
   "description": "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
   "start_url": "/",
   "display": "standalone",

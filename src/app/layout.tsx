@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OHG365",
-  applicationName: "OHG365",
-  description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
+  title: "OHG 365",
+  applicationName: "OHG 365",
+  description: "OHG365 is a comprehensive learning and career development platform offering programming tutorials, coding challenges, project-based training, career resources, and DevOps guides to help you grow your tech skills and succeed.",
   icons: {
     icon: [
       { url: '/logo.png', sizes: 'any' },
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   openGraph: {
-    title: "OHG365",
-    description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
+    title: "OHG 365",
+    description: "OHG365 is a comprehensive learning and career development platform offering programming tutorials, coding challenges, project-based training, career resources, and DevOps guides to help you grow your tech skills and succeed.",
     url: 'https://ohg365.com',
-    siteName: 'OHG365',
+    siteName: 'OHG 365',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 1200,
-        alt: 'OHG365 Logo',
+        alt: 'OHG 365 Logo',
       },
     ],
     locale: 'en_US',
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OHG365',
-    description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
+    title: 'OHG 365',
+    description: 'OHG365 is a comprehensive learning and career development platform offering programming tutorials, coding challenges, project-based training, career resources, and DevOps guides to help you grow your tech skills and succeed.',
     images: ['/logo.png'],
   },
 };
@@ -67,8 +67,8 @@ export default function RootLayout({
         <link rel="icon" href="/logo.png" type="image/png" sizes="512x512" />
         <link rel="shortcut icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/logo.png" sizes="180x180" />
-        <meta name="application-name" content="OHG365" />
-        <meta name="apple-mobile-web-app-title" content="OHG365" />
+        <meta name="application-name" content="OHG 365" />
+        <meta name="apple-mobile-web-app-title" content="OHG 365" />
         {/* Blocking script that runs before React - checks auth for tutorial routes - MUST BE FIRST */}
         {AUTH_SYSTEM_AVAILABLE && (
           <script

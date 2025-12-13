@@ -23,7 +23,7 @@ export function SEOHead({ title, description, canonicalUrl, type = 'website' }: 
       <meta property="og:image" content={`${siteUrl}/logo.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="1200" />
-      <meta property="og:image:alt" content="OHG365 Logo" />
+      <meta property="og:image:alt" content="OHG 365 Logo" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
@@ -38,7 +38,7 @@ export function SiteNavigationJSONLD() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'OHG365',
+    name: 'OHG 365',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
@@ -47,7 +47,7 @@ export function SiteNavigationJSONLD() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'OHG365',
+    name: 'OHG 365',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
