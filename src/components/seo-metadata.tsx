@@ -44,6 +44,15 @@ export function SiteNavigationJSONLD() {
     description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
   };
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'OHG365',
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    description: 'Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more',
+  };
+
   const navigationStructure = {
     '@context': 'https://schema.org',
     '@type': 'SiteNavigationElement',
@@ -126,6 +135,11 @@ export function SiteNavigationJSONLD() {
         id="organization-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <Script
+        id="website-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Script
         id="site-navigation-jsonld"

@@ -19,9 +19,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "OHG365",
+  applicationName: "OHG365",
   description: "Learn DevOps from Basics to Intermediate - A comprehensive guide covering Linux, Docker, Kubernetes, CI/CD, and more",
   icons: {
-    icon: '/logo.png',
+    icon: [
+      { url: '/logo.png', sizes: 'any' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
     shortcut: '/logo.png',
     apple: '/logo.png',
   },
@@ -57,9 +61,14 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/logo.png" type="image/png" sizes="192x192" />
+        <link rel="icon" href="/logo.png" type="image/png" sizes="512x512" />
         <link rel="shortcut icon" href="/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="apple-touch-icon" href="/logo.png" sizes="180x180" />
+        <meta name="application-name" content="OHG365" />
+        <meta name="apple-mobile-web-app-title" content="OHG365" />
         {/* Blocking script that runs before React - checks auth for tutorial routes - MUST BE FIRST */}
         {AUTH_SYSTEM_AVAILABLE && (
           <script
